@@ -1,15 +1,31 @@
-```html
 <!DOCTYPE html>
 <html>
 <head>
   <title>About | Chelsea Ogbonna</title>
 
   <style>
+    :root {
+      /* BACKGROUND (easy swap point) */
+      --bg: #abc4ff;
+
+      /* SURFACES */
+      --card: #c1d3fe;
+      --card-hover: #ccdbfd;
+
+      /* TEXT */
+      --text: #1f2937;
+      --muted: #111827;
+
+      /* NAV */
+      --nav-text: #1f2937;
+      --nav-opacity: 0.8;
+    }
+
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: #0b0f19;
-      color: white;
+      background: var(--bg);
+      color: var(--text);
     }
 
     nav {
@@ -17,10 +33,10 @@
     }
 
     nav a {
-      color: white;
+      color: var(--nav-text);
       margin-right: 15px;
       text-decoration: none;
-      opacity: 0.8;
+      opacity: var(--nav-opacity);
     }
 
     nav a:hover {
@@ -37,10 +53,14 @@
     }
 
     .card {
-      background: #111827;
+      background: var(--card);
       padding: 25px;
       border-radius: 12px;
       line-height: 1.6;
+    }
+
+    .card:hover {
+      background: var(--card-hover);
     }
 
     p {
@@ -92,4 +112,3 @@
 
 </body>
 </html>
-```
