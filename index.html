@@ -1,42 +1,195 @@
+```html
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Chelsea Ogbonna | Home</title>
+  <title>Chelsea Ogbonna | Portfolio</title>
 
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
-      font-family: Arial;
+      font-family: Arial, sans-serif;
       background: #0b0f19;
       color: white;
-      text-align: center;
+      line-height: 1.6;
     }
 
     nav {
-      padding: 20px;
+      display: flex;
+      justify-content: center;
+      padding: 25px;
+      position: sticky;
+      top: 0;
+      background: rgba(11,15,25,0.95);
+      backdrop-filter: blur(10px);
     }
 
     nav a {
       color: white;
-      margin: 10px;
       text-decoration: none;
+      margin: 0 15px;
+      font-weight: 500;
+    }
+
+    nav a:hover {
+      color: #7dd3fc;
     }
 
     .hero {
-      height: 80vh;
+      min-height: 85vh;
       display: flex;
-      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 80px;
+      gap: 60px;
+    }
+
+    .hero-text {
+      max-width: 650px;
+    }
+
+    .hero h1 {
+      font-size: 70px;
+      margin-bottom: 10px;
+    }
+
+    .hero h2 {
+      color: #7dd3fc;
+      font-weight: normal;
+      margin-top: 0;
+    }
+
+    .hero p {
+      opacity: 0.85;
+      font-size: 18px;
+    }
+
+    .hero-image {
+      width: 320px;
+      height: 320px;
+      border-radius: 20px;
+      background: #111827;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #7dd3fc;
+      font-size: 18px;
+    }
+
+    .button-container {
+      margin-top: 30px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 12px 24px;
+      margin-right: 10px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      background: #7dd3fc;
+      color: #0b0f19;
+    }
+
+    .button-secondary {
+      background: #111827;
+      color: white;
+      border: 1px solid #374151;
+    }
+
+    .section {
+      padding: 80px 10%;
+    }
+
+    .section h2 {
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 36px;
+    }
+
+    .stats {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    .stat-card {
+      background: #111827;
+      border-radius: 15px;
+      padding: 30px;
+      width: 220px;
+      text-align: center;
+    }
+
+    .stat-card h3 {
+      font-size: 40px;
+      color: #7dd3fc;
+      margin: 0;
+    }
+
+    .projects {
+      display: flex;
+      gap: 25px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .project-card {
+      background: #111827;
+      width: 320px;
+      border-radius: 15px;
+      overflow: hidden;
+      transition: transform 0.3s;
+    }
+
+    .project-card:hover {
+      transform: translateY(-8px);
+    }
+
+    .project-image {
+      height: 180px;
+      background: #1f2937;
+      display: flex;
       justify-content: center;
       align-items: center;
     }
 
-    h1 {
-      font-size: 50px;
-      margin: 0;
+    .project-content {
+      padding: 20px;
     }
 
-    p {
-      opacity: 0.8;
+    .interests {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .interest {
+      background: #111827;
+      padding: 12px 18px;
+      border-radius: 30px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 60px 20px;
+      opacity: 0.7;
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .hero h1 {
+        font-size: 50px;
+      }
     }
   </style>
 </head>
@@ -51,10 +204,114 @@
   <a href="contact.html">Contact</a>
 </nav>
 
-<div class="hero">
-  <h1>Chelsea Ogbonna</h1>
-  <p>Biomedical Engineering + Mechanical Engineering | Northwestern University</p>
-</div>
+<section class="hero">
+
+  <div class="hero-text">
+    <h1>Chelsea Ogbonna</h1>
+
+    <h2>Biomedical Engineer • Mechanical Engineer • Researcher</h2>
+
+    <p>
+      Engineering healthcare solutions through research, design, and innovation.
+      Building biomedical devices, microfluidic systems, implantable technologies,
+      and embedded sensing platforms.
+    </p>
+
+    <div class="button-container">
+      <a class="button" href="projects.html">View Projects</a>
+      <a class="button button-secondary" href="contact.html">Contact Me</a>
+    </div>
+  </div>
+
+  <div class="hero-image">
+    Your Photo Here
+  </div>
+
+</section>
+
+<section class="section">
+
+  <h2>Highlights</h2>
+
+  <div class="stats">
+
+    <div class="stat-card">
+      <h3>5+</h3>
+      <p>Engineering Projects</p>
+    </div>
+
+    <div class="stat-card">
+      <h3>3+</h3>
+      <p>Research Experiences</p>
+    </div>
+
+    <div class="stat-card">
+      <h3>50+</h3>
+      <p>Students Impacted</p>
+    </div>
+
+    <div class="stat-card">
+      <h3>2026</h3>
+      <p>Graduation Year</p>
+    </div>
+
+  </div>
+
+</section>
+
+<section class="section">
+
+  <h2>Featured Projects</h2>
+
+  <div class="projects">
+
+    <div class="project-card">
+      <div class="project-image">Project Image</div>
+      <div class="project-content">
+        <h3>Syncytial Knot Isolation Device</h3>
+        <p>Microfluidic DLD system for biological particle separation.</p>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-image">Project Image</div>
+      <div class="project-content">
+        <h3>TAVI Integrated Pacemaker</h3>
+        <p>Wireless power transfer and implantable medical technology.</p>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-image">Project Image</div>
+      <div class="project-content">
+        <h3>Terrain Analysis Platform</h3>
+        <p>Embedded sensing and terrain classification system.</p>
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+<section class="section">
+
+  <h2>Research & Engineering Interests</h2>
+
+  <div class="interests">
+    <div class="interest">Biomedical Devices</div>
+    <div class="interest">Microfluidics</div>
+    <div class="interest">Implantable Systems</div>
+    <div class="interest">Embedded Systems</div>
+    <div class="interest">Computational Modeling</div>
+    <div class="interest">Healthcare Accessibility</div>
+  </div>
+
+</section>
+
+<footer>
+  © 2026 Chelsea Ogbonna
+</footer>
 
 </body>
 </html>
+```
