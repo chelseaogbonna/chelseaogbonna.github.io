@@ -4,11 +4,28 @@
   <title>Leadership</title>
 
   <style>
+    :root {
+      /* BACKGROUND (single control point) */
+      --bg: #abc4ff;
+
+      /* CARDS */
+      --card: #c1d3fe;
+      --card-hover: #ccdbfd;
+
+      /* TEXT */
+      --text: #1f2937;
+      --muted: #111827;
+
+      /* NAV */
+      --nav-text: #1f2937;
+      --nav-opacity: 0.8;
+    }
+
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: #0b0f19;
-      color: white;
+      background: var(--bg);
+      color: var(--text);
     }
 
     nav {
@@ -16,31 +33,43 @@
     }
 
     nav a {
-      color: white;
+      color: var(--nav-text);
       margin-right: 10px;
       text-decoration: none;
+      opacity: var(--nav-opacity);
     }
 
     nav a:hover {
-      opacity: 0.8;
+      opacity: 1;
     }
 
     .content {
       padding: 60px;
     }
 
+    h1 {
+      margin-bottom: 25px;
+    }
+
     .card {
-      background: #111827;
+      background: var(--card);
       padding: 20px;
       border-radius: 10px;
-      margin-bottom: 30px; /* Creates space between boxes */
+      margin-bottom: 30px;
       max-width: 900px;
+      transition: 0.2s ease;
+    }
+
+    .card:hover {
+      background: var(--card-hover);
     }
 
     .card img {
       display: block;
       margin: 20px auto;
       border-radius: 10px;
+      max-width: 100%;
+      height: auto;
     }
 
     .caption {
@@ -48,6 +77,10 @@
       opacity: 0.8;
       text-align: center;
       margin-top: 8px;
+    }
+
+    p {
+      line-height: 1.6;
     }
   </style>
 </head>
@@ -68,9 +101,7 @@
 
   <!-- BOX 1: NSBE IMAGE -->
   <div class="card">
-    <img src="NSBE Pictures.webp"
-         width="400"
-         style="border-radius:10px; margin:20px auto; display:block;">
+    <img src="NSBE Pictures.webp" width="400">
   </div>
 
   <!-- BOX 2: LEADERSHIP TEXT -->
@@ -95,9 +126,7 @@
   <!-- BOX 3: STUDY SESSION IMAGE -->
   <div class="card">
 
-    <img src="studypictures.webp"
-         width="400"
-         style="border-radius:10px; margin:20px auto; display:block;">
+    <img src="studypictures.webp" width="400">
 
     <p class="caption">
       NSBE-led collaborative study session bringing together 50+ students across NSBE, SHPE, SWE, and WIC.
