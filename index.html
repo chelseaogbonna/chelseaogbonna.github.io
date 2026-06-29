@@ -15,25 +15,32 @@
   ========================================================= */
 
   :root {
-    --bg: #edf2fb;
-    --bg2: #e2eafc;
-    
-    --card: #d7e3fc;
+    /* BACKGROUND becomes the strongest blue */
+    --bg: #abc4ff;        /* main background (formerly accent) */
+    --bg2: #b6ccfe;       /* secondary background */
+
+    /* CARDS become lighter than bg */
+    --card: #c1d3fe;
     --card-hover: #ccdbfd;
 
+    /* SURFACE LAYERS */
+    --surface: #d7e3fc;
+
+    /* TEXT needs to go darker for contrast */
     --text: #1f2937;
-    --muted: #4b5563;
+    --muted: #111827;
 
-    --accent: #abc4ff;
-    --accent-soft: #b6ccfe;
-    --border: #c1d3fe;
+    /* ACCENT shifts to lighter highlight */
+    --accent: #e2eafc;
+    --accent-soft: #edf2fb;
 
-    --nav-bg: rgba(237, 242, 251, 0.9);
-    --project-hover: #dde6b8;
+    --border: #b6ccfe;
 
-  }  
+    --nav-bg: rgba(171, 196, 255, 0.85);
 
-
+    --project-hover: #d7e3fc;
+  }
+    
   /* =========================================================
      GLOBAL STYLES
   ========================================================= */
