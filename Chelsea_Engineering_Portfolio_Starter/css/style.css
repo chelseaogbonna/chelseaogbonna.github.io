@@ -1,0 +1,10 @@
+body{font-family:Inter,Arial,sans-serif;margin:0;background:#08111f;color:#eef}
+header{padding:25px;background:#101826;text-align:center}
+nav a{color:#fff;text-decoration:none;margin:0 10px}
+.hero{padding:80px 8%;text-align:center;background:linear-gradient(135deg,#0b1c35,#123d73)}
+.btn{display:inline-block;background:#3b82f6;padding:12px 20px;color:#fff;border-radius:8px;text-decoration:none}
+section{padding:60px 8%}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+.card{background:#152235;padding:20px;border-radius:12px;transition:.3s}
+.card:hover{transform:translateY(-5px)}
+footer{text-align:center;padding:20px;background:#101826}
