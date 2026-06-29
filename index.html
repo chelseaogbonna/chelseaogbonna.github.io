@@ -3,7 +3,6 @@
 <head>
   <title>Chelsea Ogbonna | Portfolio</title>
 
-  <!-- GOOGLE FONT -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -11,38 +10,30 @@
   <style>
 
   /* =========================================================
-     🎨 CHANGE COLORS HERE (ONLY EDIT THIS SECTION)
+     🎨 COLORS
   ========================================================= */
 
   :root {
-    /* BACKGROUND becomes the strongest blue */
-    --bg: #abc4ff;        /* main background (formerly accent) */
-    --bg2: #b6ccfe;       /* secondary background */
+    --bg: #abc4ff;
+    --bg2: #b6ccfe;
 
-    /* CARDS become lighter than bg */
     --card: #c1d3fe;
     --card-hover: #ccdbfd;
 
-    /* SURFACE LAYERS */
-    --surface: #d7e3fc;
-
-    /* TEXT needs to go darker for contrast */
     --text: #1f2937;
     --muted: #111827;
 
-    /* ACCENT shifts to lighter highlight */
     --accent: #e2eafc;
-    --accent-soft: #edf2fb;
+    --accent-hover: #ffffff;
 
     --border: #b6ccfe;
 
     --nav-bg: rgba(171, 196, 255, 0.85);
-
     --project-hover: #d7e3fc;
   }
-    
+
   /* =========================================================
-     GLOBAL STYLES
+     GLOBAL
   ========================================================= */
 
   * {
@@ -57,14 +48,19 @@
     line-height: 1.6;
   }
 
+  /* =========================================================
+     NAV
+  ========================================================= */
+
   nav {
     display: flex;
     justify-content: center;
-    padding: 25px;
+    padding: 18px;
     position: sticky;
     top: 0;
     background: var(--nav-bg);
     backdrop-filter: blur(10px);
+    z-index: 10;
   }
 
   nav a {
@@ -74,69 +70,71 @@
     font-weight: 500;
   }
 
-  nav a:hover {
-    color: var(--accent);
-  }
-
   /* =========================================================
-     HERO SECTION
+     HERO (NEHA-STYLE LAYOUT)
   ========================================================= */
 
   .hero {
-    min-height: 85vh;
-    display: flex;
+    min-height: 75vh;
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
     align-items: center;
-    justify-content: center;
-    padding: 80px;
-    gap: 60px;
+    gap: 50px;
+
+    padding: 40px 10% 20px;   /* moves everything UP */
   }
 
-  .hero-text {
+  .hero-text h1 {
+    font-size: 64px;
+    margin: 0 0 10px;
+  }
+
+  .hero-text h2 {
+    font-weight: 500;
+    margin: 0 0 15px;
+    opacity: 0.85;
+  }
+
+  .hero-text p {
+    font-size: 18px;
+    opacity: 0.85;
     max-width: 650px;
   }
 
-  .hero h1 {
-    font-size: 70px;
-    margin-bottom: 10px;
-  }
-
-  .hero h2 {
-    color: var(--accent);
-    font-weight: normal;
-    margin-top: 0;
-  }
-
-  .hero p {
-    opacity: 0.85;
-    font-size: 18px;
-  }
+  /* =========================================================
+     PROFILE IMAGE
+  ========================================================= */
 
   .hero-image img {
     width: 100%;
     max-width: 340px;
     height: auto;
+
     border-radius: 18px;
+
+    border: 5px solid white;   /* ⭐ requested border */
+
     display: block;
-    margin: 0 auto 18px;
-    object-fit: cover;
-  }    
-  
-  
+    margin: 0 auto;
+
+    box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+  }
+
   /* =========================================================
      BUTTONS
   ========================================================= */
 
   .button-container {
-    margin-top: 30px;
+    margin-top: 25px;
   }
 
   .button {
     display: inline-block;
-    padding: 12px 24px;
+    padding: 12px 22px;
     margin-right: 10px;
     border-radius: 8px;
     text-decoration: none;
-    font-weight: bold;
+    font-weight: 600;
     background: var(--accent);
     color: #0b0f19;
   }
@@ -147,8 +145,8 @@
 
   .button-secondary {
     background: var(--card);
+    border: 1px solid var(--border);
     color: var(--text);
-    border: 1px solid #3a3f48;
   }
 
   /* =========================================================
@@ -162,7 +160,6 @@
   .section h2 {
     text-align: center;
     margin-bottom: 40px;
-    font-size: 36px;
   }
 
   /* =========================================================
@@ -186,7 +183,6 @@
 
   .stat-card h3 {
     font-size: 40px;
-    color: var(--accent);
     margin: 0;
   }
 
@@ -228,7 +224,7 @@
   }
 
   /* =========================================================
-     INTEREST TAGS
+     INTERESTS
   ========================================================= */
 
   .interests {
@@ -260,12 +256,13 @@
 
   @media (max-width: 900px) {
     .hero {
-      flex-direction: column;
+      grid-template-columns: 1fr;
       text-align: center;
+      padding-top: 30px;
     }
 
-    .hero h1 {
-      font-size: 50px;
+    .hero-text h1 {
+      font-size: 48px;
     }
   }
 
@@ -311,11 +308,9 @@
 
 <!-- STATS -->
 <section class="section">
-
   <h2>Highlights</h2>
 
   <div class="stats">
-
     <div class="stat-card">
       <h3>5+</h3>
       <p>Projects</p>
@@ -330,14 +325,11 @@
       <h3>50+</h3>
       <p>Students Impacted</p>
     </div>
-
   </div>
-
 </section>
 
 <!-- PROJECTS -->
 <section class="section">
-
   <h2>Featured Projects</h2>
 
   <div class="projects">
@@ -367,12 +359,10 @@
     </div>
 
   </div>
-
 </section>
 
 <!-- INTERESTS -->
 <section class="section">
-
   <h2>Research Interests</h2>
 
   <div class="interests">
@@ -382,7 +372,6 @@
     <div class="interest">Embedded Systems</div>
     <div class="interest">Healthcare Tech</div>
   </div>
-
 </section>
 
 <!-- FOOTER -->
