@@ -10,21 +10,13 @@
   <style>
 
   :root {
-    --bg: #edf2fb;
-    --bg2: #e2eafc;
-
-    --card: #d7e3fc;
-    --card-hover: #ccdbfd;
-
-    --text: #1f2937;
-    --muted: #4b5563;
-
-    --accent: #abc4ff;
-    --accent-soft: #b6ccfe;
-    --border: #c1d3fe;
-
-    --nav-bg: rgba(237, 242, 251, 0.9);
-    --project-hover: #dde6b8;
+    --bg: #0b0f19;
+    --panel: #111827;
+    --text: #e5e7eb;
+    --muted: #9ca3af;
+    --accent: #7dd3fc;
+    --accent2: #60a5fa;
+    --border: rgba(255,255,255,0.08);
   }
 
   * {
@@ -39,178 +31,180 @@
     line-height: 1.6;
   }
 
-  /* =========================================================
-     NAV (UPDATED LAYOUT)
-  ========================================================= */
+  /* ================= NAV ================= */
 
   nav {
     display: flex;
-    justify-content: space-between;   /* KEY CHANGE */
+    justify-content: space-between;
     align-items: center;
-    padding: 18px 10%;
+    padding: 18px 8%;
     position: sticky;
     top: 0;
-    background: var(--nav-bg);
-    backdrop-filter: blur(10px);
-    z-index: 10;
+    background: rgba(11, 15, 25, 0.8);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
   }
 
   .logo {
     font-weight: 700;
-    font-size: 18px;
-    color: var(--text);
     text-decoration: none;
+    color: var(--text);
+    font-size: 18px;
   }
 
   .nav-links {
     display: flex;
-    gap: 10px;
+    gap: 18px;
   }
 
   .nav-links a {
-    color: var(--text);
+    color: var(--muted);
     text-decoration: none;
     font-weight: 500;
-    padding: 8px 14px;
+    padding: 6px 10px;
     border-radius: 8px;
     transition: 0.2s ease;
   }
 
   .nav-links a:hover {
-    background: var(--accent);
-    color: #0b0f19;
+    color: var(--text);
+    background: rgba(125, 211, 252, 0.12);
   }
-  
 
-  /* =========================================================
-     HERO
-  ========================================================= */
+  /* ================= HERO ================= */
 
   .hero {
-    min-height: 75vh;
     display: grid;
-    grid-template-columns: 1.2fr 0.8fr;
+    grid-template-columns: 1.3fr 0.7fr;
     align-items: center;
-    gap: 50px;
-    padding: 40px 10% 20px;
+    gap: 60px;
+    padding: 90px 8%;
   }
 
-  .hero-text h1 {
+  .hero h1 {
     font-size: 64px;
-    margin: 0 0 10px;
+    margin: 0;
   }
 
-  .hero-text h2 {
+  .hero h2 {
     font-weight: 500;
-    margin: 0 0 15px;
-    opacity: 0.85;
+    color: var(--accent);
+    margin-top: 10px;
   }
 
-  .hero-text p {
-    font-size: 18px;
-    opacity: 0.85;
-    max-width: 650px;
+  .hero p {
+    color: var(--muted);
+    max-width: 600px;
+    margin-top: 20px;
   }
 
-  .hero-image img {
-    width: 100%;
-    max-width: 340px;
-    border-radius: 18px;
-    border: 5px solid white;
-    display: block;
-    margin: 0 auto;
-    box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+  .buttons {
+    margin-top: 30px;
   }
 
-  .button-container {
-    margin-top: 25px;
-  }
-
-  .button {
+  .btn {
     display: inline-block;
-    padding: 12px 22px;
+    padding: 12px 18px;
     margin-right: 10px;
-    border-radius: 8px;
+    border-radius: 10px;
     text-decoration: none;
     font-weight: 600;
+    transition: 0.2s ease;
+  }
+
+  .btn-primary {
     background: var(--accent);
     color: #0b0f19;
   }
 
-  .button-secondary {
-    background: var(--card);
+  .btn-primary:hover {
+    background: var(--accent2);
+  }
+
+  .btn-secondary {
     border: 1px solid var(--border);
+    color: var(--text);
   }
 
-  .section {
-    padding: 80px 10%;
+  .btn-secondary:hover {
+    background: rgba(255,255,255,0.05);
   }
 
-  .section h2 {
-    text-align: center;
-    margin-bottom: 40px;
-  }
-
-  .stats {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    flex-wrap: wrap;
-  }
-
-  .stat-card {
-    background: var(--card);
-    border-radius: 15px;
-    padding: 30px;
-    width: 220px;
-    text-align: center;
-  }
-
-  .projects {
-    display: flex;
-    gap: 25px;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .project-card {
-    background: var(--card);
-    width: 320px;
-    border-radius: 15px;
-    overflow: hidden;
-  }
-
-  .project-image {
-    height: 180px;
-    background: #2d3138;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--accent);
-  }
-
-  .project-content {
+  .hero-card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 16px;
     padding: 20px;
+    text-align: center;
   }
 
-  .interests {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    flex-wrap: wrap;
+  .hero-card img {
+    width: 100%;
+    border-radius: 12px;
   }
 
-  .interest {
-    background: var(--card);
-    padding: 12px 18px;
-    border-radius: 30px;
+  /* ================= SECTIONS ================= */
+
+  section {
+    padding: 80px 8%;
   }
+
+  .section-title {
+    font-size: 28px;
+    margin-bottom: 30px;
+  }
+
+  /* ================= GRID ================= */
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 20px;
+    transition: 0.2s ease;
+  }
+
+  .card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(125, 211, 252, 0.3);
+  }
+
+  .card h3 {
+    margin-top: 0;
+  }
+
+  .card p {
+    color: var(--muted);
+  }
+
+  /* ================= FLOAT EFFECT ================= */
+
+  @keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-6px); }
+    100% { transform: translateY(0px); }
+  }
+
+  .hero-card {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  /* ================= FOOTER ================= */
 
   footer {
     text-align: center;
-    padding: 60px 20px;
-    opacity: 0.7;
+    padding: 50px;
+    color: var(--muted);
+    border-top: 1px solid var(--border);
   }
+
+  /* ================= MOBILE ================= */
 
   @media (max-width: 900px) {
     .hero {
@@ -218,12 +212,12 @@
       text-align: center;
     }
 
-    .hero-text h1 {
-      font-size: 48px;
+    .grid {
+      grid-template-columns: 1fr;
     }
 
-    .nav-links {
-      gap: 15px;
+    .hero h1 {
+      font-size: 42px;
     }
   }
 
@@ -248,93 +242,83 @@
 <!-- HERO -->
 <section class="hero">
 
-  <div class="hero-text">
+  <div>
     <h1>Chelsea Ogbonna</h1>
     <h2>Biomedical • Mechanical • Research Engineer</h2>
 
     <p>
-      Engineering healthcare solutions through research, design, and innovation.
-      Building biomedical devices, microfluidic systems, implantable technologies,
-      and embedded sensing platforms.
+      I design biomedical systems, implantable devices, and microfluidic technologies
+      focused on improving healthcare access and engineering impact-driven solutions.
     </p>
 
-    <div class="button-container">
-      <a class="button" href="projects.html">View Projects</a>
-      <a class="button button-secondary" href="contact.html">Contact Me</a>
+    <div class="buttons">
+      <a class="btn btn-primary" href="projects.html">View Work</a>
+      <a class="btn btn-secondary" href="contact.html">Contact</a>
     </div>
   </div>
 
-  <div class="hero-image">
-    <img src="Chelseaprofilepics.JPG" alt="Chelsea Ogbonna Profile Picture">
+  <div class="hero-card">
+    <img src="Chelseaprofilepics.JPG" alt="Profile">
+    <p style="margin-top: 12px; color: var(--muted);">
+      Northwestern University<br>
+      BS/MS Biomedical Engineering
+    </p>
   </div>
 
-</section>
-
-<!-- STATS -->
-<section class="section">
-  <h2>Highlights</h2>
-
-  <div class="stats">
-    <div class="stat-card">
-      <h3>5+</h3>
-      <p>Projects</p>
-    </div>
-    <div class="stat-card">
-      <h3>3+</h3>
-      <p>Research Roles</p>
-    </div>
-    <div class="stat-card">
-      <h3>50+</h3>
-      <p>Students Impacted</p>
-    </div>
-  </div>
 </section>
 
 <!-- PROJECTS -->
-<section class="section">
-  <h2>Featured Projects</h2>
+<section>
 
-  <div class="projects">
-    <div class="project-card">
-      <div class="project-image">Project Image</div>
-      <div class="project-content">
-        <h3>Microfluidic Device</h3>
-        <p>Biomedical separation system using DLD structures.</p>
-      </div>
+  <h2 class="section-title">Featured Projects</h2>
+
+  <div class="grid">
+
+    <div class="card">
+      <h3>Microfluidic Device</h3>
+      <p>Cell separation system using deterministic lateral displacement structures.</p>
     </div>
 
-    <div class="project-card">
-      <div class="project-image">Project Image</div>
-      <div class="project-content">
-        <h3>Implantable Device</h3>
-        <p>Wireless power transfer biomedical system.</p>
-      </div>
+    <div class="card">
+      <h3>Implantable Pacemaker</h3>
+      <p>Wireless energy transfer system for biomedical implants.</p>
     </div>
 
-    <div class="project-card">
-      <div class="project-image">Project Image</div>
-      <div class="project-content">
-        <h3>Embedded Sensor Platform</h3>
-        <p>Real-time terrain and motion classification system.</p>
-      </div>
+    <div class="card">
+      <h3>Terrain Analysis System</h3>
+      <p>Embedded sensing platform for motion and terrain classification.</p>
     </div>
+
   </div>
+
 </section>
 
-<!-- INTERESTS -->
-<section class="section">
-  <h2>Research Interests</h2>
+<!-- IMPACT -->
+<section>
 
-  <div class="interests">
-    <div class="interest">Biomedical Devices</div>
-    <div class="interest">Microfluidics</div>
-    <div class="interest">Implantable Systems</div>
-    <div class="interest">Embedded Systems</div>
-    <div class="interest">Healthcare Tech</div>
+  <h2 class="section-title">Impact</h2>
+
+  <div class="grid">
+
+    <div class="card">
+      <h3>Research</h3>
+      <p>Microfluidics, biomedical devices, and implantable systems.</p>
+    </div>
+
+    <div class="card">
+      <h3>Leadership</h3>
+      <p>NSBE Academic Chair — improving academic support and engagement.</p>
+    </div>
+
+    <div class="card">
+      <h3>Goal</h3>
+      <p>Engineering healthcare solutions for underserved communities.</p>
+    </div>
+
   </div>
+
 </section>
 
-<!-- FOOTER -->
 <footer>
   © 2026 Chelsea Ogbonna
 </footer>
