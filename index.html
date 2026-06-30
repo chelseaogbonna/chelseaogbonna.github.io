@@ -1,279 +1,108 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
-<title>Chelsea Ogbonna | Interactive Portfolio</title>
+<title>BME Body Map Portfolio</title>
 
 <style>
 body {
   margin: 0;
+  font-family: Arial;
+  background: radial-gradient(circle at center, #0b0f19, #05070c);
+  color: white;
   overflow: hidden;
-  font-family: Arial, sans-serif;
-  background: #0b0f19;
 }
 
-/* ===== CITY BACKGROUND ===== */
-.city {
+/* BODY */
+.body {
   position: relative;
   width: 100vw;
   height: 100vh;
-  background: linear-gradient(to top, #0b0f19, #1c2333);
-  overflow: hidden;
+  background: url('https://i.imgur.com/3ZQ3ZQm.png'); /* simple silhouette vibe */
+  background-size: cover;
+  opacity: 0.9;
 }
 
-/* TITLE */
-.title {
+/* ORGANS */
+.organ {
   position: absolute;
-  top: 35px;
-  width: 100%;
-  text-align: center;
-  color: white;
-}
-
-.title h1 {
-  margin: 0;
-  font-size: 44px;
-}
-
-.title p {
-  opacity: 0.7;
-}
-
-/* ROAD */
-.road {
-  position: absolute;
-  bottom: 120px;
-  width: 100%;
-  height: 140px;
-  background: #2a2f3a;
-}
-
-.line {
-  position: absolute;
-  top: 50%;
-  width: 100%;
-  height: 6px;
-  background: repeating-linear-gradient(
-    90deg,
-    #fff 0px,
-    #fff 40px,
-    transparent 40px,
-    transparent 80px
-  );
-  opacity: 0.3;
-}
-
-/* CAR */
-.car {
-  position: absolute;
-  bottom: 160px;
-  left: -150px;
-  width: 120px;
-  height: 60px;
-  background: #abc4ff;
-  border-radius: 12px;
-  animation: drive 10s linear infinite;
-  cursor: pointer;
-  box-shadow: 0 10px 30px rgba(171,196,255,0.5);
-}
-
-.car::after,
-.car::before {
-  content: "";
-  position: absolute;
-  width: 25px;
-  height: 25px;
-  background: #fff;
-  border-radius: 50%;
-  bottom: -10px;
-}
-
-.car::after { left: 10px; }
-.car::before { right: 10px; }
-
-@keyframes drive {
-  0% { left: -150px; }
-  100% { left: 110%; }
-}
-
-.car:hover {
-  animation-play-state: paused;
-}
-
-/* ===== BUILDINGS ===== */
-.building {
-  position: absolute;
-  bottom: 260px;
-  width: 140px;
-  height: 240px;
-  background: #1f2937;
+  padding: 12px 16px;
+  background: rgba(171,196,255,0.15);
   border: 2px solid #abc4ff;
   border-radius: 12px;
   cursor: pointer;
   transition: 0.3s;
-  color: white;
-  text-align: center;
-  padding-top: 90px;
-  font-weight: bold;
+  backdrop-filter: blur(5px);
 }
 
-.building:hover {
-  transform: translateY(-10px) scale(1.05);
-  background: #2b3445;
+.organ:hover {
+  transform: scale(1.1);
+  background: rgba(171,196,255,0.35);
 }
 
-/* POSITIONS */
-.b1 { left: 8%; }
-.b2 { left: 30%; }
-.b3 { left: 52%; }
-.b4 { left: 74%; }
+.brain { top: 15%; left: 50%; transform: translateX(-50%); }
+.heart { top: 40%; left: 50%; transform: translateX(-50%); }
+.lungs { top: 38%; left: 35%; }
+.bone { top: 65%; left: 55%; }
+.lab { top: 65%; left: 30%; }
 
-/* ===== POPUP (GAME MENU STYLE) ===== */
+/* POPUP */
 .popup {
   position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%,-50%);
   background: #0f172a;
+  border: 2px solid #abc4ff;
   padding: 25px;
   border-radius: 15px;
-  border: 2px solid #abc4ff;
   display: none;
-  color: white;
-  width: 360px;
-  max-height: 70vh;
-  overflow-y: auto;
-  text-align: left;
+  width: 320px;
 }
 
-.popup h2 {
-  margin-top: 0;
-  color: #abc4ff;
-}
-
-.popup p {
-  font-size: 14px;
-  opacity: 0.85;
-  line-height: 1.5;
-}
-
-.close {
-  margin-top: 15px;
-  padding: 8px 14px;
+button {
+  margin-top: 10px;
   background: #abc4ff;
   border: none;
-  cursor: pointer;
+  padding: 8px;
   border-radius: 8px;
-}
-
-/* CONTENT CARDS INSIDE POPUP */
-.card {
-  background: #1f2937;
-  padding: 10px;
-  margin-top: 10px;
-  border-radius: 10px;
-  border-left: 3px solid #abc4ff;
-}
-
-.card h4 {
-  margin: 0;
-  color: #abc4ff;
-  font-size: 14px;
-}
-
-.card p {
-  margin: 5px 0 0;
-  font-size: 13px;
 }
 </style>
 </head>
 
 <body>
 
-<div class="city">
+<div class="body">
 
-  <!-- TITLE -->
-  <div class="title">
-    <h1>Chelsea Ogbonna</h1>
-    <p>Drive the city • Explore my work 🚗 • Click buildings</p>
-  </div>
-
-  <!-- BUILDINGS -->
-  <div class="building b1" onclick="openPopup('about')">ABOUT</div>
-  <div class="building b2" onclick="openPopup('projects')">PROJECTS</div>
-  <div class="building b3" onclick="openPopup('achievements')">ACHIEVEMENTS</div>
-  <div class="building b4" onclick="openPopup('contact')">CONTACT</div>
-
-  <!-- ROAD -->
-  <div class="road">
-    <div class="line"></div>
-  </div>
-
-  <!-- CAR -->
-  <div class="car" onclick="openPopup('welcome')"></div>
+  <div class="organ brain" onclick="openP('Brain')">🧠 Brain</div>
+  <div class="organ heart" onclick="openP('Heart')">❤️ Heart</div>
+  <div class="organ lungs" onclick="openP('Lungs')">🫁 Lungs</div>
+  <div class="organ bone" onclick="openP('Biomechanics')">🦴 Bone</div>
+  <div class="organ lab" onclick="openP('Microfluidics')">🧫 Lab</div>
 
 </div>
 
-<!-- POPUP -->
-<div class="popup" id="popup">
-  <h2 id="popupTitle"></h2>
-  <div id="popupContent"></div>
-  <button class="close" onclick="closePopup()">Close</button>
+<div class="popup" id="p">
+  <h2 id="t"></h2>
+  <p id="c"></p>
+  <button onclick="closeP()">Close</button>
 </div>
 
 <script>
+function openP(x){
+  document.getElementById("p").style.display="block";
+  document.getElementById("t").innerText=x;
 
-function openPopup(section) {
-  const title = document.getElementById("popupTitle");
-  const content = document.getElementById("popupContent");
-
-  if (section === "about") {
-    title.innerText = "About Me";
-    content.innerHTML = `
-      <p>Biomedical + Mechanical Engineer focused on healthcare systems, microfluidics, and embedded devices.</p>
-      <div class="card"><h4>Focus</h4><p>Medical devices, robotics, simulation</p></div>
-      <div class="card"><h4>Tools</h4><p>MATLAB, Python, SolidWorks</p></div>
-    `;
-  }
-
-  if (section === "projects") {
-    title.innerText = "Projects";
-    content.innerHTML = `
-      <div class="card"><h4>Microfluidic Device</h4><p>DLD-based particle separation system</p></div>
-      <div class="card"><h4>Implantable Device</h4><p>Wireless power biomedical system</p></div>
-      <div class="card"><h4>Terrain Sensor System</h4><p>Embedded IMU classification platform</p></div>
-    `;
-  }
-
-  if (section === "achievements") {
-    title.innerText = "Achievements";
-    content.innerHTML = `
-      <div class="card"><h4>Research</h4><p>Multiple lab roles in biomedical engineering</p></div>
-      <div class="card"><h4>Projects</h4><p>10+ engineering systems built</p></div>
-      <div class="card"><h4>Impact</h4><p>Mentored students + lab contributions</p></div>
-    `;
-  }
-
-  if (section === "contact") {
-    title.innerText = "Contact";
-    content.innerHTML = `
-      <div class="card"><h4>Email</h4><p>chelsea@example.com</p></div>
-      <div class="card"><h4>LinkedIn</h4><p>linkedin.com/in/chelsea</p></div>
-    `;
-  }
-
-  if (section === "welcome") {
-    title.innerText = "Welcome!";
-    content.innerHTML = `<p>Drive around and click buildings to explore the portfolio 🚗</p>`;
-  }
-
-  document.getElementById("popup").style.display = "block";
+  document.getElementById("c").innerText =
+    x==="Brain" ? "ML + modeling + signal processing" :
+    x==="Heart" ? "Implantable + pacemaker systems" :
+    x==="Lungs" ? "Fluid dynamics + airflow systems" :
+    x==="Biomechanics" ? "Stress, FEA, materials" :
+    "DLD microfluidics + cell separation";
 }
-
-function closePopup() {
-  document.getElementById("popup").style.display = "none";
+function closeP(){
+  document.getElementById("p").style.display="none";
 }
-
 </script>
 
 </body>
