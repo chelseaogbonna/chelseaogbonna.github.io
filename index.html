@@ -2,49 +2,58 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>BME Body Map Portfolio</title>
+<title>Microfluidic Portfolio</title>
 
 <style>
 body {
   margin: 0;
-  font-family: Arial;
-  background: radial-gradient(circle at center, #0b0f19, #05070c);
-  color: white;
+  background: #050814;
   overflow: hidden;
+  font-family: Arial;
+  color: white;
 }
 
-/* BODY */
-.body {
-  position: relative;
+/* CHIP */
+.chip {
   width: 100vw;
   height: 100vh;
-  background: url('https://i.imgur.com/3ZQ3ZQm.png'); /* simple silhouette vibe */
-  background-size: cover;
-  opacity: 0.9;
+  background: linear-gradient(120deg,#0b0f19,#111827);
+  position: relative;
 }
 
-/* ORGANS */
-.organ {
+/* CHANNELS */
+.channel {
   position: absolute;
-  padding: 12px 16px;
   background: rgba(171,196,255,0.15);
   border: 2px solid #abc4ff;
-  border-radius: 12px;
+  border-radius: 20px;
   cursor: pointer;
   transition: 0.3s;
-  backdrop-filter: blur(5px);
 }
 
-.organ:hover {
-  transform: scale(1.1);
+.channel:hover {
   background: rgba(171,196,255,0.35);
 }
 
-.brain { top: 15%; left: 50%; transform: translateX(-50%); }
-.heart { top: 40%; left: 50%; transform: translateX(-50%); }
-.lungs { top: 38%; left: 35%; }
-.bone { top: 65%; left: 55%; }
-.lab { top: 65%; left: 30%; }
+.inlet { top: 20%; left: 10%; width: 150px; height: 80px; }
+.filter { top: 40%; left: 40%; width: 200px; height: 100px; }
+.separation { top: 60%; left: 65%; width: 200px; height: 100px; }
+.outlet { top: 75%; left: 20%; width: 150px; height: 80px; }
+
+/* PARTICLES */
+.particle {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: #abc4ff;
+  border-radius: 50%;
+  animation: flow 6s linear infinite;
+}
+
+@keyframes flow {
+  0% { transform: translate(0,0); opacity: 1; }
+  100% { transform: translate(800px,300px); opacity: 0; }
+}
 
 /* POPUP */
 .popup {
@@ -53,32 +62,26 @@ body {
   left: 50%;
   transform: translate(-50%,-50%);
   background: #0f172a;
-  border: 2px solid #abc4ff;
   padding: 25px;
-  border-radius: 15px;
+  border: 2px solid #abc4ff;
   display: none;
   width: 320px;
-}
-
-button {
-  margin-top: 10px;
-  background: #abc4ff;
-  border: none;
-  padding: 8px;
-  border-radius: 8px;
 }
 </style>
 </head>
 
 <body>
 
-<div class="body">
+<div class="chip">
 
-  <div class="organ brain" onclick="openP('Brain')">🧠 Brain</div>
-  <div class="organ heart" onclick="openP('Heart')">❤️ Heart</div>
-  <div class="organ lungs" onclick="openP('Lungs')">🫁 Lungs</div>
-  <div class="organ bone" onclick="openP('Biomechanics')">🦴 Bone</div>
-  <div class="organ lab" onclick="openP('Microfluidics')">🧫 Lab</div>
+  <div class="channel inlet" onclick="openP('Inlet')">INLET</div>
+  <div class="channel filter" onclick="openP('Filter')">FILTER ZONE</div>
+  <div class="channel separation" onclick="openP('Separation')">DLD ARRAY</div>
+  <div class="channel outlet" onclick="openP('Outlet')">OUTLET</div>
+
+  <div class="particle"></div>
+  <div class="particle" style="animation-delay:2s"></div>
+  <div class="particle" style="animation-delay:4s"></div>
 
 </div>
 
@@ -94,11 +97,10 @@ function openP(x){
   document.getElementById("t").innerText=x;
 
   document.getElementById("c").innerText =
-    x==="Brain" ? "ML + modeling + signal processing" :
-    x==="Heart" ? "Implantable + pacemaker systems" :
-    x==="Lungs" ? "Fluid dynamics + airflow systems" :
-    x==="Biomechanics" ? "Stress, FEA, materials" :
-    "DLD microfluidics + cell separation";
+    x==="Inlet" ? "Sample introduction + flow control" :
+    x==="Filter" ? "Size-based separation mechanics" :
+    x==="Separation" ? "DLD microfluidic design (your core project)" :
+    "Collected purified output (syncytial knots / cells)";
 }
 function closeP(){
   document.getElementById("p").style.display="none";
