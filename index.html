@@ -29,7 +29,7 @@ overflow-x:hidden;
 }
 
 /* =========================
-   NAV (UPDATED FLOATING PILL)
+   NAV (FINAL FIXED VERSION)
 ========================= */
 
 nav{
@@ -43,31 +43,35 @@ justify-content:space-between;
 align-items:center;
 padding:12px 18px;
 
-background:rgba(255,255,255,.75);
+background:rgba(255,255,255,.78);
 backdrop-filter:blur(16px);
 
 border-radius:24px;
 box-shadow:0 12px 35px rgba(0,0,0,.10);
 z-index:1000;
-border:1px solid rgba(193,211,254,.6);
+
+border:1px solid rgba(193,211,254,.35);
 }
 
-/* brand (no bar) */
+/* brand (clean text only) */
 .logo{
 font-weight:800;
 text-decoration:none;
 color:var(--text);
 font-size:18px;
+padding:0;
+background:none;
+border:none;
 }
 
-/* nav links container (floating pill) */
+/* floating nav pill */
 .nav-links{
 display:flex;
 gap:10px;
 padding:6px;
 border-radius:999px;
-background:rgba(237,242,251,.65);
-border:1px solid rgba(193,211,254,.5);
+background:rgba(237,242,251,.55);
+border:1px solid rgba(193,211,254,.45);
 }
 
 /* nav links */
@@ -80,7 +84,6 @@ transition:.25s;
 font-weight:500;
 }
 
-/* hover */
 .nav-links a:hover{
 background:var(--accent);
 transform:translateY(-2px);
@@ -301,7 +304,7 @@ padding-top:120px;
 }
 .hero-image{margin-top:30px}
 .hero h1{font-size:48px}
-.nav-links{gap:6px;flex-wrap:wrap}
+.nav-links{flex-wrap:wrap; gap:6px}
 }
 </style>
 </head>
@@ -310,14 +313,15 @@ padding-top:120px;
 
 <!-- NAV -->
 <nav>
-  <a href="#" class="logo">Chelsea Ogbonna</a>
+  <a href="index.html" class="logo">Chelsea Ogbonna</a>
 
   <div class="nav-links">
-    <a href="#highlights">Highlights</a>
-    <a href="#projects">Projects</a>
-    <a href="#research">Research</a>
-    <a href="#achievements">Leadership</a>
-    <a href="#campus">Explore</a>
+    <a href="index.html#highlights">Highlights</a>
+    <a href="index.html#projects">Projects</a>
+    <a href="index.html#research">Research</a>
+    <a href="leadership.html">Leadership</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
   </div>
 </nav>
 
