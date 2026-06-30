@@ -29,7 +29,7 @@ overflow-x:hidden;
 }
 
 /* =========================
-   NAV (RIGHT SIDE ONLY FIX)
+   NAV (SPLIT DESIGN FIX)
 ========================= */
 
 nav{
@@ -39,45 +39,45 @@ left:50%;
 transform:translateX(-50%);
 width:min(1100px,92%);
 display:flex;
-justify-content:flex-end; /* 🔥 KEY CHANGE */
+justify-content:space-between;
 align-items:center;
-padding:12px 18px;
-
-background:rgba(255,255,255,.78);
-backdrop-filter:blur(16px);
-
-border-radius:24px;
-box-shadow:0 12px 35px rgba(0,0,0,.10);
 z-index:1000;
-
-border:1px solid rgba(193,211,254,.35);
 }
 
-/* REMOVE logo spacing completely */
+/* LEFT BRAND (NO BOX, NO BORDER) */
 .logo{
-display:none;
+font-weight:800;
+font-size:18px;
+text-decoration:none;
+color:var(--text);
+background:none;
+border:none;
+padding:0;
 }
 
-/* nav links */
+/* RIGHT NAV BOX (SMALL + INTERACTIVE ONLY HERE) */
 .nav-links{
 display:flex;
 gap:10px;
-padding:6px;
-border-radius:999px;
-background:rgba(237,242,251,.55);
-border:1px solid rgba(193,211,254,.45);
+padding:8px 10px;
+border-radius:18px;
+background:rgba(255,255,255,.78);
+backdrop-filter:blur(16px);
+border:1px solid rgba(193,211,254,.35);
+box-shadow:0 12px 35px rgba(0,0,0,.10);
 }
 
-/* nav links */
+/* LINKS */
 .nav-links a{
 text-decoration:none;
 color:var(--text);
-padding:10px 14px;
+padding:8px 12px;
 border-radius:10px;
-transition:.25s;
 font-weight:500;
+transition:.25s;
 }
 
+/* INTERACTION ONLY ON RIGHT SIDE */
 .nav-links a:hover{
 background:var(--accent);
 transform:translateY(-2px);
@@ -298,21 +298,26 @@ padding-top:120px;
 }
 .hero-image{margin-top:30px}
 .hero h1{font-size:48px}
-.nav-links{flex-wrap:wrap; gap:6px}
+.nav-links{flex-wrap:wrap}
 }
 </style>
 </head>
 
 <body>
 
-<!-- NAV (RIGHT SIDE ONLY) -->
+<!-- NAV (FINAL SPLIT DESIGN) -->
 <nav>
+
+  <!-- LEFT: BRAND ONLY -->
+  <a href="index.html" class="logo">Chelsea Ogbonna</a>
+
+  <!-- RIGHT: SMALL INTERACTIVE BOX -->
   <div class="nav-links">
     <a href="about.html">About</a>
     <a href="projects.html">Projects</a>
     <a href="leadership.html">Leadership</a>
-    <a href="contact.html">Contact</a>
   </div>
+
 </nav>
 
 <!-- HERO -->
@@ -332,7 +337,7 @@ padding-top:120px;
 <section class="section" id="highlights">
 <h2 class="section-title">Highlights</h2>
 <div class="stats">
-<div class="stat"><h3>5+</h3><p>Engineering Projects</p></div>
+<div class="stat"><h3>5+</h3><p>Projects</p></div>
 <div class="stat"><h3>3+</h3><p>Research Labs</p></div>
 <div class="stat"><h3>50+</h3><p>Students Mentored</p></div>
 </div>
