@@ -3,392 +3,525 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bio-Integrative Systems | Chelsea Ogbonna - Interactivity Engine 2.0</title>
+<title>Chelsea Ogbonna | Bio-Fluidic Micro-Systems Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
 <style>
 :root {
-  --bme-primary: #050a14; /* Deep fluidic background */
-  --fluid-cyan: #00f2fe; /* Flowing particle color */
-  --bio-glow: #0081cf; /* Station membrane highlight */
-  --text-active: #ffffff;
-  --text-dim: #94a3b8;
-  --station-border: rgba(0, 129, 207, 0.4);
+  --bg: #edf2fb;
+  --bg2: #e2eafc;
+
+  --card: #d7e3fc;
+  --card-hover: #ccdbfd;
+
+  --text: #1f2937;
+  --muted: #4b5563;
+
+  --accent: #abc4ff;
+  --accent-soft: #b6ccfe;
+  --border: #c1d3fe;
+
+  --nav-bg: rgba(237, 242, 251, 0.9);
+  --project-hover: #dde6b8;
+  
+  /* BME Specific Colors aligned with your palette */
+  --erythrocyte-red: rgba(239, 68, 68, 0.6);
+  --buffer-blue: rgba(79, 172, 254, 0.6);
+}
+
+* {
+  box-sizing: border-box;
 }
 
 body {
   margin: 0;
   overflow: hidden;
-  font-family: 'Inter', sans-serif;
-  background: var(--bme-primary);
-  color: var(--text-dim);
+  font-family: "Inter", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  user-select: none;
 }
 
-/* ===== MAIN INTERACTIVE LANDSCAPE ===== */
-.bme-matrix {
+/* =========================================================
+   MICROFLUIDIC CHIP BACKGROUND (100% INTERACTIVE CANVAS)
+========================================================= */
+.chip-matrix {
   position: relative;
   width: 100vw;
   height: 100vh;
-  /* Visualizing dynamic fluid channel background */
-  background: radial-gradient(circle at 30% 70%, #0c1c36 0%, #050a14 100%);
+  background: linear-gradient(135deg, var(--bg) 0%, var(--bg2) 100%);
   overflow: hidden;
 }
 
-/* ====== FLOWING FLUID CHANNELS (The new 'Road' / Background) ====== */
-.fluid-channel-sys {
+/* Etched channel architecture */
+.microfluidic-network {
   position: absolute;
   width: 100%;
   height: 100%;
-  opacity: 0.15;
-  background-image:
-    repeating-linear-gradient(45deg, rgba(0,242,254,0.1) 0px, rgba(0,242,254,0.1) 1px, transparent 1px, transparent 20px),
-    repeating-linear-gradient(-45deg, rgba(0,242,254,0.1) 0px, rgba(0,242,254,0.1) 1px, transparent 1px, transparent 20px);
+  pointer-events: none;
+  z-index: 1;
 }
 
-/* Particle effect */
-.fluid-particle {
+/* Channel lines to simulate fluid paths between nodes */
+.fluid-channel-horizontal {
   position: absolute;
-  background: var(--fluid-cyan);
-  border-radius: 50%;
-  box-shadow: 0 0 10px var(--fluid-cyan);
-  animation: particle-flow infinite linear;
-}
-
-@keyframes particle-flow {
-  0% { transform: translate(-100px, 0); }
-  100% { transform: translate(110vw, 0); }
-}
-
-/* ====== INTERACTIVE NAVIGATION (System Nodes) ====== */
-.bio-nav {
-  position: absolute;
-  top: 30px;
+  top: 50%;
+  left: 0;
   width: 100%;
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  z-index: 100;
+  height: 24px;
+  background: rgba(255, 255, 255, 0.6);
+  border-top: 2px solid var(--border);
+  border-bottom: 2px solid var(--border);
+  transform: translateY(-50%);
 }
 
-.nav-node {
-  background: rgba(10, 20, 40, 0.8);
-  border: 1px solid var(--station-border);
-  border-radius: 30px;
-  color: var(--text-dim);
-  padding: 10px 25px;
-  cursor: pointer;
-  transition: 0.3s;
+.fluid-channel-vertical {
+  position: absolute;
+  top: 0;
+  left: 22%;
+  width: 24px;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.6);
+  border-left: 2px solid var(--border);
+  border-right: 2px solid var(--border);
+}
+
+/* Microscopic Flowing Particles (Cellular Assay Elements) */
+.flow-cell {
+  position: absolute;
+  border-radius: 50%;
+  animation: stream-flow infinite linear;
+  filter: blur(1px);
+}
+
+@keyframes stream-flow {
+  0% { left: -50px; }
+  100% { left: 105vw; }
+}
+
+/* =========================================================
+   SYSTEM CHIP HEADER & NAVIGATION NODES
+========================================================= */
+.chip-header {
+  position: absolute;
+  top: 25px;
+  left: 5%;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.chip-header h1 {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.chip-header p {
+  margin: 2px 0 0 0;
+  font-size: 13px;
+  color: var(--muted);
   font-weight: 500;
-  display: flex;
-  align-items: center;
-  gap: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
-.nav-node:hover {
-  border-color: var(--fluid-cyan);
-  box-shadow: 0 0 20px rgba(0, 242, 254, 0.4);
-  color: var(--text-active);
-  transform: translateY(-5px);
-}
-
-.nav-node .status-pulse {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background-color: var(--bio-glow);
-}
-
-/* ====== ACHIEVEMENT & METRICS DASHBOARD (Stagnant section replaced) ====== */
-.dashboard {
+.chip-nav {
   position: absolute;
-  top: 100px;
-  left: 30px;
-  width: 250px;
-  height: 500px;
-  background: rgba(10, 20, 38, 0.8);
-  border: 2px solid var(--bio-glow);
+  top: 25px;
+  right: 5%;
+  display: flex;
+  gap: 12px;
+  z-index: 10;
+}
+
+.chip-node {
+  background: var(--card);
+  border: 1px solid var(--border);
   border-radius: 20px;
-  padding: 20px;
-  box-shadow: 0 0 30px rgba(0, 129, 207, 0.2);
-  cursor: pointer;
-  transition: transform 0.4s;
-  z-index: 50;
-}
-
-.dashboard:hover {
-  transform: translateX(5px);
-}
-
-.dashboard h3 { margin: 0 0 15px 0; color: var(--fluid-cyan); }
-
-.stat-metric { margin-bottom: 25px; }
-.stat-metric-title { font-weight: 600; font-size: 14px; margin-bottom: 5px; color: var(--text-active); }
-.stat-value { font-size: 28px; font-weight: 700; color: var(--fluid-cyan); margin: 0; }
-.metric-progress {
-  width: 100%;
-  height: 10px;
-  background: #111e36;
-  border-radius: 5px;
-  overflow: hidden;
-  margin-top: 5px;
-}
-.metric-fill { height: 100%; background: var(--fluid-cyan); border-radius: 5px; }
-
-/* ====== FEATURED PROJECT STATIONS (Interactivity Engine) ====== */
-.project-station-block {
-  position: absolute;
-  bottom: 260px;
-  width: 130px;
-  height: 220px;
-  background: rgba(12, 25, 47, 0.7);
-  border: 2px solid var(--station-border);
-  border-radius: 40px 40px 10px 10px;
-  cursor: pointer;
-  transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding: 15px;
-  text-align: center;
-  box-shadow: 0 0 15px rgba(0, 129, 207, 0.2);
-  overflow: hidden;
-}
-
-.project-station-block:hover {
-  transform: translateY(-15px);
-  border-color: var(--fluid-cyan);
-  box-shadow: 0 0 30px rgba(0, 242, 254, 0.5);
-  background: rgba(17, 38, 70, 0.9);
-}
-
-/* Floating visualization inside the station */
-.station-viz {
-  position: absolute;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80px;
-  height: 80px;
-  opacity: 0.8;
-  transition: 0.3s;
-}
-
-.project-station-block:hover .station-viz {
-  opacity: 1;
-  transform: translateX(-50%) scale(1.1);
-}
-
-.station-viz img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
-.station-label {
+  padding: 8px 18px;
   font-size: 14px;
   font-weight: 600;
-  color: var(--text-active);
-  margin-bottom: 5px;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
-.station-sub-label {
+.chip-node:hover {
+  background: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(171, 196, 255, 0.4);
+}
+
+/* =========================================================
+   ASSAY ANALYTICS PANEL (ACHIEVEMENTS & HIGHLIGHTS)
+========================================================= */
+.analytics-panel {
+  position: absolute;
+  top: 120px;
+  left: 5%;
+  width: 280px;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(10px);
+  border: 2px solid var(--border);
+  border-radius: 22px;
+  padding: 24px;
+  box-shadow: 0 10px 30px rgba(193, 211, 254, 0.2);
+  z-index: 5;
+  cursor: pointer;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.analytics-panel:hover {
+  transform: scale(1.02);
+  border-color: var(--accent);
+}
+
+.panel-title {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--muted);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.panel-title::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  background: var(--accent);
+  border-radius: 50%;
+}
+
+.metric-row {
+  margin-bottom: 20px;
+}
+
+.metric-row:last-child {
+  margin-bottom: 0;
+}
+
+.metric-num {
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1;
+  margin: 0;
+  color: var(--text);
+}
+
+.metric-label {
+  font-size: 13px;
+  color: var(--muted);
+  margin: 4px 0 8px 0;
+  font-weight: 500;
+}
+
+.waveform-sim {
+  width: 100%;
+  height: 4px;
+  background: var(--bg2);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.waveform-bar {
+  height: 100%;
+  background: var(--accent);
+  border-radius: 2px;
+}
+
+/* =========================================================
+   CHIP INCUBATION STATIONS (FEATURED PROJECTS)
+========================================================= */
+.incubation-zone {
+  position: absolute;
+  top: 120px;
+  right: 5%;
+  left: 360px;
+  bottom: 60px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 25px;
+  align-content: center;
+  z-index: 5;
+}
+
+.incubation-station {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  border: 2px solid var(--border);
+  border-radius: 24px;
+  padding: 25px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+  height: 280px;
+  position: relative;
+}
+
+.incubation-station:hover {
+  transform: translateY(-8px);
+  background: var(--card);
+  border-color: var(--accent);
+  box-shadow: 0 15px 35px rgba(171, 196, 255, 0.3);
+}
+
+/* Biotech Chamber Chamber Graphic */
+.chamber-aperture {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 2px dashed var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  transition: all 0.3s;
+}
+
+.incubation-station:hover .chamber-aperture {
+  border-color: var(--accent);
+  background: white;
+  transform: rotate(45deg);
+}
+
+.station-info h3 {
+  margin: 15px 0 6px 0;
+  font-size: 19px;
+  font-weight: 700;
+}
+
+.station-info p {
+  margin: 0;
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.station-status {
   font-size: 11px;
-  color: var(--text-dim);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
-/* POSITIONS */
-.station-dld { left: 35vw; }
-.station-power { left: 50vw; }
-.station-kinematic { left: 65vw; }
+.incubation-station:hover .station-status {
+  color: var(--text);
+}
 
-/* ====== PROJECT INTERFACE MODAL ====== */
-.system-console {
+.status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent-soft);
+}
+
+.incubation-station:hover .status-dot {
+  background: #34d399;
+  box-shadow: 0 0 8px #34d399;
+}
+
+/* =========================================================
+   SYSTEM DIALOG OVERLAY (THE CHIP CONSOLE)
+========================================================= */
+.chip-console {
   position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%) scale(0.9);
-  background: rgba(8, 16, 32, 0.95);
-  backdrop-filter: blur(15px);
+  transform: translate(-50%, -50%) scale(0.95);
+  background: white;
+  border: 3px solid var(--accent);
+  border-radius: 28px;
   padding: 40px;
-  border-radius: 20px;
-  border: 2px solid var(--fluid-cyan);
+  width: 90%;
+  max-width: 440px;
+  box-shadow: 0 30px 70px rgba(27, 38, 59, 0.15);
   display: none;
-  color: white;
-  width: 400px;
-  text-align: center;
-  box-shadow: 0 0 50px rgba(0, 242, 254, 0.3);
-  z-index: 200;
+  z-index: 1000;
   opacity: 0;
-  transition: all 0.3s ease;
+  transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+  text-align: center;
 }
 
-.system-console.active {
+.chip-console.active {
   display: block;
   transform: translate(-50%, -50%) scale(1);
   opacity: 1;
 }
 
-.system-console h2 {
-  margin-top: 0;
-  color: var(--fluid-cyan);
-  font-weight: 400;
+.chip-console h2 {
+  margin: 0 0 10px 0;
+  font-size: 24px;
+  color: var(--text);
 }
 
-.system-console p {
-  color: #94a3b8;
+.chip-console p {
+  font-size: 15px;
+  color: var(--muted);
   line-height: 1.6;
+  margin: 0 0 25px 0;
 }
 
-.console-ctrl {
-  margin-top: 20px;
-  padding: 10px 22px;
-  background: var(--fluid-cyan);
+.console-btn {
+  background: var(--accent);
+  color: var(--text);
   border: none;
-  color: #050a14;
-  font-weight: bold;
+  padding: 12px 30px;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 14px;
   cursor: pointer;
-  border-radius: 25px;
-  transition: 0.2s;
+  transition: background 0.2s;
 }
 
-.console-ctrl:hover {
-  transform: scale(1.05);
+.console-btn:hover {
+  background: var(--accent-soft);
 }
 
-/* Title Panel */
-.system-overview-title {
+/* Profile Integration Overlay */
+.biometric-profile {
   position: absolute;
-  bottom: 30px;
-  width: 100%;
-  text-align: center;
-  pointer-events: none;
-  z-index: 5;
+  bottom: 25px;
+  left: 5%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  z-index: 10;
+  cursor: pointer;
 }
 
-.system-overview-title h1 {
-  margin: 0;
-  font-size: 32px;
-  font-weight: 300;
-  letter-spacing: 2px;
-  color: var(--text-active);
-}
-
-/* BME Bio-security Profile Section (interactive) */
-.bme-profile-station {
-  position: absolute;
-  top: 30px;
-  right: 30px;
-  width: 70px;
-  height: 70px;
+.profile-lens {
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
-  border: 3px solid var(--bio-glow);
-  cursor: pointer;
+  border: 2px solid var(--border);
   overflow: hidden;
-  box-shadow: 0 0 15px rgba(0, 129, 207, 0.2);
-  transition: 0.3s;
-  z-index: 100;
+  background: white;
+  transition: border-color 0.2s;
 }
 
-.bme-profile-station img {
+.biometric-profile:hover .profile-lens {
+  border-color: var(--accent);
+}
+
+.profile-lens img {
   width: 100%; height: 100%; object-fit: cover;
 }
 
-.bme-profile-station:hover {
-  border-color: var(--fluid-cyan);
-  box-shadow: 0 0 25px rgba(0, 242, 254, 0.6);
-  transform: scale(1.1);
-}
-
-/* Biometric pulse */
-.bme-profile-station::after {
-  content: "";
-  position: absolute;
-  top: -10px; left: -10px; right: -10px; bottom: -10px;
-  border-radius: 50%;
-  border: 2px solid var(--fluid-cyan);
-  animation: profile-pulse 2s infinite;
-  opacity: 0;
-}
-
-@keyframes profile-pulse {
-  0% { transform: scale(1); opacity: 0; }
-  50% { opacity: 0.5; }
-  100% { transform: scale(1.2); opacity: 0; }
+.profile-id {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
 }
 
 </style>
 </head>
 <body>
 
-<div class="bme-matrix">
-  <div class="fluid-channel-sys" id="particleSys"></div>
+<div class="chip-matrix">
 
-  <div class="bio-nav">
-    <div class="nav-node" onclick="showConsole('Matrix Overview', 'Chelsea Ogbonna // BME // Access Authorized')"><div class="status-pulse"></div>Explore</div>
-    <div class="nav-node" onclick="showConsole('Project Hub', 'System nodes activated: DLD, Power Network, Kinematics Platform')"><div class="status-pulse"></div>Projects</div>
-    <div class="nav-node" onclick="showConsole('Achievement Log', 'Metrics verified: Student Mentorship (6.0k+ Realtime Metrics)')"><div class="status-pulse"></div>Achievements</div>
-    <div class="nav-node" onclick="showConsole('Collaborations Matrix', 'Identify global connection parameters for next bio-innovation')"><div class="status-pulse"></div>Leadership</div>
+  <div class="microfluidic-network" id="fluidNetwork">
+    <div class="fluid-channel-horizontal"></div>
+    <div class="fluid-channel-vertical"></div>
   </div>
 
-  <div class="dashboard" onclick="showConsole('Metrics Hub', 'Realtime tracking of system performance, impact, and research initiatives.')">
-    <h3>Impact Metrics</h3>
+  <div class="chip-header">
+    <h1>Chelsea Ogbonna</h1>
+    <p>Bio-Integrative Hardware Systems Engineering</p>
+  </div>
+
+  <div class="chip-nav">
+    <div class="chip-node" onclick="executeDiagnostic('Bio-System Profile', 'Specializing in translating physical microfluidic transport rules into actionable target isolation architectures.')">About</div>
+    <div class="chip-node" onclick="executeDiagnostic('Device Pipeline Matrix', 'Current architectural modules loaded: Sorting matrices, telemetry nodes, kinematic models.')">Projects</div>
+    <div class="chip-node" onclick="executeDiagnostic('Research Alliances', 'Active focus: cell-free protein expressions, degradation kinetics, and structural molecular gels.')">Research</div>
+    <div class="chip-node" onclick="executeDiagnostic('Communication Port', 'Secure link online. Ready to establish hardware design and device innovation lines.')">Contact</div>
+  </div>
+
+  <div class="analytics-panel" onclick="executeDiagnostic('System Calibration Diagnostics', 'Telemetry verified. Core microfluidic system modules are executing inside nominal bounds.')">
+    <div class="panel-title">Assay System Health</div>
     
-    <div class="stat-metric">
-      <div class="stat-metric-title">Mentorship Units</div>
-      <p class="stat-value">6.0k+</p>
-      <div class="metric-progress"><div class="metric-fill" style="width: 85%;"></div></div>
+    <div class="metric-row">
+      <p class="metric-num">5+</p>
+      <div class="metric-label">Functional Bio-Devices</div>
+      <div class="waveform-sim"><div class="waveform-bar" style="width: 75%;"></div></div>
     </div>
 
-    <div class="stat-metric">
-      <div class="stat-metric-title">Research Initiatives</div>
-      <p class="stat-value">1,381+</p>
-      <div class="metric-progress"><div class="metric-fill" style="width: 70%;"></div></div>
+    <div class="metric-row">
+      <p class="metric-num">3+</p>
+      <div class="metric-label">Assay Research Protocols</div>
+      <div class="waveform-sim"><div class="waveform-bar" style="width: 60%;"></div></div>
     </div>
 
-    <div class="stat-metric">
-      <div class="stat-metric-title">Awards Index</div>
-      <p class="stat-value">4,257+</p>
-      <div class="metric-progress"><div class="metric-fill" style="width: 95%;"></div></div>
+    <div class="metric-row">
+      <p class="metric-num">50+</p>
+      <div class="metric-label">Cohorts Impacted</div>
+      <div class="waveform-sim"><div class="waveform-bar" style="width: 90%;"></div></div>
     </div>
   </div>
 
-  <div class="project-station-block station-dld" onclick="showConsole('DLD Calibration', 'Separation metrics: Real-time. Adjust DLD sorting parameters for targeted assay verification.')">
-    <div class="station-viz"><img src="project-DLD-DED.png" alt="Microfluidic Viz"></div>
-    <div class="station-label">DLD Microfluidic</div>
-    <div class="station-sub-label">Simulation Active // Adjust Pressure</div>
+  <div class="incubation-zone">
+    
+    <div class="incubation-station" onclick="executeDiagnostic('Microfluidic Sorter Active', 'Hardware Architecture: Deterministic Lateral Displacement (DLD) separation pillars designed to segregate cellular populations without external magnetic sorting forces.')">
+      <div class="chamber-aperture">🔬</div>
+      <div class="station-info">
+        <h3>DLD Separator</h3>
+        <p>Microfluidic geometric array sorting target bio-particles based on precise hydraulic bifurcation.</p>
+      </div>
+      <div class="station-status"><div class="status-dot"></div>Flow Rate: 4.2 mL/min</div>
+    </div>
+
+    <div class="incubation-station" onclick="executeDiagnostic('Implantable Coupling Online', 'Wireless Network Interface: High-Q inductive coupling configurations optimizing continuous telemetry data transfer through highly resistive biological mediums.')">
+      <div class="chamber-aperture">⚡</div>
+      <div class="station-info">
+        <h3>Implantable Telemetry</h3>
+        <p>Inductively powered biomedical micro-device built to transfer data points without internal bio-battery cells.</p>
+      </div>
+      <div class="station-status"><div class="status-dot"></div>Resonance Calibrated</div>
+    </div>
+
+    <div class="incubation-station" onclick="executeDiagnostic('Kinematics Network Evaluated', 'Firmware Matrix: Multi-axis tracking array classifying human locomotion vectors over real-world terrain environments.')">
+      <div class="chamber-aperture">👟</div>
+      <div class="station-info">
+        <h3>Embedded Kinematics</h3>
+        <p>Wearable sensory mesh tracking spatial gait dynamics via localized firmware translation models.</p>
+      </div>
+      <div class="station-status"><div class="status-dot"></div>Analysis Active</div>
+    </div>
+
   </div>
 
-  <div class="project-station-block station-power" onclick="showConsole('Neural Link', 'Integrated Telemetry: Real-time. Examine the rotational 3D model for transmission coupling.')">
-    <div class="station-viz"><img src="project-implantable.png" alt="Implantable Viz"></div>
-    <div class="station-label">Implantable Device</div>
-    <div class="station-sub-label">Signal Analysis Running // Rotate 3D Model</div>
+  <div class="biometric-profile" onclick="executeDiagnostic('Operator Cleared', 'Biometric profile: Chelsea Ogbonna. Hardware System Controller status active.')">
+    <div class="profile-lens">
+      <img src="Chelseaprofilepics.JPG" alt="C. Ogbonna">
+    </div>
+    <div class="profile-id">SYS_OPERATOR // CO_443</div>
   </div>
 
-  <div class="project-station-block station-kinematic" onclick="showConsole('Kinematic Platform', 'Analysis engine calibrated for terrain classification. Adjust sample gait variables.')">
-    <div class="station-viz"><img src="project-gait-ML.png" alt="Kinematic Viz"></div>
-    <div class="station-label">ML Kinematics</div>
-    <div class="station-sub-label">Gait Metrics // Terrain Feed</div>
+  <div class="chip-console" id="diagnosticConsole">
+    <h2 id="consoleHeading"></h2>
+    <p id="consoleDetails"></p>
+    <button class="console-btn" onclick="closeDiagnostic()">Resume Flow Assay</button>
   </div>
 
-  <div class="system-overview-title">
-    <h1>CHELSEA OGBONNA | BIO-INTEGRATIVE SYSTEMS</h1>
-  </div>
-
-  <div class="bme-profile-station" onclick="showConsole('Profile Node Acessed', 'Chelsea Ogbonna - Biometric verified. Project calibrator status ACTIVE.')">
-    <img src="Chelseaprofilepics.JPG" alt="C. Ogbonna">
-  </div>
-</div>
-
-<div class="system-console" id="sysConsole">
-  <h2 id="consoleTitle"></h2>
-  <p id="consoleText"></p>
-  <button class="console-ctrl" onclick="dismissConsole()">Confirm Parameters</button>
 </div>
 
 <script>
-// Project console logic
-function showConsole(title, text) {
-  const consoleEl = document.getElementById("sysConsole");
-  document.getElementById("consoleTitle").innerText = title;
-  document.getElementById("consoleText").innerText = text;
+function executeDiagnostic(heading, detailText) {
+  const consoleEl = document.getElementById("diagnosticConsole");
+  document.getElementById("consoleHeading").innerText = heading;
+  document.getElementById("consoleDetails").innerText = detailText;
   
   consoleEl.style.display = "block";
   setTimeout(() => {
@@ -396,34 +529,40 @@ function showConsole(title, text) {
   }, 10);
 }
 
-function dismissConsole() {
-  const consoleEl = document.getElementById("sysConsole");
+function closeDiagnostic() {
+  const consoleEl = document.getElementById("diagnosticConsole");
   consoleEl.classList.remove("active");
   setTimeout(() => {
     consoleEl.style.display = "none";
-  }, 300);
+  }, 250);
 }
 
-// Particle flow system (Dynamic background element)
-const sysMatrix = document.getElementById('particleSys');
-const particleCount = 25;
+// Generate fluid streams inside the microfluidic chip paths
+const channelContainer = document.getElementById('fluidNetwork');
+const totalParticles = 40;
 
-for (let i = 0; i < particleCount; i++) {
+for (let i = 0; i < totalParticles; i++) {
   const particle = document.createElement('div');
-  particle.classList.add('fluid-particle');
+  particle.classList.add('flow-cell');
   
-  // Randomize characteristics
-  const size = Math.random() * 8 + 4; // 4 to 12 px
-  particle.style.width = size + 'px';
-  particle.style.height = size + 'px';
-  particle.style.top = Math.random() * 90 + 5 + 'vh'; // Vertical distribution
-  particle.style.animationDuration = Math.random() * 8 + 5 + 's'; // Flow speed
+  // Mix up size to match typical blood/buffer solutions
+  const scaleFactor = Math.random();
+  const diameter = scaleFactor > 0.4 ? Math.random() * 6 + 6 : Math.random() * 5 + 3;
   
-  // Randomize opacity and delay
-  particle.style.opacity = Math.random() * 0.5 + 0.1;
-  particle.style.animationDelay = -(Math.random() * 10) + 's'; // Stagger start times
+  particle.style.width = diameter + 'px';
+  particle.style.height = diameter + 'px';
+  
+  // Use custom palette properties for biochemical visual markers
+  particle.style.background = scaleFactor > 0.55 ? 'var(--erythrocyte-red)' : 'var(--buffer-blue)';
+  
+  // Restrict vertical scatter strictly inside the running horizontal fluid channel (center window)
+  particle.style.top = 'calc(50% - 10px + ' + (Math.random() * 16 - 8) + 'px)';
+  
+  // Stagger launch sequences
+  particle.style.animationDuration = Math.random() * 6 + 4 + 's';
+  particle.style.animationDelay = -(Math.random() * 10) + 's';
 
-  sysMatrix.appendChild(particle);
+  channelContainer.appendChild(particle);
 }
 </script>
 
