@@ -10,13 +10,17 @@
   <style>
 
   :root {
-    --bg: #0b0f19;
-    --panel: #111827;
-    --text: #e5e7eb;
-    --muted: #9ca3af;
+    --bg: #edf2fb;
+    --bg2: #e2eafc;
+
+    --card: rgba(255,255,255,0.06);
+    --card-border: rgba(255,255,255,0.12);
+
+    --text: #ffffff;
+    --muted: rgba(255,255,255,0.7);
+
     --accent: #7dd3fc;
-    --accent2: #60a5fa;
-    --border: rgba(255,255,255,0.08);
+    --accent2: #a78bfa;
   }
 
   * {
@@ -26,23 +30,27 @@
   body {
     margin: 0;
     font-family: "Inter", sans-serif;
-    background: var(--bg);
     color: var(--text);
-    line-height: 1.6;
+    background: linear-gradient(-45deg, var(--bg1), var(--bg2), #0f172a, #1e1b4b);
+    background-size: 400% 400%;
+    animation: gradientMove 12s ease infinite;
   }
 
-  /* ================= NAV ================= */
+  @keyframes gradientMove {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+  }
 
+  /* NAV */
   nav {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    padding: 18px 8%;
+    padding: 20px 10%;
     position: sticky;
     top: 0;
-    background: rgba(11, 15, 25, 0.8);
     backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
+    background: rgba(10,10,20,0.4);
   }
 
   .logo {
@@ -58,153 +66,166 @@
   }
 
   .nav-links a {
-    color: var(--muted);
     text-decoration: none;
-    font-weight: 500;
+    color: var(--muted);
+    transition: 0.2s;
     padding: 6px 10px;
     border-radius: 8px;
-    transition: 0.2s ease;
   }
 
   .nav-links a:hover {
-    color: var(--text);
-    background: rgba(125, 211, 252, 0.12);
+    color: white;
+    background: rgba(125,211,252,0.15);
   }
 
-  /* ================= HERO ================= */
-
+  /* HERO */
   .hero {
     display: grid;
-    grid-template-columns: 1.3fr 0.7fr;
+    grid-template-columns: 1.2fr 0.8fr;
     align-items: center;
-    gap: 60px;
-    padding: 90px 8%;
+    padding: 80px 10%;
+    gap: 50px;
   }
 
   .hero h1 {
-    font-size: 64px;
+    font-size: 60px;
     margin: 0;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
 
-  .hero h2 {
-    font-weight: 500;
-    color: var(--accent);
+  .typing {
+    font-size: 22px;
+    color: var(--muted);
     margin-top: 10px;
+    border-right: 2px solid var(--accent);
+    white-space: nowrap;
+    overflow: hidden;
+    width: 0;
+    animation: typing 3s steps(40,end) forwards, blink 0.8s infinite;
+  }
+
+  @keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+  }
+
+  @keyframes blink {
+    50% { border-color: transparent; }
   }
 
   .hero p {
+    margin-top: 20px;
     color: var(--muted);
     max-width: 600px;
-    margin-top: 20px;
   }
 
   .buttons {
-    margin-top: 30px;
+    margin-top: 25px;
   }
 
   .btn {
     display: inline-block;
-    padding: 12px 18px;
+    padding: 10px 18px;
     margin-right: 10px;
     border-radius: 10px;
     text-decoration: none;
-    font-weight: 600;
-    transition: 0.2s ease;
-  }
-
-  .btn-primary {
     background: var(--accent);
-    color: #0b0f19;
+    color: #000;
+    font-weight: 600;
+    transition: 0.2s;
   }
 
-  .btn-primary:hover {
-    background: var(--accent2);
+  .btn:hover {
+    transform: translateY(-2px);
   }
 
-  .btn-secondary {
-    border: 1px solid var(--border);
-    color: var(--text);
+  .btn.secondary {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.2);
+    color: white;
   }
 
-  .btn-secondary:hover {
-    background: rgba(255,255,255,0.05);
+  /* IMAGE */
+  .hero-image img {
+    width: 320px;
+    height: 320px;
+    object-fit: cover;
+    border-radius: 20px;
+    border: 2px solid rgba(255,255,255,0.2);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    animation: float 4s ease-in-out infinite;
   }
 
-  .hero-card {
-    background: var(--panel);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 20px;
+  @keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+  }
+
+  /* SECTIONS */
+  .section {
+    padding: 80px 10%;
+  }
+
+  .title {
+    font-size: 30px;
     text-align: center;
+    margin-bottom: 40px;
   }
 
-  .hero-card img {
-    width: 100%;
-    border-radius: 12px;
-  }
-
-  /* ================= SECTIONS ================= */
-
-  section {
-    padding: 80px 8%;
-  }
-
-  .section-title {
-    font-size: 28px;
-    margin-bottom: 30px;
-  }
-
-  /* ================= GRID ================= */
-
+  /* PROJECTS */
   .grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
     gap: 20px;
   }
 
   .card {
-    background: var(--panel);
-    border: 1px solid var(--border);
-    border-radius: 14px;
+    background: var(--card);
+    border: 1px solid var(--card-border);
     padding: 20px;
-    transition: 0.2s ease;
+    border-radius: 15px;
+    transition: 0.3s;
   }
 
   .card:hover {
-    transform: translateY(-5px);
-    border-color: rgba(125, 211, 252, 0.3);
+    transform: translateY(-8px);
+    border-color: var(--accent);
   }
 
-  .card h3 {
-    margin-top: 0;
+  /* TAGS */
+  .tag {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 5px 10px;
+    font-size: 12px;
+    border-radius: 20px;
+    background: rgba(125,211,252,0.1);
+    color: var(--accent);
   }
 
-  .card p {
-    color: var(--muted);
+  /* INTERESTS */
+  .chips {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
   }
 
-  /* ================= FLOAT EFFECT ================= */
-
-  @keyframes float {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-6px); }
-    100% { transform: translateY(0px); }
+  .chip {
+    padding: 10px 14px;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
   }
-
-  .hero-card {
-    animation: float 6s ease-in-out infinite;
-  }
-
-  /* ================= FOOTER ================= */
 
   footer {
     text-align: center;
     padding: 50px;
     color: var(--muted);
-    border-top: 1px solid var(--border);
   }
-
-  /* ================= MOBILE ================= */
 
   @media (max-width: 900px) {
     .hero {
@@ -212,12 +233,8 @@
       text-align: center;
     }
 
-    .grid {
-      grid-template-columns: 1fr;
-    }
-
-    .hero h1 {
-      font-size: 42px;
+    .hero-image img {
+      margin-top: 20px;
     }
   }
 
@@ -226,10 +243,8 @@
 
 <body>
 
-<!-- NAV -->
 <nav>
   <a class="logo" href="index.html">Chelsea Ogbonna</a>
-
   <div class="nav-links">
     <a href="index.html">Home</a>
     <a href="about.html">About</a>
@@ -239,88 +254,67 @@
   </div>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
 
   <div>
     <h1>Chelsea Ogbonna</h1>
-    <h2>Biomedical • Mechanical • Research Engineer</h2>
+    <div class="typing">Biomedical • Mechanical • Research Engineer</div>
 
     <p>
-      I design biomedical systems, implantable devices, and microfluidic technologies
-      focused on improving healthcare access and engineering impact-driven solutions.
+      I design biomedical systems, microfluidic devices, and embedded sensing platforms
+      that turn engineering theory into real-world impact.
     </p>
 
     <div class="buttons">
-      <a class="btn btn-primary" href="projects.html">View Work</a>
-      <a class="btn btn-secondary" href="contact.html">Contact</a>
+      <a class="btn" href="projects.html">View Work</a>
+      <a class="btn secondary" href="contact.html">Contact</a>
     </div>
   </div>
 
-  <div class="hero-card">
-    <img src="Chelseaprofilepics.JPG" alt="Profile">
-    <p style="margin-top: 12px; color: var(--muted);">
-      Northwestern University<br>
-      BS/MS Biomedical Engineering
-    </p>
+  <div class="hero-image">
+    <img src="Chelseaprofilepics.JPG">
   </div>
 
 </section>
 
-<!-- PROJECTS -->
-<section>
-
-  <h2 class="section-title">Featured Projects</h2>
+<section class="section">
+  <div class="title">Featured Projects</div>
 
   <div class="grid">
-
     <div class="card">
       <h3>Microfluidic Device</h3>
-      <p>Cell separation system using deterministic lateral displacement structures.</p>
+      <p>DLD-based biological particle separation system.</p>
+      <span class="tag">Microfluidics</span>
     </div>
 
     <div class="card">
-      <h3>Implantable Pacemaker</h3>
-      <p>Wireless energy transfer system for biomedical implants.</p>
+      <h3>Implantable Device</h3>
+      <p>Wireless biomedical power transfer system.</p>
+      <span class="tag">Biotech</span>
     </div>
 
     <div class="card">
-      <h3>Terrain Analysis System</h3>
-      <p>Embedded sensing platform for motion and terrain classification.</p>
+      <h3>Terrain Platform</h3>
+      <p>IMU + force sensing classification system.</p>
+      <span class="tag">Robotics</span>
     </div>
-
   </div>
-
 </section>
 
-<!-- IMPACT -->
-<section>
+<section class="section">
+  <div class="title">Research Interests</div>
 
-  <h2 class="section-title">Impact</h2>
-
-  <div class="grid">
-
-    <div class="card">
-      <h3>Research</h3>
-      <p>Microfluidics, biomedical devices, and implantable systems.</p>
-    </div>
-
-    <div class="card">
-      <h3>Leadership</h3>
-      <p>NSBE Academic Chair — improving academic support and engagement.</p>
-    </div>
-
-    <div class="card">
-      <h3>Goal</h3>
-      <p>Engineering healthcare solutions for underserved communities.</p>
-    </div>
-
+  <div class="chips">
+    <div class="chip">Biomedical Engineering</div>
+    <div class="chip">Microfluidics</div>
+    <div class="chip">Implants</div>
+    <div class="chip">Embedded Systems</div>
+    <div class="chip">Biomechanics</div>
   </div>
-
 </section>
 
 <footer>
-  © 2026 Chelsea Ogbonna
+  © 2026 Chelsea Ogbonna — Built with intention
 </footer>
 
 </body>
