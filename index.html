@@ -2,58 +2,46 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Microfluidic Portfolio</title>
+<title>BME HUD Portfolio</title>
 
 <style>
 body {
   margin: 0;
-  background: #050814;
-  overflow: hidden;
+  background: #000814;
   font-family: Arial;
-  color: white;
+  color: #abc4ff;
+  overflow: hidden;
 }
 
-/* CHIP */
-.chip {
+/* GRID HUD */
+.hud {
   width: 100vw;
   height: 100vh;
-  background: linear-gradient(120deg,#0b0f19,#111827);
+  background: radial-gradient(circle, #0b0f19, black);
   position: relative;
 }
 
-/* CHANNELS */
-.channel {
+/* MODULES */
+.module {
   position: absolute;
-  background: rgba(171,196,255,0.15);
+  width: 200px;
+  height: 120px;
   border: 2px solid #abc4ff;
-  border-radius: 20px;
+  background: rgba(171,196,255,0.05);
+  padding: 10px;
   cursor: pointer;
   transition: 0.3s;
 }
 
-.channel:hover {
-  background: rgba(171,196,255,0.35);
+.module:hover {
+  transform: scale(1.1);
+  background: rgba(171,196,255,0.2);
 }
 
-.inlet { top: 20%; left: 10%; width: 150px; height: 80px; }
-.filter { top: 40%; left: 40%; width: 200px; height: 100px; }
-.separation { top: 60%; left: 65%; width: 200px; height: 100px; }
-.outlet { top: 75%; left: 20%; width: 150px; height: 80px; }
-
-/* PARTICLES */
-.particle {
-  position: absolute;
-  width: 10px;
-  height: 10px;
-  background: #abc4ff;
-  border-radius: 50%;
-  animation: flow 6s linear infinite;
-}
-
-@keyframes flow {
-  0% { transform: translate(0,0); opacity: 1; }
-  100% { transform: translate(800px,300px); opacity: 0; }
-}
+.m1 { top: 20%; left: 10%; }
+.m2 { top: 40%; left: 40%; }
+.m3 { top: 60%; left: 70%; }
+.m4 { top: 75%; left: 20%; }
 
 /* POPUP */
 .popup {
@@ -62,8 +50,8 @@ body {
   left: 50%;
   transform: translate(-50%,-50%);
   background: #0f172a;
-  padding: 25px;
   border: 2px solid #abc4ff;
+  padding: 25px;
   display: none;
   width: 320px;
 }
@@ -72,16 +60,12 @@ body {
 
 <body>
 
-<div class="chip">
+<div class="hud">
 
-  <div class="channel inlet" onclick="openP('Inlet')">INLET</div>
-  <div class="channel filter" onclick="openP('Filter')">FILTER ZONE</div>
-  <div class="channel separation" onclick="openP('Separation')">DLD ARRAY</div>
-  <div class="channel outlet" onclick="openP('Outlet')">OUTLET</div>
-
-  <div class="particle"></div>
-  <div class="particle" style="animation-delay:2s"></div>
-  <div class="particle" style="animation-delay:4s"></div>
+  <div class="module m1" onclick="openP('Biomechanics')">BIOMECH SYSTEM</div>
+  <div class="module m2" onclick="openP('Microfluidics')">FLUID SYSTEM</div>
+  <div class="module m3" onclick="openP('Implants')">IMPLANT SYSTEM</div>
+  <div class="module m4" onclick="openP('Embedded')">EMBEDDED SYSTEM</div>
 
 </div>
 
@@ -97,10 +81,10 @@ function openP(x){
   document.getElementById("t").innerText=x;
 
   document.getElementById("c").innerText =
-    x==="Inlet" ? "Sample introduction + flow control" :
-    x==="Filter" ? "Size-based separation mechanics" :
-    x==="Separation" ? "DLD microfluidic design (your core project)" :
-    "Collected purified output (syncytial knots / cells)";
+    x==="Biomechanics" ? "FEA, materials, structural modeling" :
+    x==="Microfluidics" ? "DLD, flow systems, separation tech" :
+    x==="Implants" ? "Pacemaker + wireless power systems" :
+    "Sensors + real-time data systems";
 }
 function closeP(){
   document.getElementById("p").style.display="none";
