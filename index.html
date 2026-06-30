@@ -1,139 +1,261 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Chelsea Ogbonna | Cinematic Portfolio</title>
+<title>Chelsea Ogbonna | Cyber City</title>
 
 <style>
 body {
   margin: 0;
+  overflow: hidden;
   font-family: Arial;
-  background: #0b0f19;
-  color: white;
-  overflow-x: hidden;
+  background: #070b14;
 }
 
-/* HERO */
-.hero {
-  height: 100vh;
+/* =========================
+   WORLD
+========================= */
+#world {
+  position: relative;
+  width: 2200px;
+  height: 1400px;
+  background: radial-gradient(circle at center, #1a2233, #070b14);
+}
+
+/* CITY GLOW GRID */
+.grid {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image:
+    linear-gradient(rgba(171,196,255,0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(171,196,255,0.08) 1px, transparent 1px);
+  background-size: 80px 80px;
+}
+
+/* =========================
+   PLAYER (CAR)
+========================= */
+#player {
+  position: absolute;
+  width: 60px;
+  height: 35px;
+  background: #abc4ff;
+  border-radius: 10px;
+  box-shadow: 0 0 25px rgba(171,196,255,0.8);
+}
+
+#player::before,
+#player::after {
+  content: "";
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  background: white;
+  border-radius: 50%;
+  bottom: -6px;
+}
+
+#player::before { left: 8px; }
+#player::after { right: 8px; }
+
+/* =========================
+   BUILDINGS
+========================= */
+.building {
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  background: #111827;
+  border: 2px solid #abc4ff;
+  border-radius: 14px;
+  color: white;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  background: radial-gradient(circle at center, #1c2333, #0b0f19);
-}
-
-.hero h1 {
-  font-size: 70px;
-  animation: fadeUp 1.2s ease;
-}
-
-.hero p {
-  opacity: 0.7;
-  animation: fadeUp 1.6s ease;
-}
-
-/* SCROLL SECTIONS */
-.section {
-  min-height: 100vh;
-  padding: 100px;
-  opacity: 0;
-  transform: translateY(50px);
-  transition: 1s ease;
-}
-
-.section.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* CARDS */
-.card {
-  background: #1f2937;
-  padding: 30px;
-  border-radius: 15px;
-  margin-top: 20px;
-  border: 1px solid #abc4ff;
+  cursor: pointer;
   transition: 0.3s;
+  box-shadow: 0 0 20px rgba(0,0,0,0.4);
 }
 
-.card:hover {
-  transform: scale(1.03);
+.building:hover {
+  transform: scale(1.07);
+  box-shadow: 0 0 30px rgba(171,196,255,0.5);
 }
 
-/* FLOATING PARTICLES */
+/* POSITIONS */
+#about { top: 200px; left: 250px; }
+#projects { top: 600px; left: 900px; }
+#leadership { top: 900px; left: 400px; }
+#contact { top: 300px; left: 1500px; }
+
+/* =========================
+   UI TEXT
+========================= */
+#hud {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  color: white;
+  opacity: 0.7;
+  font-size: 14px;
+}
+
+/* =========================
+   POPUP
+========================= */
+#popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #0f172a;
+  border: 2px solid #abc4ff;
+  padding: 30px;
+  width: 320px;
+  border-radius: 14px;
+  display: none;
+  color: white;
+  box-shadow: 0 0 40px rgba(171,196,255,0.3);
+}
+
+#popup h2 {
+  margin-top: 0;
+  color: #abc4ff;
+}
+
+button {
+  margin-top: 12px;
+  padding: 10px 14px;
+  border: none;
+  background: #abc4ff;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+/* =========================
+   PARTICLES (CINEMATIC)
+========================= */
 .particle {
   position: fixed;
-  width: 6px;
-  height: 6px;
+  width: 3px;
+  height: 3px;
   background: #abc4ff;
   border-radius: 50%;
-  opacity: 0.3;
-  animation: float 10s infinite;
+  opacity: 0.4;
+  animation: float 10s infinite linear;
 }
 
 @keyframes float {
-  0% { transform: translateY(0); }
-  100% { transform: translateY(-100vh); }
-}
-
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+  from { transform: translateY(100vh); }
+  to { transform: translateY(-10vh); }
 }
 </style>
 </head>
 
 <body>
 
-<div class="hero">
-  <div>
-    <h1>Chelsea Ogbonna</h1>
-    <p>Biomedical • Mechanical • Research Engineer</p>
-  </div>
+<div id="world">
+  <div class="grid"></div>
+
+  <!-- PLAYER -->
+  <div id="player"></div>
+
+  <!-- BUILDINGS -->
+  <div class="building" id="about">ABOUT</div>
+  <div class="building" id="projects">PROJECTS</div>
+  <div class="building" id="leadership">LEADERSHIP</div>
+  <div class="building" id="contact">CONTACT</div>
 </div>
 
-<div class="section">
-  <h2>Projects</h2>
-  <div class="card">Microfluidic Device</div>
-  <div class="card">Implantable Systems</div>
-  <div class="card">Terrain Analysis Platform</div>
+<!-- HUD -->
+<div id="hud">
+  Move: WASD / Arrow Keys | Click buildings or press E
 </div>
 
-<div class="section">
-  <h2>Leadership</h2>
-  <div class="card">NSBE Academic Chair</div>
-</div>
-
-<div class="section">
-  <h2>Contact</h2>
-  <div class="card">Email • LinkedIn • GitHub</div>
+<!-- POPUP -->
+<div id="popup">
+  <h2 id="title"></h2>
+  <p>This section will load your real content here.</p>
+  <button onclick="closePopup()">Close</button>
 </div>
 
 <script>
-const sections = document.querySelectorAll(".section");
 
-function reveal() {
-  sections.forEach(s => {
-    const top = s.getBoundingClientRect().top;
-    if (top < window.innerHeight - 100) {
-      s.classList.add("visible");
+/* =========================
+   PLAYER MOVEMENT
+========================= */
+let player = document.getElementById("player");
+
+let x = 120;
+let y = 120;
+
+const speed = 12;
+
+document.addEventListener("keydown", (e) => {
+
+  if (e.key === "ArrowRight" || e.key === "d") x += speed;
+  if (e.key === "ArrowLeft" || e.key === "a") x -= speed;
+  if (e.key === "ArrowUp" || e.key === "w") y -= speed;
+  if (e.key === "ArrowDown" || e.key === "s") y += speed;
+
+  player.style.left = x + "px";
+  player.style.top = y + "px";
+
+  if (e.key === "e") checkCollision();
+});
+
+/* =========================
+   COLLISION SYSTEM
+========================= */
+function checkCollision() {
+  const buildings = document.querySelectorAll(".building");
+
+  buildings.forEach(b => {
+    const r1 = player.getBoundingClientRect();
+    const r2 = b.getBoundingClientRect();
+
+    const hit =
+      !(r1.right < r2.left ||
+        r1.left > r2.right ||
+        r1.bottom < r2.top ||
+        r1.top > r2.bottom);
+
+    if (hit) {
+      openPopup(b.id);
     }
   });
 }
 
-window.addEventListener("scroll", reveal);
-reveal();
+/* =========================
+   POPUP
+========================= */
+function openPopup(id) {
+  document.getElementById("popup").style.display = "block";
+  document.getElementById("title").innerText = id.toUpperCase();
+}
 
-// particles
-for (let i = 0; i < 30; i++) {
+function closePopup() {
+  document.getElementById("popup").style.display = "none";
+}
+
+/* click buildings */
+document.querySelectorAll(".building").forEach(b => {
+  b.onclick = () => openPopup(b.id);
+});
+
+/* =========================
+   PARTICLES
+========================= */
+for (let i = 0; i < 40; i++) {
   let p = document.createElement("div");
   p.className = "particle";
   p.style.left = Math.random() * window.innerWidth + "px";
-  p.style.top = Math.random() * window.innerHeight + "px";
   p.style.animationDuration = (5 + Math.random() * 10) + "s";
   document.body.appendChild(p);
 }
+
 </script>
 
 </body>
