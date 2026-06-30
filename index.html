@@ -29,35 +29,49 @@ body {
 }
 
 /* =========================
-   NAV (floating game UI)
+   NAV (clean brand + floating pill links)
 ========================= */
 
 nav {
   display: flex;
-  justify-content: center;
-  gap: 20px;
-
-  padding: 14px 10%;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 10%;
   position: sticky;
   top: 0;
-
-  background: rgba(237,242,251,0.85);
-  backdrop-filter: blur(10px);
-
   z-index: 100;
-  border-bottom: 1px solid rgba(193, 211, 254, 0.4);
 }
 
-nav a {
+/* Brand (NO bar) */
+.logo {
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--text);
+  text-decoration: none;
+}
+
+/* Floating nav bar */
+.nav-links {
+  display: flex;
+  gap: 10px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(237,242,251,0.85);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(193, 211, 254, 0.4);
+}
+
+/* nav links */
+.nav-links a {
   text-decoration: none;
   color: var(--text);
-  padding: 8px 14px;
-  border-radius: 10px;
+  padding: 6px 12px;
+  border-radius: 8px;
   transition: 0.2s ease;
   font-weight: 500;
 }
 
-nav a:hover {
+.nav-links a:hover {
   background: var(--accent);
   transform: translateY(-2px);
 }
@@ -241,12 +255,17 @@ footer {
 
 <body>
 
-<!-- NAV (floating game UI) -->
+<!-- NAV -->
 <nav>
-  <a href="index.html">Home</a>
-  <a href="about.html">About</a>
-  <a href="projects.html">Projects</a>
-  <a href="contact.html">Contact</a>
+  <a class="logo" href="index.html">Chelsea Ogbonna</a>
+
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="projects.html">Projects</a>
+    <a href="leadership.html">Leadership</a>
+    <a href="contact.html">Contact</a>
+  </div>
 </nav>
 
 <!-- HERO -->
