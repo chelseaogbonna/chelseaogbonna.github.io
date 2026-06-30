@@ -9,14 +9,10 @@
 
   <style>
 
-  /* =========================================================
-     🎨 COLORS
-  ========================================================= */
-
- :root {
+  :root {
     --bg: #edf2fb;
     --bg2: #e2eafc;
-    
+
     --card: #d7e3fc;
     --card-hover: #ccdbfd;
 
@@ -29,13 +25,7 @@
 
     --nav-bg: rgba(237, 242, 251, 0.9);
     --project-hover: #dde6b8;
-
-  }  
-
-
-  /* =========================================================
-     GLOBAL
-  ========================================================= */
+  }
 
   * {
     box-sizing: border-box;
@@ -50,13 +40,14 @@
   }
 
   /* =========================================================
-     NAV
+     NAV (UPDATED LAYOUT)
   ========================================================= */
 
   nav {
     display: flex;
-    justify-content: center;
-    padding: 18px;
+    justify-content: space-between;   /* KEY CHANGE */
+    align-items: center;
+    padding: 18px 10%;
     position: sticky;
     top: 0;
     background: var(--nav-bg);
@@ -64,15 +55,30 @@
     z-index: 10;
   }
 
-  nav a {
+  .logo {
+    font-weight: 700;
+    font-size: 18px;
     color: var(--text);
     text-decoration: none;
-    margin: 0 15px;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 25px;
+  }
+
+  .nav-links a {
+    color: var(--text);
+    text-decoration: none;
     font-weight: 500;
   }
 
+  .nav-links a:hover {
+    opacity: 0.7;
+  }
+
   /* =========================================================
-     HERO (NEHA-STYLE LAYOUT)
+     HERO
   ========================================================= */
 
   .hero {
@@ -81,8 +87,7 @@
     grid-template-columns: 1.2fr 0.8fr;
     align-items: center;
     gap: 50px;
-
-    padding: 40px 10% 20px;   /* moves everything UP */
+    padding: 40px 10% 20px;
   }
 
   .hero-text h1 {
@@ -102,28 +107,15 @@
     max-width: 650px;
   }
 
-  /* =========================================================
-     PROFILE IMAGE
-  ========================================================= */
-
   .hero-image img {
     width: 100%;
     max-width: 340px;
-    height: auto;
-
     border-radius: 18px;
-
-    border: 5px solid white;   /* ⭐ requested border */
-
+    border: 5px solid white;
     display: block;
     margin: 0 auto;
-
     box-shadow: 0 12px 30px rgba(0,0,0,0.15);
   }
-
-  /* =========================================================
-     BUTTONS
-  ========================================================= */
 
   .button-container {
     margin-top: 25px;
@@ -140,19 +132,10 @@
     color: #0b0f19;
   }
 
-  .button:hover {
-    background: var(--accent-hover);
-  }
-
   .button-secondary {
     background: var(--card);
     border: 1px solid var(--border);
-    color: var(--text);
   }
-
-  /* =========================================================
-     SECTIONS
-  ========================================================= */
 
   .section {
     padding: 80px 10%;
@@ -162,10 +145,6 @@
     text-align: center;
     margin-bottom: 40px;
   }
-
-  /* =========================================================
-     STATS
-  ========================================================= */
 
   .stats {
     display: flex;
@@ -182,15 +161,6 @@
     text-align: center;
   }
 
-  .stat-card h3 {
-    font-size: 40px;
-    margin: 0;
-  }
-
-  /* =========================================================
-     PROJECTS
-  ========================================================= */
-
   .projects {
     display: flex;
     gap: 25px;
@@ -203,30 +173,20 @@
     width: 320px;
     border-radius: 15px;
     overflow: hidden;
-    transition: 0.3s;
-  }
-
-  .project-card:hover {
-    transform: translateY(-8px);
-    background: var(--project-hover);
   }
 
   .project-image {
     height: 180px;
     background: #2d3138;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     color: var(--accent);
   }
 
   .project-content {
     padding: 20px;
   }
-
-  /* =========================================================
-     INTERESTS
-  ========================================================= */
 
   .interests {
     display: flex;
@@ -241,29 +201,24 @@
     border-radius: 30px;
   }
 
-  /* =========================================================
-     FOOTER
-  ========================================================= */
-
   footer {
     text-align: center;
     padding: 60px 20px;
     opacity: 0.7;
   }
 
-  /* =========================================================
-     MOBILE
-  ========================================================= */
-
   @media (max-width: 900px) {
     .hero {
       grid-template-columns: 1fr;
       text-align: center;
-      padding-top: 30px;
     }
 
     .hero-text h1 {
       font-size: 48px;
+    }
+
+    .nav-links {
+      gap: 15px;
     }
   }
 
@@ -274,11 +229,15 @@
 
 <!-- NAV -->
 <nav>
-  <a href="index.html">Home</a>
-  <a href="about.html">About</a>
-  <a href="projects.html">Projects</a>
-  <a href="leadership.html">Leadership</a>
-  <a href="contact.html">Contact</a>
+  <a class="logo" href="index.html">Chelsea Ogbonna</a>
+
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="projects.html">Projects</a>
+    <a href="leadership.html">Leadership</a>
+    <a href="contact.html">Contact</a>
+  </div>
 </nav>
 
 <!-- HERO -->
@@ -286,7 +245,6 @@
 
   <div class="hero-text">
     <h1>Chelsea Ogbonna</h1>
-
     <h2>Biomedical • Mechanical • Research Engineer</h2>
 
     <p>
@@ -316,12 +274,10 @@
       <h3>5+</h3>
       <p>Projects</p>
     </div>
-
     <div class="stat-card">
       <h3>3+</h3>
       <p>Research Roles</p>
     </div>
-
     <div class="stat-card">
       <h3>50+</h3>
       <p>Students Impacted</p>
@@ -334,7 +290,6 @@
   <h2>Featured Projects</h2>
 
   <div class="projects">
-
     <div class="project-card">
       <div class="project-image">Project Image</div>
       <div class="project-content">
@@ -358,7 +313,6 @@
         <p>Real-time terrain and motion classification system.</p>
       </div>
     </div>
-
   </div>
 </section>
 
