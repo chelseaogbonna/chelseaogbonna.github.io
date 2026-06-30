@@ -1,209 +1,161 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
-<title>Chelsea Ogbonna | Interactive Portfolio</title>
+<title>Chelsea Ogbonna | Game Portfolio</title>
 
 <style>
 body {
   margin: 0;
   overflow: hidden;
-  font-family: Arial, sans-serif;
   background: #0b0f19;
+  font-family: Arial;
 }
 
-/* ===== CITY BACKGROUND ===== */
-.city {
+/* MAP */
+#map {
+  width: 2000px;
+  height: 1200px;
+  background: linear-gradient(#1c2333, #0b0f19);
   position: relative;
-  width: 100vw;
-  height: 100vh;
-  background: linear-gradient(to top, #0b0f19, #1c2333);
-  overflow: hidden;
 }
 
-/* ROAD */
-.road {
-  position: absolute;
-  bottom: 120px;
-  width: 100%;
-  height: 140px;
-  background: #2a2f3a;
-}
-
-/* ROAD LINE */
-.line {
-  position: absolute;
-  top: 50%;
-  width: 100%;
-  height: 6px;
-  background: repeating-linear-gradient(
-    90deg,
-    #fff 0px,
-    #fff 40px,
-    transparent 40px,
-    transparent 80px
-  );
-  opacity: 0.3;
-}
-
-/* CAR */
-.car {
-  position: absolute;
-  bottom: 160px;
-  left: -150px;
-  width: 120px;
-  height: 60px;
+/* PLAYER */
+#player {
+  width: 40px;
+  height: 40px;
   background: #abc4ff;
-  border-radius: 12px;
-  animation: drive 10s linear infinite;
-  cursor: pointer;
-  box-shadow: 0 10px 30px rgba(171,196,255,0.5);
-}
-
-.car::after {
-  content: "";
   position: absolute;
-  width: 25px;
-  height: 25px;
-  background: #fff;
-  border-radius: 50%;
-  bottom: -10px;
-  left: 10px;
+  border-radius: 8px;
+  box-shadow: 0 0 20px #abc4ff;
 }
 
-.car::before {
-  content: "";
-  position: absolute;
-  width: 25px;
-  height: 25px;
-  background: #fff;
-  border-radius: 50%;
-  bottom: -10px;
-  right: 10px;
-}
-
-/* CAR ANIMATION */
-@keyframes drive {
-  0% { left: -150px; }
-  100% { left: 110%; }
-}
-
-/* pause on hover */
-.car:hover {
-  animation-play-state: paused;
-}
-
-/* ===== BUILDINGS ===== */
+/* BUILDINGS */
 .building {
-  position: absolute;
-  bottom: 260px;
-  width: 120px;
-  height: 220px;
+  width: 140px;
+  height: 140px;
   background: #1f2937;
   border: 2px solid #abc4ff;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: 0.3s;
+  position: absolute;
+  border-radius: 12px;
+  color: white;
+  text-align: center;
+  padding-top: 55px;
+  font-size: 14px;
+  transition: 0.2s;
 }
 
 .building:hover {
-  transform: translateY(-10px);
-  background: #2b3445;
+  transform: scale(1.05);
 }
 
 /* POSITIONS */
-.b1 { left: 10%; }
-.b2 { left: 30%; }
-.b3 { left: 50%; }
-.b4 { left: 70%; }
+#about { top: 200px; left: 300px; }
+#projects { top: 500px; left: 900px; }
+#leadership { top: 800px; left: 500px; }
+#contact { top: 300px; left: 1400px; }
+
+/* UI */
+#hint {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  color: white;
+  opacity: 0.7;
+}
 
 /* POPUP */
-.popup {
+#popup {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   background: #111827;
-  padding: 30px;
-  border-radius: 15px;
   border: 2px solid #abc4ff;
-  display: none;
+  padding: 25px;
+  border-radius: 12px;
   color: white;
-  width: 300px;
-  text-align: center;
+  display: none;
+  width: 320px;
 }
 
-.popup h2 {
-  margin-top: 0;
-  color: #abc4ff;
-}
-
-.close {
-  margin-top: 15px;
-  padding: 8px 14px;
+button {
+  margin-top: 10px;
+  padding: 8px 12px;
   background: #abc4ff;
   border: none;
   cursor: pointer;
-  border-radius: 8px;
-}
-
-/* TITLE */
-.title {
-  position: absolute;
-  top: 40px;
-  width: 100%;
-  text-align: center;
-  color: white;
-}
-
-.title h1 {
-  margin: 0;
-  font-size: 42px;
-}
-
-.title p {
-  opacity: 0.7;
 }
 </style>
 </head>
 
 <body>
 
-<div class="city">
+<div id="map">
 
-  <!-- TITLE -->
-  <div class="title">
-    <h1>Chelsea Ogbonna</h1>
-    <p>Click buildings or pause the car 🚗</p>
-  </div>
+  <div id="player"></div>
 
-  <!-- BUILDINGS (NAV SECTIONS) -->
-  <div class="building b1" onclick="openPopup('About Me')"></div>
-  <div class="building b2" onclick="openPopup('Projects')"></div>
-  <div class="building b3" onclick="openPopup('Leadership')"></div>
-  <div class="building b4" onclick="openPopup('Contact')"></div>
-
-  <!-- ROAD -->
-  <div class="road">
-    <div class="line"></div>
-  </div>
-
-  <!-- CAR -->
-  <div class="car" onclick="openPopup('Welcome! Explore the city to view my work 🚗')"></div>
+  <div class="building" id="about">About</div>
+  <div class="building" id="projects">Projects</div>
+  <div class="building" id="leadership">Leadership</div>
+  <div class="building" id="contact">Contact</div>
 
 </div>
 
-<!-- POPUP -->
-<div class="popup" id="popup">
-  <h2 id="popupTitle"></h2>
-  <p>This is where your section content would load.</p>
-  <button class="close" onclick="closePopup()">Close</button>
+<div id="hint">
+  Move: WASD / Arrow Keys | Press E near buildings
+</div>
+
+<div id="popup">
+  <h2 id="title"></h2>
+  <p>This section will load your content here.</p>
+  <button onclick="closePopup()">Close</button>
 </div>
 
 <script>
-function openPopup(text) {
-  document.getElementById("popupTitle").innerText = text;
+let player = document.getElementById("player");
+
+let x = 100;
+let y = 100;
+
+const speed = 10;
+
+document.addEventListener("keydown", (e) => {
+
+  if (e.key === "ArrowRight" || e.key === "d") x += speed;
+  if (e.key === "ArrowLeft" || e.key === "a") x -= speed;
+  if (e.key === "ArrowUp" || e.key === "w") y -= speed;
+  if (e.key === "ArrowDown" || e.key === "s") y += speed;
+
+  player.style.left = x + "px";
+  player.style.top = y + "px";
+
+  if (e.key === "e") checkInteraction();
+});
+
+function checkInteraction() {
+  const buildings = ["about","projects","leadership","contact"];
+
+  buildings.forEach(id => {
+    let b = document.getElementById(id);
+    let rect1 = player.getBoundingClientRect();
+    let rect2 = b.getBoundingClientRect();
+
+    let overlap =
+      !(rect1.right < rect2.left ||
+        rect1.left > rect2.right ||
+        rect1.bottom < rect2.top ||
+        rect1.top > rect2.bottom);
+
+    if (overlap) {
+      openPopup(id);
+    }
+  });
+}
+
+function openPopup(id) {
   document.getElementById("popup").style.display = "block";
+  document.getElementById("title").innerText = id.toUpperCase();
 }
 
 function closePopup() {
