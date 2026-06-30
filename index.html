@@ -23,7 +23,6 @@
   --nav-bg: rgba(237, 242, 251, 0.9);
   --project-hover: #dde6b8;
 
-  /* Game Specific Cellular Fluorescent Markers aligned with your palette */
   --erythrocyte-red: rgba(239, 68, 68, 0.65);
   --buffer-blue: rgba(79, 172, 254, 0.65);
 }
@@ -73,7 +72,6 @@ body {
   border: 2px solid white;
 }
 
-/* Surface receptor proteins on the running cell */
 .cell-courier::before, .cell-courier::after {
   content: "";
   position: absolute;
@@ -83,14 +81,12 @@ body {
 .cell-courier::before { width: 10px; height: 10px; top: -5px; left: 30px; box-shadow: 0 0 10px var(--accent); }
 .cell-courier::after { width: 8px; height: 8px; bottom: 15px; right: -4px; box-shadow: 0 0 10px var(--accent); }
 
-/* FLOW MECHANICS SPEED */
 @keyframes cellular-flow {
   0% { left: -100px; transform: translateY(0px) rotate(0deg); }
   50% { transform: translateY(-12px) rotate(180deg); }
   100% { left: 110%; transform: translateY(0px) rotate(360deg); }
 }
 
-/* Trap cell flow on cursor hover */
 .cell-courier:hover {
   animation-play-state: paused;
   box-shadow: 0 0 35px var(--accent), inset -5px -5px 15px rgba(0,0,0,0.1);
@@ -106,7 +102,7 @@ body {
   background: rgba(255, 255, 255, 0.65);
   border: 2px solid var(--border);
   backdrop-filter: blur(8px);
-  border-radius: 40px 40px 20px 20px; /* Fluidic chamber appearance */
+  border-radius: 40px 40px 20px 20px;
   cursor: pointer;
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   display: flex;
@@ -123,7 +119,6 @@ body {
   box-shadow: 0 15px 35px rgba(171, 196, 255, 0.4);
 }
 
-/* Highly Fluorescent Bioreactor Core */
 .vessel-core {
   width: 44px;
   height: 44px;
@@ -150,26 +145,28 @@ body {
   text-transform: uppercase;
 }
 
-/* CHIP MATRIX POSITION VALVES */
 .node-about { left: 12%; }
 .node-projects { left: 34%; }
 .node-research { left: 56%; }
 .node-contact { left: 78%; }
 
-/* ===== LAB UTILITY OVERLAY MODAL ===== */
+/* ===== LAB EXPANDED DIALOG CONSOLE PANEL ===== */
 .bio-popup {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) scale(0.9);
   background: white;
-  padding: 40px;
+  padding: 35px;
   border-radius: 26px;
   border: 3px solid var(--accent);
   display: none;
   color: var(--text);
-  width: 380px;
-  text-align: center;
+  width: 550px; /* Widened to account for tables and grid metrics */
+  max-width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  text-align: left;
   box-shadow: 0 30px 60px rgba(27, 38, 59, 0.15);
   z-index: 1000;
   opacity: 0;
@@ -188,17 +185,73 @@ body {
   font-weight: 800;
   font-size: 24px;
   letter-spacing: -0.5px;
+  border-bottom: 2px solid var(--bg2);
+  padding-bottom: 10px;
 }
 
-.bio-popup p {
+/* GAME DISPLAY DATA STRUCTURES */
+.popup-grid-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  margin: 20px 0;
+}
+
+.metric-mini-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  padding: 15px;
+  border-radius: 14px;
+  text-align: center;
+}
+
+.metric-mini-card div:first-child {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--text);
+}
+
+.metric-mini-card div:last-child {
+  font-size: 11px;
   color: var(--muted);
-  line-height: 1.6;
-  font-size: 14.5px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.data-chambers-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin: 20px 0;
+}
+
+.data-chamber-row {
+  background: rgba(226, 234, 252, 0.4);
+  border-left: 4px solid var(--accent);
+  padding: 15px;
+  border-radius: 0 14px 14px 0;
+}
+
+.data-chamber-row h4 {
+  margin: 0 0 5px 0;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.data-chamber-row p {
+  margin: 0;
+  font-size: 13.5px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.close-btn-container {
+  text-align: center;
 }
 
 .close-btn {
-  margin-top: 25px;
-  padding: 12px 28px;
+  margin-top: 15px;
+  padding: 12px 32px;
   background: var(--accent);
   border: none;
   color: var(--text);
@@ -212,10 +265,12 @@ body {
 }
 
 .close-btn:hover {
-  transform: scale(1.05);
   background: var(--accent-soft);
-  box-shadow: 0 5px 15px rgba(171, 196, 255, 0.4);
 }
+
+/* SCROLLER FOR MODAL WINDOW */
+.bio-popup::-webkit-scrollbar { width: 4px; }
+.bio-popup::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
 
 /* TERMINAL SYSTEM HEADER PANEL */
 .header-panel {
@@ -254,26 +309,26 @@ body {
     <p>Biomedical Engineering Platform // Capture the moving target cell or load a valve node</p>
   </div>
 
-  <!-- VALVE NODE: ABOUT -->
-  <div class="bio-vessel node-about" onclick="openPopup('About Me', 'Passionate about engineering elegant, microscopic solutions to macroscopic physiological challenges. Bridging the gap between cellular mechanics and real-world clinical diagnostic platforms.')">
+  <!-- VALVE NODE: ABOUT & SYSTEM ACCOLADES -->
+  <div class="bio-vessel node-about" onclick="openAboutChamber()">
     <div class="vessel-core"></div>
     <div class="vessel-label">About Me</div>
   </div>
 
-  <!-- VALVE NODE: PROJECTS -->
-  <div class="bio-vessel node-projects" onclick="openPopup('Engineering Projects', 'From hardware prototypes to smart tracking arrays. Deep dives into wire directed energy deposition variations, microfluidic separation devices, and wearable kinematics meshes.')">
+  <!-- VALVE NODE: FEATURED PROJECTS CHAMBER -->
+  <div class="bio-vessel node-projects" onclick="openProjectsChamber()">
     <div class="vessel-core"></div>
     <div class="vessel-label">Projects</div>
   </div>
 
-  <!-- VALVE NODE: RESEARCH -->
-  <div class="bio-vessel node-research" onclick="openPopup('Research Focus', 'Investigating cutting-edge cell-free protein syntheses, responsive sequence-dependent programmable hydrogels, dynamic biomaterial degradation kinetics, and micro-target isolation systems.')">
+  <!-- VALVE NODE: RESEARCH LABS -->
+  <div class="bio-vessel node-research" onclick="openResearchChamber()">
     <div class="vessel-core"></div>
     <div class="vessel-label">Research</div>
   </div>
 
-  <!-- VALVE NODE: CONTACT -->
-  <div class="bio-vessel node-contact" onclick="openPopup('Connect Valve', 'Let\'s collaborate on the next wave of bio-hardware innovation. Secure terminal link active for discussing research integration or development opportunities.')">
+  <!-- VALVE NODE: CONTACT VECTOR -->
+  <div class="bio-vessel node-contact" onclick="openContactChamber()">
     <div class="vessel-core"></div>
     <div class="vessel-label">Contact</div>
   </div>
@@ -282,22 +337,117 @@ body {
   <div class="fluid-channel"></div>
 
   <!-- TARGET CAPTURABLE CELL COURIER -->
-  <div class="cell-courier" onclick="openPopup('Cellular Assays Trapped', 'Target isolated successfully! Micro-particle flow paused inside the diagnostic terminal chamber grid. Explore the chamber nodes to evaluate my engineering portfolio.')"></div>
+  <div class="cell-courier" onclick="openCellChamber()"></div>
 
 </div>
 
-<!-- INTERACTIVE POPUP MODULE -->
+<!-- INTERACTIVE POPUP MODULE CONTAINER -->
 <div class="bio-popup" id="bioPopup">
   <h2 id="popupTitle"></h2>
-  <p id="popupContent"></p>
-  <button class="close-btn" onclick="closePopup()">Resume Assay Flow</button>
+  <div id="popupDynamicContent"></div>
+  <div class="close-btn-container">
+    <button class="close-btn" onclick="closePopup()">Resume Assay Flow</button>
+  </div>
 </div>
 
 <script>
-function openPopup(title, content) {
+/* =========================================================
+   INJECTING DETAILED BME CONTENT INTO GAME MODALS
+========================================================= */
+
+function openAboutChamber() {
+  const title = "System Health & Accolades";
+  const contentHTML = `
+    <p style="font-size:15px; color:var(--muted);">
+      Passionate about engineering elegant, microscopic solutions to macroscopic physiological challenges. 
+      Bridging the gap between physical transport mechanics and modular, clinical hardware tracking tools.
+    </p>
+    <div class="popup-grid-metrics">
+      <div class="metric-mini-card"><div>5+</div><div>Bio-Devices</div></div>
+      <div class="metric-mini-card"><div>3+</div><div>Assay Tracks</div></div>
+      <div class="metric-mini-card"><div>50+</div><div>Peers Saved</div></div>
+    </div>
+    <div class="data-chamber-row" style="margin-top:10px;">
+      <h4>Core Competencies</h4>
+      <p>Microfluidic Transport Optimization • Additive Manufacturing Analytics • Embedded Sensory Networks • Biomedical Hardware Integration</p>
+    </div>
+  `;
+  showPopup(title, contentHTML);
+}
+
+function openProjectsChamber() {
+  const title = "Featured Project Chambers";
+  const contentHTML = `
+    <div class="data-chambers-list">
+      <div class="data-chamber-row">
+        <h4>🔬 Deterministic Lateral Displacement (DLD) Sorter</h4>
+        <p>A microfluidic post-array architecture sorting biological targets completely based on localized channel hydraulic bifurcation.</p>
+      </div>
+      <div class="data-chamber-row">
+        <h4>⚡ Implantable Telemetry Coupling</h4>
+        <p>Wireless inductive configuration minimizing communication data decay across dense anatomical boundary layers.</p>
+      </div>
+      <div class="data-chamber-row">
+        <h4>👟 Embedded Kinematic Diagnostics</h4>
+        <p>Wearable inertial tracking layout processing raw body acceleration fields into continuous biomechanical gait markers.</p>
+      </div>
+    </div>
+  `;
+  showPopup(title, contentHTML);
+}
+
+function openResearchChamber() {
+  const title = "Active Assay Alliances";
+  const contentHTML = `
+    <div class="data-chambers-list">
+      <div class="data-chamber-row">
+        <h4>🧪 Cell-Free Synthetics Engineering</h4>
+        <p>Evaluating enzyme transcription-translation pathways and degradation velocities against living cellular matrices.</p>
+      </div>
+      <div class="data-chamber-row">
+        <h4>🧬 Sequence-Programmed Hydrogels</h4>
+        <p>Constructing mechanical elasticity and expansion models for nucleic-acid-driven soft automated materials.</p>
+      </div>
+    </div>
+  `;
+  showPopup(title, contentHTML);
+}
+
+function openContactChamber() {
+  const title = "Establish Communication Link";
+  const contentHTML = `
+    <p style="text-align:center; font-size:15px; color:var(--muted); margin-bottom:20px;">
+      Secure external port online. Ready to establish hardware design alignment, assay collaboration paths, or professional device consulting vectors.
+    </p>
+    <div class="data-chamber-row" style="text-align:center;">
+      <p style="font-weight:700; color:var(--text); font-size:16px;">SYS_OPERATOR // CO_2026</p>
+      <p style="font-size:13px; margin-top:5px; color:var(--muted);">Secure Link Ready via Email & Professional Matrix Portals</p>
+    </div>
+  `;
+  showPopup(title, contentHTML);
+}
+
+function openCellChamber() {
+  const title = "Target Micro-Sample Captured!";
+  const contentHTML = `
+    <div class="data-chamber-row" style="background:var(--project-hover); border-color:#8ba85d; color:#2d3a1a;">
+      <h4 style="color:#1e290b;">Cell Stream Paused</h4>
+      <p style="color:#3f5123;">Excellent reflexes! You have safely trapped a flowing reagent unit. This confirmational diagnostic demonstrates that the terminal layout interaction engine is fully functional.</p>
+    </div>
+    <p style="font-size:14px; color:var(--muted); margin-top:15px;">
+      Now that the system flow is stable, initialize the individual reactor nodes to comprehensively read through my engineering files.
+    </p>
+  `;
+  showPopup(title, contentHTML);
+}
+
+/* =========================================================
+   MODAL DISPLAY RIG MECHANICS
+========================================================= */
+function showPopup(title, htmlContent) {
   const popup = document.getElementById("bioPopup");
   document.getElementById("popupTitle").innerText = title;
-  document.getElementById("popupContent").innerText = content;
+  document.getElementById("popupDynamicContent").innerHTML = htmlContent;
   
   popup.style.display = "block";
   setTimeout(() => {
