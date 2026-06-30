@@ -1,345 +1,280 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Chelsea Ogbonna | Interactive Portfolio</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<title>Chelsea Ogbonna | Interactive Portfolio</title>
 
 <style>
-
-/* =======================
-   THEME
-======================= */
-
-:root {
-  --bg: #edf2fb;
-  --card: #d7e3fc;
-  --accent: #abc4ff;
-  --text: #1f2937;
-}
-
-/* =======================
-   BASE
-======================= */
-
 body {
   margin: 0;
-  font-family: "Inter", sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  overflow-x: hidden;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+  background: #0b0f19;
 }
 
-/* =======================
-   FLOATING NAV (GAME UI)
-======================= */
-
-nav {
-  position: fixed;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 18px;
-  padding: 12px 20px;
-  background: rgba(255,255,255,0.6);
-  backdrop-filter: blur(12px);
-  border-radius: 999px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-  z-index: 100;
-}
-
-nav a {
-  text-decoration: none;
-  color: var(--text);
-  font-weight: 500;
-  padding: 6px 10px;
-  border-radius: 8px;
-  transition: 0.2s;
-}
-
-nav a:hover {
-  background: var(--accent);
-  transform: scale(1.1);
-}
-
-/* =======================
-   HERO (CINEMATIC DEPTH)
-======================= */
-
-.hero {
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 10%;
+/* ===== CITY BACKGROUND ===== */
+.city {
   position: relative;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(to top, #0b0f19, #1c2333);
+  overflow: hidden;
 }
 
-/* floating glow background */
-.hero::before {
+/* TITLE */
+.title {
+  position: absolute;
+  top: 35px;
+  width: 100%;
+  text-align: center;
+  color: white;
+}
+
+.title h1 {
+  margin: 0;
+  font-size: 44px;
+}
+
+.title p {
+  opacity: 0.7;
+}
+
+/* ROAD */
+.road {
+  position: absolute;
+  bottom: 120px;
+  width: 100%;
+  height: 140px;
+  background: #2a2f3a;
+}
+
+.line {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  height: 6px;
+  background: repeating-linear-gradient(
+    90deg,
+    #fff 0px,
+    #fff 40px,
+    transparent 40px,
+    transparent 80px
+  );
+  opacity: 0.3;
+}
+
+/* CAR */
+.car {
+  position: absolute;
+  bottom: 160px;
+  left: -150px;
+  width: 120px;
+  height: 60px;
+  background: #abc4ff;
+  border-radius: 12px;
+  animation: drive 10s linear infinite;
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(171,196,255,0.5);
+}
+
+.car::after,
+.car::before {
   content: "";
   position: absolute;
-  width: 600px;
-  height: 600px;
-  background: var(--accent);
-  filter: blur(120px);
-  opacity: 0.4;
-  top: -100px;
-  left: -100px;
-  z-index: 0;
+  width: 25px;
+  height: 25px;
+  background: #fff;
+  border-radius: 50%;
+  bottom: -10px;
 }
 
-.hero-text {
-  z-index: 2;
-  max-width: 600px;
+.car::after { left: 10px; }
+.car::before { right: 10px; }
+
+@keyframes drive {
+  0% { left: -150px; }
+  100% { left: 110%; }
 }
 
-.hero h1 {
-  font-size: 64px;
-  margin: 0;
-  animation: floatText 3s ease-in-out infinite;
+.car:hover {
+  animation-play-state: paused;
 }
 
-@keyframes floatText {
-  0%,100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
-}
-
-.hero-image img {
-  width: 320px;
-  border-radius: 20px;
-  border: 4px solid white;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+/* ===== BUILDINGS ===== */
+.building {
+  position: absolute;
+  bottom: 260px;
+  width: 140px;
+  height: 240px;
+  background: #1f2937;
+  border: 2px solid #abc4ff;
+  border-radius: 12px;
+  cursor: pointer;
   transition: 0.3s;
-}
-
-.hero-image img:hover {
-  transform: scale(1.08) rotate(2deg);
-}
-
-/* =======================
-   BUTTONS (GAME FEEL)
-======================= */
-
-.button {
-  display: inline-block;
-  padding: 12px 18px;
-  margin-top: 20px;
-  background: var(--accent);
-  border-radius: 10px;
-  text-decoration: none;
-  color: black;
-  transition: 0.2s;
-}
-
-.button:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
-}
-
-/* =======================
-   STATS (XP STYLE CARDS)
-======================= */
-
-.stats {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  padding: 80px 10%;
-}
-
-.stat {
-  background: var(--card);
-  padding: 25px;
-  border-radius: 16px;
-  width: 200px;
+  color: white;
   text-align: center;
-  transition: 0.3s;
+  padding-top: 90px;
+  font-weight: bold;
 }
 
-.stat:hover {
+.building:hover {
   transform: translateY(-10px) scale(1.05);
+  background: #2b3445;
 }
 
-/* animated number feel */
-.stat h2 {
-  font-size: 40px;
+/* POSITIONS */
+.b1 { left: 8%; }
+.b2 { left: 30%; }
+.b3 { left: 52%; }
+.b4 { left: 74%; }
+
+/* ===== POPUP (GAME MENU STYLE) ===== */
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #0f172a;
+  padding: 25px;
+  border-radius: 15px;
+  border: 2px solid #abc4ff;
+  display: none;
+  color: white;
+  width: 360px;
+  max-height: 70vh;
+  overflow-y: auto;
+  text-align: left;
+}
+
+.popup h2 {
+  margin-top: 0;
+  color: #abc4ff;
+}
+
+.popup p {
+  font-size: 14px;
+  opacity: 0.85;
+  line-height: 1.5;
+}
+
+.close {
+  margin-top: 15px;
+  padding: 8px 14px;
+  background: #abc4ff;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+/* CONTENT CARDS INSIDE POPUP */
+.card {
+  background: #1f2937;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 10px;
+  border-left: 3px solid #abc4ff;
+}
+
+.card h4 {
   margin: 0;
+  color: #abc4ff;
+  font-size: 14px;
 }
 
-/* =======================
-   PROJECTS (INTERACTIVE CARDS)
-======================= */
-
-.projects {
-  display: flex;
-  gap: 20px;
-  justify-content: center;
-  padding: 40px 10%;
-  flex-wrap: wrap;
+.card p {
+  margin: 5px 0 0;
+  font-size: 13px;
 }
-
-.project {
-  width: 300px;
-  background: var(--card);
-  border-radius: 16px;
-  overflow: hidden;
-  transition: 0.3s;
-  cursor: pointer;
-}
-
-.project:hover {
-  transform: translateY(-12px) rotate(-1deg);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-}
-
-.project .img {
-  height: 160px;
-  background: #2d3138;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--accent);
-  transition: 0.3s;
-}
-
-.project:hover .img {
-  transform: scale(1.1);
-}
-
-/* =======================
-   INTERESTS (BUBBLES)
-======================= */
-
-.interests {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  flex-wrap: wrap;
-  padding: 60px;
-}
-
-.tag {
-  background: var(--card);
-  padding: 10px 16px;
-  border-radius: 999px;
-  transition: 0.2s;
-  cursor: pointer;
-}
-
-.tag:hover {
-  transform: translateY(-6px);
-  background: var(--accent);
-}
-
-/* =======================
-   SCROLL REVEAL (CINEMATIC)
-======================= */
-
-section {
-  opacity: 0;
-  transform: translateY(40px);
-  animation: fadeUp 1s forwards;
-}
-
-section:nth-child(2) { animation-delay: 0.1s; }
-section:nth-child(3) { animation-delay: 0.2s; }
-section:nth-child(4) { animation-delay: 0.3s; }
-
-@keyframes fadeUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-footer {
-  text-align: center;
-  padding: 50px;
-  opacity: 0.6;
-}
-
 </style>
 </head>
 
 <body>
 
-<!-- NAV (floating game UI) -->
-<nav>
-  <a href="index.html">Home</a>
-  <a href="about.html">About</a>
-  <a href="projects.html">Projects</a>
-  <a href="contact.html">Contact</a>
-</nav>
+<div class="city">
 
-<!-- HERO -->
-<section class="hero">
-
-  <div class="hero-text">
+  <!-- TITLE -->
+  <div class="title">
     <h1>Chelsea Ogbonna</h1>
-
-    <p>
-      Biomedical + Mechanical Engineer building systems that feel alive.
-    </p>
-
-    <a class="button" href="projects.html">Enter Projects →</a>
+    <p>Drive the city • Explore my work 🚗 • Click buildings</p>
   </div>
 
-  <div class="hero-image">
-    <img src="Chelseaprofilepics.JPG">
+  <!-- BUILDINGS -->
+  <div class="building b1" onclick="openPopup('about')">ABOUT</div>
+  <div class="building b2" onclick="openPopup('projects')">PROJECTS</div>
+  <div class="building b3" onclick="openPopup('achievements')">ACHIEVEMENTS</div>
+  <div class="building b4" onclick="openPopup('contact')">CONTACT</div>
+
+  <!-- ROAD -->
+  <div class="road">
+    <div class="line"></div>
   </div>
 
-</section>
+  <!-- CAR -->
+  <div class="car" onclick="openPopup('welcome')"></div>
 
-<!-- STATS -->
-<section class="stats">
+</div>
 
-  <div class="stat">
-    <h2>5+</h2>
-    Projects
-  </div>
+<!-- POPUP -->
+<div class="popup" id="popup">
+  <h2 id="popupTitle"></h2>
+  <div id="popupContent"></div>
+  <button class="close" onclick="closePopup()">Close</button>
+</div>
 
-  <div class="stat">
-    <h2>3+</h2>
-    Labs
-  </div>
+<script>
 
-  <div class="stat">
-    <h2>50+</h2>
-    Students
-  </div>
+function openPopup(section) {
+  const title = document.getElementById("popupTitle");
+  const content = document.getElementById("popupContent");
 
-</section>
+  if (section === "about") {
+    title.innerText = "About Me";
+    content.innerHTML = `
+      <p>Biomedical + Mechanical Engineer focused on healthcare systems, microfluidics, and embedded devices.</p>
+      <div class="card"><h4>Focus</h4><p>Medical devices, robotics, simulation</p></div>
+      <div class="card"><h4>Tools</h4><p>MATLAB, Python, SolidWorks</p></div>
+    `;
+  }
 
-<!-- PROJECTS -->
-<section class="projects">
+  if (section === "projects") {
+    title.innerText = "Projects";
+    content.innerHTML = `
+      <div class="card"><h4>Microfluidic Device</h4><p>DLD-based particle separation system</p></div>
+      <div class="card"><h4>Implantable Device</h4><p>Wireless power biomedical system</p></div>
+      <div class="card"><h4>Terrain Sensor System</h4><p>Embedded IMU classification platform</p></div>
+    `;
+  }
 
-  <div class="project">
-    <div class="img">Microfluidics</div>
-    <div style="padding:15px;">DLD Device</div>
-  </div>
+  if (section === "achievements") {
+    title.innerText = "Achievements";
+    content.innerHTML = `
+      <div class="card"><h4>Research</h4><p>Multiple lab roles in biomedical engineering</p></div>
+      <div class="card"><h4>Projects</h4><p>10+ engineering systems built</p></div>
+      <div class="card"><h4>Impact</h4><p>Mentored students + lab contributions</p></div>
+    `;
+  }
 
-  <div class="project">
-    <div class="img">Implant</div>
-    <div style="padding:15px;">Wireless Pacemaker</div>
-  </div>
+  if (section === "contact") {
+    title.innerText = "Contact";
+    content.innerHTML = `
+      <div class="card"><h4>Email</h4><p>chelsea@example.com</p></div>
+      <div class="card"><h4>LinkedIn</h4><p>linkedin.com/in/chelsea</p></div>
+    `;
+  }
 
-</section>
+  if (section === "welcome") {
+    title.innerText = "Welcome!";
+    content.innerHTML = `<p>Drive around and click buildings to explore the portfolio 🚗</p>`;
+  }
 
-<!-- INTERESTS -->
-<section class="interests">
+  document.getElementById("popup").style.display = "block";
+}
 
-  <div class="tag">Biomedical Devices</div>
-  <div class="tag">Microfluidics</div>
-  <div class="tag">Embedded Systems</div>
+function closePopup() {
+  document.getElementById("popup").style.display = "none";
+}
 
-</section>
-
-<footer>
-  © 2026 Chelsea Ogbonna
-</footer>
+</script>
 
 </body>
 </html>
