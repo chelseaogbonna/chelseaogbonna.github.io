@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="styles.css">
   <style>
 :root {
-  /* Sleek, professional engineering colors */
+  /* Premium Light-Mode Engineering Palette */
   --bg: #edf2fb;
   --bg2: #e2eafc;
   --card: #d7e3fc;
@@ -17,10 +17,6 @@
   --accent: #abc4ff;
   --accent-soft: #b6ccfe;
   --border: #c1d3fe;
-  
-  /* System highlights */
-  --thermal-orange: rgba(249, 115, 22, 0.1);
-  --aerospace-blue: rgba(59, 130, 246, 0.1);
 }
 
 body {
@@ -30,313 +26,368 @@ body {
   background: var(--bg);
   color: var(--text);
   user-select: none;
-}
-
-/* ===== MECHANICAL SIMULATION GRID & LANDSCAPE ===== */
-.sim-matrix {
-  position: relative;
   width: 100vw;
   height: 100vh;
+}
+
+/* ===== ATMOSPHERIC GAME MATRIX ENVIRONMENT ===== */
+.sim-matrix {
+  position: relative;
+  width: 100%;
+  height: 100%;
   background: radial-gradient(circle at center, var(--bg) 0%, var(--bg2) 100%);
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
-/* FLUID DYNAMICS / WIND TUNNEL CHANNEL */
+/* FLUID DYNAMICS / WIND TUNNEL SIMULATION PATH */
 .fluid-channel {
   position: absolute;
-  bottom: 120px;
+  top: 15%;
+  left: 0;
   width: 100%;
-  height: 100px;
+  height: 80px;
   background: rgba(255, 255, 255, 0.4);
-  border-top: 2px dashed var(--accent);
-  border-bottom: 2px dashed var(--accent);
-  box-shadow: inset 0 0 20px rgba(171, 196, 255, 0.2);
+  border-top: 2px dashed var(--border);
+  border-bottom: 2px dashed var(--border);
+  box-shadow: inset 0 0 20px rgba(171, 196, 255, 0.15);
+  z-index: 1;
 }
 
-/* FLOATING SPACECRAFT COURIER / TELEMETRY PAYLOAD */
+/* FLOATING COURIER PAYLOAD */
 .spacecraft-courier {
   position: absolute;
-  bottom: 135px;
+  top: calc(15% + 5px);
   left: -150px;
-  width: 70px;
-  height: 70px;
+  width: 65px;
+  height: 65px;
   background: radial-gradient(circle at 30% 30%, #abc4ff, #4facfe);
-  border-radius: 35% 65% 65% 35% / 35% 35% 65% 65%; /* Mechanical aerodynamic shape */
-  animation: atmospheric-flow 10s linear infinite;
+  border-radius: 35% 65% 65% 35% / 35% 35% 65% 65%;
+  animation: atmospheric-flow 12s linear infinite;
   cursor: pointer;
-  box-shadow: 0 0 25px rgba(79, 172, 254, 0.5), inset -5px -5px 15px rgba(0,0,0,0.1);
+  box-shadow: 0 0 20px rgba(79, 172, 254, 0.4), inset -5px -5px 15px rgba(0,0,0,0.1);
   border: 2px solid rgba(255, 255, 255, 0.7);
+  z-index: 2;
 }
 
-/* Solar panels / sensor arrays protruding from the courier */
-.spacecraft-courier::before, .spacecraft-courier::after {
-  content: "";
-  position: absolute;
-  background: #4facfe;
-}
-.spacecraft-courier::before { width: 14px; height: 6px; top: 32px; left: -10px; box-shadow: 0 0 10px #abc4ff; }
-.spacecraft-courier::after { width: 6px; height: 14px; top: -10px; left: 32px; box-shadow: 0 0 10px #abc4ff; }
-
-/* WIND TUNNEL FLOW ANIMATION */
 @keyframes atmospheric-flow {
   0% { left: -100px; transform: translateY(0px) rotate(0deg); }
-  50% { transform: translateY(-15px) rotate(15deg); }
+  50% { transform: translateY(-10px) rotate(15deg); }
   100% { left: 110%; transform: translateY(0px) rotate(0deg); }
 }
 
 .spacecraft-courier:hover {
   animation-play-state: paused;
-  box-shadow: 0 0 35px #4facfe, inset -5px -5px 15px rgba(0,0,0,0.15);
-  background: #ccdbfd;
+  background: #dde6b8;
+  box-shadow: 0 0 30px rgba(79, 172, 254, 0.7);
 }
 
-/* ===== MECHANICAL VALVES / CHAMBERS ===== */
-.sim-vessel {
+/* SYSTEM INTERACTIVE NOTIFIER POPUP (FOR COURIER TRAP) */
+.hud-alert {
   position: absolute;
-  bottom: 260px;
-  width: 130px;
-  height: 170px;
-  background: rgba(255, 255, 255, 0.7);
-  border: 2px solid var(--border);
-  border-radius: 20px;
-  cursor: pointer;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%) translateY(-100px);
+  background: #0a192f;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 14px;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  z-index: 2000;
+}
+.hud-alert.triggered { transform: translateX(-50%) translateY(0); }
+
+/* ===== MASTER WORKSTATION PANEL FRAME ===== */
+.master-workstation {
+  position: relative;
+  flex: 1;
+  margin-top: 110px; /* Clears the wind tunnel path */
+  margin-bottom: 20px;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  border: 3px solid var(--border);
+  border-radius: 28px;
+  box-shadow: 0 20px 50px rgba(27, 38, 59, 0.08);
+  z-index: 10;
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  overflow: hidden;
+}
+
+/* LEFT WING: FIXED SYSTEM OPERATOR TELEMETRY FEED */
+.telemetry-left-wing {
+  background: rgba(226, 234, 252, 0.4);
+  border-right: 2px solid var(--border);
+  padding: 30px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.05);
-  backdrop-filter: blur(5px);
-}
-
-.sim-vessel:hover {
-  transform: translateY(-15px) scale(1.05);
-  background: var(--card);
-  border-color: var(--accent);
-  box-shadow: 0 15px 30px rgba(171, 196, 255, 0.5);
-}
-
-/* Rotatable Actuator Core */
-.vessel-core {
-  width: 40px;
-  height: 40px;
-  border-radius: 8px;
-  background: radial-gradient(circle, var(--accent) 10%, transparent 80%);
-  border: 2px dashed var(--accent);
-  margin-bottom: 15px;
-  transition: 0.3s;
-}
-
-.sim-vessel:hover .vessel-core {
-  transform: rotate(90deg) scale(1.1);
-  background: #ffffff;
-}
-
-.vessel-label {
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.5px;
-  color: var(--text);
-  text-transform: uppercase;
-  text-align: center;
-  padding: 0 5px;
-}
-
-/* POSITIONING CONFIGURATION */
-.node-profile { left: 10%; }
-.node-focus { left: 32%; }
-.node-projects { left: 54%; }
-.node-experience { left: 76%; }
-
-/* ===== INTERACTIVE EXPANDED TELEMETRY PANEL ===== */
-.sim-popup {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(0.9);
-  background: rgba(255, 255, 255, 0.98);
-  backdrop-filter: blur(10px);
-  padding: 35px;
-  border-radius: 24px;
-  border: 3px solid var(--accent);
-  display: none;
-  color: var(--text);
-  width: 580px;
-  max-width: 90%;
-  max-height: 80vh;
+  justify-content: space-between;
   overflow-y: auto;
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
-  opacity: 0;
-  transition: all 0.3s ease;
 }
 
-.sim-popup.active {
+.profile-identity-box img {
+  width: 110px;
+  height: 110px;
+  border-radius: 24px;
+  border: 2px solid var(--accent);
+  object-fit: cover;
   display: block;
-  transform: translate(-50%, -50%) scale(1);
-  opacity: 1;
+  margin-bottom: 15px;
 }
 
-.sim-popup h2 {
-  margin-top: 0;
+.profile-identity-box h2 {
+  margin: 0;
+  font-size: 26px;
+  font-weight: 800;
   color: var(--text);
-  font-size: 24px;
-  border-bottom: 2px solid var(--bg2);
-  padding-bottom: 10px;
+  letter-spacing: -0.5px;
+}
+
+.profile-identity-box .eyebrow {
+  font-size: 11px;
+  font-weight: 700;
   text-transform: uppercase;
+  color: #1e3a8a;
+  background: var(--card);
+  padding: 4px 10px;
+  border-radius: 6px;
+  display: inline-block;
+  margin-top: 5px;
   letter-spacing: 0.5px;
 }
 
-.sim-popup h3 {
-  color: #1e3a8a;
-  font-size: 16px;
-  margin: 15px 0 5px 0;
-}
-
-.sim-popup p {
+.profile-identity-box p {
+  font-size: 13.5px;
+  line-height: 1.5;
   color: var(--muted);
-  line-height: 1.6;
-  font-size: 14px;
-  margin-top: 5px;
+  margin: 15px 0 0 0;
 }
 
-/* DATA CARD ARRANGEMENTS */
-.telemetry-grid {
+/* TELEMETRY STATS GRID */
+.stats-matrix {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 12px;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
   margin: 20px 0;
 }
 
-.telemetry-card {
-  background: var(--bg);
+.stat-node {
+  background: white;
   border: 1px solid var(--border);
-  padding: 12px;
   border-radius: 14px;
+  padding: 12px;
   text-align: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.02);
 }
 
-.telemetry-card strong {
+.stat-node strong {
   display: block;
   font-size: 18px;
   color: var(--text);
+  font-weight: 800;
 }
 
-.telemetry-card span {
+.stat-node span {
   font-size: 10px;
   color: var(--muted);
   text-transform: uppercase;
-}
-
-.chamber-block {
-  background: var(--bg2);
-  border-left: 4px solid var(--accent);
-  padding: 15px;
-  border-radius: 0 12px 12px 0;
-  margin-bottom: 12px;
-}
-
-.tag {
-  display: inline-block;
-  background: white;
-  border: 1px solid var(--border);
-  color: var(--text);
-  padding: 3px 8px;
-  font-size: 11px;
-  border-radius: 6px;
-  margin-right: 4px;
-  margin-top: 5px;
   font-weight: 600;
 }
 
-/* BUTTON CONTROLS */
-.btn-row {
+/* HARDWARE EXTERNAL LINKS BUTTON ROW */
+.action-terminal-row {
   display: flex;
-  gap: 10px;
-  margin-top: 15px;
-  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 8px;
 }
 
-.btn {
-  padding: 10px 18px;
+.console-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
   background: white;
   border: 1px solid var(--border);
   color: var(--text);
   text-decoration: none;
   font-weight: 700;
   font-size: 12px;
-  border-radius: 10px;
-  transition: 0.2s;
-  text-transform: uppercase;
-}
-
-.btn:hover {
-  background: var(--card);
-}
-
-.btn.primary {
-  background: var(--accent);
-  border-color: var(--accent);
-}
-
-.btn.primary:hover {
-  background: var(--accent-soft);
-}
-
-.dismiss-btn {
-  margin-top: 20px;
-  padding: 12px 28px;
-  background: var(--text);
-  border: none;
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
   border-radius: 12px;
-  transition: 0.2s;
   text-transform: uppercase;
-  font-size: 12px;
   letter-spacing: 0.5px;
+  transition: all 0.2s;
 }
 
-.dismiss-btn:hover {
+.console-btn:hover {
+  background: var(--card);
+  transform: translateY(-2px);
+}
+
+.console-btn.primary-gate {
+  background: var(--text);
+  color: white;
+  border: none;
+}
+
+.console-btn.primary-gate:hover {
   background: var(--muted);
 }
 
-/* HEADER PANEL OVERLAY */
-.system-header {
-  position: absolute;
-  top: 50px;
-  width: 100%;
-  text-align: center;
-  pointer-events: none;
+/* RIGHT WING: INTERACTIVE SNAPSHOT WORKING DECK */
+.workspace-right-wing {
+  padding: 35px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
-.system-header h1 {
-  margin: 0;
-  font-size: 42px;
-  font-weight: 800;
-  letter-spacing: -0.5px;
+/* TACTICAL VALVES CONFIGURATION (TAB TRIGGERS) */
+.tactical-valves-deck {
+  display: flex;
+  gap: 8px;
+  background: var(--bg2);
+  padding: 6px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  align-self: start;
+  margin-bottom: 25px;
+}
+
+.valve-trigger {
+  padding: 10px 18px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.75px;
+  border-radius: 10px;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  color: var(--muted);
+  transition: all 0.2s ease;
+}
+
+.valve-trigger.active-valve {
+  background: white;
+  color: var(--text);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+/* LOG CHAMBERS SCROLLER CONTAINER */
+.log-chambers-container {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+}
+
+.chamber-view-pane {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+  overflow-y: auto;
+  padding-right: 8px;
+}
+
+.chamber-view-pane.active-pane {
+  display: block;
+}
+
+/* Custom internal track scroller */
+.chamber-view-pane::-webkit-scrollbar { width: 5px; }
+.chamber-view-pane::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+/* REUSABLE CHAMBER DATA BLOCKS */
+.chamber-card-block {
+  background: white;
+  border-left: 4px solid var(--accent);
+  padding: 20px;
+  border-radius: 0 16px 16px 0;
+  margin-bottom: 16px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+}
+
+.chamber-card-block h3 {
+  margin: 0 0 6px 0;
+  font-size: 16px;
+  font-weight: 700;
   color: var(--text);
 }
 
-.system-header p {
-  font-size: 13px;
+.chamber-card-block p {
+  margin: 0;
+  font-size: 13.5px;
   color: var(--muted);
-  margin-top: 6px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
+  line-height: 1.5;
 }
 
-/* CUSTOM SCROLLBAR FOR DATA PANELS */
-.sim-popup::-webkit-scrollbar { width: 4px; }
-.sim-popup::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+.tag-mesh {
+  margin-top: 10px;
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+
+.tag {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 3px 8px;
+  font-size: 11px;
+  font-weight: 600;
+  border-radius: 6px;
+}
+
+/* SYSTEM STATUS CONSOLE FOOTER */
+.hardware-footer {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--muted);
+  letter-spacing: 0.5px;
+  padding: 0 10px;
+}
+
+.pulse-dot {
+  width: 6px;
+  height: 6px;
+  background: #10b981;
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0 0 8px #10b981;
+  margin-right: 6px;
+}
+
+/* RESPONSIVE RENDERING */
+@media (max-width: 880px) {
+  .master-workstation {
+    grid-template-columns: 1fr;
+    margin-top: 120px;
+  }
+  .telemetry-left-wing {
+    border-right: none;
+    border-bottom: 2px solid var(--border);
+    padding: 20px;
+  }
+  .workspace-right-wing { padding: 20px; }
+  body { overflow: auto; height: auto; }
+  .sim-matrix { height: auto; min-height: 100vh; }
+}
 </style>
 </head>
-
 <body>
 
-<!-- TRADITIONAL HEADER RETAINED IN HARDCODE BACKEND LINKING -->
 <header style="display:none;">
   <div class="nav-container">
     <a class="logo" href="index.html">NEHA NEPAL</a>
@@ -355,200 +406,137 @@ body {
 
 <div class="sim-matrix">
 
-  <div class="system-header">
-    <h1>Neha Nepal</h1>
-    <p>Mechanical Systems Terminal // Engage Chamber Valves or Intercept Flowing Payload</p>
-  </div>
+  <div class="hud-alert" id="hudNotification">Telemetry Payload Trapped // Flow Locked</div>
 
-  <!-- NODE 1: BIO AND PROFILE CORE -->
-  <div class="sim-vessel node-profile" onclick="openProfileChamber()">
-    <div class="vessel-core"></div>
-    <div class="vessel-label">Profile & Stats</div>
-  </div>
-
-  <!-- NODE 2: ENGINEERING FOCUS FIELDS -->
-  <div class="sim-vessel node-focus" onclick="openFocusChamber()">
-    <div class="vessel-core"></div>
-    <div class="vessel-label">System Focus</div>
-  </div>
-
-  <!-- NODE 3: FEATURED EXPERIMENTAL PROJECTS -->
-  <div class="sim-vessel node-projects" onclick="openProjectsChamber()">
-    <div class="vessel-core"></div>
-    <div class="vessel-label">Project Array</div>
-  </div>
-
-  <!-- NODE 4: EXPERIENCE OVERVIEW -->
-  <div class="sim-vessel node-experience" onclick="openExperienceChamber()">
-    <div class="vessel-core"></div>
-    <div class="vessel-label">Field Experience</div>
-  </div>
-
-  <!-- AIRFLOW TUNNEL GRID -->
   <div class="fluid-channel"></div>
+  <div class="spacecraft-courier" onclick="triggerHudCapture()"></div>
 
-  <!-- FLOATING INTERCEPTABLE PAYLOAD COURIER -->
-  <div class="spacecraft-courier" onclick="openPayloadChamber()"></div>
+  <main class="master-workstation">
+    
+    <section class="telemetry-left-wing">
+      <div class="profile-identity-box">
+        <img src="nehanepal@ucsb.edu-c0a8d455.jpg" alt="Neha Nepal" onerror="this.style.background='var(--accent)'">
+        <h2>Neha Nepal</h2>
+        <div class="eyebrow">Mechanical Engineer</div>
+        <p>
+          I am a Mechanical Engineering graduate from UC Santa Barbara with experience in mechanical design, fluid dynamics, heat transfer, HVAC engineering, MATLAB modeling, and multidisciplinary prototype development.
+        </p>
+      </div>
 
-</div>
+      <div class="stats-matrix">
+        <div class="stat-node"><strong>10+</strong><span>Projects</span></div>
+        <div class="stat-node"><strong>$2–3M</strong><span>HVAC Value</span></div>
+        <div class="stat-node"><strong>1.03 MW</strong><span>Turbine Out</span></div>
+        <div class="stat-node"><strong>15+</strong><span>3D Parts</span></div>
+      </div>
 
-<!-- INTERACTIVE SIMULATOR CONSOLE DISPLAY WINDOW -->
-<div class="sim-popup" id="simPopup">
-  <h2 id="simTitle"></h2>
-  <div id="simDynamicContent"></div>
-  <div style="text-align: center;">
-    <button class="dismiss-btn" onclick="closePopup()">Resume System Flow</button>
-  </div>
+      <div class="action-terminal-row">
+        <a class="console-btn primary-gate" href="mailto:nepalneha1@gmail.com">Email Operator</a>
+        <a class="console-btn" href="Neha Nepal Res- Google Docs.pdf" target="_blank">Download Resume</a>
+        <a class="console-btn" href="https://www.linkedin.com/in/nehanepal/" target="_blank">LinkedIn Connection Matrix</a>
+      </div>
+    </section>
+
+    <section class="workspace-right-wing">
+      
+      <div class="tactical-valves-deck">
+        <button class="valve-trigger active-valve" onclick="switchControlPane(event, 'pane-focus')">System Focus</button>
+        <button class="valve-trigger" onclick="switchControlPane(event, 'pane-projects')">Project Array</button>
+        <button class="valve-trigger" onclick="switchControlPane(event, 'pane-experience')">Field Experience</button>
+      </div>
+
+      <div class="log-chambers-container">
+        
+        <div class="chamber-view-pane active-pane" id="pane-focus">
+          <p style="margin: 0 0 15px 0; font-size: 14px; color: var(--muted); font-weight: 600; text-transform: uppercase;">Engineering constraints tracking at the intersection of mechanical design and testing simulation:</p>
+          
+          <div class="chamber-card-block">
+            <h3>Mechanical Design</h3>
+            <p>CAD, assemblies, design iteration, component integration, and prototype development.</p>
+            <div class="tag-mesh"><span class="tag">SolidWorks</span><span class="tag">Fusion 360</span><span class="tag">3D Printing</span></div>
+          </div>
+          <div class="chamber-card-block">
+            <h3>Thermal & Fluids</h3>
+            <p>Heat transfer, fluid mechanics, HVAC systems, airflow, and energy system behavior.</p>
+            <div class="tag-mesh"><span class="tag">Heat Transfer</span><span class="tag">Fluid Dynamics</span><span class="tag">HVAC</span></div>
+          </div>
+          <div class="chamber-card-block">
+            <h3>Simulation</h3>
+            <p>MATLAB modeling, engineering analysis, numerical methods, and performance prediction.</p>
+            <div class="tag-mesh"><span class="tag">MATLAB</span><span class="tag">Python</span><span class="tag">FEA</span></div>
+          </div>
+          <div class="chamber-card-block">
+            <h3>Robotics & Controls</h3>
+            <p>Arduino systems, sensors, mechatronics, mechanical motion, and embedded prototypes.</p>
+            <div class="tag-mesh"><span class="tag">Arduino</span><span class="tag">Sensors</span><span class="tag">Controls</span></div>
+          </div>
+        </div>
+
+        <div class="chamber-view-pane" id="pane-projects">
+          <div class="chamber-card-block">
+            <h3>🚀 Spacecraft Camera Housing</h3>
+            <p>Northrop Grumman-sponsored capstone focused on designing a camera housing for extreme spacecraft environments, including temperatures from −180°C to +130°C and vacuum conditions down to 10⁻⁴ torr.</p>
+            <div class="tag-mesh"><span class="tag">Aerospace</span><span class="tag">Thermal</span><span class="tag">CAD</span></div>
+            <p style="margin-top:10px; font-size:12px; font-weight:700;"><a href="projects.html#capstone" style="color:var(--text);">Open full design log records →</a></p>
+          </div>
+          <div class="chamber-card-block">
+            <h3>🤖 Autonomous Window Cleaning Robot</h3>
+            <p>Designed and prototyped a residential window-cleaning system using a gantry mechanism, fluid delivery subsystem, 3D printed parts, and Arduino-based motion control.</p>
+            <div class="tag-mesh"><span class="tag">Robotics</span><span class="tag">Prototyping</span><span class="tag">Fluids</span></div>
+            <p style="margin-top:10px; font-size:12px; font-weight:700;"><a href="projects.html#automatic-window-washer" style="color:var(--text);">Open full design log records →</a></p>
+          </div>
+          <div class="chamber-card-block">
+            <h3>📊 Wind Turbine Performance Modeling</h3>
+            <p>Developed MATLAB models using Blade Element Momentum theory to evaluate aerodynamic performance, wake behavior, and turbine output for a horizontal-axis wind turbine.</p>
+            <div class="tag-mesh"><span class="tag">MATLAB</span><span class="tag">BEM Theory</span><span class="tag">Energy</span></div>
+            <p style="margin-top:10px; font-size:12px; font-weight:700;"><a href="projects.html#airfoil-project" style="color:var(--text);">Open full design log records →</a></p>
+          </div>
+        </div>
+
+        <div class="chamber-view-pane" id="pane-experience">
+          <div class="chamber-card-block" style="border-color:#1e3a8a;">
+            <h3 style="font-size:18px;">Project Engineering Intern</h3>
+            <p style="font-weight:700; color:var(--text); margin-bottom:6px;">Western Allied Mechanical</p>
+            <p>
+              Supported mechanical engineering and project coordination across more than ten commercial HVAC projects, including healthcare and laboratory environments. Reviewed drawings, conducted field audits, supported RFIs and submittals, and helped coordinate mechanical systems in real project environments.
+            </p>
+            <div class="tag-mesh" style="margin-top:12px;">
+              <span class="tag">HVAC Systems</span><span class="tag">Mechanical Drawings</span><span class="tag">Field Engineering</span><span class="tag">Heat Transfer</span><span class="tag">Fluid Flow</span><span class="tag">QA/QC</span>
+            </div>
+            <p style="margin-top:15px; font-size:12px; font-weight:700;"><a href="experience.html" style="color:var(--text);">Review comprehensive industrial deployment files →</a></p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="hardware-footer">
+    <div>CONSOLE FEED STATUS: DEPLOYED // NO EXTERNAL SEARCH REDIRECT REQUIRED</div>
+    <div><span class="pulse-dot"></span>CORE ENGINE STEADY // 2026 ACTIVE</div>
+  </footer>
+
 </div>
 
 <script>
-/* =========================================================
-   SIMULATOR ENGINE DATA INJECTION RIG
-========================================================= */
-
-function openProfileChamber() {
-  const title = "System Operator Profile // Overview";
-  const contentHTML = `
-    <div style="display:flex; gap:20px; align-items:center; margin-bottom:15px;">
-      <img src="nehanepal@ucsb.edu-c0a8d455.jpg" alt="Neha Nepal" style="width:100px; height:100px; border-radius:50%; border:2px solid var(--accent); object-fit:cover;" onerror="this.style.display='none'">
-      <div>
-        <p style="font-weight:700; margin:0; font-size:16px;">Mechanical Engineer Graduate (UC Santa Barbara)</p>
-        <p style="margin:5px 0 0 0; color:var(--muted);">Designing aerospace, robotic, and thermal systems through simulation, CAD, and hands-on prototyping. Focuses on turning engineering concepts into testable, reliable systems.</p>
-      </div>
-    </div>
-    
-    <div class="chamber-block" style="background:rgba(255,255,255,0.5); border-color:var(--text);">
-      <p style="margin:0; font-size:13px; font-weight:600;">🎯 Operational Deployment Target:</p>
-      <p style="margin:4px 0 0 0;">Seeking full-time Mechanical, Aerospace, Robotics, or Systems Engineering roles beginning in 2026.</p>
-    </div>
-
-    <div class="telemetry-grid">
-      <div class="telemetry-card"><strong>10+</strong><span>Projects</span></div>
-      <div class="telemetry-card"><strong>$2–3M</strong><span>HVAC Value</span></div>
-      <div class="telemetry-card"><strong>1.03 MW</strong><span>Turbine Out</span></div>
-      <div class="telemetry-card"><strong>15+</strong><span>3D Components</span></div>
-    </div>
-
-    <p style="font-size:13px; color:var(--muted);">I enjoy solving problems where mechanical, thermal, and structural constraints all influence the final design. Through internships, undergraduate research, and design projects, I have built experience connecting analytical engineering with hands-on implementation.</p>
-    
-    <div class="btn-row">
-      <a class="btn primary" href="mailto:nepalneha1@gmail.com">Email Me</a>
-      <a class="btn" href="contact.html">Contact Page</a>
-      <a class="btn" href="Neha Nepal Res- Google Docs.pdf" target="_blank">Download Resume</a>
-      <a class="btn" href="https://www.linkedin.com/in/nehanepal/" target="_blank">LinkedIn</a>
-    </div>
-  `;
-  showPopup(title, contentHTML);
-}
-
-function openFocusChamber() {
-  const title = "Engineering Matrix Focus Areas";
-  const contentHTML = `
-    <p style="margin-bottom:15px;">My interests sit at the intersection of mechanical design, simulation, manufacturing, and physical testing.</p>
-    <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
-      <div class="chamber-block" style="margin:0;">
-        <h3>Mechanical Design</h3>
-        <p>CAD, assemblies, design iteration, component integration, and prototype development.</p>
-        <span class="tag">SolidWorks</span><span class="tag">Fusion 360</span><span class="tag">3D Printing</span>
-      </div>
-      <div class="chamber-block" style="margin:0;">
-        <h3>Thermal & Fluids</h3>
-        <p>Heat transfer, fluid mechanics, HVAC systems, airflow, and energy system behavior.</p>
-        <span class="tag">Heat Transfer</span><span class="tag">Fluid Dynamics</span><span class="tag">HVAC</span>
-      </div>
-      <div class="chamber-block" style="margin:0;">
-        <h3>Simulation</h3>
-        <p>MATLAB modeling, engineering analysis, numerical methods, and performance prediction.</p>
-        <span class="tag">MATLAB</span><span class="tag">Python</span><span class="tag">FEA</span>
-      </div>
-      <div class="chamber-block" style="margin:0;">
-        <h3>Robotics & Controls</h3>
-        <p>Arduino systems, sensors, mechatronics, mechanical motion, and embedded prototypes.</p>
-        <span class="tag">Arduino</span><span class="tag">Sensors</span><span class="tag">Controls</span>
-      </div>
-    </div>
-  `;
-  showPopup(title, contentHTML);
-}
-
-function openProjectsChamber() {
-  const title = "Featured Experimental Projects";
-  const contentHTML = `
-    <div class="chamber-block">
-      <h3>🚀 Spacecraft Camera Housing</h3>
-      <p>Northrop Grumman-sponsored capstone focused on designing a camera housing for extreme spacecraft environments, including temperatures from −180°C to +130°C and vacuum conditions down to 10⁻⁴ torr.</p>
-      <span class="tag">Aerospace</span><span class="tag">Thermal</span><span class="tag">CAD</span>
-      <p style="margin-top:8px; font-size:12px;"><a href="projects.html#capstone" style="color:var(--text); font-weight:700;">View expansion log →</a></p>
-    </div>
-    <div class="chamber-block">
-      <h3>🤖 Autonomous Window Cleaning Robot</h3>
-      <p>Designed and prototyped a residential window-cleaning system using a gantry mechanism, fluid delivery subsystem, 3D printed parts, and Arduino-based motion control.</p>
-      <span class="tag">Robotics</span><span class="tag">Prototyping</span><span class="tag">Fluids</span>
-      <p style="margin-top:8px; font-size:12px;"><a href="projects.html#automatic-window-washer" style="color:var(--text); font-weight:700;">View expansion log →</a></p>
-    </div>
-    <div class="chamber-block" style="margin-bottom:0;">
-      <h3>📊 Wind Turbine Performance Modeling</h3>
-      <p>Developed MATLAB models using Blade Element Momentum theory to evaluate aerodynamic performance, wake behavior, and turbine output for a horizontal-axis wind turbine.</p>
-      <span class="tag">MATLAB</span><span class="tag">BEM Theory</span><span class="tag">Energy</span>
-      <p style="margin-top:8px; font-size:12px;"><a href="projects.html#airfoil-project" style="color:var(--text); font-weight:700;">View expansion log →</a></p>
-    </div>
-  `;
-  showPopup(title, contentHTML);
-}
-
-function openExperienceChamber() {
-  const title = "Current Operational Deployment Experience";
-  const contentHTML = `
-    <div class="chamber-block" style="border-color:#1e3a8a;">
-      <h3 style="margin-top:0;">Project Engineering Intern</h3>
-      <p style="font-weight:700; color:var(--text); margin:0;">Western Allied Mechanical</p>
-      <p style="margin-top:8px;">Supported mechanical engineering and project coordination across more than ten commercial HVAC projects, including healthcare and laboratory environments. Reviewed drawings, conducted field audits, supported RFIs and submittals, and helped coordinate mechanical systems in real project environments.</p>
-    </div>
-    
-    <div class="chamber-block" style="background:white; margin-bottom:0;">
-      <p style="font-weight:700; margin:0 0 5px 0; text-transform:uppercase; font-size:11px; letter-spacing:0.5px;">Integrated Technical Areas:</p>
-      <p style="margin:0; font-size:13px;">HVAC systems · Mechanical drawings · Field engineering · Heat transfer · Fluid flow · Construction coordination · QA/QC</p>
-    </div>
-    
-    <div class="btn-row" style="justify-content:center;">
-      <a class="btn" href="experience.html">Read Full Log Records →</a>
-    </div>
-  `;
-  showPopup(title, contentHTML);
-}
-
-function openPayloadChamber() {
-  const title = "Telemetry Payload Trapped!";
-  const contentHTML = `
-    <div class="chamber-block" style="background:#ccdbfd; border-color:#abc4ff;">
-      <h3 style="margin-top:0; color:#0a192f;">Flow Channel Static Field Locked</h3>
-      <p style="color:#0a192f;">Successful tracking! You intercepted the flying telemetry pack traversing the wind tunnel circuit. This establishes full core connection function across the graphic terminal interface.</p>
-    </div>
-    <p style="font-size:13px; color:var(--muted); text-align:center;">Now that flow metrics are calibrated, use the system console nodes to check project arrays and field deployments.</p>
-  `;
-  showPopup(title, contentHTML);
-}
-
-/* =========================================================
-   MODAL OVERLAY MECHANICAL RIG
-========================================================= */
-function showPopup(title, htmlContent) {
-  const popup = document.getElementById("simPopup");
-  document.getElementById("simTitle").innerText = title;
-  document.getElementById("simDynamicContent").innerHTML = htmlContent;
+function switchControlPane(event, targetPaneId) {
+  // Purge existing active matrix layers
+  document.querySelectorAll('.valve-trigger').forEach(btn => btn.classList.remove('active-valve'));
+  document.querySelectorAll('.chamber-view-pane').forEach(pane => pane.classList.remove('active-pane'));
   
-  popup.style.display = "block";
-  setTimeout(() => {
-    popup.classList.add("active");
-  }, 10);
+  // Connect targeted structural interface systems
+  event.currentTarget.classList.add('active-valve');
+  document.getElementById(targetPaneId).classList.add('active-pane');
 }
 
-function closePopup() {
-  const popup = document.getElementById("simPopup");
-  popup.classList.remove("active");
+function triggerHudCapture() {
+  const alertBox = document.getElementById('hudNotification');
+  alertBox.classList.add('triggered');
+  
+  // Automated timeout sweep to reset alert panel position parameters
   setTimeout(() => {
-    popup.style.display = "none";
-  }, 250);
+    alertBox.classList.remove('triggered');
+  }, 3000);
 }
 </script>
 
