@@ -1,687 +1,429 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chelsea Ogbonna | Portfolio</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bio-Integrative Systems | Chelsea Ogbonna - Interactivity Engine 2.0</title>
+<style>
+:root {
+  --bme-primary: #050a14; /* Deep fluidic background */
+  --fluid-cyan: #00f2fe; /* Flowing particle color */
+  --bio-glow: #0081cf; /* Station membrane highlight */
+  --text-active: #ffffff;
+  --text-dim: #94a3b8;
+  --station-border: rgba(0, 129, 207, 0.4);
+}
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+body {
+  margin: 0;
+  overflow: hidden;
+  font-family: 'Inter', sans-serif;
+  background: var(--bme-primary);
+  color: var(--text-dim);
+}
 
-  <style>
-  :root {
-    --bg: #edf2fb;
-    --bg2: #e2eafc;
+/* ===== MAIN INTERACTIVE LANDSCAPE ===== */
+.bme-matrix {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  /* Visualizing dynamic fluid channel background */
+  background: radial-gradient(circle at 30% 70%, #0c1c36 0%, #050a14 100%);
+  overflow: hidden;
+}
 
-    --card: #d7e3fc;
-    --card-hover: #ccdbfd;
+/* ====== FLOWING FLUID CHANNELS (The new 'Road' / Background) ====== */
+.fluid-channel-sys {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0.15;
+  background-image:
+    repeating-linear-gradient(45deg, rgba(0,242,254,0.1) 0px, rgba(0,242,254,0.1) 1px, transparent 1px, transparent 20px),
+    repeating-linear-gradient(-45deg, rgba(0,242,254,0.1) 0px, rgba(0,242,254,0.1) 1px, transparent 1px, transparent 20px);
+}
 
-    --text: #1f2937;
-    --muted: #4b5563;
+/* Particle effect */
+.fluid-particle {
+  position: absolute;
+  background: var(--fluid-cyan);
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--fluid-cyan);
+  animation: particle-flow infinite linear;
+}
 
-    --accent: #abc4ff;
-    --accent-soft: #b6ccfe;
-    --border: #c1d3fe;
+@keyframes particle-flow {
+  0% { transform: translate(-100px, 0); }
+  100% { transform: translate(110vw, 0); }
+}
 
-    --nav-bg: rgba(237, 242, 251, 0.9);
-    --project-hover: #dde6b8;
-    
-    /* Interactive Biotech Accent Colors derived from your theme */
-    --bio-glow: #4facfe;
-    --cell-gradient: linear-gradient(135deg, #abc4ff 0%, #ccdbfd 100%);
-  }
+/* ====== INTERACTIVE NAVIGATION (System Nodes) ====== */
+.bio-nav {
+  position: absolute;
+  top: 30px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  z-index: 100;
+}
 
-  * {
-    box-sizing: border-box;
-  }
+.nav-node {
+  background: rgba(10, 20, 40, 0.8);
+  border: 1px solid var(--station-border);
+  border-radius: 30px;
+  color: var(--text-dim);
+  padding: 10px 25px;
+  cursor: pointer;
+  transition: 0.3s;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
 
-  body {
-    margin: 0;
-    font-family: "Inter", sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    line-height: 1.6;
-    overflow-x: hidden;
-  }
+.nav-node:hover {
+  border-color: var(--fluid-cyan);
+  box-shadow: 0 0 20px rgba(0, 242, 254, 0.4);
+  color: var(--text-active);
+  transform: translateY(-5px);
+}
 
-  /* =========================================================
-     NAV
-  ========================================================= */
-  nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 18px 10%;
-    position: sticky;
-    top: 0;
-    background: var(--nav-bg);
-    backdrop-filter: blur(10px);
-    z-index: 100;
-    border-bottom: 1px solid rgba(193, 211, 254, 0.4);
-  }
+.nav-node .status-pulse {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--bio-glow);
+}
 
-  .logo {
-    font-weight: 700;
-    font-size: 18px;
-    color: var(--text);
-    text-decoration: none;
-  }
+/* ====== ACHIEVEMENT & METRICS DASHBOARD (Stagnant section replaced) ====== */
+.dashboard {
+  position: absolute;
+  top: 100px;
+  left: 30px;
+  width: 250px;
+  height: 500px;
+  background: rgba(10, 20, 38, 0.8);
+  border: 2px solid var(--bio-glow);
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 0 30px rgba(0, 129, 207, 0.2);
+  cursor: pointer;
+  transition: transform 0.4s;
+  z-index: 50;
+}
 
-  .nav-links {
-    display: flex;
-    gap: 25px;
-  }
+.dashboard:hover {
+  transform: translateX(5px);
+}
 
-  .nav-links a {
-    color: var(--text);
-    text-decoration: none;
-    font-weight: 500;
-    padding: 8px 14px;
-    border-radius: 8px;
-    transition: 0.2s ease;
-  }
+.dashboard h3 { margin: 0 0 15px 0; color: var(--fluid-cyan); }
 
-  .nav-links a:hover {
-    background: var(--accent);
-    color: #1f2937;
-  }
-  
-  /* =========================================================
-     HERO & INTERACTIVE LAB PLATFORM
-  ========================================================= */
-  .hero {
-    min-height: 85vh;
-    display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
-    align-items: center;
-    gap: 40px;
-    padding: 40px 10% 20px;
-  }
+.stat-metric { margin-bottom: 25px; }
+.stat-metric-title { font-weight: 600; font-size: 14px; margin-bottom: 5px; color: var(--text-active); }
+.stat-value { font-size: 28px; font-weight: 700; color: var(--fluid-cyan); margin: 0; }
+.metric-progress {
+  width: 100%;
+  height: 10px;
+  background: #111e36;
+  border-radius: 5px;
+  overflow: hidden;
+  margin-top: 5px;
+}
+.metric-fill { height: 100%; background: var(--fluid-cyan); border-radius: 5px; }
 
-  .hero-text h1 {
-    font-size: 64px;
-    margin: 0 0 10px;
-    font-weight: 700;
-    color: var(--text);
-  }
+/* ====== FEATURED PROJECT STATIONS (Interactivity Engine) ====== */
+.project-station-block {
+  position: absolute;
+  bottom: 260px;
+  width: 130px;
+  height: 220px;
+  background: rgba(12, 25, 47, 0.7);
+  border: 2px solid var(--station-border);
+  border-radius: 40px 40px 10px 10px;
+  cursor: pointer;
+  transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 15px;
+  text-align: center;
+  box-shadow: 0 0 15px rgba(0, 129, 207, 0.2);
+  overflow: hidden;
+}
 
-  .hero-text h2 {
-    font-size: 24px;
-    font-weight: 500;
-    margin: 0 0 20px;
-    color: var(--muted);
-  }
+.project-station-block:hover {
+  transform: translateY(-15px);
+  border-color: var(--fluid-cyan);
+  box-shadow: 0 0 30px rgba(0, 242, 254, 0.5);
+  background: rgba(17, 38, 70, 0.9);
+}
 
-  .hero-text p {
-    font-size: 18px;
-    opacity: 0.85;
-    max-width: 650px;
-    margin-bottom: 10px;
-  }
+/* Floating visualization inside the station */
+.station-viz {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 80px;
+  opacity: 0.8;
+  transition: 0.3s;
+}
 
-  .interaction-hint {
-    font-size: 14px;
-    color: var(--muted);
-    font-style: italic;
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
+.project-station-block:hover .station-viz {
+  opacity: 1;
+  transform: translateX(-50%) scale(1.1);
+}
 
-  /* Embedded Microfluidic Lab Sandbox Container */
-  .lab-sandbox {
-    position: relative;
-    width: 100%;
-    height: 450px;
-    background: var(--bg2);
-    border: 3px solid white;
-    border-radius: 24px;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.06);
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
+.station-viz img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
 
-  /* Microfluidic flow channel stretching across sandbox */
-  .fluid-channel {
-    position: absolute;
-    bottom: 100px;
-    width: 100%;
-    height: 70px;
-    background: rgba(255, 255, 255, 0.4);
-    border-top: 2px dashed var(--border);
-    border-bottom: 2px dashed var(--border);
-    box-shadow: inset 0 0 10px rgba(171, 196, 255, 0.2);
-  }
+.station-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-active);
+  margin-bottom: 5px;
+}
 
-  /* Flowing Cell / Targeted Drug Carrier Particle */
-  .cell-courier {
-    position: absolute;
-    bottom: 110px;
-    left: -100px;
-    width: 50px;
-    height: 50px;
-    background: var(--cell-gradient);
-    border-radius: 50%;
-    animation: cellular-flow 9s linear infinite;
-    cursor: pointer;
-    box-shadow: 0 0 15px rgba(171, 196, 255, 0.8), inset -3px -3px 8px rgba(0,0,0,0.1);
-    border: 2px solid white;
-    z-index: 5;
-  }
+.station-sub-label {
+  font-size: 11px;
+  color: var(--text-dim);
+}
 
-  /* Functional receptors built onto cellular shell */
-  .cell-courier::before {
-    content: "";
-    position: absolute;
-    width: 8px;
-    height: 8px;
-    background: var(--accent);
-    border-radius: 50%;
-    top: -4px;
-    left: 20px;
-  }
+/* POSITIONS */
+.station-dld { left: 35vw; }
+.station-power { left: 50vw; }
+.station-kinematic { left: 65vw; }
 
-  @keyframes cellular-flow {
-    0% { left: -100px; transform: translateY(0px) rotate(0deg); }
-    50% { transform: translateY(-8px) rotate(180deg); }
-    100% { left: 110%; transform: translateY(0px) rotate(360deg); }
-  }
+/* ====== PROJECT INTERFACE MODAL ====== */
+.system-console {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.9);
+  background: rgba(8, 16, 32, 0.95);
+  backdrop-filter: blur(15px);
+  padding: 40px;
+  border-radius: 20px;
+  border: 2px solid var(--fluid-cyan);
+  display: none;
+  color: white;
+  width: 400px;
+  text-align: center;
+  box-shadow: 0 0 50px rgba(0, 242, 254, 0.3);
+  z-index: 200;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
 
-  .cell-courier:hover {
-    animation-play-state: paused;
-    box-shadow: 0 0 25px var(--accent);
-  }
+.system-console.active {
+  display: block;
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+}
 
-  /* Bioreactor Nodes inside sandbox */
-  .bio-vessel {
-    position: absolute;
-    bottom: 200px;
-    width: 85px;
-    height: 140px;
-    background: rgba(255, 255, 255, 0.6);
-    border: 2px solid var(--border);
-    border-radius: 25px 25px 12px 12px;
-    cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    z-index: 4;
-  }
+.system-console h2 {
+  margin-top: 0;
+  color: var(--fluid-cyan);
+  font-weight: 400;
+}
 
-  .bio-vessel:hover {
-    transform: translateY(-8px);
-    background: var(--card);
-    border-color: var(--accent);
-    box-shadow: 0 10px 20px rgba(171, 196, 255, 0.4);
-  }
+.system-console p {
+  color: #94a3b8;
+  line-height: 1.6;
+}
 
-  .vessel-core {
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    background: radial-gradient(circle, var(--accent), transparent);
-    margin-bottom: 10px;
-    transition: 0.3s;
-  }
+.console-ctrl {
+  margin-top: 20px;
+  padding: 10px 22px;
+  background: var(--fluid-cyan);
+  border: none;
+  color: #050a14;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 25px;
+  transition: 0.2s;
+}
 
-  .bio-vessel:hover .vessel-core {
-    transform: scale(1.2);
-    background: radial-gradient(circle, var(--bio-glow), transparent);
-  }
+.console-ctrl:hover {
+  transform: scale(1.05);
+}
 
-  .vessel-label {
-    font-size: 11px;
-    font-weight: 600;
-    color: var(--text);
-    text-align: center;
-  }
+/* Title Panel */
+.system-overview-title {
+  position: absolute;
+  bottom: 30px;
+  width: 100%;
+  text-align: center;
+  pointer-events: none;
+  z-index: 5;
+}
 
-  /* Node Coordinates inside Sandbox window */
-  .node-about { left: 8%; }
-  .node-projects { left: 31%; }
-  .node-research { left: 54%; }
-  .node-contact { left: 77%; }
+.system-overview-title h1 {
+  margin: 0;
+  font-size: 32px;
+  font-weight: 300;
+  letter-spacing: 2px;
+  color: var(--text-active);
+}
 
-  .button-container {
-    margin-top: 25px;
-  }
+/* BME Bio-security Profile Section (interactive) */
+.bme-profile-station {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: 3px solid var(--bio-glow);
+  cursor: pointer;
+  overflow: hidden;
+  box-shadow: 0 0 15px rgba(0, 129, 207, 0.2);
+  transition: 0.3s;
+  z-index: 100;
+}
 
-  .button {
-    display: inline-block;
-    padding: 12px 22px;
-    margin-right: 10px;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: 600;
-    background: var(--accent);
-    color: #1f2937;
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
+.bme-profile-station img {
+  width: 100%; height: 100%; object-fit: cover;
+}
 
-  .button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(171, 196, 255, 0.4);
-  }
+.bme-profile-station:hover {
+  border-color: var(--fluid-cyan);
+  box-shadow: 0 0 25px rgba(0, 242, 254, 0.6);
+  transform: scale(1.1);
+}
 
-  .button-secondary {
-    background: var(--card);
-    border: 1px solid var(--border);
-  }
+/* Biometric pulse */
+.bme-profile-station::after {
+  content: "";
+  position: absolute;
+  top: -10px; left: -10px; right: -10px; bottom: -10px;
+  border-radius: 50%;
+  border: 2px solid var(--fluid-cyan);
+  animation: profile-pulse 2s infinite;
+  opacity: 0;
+}
 
-  .button-secondary:hover {
-    background: var(--card-hover);
-    box-shadow: none;
-  }
+@keyframes profile-pulse {
+  0% { transform: scale(1); opacity: 0; }
+  50% { opacity: 0.5; }
+  100% { transform: scale(1.2); opacity: 0; }
+}
 
-  /* =========================================================
-     SECTIONS & CONTENT CARDS
-  ========================================================= */
-  .section {
-    padding: 80px 10%;
-  }
-
-  .section h2 {
-    text-align: center;
-    font-size: 32px;
-    margin-bottom: 40px;
-    position: relative;
-  }
-
-  .section h2::after {
-    content: '';
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 50px;
-    height: 3px;
-    background: var(--accent);
-    border-radius: 2px;
-  }
-
-  .stats {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    flex-wrap: wrap;
-  }
-
-  .stat-card {
-    background: var(--card);
-    border-radius: 15px;
-    padding: 30px;
-    width: 240px;
-    text-align: center;
-    border: 1px solid rgba(255,255,255,0.5);
-    transition: transform 0.3s ease;
-  }
-
-  .stat-card:hover {
-    transform: translateY(-5px);
-    background: var(--card-hover);
-  }
-
-  .stat-card h3 {
-    font-size: 42px;
-    margin: 0 0 5px 0;
-    color: var(--text);
-  }
-
-  .stat-card p {
-    margin: 0;
-    color: var(--muted);
-    font-weight: 500;
-  }
-
-  .projects {
-    display: flex;
-    gap: 30px;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .project-card {
-    background: var(--card);
-    width: 340px;
-    border-radius: 18px;
-    overflow: hidden;
-    border: 1px solid rgba(255,255,255,0.5);
-    transition: all 0.3s ease;
-  }
-
-  .project-card:hover {
-    transform: translateY(-8px);
-    background: var(--card-hover);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.05);
-  }
-
-  .project-image {
-    height: 180px;
-    background: #2d3138;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--accent);
-    font-weight: 500;
-    letter-spacing: 0.5px;
-    background-size: cover;
-    background-position: center;
-  }
-
-  .project-content {
-    padding: 25px;
-  }
-
-  .project-content h3 {
-    margin: 0 0 10px 0;
-    font-size: 20px;
-  }
-
-  .project-content p {
-    margin: 0;
-    color: var(--muted);
-    font-size: 15px;
-  }
-
-  .interests {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    flex-wrap: wrap;
-    max-width: 800px;
-    margin: 0 auto;
-  }
-
-  .interest {
-    background: var(--card);
-    padding: 12px 24px;
-    border-radius: 30px;
-    font-weight: 500;
-    border: 1px solid rgba(255,255,255,0.4);
-    transition: all 0.2s;
-  }
-
-  .interest:hover {
-    background: var(--accent);
-    transform: scale(1.05);
-  }
-
-  /* =========================================================
-     SANDBOX OVERLAY POPUP
-  ========================================================= */
-  .bio-popup {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(0.9);
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(8px);
-    padding: 25px;
-    border-radius: 16px;
-    border: 2px solid var(--accent);
-    display: none;
-    color: var(--text);
-    width: 80%;
-    max-width: 320px;
-    text-align: center;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    z-index: 20;
-    opacity: 0;
-    transition: all 0.25s ease-in-out;
-  }
-
-  .bio-popup.active {
-    display: block;
-    transform: translate(-50%, -50%) scale(1);
-    opacity: 1;
-  }
-
-  .bio-popup h3 {
-    margin: 0 0 10px 0;
-    color: var(--text);
-  }
-
-  .bio-popup p {
-    font-size: 14px;
-    color: var(--muted);
-    margin: 0 0 15px 0;
-  }
-
-  .close-btn {
-    padding: 8px 18px;
-    background: var(--accent);
-    border: none;
-    color: #1f2937;
-    font-weight: 600;
-    cursor: pointer;
-    border-radius: 6px;
-    transition: background 0.2s;
-  }
-
-  .close-btn:hover {
-    background: var(--accent-soft);
-  }
-
-  footer {
-    text-align: center;
-    padding: 60px 20px;
-    opacity: 0.7;
-    font-size: 14px;
-    border-top: 1px solid var(--border);
-    background: var(--bg2);
-  }
-
-  /* =========================================================
-     RESPONSIVE BREAKPOINTS
-  ========================================================= */
-  @media (max-width: 992px) {
-    .hero {
-      grid-template-columns: 1fr;
-      text-align: center;
-      padding-top: 20px;
-    }
-
-    .hero-text h1 {
-      font-size: 48px;
-    }
-
-    .interaction-hint {
-      justify-content: center;
-    }
-
-    .lab-sandbox {
-      height: 38px; /* Fallback placeholder sizing adjustments */
-      height: 400px;
-      max-width: 500px;
-      margin: 0 auto;
-    }
-    
-    .bio-vessel {
-      bottom: 170px;
-    }
-    .fluid-channel {
-      bottom: 80px;
-    }
-    .cell-courier {
-      bottom: 90px;
-    }
-  }
-  </style>
+</style>
 </head>
-
 <body>
 
-<!-- NAV -->
-<nav>
-  <a class="logo" href="index.html">Chelsea Ogbonna</a>
+<div class="bme-matrix">
+  <div class="fluid-channel-sys" id="particleSys"></div>
 
-  <div class="nav-links">
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="projects.html">Projects</a>
-    <a href="leadership.html">Leadership</a>
-    <a href="contact.html">Contact</a>
-  </div>
-</nav>
-
-<!-- HERO BLOCK WITH SIMULATOR -->
-<section class="hero">
-
-  <div class="hero-text">
-    <h1>Chelsea Ogbonna</h1>
-    <h2>Biomedical • Mechanical • Research Engineer</h2>
-
-    <p>
-      Engineering healthcare solutions through research, design, and innovation.
-      Building biomedical devices, microfluidic systems, implantable technologies,
-      and embedded sensing platforms.
-    </p>
-
-    <div class="interaction-hint">
-      🔬 Click a biological node node or hover over the running cell stream to pause assay analysis.
-    </div>
-
-    <div class="button-container">
-      <a class="button" href="projects.html">View Projects</a>
-      <a class="button button-secondary" href="contact.html">Contact Me</a>
-    </div>
+  <div class="bio-nav">
+    <div class="nav-node" onclick="showConsole('Matrix Overview', 'Chelsea Ogbonna // BME // Access Authorized')"><div class="status-pulse"></div>Explore</div>
+    <div class="nav-node" onclick="showConsole('Project Hub', 'System nodes activated: DLD, Power Network, Kinematics Platform')"><div class="status-pulse"></div>Projects</div>
+    <div class="nav-node" onclick="showConsole('Achievement Log', 'Metrics verified: Student Mentorship (6.0k+ Realtime Metrics)')"><div class="status-pulse"></div>Achievements</div>
+    <div class="nav-node" onclick="showConsole('Collaborations Matrix', 'Identify global connection parameters for next bio-innovation')"><div class="status-pulse"></div>Leadership</div>
   </div>
 
-  <!-- INTERACTIVE EMBEDDED MICROFLUIDIC WINDOW -->
-  <div class="lab-sandbox">
+  <div class="dashboard" onclick="showConsole('Metrics Hub', 'Realtime tracking of system performance, impact, and research initiatives.')">
+    <h3>Impact Metrics</h3>
     
-    <!-- BIO LAB NODES (SECTION CONNECTORS) -->
-    <div class="bio-vessel node-about" onclick="openPopup('Biomedical Scope', 'Bridging quantitative engineering rules with cellular microenvironments to innovate translation medicine applications.')">
-      <div class="vessel-core"></div>
-      <div class="vessel-label">About Scope</div>
+    <div class="stat-metric">
+      <div class="stat-metric-title">Mentorship Units</div>
+      <p class="stat-value">6.0k+</p>
+      <div class="metric-progress"><div class="metric-fill" style="width: 85%;"></div></div>
     </div>
 
-    <div class="bio-vessel node-projects" onclick="openPopup('Prototyping Labs', 'Exploring structural validation, thermal gradients in additive engineering, and mechanical gait platforms.')">
-      <div class="vessel-core"></div>
-      <div class="vessel-label">Device Work</div>
+    <div class="stat-metric">
+      <div class="stat-metric-title">Research Initiatives</div>
+      <p class="stat-value">1,381+</p>
+      <div class="metric-progress"><div class="metric-fill" style="width: 70%;"></div></div>
     </div>
 
-    <div class="bio-vessel node-research" onclick="openPopup('Biomaterials Lab', 'Quantifying soft molecular hydrogels, enzymatic plastic degradation systems, and specialized isolation assays.')">
-      <div class="vessel-core"></div>
-      <div class="vessel-label">Research</div>
-    </div>
-
-    <div class="bio-vessel node-contact" onclick="openPopup('Inquire Matrix', 'Open for engineering alliances, design challenges, and clinical product development collaborations.')">
-      <div class="vessel-core"></div>
-      <div class="vessel-label">Contact</div>
-    </div>
-
-    <!-- FLUID STREAM INTERFACE -->
-    <div class="fluid-channel"></div>
-
-    <!-- CARRIER COURIER NANOPARTICLE -->
-    <div class="cell-courier" onclick="openPopup('Microfluidic Trapping Active', 'Assay sequence successful! This automated flow channel tracks single-cell microenvironments across variable parameter vectors.')"></div>
-
-    <!-- SANDBOX LOCALIZED POPUP OVERLAY -->
-    <div class="bio-popup" id="labPopup">
-      <h3 id="popupTitle"></h3>
-      <p id="popupContent"></p>
-      <button class="close-btn" onclick="closePopup()">Dismiss</button>
-    </div>
-
-  </div>
-
-</section>
-
-<!-- STATS SECTION -->
-<section class="section" style="background: var(--bg2);">
-  <h2>Highlights</h2>
-
-  <div class="stats">
-    <div class="stat-card">
-      <h3>5+</h3>
-      <p>Projects Developed</p>
-    </div>
-    <div class="stat-card">
-      <h3>3+</h3>
-      <p>Research Initiatives</p>
-    </div>
-    <div class="stat-card">
-      <h3>50+</h3>
-      <p>Students Impacted</p>
+    <div class="stat-metric">
+      <div class="stat-metric-title">Awards Index</div>
+      <p class="stat-value">4,257+</p>
+      <div class="metric-progress"><div class="metric-fill" style="width: 95%;"></div></div>
     </div>
   </div>
-</section>
 
-<!-- FEATURED PROJECTS -->
-<section class="section">
-  <h2>Featured Projects</h2>
-
-  <div class="projects">
-    <div class="project-card">
-      <div class="project-image" style="background-color: #1e293b;">🔬 Microfluidics Matrix</div>
-      <div class="project-content">
-        <h3>Microfluidic Device</h3>
-        <p>Biomedical separation system leveraging deterministic lateral displacement (DLD) geometry arrays for sorting targets.</p>
-      </div>
-    </div>
-
-    <div class="project-card">
-      <div class="project-image" style="background-color: #334155;">⚡ Bio-Implantable Systems</div>
-      <div class="project-content">
-        <h3>Implantable Device</h3>
-        <p>Highly integrated wireless power transfer coupling networks optimized for subterranean or clinical anatomical configurations.</p>
-      </div>
-    </div>
-
-    <div class="project-card">
-      <div class="project-image" style="background-color: #475569;">👟 Kinematic Arrays</div>
-      <div class="project-content">
-        <h3>Embedded Sensor Platform</h3>
-        <p>Real-time machine learning gait evaluation matrix extracting kinematic variables using terrain-adaptive firmware networks.</p>
-      </div>
-    </div>
+  <div class="project-station-block station-dld" onclick="showConsole('DLD Calibration', 'Separation metrics: Real-time. Adjust DLD sorting parameters for targeted assay verification.')">
+    <div class="station-viz"><img src="project-DLD-DED.png" alt="Microfluidic Viz"></div>
+    <div class="station-label">DLD Microfluidic</div>
+    <div class="station-sub-label">Simulation Active // Adjust Pressure</div>
   </div>
-</section>
 
-<!-- RESEARCH INTERESTS -->
-<section class="section" style="background: var(--bg2);">
-  <h2>Research Interests</h2>
-
-  <div class="interests">
-    <div class="interest">Biomedical Devices</div>
-    <div class="interest">Microfluidics</div>
-    <div class="interest">Implantable Systems</div>
-    <div class="interest">Embedded Systems</div>
-    <div class="interest">Healthcare Tech</div>
+  <div class="project-station-block station-power" onclick="showConsole('Neural Link', 'Integrated Telemetry: Real-time. Examine the rotational 3D model for transmission coupling.')">
+    <div class="station-viz"><img src="project-implantable.png" alt="Implantable Viz"></div>
+    <div class="station-label">Implantable Device</div>
+    <div class="station-sub-label">Signal Analysis Running // Rotate 3D Model</div>
   </div>
-</section>
 
-<!-- FOOTER -->
-<footer>
-  © 2026 Chelsea Ogbonna • Biomedical & Mechanical Systems Engineering
-</footer>
+  <div class="project-station-block station-kinematic" onclick="showConsole('Kinematic Platform', 'Analysis engine calibrated for terrain classification. Adjust sample gait variables.')">
+    <div class="station-viz"><img src="project-gait-ML.png" alt="Kinematic Viz"></div>
+    <div class="station-label">ML Kinematics</div>
+    <div class="station-sub-label">Gait Metrics // Terrain Feed</div>
+  </div>
 
-<!-- INTERACTION ENGINE SCRIPT -->
+  <div class="system-overview-title">
+    <h1>CHELSEA OGBONNA | BIO-INTEGRATIVE SYSTEMS</h1>
+  </div>
+
+  <div class="bme-profile-station" onclick="showConsole('Profile Node Acessed', 'Chelsea Ogbonna - Biometric verified. Project calibrator status ACTIVE.')">
+    <img src="Chelseaprofilepics.JPG" alt="C. Ogbonna">
+  </div>
+</div>
+
+<div class="system-console" id="sysConsole">
+  <h2 id="consoleTitle"></h2>
+  <p id="consoleText"></p>
+  <button class="console-ctrl" onclick="dismissConsole()">Confirm Parameters</button>
+</div>
+
 <script>
-function openPopup(title, text) {
-  const popup = document.getElementById("labPopup");
-  document.getElementById("popupTitle").innerText = title;
-  document.getElementById("popupContent").innerText = text;
+// Project console logic
+function showConsole(title, text) {
+  const consoleEl = document.getElementById("sysConsole");
+  document.getElementById("consoleTitle").innerText = title;
+  document.getElementById("consoleText").innerText = text;
   
-  popup.style.display = "block";
+  consoleEl.style.display = "block";
   setTimeout(() => {
-    popup.classList.add("active");
+    consoleEl.classList.add("active");
   }, 10);
 }
 
-function closePopup() {
-  const popup = document.getElementById("labPopup");
-  popup.classList.remove("active");
+function dismissConsole() {
+  const consoleEl = document.getElementById("sysConsole");
+  consoleEl.classList.remove("active");
   setTimeout(() => {
-    popup.style.display = "none";
-  }, 250);
+    consoleEl.style.display = "none";
+  }, 300);
+}
+
+// Particle flow system (Dynamic background element)
+const sysMatrix = document.getElementById('particleSys');
+const particleCount = 25;
+
+for (let i = 0; i < particleCount; i++) {
+  const particle = document.createElement('div');
+  particle.classList.add('fluid-particle');
+  
+  // Randomize characteristics
+  const size = Math.random() * 8 + 4; // 4 to 12 px
+  particle.style.width = size + 'px';
+  particle.style.height = size + 'px';
+  particle.style.top = Math.random() * 90 + 5 + 'vh'; // Vertical distribution
+  particle.style.animationDuration = Math.random() * 8 + 5 + 's'; // Flow speed
+  
+  // Randomize opacity and delay
+  particle.style.opacity = Math.random() * 0.5 + 0.1;
+  particle.style.animationDelay = -(Math.random() * 10) + 's'; // Stagger start times
+
+  sysMatrix.appendChild(particle);
 }
 </script>
 
