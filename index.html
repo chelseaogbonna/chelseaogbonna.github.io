@@ -3,606 +3,637 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Chelsea Ogbonna | Bio-Systems Engineering Portfolio</title>
+<title>Chelsea Ogbonna | Bio-System Control Console</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 
 <style>
 :root {
   --bg: #edf2fb;
   --bg2: #e2eafc;
-
   --card: #d7e3fc;
   --card-hover: #ccdbfd;
-
   --text: #1f2937;
   --muted: #4b5563;
-
   --accent: #abc4ff;
   --accent-soft: #b6ccfe;
   --border: #c1d3fe;
-
-  --nav-bg: rgba(237, 242, 251, 0.95);
-  --project-hover: #dde6b8;
   
-  --erythrocyte-red: rgba(239, 68, 68, 0.5);
-  --buffer-blue: rgba(79, 172, 254, 0.5);
+  /* Gameful Biological Fluid Indicators */
+  --erythrocyte: rgba(239, 68, 68, 0.65);
+  --buffer: rgba(79, 172, 254, 0.65);
+  --success: #10b981;
 }
 
 * {
   box-sizing: border-box;
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
 body {
   margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
   font-family: "Inter", sans-serif;
   background: var(--bg);
   color: var(--text);
-  line-height: 1.6;
+  user-select: none;
 }
 
 /* =========================================================
-   STICKY BME DEVICE NAVIGATION
+   GAME ENGINE FRAMEWORK (FIXED VIEW MATRIX)
 ========================================================= */
-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 18px 10%;
-  position: sticky;
-  top: 0;
-  background: var(--nav-bg);
-  backdrop-filter: blur(12px);
-  z-index: 100;
-  border-bottom: 1px solid var(--border);
-}
-
-.logo {
-  font-weight: 700;
-  font-size: 18px;
-  color: var(--text);
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.logo::before {
-  content: '';
-  width: 10px;
-  height: 10px;
-  background: var(--accent);
-  border-radius: 50%;
-}
-
-.nav-links {
-  display: flex;
-  gap: 15px;
-}
-
-.nav-links a {
-  color: var(--text);
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 14px;
-  padding: 8px 16px;
-  border-radius: 20px;
-  background: transparent;
-  border: 1px solid transparent;
-  transition: all 0.2s ease;
-}
-
-.nav-links a:hover {
-  background: var(--card);
-  border-color: var(--border);
-}
-
-/* =========================================================
-   HERO: FULLY INTERACTIVE MICROFLUIDIC BENCH
-========================================================= */
-.hero-chip-container {
+.game-viewport {
   position: relative;
   width: 100%;
-  height: calc(100vh - 61px);
+  height: 100%;
   background: linear-gradient(135deg, var(--bg) 0%, var(--bg2) 100%);
-  overflow: hidden;
   display: flex;
-  align-items: center;
-  padding: 0 10%;
+  flex-direction: column;
+  padding: 20px;
 }
 
-.microfluidic-network {
+/* Active Fluid Network running in the backdrop */
+.fluidic-grid-bg {
   position: absolute;
-  width: 100%;
-  height: 100%;
   top: 0;
   left: 0;
+  width: 100%;
+  height: 100%;
   pointer-events: none;
   z-index: 1;
 }
 
-.fluid-channel-horizontal {
+.fluid-highway {
   position: absolute;
-  top: 55%;
+  top: 15%;
   left: 0;
   width: 100%;
-  height: 32px;
-  background: rgba(255, 255, 255, 0.5);
+  height: 20px;
+  background: rgba(255, 255, 255, 0.4);
   border-top: 2px solid var(--border);
   border-bottom: 2px solid var(--border);
 }
 
-.flow-cell {
+.fluid-highway-v {
+  position: absolute;
+  top: 0;
+  right: 25%;
+  width: 20px;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.4);
+  border-left: 2px solid var(--border);
+  border-right: 2px solid var(--border);
+}
+
+.cell-node {
   position: absolute;
   border-radius: 50%;
-  animation: stream-flow infinite linear;
+  animation: sorting-stream infinite linear;
   filter: blur(0.5px);
 }
 
-@keyframes stream-flow {
-  0% { left: -50px; }
+@keyframes sorting-stream {
+  0% { left: -30px; }
   100% { left: 105vw; }
 }
 
-.hero-text-block {
+/* =========================================================
+   TACTICAL HEADER & OPERATIONAL CONTROL TABS
+========================================================= */
+.control-header {
   position: relative;
   z-index: 10;
-  max-width: 620px;
-  background: rgba(237, 242, 251, 0.8);
-  padding: 40px;
-  border-radius: 24px;
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  backdrop-filter: blur(8px);
-  box-shadow: 0 20px 40px rgba(193, 211, 254, 0.25);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  border: 2px solid var(--border);
+  padding: 15px 30px;
+  border-radius: 20px;
+  box-shadow: 0 8px 24px rgba(193, 211, 254, 0.2);
 }
 
-.hero-text-block h1 {
-  font-size: 56px;
-  margin: 0 0 10px 0;
-  line-height: 1.1;
-  font-weight: 700;
+.hardware-title h1 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
 }
 
-.hero-text-block h2 {
-  font-size: 20px;
-  font-weight: 500;
-  color: var(--muted);
-  margin: 0 0 20px 0;
+.hardware-title p {
+  margin: 2px 0 0 0;
+  font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 1.5px;
-}
-
-.hero-text-block p {
-  font-size: 17px;
   color: var(--muted);
-  margin: 0 0 30px 0;
-}
-
-/* Interactive Node Callout inside Hero */
-.interactive-trigger-node {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  background: var(--card);
-  border: 2px solid var(--border);
-  padding: 12px 24px;
-  border-radius: 30px;
   font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s ease;
 }
 
-.interactive-trigger-node:hover {
-  background: var(--accent);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(171, 196, 255, 0.4);
-}
-
-.pulse-indicator {
-  width: 10px;
-  height: 10px;
-  background: #34d399;
-  border-radius: 50%;
-  box-shadow: 0 0 8px #34d399;
-}
-
-/* Scroll indicator anchor */
-.scroll-down-hint {
-  position: absolute;
-  bottom: 30px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--muted);
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  z-index: 10;
-  animation: bounce 2s infinite;
-}
-
-@keyframes bounce {
-  0%, 20%, 50%, 80%, 100% { transform: translate(-50%, 0); }
-  40% { transform: translate(-50%, -10px); }
-  60% { transform: translate(-50%, -5px); }
-}
-
-/* =========================================================
-   SCROLLABLE CONTENT SECTIONS
-========================================================= */
-.section {
-  padding: 100px 10%;
-  position: relative;
-}
-
-.section-alt {
+/* Tactical Selection Matrix (Tabs) */
+.system-tabs {
+  display: flex;
+  gap: 8px;
   background: var(--bg2);
-}
-
-.section-title {
-  font-size: 32px;
-  font-weight: 700;
-  margin: 0 0 50px 0;
-  position: relative;
-  display: inline-block;
-}
-
-.section-title::after {
-  content: '';
-  position: absolute;
-  bottom: -10px;
-  left: 0;
-  width: 40px;
-  height: 4px;
-  background: var(--accent);
-  border-radius: 2px;
-}
-
-/* ACCOLADES / METRICS GRID */
-.metrics-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 30px;
-}
-
-.metric-card {
-  background: rgba(255, 255, 255, 0.6);
+  padding: 6px;
+  border-radius: 14px;
   border: 1px solid var(--border);
-  border-radius: 20px;
-  padding: 40px 30px;
-  text-align: center;
-  transition: all 0.3s ease;
 }
 
-.metric-card:hover {
-  transform: translateY(-5px);
-  background: var(--card);
-  box-shadow: 0 15px 30px rgba(193, 211, 254, 0.2);
-}
-
-.metric-card h3 {
-  font-size: 48px;
-  margin: 0 0 10px 0;
-  color: var(--text);
-  font-weight: 700;
-}
-
-.metric-card p {
-  margin: 0;
-  font-size: 15px;
-  color: var(--muted);
-  font-weight: 500;
-}
-
-/* EXPANDED FEATURED PROJECTS SECTION */
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 35px;
-}
-
-.project-card {
-  background: rgba(255, 255, 255, 0.6);
-  border: 2px solid var(--border);
-  border-radius: 24px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  transition: all 0.3s ease;
-  height: 380px;
-  cursor: pointer;
-}
-
-.project-card:hover {
-  transform: translateY(-8px);
-  background: var(--card);
-  border-color: var(--accent);
-  box-shadow: 0 20px 40px rgba(171, 196, 255, 0.25);
-}
-
-.project-chamber-header {
-  padding: 30px 30px 10px 30px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.chamber-badge {
-  background: var(--bg);
-  border: 1px dashed var(--border);
-  padding: 6px 14px;
-  border-radius: 12px;
-  font-size: 11px;
+.tab-trigger {
+  padding: 10px 20px;
+  font-size: 13px;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-}
-
-.project-body {
-  padding: 0 30px;
-}
-
-.project-body h3 {
-  margin: 0 0 10px 0;
-  font-size: 22px;
-  font-weight: 700;
-}
-
-.project-body p {
-  margin: 0;
-  font-size: 15px;
+  border-radius: 10px;
+  cursor: pointer;
+  border: none;
+  background: transparent;
   color: var(--muted);
-  line-height: 1.6;
+  transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.project-footer {
-  padding: 20px 30px 30px 30px;
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--muted);
-  border-top: 1px solid rgba(193, 211, 254, 0.3);
+.tab-trigger.active-view {
+  background: white;
+  color: var(--text);
+  box-shadow: 0 4px 12px rgba(27, 38, 59, 0.08);
 }
 
 /* =========================================================
-   INTERACTIVE FLOATING CONSOLE MODAL
+   WORKSPACE CHAMBERS (DYNAMIC CONTENT PANEL)
 ========================================================= */
-.chip-console {
+.workspace-chambers {
+  position: relative;
+  flex: 1;
+  z-index: 10;
+  margin-top: 20px;
+  overflow: hidden;
+}
+
+.chamber-view {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: none;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.chamber-view.active-view {
+  display: grid;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* VIEW 1 SPECIFICS: DASHBOARD ARCHITECTURE */
+#view-dash.active-view {
+  grid-template-columns: 320px 1fr;
+}
+
+/* TELEMETRY BAR SIDEBAR */
+.telemetry-sidebar {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  border: 2px solid var(--border);
+  border-radius: 24px;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.widget-box h3 {
+  margin: 0 0 15px 0;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--muted);
+}
+
+.data-strip {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 15px;
+  margin-bottom: 12px;
+}
+
+.data-strip-num {
+  font-size: 28px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.data-strip-label {
+  font-size: 12px;
+  color: var(--muted);
+  margin: 2px 0 0 0;
+  font-weight: 600;
+}
+
+/* MAIN DASH CORE HERO BANNER */
+.dash-hero-core {
+  background: white;
+  border: 2px solid var(--accent);
+  border-radius: 24px;
+  padding: 45px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: 0 15px 35px rgba(171, 196, 255, 0.2);
+}
+
+.dash-hero-core h2 {
+  margin: 0;
+  font-size: 44px;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.dash-hero-core p {
+  font-size: 16px;
+  color: var(--muted);
+  max-width: 580px;
+  margin: 20px 0 30px 0;
+  line-height: 1.6;
+}
+
+/* VIEW 2 & 3 SPECIFICS: GRID STORAGE SYSTEM */
+.chambers-grid-scroller {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  padding-right: 8px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  align-content: start;
+}
+
+/* Custom scroller to maintain high-tech dashboard feel */
+.chambers-grid-scroller::-webkit-scrollbar {
+  width: 6px;
+}
+.chambers-grid-scroller::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
+}
+
+/* GAME LEVEL INTERACTIVE CARD NODES */
+.game-card-node {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(8px);
+  border: 2px solid var(--border);
+  border-radius: 22px;
+  padding: 25px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 220px;
+  position: relative;
+  transition: all 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.game-card-node:hover {
+  transform: translateY(-4px);
+  background: var(--card);
+  border-color: var(--accent);
+  box-shadow: 0 12px 24px rgba(171, 196, 255, 0.3);
+}
+
+.node-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.node-id {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--muted);
+  background: var(--bg2);
+  padding: 4px 10px;
+  border-radius: 8px;
+}
+
+.game-card-node h3 {
+  margin: 15px 0 6px 0;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.game-card-node p {
+  margin: 0;
+  font-size: 13.5px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.node-status-bar {
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.status-fluid-fill {
+  width: 60px;
+  height: 5px;
+  background: var(--bg2);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.status-fluid-fill::after {
+  content: '';
+  display: block;
+  height: 100%;
+  width: 80%;
+  background: var(--accent);
+}
+
+/* =========================================================
+   DIAGNOSTIC CALIBRATION POPUP MODAL
+========================================================= */
+.terminal-overlay-console {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) scale(0.95);
   background: white;
   border: 3px solid var(--accent);
-  border-radius: 28px;
+  border-radius: 26px;
   padding: 40px;
   width: 90%;
-  max-width: 460px;
-  box-shadow: 0 30px 70px rgba(27, 38, 59, 0.15);
+  max-width: 440px;
+  box-shadow: 0 30px 60px rgba(27, 38, 59, 0.15);
   display: none;
   z-index: 1000;
   opacity: 0;
-  transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+  transition: all 0.2s ease;
   text-align: center;
 }
 
-.chip-console.active {
+.terminal-overlay-console.active-modal {
   display: block;
   transform: translate(-50%, -50%) scale(1);
   opacity: 1;
 }
 
-.chip-console h2 {
-  margin: 0 0 12px 0;
-  font-size: 24px;
+.terminal-overlay-console h2 {
+  margin: 0 0 10px 0;
+  font-size: 22px;
 }
 
-.chip-console p {
-  font-size: 15px;
+.terminal-overlay-console p {
+  font-size: 14.5px;
   color: var(--muted);
   line-height: 1.6;
   margin: 0 0 25px 0;
 }
 
-.console-btn {
+.close-console-btn {
   background: var(--accent);
   color: var(--text);
   border: none;
-  padding: 12px 30px;
-  font-size: 15px;
-  font-weight: 600;
-  border-radius: 14px;
+  padding: 12px 32px;
+  font-size: 14px;
+  font-weight: 700;
+  border-radius: 12px;
   cursor: pointer;
-  transition: background 0.2s;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
-.console-btn:hover {
+.close-console-btn:hover {
   background: var(--accent-soft);
 }
 
-footer {
-  text-align: center;
-  padding: 60px 20px;
-  font-size: 14px;
+/* SYSTEM INTERACTIVE FOOTER */
+.tactical-footer {
+  position: relative;
+  z-index: 10;
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  font-weight: 600;
   color: var(--muted);
-  border-top: 1px solid var(--border);
-  background: var(--bg2);
+  letter-spacing: 0.5px;
+}
+
+.system-ping {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.ping-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--success);
+  border-radius: 50%;
+  box-shadow: 0 0 6px var(--success);
 }
 </style>
 </head>
 <body>
 
-<!-- NAVIGATION -->
-<nav>
-  <a class="logo" href="#">Chelsea Ogbonna</a>
-  <div class="nav-links">
-    <a href="#">Home</a>
-    <a href="#highlights">Highlights</a>
-    <a href="#projects">Projects</a>
-    <a href="#footer">Contact</a>
-  </div>
-</nav>
+<div class="game-viewport">
 
-<!-- HERO CONTAINER (INTERACTIVE SIMULATION CANVAS) -->
-<section class="hero-chip-container">
-  
-  <!-- Flow lines embedded behind the hero narrative card -->
-  <div class="microfluidic-network" id="fluidNetwork">
-    <div class="fluid-channel-horizontal"></div>
+  <!-- LIVING FLUID ARCHITECTURE ENGINE BACKGROUND -->
+  <div class="fluidic-grid-bg" id="fluidicEngine">
+    <div class="fluid-highway"></div>
+    <div class="fluid-highway-v"></div>
   </div>
 
-  <div class="hero-text-block">
-    <h2>Bio-Integrative Hardware Systems</h2>
-    <h1>Engineering Fluidic Tech Platforms</h1>
-    <p>
-      Translating biological microenvironments into modular, hardware-driven solutions. 
-      Designing active separation systems, mechanical assay architectures, and embedded arrays 
-      to bridge clinical diagnostics and precision research.
-    </p>
+  <!-- CONTROL HEADER WITH INTEGRATED TAB HARDWARE MECHANISM -->
+  <header class="control-header">
+    <div class="hardware-title">
+      <h1>Chelsea Ogbonna</h1>
+      <p>Bio-Integrative Device Framework Console</p>
+    </div>
     
-    <div class="interactive-trigger-node" onclick="triggerSystemDiagnostic('Assay Diagnostic Engine', 'System core baseline loaded. Fluorescent tracer routing verified. Use the scroll matrix to examine project chambers.')">
-      <div class="pulse-indicator"></div>
-      <span>Initialize Chip Diagnostic</span>
+    <!-- Tab system handles multiple pages without breaking the game loop screen -->
+    <div class="system-tabs">
+      <button class="tab-trigger active-view" onclick="switchChamberMode(event, 'view-dash')">Main Dash</button>
+      <button class="tab-trigger" onclick="switchChamberMode(event, 'view-projects')">Project Chambers</button>
+      <button class="tab-trigger" onclick="switchChamberMode(event, 'view-research')">Assay Alliances</button>
     </div>
+  </header>
+
+  <!-- WORKSPACE CHAMBERS -->
+  <main class="workspace-chambers">
+
+    <!-- VIEW 1: MAIN DASHBOARD CORE -->
+    <div class="chamber-view active-view" id="view-dash">
+      <div class="telemetry-sidebar">
+        <div class="widget-box">
+          <h3>System Metrics</h3>
+          <div class="data-strip">
+            <div class="data-strip-num">05+</div>
+            <div class="data-strip-label">Hardware Assets Loaded</div>
+          </div>
+          <div class="data-strip">
+            <div class="data-strip-num">03+</div>
+            <div class="data-strip-label">Assay Environments</div>
+          </div>
+        </div>
+        <div class="widget-box" style="margin-bottom: 0;">
+          <div class="data-strip" style="background: transparent; border-style: dashed; margin-bottom: 0; cursor: pointer;" onclick="executeCalibration('Identity Diagnostic', 'System Operator Clearance: Chelsea Ogbonna. Firmware compilation version BME_443 active.')">
+            <div class="data-strip-label">OPERATOR SECURE ID</div>
+            <div class="data-strip-num" style="font-size: 16px; margin-top: 5px;">SYS_OP // CO_2026</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="dash-hero-core">
+        <h2>Engineering Hardware-Driven Biological Mediums</h2>
+        <p>
+          Translating complex cellular phenomena and microfluidic mechanics into crisp, modular device platforms. 
+          Select any operational chamber matrix tab above to load active engineering arrays and diagnostic analytics.
+        </p>
+        <div>
+          <button class="close-console-btn" onclick="executeCalibration('System Engine Calibrated', 'Fluorescent tracer streams initialized. Real-time sorting analytics are executing perfectly at nominal baseline bounds.')">Initialize Flow Test</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- VIEW 2: PROJECT CHAMBERS MODULE (SCROLLER CAPABLE WITHOUT BODY SCROLL) -->
+    <div class="chamber-view" id="view-projects">
+      <div class="chambers-grid-scroller">
+        
+        <div class="game-card-node" onclick="executeCalibration('DLD Sorter Diagnostics', 'Architecture Configuration: Geometric pillar matrices using hydrodynamic microfluidics to segregate target biological agents without causing internal structural damage.')">
+          <div class="node-header"><span class="node-id">Assay Chamber 01</span><span>🔬</span></div>
+          <h3>DLD Sorter Framework</h3>
+          <p>Microscopic array designed for isolating explicit target vectors using fluid stream branch dynamics.</p>
+          <div class="node-status-bar"><span>FLOW: ACTIVE</span><div class="status-fluid-fill"></div></div>
+        </div>
+
+        <div class="game-card-node" onclick="executeCalibration('Telemetry Core Diagnostics', 'System State: Inductive micro-coupling running continuously across isolated anatomical skin layers without generating internal heat pockets.')">
+          <div class="node-header"><span class="node-id">Telemetry Chamber 02</span><span>⚡</span></div>
+          <h3>Implantable Telemetry</h3>
+          <p>Inductively coupled data streaming architecture built to transfer processing metrics without standard batteries.</p>
+          <div class="node-status-bar"><span>RESONANCE: LOCK</span><div class="status-fluid-fill"></div></div>
+        </div>
+
+        <div class="game-card-node" onclick="executeCalibration('Gait Sensory Diagnostics', 'Firmware Profile: Multi-axis inertial navigation mesh compiling kinetic vector coordinates directly inside internal localized memory banks.')">
+          <div class="node-header"><span class="node-id">Kinematics Chamber 03</span><span>👟</span></div>
+          <h3>Embedded Kinematics</h3>
+          <p>Wearable locomotion sensory frame matching human movement metrics against continuous environment tracks.</p>
+          <div class="node-status-bar"><span>SAMPLING: 120HZ</span><div class="status-fluid-fill"></div></div>
+        </div>
+
+        <!-- PLACEHOLDER FOR ROOM TO ADD STUFF EASILY -->
+        <div class="game-card-node" style="border-style: dashed; background: transparent; justify-content: center; align-items: center;">
+          <span style="font-size: 24px; color: var(--border);">+</span>
+          <span style="font-size: 12px; font-weight:700; color:var(--muted); text-transform:uppercase; margin-top:5px;">Load New Assay</span>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- VIEW 3: ASSAY ALLIANCES / RESEARCH TRACKS -->
+    <div class="chamber-view" id="view-research">
+      <div class="chambers-grid-scroller">
+        
+        <div class="game-card-node" onclick="executeCalibration('Cell-Free Translation System', 'Research Metric: Assessing cell-free transcription-translation system efficiency pathways relative to standard living expression models.')">
+          <div class="node-header"><span class="node-id">Research Core Alpha</span><span>🧪</span></div>
+          <h3>Cell-Free Synthetics</h3>
+          <p>Investigating metabolic reaction kinetics and structural degradation behaviors within synthetic expression models.</p>
+          <div class="node-status-bar"><span>STATUS: VERIFIED</span><div class="status-fluid-fill"></div></div>
+        </div>
+
+        <div class="game-card-node" onclick="executeCalibration('Molecular Gel Analytics', 'Analysis Mode: Quantifying volumetric spatial expansion metrics triggered via sequence-dependent DNA polymerization lines.')">
+          <div class="node-header"><span class="node-id">Research Core Beta</span><span>🧬</span></div>
+          <h3>Programmable Hydrogels</h3>
+          <p>Formulating structural elasticity calculations for DNA-based responsive soft robotic assemblies.</p>
+          <div class="node-status-bar"><span>STATUS: VERIFIED</span><div class="status-fluid-fill"></div></div>
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+
+  <!-- TERMINAL OVERLAY CONSOLE (LIGHTBOX POPUP) -->
+  <div class="terminal-overlay-console" id="calibrationConsole">
+    <h2 id="consoleHeading"></h2>
+    <p id="consoleDetails"></p>
+    <button class="close-console-btn" onclick="dismissCalibration()">Resume Console Loop</button>
   </div>
 
-  <div class="scroll-down-hint">Scroll Matrix</div>
-</section>
+  <!-- TACTICAL HARDWARE FOOTER -->
+  <footer class="tactical-footer">
+    <div>SYSTEM LOG: READY // MODULE MATRIX ONLINE</div>
+    <div class="system-ping"><div class="ping-dot"></div>CORE BIO-CHIP SIMULATOR STABLE</div>
+  </footer>
 
-<!-- HIGHLIGHTS / ACCOLADES SECTION (NOW HAS SCROLL ROOM) -->
-<section class="section" id="highlights">
-  <h2 class="section-title">System Highlights</h2>
-  
-  <div class="metrics-grid">
-    <div class="metric-card">
-      <h3>5+</h3>
-      <p>Functional Bio-Devices Constructed</p>
-    </div>
-    <div class="metric-card">
-      <h3>3+</h3>
-      <p>Assay Research Initiative Tracks</p>
-    </div>
-    <div class="metric-card">
-      <h3>50+</h3>
-      <p>Research Peers & Cohorts Impacted</p>
-    </div>
-  </div>
-</section>
-
-<!-- EXPANDED FEATURED PROJECTS SECTION (PLENTY OF ROOM TO ADD MORE CARDS) -->
-<section class="section section-alt" id="projects">
-  <h2 class="section-title">Featured Project Chambers</h2>
-  
-  <div class="projects-grid">
-    
-    <!-- CARD 1 -->
-    <div class="project-card" onclick="triggerSystemDiagnostic('DLD Hydro-Separator Module', 'Geometric micro-post layout utilizing deterministic lateral displacement rules. System segments blood/buffer component populations cleanly along designated streamline vectors without causing mechanical shear stress.')">
-      <div class="project-chamber-header">
-        <div class="chamber-badge">Assay Module 01</div>
-        <span>🔬</span>
-      </div>
-      <div class="project-body">
-        <h3>DLD Sorter</h3>
-        <p>A microscopic geometric separation framework built to isolate targeted biological agents using hydrodynamic fluid sorting vectors.</p>
-      </div>
-      <div class="project-footer">
-        Current Vector: Flow Calibrated (4.2 mL/min)
-      </div>
-    </div>
-
-    <!-- CARD 2 -->
-    <div class="project-card" onclick="triggerSystemDiagnostic('Implantable Coupling Matrix', 'Inductive micro-network transferring diagnostic sensor values smoothly through highly resistive, multi-layer anatomical boundary models.')">
-      <div class="project-chamber-header">
-        <div class="chamber-badge">Telemetry Module 02</div>
-        <span>⚡</span>
-      </div>
-      <div class="project-body">
-        <h3>Implantable Telemetry</h3>
-        <p>An inductively paired bio-telemetry architecture engineered to secure constant data streaming paths without deploying local battery units.</p>
-      </div>
-      <div class="project-footer">
-        Current Vector: Resonance Calibrated
-      </div>
-    </div>
-
-    <!-- CARD 3 -->
-    <div class="project-card" onclick="triggerSystemDiagnostic('Gait Tracking Array Engine', 'Multi-axis spatial sensor grid capturing locomotive translation indices. Embedded classification paths isolate kinematic markers over variable real-world topologies.')">
-      <div class="project-chamber-header">
-        <div class="chamber-badge">Kinematic Module 03</div>
-        <span>鞋</span>
-      </div>
-      <div class="project-body">
-        <h3>Embedded Kinematics</h3>
-        <p>A sensory locomotion diagnostic mesh translating raw biometric acceleration arrays into synchronized biomechanical gait metrics.</p>
-      </div>
-      <div class="project-footer">
-        Current Vector: Analysis Engine Active
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- DYNAMIC LIGHTBOX OVERLAY CONSOLE -->
-<div class="chip-console" id="diagnosticConsole">
-  <h2 id="consoleHeading"></h2>
-  <p id="consoleDetails"></p>
-  <button class="console-btn" onclick="dismissSystemDiagnostic()">Resume Flow Assay</button>
 </div>
 
-<!-- FOOTER -->
-<footer id="footer">
-  © 2026 Chelsea Ogbonna • Bio-Systems Engineering & Microfluidics Prototyping
-</footer>
-
-<!-- FLUID FLOWING JAVASCRIPT ANIMATION CORE -->
+<!-- COMPACT INTERACTIVE SIMULATION LOGIC -->
 <script>
-function triggerSystemDiagnostic(heading, detailText) {
-  const consoleEl = document.getElementById("diagnosticConsole");
+// Dynamic View Matrix Router
+function switchChamberMode(event, targetChamberId) {
+  // Clear Active States across all triggers
+  document.querySelectorAll('.tab-trigger').forEach(btn => btn.classList.remove('active-view'));
+  document.querySelectorAll('.chamber-view').forEach(panel => panel.classList.remove('active-view'));
+  
+  // Activate selected assets
+  event.currentTarget.classList.add('active-view');
+  const targetPanel = document.getElementById(targetChamberId);
+  targetPanel.classList.add('active-view');
+}
+
+// Tactical Interactivity Popups
+function executeCalibration(heading, detailText) {
+  const modal = document.getElementById("calibrationConsole");
   document.getElementById("consoleHeading").innerText = heading;
   document.getElementById("consoleDetails").innerText = detailText;
   
-  consoleEl.style.display = "block";
-  setTimeout(() => {
-    consoleEl.classList.add("active");
-  }, 10);
+  modal.style.display = "block";
+  setTimeout(() => modal.classList.add("active-modal"), 10);
 }
 
-function dismissSystemDiagnostic() {
-  const consoleEl = document.getElementById("diagnosticConsole");
-  consoleEl.classList.remove("active");
-  setTimeout(() => {
-    consoleEl.style.display = "none";
-  }, 250);
+function dismissCalibration() {
+  const modal = document.getElementById("calibrationConsole");
+  modal.classList.remove("active-modal");
+  setTimeout(() => modal.style.display = "none", 200);
 }
 
-// Generate continuous streaming cells inside the horizontal microfluidic background track
-const matrixEngine = document.getElementById('fluidNetwork');
-const targetVolume = 35;
+// Fluid Microfluidic Animation Loop Execution
+const container = document.getElementById('fluidicEngine');
+const cellDensity = 30;
 
-for (let i = 0; i < targetVolume; i++) {
-  const particle = document.createElement('div');
-  particle.classList.add('flow-cell');
+for (let i = 0; i < cellDensity; i++) {
+  const cell = document.createElement('div');
+  cell.classList.add('cell-node');
   
-  const scale = Math.random();
-  const radius = scale > 0.45 ? Math.random() * 6 + 6 : Math.random() * 4 + 3;
+  const trait = Math.random();
+  const diameter = trait > 0.5 ? Math.random() * 6 + 6 : Math.random() * 4 + 3;
   
-  particle.style.width = radius + 'px';
-  particle.style.height = radius + 'px';
-  particle.style.background = scale > 0.5 ? 'var(--erythrocyte-red)' : 'var(--buffer-blue)';
+  cell.style.width = diameter + 'px';
+  cell.style.height = diameter + 'px';
+  cell.style.background = trait > 0.5 ? 'var(--erythrocyte)' : 'var(--buffer)';
   
-  // Confine the particles inside the bounding dimensions of the horizontal channel line
-  particle.style.top = 'calc(55% + 4px + ' + (Math.random() * 16 - 8) + 'px)';
+  // Track cleanly inside our horizontal fluid path setup
+  cell.style.top = 'calc(15% + 2px + ' + (Math.random() * 12 - 6) + 'px)';
   
-  particle.style.animationDuration = Math.random() * 7 + 4 + 's';
-  particle.style.animationDelay = -(Math.random() * 12) + 's';
+  cell.style.animationDuration = Math.random() * 6 + 4 + 's';
+  cell.style.animationDelay = -(Math.random() * 10) + 's';
 
-  matrixEngine.appendChild(particle);
+  container.appendChild(cell);
 }
 </script>
 
