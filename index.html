@@ -29,7 +29,7 @@ overflow-x:hidden;
 }
 
 /* =========================
-   NAV (FINAL FIXED VERSION)
+   NAV (RIGHT SIDE ONLY FIX)
 ========================= */
 
 nav{
@@ -39,7 +39,7 @@ left:50%;
 transform:translateX(-50%);
 width:min(1100px,92%);
 display:flex;
-justify-content:space-between;
+justify-content:flex-end; /* 🔥 KEY CHANGE */
 align-items:center;
 padding:12px 18px;
 
@@ -53,18 +53,12 @@ z-index:1000;
 border:1px solid rgba(193,211,254,.35);
 }
 
-/* brand (clean text only) */
+/* REMOVE logo spacing completely */
 .logo{
-font-weight:800;
-text-decoration:none;
-color:var(--text);
-font-size:18px;
-padding:0;
-background:none;
-border:none;
+display:none;
 }
 
-/* floating nav pill */
+/* nav links */
 .nav-links{
 display:flex;
 gap:10px;
@@ -311,16 +305,12 @@ padding-top:120px;
 
 <body>
 
-<!-- NAV -->
+<!-- NAV (RIGHT SIDE ONLY) -->
 <nav>
-  <a href="index.html" class="logo">Chelsea Ogbonna</a>
-
   <div class="nav-links">
-    <a href="index.html#highlights">Highlights</a>
-    <a href="index.html#projects">Projects</a>
-    <a href="index.html#research">Research</a>
-    <a href="leadership.html">Leadership</a>
     <a href="about.html">About</a>
+    <a href="projects.html">Projects</a>
+    <a href="leadership.html">Leadership</a>
     <a href="contact.html">Contact</a>
   </div>
 </nav>
@@ -331,7 +321,7 @@ padding-top:120px;
 <h1>Chelsea Ogbonna</h1>
 <h2>Biomedical • Mechanical • Research Engineer</h2>
 <p>Engineering healthcare solutions through research, design, microfluidics, implantable devices, embedded systems, and computational engineering.</p>
-<a href="#projects" class="button">Explore My Work →</a>
+<a href="projects.html" class="button">Explore My Work →</a>
 </div>
 
 <div class="hero-image">
@@ -368,14 +358,6 @@ padding-top:120px;
 </div>
 </div>
 
-<div class="project">
-<div class="project-img">Embedded Systems</div>
-<div class="project-content">
-<h3>Terrain Classification Platform</h3>
-<p>IMU and force-sensor based terrain analysis platform.</p>
-</div>
-</div>
-
 </div>
 </section>
 
@@ -387,31 +369,7 @@ padding-top:120px;
 <div class="tag">Implantable Systems</div>
 <div class="tag">Mechanics</div>
 <div class="tag">Embedded Systems</div>
-<div class="tag">Healthcare Technology</div>
 </div>
-</section>
-
-<section class="section" id="achievements">
-<h2 class="section-title">Achievements Timeline</h2>
-
-<div class="timeline">
-<div class="timeline-item"><strong>2026</strong> — M.S. Mechanical Engineering Candidate</div>
-<div class="timeline-item"><strong>2025</strong> — Rogers Lab Research Assistant</div>
-<div class="timeline-item"><strong>2025</strong> — Solutions Lab Research Assistant</div>
-<div class="timeline-item"><strong>2025</strong> — Microfluidic Device Team Lead</div>
-</div>
-</section>
-
-<section class="section" id="campus">
-<h2 class="section-title">Interactive Research Campus</h2>
-
-<div class="campus">
-<div class="lab" onclick="alert('Microfluidic Device Research')">🧬 Microfluidics Lab</div>
-<div class="lab" onclick="alert('Wireless Pacemaker Research')">❤️ Implantable Devices Lab</div>
-<div class="lab" onclick="alert('Embedded Systems Projects')">🚗 Embedded Systems Lab</div>
-<div class="lab" onclick="alert('Leadership and Outreach')">🏆 Leadership Center</div>
-</div>
-
 </section>
 
 <footer>
