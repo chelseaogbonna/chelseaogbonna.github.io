@@ -29,7 +29,7 @@ overflow-x:hidden;
 }
 
 /* =========================
-   NAV (SPLIT DESIGN FIX)
+   NAV (UNCHANGED - ONLY CONTACT ADDED)
 ========================= */
 
 nav{
@@ -41,43 +41,46 @@ width:min(1100px,92%);
 display:flex;
 justify-content:space-between;
 align-items:center;
+padding:12px 18px;
+
+background:rgba(255,255,255,.78);
+backdrop-filter:blur(16px);
+
+border-radius:24px;
+box-shadow:0 12px 35px rgba(0,0,0,.10);
 z-index:1000;
+
+border:1px solid rgba(193,211,254,.35);
 }
 
-/* LEFT BRAND (NO BOX, NO BORDER) */
 .logo{
 font-weight:800;
-font-size:18px;
 text-decoration:none;
 color:var(--text);
+font-size:18px;
+padding:0;
 background:none;
 border:none;
-padding:0;
 }
 
-/* RIGHT NAV BOX (SMALL + INTERACTIVE ONLY HERE) */
 .nav-links{
 display:flex;
 gap:10px;
-padding:8px 10px;
-border-radius:18px;
-background:rgba(255,255,255,.78);
-backdrop-filter:blur(16px);
-border:1px solid rgba(193,211,254,.35);
-box-shadow:0 12px 35px rgba(0,0,0,.10);
+padding:6px;
+border-radius:999px;
+background:rgba(237,242,251,.55);
+border:1px solid rgba(193,211,254,.45);
 }
 
-/* LINKS */
 .nav-links a{
 text-decoration:none;
 color:var(--text);
-padding:8px 12px;
+padding:10px 14px;
 border-radius:10px;
-font-weight:500;
 transition:.25s;
+font-weight:500;
 }
 
-/* INTERACTION ONLY ON RIGHT SIDE */
 .nav-links a:hover{
 background:var(--accent);
 transform:translateY(-2px);
@@ -289,7 +292,6 @@ padding:60px;
 opacity:.7;
 }
 
-/* MOBILE */
 @media(max-width:900px){
 .hero{
 grid-template-columns:1fr;
@@ -298,26 +300,26 @@ padding-top:120px;
 }
 .hero-image{margin-top:30px}
 .hero h1{font-size:48px}
-.nav-links{flex-wrap:wrap}
+.nav-links{flex-wrap:wrap; gap:6px}
 }
 </style>
 </head>
 
 <body>
 
-<!-- NAV (FINAL SPLIT DESIGN) -->
+<!-- NAV -->
 <nav>
-
-  <!-- LEFT: BRAND ONLY -->
   <a href="index.html" class="logo">Chelsea Ogbonna</a>
 
-  <!-- RIGHT: SMALL INTERACTIVE BOX -->
   <div class="nav-links">
-    <a href="about.html">About</a>
-    <a href="projects.html">Projects</a>
+    <a href="#highlights">Highlights</a>
+    <a href="#projects">Projects</a>
+    <a href="#research">Research</a>
+    <a href="#achievements">Achievements</a>
     <a href="leadership.html">Leadership</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
   </div>
-
 </nav>
 
 <!-- HERO -->
@@ -326,7 +328,7 @@ padding-top:120px;
 <h1>Chelsea Ogbonna</h1>
 <h2>Biomedical • Mechanical • Research Engineer</h2>
 <p>Engineering healthcare solutions through research, design, microfluidics, implantable devices, embedded systems, and computational engineering.</p>
-<a href="projects.html" class="button">Explore My Work →</a>
+<a href="#projects" class="button">Explore My Work →</a>
 </div>
 
 <div class="hero-image">
@@ -334,15 +336,17 @@ padding-top:120px;
 </div>
 </section>
 
+<!-- HIGHLIGHTS -->
 <section class="section" id="highlights">
 <h2 class="section-title">Highlights</h2>
 <div class="stats">
-<div class="stat"><h3>5+</h3><p>Projects</p></div>
+<div class="stat"><h3>5+</h3><p>Engineering Projects</p></div>
 <div class="stat"><h3>3+</h3><p>Research Labs</p></div>
 <div class="stat"><h3>50+</h3><p>Students Mentored</p></div>
 </div>
 </section>
 
+<!-- PROJECTS -->
 <section class="section" id="projects">
 <h2 class="section-title">Featured Projects</h2>
 <div class="projects">
@@ -366,6 +370,7 @@ padding-top:120px;
 </div>
 </section>
 
+<!-- RESEARCH -->
 <section class="section" id="research">
 <h2 class="section-title">Research Interests</h2>
 <div class="tags">
@@ -374,7 +379,33 @@ padding-top:120px;
 <div class="tag">Implantable Systems</div>
 <div class="tag">Mechanics</div>
 <div class="tag">Embedded Systems</div>
+<div class="tag">Healthcare Technology</div>
 </div>
+</section>
+
+<!-- ACHIEVEMENTS (RESTORED) -->
+<section class="section" id="achievements">
+<h2 class="section-title">Achievements Timeline</h2>
+
+<div class="timeline">
+<div class="timeline-item"><strong>2026</strong> — M.S. Mechanical Engineering Candidate</div>
+<div class="timeline-item"><strong>2025</strong> — Rogers Lab Research Assistant</div>
+<div class="timeline-item"><strong>2025</strong> — Solutions Lab Research Assistant</div>
+<div class="timeline-item"><strong>2025</strong> — Microfluidic Device Team Lead</div>
+</div>
+</section>
+
+<!-- CAMPUS (RESTORED) -->
+<section class="section" id="campus">
+<h2 class="section-title">Interactive Research Campus</h2>
+
+<div class="campus">
+<div class="lab" onclick="alert('Microfluidic Device Research')">🧬 Microfluidics Lab</div>
+<div class="lab" onclick="alert('Wireless Pacemaker Research')">❤️ Implantable Devices Lab</div>
+<div class="lab" onclick="alert('Embedded Systems Projects')">🚗 Embedded Systems Lab</div>
+<div class="lab" onclick="alert('Leadership and Outreach')">🏆 Leadership Center</div>
+</div>
+
 </section>
 
 <footer>
