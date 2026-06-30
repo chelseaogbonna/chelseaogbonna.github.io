@@ -1,558 +1,345 @@
+Index code:
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Chelsea Ogbonna | Interactive Biomedical Engineering Portfolio</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>Chelsea Ogbonna | Portfolio</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
   <style>
-:root {
-  /* High-Tech Bio-Inspired Light Palette */
-  --bg: #f4f9f4;
-  --bg2: #e8f1e9;
-  --card: #d8ebd9;
-  --card-hover: #cbe3cc;
-  --text: #0b2512;
-  --muted: #3d5243;
-  --accent: #a3d9a5;
-  --accent-soft: #bde6be;
-  --border: #b3cfb5;
-}
 
-body {
-  margin: 0;
-  overflow: hidden;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  user-select: none;
-  width: 100vw;
-  height: 100vh;
-}
+  :root {
+    --bg: #edf2fb;
+    --bg2: #e2eafc;
 
-/* ===== MICROFLUIDIC GAME MATRIX ENVIRONMENT ===== */
-.sim-matrix {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(circle at center, var(--bg) 0%, var(--bg2) 100%);
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
-  box-sizing: border-box;
-}
+    --card: #d7e3fc;
+    --card-hover: #ccdbfd;
 
-/* CELLULAR FLUIDICS / FLOW CHANNEL PATH */
-.fluid-channel {
-  position: absolute;
-  top: 15%;
-  left: 0;
-  width: 100%;
-  height: 80px;
-  background: rgba(255, 255, 255, 0.5);
-  border-top: 2px dashed var(--border);
-  border-bottom: 2px dashed var(--border);
-  box-shadow: inset 0 0 20px rgba(163, 217, 165, 0.15);
-  z-index: 1;
-}
+    --text: #1f2937;
+    --muted: #4b5563;
 
-/* FLOATING CELLULAR CARRIER PAYLOAD */
-.spacecraft-courier {
-  position: absolute;
-  top: calc(15% + 7px);
-  left: -150px;
-  width: 60px;
-  height: 60px;
-  background: radial-gradient(circle at 35% 35%, #bde6be, #22c55e);
-  border-radius: 42% 58% 51% 49% / 45% 45% 55% 55%; /* Organic cellular geometry */
-  animation: cellular-flow 11s linear infinite;
-  cursor: pointer;
-  box-shadow: 0 0 20px rgba(34, 197, 94, 0.4), inset -5px -5px 15px rgba(0,0,0,0.08);
-  border: 2px solid rgba(255, 255, 255, 0.8);
-  z-index: 2;
-}
+    --accent: #abc4ff;
+    --accent-soft: #b6ccfe;
+    --border: #c1d3fe;
 
-@keyframes cellular-flow {
-  0% { left: -100px; transform: translateY(0px) rotate(0deg) scale(1); }
-  50% { transform: translateY(-8px) rotate(180deg) scale(1.05); }
-  100% { left: 110%; transform: translateY(0px) rotate(360deg) scale(1); }
-}
-
-.spacecraft-courier:hover {
-  animation-play-state: paused;
-  background: #a3e635;
-  box-shadow: 0 0 30px rgba(34, 197, 94, 0.7);
-}
-
-/* SYSTEM INTERACTIVE NOTIFIER POPUP (FOR CELL TRAP) */
-.hud-alert {
-  position: absolute;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%) translateY(-100px);
-  background: var(--text);
-  color: white;
-  padding: 12px 24px;
-  border-radius: 14px;
-  font-size: 13px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  z-index: 2000;
-}
-.hud-alert.triggered { transform: translateX(-50%) translateY(0); }
-
-/* ===== MASTER WORKSTATION PANEL FRAME ===== */
-.master-workstation {
-  position: relative;
-  flex: 1;
-  margin-top: 110px; 
-  margin-bottom: 20px;
-  background: rgba(255, 255, 255, 0.82);
-  backdrop-filter: blur(12px);
-  border: 3px solid var(--border);
-  border-radius: 28px;
-  box-shadow: 0 20px 50px rgba(11, 37, 18, 0.06);
-  z-index: 10;
-  display: grid;
-  grid-template-columns: 360px 1fr;
-  overflow: hidden;
-}
-
-/* LEFT WING: FIXED SYSTEM OPERATOR TELEMETRY FEED */
-.telemetry-left-wing {
-  background: rgba(232, 241, 233, 0.4);
-  border-right: 2px solid var(--border);
-  padding: 30px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  overflow-y: auto;
-}
-
-.profile-identity-box img {
-  width: 110px;
-  height: 110px;
-  border-radius: 24px;
-  border: 2px solid var(--accent);
-  object-fit: cover;
-  display: block;
-  margin-bottom: 15px;
-}
-
-.profile-identity-box h2 {
-  margin: 0;
-  font-size: 26px;
-  font-weight: 800;
-  color: var(--text);
-  letter-spacing: -0.5px;
-}
-
-.profile-identity-box .eyebrow {
-  font-size: 11px;
-  font-weight: 700;
-  text-transform: uppercase;
-  color: #14532d;
-  background: var(--card);
-  padding: 4px 10px;
-  border-radius: 6px;
-  display: inline-block;
-  margin-top: 5px;
-  letter-spacing: 0.5px;
-}
-
-.profile-identity-box p {
-  font-size: 13.5px;
-  line-height: 1.5;
-  color: var(--muted);
-  margin: 15px 0 0 0;
-}
-
-/* TELEMETRY STATS GRID */
-.stats-matrix {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-  margin: 20px 0;
-}
-
-.stat-node {
-  background: white;
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  padding: 12px;
-  text-align: center;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.02);
-}
-
-.stat-node strong {
-  display: block;
-  font-size: 18px;
-  color: var(--text);
-  font-weight: 800;
-}
-
-.stat-node span {
-  font-size: 10px;
-  color: var(--muted);
-  text-transform: uppercase;
-  font-weight: 600;
-}
-
-/* HARDWARE EXTERNAL LINKS BUTTON ROW */
-.action-terminal-row {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.console-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 12px;
-  background: white;
-  border: 1px solid var(--border);
-  color: var(--text);
-  text-decoration: none;
-  font-weight: 700;
-  font-size: 12px;
-  border-radius: 12px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  transition: all 0.2s;
-}
-
-.console-btn:hover {
-  background: var(--card);
-  transform: translateY(-2px);
-}
-
-.console-btn.primary-gate {
-  background: var(--text);
-  color: white;
-  border: none;
-}
-
-.console-btn.primary-gate:hover {
-  background: var(--muted);
-}
-
-/* RIGHT WING: INTERACTIVE SNAPSHOT WORKING DECK */
-.workspace-right-wing {
-  padding: 35px;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-}
-
-/* TACTICAL VALVES CONFIGURATION (TAB TRIGGERS) */
-.tactical-valves-deck {
-  display: flex;
-  gap: 8px;
-  background: var(--bg2);
-  padding: 6px;
-  border-radius: 14px;
-  border: 1px solid var(--border);
-  align-self: start;
-  margin-bottom: 25px;
-}
-
-.valve-trigger {
-  padding: 10px 18px;
-  font-size: 11px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.75px;
-  border-radius: 10px;
-  cursor: pointer;
-  border: none;
-  background: transparent;
-  color: var(--muted);
-  transition: all 0.2s ease;
-}
-
-.valve-trigger.active-valve {
-  background: white;
-  color: var(--text);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-}
-
-/* LOG CHAMBERS SCROLLER CONTAINER */
-.log-chambers-container {
-  flex: 1;
-  position: relative;
-  overflow: hidden;
-}
-
-.chamber-view-pane {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: none;
-  overflow-y: auto;
-  padding-right: 8px;
-}
-
-.chamber-view-pane.active-pane {
-  display: block;
-}
-
-.chamber-view-pane::-webkit-scrollbar { width: 5px; }
-.chamber-view-pane::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
-
-/* REUSABLE CHAMBER DATA BLOCKS */
-.chamber-card-block {
-  background: white;
-  border-left: 4px solid var(--accent);
-  padding: 20px;
-  border-radius: 0 16px 16px 0;
-  margin-bottom: 16px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.02);
-}
-
-.chamber-card-block h3 {
-  margin: 0 0 6px 0;
-  font-size: 16px;
-  font-weight: 700;
-  color: var(--text);
-}
-
-.chamber-card-block p {
-  margin: 0;
-  font-size: 13.5px;
-  color: var(--muted);
-  line-height: 1.5;
-}
-
-.tag-mesh {
-  margin-top: 10px;
-  display: flex;
-  gap: 5px;
-  flex-wrap: wrap;
-}
-
-.tag {
-  background: var(--bg);
-  border: 1px solid var(--border);
-  color: var(--text);
-  padding: 3px 8px;
-  font-size: 11px;
-  font-weight: 600;
-  border-radius: 6px;
-}
-
-/* SYSTEM STATUS CONSOLE FOOTER */
-.hardware-footer {
-  display: flex;
-  justify-content: space-between;
-  font-size: 11px;
-  font-weight: 600;
-  color: var(--muted);
-  letter-spacing: 0.5px;
-  padding: 0 10px;
-}
-
-.pulse-dot {
-  width: 6px;
-  height: 6px;
-  background: #22c55e;
-  border-radius: 50%;
-  display: inline-block;
-  box-shadow: 0 0 8px #22c55e;
-  margin-right: 6px;
-}
-
-/* RESPONSIVE RENDERING */
-@media (max-width: 880px) {
-  .master-workstation {
-    grid-template-columns: 1fr;
-    margin-top: 120px;
+    --nav-bg: rgba(237, 242, 251, 0.9);
+    --project-hover: #dde6b8;
   }
-  .telemetry-left-wing {
-    border-right: none;
-    border-bottom: 2px solid var(--border);
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    font-family: "Inter", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  /* =========================================================
+     NAV (UPDATED LAYOUT)
+  ========================================================= */
+
+  nav {
+    display: flex;
+    justify-content: space-between;   /* KEY CHANGE */
+    align-items: center;
+    padding: 18px 10%;
+    position: sticky;
+    top: 0;
+    background: var(--nav-bg);
+    backdrop-filter: blur(10px);
+    z-index: 10;
+  }
+
+  .logo {
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--text);
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 25px;
+  }
+
+  .nav-links a {
+    color: var(--text);
+    text-decoration: none;
+    font-weight: 500;
+    padding: 8px 14px;
+    border-radius: 8px;
+    transition: 0.2s ease;
+  }
+
+  .nav-links a:hover {
+    background: var(--accent);
+    color: #0b0f19;
+  }
+  
+
+  /* =========================================================
+     HERO
+  ========================================================= */
+
+  .hero {
+    min-height: 75vh;
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    align-items: center;
+    gap: 50px;
+    padding: 40px 10% 20px;
+  }
+
+  .hero-text h1 {
+    font-size: 64px;
+    margin: 0 0 10px;
+  }
+
+  .hero-text h2 {
+    font-weight: 500;
+    margin: 0 0 15px;
+    opacity: 0.85;
+  }
+
+  .hero-text p {
+    font-size: 18px;
+    opacity: 0.85;
+    max-width: 650px;
+  }
+
+  .hero-image img {
+    width: 100%;
+    max-width: 340px;
+    border-radius: 18px;
+    border: 5px solid white;
+    display: block;
+    margin: 0 auto;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+  }
+
+  .button-container {
+    margin-top: 25px;
+  }
+
+  .button {
+    display: inline-block;
+    padding: 12px 22px;
+    margin-right: 10px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    background: var(--accent);
+    color: #0b0f19;
+  }
+
+  .button-secondary {
+    background: var(--card);
+    border: 1px solid var(--border);
+  }
+
+  .section {
+    padding: 80px 10%;
+  }
+
+  .section h2 {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .stats {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+  }
+
+  .stat-card {
+    background: var(--card);
+    border-radius: 15px;
+    padding: 30px;
+    width: 220px;
+    text-align: center;
+  }
+
+  .projects {
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .project-card {
+    background: var(--card);
+    width: 320px;
+    border-radius: 15px;
+    overflow: hidden;
+  }
+
+  .project-image {
+    height: 180px;
+    background: #2d3138;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent);
+  }
+
+  .project-content {
     padding: 20px;
   }
-  .workspace-right-wing { padding: 20px; }
-  body { overflow: auto; height: auto; }
-  .sim-matrix { height: auto; min-height: 100vh; }
-}
-</style>
+
+  .interests {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+
+  .interest {
+    background: var(--card);
+    padding: 12px 18px;
+    border-radius: 30px;
+  }
+
+  footer {
+    text-align: center;
+    padding: 60px 20px;
+    opacity: 0.7;
+  }
+
+  @media (max-width: 900px) {
+    .hero {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+
+    .hero-text h1 {
+      font-size: 48px;
+    }
+
+    .nav-links {
+      gap: 15px;
+    }
+  }
+
+  </style>
 </head>
+
 <body>
 
-<!-- BACKEND SEED NAVIGATION (RETAINED FOR HARDCODE DIRECT STRUCTURAL TRAVERSAL) -->
-<header style="display:none;">
-  <div class="nav-container">
-    <a class="logo" href="index.html">CHELSEA OGBONNA</a>
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="projects.html">Projects</a></li>
-        <li><a href="experience.html">Experience</a></li>
-        <li><a href="skills.html">Technical Skills</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
+<!-- NAV -->
+<nav>
+  <a class="logo" href="index.html">Chelsea Ogbonna</a>
+
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="projects.html">Projects</a>
+    <a href="leadership.html">Leadership</a>
+    <a href="contact.html">Contact</a>
   </div>
-</header>
+</nav>
 
-<div class="sim-matrix">
+<!-- HERO -->
+<section class="hero">
 
-  <!-- HUD BIOMETRIC FEEDBACK BANNER -->
-  <div class="hud-alert" id="hudNotification">Cellular Carrier Intercepted // Flow Trapped</div>
+  <div class="hero-text">
+    <h1>Chelsea Ogbonna</h1>
+    <h2>Biomedical • Mechanical • Research Engineer</h2>
 
-  <!-- MICROFLUIDIC STREAM CHANNELS -->
-  <div class="fluid-channel"></div>
-  <div class="spacecraft-courier" onclick="triggerHudCapture()"></div>
+    <p>
+      Engineering healthcare solutions through research, design, and innovation.
+      Building biomedical devices, microfluidic systems, implantable technologies,
+      and embedded sensing platforms.
+    </p>
 
-  <!-- MAIN MASTER BIOMEDICAL WORKSTATION PANEL -->
-  <main class="master-workstation">
-    
-    <!-- LEFT WING: IMMEDIATE IDENTITY PARAMETERS -->
-    <section class="telemetry-left-wing">
-      <div class="profile-identity-box">
-        <img src="chelseaogbonna-avatar.jpg" alt="Chelsea Ogbonna" onerror="this.style.background='var(--accent)'">
-        <h2>Chelsea Ogbonna</h2>
-        <div class="eyebrow">Biomedical & Research Engineer</div>
-        <p>
-          I bridge biological systems with precision mechanical design. Specialized in analytical problem-solving, microfluidic architecture, cell-free diagnostic screening, sensing algorithms, and translating cellular mechanics into testable clinical prototypes.
-        </p>
+    <div class="button-container">
+      <a class="button" href="projects.html">View Projects</a>
+      <a class="button button-secondary" href="contact.html">Contact Me</a>
+    </div>
+  </div>
+
+  <div class="hero-image">
+    <img src="Chelseaprofilepics.JPG" alt="Chelsea Ogbonna Profile Picture">
+  </div>
+
+</section>
+
+<!-- STATS -->
+<section class="section">
+  <h2>Highlights</h2>
+
+  <div class="stats">
+    <div class="stat-card">
+      <h3>5+</h3>
+      <p>Projects</p>
+    </div>
+    <div class="stat-card">
+      <h3>3+</h3>
+      <p>Research Roles</p>
+    </div>
+    <div class="stat-card">
+      <h3>50+</h3>
+      <p>Students Impacted</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="section">
+  <h2>Featured Projects</h2>
+
+  <div class="projects">
+    <div class="project-card">
+      <div class="project-image">Project Image</div>
+      <div class="project-content">
+        <h3>Microfluidic Device</h3>
+        <p>Biomedical separation system using DLD structures.</p>
       </div>
+    </div>
 
-      <!-- BIO-SYSTEMS TELEMETRY STATS METRICS -->
-      <div class="stats-matrix">
-        <div class="stat-node"><strong>8+</strong><span>Bio-Platforms</span></div>
-        <div class="stat-node"><strong>10⁻⁴ torr</strong><span>Vacuum Target</span></div>
-        <div class="stat-node"><strong>100%</strong><span>Closed-Loop Depol</span></div>
-        <div class="stat-node"><strong>HCR</strong><span>Hydrogel Expansion</span></div>
+    <div class="project-card">
+      <div class="project-image">Project Image</div>
+      <div class="project-content">
+        <h3>Implantable Device</h3>
+        <p>Wireless power transfer biomedical system.</p>
       </div>
+    </div>
 
-      <!-- COMM GATEWAYS -->
-      <div class="action-terminal-row">
-        <a class="console-btn primary-gate" href="mailto:ogbonnachelsea@gmail.com">Email Investigator</a>
-        <a class="console-btn" href="Chelsea_Ogbonna_Resume.pdf" target="_blank">Download Curriculum Vitae</a>
-        <a class="console-btn" href="https://www.linkedin.com/in/chelseaogbonna/" target="_blank">LinkedIn Synaptic Node</a>
+    <div class="project-card">
+      <div class="project-image">Project Image</div>
+      <div class="project-content">
+        <h3>Embedded Sensor Platform</h3>
+        <p>Real-time terrain and motion classification system.</p>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
 
-    <!-- RIGHT WING: ACTIVE DECK PANE SCROLLER -->
-    <section class="workspace-right-wing">
-      
-      <!-- TACTICAL TOGGLE SWITCH VALVES -->
-      <div class="tactical-valves-deck">
-        <button class="valve-trigger active-valve" onclick="switchControlPane(event, 'pane-focus')">Bio-System Focus</button>
-        <button class="valve-trigger" onclick="switchControlPane(event, 'pane-projects')">Experimental Array</button>
-        <button class="valve-trigger" onclick="switchControlPane(event, 'pane-experience')">Research & Translation Logs</button>
-      </div>
+<!-- INTERESTS -->
+<section class="section">
+  <h2>Research Interests</h2>
 
-      <!-- INSTANT OVERVIEW LOGS CONSOLE CONTAINER -->
-      <div class="log-chambers-container">
-        
-        <!-- PANE 1: CELLULAR MATRIX FOCUS AREAS -->
-        <div class="chamber-view-pane active-pane" id="pane-focus">
-          <p style="margin: 0 0 15px 0; font-size: 14px; color: var(--muted); font-weight: 600; text-transform: uppercase;">Tracking technical domains at the intersection of microfluidics, cell mechanics, and hardware integration:</p>
-          
-          <div class="chamber-card-block">
-            <h3>Microfluidics & Assays</h3>
-            <p>Design of microfluidic sorting mechanisms, size-dependent particles isolation, fluid behavior analysis, and cell-free assay execution.</p>
-            <div class="tag-mesh"><span class="tag">DLD Geometry</span><span class="tag">Fluid Dynamics</span><span class="tag">Assay Prototyping</span></div>
-          </div>
-          <div class="chamber-card-block">
-            <h3>Biomaterials & Mechanics</h3>
-            <p>Characterization of molecular programming hydrogels, volumetric structural behavior, tissue elasticity modeling, and enzymatic plastic degradation pathways.</p>
-            <div class="tag-mesh"><span class="tag">DNA Hydrogels</span><span class="tag">HCR Mechanics</span><span class="tag">Enzyme Depolymerization</span></div>
-          </div>
-          <div class="chamber-card-block">
-            <h3>Biomedical Hardware & Simulation</h3>
-            <p>CAD, assemblies, structural finite element analysis, heat transfer diagnostics, and predictive computational modelling.</p>
-            <div class="tag-mesh"><span class="tag">SolidWorks</span><span class="tag">MATLAB Modeling</span><span class="tag">FEA Analysis</span></div>
-          </div>
-          <div class="chamber-card-block">
-            <h3>Sensing & Embedded Platforms</h3>
-            <p>Mechatronic sensor arrays, microcontrollers, Arduino prototyping, and motion processing algorithm tracking.</p>
-            <div class="tag-mesh"><span class="tag">Arduino</span><span class="tag">IMU Systems</span><span class="tag">Mechatronics</span></div>
-          </div>
-        </div>
+  <div class="interests">
+    <div class="interest">Biomedical Devices</div>
+    <div class="interest">Microfluidics</div>
+    <div class="interest">Implantable Systems</div>
+    <div class="interest">Embedded Systems</div>
+    <div class="interest">Healthcare Tech</div>
+  </div>
+</section>
 
-        <!-- PANE 2: EXPERIMENTAL DEVICE ARRAY -->
-        <div class="chamber-view-pane" id="pane-projects">
-          <div class="chamber-card-block">
-            <h3>🔬 Microfluidic Particle Isolation Platform</h3>
-            <p>Developed structural isolation methodologies utilizing Deterministic Lateral Displacement (DLD) geometry arrays to separate distinct biological components and syncytial knots within highly precise fluidic constraints.</p>
-            <div class="tag-mesh"><span class="tag">Microfluidics</span><span class="tag">Cellular Mechanics</span><span class="tag">Bio-Separation</span></div>
-            <p style="margin-top:10px; font-size:12px; font-weight:700;"><a href="projects.html#fluidics" style="color:var(--text);">Open full design log records →</a></p>
-          </div>
-          <div class="chamber-card-block">
-            <h3>⚡ Implantable Wireless Power Transfer System</h3>
-            <p>Designed and analyzed cross-disciplinary electromagnetic coupling mechanisms optimized to deliver continuous regulated voltage to embedded medical biosensors, minimizing tissue thermal gradients.</p>
-            <div class="tag-mesh"><span class="tag">Biomedical Devices</span><span class="tag">Wireless Power</span><span class="tag">Thermal Modeling</span></div>
-            <p style="margin-top:10px; font-size:12px; font-weight:700;"><a href="projects.html#wireless-power" style="color:var(--text);">Open full design log records →</a></p>
-          </div>
-          <div class="chamber-card-block">
-            <h3>🧠 Molecular Hydrogel Soft Actuator</h3>
-            <p>Integrated molecular programming and elasticity physics to build soft robotic actuators utilizing DNA hydrogel matrices capable of massive volumetric expansion via Hybridization Chain Reactions (HCR).</p>
-            <div class="tag-mesh"><span class="tag">DNA Programming</span><span class="tag">Soft Robotics</span><span class="tag">Elasticity Theory</span></div>
-            <p style="margin-top:10px; font-size:12px; font-weight:700;"><a href="projects.html#hydrogels" style="color:var(--text);">Open full design log records →</a></p>
-          </div>
-        </div>
-
-        <!-- PANE 3: TRANSLATION LOGS -->
-        <div class="chamber-view-pane" id="pane-experience">
-          <div class="chamber-card-block" style="border-color:#14532d;">
-            <h3 style="font-size:18px;">Engineering & Biomaterial Research</h3>
-            <p style="font-weight:700; color:var(--text); margin-bottom:6px;">Cell-Free Phenomena Diagnostics Lab</p>
-            <p>
-              Investigated real-time translation-transcription kinetics comparing traditional cell-based methods with cell-free protein synthesis (CFPS). Evaluated closed-loop enzyme degradation matrices to achieve rapid, efficient plastic depolymerization under severe physical constraints.
-            </p>
-            <div class="tag-mesh" style="margin-top:12px;">
-              <span class="tag">CFPS Systems</span><span class="tag">Enzymatic Degradation</span><span class="tag">Kinetics Analysis</span><span class="tag">Quantitative Modeling</span>
-            </div>
-            <p style="margin-top:15px; font-size:12px; font-weight:700;"><a href="experience.html" style="color:var(--text);">Review comprehensive industrial deployment files →</a></p>
-          </div>
-        </div>
-
-      </div>
-    </section>
-  </main>
-
-  <!-- OPERATIONAL FLUID SYSTEM CONSOLE FOOTER -->
-  <footer class="hardware-footer">
-    <div>CONSOLE DIAGNOSTIC STATUS: ONLINE // NO CELL EXTRACTION DELAY REGISTERED</div>
-    <div><span class="pulse-dot"></span>CORE ENGINE BALANCED // 2026 LOG ACTIVE</div>
-  </footer>
-
-</div>
-
-<!-- INTERACTIVE DATA TERMINAL ROUTER MECHANICS -->
-<script>
-function switchControlPane(event, targetPaneId) {
-  // Purge existing active matrix layers
-  document.querySelectorAll('.valve-trigger').forEach(btn => btn.classList.remove('active-valve'));
-  document.querySelectorAll('.chamber-view-pane').forEach(pane => pane.classList.remove('active-pane'));
-  
-  // Connect targeted structural interface systems
-  event.currentTarget.classList.add('active-valve');
-  document.getElementById(targetPaneId).classList.add('active-pane');
-}
-
-function triggerHudCapture() {
-  const alertBox = document.getElementById('hudNotification');
-  alertBox.classList.add('triggered');
-  
-  // Automated timeout sweep to reset alert panel position parameters
-  setTimeout(() => {
-    alertBox.classList.remove('triggered');
-  }, 3000);
-}
-</script>
+<!-- FOOTER -->
+<footer>
+  © 2026 Chelsea Ogbonna
+</footer>
 
 </body>
 </html>
+
