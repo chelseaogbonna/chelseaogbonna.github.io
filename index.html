@@ -1,344 +1,215 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Chelsea Ogbonna | Portfolio</title>
+<meta charset="UTF-8">
+<title>Chelsea Ogbonna | Interactive Portfolio</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+body {
+  margin: 0;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+  background: #0b0f19;
+}
 
-  <style>
+/* ===== CITY BACKGROUND ===== */
+.city {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(to top, #0b0f19, #1c2333);
+  overflow: hidden;
+}
 
-  :root {
-    --bg: #edf2fb;
-    --bg2: #e2eafc;
+/* ROAD */
+.road {
+  position: absolute;
+  bottom: 120px;
+  width: 100%;
+  height: 140px;
+  background: #2a2f3a;
+}
 
-    --card: #d7e3fc;
-    --card-hover: #ccdbfd;
+/* ROAD LINE */
+.line {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  height: 6px;
+  background: repeating-linear-gradient(
+    90deg,
+    #fff 0px,
+    #fff 40px,
+    transparent 40px,
+    transparent 80px
+  );
+  opacity: 0.3;
+}
 
-    --text: #1f2937;
-    --muted: #4b5563;
+/* CAR */
+.car {
+  position: absolute;
+  bottom: 160px;
+  left: -150px;
+  width: 120px;
+  height: 60px;
+  background: #abc4ff;
+  border-radius: 12px;
+  animation: drive 10s linear infinite;
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(171,196,255,0.5);
+}
 
-    --accent: #abc4ff;
-    --accent-soft: #b6ccfe;
-    --border: #c1d3fe;
+.car::after {
+  content: "";
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  background: #fff;
+  border-radius: 50%;
+  bottom: -10px;
+  left: 10px;
+}
 
-    --nav-bg: rgba(237, 242, 251, 0.9);
-    --project-hover: #dde6b8;
-  }
+.car::before {
+  content: "";
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  background: #fff;
+  border-radius: 50%;
+  bottom: -10px;
+  right: 10px;
+}
 
-  * {
-    box-sizing: border-box;
-  }
+/* CAR ANIMATION */
+@keyframes drive {
+  0% { left: -150px; }
+  100% { left: 110%; }
+}
 
-  body {
-    margin: 0;
-    font-family: "Inter", sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    line-height: 1.6;
-  }
+/* pause on hover */
+.car:hover {
+  animation-play-state: paused;
+}
 
-  /* =========================================================
-     NAV (UPDATED LAYOUT)
-  ========================================================= */
+/* ===== BUILDINGS ===== */
+.building {
+  position: absolute;
+  bottom: 260px;
+  width: 120px;
+  height: 220px;
+  background: #1f2937;
+  border: 2px solid #abc4ff;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
 
-  nav {
-    display: flex;
-    justify-content: space-between;   /* KEY CHANGE */
-    align-items: center;
-    padding: 18px 10%;
-    position: sticky;
-    top: 0;
-    background: var(--nav-bg);
-    backdrop-filter: blur(10px);
-    z-index: 10;
-  }
+.building:hover {
+  transform: translateY(-10px);
+  background: #2b3445;
+}
 
-  .logo {
-    font-weight: 700;
-    font-size: 18px;
-    color: var(--text);
-    text-decoration: none;
-  }
+/* POSITIONS */
+.b1 { left: 10%; }
+.b2 { left: 30%; }
+.b3 { left: 50%; }
+.b4 { left: 70%; }
 
-  .nav-links {
-    display: flex;
-    gap: 25px;
-  }
+/* POPUP */
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #111827;
+  padding: 30px;
+  border-radius: 15px;
+  border: 2px solid #abc4ff;
+  display: none;
+  color: white;
+  width: 300px;
+  text-align: center;
+}
 
-  .nav-links a {
-    color: var(--text);
-    text-decoration: none;
-    font-weight: 500;
-    padding: 8px 14px;
-    border-radius: 8px;
-    transition: 0.2s ease;
-  }
+.popup h2 {
+  margin-top: 0;
+  color: #abc4ff;
+}
 
-  .nav-links a:hover {
-    background: var(--accent);
-    color: #0b0f19;
-  }
-  
+.close {
+  margin-top: 15px;
+  padding: 8px 14px;
+  background: #abc4ff;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+}
 
-  /* =========================================================
-     HERO
-  ========================================================= */
+/* TITLE */
+.title {
+  position: absolute;
+  top: 40px;
+  width: 100%;
+  text-align: center;
+  color: white;
+}
 
-  .hero {
-    min-height: 75vh;
-    display: grid;
-    grid-template-columns: 1.2fr 0.8fr;
-    align-items: center;
-    gap: 50px;
-    padding: 40px 10% 20px;
-  }
+.title h1 {
+  margin: 0;
+  font-size: 42px;
+}
 
-  .hero-text h1 {
-    font-size: 64px;
-    margin: 0 0 10px;
-  }
-
-  .hero-text h2 {
-    font-weight: 500;
-    margin: 0 0 15px;
-    opacity: 0.85;
-  }
-
-  .hero-text p {
-    font-size: 18px;
-    opacity: 0.85;
-    max-width: 650px;
-  }
-
-  .hero-image img {
-    width: 100%;
-    max-width: 340px;
-    border-radius: 18px;
-    border: 5px solid white;
-    display: block;
-    margin: 0 auto;
-    box-shadow: 0 12px 30px rgba(0,0,0,0.15);
-  }
-
-  .button-container {
-    margin-top: 25px;
-  }
-
-  .button {
-    display: inline-block;
-    padding: 12px 22px;
-    margin-right: 10px;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: 600;
-    background: var(--accent);
-    color: #0b0f19;
-  }
-
-  .button-secondary {
-    background: var(--card);
-    border: 1px solid var(--border);
-  }
-
-  .section {
-    padding: 80px 10%;
-  }
-
-  .section h2 {
-    text-align: center;
-    margin-bottom: 40px;
-  }
-
-  .stats {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    flex-wrap: wrap;
-  }
-
-  .stat-card {
-    background: var(--card);
-    border-radius: 15px;
-    padding: 30px;
-    width: 220px;
-    text-align: center;
-  }
-
-  .projects {
-    display: flex;
-    gap: 25px;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .project-card {
-    background: var(--card);
-    width: 320px;
-    border-radius: 15px;
-    overflow: hidden;
-  }
-
-  .project-image {
-    height: 180px;
-    background: #2d3138;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--accent);
-  }
-
-  .project-content {
-    padding: 20px;
-  }
-
-  .interests {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    flex-wrap: wrap;
-  }
-
-  .interest {
-    background: var(--card);
-    padding: 12px 18px;
-    border-radius: 30px;
-  }
-
-  footer {
-    text-align: center;
-    padding: 60px 20px;
-    opacity: 0.7;
-  }
-
-  @media (max-width: 900px) {
-    .hero {
-      grid-template-columns: 1fr;
-      text-align: center;
-    }
-
-    .hero-text h1 {
-      font-size: 48px;
-    }
-
-    .nav-links {
-      gap: 15px;
-    }
-  }
-
-  </style>
+.title p {
+  opacity: 0.7;
+}
+</style>
 </head>
 
 <body>
 
-<!-- NAV -->
-<nav>
-  <a class="logo" href="index.html">Chelsea Ogbonna</a>
+<div class="city">
 
-  <div class="nav-links">
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="projects.html">Projects</a>
-    <a href="leadership.html">Leadership</a>
-    <a href="contact.html">Contact</a>
-  </div>
-</nav>
-
-<!-- HERO -->
-<section class="hero">
-
-  <div class="hero-text">
+  <!-- TITLE -->
+  <div class="title">
     <h1>Chelsea Ogbonna</h1>
-    <h2>Biomedical • Mechanical • Research Engineer</h2>
-
-    <p>
-      Engineering healthcare solutions through research, design, and innovation.
-      Building biomedical devices, microfluidic systems, implantable technologies,
-      and embedded sensing platforms.
-    </p>
-
-    <div class="button-container">
-      <a class="button" href="projects.html">View Projects</a>
-      <a class="button button-secondary" href="contact.html">Contact Me</a>
-    </div>
+    <p>Click buildings or pause the car 🚗</p>
   </div>
 
-  <div class="hero-image">
-    <img src="Chelseaprofilepics.JPG" alt="Chelsea Ogbonna Profile Picture">
+  <!-- BUILDINGS (NAV SECTIONS) -->
+  <div class="building b1" onclick="openPopup('About Me')"></div>
+  <div class="building b2" onclick="openPopup('Projects')"></div>
+  <div class="building b3" onclick="openPopup('Leadership')"></div>
+  <div class="building b4" onclick="openPopup('Contact')"></div>
+
+  <!-- ROAD -->
+  <div class="road">
+    <div class="line"></div>
   </div>
 
-</section>
+  <!-- CAR -->
+  <div class="car" onclick="openPopup('Welcome! Explore the city to view my work 🚗')"></div>
 
-<!-- STATS -->
-<section class="section">
-  <h2>Highlights</h2>
+</div>
 
-  <div class="stats">
-    <div class="stat-card">
-      <h3>5+</h3>
-      <p>Projects</p>
-    </div>
-    <div class="stat-card">
-      <h3>3+</h3>
-      <p>Research Roles</p>
-    </div>
-    <div class="stat-card">
-      <h3>50+</h3>
-      <p>Students Impacted</p>
-    </div>
-  </div>
-</section>
+<!-- POPUP -->
+<div class="popup" id="popup">
+  <h2 id="popupTitle"></h2>
+  <p>This is where your section content would load.</p>
+  <button class="close" onclick="closePopup()">Close</button>
+</div>
 
-<!-- PROJECTS -->
-<section class="section">
-  <h2>Featured Projects</h2>
+<script>
+function openPopup(text) {
+  document.getElementById("popupTitle").innerText = text;
+  document.getElementById("popup").style.display = "block";
+}
 
-  <div class="projects">
-    <div class="project-card">
-      <div class="project-image">Project Image</div>
-      <div class="project-content">
-        <h3>Microfluidic Device</h3>
-        <p>Biomedical separation system using DLD structures.</p>
-      </div>
-    </div>
-
-    <div class="project-card">
-      <div class="project-image">Project Image</div>
-      <div class="project-content">
-        <h3>Implantable Device</h3>
-        <p>Wireless power transfer biomedical system.</p>
-      </div>
-    </div>
-
-    <div class="project-card">
-      <div class="project-image">Project Image</div>
-      <div class="project-content">
-        <h3>Embedded Sensor Platform</h3>
-        <p>Real-time terrain and motion classification system.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- INTERESTS -->
-<section class="section">
-  <h2>Research Interests</h2>
-
-  <div class="interests">
-    <div class="interest">Biomedical Devices</div>
-    <div class="interest">Microfluidics</div>
-    <div class="interest">Implantable Systems</div>
-    <div class="interest">Embedded Systems</div>
-    <div class="interest">Healthcare Tech</div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  © 2026 Chelsea Ogbonna
-</footer>
+function closePopup() {
+  document.getElementById("popup").style.display = "none";
+}
+</script>
 
 </body>
 </html>
-
