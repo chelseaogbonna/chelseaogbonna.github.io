@@ -4,337 +4,461 @@
   <title>Chelsea Ogbonna | Interactive Portfolio</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-<style>
+  <style>
 
-/* =======================
-   THEME
-======================= */
+  /* =========================================================
+      THEME & VARIABLES
+  ========================================================= */
+  :root {
+    --bg: #edf2fb;
+    --bg2: #e2eafc;
 
-:root {
-  --bg: #edf2fb;
-  --card: #d7e3fc;
-  --accent: #abc4ff;
-  --text: #1f2937;
-}
+    --card: #d7e3fc;
+    --card-hover: #ccdbfd;
 
-/* =======================
-   BASE
-======================= */
+    --text: #1f2937;
+    --muted: #4b5563;
 
-body {
-  margin: 0;
-  font-family: "Inter", sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  overflow-x: hidden;
-}
+    --accent: #abc4ff;
+    --accent-soft: #b6ccfe;
+    --border: #c1d3fe;
 
-/* =======================
-   FLOATING NAV (GAME UI)
-======================= */
-
-nav {
-  position: fixed;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 18px;
-  padding: 12px 20px;
-  background: rgba(255,255,255,0.6);
-  backdrop-filter: blur(12px);
-  border-radius: 999px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-  z-index: 100;
-}
-
-nav a {
-  text-decoration: none;
-  color: var(--text);
-  font-weight: 500;
-  padding: 6px 10px;
-  border-radius: 8px;
-  transition: 0.2s;
-}
-
-nav a:hover {
-  background: var(--accent);
-  transform: scale(1.1);
-}
-
-/* =======================
-   HERO (CINEMATIC DEPTH)
-======================= */
-
-.hero {
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 10%;
-  position: relative;
-}
-
-/* floating glow background */
-.hero::before {
-  content: "";
-  position: absolute;
-  width: 600px;
-  height: 600px;
-  background: var(--accent);
-  filter: blur(120px);
-  opacity: 0.4;
-  top: -100px;
-  left: -100px;
-  z-index: 0;
-}
-
-.hero-text {
-  z-index: 2;
-  max-width: 600px;
-}
-
-.hero h1 {
-  font-size: 64px;
-  margin: 0;
-  animation: floatText 3s ease-in-out infinite;
-}
-
-@keyframes floatText {
-  0%,100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
-}
-
-.hero-image img {
-  width: 320px;
-  border-radius: 20px;
-  border: 4px solid white;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.2);
-  transition: 0.3s;
-}
-
-.hero-image img:hover {
-  transform: scale(1.08) rotate(2deg);
-}
-
-/* =======================
-   BUTTONS (GAME FEEL)
-======================= */
-
-.button {
-  display: inline-block;
-  padding: 12px 18px;
-  margin-top: 20px;
-  background: var(--accent);
-  border-radius: 10px;
-  text-decoration: none;
-  color: black;
-  transition: 0.2s;
-}
-
-.button:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
-}
-
-/* =======================
-   STATS (XP STYLE CARDS)
-======================= */
-
-.stats {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  padding: 80px 10%;
-}
-
-.stat {
-  background: var(--card);
-  padding: 25px;
-  border-radius: 16px;
-  width: 200px;
-  text-align: center;
-  transition: 0.3s;
-}
-
-.stat:hover {
-  transform: translateY(-10px) scale(1.05);
-}
-
-/* animated number feel */
-.stat h2 {
-  font-size: 40px;
-  margin: 0;
-}
-
-/* =======================
-   PROJECTS (INTERACTIVE CARDS)
-======================= */
-
-.projects {
-  display: flex;
-  gap: 20px;
-  justify-content: center;
-  padding: 40px 10%;
-  flex-wrap: wrap;
-}
-
-.project {
-  width: 300px;
-  background: var(--card);
-  border-radius: 16px;
-  overflow: hidden;
-  transition: 0.3s;
-  cursor: pointer;
-}
-
-.project:hover {
-  transform: translateY(-12px) rotate(-1deg);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-}
-
-.project .img {
-  height: 160px;
-  background: #2d3138;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--accent);
-  transition: 0.3s;
-}
-
-.project:hover .img {
-  transform: scale(1.1);
-}
-
-/* =======================
-   INTERESTS (BUBBLES)
-======================= */
-
-.interests {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  flex-wrap: wrap;
-  padding: 60px;
-}
-
-.tag {
-  background: var(--card);
-  padding: 10px 16px;
-  border-radius: 999px;
-  transition: 0.2s;
-  cursor: pointer;
-}
-
-.tag:hover {
-  transform: translateY(-6px);
-  background: var(--accent);
-}
-
-/* =======================
-   SCROLL REVEAL (CINEMATIC)
-======================= */
-
-section {
-  opacity: 0;
-  transform: translateY(40px);
-  animation: fadeUp 1s forwards;
-}
-
-section:nth-child(2) { animation-delay: 0.1s; }
-section:nth-child(3) { animation-delay: 0.2s; }
-section:nth-child(4) { animation-delay: 0.3s; }
-
-@keyframes fadeUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
+    --nav-bg: rgba(237, 242, 251, 0.6);
   }
-}
 
-footer {
-  text-align: center;
-  padding: 50px;
-  opacity: 0.6;
-}
+  * {
+    box-sizing: border-box;
+  }
 
-</style>
+  body {
+    margin: 0;
+    font-family: "Inter", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* =========================================================
+      NAV (FLOATING STICKY)
+  ========================================================= */
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 10%;
+    position: sticky;
+    top: 0;
+    background: var(--nav-bg);
+    backdrop-filter: blur(12px);
+    z-index: 100;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+  }
+
+  .logo {
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--text);
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 18px;
+  }
+
+  .nav-links a {
+    color: var(--text);
+    text-decoration: none;
+    font-weight: 500;
+    padding: 6px 12px;
+    border-radius: 8px;
+    transition: 0.2s ease;
+  }
+
+  .nav-links a:hover {
+    background: var(--accent);
+    color: #0b0f19;
+    transform: scale(1.05);
+  }
+  
+
+  /* =========================================================
+      HERO (CINEMATIC DEPTH & ANIMATIONS)
+  ========================================================= */
+  .hero {
+    min-height: 75vh;
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    align-items: center;
+    gap: 50px;
+    padding: 60px 10% 40px;
+    position: relative;
+  }
+
+  /* floating glow background */
+  .hero::before {
+    content: "";
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    background: var(--accent);
+    filter: blur(120px);
+    opacity: 0.4;
+    top: -100px;
+    left: -100px;
+    z-index: 0;
+  }
+
+  .hero-text {
+    z-index: 2;
+  }
+
+  .hero-text h1 {
+    font-size: 64px;
+    margin: 0 0 10px;
+    animation: floatText 3s ease-in-out infinite;
+  }
+
+  @keyframes floatText {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+  }
+
+  .hero-text h2 {
+    font-weight: 500;
+    margin: 0 0 15px;
+    opacity: 0.85;
+  }
+
+  .hero-text p {
+    font-size: 18px;
+    opacity: 0.85;
+    max-width: 650px;
+  }
+
+  .hero-image {
+    z-index: 2;
+  }
+
+  .hero-image img {
+    width: 100%;
+    max-width: 340px;
+    border-radius: 20px;
+    border: 5px solid white;
+    display: block;
+    margin: 0 auto;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.18);
+    transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+
+  .hero-image img:hover {
+    transform: scale(1.08) rotate(2deg);
+  }
+
+  /* =========================================================
+      BUTTONS (GAME FEEL)
+  ========================================================= */
+  .button-container {
+    margin-top: 25px;
+  }
+
+  .button {
+    display: inline-block;
+    padding: 12px 22px;
+    margin-right: 10px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 600;
+    background: var(--accent);
+    color: #0b0f19;
+    transition: 0.2s ease;
+  }
+
+  .button:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  }
+
+  .button-secondary {
+    background: var(--card);
+    border: 1px solid var(--border);
+  }
+
+  /* =========================================================
+      SECTIONS & SCROLL REVEAL EFFCTS
+  ========================================================= */
+  .section {
+    padding: 80px 10%;
+    opacity: 0;
+    transform: translateY(40px);
+    animation: fadeUp 1s forwards;
+  }
+
+  .section:nth-child(2) { animation-delay: 0.1s; }
+  .section:nth-child(3) { animation-delay: 0.2s; }
+  .section:nth-child(4) { animation-delay: 0.3s; }
+
+  @keyframes fadeUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .section h2 {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  /* =========================================================
+      STATS (XP STYLE CARDS)
+  ========================================================= */
+  .stats {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+  }
+
+  .stat-card {
+    background: var(--card);
+    border-radius: 16px;
+    padding: 30px;
+    width: 220px;
+    text-align: center;
+    transition: 0.3s ease;
+  }
+
+  .stat-card:hover {
+    transform: translateY(-10px) scale(1.05);
+    background: var(--card-hover);
+  }
+
+  .stat-card h3 {
+    font-size: 40px;
+    margin: 0;
+  }
+
+  .stat-card p {
+    margin: 5px 0 0;
+    font-weight: 500;
+  }
+
+  /* =========================================================
+      PROJECTS (INTERACTIVE CARDS)
+  ========================================================= */
+  .projects {
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .project-card {
+    background: var(--card);
+    width: 320px;
+    border-radius: 16px;
+    overflow: hidden;
+    transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+  }
+
+  .project-card:hover {
+    transform: translateY(-12px) rotate(-1deg);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    background: var(--card-hover);
+  }
+
+  .project-image {
+    height: 180px;
+    background: #2d3138;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent);
+    transition: 0.3s ease;
+    font-weight: 600;
+  }
+
+  .project-card:hover .project-image {
+    transform: scale(1.05);
+  }
+
+  .project-content {
+    padding: 20px;
+  }
+
+  .project-content h3 {
+    margin: 0 0 8px;
+  }
+
+  .project-content p {
+    margin: 0;
+    font-size: 14px;
+    color: var(--muted);
+  }
+
+  /* =========================================================
+      INTERESTS (BUBBLES)
+  ========================================================= */
+  .interests {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .interest {
+    background: var(--card);
+    padding: 12px 20px;
+    border-radius: 999px;
+    transition: 0.2s ease;
+    cursor: pointer;
+    font-weight: 500;
+  }
+
+  .interest:hover {
+    transform: translateY(-6px);
+    background: var(--accent);
+  }
+
+  /* =========================================================
+      FOOTER
+  ========================================================= */
+  footer {
+    text-align: center;
+    padding: 60px 20px;
+    opacity: 0.6;
+  }
+
+  /* =========================================================
+      RESPONSIVENESS
+  ========================================================= */
+  @media (max-width: 900px) {
+    .hero {
+      grid-template-columns: 1fr;
+      text-align: center;
+      padding-top: 40px;
+    }
+
+    .hero::before {
+      width: 300px;
+      height: 300px;
+    }
+
+    .hero-text h1 {
+      font-size: 48px;
+    }
+
+    .nav-links {
+      gap: 10px;
+    }
+  }
+
+  </style>
 </head>
 
 <body>
 
-<!-- NAV (floating game UI) -->
 <nav>
-  <a href="index.html">Home</a>
-  <a href="about.html">About</a>
-  <a href="projects.html">Projects</a>
-  <a href="contact.html">Contact</a>
+  <a class="logo" href="index.html">Chelsea Ogbonna</a>
+
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="projects.html">Projects</a>
+    <a href="leadership.html">Leadership</a>
+    <a href="contact.html">Contact</a>
+  </div>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
 
   <div class="hero-text">
     <h1>Chelsea Ogbonna</h1>
+    <h2>Biomedical • Mechanical • Research Engineer</h2>
 
     <p>
-      Biomedical + Mechanical Engineer building systems that feel alive.
+      Engineering healthcare solutions through research, design, and innovation.
+      Building biomedical devices, microfluidic systems, implantable technologies,
+      and embedded sensing platforms.
     </p>
 
-    <a class="button" href="projects.html">Enter Projects →</a>
+    <div class="button-container">
+      <a class="button" href="projects.html">View Projects →</a>
+      <a class="button button-secondary" href="contact.html">Contact Me</a>
+    </div>
   </div>
 
   <div class="hero-image">
-    <img src="Chelseaprofilepics.JPG">
+    <img src="Chelseaprofilepics.JPG" alt="Chelsea Ogbonna Profile Picture">
   </div>
 
 </section>
 
-<!-- STATS -->
-<section class="stats">
+<section class="section">
+  <h2>Highlights</h2>
 
-  <div class="stat">
-    <h2>5+</h2>
-    Projects
+  <div class="stats">
+    <div class="stat-card">
+      <h3>5+</h3>
+      <p>Projects</p>
+    </div>
+    <div class="stat-card">
+      <h3>3+</h3>
+      <p>Research Roles</p>
+    </div>
+    <div class="stat-card">
+      <h3>50+</h3>
+      <p>Students Impacted</p>
+    </div>
   </div>
-
-  <div class="stat">
-    <h2>3+</h2>
-    Labs
-  </div>
-
-  <div class="stat">
-    <h2>50+</h2>
-    Students
-  </div>
-
 </section>
 
-<!-- PROJECTS -->
-<section class="projects">
+<section class="section">
+  <h2>Featured Projects</h2>
 
-  <div class="project">
-    <div class="img">Microfluidics</div>
-    <div style="padding:15px;">DLD Device</div>
+  <div class="projects">
+    <div class="project-card">
+      <div class="project-image">Microfluidics</div>
+      <div class="project-content">
+        <h3>Microfluidic Device</h3>
+        <p>Biomedical separation system using DLD structures.</p>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-image">Implant</div>
+      <div class="project-content">
+        <h3>Implantable Device</h3>
+        <p>Wireless power transfer biomedical system.</p>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-image">Sensing</div>
+      <div class="project-content">
+        <h3>Embedded Sensor Platform</h3>
+        <p>Real-time terrain and motion classification system.</p>
+      </div>
+    </div>
   </div>
-
-  <div class="project">
-    <div class="img">Implant</div>
-    <div style="padding:15px;">Wireless Pacemaker</div>
-  </div>
-
 </section>
 
-<!-- INTERESTS -->
-<section class="interests">
+<section class="section">
+  <h2>Research Interests</h2>
 
-  <div class="tag">Biomedical Devices</div>
-  <div class="tag">Microfluidics</div>
-  <div class="tag">Embedded Systems</div>
-
+  <div class="interests">
+    <div class="interest">Biomedical Devices</div>
+    <div class="interest">Microfluidics</div>
+    <div class="interest">Implantable Systems</div>
+    <div class="interest">Embedded Systems</div>
+    <div class="interest">Healthcare Tech</div>
+  </div>
 </section>
 
 <footer>
