@@ -29,7 +29,7 @@ body {
 }
 
 /* =========================
-   NAV (clean brand + floating pill links)
+   NAV (IMPROVED VISIBILITY)
 ========================= */
 
 nav {
@@ -42,7 +42,7 @@ nav {
   z-index: 100;
 }
 
-/* Brand (NO bar) */
+/* Brand (no bar) */
 .logo {
   font-weight: 700;
   font-size: 18px;
@@ -50,18 +50,29 @@ nav {
   text-decoration: none;
 }
 
-/* Floating nav bar */
+/* Floating nav bar (MORE VISIBLE NOW) */
 .nav-links {
   display: flex;
   gap: 10px;
-  padding: 8px 12px;
+  padding: 10px 14px;
+
   border-radius: 999px;
-  background: rgba(237,242,251,0.85);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(193, 211, 254, 0.4);
+
+  /* stronger glass / less transparent */
+  background: rgba(255, 255, 255, 0.65);
+
+  /* stronger blur */
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  /* clearer border */
+  border: 1px solid rgba(193, 211, 254, 0.9);
+
+  /* stronger depth so it stands out */
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.10);
 }
 
-/* nav links */
+/* links */
 .nav-links a {
   text-decoration: none;
   color: var(--text);
@@ -71,9 +82,11 @@ nav {
   font-weight: 500;
 }
 
+/* hover effect */
 .nav-links a:hover {
   background: var(--accent);
-  transform: translateY(-2px);
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.08);
 }
 
 /* =========================
