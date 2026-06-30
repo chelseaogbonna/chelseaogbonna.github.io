@@ -2,18 +2,44 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Chelsea Ogbonna | Cyber City v2</title>
+<title>Chelsea Ogbonna | Cyber City v3</title>
 
 <style>
 body {
   margin: 0;
   overflow: hidden;
   font-family: Arial;
-  background: #060913;
+  background: #050814;
 }
 
 /* =========================
-   CAMERA SYSTEM
+   LOADING SCREEN (CINEMATIC)
+========================= */
+#loading {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background: radial-gradient(circle, #1a2233, #050814);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: white;
+  z-index: 999;
+  animation: fadeOut 2s ease 2.5s forwards;
+}
+
+#loading h1 {
+  color: #abc4ff;
+  margin-bottom: 10px;
+}
+
+@keyframes fadeOut {
+  to { opacity: 0; visibility: hidden; }
+}
+
+/* =========================
+   CAMERA WORLD
 ========================= */
 #camera {
   width: 100vw;
@@ -22,12 +48,11 @@ body {
   position: relative;
 }
 
-/* WORLD (moves inside camera) */
 #world {
   position: absolute;
-  width: 2200px;
-  height: 1400px;
-  background: radial-gradient(circle at center, #1a2233, #060913);
+  width: 2400px;
+  height: 1500px;
+  background: radial-gradient(circle at center, #1a2233, #050814);
 }
 
 /* GRID */
@@ -36,8 +61,8 @@ body {
   width: 100%;
   height: 100%;
   background-image:
-    linear-gradient(rgba(171,196,255,0.07) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(171,196,255,0.07) 1px, transparent 1px);
+    linear-gradient(rgba(171,196,255,0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(171,196,255,0.08) 1px, transparent 1px);
   background-size: 80px 80px;
 }
 
@@ -50,7 +75,7 @@ body {
   height: 35px;
   background: #abc4ff;
   border-radius: 10px;
-  box-shadow: 0 0 25px rgba(171,196,255,0.7);
+  box-shadow: 0 0 30px rgba(171,196,255,0.8);
 }
 
 #player::before,
@@ -61,9 +86,10 @@ body {
   height: 12px;
   background: white;
   border-radius: 50%;
-  bottom: -5px;
+  bottom: -6px;
 }
 
+/* wheels */
 #player::before { left: 10px; }
 #player::after { right: 10px; }
 
@@ -72,9 +98,9 @@ body {
 ========================= */
 .building {
   position: absolute;
-  width: 160px;
-  height: 160px;
-  background: #111827;
+  width: 170px;
+  height: 170px;
+  background: #0f172a;
   border: 2px solid #abc4ff;
   border-radius: 14px;
   color: white;
@@ -82,18 +108,20 @@ body {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: 0.2s;
+  transition: 0.25s;
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
 }
 
 .building:hover {
-  transform: scale(1.05);
+  transform: scale(1.07);
+  box-shadow: 0 0 35px rgba(171,196,255,0.5);
 }
 
 /* positions */
-#about { top: 200px; left: 300px; }
-#projects { top: 600px; left: 900px; }
-#leadership { top: 900px; left: 400px; }
-#contact { top: 300px; left: 1500px; }
+#about { top: 250px; left: 250px; }
+#projects { top: 650px; left: 950px; }
+#leadership { top: 950px; left: 450px; }
+#contact { top: 350px; left: 1600px; }
 
 /* =========================
    HUD
@@ -107,7 +135,29 @@ body {
 }
 
 /* =========================
-   SECTION PANELS (REAL CONTENT)
+   MINIMAP (NEW FEATURE)
+========================= */
+#minimap {
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+  width: 160px;
+  height: 120px;
+  background: rgba(10,15,30,0.8);
+  border: 1px solid #abc4ff;
+  border-radius: 10px;
+}
+
+#dot {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: #abc4ff;
+  border-radius: 50%;
+}
+
+/* =========================
+   PANELS
 ========================= */
 .panel {
   position: fixed;
@@ -129,15 +179,6 @@ body {
 
 .panel h2 {
   color: #abc4ff;
-  margin-top: 0;
-}
-
-.close {
-  margin-top: 20px;
-  padding: 10px;
-  background: #abc4ff;
-  border: none;
-  cursor: pointer;
 }
 
 /* =========================
@@ -162,9 +203,15 @@ body {
 
 <body>
 
+<!-- LOADING SCREEN -->
+<div id="loading">
+  <h1>Initializing Cyber City</h1>
+  <p>Loading Chelsea Ogbonna Portfolio...</p>
+</div>
+
+<!-- WORLD -->
 <div id="camera">
   <div id="world">
-
     <div class="grid"></div>
 
     <div id="player"></div>
@@ -173,37 +220,38 @@ body {
     <div class="building" id="projects">PROJECTS</div>
     <div class="building" id="leadership">LEADERSHIP</div>
     <div class="building" id="contact">CONTACT</div>
-
   </div>
 </div>
 
+<!-- HUD -->
 <div id="hud">
-  Move: WASD / Arrows | E or Click buildings
+  WASD / Arrows • E or Click Buildings
 </div>
 
-<!-- REAL PANELS -->
+<!-- MINIMAP -->
+<div id="minimap">
+  <div id="dot"></div>
+</div>
+
+<!-- PANELS -->
 <div class="panel" id="aboutPanel">
-  <h2>About Me</h2>
-  <p>Biomedical + Mechanical Engineering student focused on microfluidics, implantable systems, and robotics.</p>
-  <button class="close" onclick="closePanel('aboutPanel')">Close</button>
+  <h2>About</h2>
+  <p>Biomedical + Mechanical Engineer focused on microfluidics, robotics, and implantable systems.</p>
 </div>
 
 <div class="panel" id="projectsPanel">
   <h2>Projects</h2>
-  <p>• Microfluidic DLD Device<br>• Terrain Analysis Robot<br>• Implantable Pacemaker System</p>
-  <button class="close" onclick="closePanel('projectsPanel')">Close</button>
+  <p>• Microfluidic DLD Device<br>• Terrain Analysis Platform<br>• Implantable Pacemaker System</p>
 </div>
 
 <div class="panel" id="leadershipPanel">
   <h2>Leadership</h2>
-  <p>NSBE Academic Chair — led 50+ student collaboration events and study sessions.</p>
-  <button class="close" onclick="closePanel('leadershipPanel')">Close</button>
+  <p>NSBE Academic Chair — led 50+ student initiatives and cross-org collaboration.</p>
 </div>
 
 <div class="panel" id="contactPanel">
   <h2>Contact</h2>
-  <p>Email, LinkedIn, GitHub links go here.</p>
-  <button class="close" onclick="closePanel('contactPanel')">Close</button>
+  <p>Email • LinkedIn • GitHub</p>
 </div>
 
 <script>
@@ -213,50 +261,54 @@ body {
 ========================= */
 
 let player = document.getElementById("player");
-let world = document.getElementById("world");
-let camera = document.getElementById("camera");
 
-let x = 120;
-let y = 120;
+let x = 150;
+let y = 150;
 
 const speed = 10;
 
-/* camera offset */
 let camX = 0;
 let camY = 0;
 
 document.addEventListener("keydown", (e) => {
 
-  if (e.key === "ArrowRight" || e.key === "d") x += speed;
-  if (e.key === "ArrowLeft" || e.key === "a") x -= speed;
-  if (e.key === "ArrowUp" || e.key === "w") y -= speed;
-  if (e.key === "ArrowDown" || e.key === "s") y += speed;
+  if (e.key === "d" || e.key === "ArrowRight") x += speed;
+  if (e.key === "a" || e.key === "ArrowLeft") x -= speed;
+  if (e.key === "w" || e.key === "ArrowUp") y -= speed;
+  if (e.key === "s" || e.key === "ArrowDown") y += speed;
 
   player.style.left = x + "px";
   player.style.top = y + "px";
 
   updateCamera();
+  updateMinimap();
 
   if (e.key === "e") checkBuildings();
 });
 
-/* =========================
-   SMOOTH CAMERA FOLLOW
-========================= */
+/* smooth camera */
 function updateCamera() {
+  camX += (x - window.innerWidth/2 - camX) * 0.08;
+  camY += (y - window.innerHeight/2 - camY) * 0.08;
 
-  camX += (x - window.innerWidth / 2 - camX) * 0.08;
-  camY += (y - window.innerHeight / 2 - camY) * 0.08;
-
-  world.style.transform = `translate(${-camX}px, ${-camY}px)`;
+  document.getElementById("world")
+    .style.transform = `translate(${-camX}px, ${-camY}px)`;
 }
 
 /* =========================
-   INTERACTION
+   MINIMAP
+========================= */
+function updateMinimap() {
+  let dot = document.getElementById("dot");
+  dot.style.left = (x / 15) + "px";
+  dot.style.top = (y / 12) + "px";
+}
+
+/* =========================
+   BUILDING INTERACTION
 ========================= */
 function checkBuildings() {
   document.querySelectorAll(".building").forEach(b => {
-
     const r1 = player.getBoundingClientRect();
     const r2 = b.getBoundingClientRect();
 
@@ -274,24 +326,18 @@ document.querySelectorAll(".building").forEach(b => {
   b.onclick = () => openPanel(b.id + "Panel");
 });
 
-/* =========================
-   PANELS
-========================= */
 function openPanel(id) {
   document.getElementById(id).classList.add("active");
 }
 
-function closePanel(id) {
-  document.getElementById(id).classList.remove("active");
-}
-
-/* init */
-updateCamera();
-
 /* =========================
-   PARTICLES
+   INIT
 ========================= */
-for (let i = 0; i < 35; i++) {
+updateCamera();
+updateMinimap();
+
+/* particles */
+for (let i = 0; i < 40; i++) {
   let p = document.createElement("div");
   p.className = "particle";
   p.style.left = Math.random() * window.innerWidth + "px";
