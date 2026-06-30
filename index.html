@@ -1,166 +1,187 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Chelsea Ogbonna | Portfolio</title>
+  <title>Chelsea Ogbonna | Interactive Portfolio</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
+
+/* =======================
+   THEME
+======================= */
 
 :root {
   --bg: #edf2fb;
   --card: #d7e3fc;
   --accent: #abc4ff;
   --text: #1f2937;
-  --border: #c1d3fe;
 }
 
-/* =========================
+/* =======================
    BASE
-========================= */
+======================= */
 
 body {
   margin: 0;
   font-family: "Inter", sans-serif;
   background: var(--bg);
   color: var(--text);
+  overflow-x: hidden;
 }
 
-/* =========================
-   NAV
-========================= */
+/* =======================
+   FLOATING NAV (GAME UI)
+======================= */
 
 nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 18px 10%;
-  position: sticky;
-  top: 0;
-  background: rgba(237,242,251,0.9);
-  backdrop-filter: blur(10px);
-}
-
-.logo {
-  font-weight: 700;
-  text-decoration: none;
-  color: var(--text);
-}
-
-.nav-links {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
   gap: 18px;
+  padding: 12px 20px;
+  background: rgba(255,255,255,0.6);
+  backdrop-filter: blur(12px);
+  border-radius: 999px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  z-index: 100;
 }
 
-.nav-links a {
+nav a {
   text-decoration: none;
   color: var(--text);
+  font-weight: 500;
   padding: 6px 10px;
-  border-radius: 6px;
+  border-radius: 8px;
   transition: 0.2s;
 }
 
-.nav-links a:hover {
+nav a:hover {
   background: var(--accent);
+  transform: scale(1.1);
 }
 
-/* =========================
-   HERO
-========================= */
+/* =======================
+   HERO (CINEMATIC DEPTH)
+======================= */
 
 .hero {
-  display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  padding: 60px 10%;
+  height: 100vh;
+  display: flex;
   align-items: center;
-  gap: 40px;
+  justify-content: space-between;
+  padding: 0 10%;
+  position: relative;
+}
+
+/* floating glow background */
+.hero::before {
+  content: "";
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background: var(--accent);
+  filter: blur(120px);
+  opacity: 0.4;
+  top: -100px;
+  left: -100px;
+  z-index: 0;
+}
+
+.hero-text {
+  z-index: 2;
+  max-width: 600px;
 }
 
 .hero h1 {
-  font-size: 60px;
+  font-size: 64px;
   margin: 0;
+  animation: floatText 3s ease-in-out infinite;
 }
 
-.hero h2 {
-  font-weight: 500;
-  opacity: 0.8;
+@keyframes floatText {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
 }
 
 .hero-image img {
-  width: 100%;
-  max-width: 320px;
-  border-radius: 18px;
-  border: 5px solid white;
-  box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-  transition: 0.3s ease;
+  width: 320px;
+  border-radius: 20px;
+  border: 4px solid white;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+  transition: 0.3s;
 }
 
 .hero-image img:hover {
-  transform: scale(1.05) rotate(1deg);
+  transform: scale(1.08) rotate(2deg);
 }
 
-/* =========================
-   BUTTONS
-========================= */
+/* =======================
+   BUTTONS (GAME FEEL)
+======================= */
 
 .button {
   display: inline-block;
-  padding: 10px 18px;
+  padding: 12px 18px;
+  margin-top: 20px;
   background: var(--accent);
-  color: black;
-  border-radius: 8px;
+  border-radius: 10px;
   text-decoration: none;
-  margin-right: 10px;
+  color: black;
   transition: 0.2s;
 }
 
 .button:hover {
-  transform: translateY(-2px);
-  filter: brightness(0.9);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
 }
 
-/* =========================
-   STATS (INTERACTIVE)
-========================= */
+/* =======================
+   STATS (XP STYLE CARDS)
+======================= */
 
 .stats {
   display: flex;
   justify-content: center;
   gap: 20px;
-  flex-wrap: wrap;
-  padding: 40px 10%;
+  padding: 80px 10%;
 }
 
-.stat-card {
+.stat {
   background: var(--card);
   padding: 25px;
   border-radius: 16px;
   width: 200px;
   text-align: center;
   transition: 0.3s;
-  cursor: pointer;
 }
 
-.stat-card:hover {
-  transform: translateY(-10px) scale(1.03);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+.stat:hover {
+  transform: translateY(-10px) scale(1.05);
 }
 
-/* =========================
-   PROJECTS (GAME-LIKE)
-========================= */
+/* animated number feel */
+.stat h2 {
+  font-size: 40px;
+  margin: 0;
+}
+
+/* =======================
+   PROJECTS (INTERACTIVE CARDS)
+======================= */
 
 .projects {
   display: flex;
   gap: 20px;
   justify-content: center;
+  padding: 40px 10%;
   flex-wrap: wrap;
-  padding: 20px 10%;
 }
 
-.project-card {
+.project {
   width: 300px;
   background: var(--card);
   border-radius: 16px;
@@ -169,12 +190,12 @@ nav {
   cursor: pointer;
 }
 
-.project-card:hover {
+.project:hover {
   transform: translateY(-12px) rotate(-1deg);
-  box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
 }
 
-.project-image {
+.project .img {
   height: 160px;
   background: #2d3138;
   display: flex;
@@ -184,43 +205,43 @@ nav {
   transition: 0.3s;
 }
 
-.project-card:hover .project-image {
+.project:hover .img {
   transform: scale(1.1);
 }
 
-/* =========================
-   INTERESTS (BUBBLY)
-========================= */
+/* =======================
+   INTERESTS (BUBBLES)
+======================= */
 
 .interests {
   display: flex;
   justify-content: center;
+  gap: 10px;
   flex-wrap: wrap;
-  gap: 12px;
-  padding: 40px;
+  padding: 60px;
 }
 
-.interest {
+.tag {
   background: var(--card);
   padding: 10px 16px;
   border-radius: 999px;
-  transition: 0.3s;
+  transition: 0.2s;
   cursor: pointer;
 }
 
-.interest:hover {
+.tag:hover {
   transform: translateY(-6px);
   background: var(--accent);
 }
 
-/* =========================
-   FADE IN (SMOOTH ENTRY)
-========================= */
+/* =======================
+   SCROLL REVEAL (CINEMATIC)
+======================= */
 
 section {
   opacity: 0;
-  transform: translateY(20px);
-  animation: fadeUp 0.8s forwards;
+  transform: translateY(40px);
+  animation: fadeUp 1s forwards;
 }
 
 section:nth-child(2) { animation-delay: 0.1s; }
@@ -236,7 +257,7 @@ section:nth-child(4) { animation-delay: 0.3s; }
 
 footer {
   text-align: center;
-  padding: 40px;
+  padding: 50px;
   opacity: 0.6;
 }
 
@@ -245,31 +266,25 @@ footer {
 
 <body>
 
+<!-- NAV (floating game UI) -->
 <nav>
-  <a class="logo" href="index.html">Chelsea Ogbonna</a>
-
-  <div class="nav-links">
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="projects.html">Projects</a>
-    <a href="leadership.html">Leadership</a>
-    <a href="contact.html">Contact</a>
-  </div>
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="projects.html">Projects</a>
+  <a href="contact.html">Contact</a>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
 
-  <div>
+  <div class="hero-text">
     <h1>Chelsea Ogbonna</h1>
-    <h2>Biomedical • Mechanical • Research Engineer</h2>
 
     <p>
-      Engineering systems that merge biology, mechanics, and computation.
+      Biomedical + Mechanical Engineer building systems that feel alive.
     </p>
 
-    <a class="button" href="projects.html">View Projects</a>
-    <a class="button" href="contact.html">Contact</a>
+    <a class="button" href="projects.html">Enter Projects →</a>
   </div>
 
   <div class="hero-image">
@@ -279,54 +294,47 @@ footer {
 </section>
 
 <!-- STATS -->
-<section>
-  <div class="stats">
-    <div class="stat-card">
-      <h2>5+</h2>
-      Projects
-    </div>
+<section class="stats">
 
-    <div class="stat-card">
-      <h2>3+</h2>
-      Research Roles
-    </div>
-
-    <div class="stat-card">
-      <h2>50+</h2>
-      Students Impacted
-    </div>
+  <div class="stat">
+    <h2>5+</h2>
+    Projects
   </div>
+
+  <div class="stat">
+    <h2>3+</h2>
+    Labs
+  </div>
+
+  <div class="stat">
+    <h2>50+</h2>
+    Students
+  </div>
+
 </section>
 
 <!-- PROJECTS -->
-<section>
-  <div class="projects">
+<section class="projects">
 
-    <div class="project-card">
-      <div class="project-image">Microfluidic Device</div>
-      <div class="project-content">
-        <h3>Syncytial Knot Device</h3>
-      </div>
-    </div>
-
-    <div class="project-card">
-      <div class="project-image">Implant System</div>
-      <div class="project-content">
-        <h3>TAVI Pacemaker</h3>
-      </div>
-    </div>
-
+  <div class="project">
+    <div class="img">Microfluidics</div>
+    <div style="padding:15px;">DLD Device</div>
   </div>
+
+  <div class="project">
+    <div class="img">Implant</div>
+    <div style="padding:15px;">Wireless Pacemaker</div>
+  </div>
+
 </section>
 
 <!-- INTERESTS -->
-<section>
-  <div class="interests">
-    <div class="interest">Biomedical Devices</div>
-    <div class="interest">Microfluidics</div>
-    <div class="interest">Embedded Systems</div>
-    <div class="interest">Simulation</div>
-  </div>
+<section class="interests">
+
+  <div class="tag">Biomedical Devices</div>
+  <div class="tag">Microfluidics</div>
+  <div class="tag">Embedded Systems</div>
+
 </section>
 
 <footer>
