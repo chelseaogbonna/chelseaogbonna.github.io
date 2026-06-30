@@ -1,93 +1,282 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>BME HUD Portfolio</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chelsea Ogbonna | Interactive BME Portfolio</title>
 
 <style>
+:root {
+  --bg-color: #050b14;
+  --bio-glow: #00f2fe;
+  --cell-membrane: #4facfe;
+  --text-light: #e0f2fe;
+}
+
 body {
   margin: 0;
-  background: #000814;
-  font-family: Arial;
-  color: #abc4ff;
+  overflow: hidden;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: var(--bg-color);
+  color: var(--text-light);
+}
+
+/* ===== MICROFLUIDIC / BIOLOGICAL LANDSCAPE ===== */
+.bio-matrix {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background: radial-gradient(circle at center, #0a192f 0%, #050b14 100%);
   overflow: hidden;
 }
 
-/* GRID HUD */
-.hud {
-  width: 100vw;
-  height: 100vh;
-  background: radial-gradient(circle, #0b0f19, black);
-  position: relative;
+/* MICROFLUIDIC CHANNEL (Replaced the road) */
+.fluid-channel {
+  position: absolute;
+  bottom: 120px;
+  width: 100%;
+  height: 100px;
+  background: rgba(79, 172, 254, 0.05);
+  border-top: 2px dashed rgba(0, 242, 254, 0.3);
+  border-bottom: 2px dashed rgba(0, 242, 254, 0.3);
+  box-shadow: inset 0 0 20px rgba(0, 242, 254, 0.1);
 }
 
-/* MODULES */
-.module {
+/* FLOATING CELL / NANOPARTICLE (Replaced the car) */
+.cell-courier {
   position: absolute;
-  width: 200px;
-  height: 120px;
-  border: 2px solid #abc4ff;
-  background: rgba(171,196,255,0.05);
-  padding: 10px;
+  bottom: 135px;
+  left: -150px;
+  width: 70px;
+  height: 70px;
+  background: radial-gradient(circle at 30% 30%, #00f2fe, #4facfe);
+  border-radius: 50%;
+  animation: cellular-flow 12s linear infinite;
   cursor: pointer;
+  box-shadow: 0 0 25px rgba(0, 242, 254, 0.8), inset -5px -5px 15px rgba(0,0,0,0.3);
+  border: 2px solid rgba(255, 255, 255, 0.4);
+}
+
+/* Receptor proteins on the cell surface */
+.cell-courier::before, .cell-courier::after {
+  content: "";
+  position: absolute;
+  background: #00f2fe;
+  border-radius: 50%;
+}
+.cell-courier::before { width: 10px; height: 10px; top: -5px; left: 30px; box-shadow: 0 0 10px #00f2fe; }
+.cell-courier::after { width: 8px; height: 8px; bottom: 15px; right: -4px; box-shadow: 0 0 10px #00f2fe; }
+
+/* FLOW ANIMATION */
+@keyframes cellular-flow {
+  0% { left: -100px; transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(180deg); }
+  100% { left: 110%; transform: translateY(0px) rotate(360deg); }
+}
+
+/* Pause flow on hover */
+.cell-courier:hover {
+  animation-play-state: paused;
+  box-shadow: 0 0 35px #00f2fe, inset -5px -5px 15px rgba(0,0,0,0.3);
+}
+
+/* ===== BIO-VESSELS / LAB STATIONS (Replaced buildings) ===== */
+.bio-vessel {
+  position: absolute;
+  bottom: 260px;
+  width: 110px;
+  height: 180px;
+  background: rgba(10, 25, 47, 0.6);
+  border: 2px solid var(--cell-membrane);
+  border-radius: 40px 40px 15px 15px; /* Pod/cellular look */
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 15px rgba(79, 172, 254, 0.2);
+}
+
+.bio-vessel:hover {
+  transform: translateY(-15px) scale(1.05);
+  background: rgba(17, 38, 70, 0.8);
+  border-color: var(--bio-glow);
+  box-shadow: 0 0 30px rgba(0, 242, 254, 0.6);
+}
+
+/* Biological "Nucleus" inside the vessel */
+.vessel-core {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--bio-glow), transparent);
+  margin-bottom: 15px;
+  opacity: 0.7;
   transition: 0.3s;
 }
 
-.module:hover {
-  transform: scale(1.1);
-  background: rgba(171,196,255,0.2);
+.bio-vessel:hover .vessel-core {
+  opacity: 1;
+  transform: scale(1.2);
 }
 
-.m1 { top: 20%; left: 10%; }
-.m2 { top: 40%; left: 40%; }
-.m3 { top: 60%; left: 70%; }
-.m4 { top: 75%; left: 20%; }
+.vessel-label {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: var(--text-light);
+}
 
-/* POPUP */
-.popup {
+/* STATIONS POSITIONING */
+.node-about { left: 12%; }
+.node-projects { left: 34%; }
+.node-research { left: 56%; }
+.node-contact { left: 78%; }
+
+/* ===== INTERACTIVE MODAL / POPUP ===== */
+.bio-popup {
   position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%,-50%);
-  background: #0f172a;
-  border: 2px solid #abc4ff;
-  padding: 25px;
+  transform: translate(-50%, -50%) scale(0.9);
+  background: rgba(10, 20, 38, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 35px;
+  border-radius: 20px;
+  border: 2px solid var(--bio-glow);
   display: none;
-  width: 320px;
+  color: white;
+  width: 350px;
+  text-align: center;
+  box-shadow: 0 0 50px rgba(0, 242, 254, 0.3);
+  z-index: 100;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.bio-popup.active {
+  display: block;
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+}
+
+.bio-popup h2 {
+  margin-top: 0;
+  color: var(--bio-glow);
+  font-weight: 400;
+  letter-spacing: 1px;
+}
+
+.bio-popup p {
+  color: #94a3b8;
+  line-height: 1.6;
+}
+
+.close-btn {
+  margin-top: 20px;
+  padding: 10px 22px;
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  border: none;
+  color: #050b14;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 25px;
+  transition: 0.2s;
+}
+
+.close-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px var(--bio-glow);
+}
+
+/* HEADER / TITLE */
+.header-panel {
+  position: absolute;
+  top: 50px;
+  width: 100%;
+  text-align: center;
+  pointer-events: none;
+}
+
+.header-panel h1 {
+  margin: 0;
+  font-size: 46px;
+  font-weight: 300;
+  letter-spacing: 2px;
+  background: linear-gradient(to right, #fff, var(--bio-glow));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.header-panel p {
+  font-size: 16px;
+  color: #64748b;
+  margin-top: 10px;
 }
 </style>
 </head>
 
 <body>
 
-<div class="hud">
+<div class="bio-matrix">
 
-  <div class="module m1" onclick="openP('Biomechanics')">BIOMECH SYSTEM</div>
-  <div class="module m2" onclick="openP('Microfluidics')">FLUID SYSTEM</div>
-  <div class="module m3" onclick="openP('Implants')">IMPLANT SYSTEM</div>
-  <div class="module m4" onclick="openP('Embedded')">EMBEDDED SYSTEM</div>
+  <div class="header-panel">
+    <h1>Chelsea Ogbonna</h1>
+    <p>Biomedical Engineering Portfolio // Click a bioreactor node or isolate the flowing cell</p>
+  </div>
+
+  <div class="bio-vessel node-about" onclick="openPopup('About Me', 'Passionate about engineering elegant, microscopic solutions to macroscopic physiological challenges. Bridging the gap between cellular mechanics and real-world clinical tools.')">
+    <div class="vessel-core"></div>
+    <div class="vessel-label">About Me</div>
+  </div>
+
+  <div class="bio-vessel node-projects" onclick="openPopup('Engineering Projects', 'From hardware prototypes to smart algorithms. Deep dives into additive manufacturing variations, cellular assay engineering, and mechanical tracking platforms.')">
+    <div class="vessel-core"></div>
+    <div class="vessel-label">Projects</div>
+  </div>
+
+  <div class="bio-vessel node-research" onclick="openPopup('Research Focus', 'Investigating cutting-edge cell-free phenomena, soft molecular hydrogels, biomaterial degradation pathways, and cellular translation dynamics.')">
+    <div class="vessel-core"></div>
+    <div class="vessel-label">Research</div>
+  </div>
+
+  <div class="bio-vessel node-contact" onclick="openPopup('Connect', 'Let\'s collaborate on the next wave of bio-innovation. Reach out via email or professional networks to discuss ideas, research, or opportunities.')">
+    <div class="vessel-core"></div>
+    <div class="vessel-label">Contact</div>
+  </div>
+
+  <div class="fluid-channel"></div>
+
+  <div class="cell-courier" onclick="openPopup('System Analysis Active', 'Welcome! You have successfully trapped a sample cell. Explore the surrounding bioreactor nodes to view my engineering portfolio.')"></div>
 
 </div>
 
-<div class="popup" id="p">
-  <h2 id="t"></h2>
-  <p id="c"></p>
-  <button onclick="closeP()">Close</button>
+<div class="bio-popup" id="bioPopup">
+  <h2 id="popupTitle"></h2>
+  <p id="popupContent"></p>
+  <button class="close-btn" onclick="closePopup()">Dismiss</button>
 </div>
 
 <script>
-function openP(x){
-  document.getElementById("p").style.display="block";
-  document.getElementById("t").innerText=x;
-
-  document.getElementById("c").innerText =
-    x==="Biomechanics" ? "FEA, materials, structural modeling" :
-    x==="Microfluidics" ? "DLD, flow systems, separation tech" :
-    x==="Implants" ? "Pacemaker + wireless power systems" :
-    "Sensors + real-time data systems";
+function openPopup(title, content) {
+  const popup = document.getElementById("bioPopup");
+  document.getElementById("popupTitle").innerText = title;
+  document.getElementById("popupContent").innerText = content;
+  
+  popup.style.display = "block";
+  // Small timeout to allow transition opacity to trigger smoothly
+  setTimeout(() => {
+    popup.classList.add("active");
+  }, 10);
 }
-function closeP(){
-  document.getElementById("p").style.display="none";
+
+function closePopup() {
+  const popup = document.getElementById("bioPopup");
+  popup.classList.remove("active");
+  setTimeout(() => {
+    popup.style.display = "none";
+  }, 300); // Matches transition duration
 }
 </script>
 
