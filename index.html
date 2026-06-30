@@ -3,20 +3,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Neha Nepal | Interactive Mechanical Engineering Portfolio</title>
+  <title>Chelsea Ogbonna | Interactive Biomedical Engineering Portfolio</title>
   <link rel="stylesheet" href="styles.css">
   <style>
 :root {
-  /* Premium Light-Mode Engineering Palette */
-  --bg: #edf2fb;
-  --bg2: #e2eafc;
-  --card: #d7e3fc;
-  --card-hover: #ccdbfd;
-  --text: #0a192f;
-  --muted: #4a5568;
-  --accent: #abc4ff;
-  --accent-soft: #b6ccfe;
-  --border: #c1d3fe;
+  /* High-Tech Bio-Inspired Light Palette */
+  --bg: #f4f9f4;
+  --bg2: #e8f1e9;
+  --card: #d8ebd9;
+  --card-hover: #cbe3cc;
+  --text: #0b2512;
+  --muted: #3d5243;
+  --accent: #a3d9a5;
+  --accent-soft: #bde6be;
+  --border: #b3cfb5;
 }
 
 body {
@@ -30,7 +30,7 @@ body {
   height: 100vh;
 }
 
-/* ===== ATMOSPHERIC GAME MATRIX ENVIRONMENT ===== */
+/* ===== MICROFLUIDIC GAME MATRIX ENVIRONMENT ===== */
 .sim-matrix {
   position: relative;
   width: 100%;
@@ -43,55 +43,55 @@ body {
   box-sizing: border-box;
 }
 
-/* FLUID DYNAMICS / WIND TUNNEL SIMULATION PATH */
+/* CELLULAR FLUIDICS / FLOW CHANNEL PATH */
 .fluid-channel {
   position: absolute;
   top: 15%;
   left: 0;
   width: 100%;
   height: 80px;
-  background: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.5);
   border-top: 2px dashed var(--border);
   border-bottom: 2px dashed var(--border);
-  box-shadow: inset 0 0 20px rgba(171, 196, 255, 0.15);
+  box-shadow: inset 0 0 20px rgba(163, 217, 165, 0.15);
   z-index: 1;
 }
 
-/* FLOATING COURIER PAYLOAD */
+/* FLOATING CELLULAR CARRIER PAYLOAD */
 .spacecraft-courier {
   position: absolute;
-  top: calc(15% + 5px);
+  top: calc(15% + 7px);
   left: -150px;
-  width: 65px;
-  height: 65px;
-  background: radial-gradient(circle at 30% 30%, #abc4ff, #4facfe);
-  border-radius: 35% 65% 65% 35% / 35% 35% 65% 65%;
-  animation: atmospheric-flow 12s linear infinite;
+  width: 60px;
+  height: 60px;
+  background: radial-gradient(circle at 35% 35%, #bde6be, #22c55e);
+  border-radius: 42% 58% 51% 49% / 45% 45% 55% 55%; /* Organic cellular geometry */
+  animation: cellular-flow 11s linear infinite;
   cursor: pointer;
-  box-shadow: 0 0 20px rgba(79, 172, 254, 0.4), inset -5px -5px 15px rgba(0,0,0,0.1);
-  border: 2px solid rgba(255, 255, 255, 0.7);
+  box-shadow: 0 0 20px rgba(34, 197, 94, 0.4), inset -5px -5px 15px rgba(0,0,0,0.08);
+  border: 2px solid rgba(255, 255, 255, 0.8);
   z-index: 2;
 }
 
-@keyframes atmospheric-flow {
-  0% { left: -100px; transform: translateY(0px) rotate(0deg); }
-  50% { transform: translateY(-10px) rotate(15deg); }
-  100% { left: 110%; transform: translateY(0px) rotate(0deg); }
+@keyframes cellular-flow {
+  0% { left: -100px; transform: translateY(0px) rotate(0deg) scale(1); }
+  50% { transform: translateY(-8px) rotate(180deg) scale(1.05); }
+  100% { left: 110%; transform: translateY(0px) rotate(360deg) scale(1); }
 }
 
 .spacecraft-courier:hover {
   animation-play-state: paused;
-  background: #dde6b8;
-  box-shadow: 0 0 30px rgba(79, 172, 254, 0.7);
+  background: #a3e635;
+  box-shadow: 0 0 30px rgba(34, 197, 94, 0.7);
 }
 
-/* SYSTEM INTERACTIVE NOTIFIER POPUP (FOR COURIER TRAP) */
+/* SYSTEM INTERACTIVE NOTIFIER POPUP (FOR CELL TRAP) */
 .hud-alert {
   position: absolute;
   top: 20px;
   left: 50%;
   transform: translateX(-50%) translateY(-100px);
-  background: #0a192f;
+  background: var(--text);
   color: white;
   padding: 12px 24px;
   border-radius: 14px;
@@ -109,13 +109,13 @@ body {
 .master-workstation {
   position: relative;
   flex: 1;
-  margin-top: 110px; /* Clears the wind tunnel path */
+  margin-top: 110px; 
   margin-bottom: 20px;
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.82);
   backdrop-filter: blur(12px);
   border: 3px solid var(--border);
   border-radius: 28px;
-  box-shadow: 0 20px 50px rgba(27, 38, 59, 0.08);
+  box-shadow: 0 20px 50px rgba(11, 37, 18, 0.06);
   z-index: 10;
   display: grid;
   grid-template-columns: 360px 1fr;
@@ -124,7 +124,7 @@ body {
 
 /* LEFT WING: FIXED SYSTEM OPERATOR TELEMETRY FEED */
 .telemetry-left-wing {
-  background: rgba(226, 234, 252, 0.4);
+  background: rgba(232, 241, 233, 0.4);
   border-right: 2px solid var(--border);
   padding: 30px;
   display: flex;
@@ -155,7 +155,7 @@ body {
   font-size: 11px;
   font-weight: 700;
   text-transform: uppercase;
-  color: #1e3a8a;
+  color: #14532d;
   background: var(--card);
   padding: 4px 10px;
   border-radius: 6px;
@@ -303,7 +303,6 @@ body {
   display: block;
 }
 
-/* Custom internal track scroller */
 .chamber-view-pane::-webkit-scrollbar { width: 5px; }
 .chamber-view-pane::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
 
@@ -362,10 +361,10 @@ body {
 .pulse-dot {
   width: 6px;
   height: 6px;
-  background: #10b981;
+  background: #22c55e;
   border-radius: 50%;
   display: inline-block;
-  box-shadow: 0 0 8px #10b981;
+  box-shadow: 0 0 8px #22c55e;
   margin-right: 6px;
 }
 
@@ -388,9 +387,10 @@ body {
 </head>
 <body>
 
+<!-- BACKEND SEED NAVIGATION (RETAINED FOR HARDCODE DIRECT STRUCTURAL TRAVERSAL) -->
 <header style="display:none;">
   <div class="nav-container">
-    <a class="logo" href="index.html">NEHA NEPAL</a>
+    <a class="logo" href="index.html">CHELSEA OGBONNA</a>
     <nav>
       <ul>
         <li><a href="index.html">Home</a></li>
@@ -406,102 +406,114 @@ body {
 
 <div class="sim-matrix">
 
-  <div class="hud-alert" id="hudNotification">Telemetry Payload Trapped // Flow Locked</div>
+  <!-- HUD BIOMETRIC FEEDBACK BANNER -->
+  <div class="hud-alert" id="hudNotification">Cellular Carrier Intercepted // Flow Trapped</div>
 
+  <!-- MICROFLUIDIC STREAM CHANNELS -->
   <div class="fluid-channel"></div>
   <div class="spacecraft-courier" onclick="triggerHudCapture()"></div>
 
+  <!-- MAIN MASTER BIOMEDICAL WORKSTATION PANEL -->
   <main class="master-workstation">
     
+    <!-- LEFT WING: IMMEDIATE IDENTITY PARAMETERS -->
     <section class="telemetry-left-wing">
       <div class="profile-identity-box">
-        <img src="nehanepal@ucsb.edu-c0a8d455.jpg" alt="Neha Nepal" onerror="this.style.background='var(--accent)'">
-        <h2>Neha Nepal</h2>
-        <div class="eyebrow">Mechanical Engineer</div>
+        <img src="chelseaogbonna-avatar.jpg" alt="Chelsea Ogbonna" onerror="this.style.background='var(--accent)'">
+        <h2>Chelsea Ogbonna</h2>
+        <div class="eyebrow">Biomedical & Research Engineer</div>
         <p>
-          I am a Mechanical Engineering graduate from UC Santa Barbara with experience in mechanical design, fluid dynamics, heat transfer, HVAC engineering, MATLAB modeling, and multidisciplinary prototype development.
+          I bridge biological systems with precision mechanical design. Specialized in analytical problem-solving, microfluidic architecture, cell-free diagnostic screening, sensing algorithms, and translating cellular mechanics into testable clinical prototypes.
         </p>
       </div>
 
+      <!-- BIO-SYSTEMS TELEMETRY STATS METRICS -->
       <div class="stats-matrix">
-        <div class="stat-node"><strong>10+</strong><span>Projects</span></div>
-        <div class="stat-node"><strong>$2–3M</strong><span>HVAC Value</span></div>
-        <div class="stat-node"><strong>1.03 MW</strong><span>Turbine Out</span></div>
-        <div class="stat-node"><strong>15+</strong><span>3D Parts</span></div>
+        <div class="stat-node"><strong>8+</strong><span>Bio-Platforms</span></div>
+        <div class="stat-node"><strong>10⁻⁴ torr</strong><span>Vacuum Target</span></div>
+        <div class="stat-node"><strong>100%</strong><span>Closed-Loop Depol</span></div>
+        <div class="stat-node"><strong>HCR</strong><span>Hydrogel Expansion</span></div>
       </div>
 
+      <!-- COMM GATEWAYS -->
       <div class="action-terminal-row">
-        <a class="console-btn primary-gate" href="mailto:nepalneha1@gmail.com">Email Operator</a>
-        <a class="console-btn" href="Neha Nepal Res- Google Docs.pdf" target="_blank">Download Resume</a>
-        <a class="console-btn" href="https://www.linkedin.com/in/nehanepal/" target="_blank">LinkedIn Connection Matrix</a>
+        <a class="console-btn primary-gate" href="mailto:ogbonnachelsea@gmail.com">Email Investigator</a>
+        <a class="console-btn" href="Chelsea_Ogbonna_Resume.pdf" target="_blank">Download Curriculum Vitae</a>
+        <a class="console-btn" href="https://www.linkedin.com/in/chelseaogbonna/" target="_blank">LinkedIn Synaptic Node</a>
       </div>
     </section>
 
+    <!-- RIGHT WING: ACTIVE DECK PANE SCROLLER -->
     <section class="workspace-right-wing">
       
+      <!-- TACTICAL TOGGLE SWITCH VALVES -->
       <div class="tactical-valves-deck">
-        <button class="valve-trigger active-valve" onclick="switchControlPane(event, 'pane-focus')">System Focus</button>
-        <button class="valve-trigger" onclick="switchControlPane(event, 'pane-projects')">Project Array</button>
-        <button class="valve-trigger" onclick="switchControlPane(event, 'pane-experience')">Field Experience</button>
+        <button class="valve-trigger active-valve" onclick="switchControlPane(event, 'pane-focus')">Bio-System Focus</button>
+        <button class="valve-trigger" onclick="switchControlPane(event, 'pane-projects')">Experimental Array</button>
+        <button class="valve-trigger" onclick="switchControlPane(event, 'pane-experience')">Research & Translation Logs</button>
       </div>
 
+      <!-- INSTANT OVERVIEW LOGS CONSOLE CONTAINER -->
       <div class="log-chambers-container">
         
+        <!-- PANE 1: CELLULAR MATRIX FOCUS AREAS -->
         <div class="chamber-view-pane active-pane" id="pane-focus">
-          <p style="margin: 0 0 15px 0; font-size: 14px; color: var(--muted); font-weight: 600; text-transform: uppercase;">Engineering constraints tracking at the intersection of mechanical design and testing simulation:</p>
+          <p style="margin: 0 0 15px 0; font-size: 14px; color: var(--muted); font-weight: 600; text-transform: uppercase;">Tracking technical domains at the intersection of microfluidics, cell mechanics, and hardware integration:</p>
           
           <div class="chamber-card-block">
-            <h3>Mechanical Design</h3>
-            <p>CAD, assemblies, design iteration, component integration, and prototype development.</p>
-            <div class="tag-mesh"><span class="tag">SolidWorks</span><span class="tag">Fusion 360</span><span class="tag">3D Printing</span></div>
+            <h3>Microfluidics & Assays</h3>
+            <p>Design of microfluidic sorting mechanisms, size-dependent particles isolation, fluid behavior analysis, and cell-free assay execution.</p>
+            <div class="tag-mesh"><span class="tag">DLD Geometry</span><span class="tag">Fluid Dynamics</span><span class="tag">Assay Prototyping</span></div>
           </div>
           <div class="chamber-card-block">
-            <h3>Thermal & Fluids</h3>
-            <p>Heat transfer, fluid mechanics, HVAC systems, airflow, and energy system behavior.</p>
-            <div class="tag-mesh"><span class="tag">Heat Transfer</span><span class="tag">Fluid Dynamics</span><span class="tag">HVAC</span></div>
+            <h3>Biomaterials & Mechanics</h3>
+            <p>Characterization of molecular programming hydrogels, volumetric structural behavior, tissue elasticity modeling, and enzymatic plastic degradation pathways.</p>
+            <div class="tag-mesh"><span class="tag">DNA Hydrogels</span><span class="tag">HCR Mechanics</span><span class="tag">Enzyme Depolymerization</span></div>
           </div>
           <div class="chamber-card-block">
-            <h3>Simulation</h3>
-            <p>MATLAB modeling, engineering analysis, numerical methods, and performance prediction.</p>
-            <div class="tag-mesh"><span class="tag">MATLAB</span><span class="tag">Python</span><span class="tag">FEA</span></div>
+            <h3>Biomedical Hardware & Simulation</h3>
+            <p>CAD, assemblies, structural finite element analysis, heat transfer diagnostics, and predictive computational modelling.</p>
+            <div class="tag-mesh"><span class="tag">SolidWorks</span><span class="tag">MATLAB Modeling</span><span class="tag">FEA Analysis</span></div>
           </div>
           <div class="chamber-card-block">
-            <h3>Robotics & Controls</h3>
-            <p>Arduino systems, sensors, mechatronics, mechanical motion, and embedded prototypes.</p>
-            <div class="tag-mesh"><span class="tag">Arduino</span><span class="tag">Sensors</span><span class="tag">Controls</span></div>
+            <h3>Sensing & Embedded Platforms</h3>
+            <p>Mechatronic sensor arrays, microcontrollers, Arduino prototyping, and motion processing algorithm tracking.</p>
+            <div class="tag-mesh"><span class="tag">Arduino</span><span class="tag">IMU Systems</span><span class="tag">Mechatronics</span></div>
           </div>
         </div>
 
+        <!-- PANE 2: EXPERIMENTAL DEVICE ARRAY -->
         <div class="chamber-view-pane" id="pane-projects">
           <div class="chamber-card-block">
-            <h3>🚀 Spacecraft Camera Housing</h3>
-            <p>Northrop Grumman-sponsored capstone focused on designing a camera housing for extreme spacecraft environments, including temperatures from −180°C to +130°C and vacuum conditions down to 10⁻⁴ torr.</p>
-            <div class="tag-mesh"><span class="tag">Aerospace</span><span class="tag">Thermal</span><span class="tag">CAD</span></div>
-            <p style="margin-top:10px; font-size:12px; font-weight:700;"><a href="projects.html#capstone" style="color:var(--text);">Open full design log records →</a></p>
+            <h3>🔬 Microfluidic Particle Isolation Platform</h3>
+            <p>Developed structural isolation methodologies utilizing Deterministic Lateral Displacement (DLD) geometry arrays to separate distinct biological components and syncytial knots within highly precise fluidic constraints.</p>
+            <div class="tag-mesh"><span class="tag">Microfluidics</span><span class="tag">Cellular Mechanics</span><span class="tag">Bio-Separation</span></div>
+            <p style="margin-top:10px; font-size:12px; font-weight:700;"><a href="projects.html#fluidics" style="color:var(--text);">Open full design log records →</a></p>
           </div>
           <div class="chamber-card-block">
-            <h3>🤖 Autonomous Window Cleaning Robot</h3>
-            <p>Designed and prototyped a residential window-cleaning system using a gantry mechanism, fluid delivery subsystem, 3D printed parts, and Arduino-based motion control.</p>
-            <div class="tag-mesh"><span class="tag">Robotics</span><span class="tag">Prototyping</span><span class="tag">Fluids</span></div>
-            <p style="margin-top:10px; font-size:12px; font-weight:700;"><a href="projects.html#automatic-window-washer" style="color:var(--text);">Open full design log records →</a></p>
+            <h3>⚡ Implantable Wireless Power Transfer System</h3>
+            <p>Designed and analyzed cross-disciplinary electromagnetic coupling mechanisms optimized to deliver continuous regulated voltage to embedded medical biosensors, minimizing tissue thermal gradients.</p>
+            <div class="tag-mesh"><span class="tag">Biomedical Devices</span><span class="tag">Wireless Power</span><span class="tag">Thermal Modeling</span></div>
+            <p style="margin-top:10px; font-size:12px; font-weight:700;"><a href="projects.html#wireless-power" style="color:var(--text);">Open full design log records →</a></p>
           </div>
           <div class="chamber-card-block">
-            <h3>📊 Wind Turbine Performance Modeling</h3>
-            <p>Developed MATLAB models using Blade Element Momentum theory to evaluate aerodynamic performance, wake behavior, and turbine output for a horizontal-axis wind turbine.</p>
-            <div class="tag-mesh"><span class="tag">MATLAB</span><span class="tag">BEM Theory</span><span class="tag">Energy</span></div>
-            <p style="margin-top:10px; font-size:12px; font-weight:700;"><a href="projects.html#airfoil-project" style="color:var(--text);">Open full design log records →</a></p>
+            <h3>🧠 Molecular Hydrogel Soft Actuator</h3>
+            <p>Integrated molecular programming and elasticity physics to build soft robotic actuators utilizing DNA hydrogel matrices capable of massive volumetric expansion via Hybridization Chain Reactions (HCR).</p>
+            <div class="tag-mesh"><span class="tag">DNA Programming</span><span class="tag">Soft Robotics</span><span class="tag">Elasticity Theory</span></div>
+            <p style="margin-top:10px; font-size:12px; font-weight:700;"><a href="projects.html#hydrogels" style="color:var(--text);">Open full design log records →</a></p>
           </div>
         </div>
 
+        <!-- PANE 3: TRANSLATION LOGS -->
         <div class="chamber-view-pane" id="pane-experience">
-          <div class="chamber-card-block" style="border-color:#1e3a8a;">
-            <h3 style="font-size:18px;">Project Engineering Intern</h3>
-            <p style="font-weight:700; color:var(--text); margin-bottom:6px;">Western Allied Mechanical</p>
+          <div class="chamber-card-block" style="border-color:#14532d;">
+            <h3 style="font-size:18px;">Engineering & Biomaterial Research</h3>
+            <p style="font-weight:700; color:var(--text); margin-bottom:6px;">Cell-Free Phenomena Diagnostics Lab</p>
             <p>
-              Supported mechanical engineering and project coordination across more than ten commercial HVAC projects, including healthcare and laboratory environments. Reviewed drawings, conducted field audits, supported RFIs and submittals, and helped coordinate mechanical systems in real project environments.
+              Investigated real-time translation-transcription kinetics comparing traditional cell-based methods with cell-free protein synthesis (CFPS). Evaluated closed-loop enzyme degradation matrices to achieve rapid, efficient plastic depolymerization under severe physical constraints.
             </p>
             <div class="tag-mesh" style="margin-top:12px;">
-              <span class="tag">HVAC Systems</span><span class="tag">Mechanical Drawings</span><span class="tag">Field Engineering</span><span class="tag">Heat Transfer</span><span class="tag">Fluid Flow</span><span class="tag">QA/QC</span>
+              <span class="tag">CFPS Systems</span><span class="tag">Enzymatic Degradation</span><span class="tag">Kinetics Analysis</span><span class="tag">Quantitative Modeling</span>
             </div>
             <p style="margin-top:15px; font-size:12px; font-weight:700;"><a href="experience.html" style="color:var(--text);">Review comprehensive industrial deployment files →</a></p>
           </div>
@@ -511,13 +523,15 @@ body {
     </section>
   </main>
 
+  <!-- OPERATIONAL FLUID SYSTEM CONSOLE FOOTER -->
   <footer class="hardware-footer">
-    <div>CONSOLE FEED STATUS: DEPLOYED // NO EXTERNAL SEARCH REDIRECT REQUIRED</div>
-    <div><span class="pulse-dot"></span>CORE ENGINE STEADY // 2026 ACTIVE</div>
+    <div>CONSOLE DIAGNOSTIC STATUS: ONLINE // NO CELL EXTRACTION DELAY REGISTERED</div>
+    <div><span class="pulse-dot"></span>CORE ENGINE BALANCED // 2026 LOG ACTIVE</div>
   </footer>
 
 </div>
 
+<!-- INTERACTIVE DATA TERMINAL ROUTER MECHANICS -->
 <script>
 function switchControlPane(event, targetPaneId) {
   // Purge existing active matrix layers
