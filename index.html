@@ -2,39 +2,47 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Chelsea Ogbonna | Cyber City</title>
+<title>Chelsea Ogbonna | Cyber City v2</title>
 
 <style>
 body {
   margin: 0;
   overflow: hidden;
   font-family: Arial;
-  background: #070b14;
+  background: #060913;
 }
 
 /* =========================
-   WORLD
+   CAMERA SYSTEM
 ========================= */
-#world {
+#camera {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
   position: relative;
-  width: 2200px;
-  height: 1400px;
-  background: radial-gradient(circle at center, #1a2233, #070b14);
 }
 
-/* CITY GLOW GRID */
+/* WORLD (moves inside camera) */
+#world {
+  position: absolute;
+  width: 2200px;
+  height: 1400px;
+  background: radial-gradient(circle at center, #1a2233, #060913);
+}
+
+/* GRID */
 .grid {
   position: absolute;
   width: 100%;
   height: 100%;
   background-image:
-    linear-gradient(rgba(171,196,255,0.08) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(171,196,255,0.08) 1px, transparent 1px);
+    linear-gradient(rgba(171,196,255,0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(171,196,255,0.07) 1px, transparent 1px);
   background-size: 80px 80px;
 }
 
 /* =========================
-   PLAYER (CAR)
+   PLAYER
 ========================= */
 #player {
   position: absolute;
@@ -42,22 +50,22 @@ body {
   height: 35px;
   background: #abc4ff;
   border-radius: 10px;
-  box-shadow: 0 0 25px rgba(171,196,255,0.8);
+  box-shadow: 0 0 25px rgba(171,196,255,0.7);
 }
 
 #player::before,
 #player::after {
   content: "";
   position: absolute;
-  width: 14px;
-  height: 14px;
+  width: 12px;
+  height: 12px;
   background: white;
   border-radius: 50%;
-  bottom: -6px;
+  bottom: -5px;
 }
 
-#player::before { left: 8px; }
-#player::after { right: 8px; }
+#player::before { left: 10px; }
+#player::after { right: 10px; }
 
 /* =========================
    BUILDINGS
@@ -73,69 +81,67 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
   cursor: pointer;
-  transition: 0.3s;
-  box-shadow: 0 0 20px rgba(0,0,0,0.4);
+  transition: 0.2s;
 }
 
 .building:hover {
-  transform: scale(1.07);
-  box-shadow: 0 0 30px rgba(171,196,255,0.5);
+  transform: scale(1.05);
 }
 
-/* POSITIONS */
-#about { top: 200px; left: 250px; }
+/* positions */
+#about { top: 200px; left: 300px; }
 #projects { top: 600px; left: 900px; }
 #leadership { top: 900px; left: 400px; }
 #contact { top: 300px; left: 1500px; }
 
 /* =========================
-   UI TEXT
+   HUD
 ========================= */
 #hud {
   position: fixed;
-  top: 20px;
-  left: 20px;
+  top: 15px;
+  left: 15px;
   color: white;
   opacity: 0.7;
-  font-size: 14px;
 }
 
 /* =========================
-   POPUP
+   SECTION PANELS (REAL CONTENT)
 ========================= */
-#popup {
+.panel {
   position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  top: 0;
+  right: -420px;
+  width: 380px;
+  height: 100vh;
   background: #0f172a;
-  border: 2px solid #abc4ff;
-  padding: 30px;
-  width: 320px;
-  border-radius: 14px;
-  display: none;
+  border-left: 2px solid #abc4ff;
+  padding: 25px;
   color: white;
-  box-shadow: 0 0 40px rgba(171,196,255,0.3);
+  transition: 0.4s ease;
+  overflow-y: auto;
 }
 
-#popup h2 {
-  margin-top: 0;
+.panel.active {
+  right: 0;
+}
+
+.panel h2 {
   color: #abc4ff;
+  margin-top: 0;
 }
 
-button {
-  margin-top: 12px;
-  padding: 10px 14px;
-  border: none;
+.close {
+  margin-top: 20px;
+  padding: 10px;
   background: #abc4ff;
+  border: none;
   cursor: pointer;
-  border-radius: 8px;
 }
 
 /* =========================
-   PARTICLES (CINEMATIC)
+   PARTICLES
 ========================= */
 .particle {
   position: fixed;
@@ -144,7 +150,7 @@ button {
   background: #abc4ff;
   border-radius: 50%;
   opacity: 0.4;
-  animation: float 10s infinite linear;
+  animation: float 10s linear infinite;
 }
 
 @keyframes float {
@@ -156,42 +162,68 @@ button {
 
 <body>
 
-<div id="world">
-  <div class="grid"></div>
+<div id="camera">
+  <div id="world">
 
-  <!-- PLAYER -->
-  <div id="player"></div>
+    <div class="grid"></div>
 
-  <!-- BUILDINGS -->
-  <div class="building" id="about">ABOUT</div>
-  <div class="building" id="projects">PROJECTS</div>
-  <div class="building" id="leadership">LEADERSHIP</div>
-  <div class="building" id="contact">CONTACT</div>
+    <div id="player"></div>
+
+    <div class="building" id="about">ABOUT</div>
+    <div class="building" id="projects">PROJECTS</div>
+    <div class="building" id="leadership">LEADERSHIP</div>
+    <div class="building" id="contact">CONTACT</div>
+
+  </div>
 </div>
 
-<!-- HUD -->
 <div id="hud">
-  Move: WASD / Arrow Keys | Click buildings or press E
+  Move: WASD / Arrows | E or Click buildings
 </div>
 
-<!-- POPUP -->
-<div id="popup">
-  <h2 id="title"></h2>
-  <p>This section will load your real content here.</p>
-  <button onclick="closePopup()">Close</button>
+<!-- REAL PANELS -->
+<div class="panel" id="aboutPanel">
+  <h2>About Me</h2>
+  <p>Biomedical + Mechanical Engineering student focused on microfluidics, implantable systems, and robotics.</p>
+  <button class="close" onclick="closePanel('aboutPanel')">Close</button>
+</div>
+
+<div class="panel" id="projectsPanel">
+  <h2>Projects</h2>
+  <p>• Microfluidic DLD Device<br>• Terrain Analysis Robot<br>• Implantable Pacemaker System</p>
+  <button class="close" onclick="closePanel('projectsPanel')">Close</button>
+</div>
+
+<div class="panel" id="leadershipPanel">
+  <h2>Leadership</h2>
+  <p>NSBE Academic Chair — led 50+ student collaboration events and study sessions.</p>
+  <button class="close" onclick="closePanel('leadershipPanel')">Close</button>
+</div>
+
+<div class="panel" id="contactPanel">
+  <h2>Contact</h2>
+  <p>Email, LinkedIn, GitHub links go here.</p>
+  <button class="close" onclick="closePanel('contactPanel')">Close</button>
 </div>
 
 <script>
 
 /* =========================
-   PLAYER MOVEMENT
+   PLAYER + CAMERA
 ========================= */
+
 let player = document.getElementById("player");
+let world = document.getElementById("world");
+let camera = document.getElementById("camera");
 
 let x = 120;
 let y = 120;
 
-const speed = 12;
+const speed = 10;
+
+/* camera offset */
+let camX = 0;
+let camY = 0;
 
 document.addEventListener("keydown", (e) => {
 
@@ -203,16 +235,28 @@ document.addEventListener("keydown", (e) => {
   player.style.left = x + "px";
   player.style.top = y + "px";
 
-  if (e.key === "e") checkCollision();
+  updateCamera();
+
+  if (e.key === "e") checkBuildings();
 });
 
 /* =========================
-   COLLISION SYSTEM
+   SMOOTH CAMERA FOLLOW
 ========================= */
-function checkCollision() {
-  const buildings = document.querySelectorAll(".building");
+function updateCamera() {
 
-  buildings.forEach(b => {
+  camX += (x - window.innerWidth / 2 - camX) * 0.08;
+  camY += (y - window.innerHeight / 2 - camY) * 0.08;
+
+  world.style.transform = `translate(${-camX}px, ${-camY}px)`;
+}
+
+/* =========================
+   INTERACTION
+========================= */
+function checkBuildings() {
+  document.querySelectorAll(".building").forEach(b => {
+
     const r1 = player.getBoundingClientRect();
     const r2 = b.getBoundingClientRect();
 
@@ -222,33 +266,32 @@ function checkCollision() {
         r1.bottom < r2.top ||
         r1.top > r2.bottom);
 
-    if (hit) {
-      openPopup(b.id);
-    }
+    if (hit) openPanel(b.id + "Panel");
   });
 }
 
-/* =========================
-   POPUP
-========================= */
-function openPopup(id) {
-  document.getElementById("popup").style.display = "block";
-  document.getElementById("title").innerText = id.toUpperCase();
-}
-
-function closePopup() {
-  document.getElementById("popup").style.display = "none";
-}
-
-/* click buildings */
 document.querySelectorAll(".building").forEach(b => {
-  b.onclick = () => openPopup(b.id);
+  b.onclick = () => openPanel(b.id + "Panel");
 });
+
+/* =========================
+   PANELS
+========================= */
+function openPanel(id) {
+  document.getElementById(id).classList.add("active");
+}
+
+function closePanel(id) {
+  document.getElementById(id).classList.remove("active");
+}
+
+/* init */
+updateCamera();
 
 /* =========================
    PARTICLES
 ========================= */
-for (let i = 0; i < 40; i++) {
+for (let i = 0; i < 35; i++) {
   let p = document.createElement("div");
   p.className = "particle";
   p.style.left = Math.random() * window.innerWidth + "px";
