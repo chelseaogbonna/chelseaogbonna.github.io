@@ -1,0 +1,22 @@
+<div class="project-small">
+
+<img src="wearable.webp">
+
+<div class="project-info">
+
+<h3>🚶 Wearable Gait Monitoring System</h3>
+
+<p>
+Built a wearable sensor system using IMUs and force sensors to analyze gait and detect abnormalities.
+</p>
+
+<div class="tags">
+<span class="tag">Wearables</span>
+<span class="tag">Biomechanics</span>
+<span class="tag">Python</span>
+</div>
+
+<a href="#">Coming Soon →</a>
+
+</div>
+</div>
