@@ -1,0 +1,22 @@
+<div class="project-small">
+
+<img src="imuanalysis.webp">
+
+<div class="project-info">
+
+<h3>📈 IMU Motion Analysis</h3>
+
+<p>
+Created Python-based pipelines for processing IMU motion data to analyze human movement patterns.
+</p>
+
+<div class="tags">
+<span class="tag">Python</span>
+<span class="tag">Signal Processing</span>
+<span class="tag">Data Analysis</span>
+</div>
+
+<a href="#">Coming Soon →</a>
+
+</div>
+</div>
