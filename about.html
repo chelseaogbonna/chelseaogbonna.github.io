@@ -7,18 +7,16 @@
 
   <title>About | Chelsea Ogbonna</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      /* COLORS */
       --bg: #edf2fb;
       --card: #d7e3fc;
-      --card-hover: #ccdbfd;
-      --white: #ffffff;
+      --accent: #abc4ff;
       --text: #1f2937;
-      --muted: #5f6b7a;
-      --accent: #6C8EF5;
+      --border: #c1d3fe;
       --shadow: 0 12px 30px rgba(0, 0, 0, .08);
     }
 
@@ -33,276 +31,298 @@
     }
 
     body {
+      font-family: Inter, sans-serif;
       background: var(--bg);
-      font-family: "Poppins", sans-serif;
       color: var(--text);
       line-height: 1.7;
     }
 
+    /* =========================
+    NAV (MATCH HOMEPAGE)
+    ========================= */
     nav {
-      width: 100%;
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(1100px, 92%);
       display: flex;
-      justify-content: center;
-      gap: 45px;
-      padding: 25px;
-      position: sticky;
-      top: 0;
-      backdrop-filter: blur(12px);
-      background: rgba(237, 242, 251, .75);
+      justify-content: space-between;
+      align-items: center;
       z-index: 1000;
     }
 
-    nav a {
+    .logo {
+      font-weight: 800;
+      font-size: 18px;
       text-decoration: none;
       color: var(--text);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 10px;
+      padding: 8px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .78);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(193, 211, 254, .45);
+      box-shadow: 0 12px 35px rgba(0, 0, 0, .10);
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text);
+      padding: 10px 14px;
+      border-radius: 10px;
+      transition: .25s;
       font-weight: 500;
-      transition: .3s;
     }
 
-    nav a:hover {
-      color: var(--accent);
+    .nav-links a:hover {
+      background: var(--accent);
+      transform: translateY(-2px);
     }
 
-    .content {
-      width: min(1200px, 90%);
+    /* =========================
+    ABOUT LAYOUT
+    ========================= */
+    .section {
+      padding: 140px 10% 80px;
+      width: min(1200px, 100%);
       margin: auto;
-      padding: 60px 0 100px;
     }
 
-    /* HERO */
     .hero {
-      text-align: center;
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      align-items: center;
+      gap: 60px;
       margin-bottom: 80px;
     }
 
-    .profile {
-      width: 180px;
-      height: 180px;
-      object-fit: cover;
-      border-radius: 50%;
-      border: 6px solid white;
-      box-shadow: var(--shadow);
-      margin-bottom: 25px;
-    }
-
     .hero h1 {
-      font-size: 52px;
-      font-weight: 700;
-      margin-bottom: 12px;
+      font-size: 60px;
+      font-weight: 800;
+      margin-bottom: 20px;
     }
 
     .subtitle {
       font-size: 20px;
-      color: var(--muted);
+      color: #4b5563;
+      font-weight: 500;
       margin-bottom: 15px;
     }
 
     .hero-description {
-      max-width: 700px;
-      margin: auto;
-      color: var(--muted);
-      font-size: 17px;
-    }
-
-    /* GRID */
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
-      gap: 30px;
-      margin-bottom: 60px;
-    }
-
-    /* CARDS */
-    .about-box {
-      background: var(--card);
-      border-radius: 22px;
-      padding: 35px;
-      box-shadow: var(--shadow);
-      transition: .35s;
-    }
-
-    .about-box:hover {
-      background: var(--card-hover);
-      transform: translateY(-8px);
-    }
-
-    .about-box h2 {
+      font-size: 18px;
+      line-height: 1.8;
+      color: #4b5563;
       margin-bottom: 20px;
-      color: #3558d4;
     }
 
-    .about-box p {
-      font-size: 16px;
-    }
-
-    /* PHILOSOPHY TAGS */
-    .pill {
-      display: inline-block;
-      background: white;
-      border-radius: 30px;
-      padding: 10px 18px;
-      margin: 6px;
-      font-weight: 500;
-      font-size: 14px;
-    }
-
-    /* TIMELINE */
-    .timeline {
-      margin: 80px 0;
-    }
-
-    .timeline h2 {
-      text-align: center;
-      margin-bottom: 60px;
-      color: #3558d4;
-      font-size: 36px;
-    }
-
-    .timeline-line {
-      position: relative;
-      max-width: 900px;
-      margin: auto;
-      padding-left: 45px;
-      border-left: 4px solid var(--accent);
-    }
-
-    .timeline-item {
-      position: relative;
-      margin-bottom: 55px;
-    }
-
-    .timeline-item:last-child {
-      margin-bottom: 0;
-    }
-
-    .timeline-dot {
-      position: absolute;
-      left: -57px;
-      top: 8px;
-      width: 22px;
-      height: 22px;
-      border-radius: 50%;
-      background: var(--accent);
-      border: 5px solid white;
-      box-shadow: var(--shadow);
-    }
-
-    .timeline-content {
-      background: var(--card);
-      border-radius: 18px;
-      padding: 28px;
-      box-shadow: var(--shadow);
+    .hero img {
+      width: 100%;
+      border-radius: 24px;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, .12);
       transition: .3s;
     }
 
-    .timeline-content:hover {
-      background: var(--card-hover);
-      transform: translateX(8px);
+    .hero img:hover {
+      transform: scale(1.03) rotate(1deg);
     }
 
-    .timeline-content h3 {
-      margin-bottom: 10px;
-      color: #3558d4;
-    }
-
-    .timeline-content p {
-      color: var(--text);
-    }
-
-    /* COUNTER STATS */
+    /* =========================
+    COUNTER STATS SECTION
+    ========================= */
     .stats-section {
-      margin: 100px 0;
+      margin: 80px 0;
       text-align: center;
     }
 
-    .stats-section h2 {
+    .stats-section h2, 
+    .engineering-dna h2, 
+    .skills-section h2, 
+    .timeline-section h2,
+    .motto-section h2 {
       font-size: 36px;
-      color: #3558d4;
-      margin-bottom: 10px;
+      font-weight: 800;
+      margin-bottom: 40px;
+      text-align: center;
     }
 
     .stats {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 30px;
-      margin-top: 40px;
+      gap: 25px;
     }
 
     .stat {
       background: var(--card);
-      padding: 35px;
-      border-radius: 25px;
+      padding: 35px 25px;
+      border-radius: 20px;
       box-shadow: var(--shadow);
     }
 
     .stat h1 {
-      font-size: 60px;
-      color: #3558d4;
+      font-size: 52px;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 5px;
     }
 
     .stat p {
-      font-size: 18px;
+      font-size: 16px;
+      font-weight: 500;
+      color: #4b5563;
     }
 
-    /* ENGINEERING DNA */
+    /* =========================
+    CARDS GRID
+    ========================= */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      margin: 80px 0;
+    }
+
+    .card {
+      background: var(--card);
+      padding: 32px;
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+      transition: .3s;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      background: #ccdbfd;
+    }
+
+    .card h2, .card h3 {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .card p {
+      color: #4b5563;
+      line-height: 1.7;
+      font-size: 15px;
+    }
+
+    /* PHILOSOPHY PILLS */
+    .pill {
+      display: inline-block;
+      background: white;
+      border-radius: 30px;
+      padding: 8px 16px;
+      margin: 5px;
+      font-weight: 600;
+      font-size: 13px;
+    }
+
+    /* =========================
+    ENGINEERING DNA
+    ========================= */
     .engineering-dna {
-      margin: 100px 0;
-      text-align: center;
-    }
-
-    .engineering-dna h2 {
-      font-size: 36px;
-      color: #3558d4;
-      margin-bottom: 10px;
+      margin: 80px 0;
     }
 
     .dna-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 25px;
-      margin-top: 40px;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 20px;
     }
 
     .dna-card {
       background: var(--card);
-      padding: 35px;
-      border-radius: 25px;
+      padding: 30px 20px;
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+      text-align: center;
       transition: .3s;
     }
 
     .dna-card:hover {
-      transform: translateY(-10px);
-      background: var(--card-hover);
+      transform: translateY(-8px);
+      background: #ccdbfd;
     }
 
     .dna-card h1 {
-      font-size: 50px;
-      margin-bottom: 15px;
+      font-size: 44px;
+      margin-bottom: 10px;
     }
 
-    /* WHAT I LOVE BUILDING */
+    .dna-card h3 {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .dna-card p {
+      font-size: 14px;
+      color: #4b5563;
+    }
+
+    /* =========================
+    TIMELINE (REFINED MODERN CLEAN)
+    ========================= */
+    .timeline-section {
+      margin: 80px 0;
+    }
+
+    .timeline {
+      max-width: 900px;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .timeline-item {
+      background: var(--card);
+      padding: 28px;
+      border-radius: 16px;
+      transition: .3s;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, .06);
+      font-size: 16px;
+      color: #4b5563;
+      line-height: 1.7;
+    }
+
+    .timeline-item strong {
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .timeline-item:hover {
+      transform: translateX(10px);
+      background: #ccdbfd;
+    }
+
+    /* =========================
+    SKILLS / WHAT I LOVE BUILDING
+    ========================= */
     .skills-section {
-      margin: 90px 0;
-    }
-
-    .skills-section h2 {
-      text-align: center;
-      font-size: 36px;
-      color: #3558d4;
-      margin-bottom: 40px;
+      margin: 80px 0;
     }
 
     .skills {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 18px;
+      gap: 14px;
+      max-width: 1000px;
+      margin: auto;
     }
 
     .skills span {
       background: white;
-      padding: 14px 22px;
+      padding: 12px 20px;
       border-radius: 999px;
+      font-size: 14px;
       font-weight: 600;
       box-shadow: var(--shadow);
       transition: .3s;
@@ -310,20 +330,36 @@
     }
 
     .skills span:hover {
-      transform: translateY(-6px);
-      background: var(--card-hover);
+      transform: translateY(-4px);
+      background: var(--accent);
+      color: var(--text);
     }
 
     /* SCROLL REVEAL ANIMATIONS */
     .hidden {
       opacity: 0;
-      transform: translateY(60px);
-      transition: all .8s ease;
+      transform: translateY(40px);
+      transition: all .7s ease-out;
     }
 
     .show {
       opacity: 1;
       transform: translateY(0);
+    }
+
+    /* =========================
+    RESPONSIVE
+    ========================= */
+    @media(max-width:900px) {
+      .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 40px;
+      }
+
+      .hero h1 {
+        font-size: 42px;
+      }
     }
   </style>
 </head>
@@ -331,25 +367,37 @@
 <body>
 
   <nav>
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="projects.html">Projects</a>
-    <a href="research.html">Research</a>
-    <a href="leadership.html">Leadership</a>
-    <a href="contact.html">Contact</a>
+    <a href="index.html" class="logo">Chelsea Ogbonna</a>
+    <div class="nav-links">
+      <a href="about.html">About</a>
+      <a href="projects.html">Projects</a>
+      <a href="research.html">Research</a>
+      <a href="leadership.html">Leadership</a>
+      <a href="contact.html">Contact</a>
+    </div>
   </nav>
 
-  <div class="content">
+  <section class="section">
 
     <div class="hero">
-      <img src="images/profile.jpg" class="profile" alt="Chelsea Ogbonna">
-      <h1>Hi, I'm Chelsea 👋</h1>
-      <p class="subtitle">
-        Biomedical Engineer • Mechanical Engineer • Medical Device Researcher
-      </p>
-      <p class="hero-description">
-        I design engineering solutions that bridge medicine, technology, and human-centered design. My goal is to create devices that improve lives and make healthcare more accessible around the world.
-      </p>
+      <div>
+        <h1>Hi, I'm Chelsea 👋</h1>
+        <p class="subtitle">
+          Biomedical Engineer • Mechanical Engineer • Medical Device Researcher
+        </p>
+        <p class="hero-description">
+          I am a Biomedical and Mechanical Engineering student focused on designing solutions at the intersection of healthcare, mechanics, and computation. My work spans medical devices, microfluidics, robotics, and data-driven systems.
+        </p>
+        <p class="hero-description">
+          I design engineering solutions that bridge medicine, technology, and human-centered design. My goal is to create devices that improve lives and make healthcare more accessible around the world.
+        </p>
+        <p class="hero-description">
+          I am especially motivated by healthcare accessibility and developing engineering solutions that can translate into real-world clinical impact.
+        </p>
+      </div>
+      <div>
+        <img src="Chelseaprofilepics.JPG" alt="Chelsea">
+      </div>
     </div>
 
     <section class="stats-section">
@@ -375,25 +423,48 @@
     </section>
 
     <div class="grid">
-      <div class="about-box">
-        <h2>❤️ My Why</h2>
+      <div class="card">
+        <h3>🌍 My Why</h3>
         <p>
           Growing up in Nigeria, I witnessed firsthand how limited access to healthcare could dramatically affect people's lives. Seeing preventable illnesses go untreated inspired me to pursue engineering—not simply to build technology, but to create solutions that improve healthcare accessibility and patient outcomes.
         </p>
+        <br>
+        <p>
+          I grew up witnessing gaps in healthcare access, which drives my focus on developing engineering solutions for underserved communities.
+        </p>
       </div>
 
-      <div class="about-box">
-        <h2>⚙️ My Engineering Philosophy</h2>
+      <div class="card">
+        <h3>⚙️ Engineering Approach</h3>
+        <p>
+          I approach problems through structured design: identify, research, model, prototype, test, and iterate.
+        </p>
+        <br>
         <p>
           I believe engineering is most impactful when it starts with understanding people. Every project should solve a real problem through thoughtful design, careful experimentation, collaboration, and continuous improvement.
         </p>
-        <br>
-        <div class="pill">🧠 Human-Centered Design</div>
-        <div class="pill">🔬 Research-Driven</div>
-        <div class="pill">⚙️ Build → Test → Improve</div>
-        <div class="pill">🤝 Collaboration</div>
-        <div class="pill">💡 Creative Problem Solving</div>
-        <div class="pill">📈 Continuous Learning</div>
+        <div style="margin-top: 20px;">
+          <div class="pill">🧠 Human-Centered Design</div>
+          <div class="pill">🔬 Research-Driven</div>
+          <div class="pill">⚙️ Build → Test → Improve</div>
+          <div class="pill">🤝 Collaboration</div>
+          <div class="pill">💡 Creative Problem Solving</div>
+          <div class="pill">📈 Continuous Learning</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>🔬 Focus Areas</h3>
+        <p>
+          Medical devices, microfluidics, biomechanics, embedded systems, and data-driven engineering systems.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>🚀 Current Goals</h3>
+        <p>
+          Build impactful healthcare technologies, strengthen R&D skills, and contribute to translational medical engineering projects.
+        </p>
       </div>
     </div>
 
@@ -428,60 +499,24 @@
       </div>
     </section>
 
-    <section class="timeline">
+    <section class="timeline-section">
       <h2>🚀 My Journey</h2>
-      <div class="timeline-line">
-
+      <div class="timeline">
         <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <h3>🇳🇬 Growing Up in Nigeria</h3>
-            <p>
-              Living in Nigeria gave me firsthand exposure to the realities of healthcare disparities. Watching friends, classmates, and family members struggle to access quality medical care shaped my desire to create engineering solutions that make healthcare more accessible.
-            </p>
-          </div>
+          <strong>Nigeria → US Transition</strong> — Early exposure to healthcare disparities shaped my motivation. Living in Nigeria gave me firsthand exposure to the realities of healthcare disparities. Watching friends, classmates, and family members struggle to access quality medical care shaped my desire to create engineering solutions that make healthcare more accessible.
         </div>
 
         <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <h3>🧬 Discovering Science</h3>
-            <p>
-              In high school I developed a love for biology and mathematics. I became fascinated by how the human body works and how engineering principles could be used to solve medical challenges.
-            </p>
-          </div>
+          <strong>Undergraduate Engineering Foundation</strong> — Developed foundation in biomedical and mechanical engineering. At Northwestern University, I pursued a Bachelor's degree in Biomedical Engineering while simultaneously earning a Master's degree in Mechanical Engineering. This combination allowed me to connect medicine, mechanics, manufacturing, and product design into one multidisciplinary engineering approach.
         </div>
 
         <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <h3>🎓 Northwestern University</h3>
-            <p>
-              At Northwestern University, I pursued a Bachelor's degree in Biomedical Engineering while simultaneously earning a Master's degree in Mechanical Engineering. This combination allowed me to connect medicine, mechanics, manufacturing, and product design into one multidisciplinary engineering approach.
-            </p>
-          </div>
+          <strong>Discovering Science & Research Experience</strong> — Work in microfluidics, implants, and biomechanics systems. In high school I developed a love for biology and mathematics. Throughout college, I immersed myself in research spanning implantable pacemakers, microfluidic devices, biomechanics, wearable sensing, robotics, CAD design, manufacturing, and biomedical experimentation.
         </div>
 
         <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <h3>🔬 Research & Innovation</h3>
-            <p>
-              Throughout college, I immersed myself in research spanning implantable pacemakers, microfluidic devices, biomechanics, wearable sensing, robotics, CAD design, manufacturing, and biomedical experimentation. Every project strengthened my belief that engineering has the power to improve patient outcomes.
-            </p>
-          </div>
+          <strong>Current Focus & Vision</strong> — Translating engineering principles into healthcare solutions. Today, I continue developing engineering solutions that bridge research and real-world impact. My goal is to design technologies that improve healthcare accessibility while advancing innovation in medical devices.
         </div>
-
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <h3>🚀 Today</h3>
-            <p>
-              Today, I continue developing engineering solutions that bridge research and real-world impact. My goal is to design technologies that improve healthcare accessibility while advancing innovation in medical devices.
-            </p>
-          </div>
-        </div>
-
       </div>
     </section>
 
@@ -507,68 +542,65 @@
     </section>
 
     <div class="grid">
-      <div class="about-box">
-        <h2>🌍 Beyond Engineering</h2>
+      <div class="card">
+        <h3>🌍 Beyond Engineering</h3>
         <p>
           Outside of engineering, I enjoy mentoring students, leading multidisciplinary teams, and creating opportunities that help others grow. Whether through research, leadership, or outreach, I value collaboration and believe that innovation is strongest when people from different backgrounds work together.
         </p>
+        <br>
         <p>
           I'm also passionate about giving back to my community and hope to inspire future engineers—especially those who may not have always seen themselves represented in STEM.
         </p>
       </div>
 
-      <div class="about-box">
-        <h2>🎯 What's Next</h2>
+      <div class="card">
+        <h3>🎯 What's Next</h3>
         <p>
           My long-term goal is to develop medical technologies that improve patient care around the world, particularly in underserved communities. I hope to work at the intersection of research, engineering, and product development, bringing ideas from concept to real-world clinical impact.
         </p>
+        <br>
         <p>
           As I continue growing as an engineer, I'm excited to contribute to multidisciplinary teams tackling some of healthcare's most meaningful challenges.
         </p>
       </div>
     </div>
 
-    <section style="margin-top:90px; text-align:center;">
-      <h2 style="font-size:32px; color:#3558d4; margin-bottom:25px;">
-        A Personal Motto
-      </h2>
-      <p style="max-width:750px; margin:auto; font-size:20px; font-style:italic; color:var(--muted); line-height:1.8;">
+    <section class="motto-section" style="margin-top:60px;">
+      <h2>A Personal Motto</h2>
+      <p style="max-width:750px; margin:auto; font-size:20px; font-style:italic; color:#4b5563; text-align:center; line-height:1.8;">
         "Engineering is more than building devices—it's about creating solutions that improve lives and expand what's possible."
       </p>
     </section>
 
-  </div>
+  </section>
 
-  <footer style="margin-top:100px; padding:40px; text-align:center; background:rgba(255,255,255,.35); color:var(--muted); font-size:15px;">
+  <footer style="margin-top:60px; padding:40px; text-align:center; border-top: 1px solid var(--border); color:#4b5563; font-size:15px;">
     <p>© 2026 Chelsea Ogbonna</p>
-    <p style="margin-top:10px;">Designed & Built with HTML, CSS, and ❤️</p>
+    <p style="margin-top:10px; font-size:13px;">Designed & Built with HTML, CSS, and ❤️</p>
   </footer>
 
-
   <script>
-    // Intersection Observer for Smooth Scroll Fade-In Reveal
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add("show");
         }
       });
-    }, { threshold: 0.1 });
+    }, { threshold: 0.05 });
 
-    document.querySelectorAll(".about-box, .timeline-item, .skills-section, .stats-section, .engineering-dna").forEach(el => {
+    document.querySelectorAll(".card, .timeline-item, .skills-section, .stats-section, .engineering-dna, .dna-card").forEach(el => {
       el.classList.add("hidden");
       observer.observe(el);
     });
 
-    // Clean Counter Engine
     const counters = document.querySelectorAll(".counter");
     counters.forEach(counter => {
-      counter.innerText = "0"; // Initialize cleanly
+      counter.innerText = "0";
       
       const update = () => {
         const target = +counter.dataset.target;
         const current = parseInt(counter.innerText, 10);
-        const increment = Math.ceil(target / 50); // Normalized speed regardless of size
+        const increment = Math.ceil(target / 40);
 
         if (current < target) {
           const nextVal = current + increment;
@@ -576,14 +608,13 @@
             counter.innerText = target + "+";
           } else {
             counter.innerText = nextVal;
-            setTimeout(update, 25);
+            setTimeout(update, 30);
           }
         } else {
           counter.innerText = target + "+";
         }
       }
       
-      // Trigger counter when elements come into viewport context
       const counterObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if(entry.isIntersecting && counter.innerText === "0") {
