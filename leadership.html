@@ -5,18 +5,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Leadership | Chelsea Ogbonna</title>
-  
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   
   <style>
     :root {
       --bg: #edf2fb;
       --card: #d7e3fc;
-      --accent: #abc4ff;
-      --text: #1f2937;
-      --border: #c1d3fe;
       --card-hover: #ccdbfd;
+      --white: #ffffff;
+      --text: #1f2937;
+      --muted: #5f6b7a;
+      --accent: #6C8EF5;
       --shadow: 0 12px 30px rgba(0, 0, 0, .08);
     }
 
@@ -31,91 +30,70 @@
     }
 
     body {
-      font-family: Inter, sans-serif;
+      font-family: "Poppins", sans-serif;
       background: var(--bg);
       color: var(--text);
       line-height: 1.7;
-      overflow-x: hidden;
     }
 
-    /* =========================
-    NAV (MATCHES HOMEPAGE & PROJECTS)
-    ========================= */
     nav {
-      position: fixed;
-      top: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: min(1100px, 92%);
       display: flex;
-      justify-content: space-between;
-      align-items: center;
+      justify-content: center;
+      gap: 45px;
+      padding: 25px;
+      position: sticky;
+      top: 0;
+      backdrop-filter: blur(12px);
+      background: rgba(237, 242, 251, .75);
       z-index: 1000;
     }
 
-    .logo {
-      font-weight: 800;
-      font-size: 18px;
+    nav a {
       text-decoration: none;
       color: var(--text);
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 10px;
-      padding: 8px;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, .78);
-      backdrop-filter: blur(16px);
-      border: 1px solid rgba(193, 211, 254, .45);
-      box-shadow: 0 12px 35px rgba(0, 0, 0, .10);
-    }
-
-    .nav-links a {
-      text-decoration: none;
-      color: var(--text);
-      padding: 10px 14px;
-      border-radius: 10px;
-      transition: .25s;
       font-weight: 500;
+      transition: .3s;
     }
 
-    .nav-links a:hover {
-      background: var(--accent);
-      transform: translateY(-2px);
+    nav a:hover {
+      color: var(--accent);
     }
 
-    /* =========================
-    LAYOUT WRAPPER
-    ========================= */
     .content {
       width: min(1200px, 90%);
       margin: auto;
-      padding: 140px 0 100px;
+      padding: 60px 0 100px;
     }
 
     /* HERO */
     .hero {
       text-align: center;
       margin-bottom: 80px;
-      position: relative;
     }
 
     .hero h1 {
-      font-size: 60px;
-      font-weight: 800;
-      margin-bottom: 20px;
+      font-size: 52px;
+      margin-bottom: 15px;
     }
 
     .hero p {
       max-width: 750px;
       margin: auto;
-      color: #4b5563;
+      color: var(--muted);
       font-size: 18px;
-      line-height: 1.8;
     }
 
-    /* STATISTICS BLOCKS */
+    .leader-photo {
+      width: 220px;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-bottom: 30px;
+      border: 6px solid white;
+      box-shadow: var(--shadow);
+    }
+
+    /* STATISTICS */
     .stats-section {
       margin: 80px 0;
       text-align: center;
@@ -123,8 +101,8 @@
 
     .stats-section h2 {
       font-size: 36px;
-      font-weight: 800;
       margin-bottom: 40px;
+      color: #3558d4;
     }
 
     .stats-grid {
@@ -136,7 +114,7 @@
     .stat-card {
       background: var(--card);
       border-radius: 20px;
-      padding: 35px 25px;
+      padding: 35px;
       box-shadow: var(--shadow);
       transition: .3s;
     }
@@ -147,33 +125,31 @@
     }
 
     .stat-card h1 {
-      font-size: 52px;
-      font-weight: 800;
-      color: var(--text);
+      font-size: 55px;
+      color: var(--accent);
       margin-bottom: 10px;
     }
 
     .stat-card p {
-      font-size: 16px;
-      font-weight: 500;
-      color: #4b5563;
+      font-size: 17px;
+      color: var(--muted);
     }
 
-    /* LEADERSHIP CARDS GRID & ITEM ENTRIES */
+    /* LEADERSHIP CARDS */
     .section {
-      margin: 80px 0;
+      margin: 90px 0;
     }
 
     .section h2 {
       text-align: center;
       font-size: 36px;
-      font-weight: 800;
+      color: #3558d4;
       margin-bottom: 40px;
     }
 
     .card {
       background: var(--card);
-      border-radius: 20px;
+      border-radius: 22px;
       padding: 35px;
       box-shadow: var(--shadow);
       transition: .3s;
@@ -186,40 +162,22 @@
 
     .card h3 {
       font-size: 24px;
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: 16px;
+      color: #3558d4;
+      margin-bottom: 12px;
     }
 
     .card img {
       width: 100%;
-      max-width: 100%;
-      border-radius: 18px;
+      border-radius: 16px;
       margin-bottom: 25px;
-      box-shadow: 0 15px 35px rgba(0, 0, 0, .06);
     }
 
     .card p {
-      color: #4b5563;
-      font-size: 16px;
-      line-height: 1.7;
       margin-bottom: 18px;
     }
 
     .card p:last-of-type {
       margin-bottom: 0;
-    }
-
-    /* SCROLL REVEAL STRUCTURE */
-    .hidden {
-      opacity: 0;
-      transform: translateY(40px);
-      transition: all .7s ease-out;
-    }
-
-    .show {
-      opacity: 1;
-      transform: translateY(0);
     }
   </style>
 </head>
@@ -227,15 +185,12 @@
 <body>
 
   <nav>
-    <a href="index.html" class="logo">Chelsea Ogbonna</a>
-
-    <div class="nav-links">
-      <a href="about.html">About</a>
-      <a href="projects.html">Projects</a>
-      <a href="research.html">Research</a>
-      <a href="leadership.html">Leadership</a>
-      <a href="contact.html">Contact</a>
-    </div>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="projects.html">Projects</a>
+    <a href="research.html">Research</a>
+    <a href="leadership.html">Leadership</a>
+    <a href="contact.html">Contact</a>
   </nav>
 
   <div class="content">
@@ -407,27 +362,19 @@
       <div class="stats-grid">
         <div class="stat-card">
           <h1>🤝</h1>
-          <p style="color: var(--text); font-size: 15px; margin-top: 5px;">
-            <strong>Collaboration</strong><br>I believe the best ideas come from diverse teams working together.
-          </p>
+          <p><strong>Collaboration</strong><br>I believe the best ideas come from diverse teams working together.</p>
         </div>
         <div class="stat-card">
           <h1>💙</h1>
-          <p style="color: var(--text); font-size: 15px; margin-top: 5px;">
-            <strong>Empathy</strong><br>I strive to understand people first, then lead with compassion and respect.
-          </p>
+          <p><strong>Empathy</strong><br>I strive to understand people first, then lead with compassion and respect.</p>
         </div>
         <div class="stat-card">
           <h1>🚀</h1>
-          <p style="color: var(--text); font-size: 15px; margin-top: 5px;">
-            <strong>Growth</strong><br>I encourage continuous learning, curiosity, and improvement in every project.
-          </p>
+          <p><strong>Growth</strong><br>I encourage continuous learning, curiosity, and improvement in every project.</p>
         </div>
         <div class="stat-card">
           <h1>🌍</h1>
-          <p style="color: var(--text); font-size: 15px; margin-top: 5px;">
-            <strong>Impact</strong><br>My goal is to create opportunities and technologies that improve lives.
-          </p>
+          <p><strong>Impact</strong><br>My goal is to create opportunities and technologies that improve lives.</p>
         </div>
       </div>
     </section>
@@ -435,7 +382,7 @@
     <section class="section">
       <div class="card" style="text-align:center;">
         <h2 style="margin-bottom:20px;">💬 Leadership in One Sentence</h2>
-        <p style="max-width:700px; margin:auto; font-size:20px; font-style:italic; color:#4b5563;">
+        <p style="max-width:700px; margin:auto; font-size:20px; font-style:italic; color:var(--muted);">
           "Great leadership isn't measured by how many people follow you—it's measured by how many people grow because of you."
         </p>
       </div>
@@ -443,14 +390,14 @@
 
   </div>
 
-  <footer style="margin-top:80px; padding:45px; text-align:center; border-top: 1px solid var(--border); color:#4b5563;">
-    <p style="font-size:18px; font-weight:600;">
+  <footer style="margin-top:80px; padding:45px; text-align:center; background:rgba(255,255,255,.35); color:var(--muted);">
+    <p style="font-size:18px;font-weight:600;">
       Thank you for visiting my portfolio!
     </p>
-    <p style="margin-top:10px; font-size:15px;">
+    <p style="margin-top:10px;">
       If you'd like to collaborate, discuss research, or connect professionally, I'd love to hear from you.
     </p>
-    <p style="margin-top:25px; font-size:14px;">
+    <p style="margin-top:25px;">
       © 2026 Chelsea Ogbonna
     </p>
   </footer>
@@ -459,13 +406,16 @@
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          entry.target.classList.add("show");
+          entry.target.style.opacity = "1";
+          entry.target.style.transform = "translateY(0)";
         }
       });
-    }, { threshold: 0.05 });
+    }, { threshold: 0.1 });
 
-    document.querySelectorAll(".card, .stat-card, .hero, .section").forEach((el) => {
-      el.classList.add("hidden");
+    document.querySelectorAll(".card, .stat-card, .hero").forEach((el) => {
+      el.style.opacity = "0";
+      el.style.transform = "translateY(40px)";
+      el.style.transition = "all .8s ease";
       observer.observe(el);
     });
   </script>
