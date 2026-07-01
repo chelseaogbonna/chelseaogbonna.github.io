@@ -1,0 +1,22 @@
+<div class="project-small">
+
+<img src="terrainrobot.webp">
+
+<div class="project-info">
+
+<h3>🚗 Terrain Detection Robot</h3>
+
+<p>
+Developed a robotic system that classifies terrain types using IMU and force sensor data.
+</p>
+
+<div class="tags">
+<span class="tag">Robotics</span>
+<span class="tag">Sensors</span>
+<span class="tag">Python</span>
+</div>
+
+<a href="#">Coming Soon →</a>
+
+</div>
+</div>
