@@ -4,11 +4,31 @@
   <title>Contact | Chelsea Ogbonna</title>
 
   <style>
+    :root {
+      /* BACKGROUND (single control point) */
+      --bg: #abc4ff;
+
+      /* CARDS */
+      --card: #c1d3fe;
+      --card-hover: #ccdbfd;
+
+      /* TEXT */
+      --text: #1f2937;
+      --muted: #111827;
+
+      /* LINKS */
+      --link: #1d4ed8;
+
+      /* NAV */
+      --nav-text: #1f2937;
+      --nav-opacity: 0.8;
+    }
+
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: #0b0f19;
-      color: white;
+      background: var(--bg);
+      color: var(--text);
     }
 
     nav {
@@ -16,29 +36,39 @@
     }
 
     nav a {
-      color: white;
+      color: var(--nav-text);
       margin-right: 10px;
       text-decoration: none;
+      opacity: var(--nav-opacity);
     }
 
     nav a:hover {
-      opacity: 0.8;
+      opacity: 1;
     }
 
     .content {
       padding: 60px;
     }
 
+    h1 {
+      margin-bottom: 20px;
+    }
+
     .card {
-      background: #111827;
+      background: var(--card);
       padding: 20px;
       border-radius: 10px;
       max-width: 700px;
       margin-bottom: 20px;
+      transition: 0.2s ease;
+    }
+
+    .card:hover {
+      background: var(--card-hover);
     }
 
     .card a {
-      color: #7dd3fc;
+      color: var(--link);
       text-decoration: none;
     }
 
@@ -48,6 +78,10 @@
 
     h2 {
       margin-top: 0;
+    }
+
+    p {
+      line-height: 1.6;
     }
   </style>
 </head>
