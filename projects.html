@@ -364,45 +364,141 @@
       margin-bottom: 18px;
     }
 
-    /* =========================
-    ADDITIONAL EXPERIENCE STYLING
-    ========================= */
-    .additional-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
-      margin-top: 20px;
+    /* =====================================
+    PROCESS & TOOLKIT ADDITIONS
+    ====================================== */
+    .process-line {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 0;
+      margin-top: 70px;
     }
 
-    .additional-project-box {
-      background: var(--card);
-      border-radius: 16px;
-      padding: 24px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, .05);
-      transition: 0.3s;
+    .step {
+      width: 150px;
+      text-align: center;
+      position: relative;
     }
 
-    .additional-project-box:hover {
-      transform: translateY(-4px);
+    .circle {
+      width: 70px;
+      height: 70px;
+      margin: auto;
+      border-radius: 50%;
+      background: var(--accent);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 26px;
+      font-weight: 700;
+      box-shadow: 0 12px 25px rgba(0, 0, 0, .08);
+      transition: .35s;
     }
 
-    .additional-project-box h3 {
+    .step:hover .circle {
+      transform: scale(1.12);
+      background: #9bb7ff;
+    }
+
+    .connector {
+      width: 50px;
+      height: 4px;
+      background: var(--border);
+      margin-top: 34px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .connector::after {
+      content: "";
+      position: absolute;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: #7ca1ff;
+      animation: flow 3s linear infinite;
+    }
+
+    .step h3 {
+      margin: 22px 0 12px;
       font-size: 20px;
-      margin-bottom: 10px;
     }
 
-    .additional-project-box p {
-      color: #4b5563;
-      font-size: 15px;
+    .step p {
+      font-size: 14px;
       line-height: 1.6;
+      color: #4b5563;
+      padding: 0 4px;
+    }
+
+    @keyframes flow {
+      0% { left: -100%; }
+      100% { left: 100%; }
+    }
+
+    .toolkit-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+      margin-top: 50px;
+    }
+
+    .toolkit-card {
+      background: var(--card);
+      padding: 30px;
+      border-radius: 22px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, .08);
+      transition: .3s;
+    }
+
+    .toolkit-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 18px 45px rgba(0, 0, 0, .12);
+      background: #e4ecff;
+    }
+
+    .toolkit-card h3 {
+      margin-bottom: 20px;
+      font-size: 22px;
+    }
+
+    .tool-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .tool-tags span {
+      background: white;
+      padding: 10px 16px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 600;
+      transition: .25s;
+    }
+
+    .tool-tags span:hover {
+      background: var(--accent);
+      transform: translateY(-3px);
+    }
+
+    /* Responsive adjustments */
+    @media(max-width: 1300px) {
+      .connector { display: none; }
+      .process-line { gap: 40px; }
+      .step { width: 230px; }
+    }
+
+    @media(max-width: 768px) {
+      .process-line { flex-direction: column; align-items: center; }
+      .step { width: 100%; max-width: 380px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- =========================
-  NAVIGATION
-  ========================= -->
   <nav>
     <a href="index.html" class="logo">Chelsea Ogbonna</a>
     <div class="nav-links">
@@ -414,9 +510,6 @@
     </div>
   </nav>
 
-  <!-- =========================
-  HERO
-  ========================= -->
   <section class="hero">
     <div class="hero-text">
       <h1>Engineering Portfolio</h1>
@@ -433,9 +526,6 @@
     </div>
   </section>
 
-  <!-- =========================
-  FEATURED PROJECTS
-  ========================= -->
   <section class="section" id="featured">
     <h2 class="section-title">Featured Projects</h2>
     <p class="section-subtitle">
@@ -443,7 +533,6 @@
       showcasing research, design, prototyping, testing, and innovation.
     </p>
     <div class="featured-grid">
-      <!-- FEATURED PROJECT 1 -->
       <div class="feature-card">
         <div class="feature-image">
           <img src="syncytialknots.webp" alt="Syncytial Knot Isolation Device">
@@ -464,7 +553,6 @@
         </div>
       </div>
 
-      <!-- FEATURED PROJECT 2 -->
       <div class="feature-card">
         <div class="feature-image">
           <img src="tavipacemaker.webp" alt="TAVI Pacemaker">
@@ -485,7 +573,6 @@
         </div>
       </div>
 
-      <!-- FEATURED PROJECT 3 -->
       <div class="feature-card">
         <div class="feature-image">
           <img src="everydaymovinghelper.webp" alt="Everyday Moving Helper">
@@ -508,9 +595,6 @@
     </div>
   </section>
 
-  <!-- =========================
-  PROJECT FILTERS BAR
-  ========================= -->
   <section class="section">
     <h2 class="section-title">Explore More Projects</h2>
     <p class="section-subtitle">
@@ -526,22 +610,14 @@
     </div>
   </section>
 
-  <!-- =========================
-  MEDICAL DEVICES CATEGORY
-  ========================= -->
   <section class="section">
     <h2 class="section-title">🔬 Medical Devices</h2>
     <div class="project-grid">
-      <!-- MEDICAL PROJECT 1 -->
       <div class="project-small">
         <img src="tavipacemaker.webp" alt="TAVI Pacemaker">
         <div class="project-info">
           <h3>❤️ TAVI-Integrated Pacemaker</h3>
-          <p>
-            Contributed to the development and testing of a wireless implantable
-            pacemaker designed for integration with transcatheter aortic valve
-            replacement procedures.
-          </p>
+          <p>Contributed to the development and testing of a wireless implantable pacemaker designed for integration with transcatheter aortic valve replacement procedures.</p>
           <div class="tags">
             <span class="tag">Medical Devices</span>
             <span class="tag">PCB</span>
@@ -552,16 +628,11 @@
         </div>
       </div>
 
-      <!-- MEDICAL PROJECT 2 -->
       <div class="project-small">
         <img src="syncytialknots.webp" alt="Syncytial Knot Device">
         <div class="project-info">
           <h3>🧬 Syncytial Knot Isolation</h3>
-          <p>
-            Developed a crossflow microfluidic device for isolating placental
-            syncytial knots using computational modeling, CAD, and experimental
-            validation.
-          </p>
+          <p>Developed a crossflow microfluidic device for isolating placental syncytial knots using computational modeling, CAD, and experimental validation.</p>
           <div class="tags">
             <span class="tag">Microfluidics</span>
             <span class="tag">COMSOL</span>
@@ -572,16 +643,11 @@
         </div>
       </div>
 
-      <!-- MEDICAL PROJECT 3 -->
       <div class="project-small">
         <img src="diabeticfoot.webp" alt="Haptic Diabetic Foot Project">
         <div class="project-info">
           <h3>🦶 Haptic Diabetic Foot Monitoring</h3>
-          <p>
-            Led the development of a wearable sensing system designed to improve
-            gait monitoring and reduce complications associated with diabetic foot
-            ulcers.
-          </p>
+          <p>Led the development of a wearable sensing system designed to improve gait monitoring and reduce complications associated with diabetic foot ulcers.</p>
           <div class="tags">
             <span class="tag">Wearables</span>
             <span class="tag">Biomechanics</span>
@@ -597,21 +663,14 @@
     </div>
   </section>
 
-  <!-- =========================
-  ROBOTICS & MECHATRONICS CATEGORY
-  ========================= -->
   <section class="section">
     <h2 class="section-title">🤖 Robotics & Mechatronics</h2>
     <div class="project-grid">
-      <!-- ROBOTICS PROJECT 1 -->
       <div class="project-small">
         <img src="everydaymovinghelper.webp" alt="Everyday Moving Helper">
         <div class="project-info">
           <h3>📦 Everyday Moving Helper</h3>
-          <p>
-            Designed a modular powered cargo platform that assists users with transporting
-            everyday items through adaptable mechanical design and user-centered engineering.
-          </p>
+          <p>Designed a modular powered cargo platform that assists users with transporting everyday items through adaptable mechanical design and user-centered engineering.</p>
           <div class="tags">
             <span class="tag">Mechanical Design</span>
             <span class="tag">CAD</span>
@@ -622,16 +681,11 @@
         </div>
       </div>
 
-      <!-- ROBOTICS PROJECT 2 -->
       <div class="project-small">
         <img src="terrainrobot.webp" alt="Terrain Detection Robot">
         <div class="project-info">
           <h3>🚗 Terrain Detection Robot</h3>
-          <p>
-            Built a robotic sensing system capable of identifying different terrain
-            types using force sensors and inertial measurement units with real-time
-            data collection.
-          </p>
+          <p>Built a robotic sensing system capable of identifying different terrain types using force sensors and inertial measurement units with real-time data collection.</p>
           <div class="tags">
             <span class="tag">Robotics</span>
             <span class="tag">Embedded Systems</span>
@@ -642,16 +696,11 @@
         </div>
       </div>
 
-      <!-- ROBOTICS PROJECT 3 -->
       <div class="project-small">
         <img src="imuanalysis.webp" alt="IMU Motion Analysis">
         <div class="project-info">
           <h3>📈 IMU Motion Analysis</h3>
-          <p>
-            Developed Python-based data analysis workflows for inertial measurement
-            unit data, enabling visualization, processing, and interpretation of
-            human movement.
-          </p>
+          <p>Developed Python-based data analysis workflows for inertial measurement unit data, enabling visualization, processing, and interpretation of human movement.</p>
           <div class="tags">
             <span class="tag">Python</span>
             <span class="tag">Data Analysis</span>
@@ -667,9 +716,6 @@
     </div>
   </section>
 
-  <!-- =====================================
-  SOFTWARE & DATA CATEGORY
-  ====================================== -->
   <section class="section">
     <h2 class="section-title">💻 Software & Data</h2>
     <p class="section-subtitle">
@@ -678,15 +724,11 @@
       signal processing, and computational tools.
     </p>
     <div class="project-grid">
-      <!-- SOFTWARE PROJECT 1 -->
       <div class="project-small">
         <img src="pythonanalysis.webp" alt="Python Data Analysis">
         <div class="project-info">
           <h3>🐍 Python Sensor Analysis</h3>
-          <p>
-            Built automated Python workflows to clean, analyze, and visualize sensor
-            data collected from robotics and biomechanics experiments.
-          </p>
+          <p>Built automated Python workflows to clean, analyze, and visualize sensor data collected from robotics and biomechanics experiments.</p>
           <div class="tags">
             <span class="tag">Python</span>
             <span class="tag">Pandas</span>
@@ -697,15 +739,11 @@
         </div>
       </div>
 
-      <!-- SOFTWARE PROJECT 2 -->
       <div class="project-small">
         <img src="signals.webp" alt="Biomedical Signal Processing">
         <div class="project-info">
           <h3>📈 Biomedical Signal Processing</h3>
-          <p>
-            Applied signal processing techniques to interpret physiological and motion
-            signals, improving data quality and extracting meaningful trends.
-          </p>
+          <p>Applied signal processing techniques to interpret physiological and motion signals, improving data quality and extracting meaningful trends.</p>
           <div class="tags">
             <span class="tag">MATLAB</span>
             <span class="tag">Signals</span>
@@ -716,15 +754,11 @@
         </div>
       </div>
 
-      <!-- SOFTWARE PROJECT 3 -->
       <div class="project-small">
         <img src="forcesensors.webp" alt="Force Sensor Analysis">
         <div class="project-info">
           <h3>📊 Force Sensor Classification</h3>
-          <p>
-            Analyzed force sensor data collected across different terrains to classify
-            walking surfaces and evaluate system performance.
-          </p>
+          <p>Analyzed force sensor data collected across different terrains to classify walking surfaces and evaluate system performance.</p>
           <div class="tags">
             <span class="tag">Python</span>
             <span class="tag">Sensors</span>
@@ -740,9 +774,6 @@
     </div>
   </section>
 
-  <!-- =====================================
-  DESIGN & MANUFACTURING CATEGORY
-  ====================================== -->
   <section class="section">
     <h2 class="section-title">⚙️ Design & Manufacturing</h2>
     <p class="section-subtitle">
@@ -750,16 +781,11 @@
       highlight the engineering process of turning ideas into functional devices.
     </p>
     <div class="project-grid">
-      <!-- DESIGN PROJECT 1 -->
       <div class="project-small">
         <img src="cad.webp" alt="CAD Design">
         <div class="project-info">
           <h3>📐 CAD Design Portfolio</h3>
-          <p>
-            Designed mechanical components and biomedical devices using SolidWorks,
-            Siemens NX, and COMSOL, balancing functionality, manufacturability,
-            and performance.
-          </p>
+          <p>Designed mechanical components and biomedical devices using SolidWorks, Siemens NX, and COMSOL, balancing functionality, manufacturability, and performance.</p>
           <div class="tags">
             <span class="tag">SolidWorks</span>
             <span class="tag">Siemens NX</span>
@@ -770,15 +796,11 @@
         </div>
       </div>
 
-      <!-- DESIGN PROJECT 2 -->
       <div class="project-small">
         <img src="3dprinting.webp" alt="3D Printing">
         <div class="project-info">
           <h3>🖨️ Rapid Prototyping</h3>
-          <p>
-            Fabricated engineering prototypes using 3D printing to evaluate form,
-            fit, and functionality before experimental testing and manufacturing.
-          </p>
+          <p>Fabricated engineering prototypes using 3D printing to evaluate form, fit, and functionality before experimental testing and manufacturing.</p>
           <div class="tags">
             <span class="tag">3D Printing</span>
             <span class="tag">Prototype</span>
@@ -789,16 +811,11 @@
         </div>
       </div>
 
-      <!-- DESIGN PROJECT 3 -->
       <div class="project-small">
         <img src="pcb.webp" alt="PCB Assembly">
         <div class="project-info">
           <h3>🔧 PCB Assembly & Electronics</h3>
-          <p>
-            Assembled, soldered, and tested printed circuit boards for implantable
-            medical device prototypes while improving manufacturing consistency
-            and device reliability.
-          </p>
+          <p>Assembled, soldered, and tested printed circuit boards for implantable medical device prototypes while improving manufacturing consistency and device reliability.</p>
           <div class="tags">
             <span class="tag">PCB</span>
             <span class="tag">Soldering</span>
@@ -814,60 +831,202 @@
     </div>
   </section>
 
-  <!-- =====================================
-  ADDITIONAL PROJECTS CATEGORY
-  ====================================== -->
   <section class="section">
     <h2 class="section-title">📁 Additional Engineering Experience</h2>
     <p class="section-subtitle">
-      Alongside my featured work, I've completed a variety of engineering projects,
-      coursework, and technical explorations that have strengthened my skills across
-      multiple disciplines.
+      Beyond my featured projects, I've contributed to a variety of engineering
+      initiatives that strengthened my experience in design, research,
+      manufacturing, education, and product development.
     </p>
-    <div class="additional-container">
-      <div class="additional-project-box">
-        <h3>♻️ Sustainable Recycling Center</h3>
-        <p>Designed a sustainable recycling center for a Chicago condominium complex, earning recognition for the team's innovative engineering solution.</p>
+    <div class="project-grid">
+      <div class="project-small">
+        <img src="recyclingcenter.webp" alt="Sustainable Recycling Center">
+        <div class="project-info">
+          <h3>♻️ Sustainable Recycling Center</h3>
+          <p>Designed a sustainable recycling center for a Chicago condominium, developing an accessible solution that improved waste management while earning Best Design Team recognition.</p>
+          <div class="tags">
+            <span class="tag">Design</span>
+            <span class="tag">Sustainability</span>
+            <span class="tag">Teamwork</span>
+            <span class="tag">CAD</span>
+          </div>
+          <a href="#" class="project-button">Coming Soon →</a>
+        </div>
       </div>
-      <div class="additional-project-box">
-        <h3>🧪 Inspire Labs</h3>
-        <p>Developed hands-on engineering activities and educational content to introduce high school students to engineering concepts through project-based learning.</p>
+
+      <div class="project-small">
+        <img src="inspirelabs.webp" alt="Engineering Outreach">
+        <div class="project-info">
+          <h3>🧪 Inspire Labs</h3>
+          <p>Designed hands-on engineering activities and educational demonstrations to introduce high school students to engineering through project-based learning.</p>
+          <div class="tags">
+            <span class="tag">STEM Outreach</span>
+            <span class="tag">Leadership</span>
+            <span class="tag">Education</span>
+            <span class="tag">Design</span>
+          </div>
+          <a href="#" class="project-button">Coming Soon →</a>
+        </div>
       </div>
-      <div class="additional-project-box">
-        <h3>📊 COMSOL Simulations</h3>
-        <p>Created computational models to evaluate flow behavior, optimize geometries, and support engineering design decisions.</p>
+
+      <div class="project-small">
+        <img src="rfcoil.webp" alt="RF Coil Optimization">
+        <div class="project-info">
+          <h3>📡 RF Coil Optimization</h3>
+          <p>Optimized wireless power transfer performance by evaluating RF coil geometry, impedance matching, and manufacturing techniques for implantable medical devices.</p>
+          <div class="tags">
+            <span class="tag">RF Engineering</span>
+            <span class="tag">Medical Devices</span>
+            <span class="tag">Testing</span>
+            <span class="tag">Research</span>
+          </div>
+          <a href="#" class="project-button">Coming Soon →</a>
+        </div>
       </div>
-      <div class="additional-project-box">
-        <h3>💻 MATLAB Coursework</h3>
-        <p>Applied numerical methods, data visualization, and engineering analysis to solve biomedical and mechanical engineering problems.</p>
-      </div>
-      <div class="additional-project-box">
-        <h3>⚙️ Arduino & Embedded Systems</h3>
-        <p>Built embedded systems integrating sensors, microcontrollers, and software for engineering prototypes and experimental platforms.</p>
-      </div>
-      <div class="additional-project-box">
-        <h3>📐 Engineering Design Projects</h3>
-        <p>Completed multidisciplinary design projects involving prototyping, manufacturing, CAD, experimentation, and technical communication.</p>
+
+      <div class="project-small">
+        <img src="wearable.webp" alt="Wearable Gait Monitoring">
+        <div class="project-info">
+          <h3>🚶 Wearable Gait Monitoring</h3>
+          <p>Developed wearable sensing systems integrating IMUs and force sensors to analyze gait, classify movement, and support biomechanics research.</p>
+          <div class="tags">
+            <span class="tag">Wearables</span>
+            <span class="tag">Python</span>
+            <span class="tag">Sensors</span>
+            <span class="tag">Biomechanics</span>
+          </div>
+          <a href="#" class="project-button">Coming Soon →</a>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- =====================================
-  CURRENTLY BUILDING
-  ====================================== -->
+  <section class="section">
+    <h2 class="section-title">⚙️ My Engineering Process</h2>
+    <p class="section-subtitle">
+      Every project follows the same philosophy: understand the problem, design
+      thoughtfully, validate experimentally, and continuously improve.
+    </p>
+    <div class="process-line">
+      <div class="step">
+        <div class="circle">1</div>
+        <h3>Identify</h3>
+        <p>Understand the problem, define user needs, and establish engineering constraints.</p>
+      </div>
+      <div class="connector"></div>
+      <div class="step">
+        <div class="circle">2</div>
+        <h3>Research</h3>
+        <p>Study existing solutions, literature, and technical requirements before designing.</p>
+      </div>
+      <div class="connector"></div>
+      <div class="step">
+        <div class="circle">3</div>
+        <h3>Design</h3>
+        <p>Develop concepts through CAD, calculations, simulations, and engineering analysis.</p>
+      </div>
+      <div class="connector"></div>
+      <div class="step">
+        <div class="circle">4</div>
+        <h3>Prototype</h3>
+        <p>Build functional prototypes using manufacturing and rapid prototyping techniques.</p>
+      </div>
+      <div class="connector"></div>
+      <div class="step">
+        <div class="circle">5</div>
+        <h3>Test</h3>
+        <p>Collect data, validate performance, troubleshoot issues, and analyze results.</p>
+      </div>
+      <div class="connector"></div>
+      <div class="step">
+        <div class="circle">6</div>
+        <h3>Iterate</h3>
+        <p>Improve the design through multiple iterations until the engineering goals are met.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">🛠️ Technical Toolkit</h2>
+    <p class="section-subtitle">
+      The tools, technologies, and engineering methods I use throughout the
+      design, research, and product development process.
+    </p>
+    <div class="toolkit-grid">
+      <div class="toolkit-card">
+        <h3>💻 Programming</h3>
+        <div class="tool-tags">
+          <span>Python</span>
+          <span>MATLAB</span>
+          <span>C++</span>
+          <span>Arduino</span>
+        </div>
+      </div>
+      <div class="toolkit-card">
+        <h3>📐 CAD & Simulation</h3>
+        <div class="tool-tags">
+          <span>SolidWorks</span>
+          <span>Siemens NX</span>
+          <span>COMSOL</span>
+          <span>Engineering Drawings</span>
+        </div>
+      </div>
+      <div class="toolkit-card">
+        <h3>⚙️ Manufacturing</h3>
+        <div class="tool-tags">
+          <span>3D Printing</span>
+          <span>PCB Soldering</span>
+          <span>Rapid Prototyping</span>
+          <span>Device Assembly</span>
+        </div>
+      </div>
+      <div class="toolkit-card">
+        <h3>🔬 Research</h3>
+        <div class="tool-tags">
+          <span>Experimental Design</span>
+          <span>Data Analysis</span>
+          <span>Technical Writing</span>
+          <span>Statistical Analysis</span>
+        </div>
+      </div>
+      <div class="toolkit-card">
+        <h3>❤️ Biomedical Engineering</h3>
+        <div class="tool-tags">
+          <span>Microfluidics</span>
+          <span>Medical Devices</span>
+          <span>Biomechanics</span>
+          <span>Wearable Sensors</span>
+        </div>
+      </div>
+      <div class="toolkit-card">
+        <h3>🚀 Product Development</h3>
+        <div class="tool-tags">
+          <span>Problem Solving</span>
+          <span>Product Design</span>
+          <span>Testing</span>
+          <span>Iteration</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="section" style="margin-bottom: 60px;">
     <h2 class="section-title">🚀 Currently Building</h2>
     <p class="section-subtitle">
-      I'm actively expanding this portfolio with detailed engineering case studies,
-      design notebooks, CAD models, videos, and technical documentation. Each new
-      project page will walk through the complete engineering process—from identifying
-      the problem to designing, testing, iterating, and reflecting on the final
-      solution.
+      I'm continuously expanding this portfolio with detailed engineering case
+      studies, CAD models, videos, design iterations, and technical documentation.
+      Each project page will provide a deeper look into the engineering process—
+      from defining the problem and exploring design alternatives to testing,
+      validation, and final outcomes.
     </p>
     <div style="text-align:center; margin-top:40px;">
       <a href="contact.html" class="button">Let's Connect →</a>
     </div>
   </section>
+
+  <footer style="padding: 40px 10%; text-align: center; color: var(--text); border-top: 1px solid var(--border); font-size: 15px; font-weight: 500;">
+    © 2026 Chelsea Ogbonna • Designed & Built by Chelsea
+  </footer>
 
 </body>
 </html>
