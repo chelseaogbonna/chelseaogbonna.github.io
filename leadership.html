@@ -1,140 +1,424 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>Leadership</title>
+<html lang="en">
 
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leadership | Chelsea Ogbonna</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
   <style>
     :root {
-      /* BACKGROUND (single control point) */
-      --bg: #abc4ff;
-
-      /* CARDS */
-      --card: #c1d3fe;
+      --bg: #edf2fb;
+      --card: #d7e3fc;
       --card-hover: #ccdbfd;
-
-      /* TEXT */
+      --white: #ffffff;
       --text: #1f2937;
-      --muted: #111827;
+      --muted: #5f6b7a;
+      --accent: #6C8EF5;
+      --shadow: 0 12px 30px rgba(0, 0, 0, .08);
+    }
 
-      /* NAV */
-      --nav-text: #1f2937;
-      --nav-opacity: 0.8;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
-      margin: 0;
-      font-family: Arial, sans-serif;
+      font-family: "Poppins", sans-serif;
       background: var(--bg);
       color: var(--text);
+      line-height: 1.7;
     }
 
     nav {
-      padding: 20px;
+      display: flex;
+      justify-content: center;
+      gap: 45px;
+      padding: 25px;
+      position: sticky;
+      top: 0;
+      backdrop-filter: blur(12px);
+      background: rgba(237, 242, 251, .75);
+      z-index: 1000;
     }
 
     nav a {
-      color: var(--nav-text);
-      margin-right: 10px;
       text-decoration: none;
-      opacity: var(--nav-opacity);
+      color: var(--text);
+      font-weight: 500;
+      transition: .3s;
     }
 
     nav a:hover {
-      opacity: 1;
+      color: var(--accent);
     }
 
     .content {
-      padding: 60px;
+      width: min(1200px, 90%);
+      margin: auto;
+      padding: 60px 0 100px;
     }
 
-    h1 {
-      margin-bottom: 25px;
+    /* HERO */
+    .hero {
+      text-align: center;
+      margin-bottom: 80px;
+    }
+
+    .hero h1 {
+      font-size: 52px;
+      margin-bottom: 15px;
+    }
+
+    .hero p {
+      max-width: 750px;
+      margin: auto;
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .leader-photo {
+      width: 220px;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-bottom: 30px;
+      border: 6px solid white;
+      box-shadow: var(--shadow);
+    }
+
+    /* STATISTICS */
+    .stats-section {
+      margin: 80px 0;
+      text-align: center;
+    }
+
+    .stats-section h2 {
+      font-size: 36px;
+      margin-bottom: 40px;
+      color: #3558d4;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 25px;
+    }
+
+    .stat-card {
+      background: var(--card);
+      border-radius: 20px;
+      padding: 35px;
+      box-shadow: var(--shadow);
+      transition: .3s;
+    }
+
+    .stat-card:hover {
+      background: var(--card-hover);
+      transform: translateY(-8px);
+    }
+
+    .stat-card h1 {
+      font-size: 55px;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+
+    .stat-card p {
+      font-size: 17px;
+      color: var(--muted);
+    }
+
+    /* LEADERSHIP CARDS */
+    .section {
+      margin: 90px 0;
+    }
+
+    .section h2 {
+      text-align: center;
+      font-size: 36px;
+      color: #3558d4;
+      margin-bottom: 40px;
     }
 
     .card {
       background: var(--card);
-      padding: 20px;
-      border-radius: 10px;
-      margin-bottom: 30px;
-      max-width: 900px;
-      transition: 0.2s ease;
+      border-radius: 22px;
+      padding: 35px;
+      box-shadow: var(--shadow);
+      transition: .3s;
     }
 
     .card:hover {
       background: var(--card-hover);
+      transform: translateY(-8px);
+    }
+
+    .card h3 {
+      font-size: 24px;
+      color: #3558d4;
+      margin-bottom: 12px;
     }
 
     .card img {
-      display: block;
-      margin: 20px auto;
-      border-radius: 10px;
-      max-width: 100%;
-      height: auto;
+      width: 100%;
+      border-radius: 16px;
+      margin-bottom: 25px;
     }
 
-    .caption {
-      font-size: 12px;
-      opacity: 0.8;
-      text-align: center;
-      margin-top: 8px;
+    .card p {
+      margin-bottom: 18px;
     }
 
-    p {
-      line-height: 1.6;
+    .card p:last-of-type {
+      margin-bottom: 0;
     }
   </style>
 </head>
 
 <body>
 
-<nav>
-  <a href="index.html">Home</a>
-  <a href="about.html">About</a>
-  <a href="projects.html">Projects</a>
-  <a href="leadership.html">Leadership</a>
-  <a href="contact.html">Contact</a>
-</nav>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="projects.html">Projects</a>
+    <a href="leadership.html">Leadership</a>
+    <a href="contact.html">Contact</a>
+  </nav>
 
-<div class="content">
+  <div class="content">
 
-  <h1>Leadership</h1>
+    <div class="hero">
+      <img src="images/leadership-profile.jpg" class="leader-photo" alt="Chelsea Ogbonna">
+      <h1>Leadership</h1>
+      <p>
+        Engineering is about building technology. Leadership is about building people.
+        Throughout my experiences, I've enjoyed creating opportunities, mentoring others,
+        and bringing teams together to accomplish goals bigger than any individual could achieve.
+      </p>
+    </div>
 
-  <!-- BOX 1: NSBE IMAGE -->
-  <div class="card">
-    <img src="NSBE Pictures.webp" width="400">
+    <section class="stats-section">
+      <h2>Leadership at a Glance</h2>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <h1>4+</h1>
+          <p>Leadership Roles</p>
+        </div>
+        <div class="stat-card">
+          <h1>50+</h1>
+          <p>Students at Collaborative Study Session</p>
+        </div>
+        <div class="stat-card">
+          <h1>60+</h1>
+          <p>Increase in NSBE Meeting Attendance</p>
+        </div>
+        <div class="stat-card">
+          <h1>20+</h1>
+          <p>Purple Passion Members Recruited</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>❤️ My Leadership Philosophy</h2>
+      <div class="card">
+        <p>
+          To me, leadership isn't about having a title—it's about creating an environment
+          where people feel supported, challenged, and empowered to succeed. I strive to
+          lead with empathy, curiosity, and accountability while encouraging collaboration
+          and continuous growth.
+        </p>
+        <p>
+          Whether I'm organizing campus events, mentoring fellow students, or leading
+          research projects, my goal is always the same: help people reach their potential
+          while working together to solve meaningful problems.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>🟨 National Society of Black Engineers</h2>
+      <div class="card">
+        <img src="NSBE Pictures.webp" alt="NSBE Leadership">
+        <h3>Academic Chair</h3>
+        <p>
+          As Academic Chair for the National Society of Black Engineers (NSBE) at
+          Northwestern University, I focused on strengthening academic support,
+          encouraging collaboration, and building a stronger engineering community.
+        </p>
+        <p>
+          I organized programs that connected students across multiple engineering
+          organizations, helping create spaces where students could learn from one
+          another, build relationships, and succeed together.
+        </p>
+        <p>
+          One of my favorite initiatives was organizing a collaborative study session
+          that brought together students from NSBE, SHPE, SWE, and WIC. More than
+          50 students attended, creating an inclusive environment where students could
+          study together, share resources, and build relationships across organizations.
+        </p>
+        <p>
+          Through intentional outreach, event planning, and social media engagement,
+          I also helped increase NSBE meeting attendance by more than 60 students,
+          strengthening chapter involvement and creating a more connected engineering
+          community.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="card">
+        <img src="studypictures.webp" alt="Collaborative Study Session">
+        <h3>Cross-Organization Collaboration</h3>
+        <p>
+          One of my proudest accomplishments was helping organize a collaborative study
+          session that united students from multiple engineering organizations.
+          Instead of studying separately, students from NSBE, SHPE, SWE, and WIC came
+          together to prepare for exams, exchange knowledge, and support one another.
+          This event demonstrated how collaboration—not competition—creates stronger
+          engineering communities.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>💜 Purple Passion</h2>
+      <div class="card">
+        <img src="purplepassion.webp" alt="Purple Passion">
+        <h3>Co-Founder</h3>
+        <p>
+          Seeing a need for greater representation of majorette culture on campus,
+          I helped co-found Purple Passion, Northwestern University's majorette dance
+          team. What started as an idea quickly grew into a thriving student organization.
+        </p>
+        <p>
+          I recruited members, helped establish the team's foundation, organized
+          practices, coordinated performances, and worked closely with other student
+          leaders to create an inclusive and welcoming environment.
+        </p>
+        <p>
+          Building an organization from the ground up taught me that leadership isn't
+          just about managing people—it's about creating opportunities, fostering
+          community, and inspiring others to believe in a shared vision.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>🔬 Research Leadership</h2>
+      <div class="card">
+        <img src="syncytialknots.webp" alt="Microfluidic Research">
+        <h3>Team Lead — Syncytial Knot Isolation Project</h3>
+        <p>
+          Leadership extends beyond student organizations. As the team lead for a
+          microfluidic device design project, I coordinated project planning,
+          delegated responsibilities, and kept our team aligned throughout the
+          engineering design process.
+        </p>
+        <p>
+          Our goal was to develop a novel microfluidic platform capable of isolating
+          syncytial knots from placental tissue, a challenge with important
+          applications in maternal and fetal health research. Leading this project
+          required balancing technical problem-solving with communication, project
+          management, and collaboration.
+        </p>
+        <p>
+          From brainstorming design concepts and creating CAD models to planning
+          experiments and presenting our work, I learned that successful engineering
+          depends just as much on teamwork and communication as it does on technical
+          expertise.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>🧪 Engineering Outreach</h2>
+      <div class="card">
+        <img src="inspirelabs.webp" alt="Engineering Outreach">
+        <h3>Making Engineering Accessible</h3>
+        <p>
+          I'm passionate about encouraging the next generation of engineers.
+          Through outreach activities and educational initiatives, I've enjoyed
+          sharing engineering concepts in ways that are engaging, approachable,
+          and hands-on.
+        </p>
+        <p>
+          Whether mentoring students, creating demonstrations, or collaborating on
+          educational projects, I believe engineering becomes more powerful when
+          knowledge is shared and opportunities are made accessible to everyone.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>🌟 Leadership Values</h2>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <h1>🤝</h1>
+          <p><strong>Collaboration</strong><br>I believe the best ideas come from diverse teams working together.</p>
+        </div>
+        <div class="stat-card">
+          <h1>💙</h1>
+          <p><strong>Empathy</strong><br>I strive to understand people first, then lead with compassion and respect.</p>
+        </div>
+        <div class="stat-card">
+          <h1>🚀</h1>
+          <p><strong>Growth</strong><br>I encourage continuous learning, curiosity, and improvement in every project.</p>
+        </div>
+        <div class="stat-card">
+          <h1>🌍</h1>
+          <p><strong>Impact</strong><br>My goal is to create opportunities and technologies that improve lives.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="card" style="text-align:center;">
+        <h2 style="margin-bottom:20px;">💬 Leadership in One Sentence</h2>
+        <p style="max-width:700px; margin:auto; font-size:20px; font-style:italic; color:var(--muted);">
+          "Great leadership isn't measured by how many people follow you—it's measured by how many people grow because of you."
+        </p>
+      </div>
+    </section>
+
   </div>
 
-  <!-- BOX 2: LEADERSHIP TEXT -->
-  <div class="card">
-
-    <p>
-      I am currently the Academic Chair for the National Society of Black Engineers (NSBE) chapter at Northwestern University.
-      In this role, I focus on strengthening academic support systems and fostering collaboration across engineering student organizations.
+  <footer style="margin-top:80px; padding:45px; text-align:center; background:rgba(255,255,255,.35); color:var(--muted);">
+    <p style="font-size:18px;font-weight:600;">
+      Thank you for visiting my portfolio!
     </p>
-
-    <p>
-      I have led initiatives to increase cross-organization engagement among NSBE, SHPE, SWE, and WIC. One of my key accomplishments was organizing a collaborative study session that brought together over 50 students, significantly improving academic support and promoting inter-club connection.
-      Through targeted outreach and social media engagement, I increased NSBE meeting attendance by over 60 students, improving overall participation and strengthening community involvement within the chapter.
+    <p style="margin-top:10px;">
+      If you'd like to collaborate, discuss research, or connect professionally, I'd love to hear from you.
     </p>
-
-    <p>
-      These initiatives have helped create a more connected and supportive engineering community at Northwestern while strengthening my skills in leadership, communication, and organizational development.
+    <p style="margin-top:25px;">
+      © 2026 Chelsea Ogbonna
     </p>
+  </footer>
 
-  </div>
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = "1";
+          entry.target.style.transform = "translateY(0)";
+        }
+      });
+    }, { threshold: 0.1 });
 
-  <!-- BOX 3: STUDY SESSION IMAGE -->
-  <div class="card">
-
-    <img src="studypictures.webp" width="400">
-
-    <p class="caption">
-      NSBE-led collaborative study session bringing together 50+ students across NSBE, SHPE, SWE, and WIC.
-    </p>
-
-  </div>
-
-</div>
+    document.querySelectorAll(".card, .stat-card, .hero").forEach((el) => {
+      el.style.opacity = "0";
+      el.style.transform = "translateY(40px)";
+      el.style.transition = "all .8s ease";
+      observer.observe(el);
+    });
+  </script>
 
 </body>
 </html>
