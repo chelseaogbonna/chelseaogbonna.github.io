@@ -118,7 +118,7 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
       gap: 30px;
-      margin-bottom: 60px;
+      margin-bottom: 30px;
     }
 
     /* CARDS */
@@ -159,12 +159,7 @@
       transition: color 0.2s;
     }
 
-    .card a:hover {
-      color: #1d4ed8;
-      text-decoration: underline;
-    }
-
-    /* RESUME DOWNLOAD BUTTON SPECIFIC */
+    /* ACTION BUTTON SPECIFIC */
     .resume-btn {
       display: inline-flex;
       align-items: center;
@@ -177,12 +172,25 @@
       border: 1px solid rgba(193, 211, 254, 0.5);
       box-shadow: var(--shadow);
       transition: all 0.3s;
+      color: var(--text) !important;
+      text-decoration: none !important;
     }
 
     .resume-btn:hover {
       background: rgba(255, 255, 255, 0.95);
       transform: translateY(-3px);
-      text-decoration: none !important;
+    }
+
+    /* CORE TARGET DISCIPLINE PILLS */
+    .pill {
+      background: rgba(255, 255, 255, 0.55);
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+      border: 1px solid rgba(193, 211, 254, 0.4);
+      display: inline-block;
     }
 
     /* =========================
@@ -249,6 +257,7 @@
 
 <body>
 
+  <!-- NAV -->
   <nav>
     <a href="index.html" class="logo">Chelsea Ogbonna</a>
 
@@ -261,55 +270,80 @@
     </div>
   </nav>
 
+  <!-- CONTENT WRAPPER -->
   <div class="content">
 
     <div class="hero">
-      <h1>Contact ✉️</h1>
-      <p class="subtitle">Let's build something impactful together.</p>
+      <h1>Let's Connect 🚀</h1>
+      <p class="subtitle">Designing hardware for clinical precision and extreme environments.</p>
+      <p style="max-width: 800px; margin: 20px auto 0; font-size: 18px; line-height: 1.8; color: #374151;">
+        Thank you for visiting my portfolio. I'm currently seeking full-time <strong>Mechanical Engineering, Robotics, and R&D opportunities beginning in 2026</strong>. If you think my engineering background and technical toolsets align with your team, I'd love to hear from you.
+      </p>
     </div>
 
+    <!-- MAIN CONTACT FLOW -->
     <div class="grid">
-      <div class="card">
-        <h2>Get in Touch</h2>
+      
+      <!-- COMMUNICATION HUB -->
+      <div class="card" style="display: flex; flex-direction: column; gap: 30px;">
+        <h2>Direct Channels</h2>
 
-        <p>
-          <strong>Email:</strong><br>
-          <a href="mailto:Chelseaogbonna2@gmail.com">
-            Chelseaogbonna2@gmail.com
-          </a>
-        </p>
-
-        <p>
-          <strong>GitHub:</strong><br>
-          <a href="https://github.com/chelseaogbonna" target="_blank">
-            github.com/chelseaogbonna
-          </a>
-        </p>
-
-        <p>
-          <strong>LinkedIn:</strong><br>
-          <a href="https://www.linkedin.com/in/chelsea-ogbonna-891980342" target="_blank">
-            LinkedIn Profile
-          </a>
-        </p>
-      </div>
-
-      <div class="card" style="display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start;">
         <div>
-          <h2>Resume</h2>
-          <p>
-            View or download my resume covering engineering implementation metrics, cross-functional project insights, and experimental engineering designs.
-          </p>
+          <p style="margin-bottom: 6px;"><strong>Email</strong></p>
+          <p style="font-size: 15px; margin-bottom: 12px; color: #4b5563;">The best way to reach me is by email. I typically respond within 24 hours to coordinate technical discussions.</p>
+          <a href="mailto:Chelseaogbonna2@gmail.com" class="resume-btn">
+            ✉️ Send Email
+          </a>
         </div>
 
-        <a href="Ogbonna_Chelsea_BS_MS_Northwestern .pdf" target="_blank" class="resume-btn">
-          📄 View Resume
-        </a>
+        <div>
+          <p style="margin-bottom: 6px;"><strong>LinkedIn</strong></p>
+          <p style="font-size: 15px; margin-bottom: 12px; color: #4b5563;">Connect with me on LinkedIn to view my professional experience, project cross-sections, and ongoing career iterations.</p>
+          <a href="https://www.linkedin.com/in/chelsea-ogbonna-891980342" target="_blank" class="resume-btn">
+            💼 Visit LinkedIn
+          </a>
+        </div>
       </div>
+
+      <!-- TECHNICAL ASSETS & TARGETS -->
+      <div class="card" style="display: flex; flex-direction: column; justify-content: space-between;">
+        <div>
+          <h2>Technical Credentials</h2>
+          <p style="font-size: 15px; margin-bottom: 20px; color: #4b5563;">
+            Download my most recent resume to learn more about my education, technical competencies, hands-on lab experience, and engineering implementations.
+          </p>
+          <a href="Ogbonna_Chelsea_BS_MS_Northwestern .pdf" target="_blank" class="resume-btn" style="margin-bottom: 25px;">
+            📄 Download Resume
+          </a>
+        </div>
+
+        <hr style="border: 0; border-top: 1px solid var(--border); margin-bottom: 20px;">
+
+        <div>
+          <h3 style="font-size: 17px; font-weight: 700; margin-bottom: 15px; color: var(--text);">Currently Looking For</h3>
+          <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+            <span class="pill">⚙️ Mechanical Engineering</span>
+            <span class="pill">🚀 Aerospace Engineering</span>
+            <span class="pill">🤖 Robotics</span>
+            <span class="pill">🛠️ Product Development</span>
+            <span class="pill">📐 Systems Engineering</span>
+          </div>
+        </div>
+      </div>
+
     </div>
 
+    <!-- GEOGRAPHIC PREFERENCES BLOCK -->
+    <div class="card" style="max-width: 100%; text-align: center; padding: 40px; margin-bottom: 60px;">
+      <h3 style="font-size: 22px; font-weight: 800; margin-bottom: 12px; color: var(--text);">📍 Geographic Mobility</h3>
+      <p style="max-width: 750px; margin: 0 auto; font-size: 16px; color: #4b5563;">
+        Preferred locations include <strong>California, Washington, Massachusetts</strong>, and other exceptional engineering opportunities across the United States.
+      </p>
+    </div>
+
+    <!-- NEXT PAGE NAVIGATION CTA -->
     <section class="next-page-container">
-      <p>Want to review everything?</p>
+      <p>Want to review everything from the beginning?</p>
       <a href="about.html" class="next-page-btn">
         Back to About Me <span class="arrow">→</span>
       </a>
@@ -317,11 +351,13 @@
 
   </div>
 
+  <!-- FOOTER -->
   <footer style="margin-top:100px; padding:45px; text-align:center; border-top: 1px solid var(--border); color:#4b5563;">
     <p style="font-size:18px; font-weight:600;">© 2026 Chelsea Ogbonna</p>
     <p style="margin-top:10px; font-size:14px;">Designed & Built with HTML, CSS, and ❤️</p>
   </footer>
 
+  <!-- SYSTEM INTERACTION SCRIPTS -->
   <script>
     // Intersection Observer for Smooth Scroll Fade-In Reveal
     const observer = new IntersectionObserver((entries) => {
