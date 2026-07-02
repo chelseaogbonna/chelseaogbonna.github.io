@@ -1,149 +1,342 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact | Chelsea Ogbonna</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      /* BACKGROUND (single control point) */
-      --bg: #abc4ff;
-
-      /* CARDS */
-      --card: #c1d3fe;
-      --card-hover: #ccdbfd;
-
-      /* TEXT */
+      --bg: #edf2fb;
+      --card: #d7e3fc;
+      --accent: #abc4ff;
       --text: #1f2937;
-      --muted: #111827;
+      --border: #c1d3fe;
+      --card-hover: #ccdbfd;
+      --shadow: 0 12px 30px rgba(0, 0, 0, .08);
+    }
 
-      /* LINKS */
-      --link: #1d4ed8;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-      /* NAV */
-      --nav-text: #1f2937;
-      --nav-opacity: 0.8;
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
-      margin: 0;
-      font-family: Arial, sans-serif;
+      font-family: Inter, sans-serif;
       background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* =========================
+    NAV (MATCHES PORTFOLIO SYSTEM)
+    ========================= */
+    nav {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(1100px, 92%);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-weight: 800;
+      font-size: 18px;
+      text-decoration: none;
       color: var(--text);
     }
 
-    nav {
-      padding: 20px;
+    .nav-links {
+      display: flex;
+      gap: 10px;
+      padding: 8px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .78);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(193, 211, 254, .45);
+      box-shadow: 0 12px 35px rgba(0, 0, 0, .10);
     }
 
-    nav a {
-      color: var(--nav-text);
-      margin-right: 10px;
+    .nav-links a {
       text-decoration: none;
-      opacity: var(--nav-opacity);
+      color: var(--text);
+      padding: 10px 14px;
+      border-radius: 10px;
+      transition: .25s;
+      font-weight: 500;
     }
 
-    nav a:hover {
-      opacity: 1;
+    .nav-links a:hover {
+      background: var(--accent);
+      transform: translateY(-2px);
     }
 
+    /* =========================
+    LAYOUT WRAPPER
+    ========================= */
     .content {
-      padding: 60px;
+      width: min(1200px, 90%);
+      margin: auto;
+      padding: 140px 0 100px;
     }
 
-    h1 {
-      margin-bottom: 20px;
+    /* HERO / HEADER */
+    .hero {
+      text-align: center;
+      margin-bottom: 60px;
     }
 
+    .hero h1 {
+      font-size: 52px;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    .subtitle {
+      font-size: 20px;
+      color: #4b5563;
+      font-weight: 500;
+      margin-bottom: 15px;
+    }
+
+    /* GRID STRUCTURE */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+      gap: 30px;
+      margin-bottom: 60px;
+    }
+
+    /* CARDS */
     .card {
       background: var(--card);
-      padding: 20px;
-      border-radius: 10px;
-      max-width: 700px;
-      margin-bottom: 20px;
-      transition: 0.2s ease;
+      border-radius: 22px;
+      padding: 35px;
+      box-shadow: var(--shadow);
+      transition: .35s;
     }
 
     .card:hover {
       background: var(--card-hover);
+      transform: translateY(-8px);
+    }
+
+    .card h2 {
+      margin-bottom: 25px;
+      font-weight: 800;
+      color: var(--text);
+    }
+
+    .card p {
+      font-size: 16px;
+      color: #4b5563;
+      margin-bottom: 20px;
+    }
+
+    .card p strong {
+      color: var(--text);
+      font-weight: 700;
     }
 
     .card a {
-      color: var(--link);
+      color: var(--text);
       text-decoration: none;
+      font-weight: 600;
+      transition: color 0.2s;
     }
 
     .card a:hover {
+      color: #1d4ed8;
       text-decoration: underline;
     }
 
-    h2 {
-      margin-top: 0;
+    /* RESUME DOWNLOAD BUTTON SPECIFIC */
+    .resume-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255, 255, 255, 0.6);
+      border-radius: 14px;
+      padding: 14px 24px;
+      font-weight: 600;
+      font-size: 16px;
+      border: 1px solid rgba(193, 211, 254, 0.5);
+      box-shadow: var(--shadow);
+      transition: all 0.3s;
     }
 
-    p {
-      line-height: 1.6;
+    .resume-btn:hover {
+      background: rgba(255, 255, 255, 0.95);
+      transform: translateY(-3px);
+      text-decoration: none !important;
+    }
+
+    /* =========================
+    NEXT PAGE CTA BUTTON
+    ========================= */
+    .next-page-container {
+      text-align: center;
+      margin: 80px 0 20px 0;
+      padding: 20px;
+    }
+
+    .next-page-container p {
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #6b7280;
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+
+    .next-page-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--card);
+      color: var(--text);
+      text-decoration: none;
+      padding: 18px 36px;
+      border-radius: 999px;
+      font-size: 18px;
+      font-weight: 700;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(193, 211, 254, 0.6);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .next-page-btn .arrow {
+      transition: transform 0.3s ease;
+    }
+
+    .next-page-btn:hover {
+      background: var(--accent);
+      transform: translateY(-4px);
+      box-shadow: 0 15px 35px rgba(171, 196, 255, 0.4);
+    }
+
+    .next-page-btn:hover .arrow {
+      transform: translateX(6px);
+    }
+
+    /* SCROLL REVEAL STRUCT CORE */
+    .hidden {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all .7s ease-out;
+    }
+
+    .show {
+      opacity: 1;
+      transform: translateY(0);
     }
   </style>
 </head>
 
 <body>
 
-<nav>
-  <a href="index.html">Home</a>
-  <a href="about.html">About</a>
-  <a href="projects.html">Projects</a>
-  <a href="research.html">Research</a>
-  <a href="leadership.html">Leadership</a>
-  <a href="contact.html">Contact</a>
-</nav>
+  <nav>
+    <a href="index.html" class="logo">Chelsea Ogbonna</a>
 
-<div class="content">
-  <h1>Contact</h1>
+    <div class="nav-links">
+      <a href="about.html">About</a>
+      <a href="projects.html">Projects</a>
+      <a href="research.html">Research</a>
+      <a href="leadership.html">Leadership</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
 
-  <!-- CONTACT BOX -->
-  <div class="card">
+  <div class="content">
 
-    <h2>Get in Touch</h2>
+    <div class="hero">
+      <h1>Contact ✉️</h1>
+      <p class="subtitle">Let's build something impactful together.</p>
+    </div>
 
-    <p>
-      <strong>Email:</strong><br>
-      <a href="mailto:Chelseaogbonna2@gmail.com">
-        Chelseaogbonna2@gmail.com
+    <div class="grid">
+      <div class="card">
+        <h2>Get in Touch</h2>
+
+        <p>
+          <strong>Email:</strong><br>
+          <a href="mailto:Chelseaogbonna2@gmail.com">
+            Chelseaogbonna2@gmail.com
+          </a>
+        </p>
+
+        <p>
+          <strong>GitHub:</strong><br>
+          <a href="https://github.com/chelseaogbonna" target="_blank">
+            github.com/chelseaogbonna
+          </a>
+        </p>
+
+        <p>
+          <strong>LinkedIn:</strong><br>
+          <a href="https://www.linkedin.com/in/chelsea-ogbonna-891980342" target="_blank">
+            LinkedIn Profile
+          </a>
+        </p>
+      </div>
+
+      <div class="card" style="display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start;">
+        <div>
+          <h2>Resume</h2>
+          <p>
+            View or download my resume covering engineering implementation metrics, cross-functional project insights, and experimental engineering designs.
+          </p>
+        </div>
+
+        <a href="Ogbonna_Chelsea_BS_MS_Northwestern .pdf" target="_blank" class="resume-btn">
+          📄 View Resume
+        </a>
+      </div>
+    </div>
+
+    <section class="next-page-container">
+      <p>Want to review everything?</p>
+      <a href="about.html" class="next-page-btn">
+        Back to About Me <span class="arrow">→</span>
       </a>
-    </p>
-
-    <p>
-      <strong>GitHub:</strong><br>
-      <a href="https://github.com/chelseaogbonna" target="_blank">
-        github.com/chelseaogbonna
-      </a>
-    </p>
-
-    <p>
-      <strong>LinkedIn:</strong><br>
-      <a href="https://www.linkedin.com/in/chelsea-ogbonna-891980342" target="_blank">
-        LinkedIn Profile
-      </a>
-    </p>
+    </section>
 
   </div>
 
-  <!-- RESUME BOX -->
-  <div class="card">
+  <footer style="margin-top:100px; padding:45px; text-align:center; border-top: 1px solid var(--border); color:#4b5563;">
+    <p style="font-size:18px; font-weight:600;">© 2026 Chelsea Ogbonna</p>
+    <p style="margin-top:10px; font-size:14px;">Designed & Built with HTML, CSS, and ❤️</p>
+  </footer>
 
-    <h2>Resume</h2>
+  <script>
+    // Intersection Observer for Smooth Scroll Fade-In Reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("show");
+        }
+      });
+    }, { threshold: 0.05 });
 
-    <p>
-      View or download my resume below.
-    </p>
-
-    <a href="Ogbonna_Chelsea_BS_MS_Northwestern .pdf" target="_blank">
-      📄 View Resume
-    </a>
-
-  </div>
-
-</div>
+    document.querySelectorAll(".card, .next-page-container, .hero").forEach(el => {
+      el.classList.add("hidden");
+      observer.observe(el);
+    });
+  </script>
 
 </body>
 </html>
