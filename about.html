@@ -37,7 +37,55 @@
       line-height: 1.7;
       overflow-x: hidden;
     }
+   
+    /* =========================
+NEXT PAGE CTA BUTTON
+========================= */
+    .next-page-container {
+      text-align: center;
+      margin: 80px 0 20px 0;
+      padding: 20px;
+    }
 
+    .next-page-container p {
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #6b7280;
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+
+    .next-page-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--card);
+      color: var(--text);
+      text-decoration: none;
+      padding: 18px 36px;
+      border-radius: 999px;
+      font-size: 18px;
+      font-weight: 700;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(193, 211, 254, 0.6);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .next-page-btn .arrow {
+      transition: transform 0.3s ease;
+    }
+
+    /* Hover Engine Effects */
+    .next-page-btn:hover {
+      background: var(--accent);
+      transform: translateY(-4px);
+      box-shadow: 0 15px 35px rgba(171, 196, 255, 0.4);
+    }
+
+    .next-page-btn:hover .arrow {
+      transform: translateX(6px);
+    }
     /* =========================
     NAV (MATCHES PORTFOLIO SYSTEM)
     ========================= */
@@ -597,6 +645,12 @@
       </p>
     </section>
 
+    <section class="next-page-container">
+      <p>Finished reading?</p>
+      <a href="projects.html" class="next-page-btn">View My Projects <span class="arrow">→</span></a>      View My Projects <span class="arrow">→</span>
+      </a>
+    </section>
+ 
   </div>
 
   <footer style="margin-top:100px; padding:45px; text-align:center; border-top: 1px solid var(--border); color:#4b5563;">
