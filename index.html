@@ -1,140 +1,398 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Chelsea Ogbonna | Cinematic Portfolio</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chelsea Ogbonna | Interactive Portfolio</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
-body {
-  margin: 0;
-  font-family: Arial;
-  background: #0b0f19;
-  color: white;
-  overflow-x: hidden;
+:root{
+--bg:#edf2fb;
+--card:#d7e3fc;
+--accent:#abc4ff;
+--text:#1f2937;
+--border:#c1d3fe;
 }
 
-/* HERO */
-.hero {
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  background: radial-gradient(circle at center, #1c2333, #0b0f19);
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+
+body{
+margin:0;
+font-family:Inter,sans-serif;
+background:var(--bg);
+color:var(--text);
+overflow-x:hidden;
 }
 
-.hero h1 {
-  font-size: 70px;
-  animation: fadeUp 1.2s ease;
+/* =========================
+   NAV (UNCHANGED - DO NOT MODIFY)
+========================= */
+
+nav{
+position:fixed;
+top:20px;
+left:50%;
+transform:translateX(-50%);
+width:min(1100px,92%);
+display:flex;
+justify-content:space-between;
+align-items:center;
+z-index:1000;
 }
 
-.hero p {
-  opacity: 0.7;
-  animation: fadeUp 1.6s ease;
+.logo{
+font-weight:800;
+font-size:18px;
+color:var(--text);
+text-decoration:none;
 }
 
-/* SCROLL SECTIONS */
-.section {
-  min-height: 100vh;
-  padding: 100px;
-  opacity: 0;
-  transform: translateY(50px);
-  transition: 1s ease;
+.nav-links{
+display:flex;
+gap:10px;
+padding:8px;
+border-radius:999px;
+background:rgba(255,255,255,.78);
+backdrop-filter:blur(16px);
+border:1px solid rgba(193,211,254,.45);
+box-shadow:0 12px 35px rgba(0,0,0,.10);
 }
 
-.section.visible {
-  opacity: 1;
-  transform: translateY(0);
+.nav-links a{
+text-decoration:none;
+color:var(--text);
+padding:10px 14px;
+border-radius:10px;
+transition:.25s;
+font-weight:500;
 }
 
-/* CARDS */
-.card {
-  background: #1f2937;
-  padding: 30px;
-  border-radius: 15px;
-  margin-top: 20px;
-  border: 1px solid #abc4ff;
-  transition: 0.3s;
+.nav-links a:hover{
+background:var(--accent);
+transform:translateY(-2px);
 }
 
-.card:hover {
-  transform: scale(1.03);
+/* =========================
+   HERO
+========================= */
+
+.hero{
+min-height:100vh;
+display:grid;
+grid-template-columns:1.2fr .8fr;
+align-items:center;
+padding:0 10%;
+position:relative;
 }
 
-/* FLOATING PARTICLES */
-.particle {
-  position: fixed;
-  width: 6px;
-  height: 6px;
-  background: #abc4ff;
-  border-radius: 50%;
-  opacity: 0.3;
-  animation: float 10s infinite;
+.hero:before{
+content:"";
+position:absolute;
+width:700px;
+height:700px;
+background:var(--accent);
+filter:blur(150px);
+opacity:.35;
+left:-200px;
+top:-150px;
 }
 
-@keyframes float {
-  0% { transform: translateY(0); }
-  100% { transform: translateY(-100vh); }
+.hero-text{position:relative;z-index:2}
+
+.hero h1{
+font-size:72px;
+margin:0;
+animation:floaty 4s ease-in-out infinite;
 }
 
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+.hero h2{font-weight:500;opacity:.8}
+
+.hero-image img{
+width:340px;
+max-width:100%;
+border-radius:24px;
+border:5px solid white;
+box-shadow:0 25px 60px rgba(0,0,0,.15);
+transition:.3s;
+}
+
+.hero-image img:hover{
+transform:rotate(2deg) scale(1.05);
+}
+
+@keyframes floaty{
+50%{transform:translateY(-8px)}
+}
+
+.button{
+display:inline-block;
+margin-top:20px;
+padding:14px 22px;
+background:var(--accent);
+border-radius:12px;
+text-decoration:none;
+color:black;
+font-weight:700;
+}
+
+/* =========================
+   SECTIONS
+========================= */
+
+.section{
+padding:90px 10%;
+}
+
+.section-title{
+text-align:center;
+font-size:42px;
+margin-bottom:50px;
+}
+
+/* STATS */
+.stats{
+display:flex;
+justify-content:center;
+gap:25px;
+flex-wrap:wrap;
+}
+
+.stat{
+width:230px;
+background:var(--card);
+padding:30px;
+border-radius:18px;
+text-align:center;
+transition:.3s;
+}
+
+.stat:hover{
+transform:translateY(-12px) scale(1.04);
+}
+
+.stat h3{
+font-size:42px;
+margin:0;
+}
+
+/* PROJECTS */
+.projects{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:25px;
+}
+
+.project{
+width:320px;
+background:var(--card);
+border-radius:18px;
+overflow:hidden;
+transition:.3s;
+}
+
+.project:hover{
+transform:translateY(-12px) rotate(-1deg);
+box-shadow:0 20px 40px rgba(0,0,0,.12);
+}
+
+.project-img{
+height:180px;
+background:#2d3138;
+display:flex;
+align-items:center;
+justify-content:center;
+color:white;
+font-weight:700;
+}
+
+.project-content{padding:20px}
+
+/* TAGS */
+.tags{
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+gap:12px;
+}
+
+.tag{
+background:var(--card);
+padding:12px 18px;
+border-radius:999px;
+transition:.25s;
+}
+
+.tag:hover{
+background:var(--accent);
+transform:translateY(-5px);
+}
+
+/* TIMELINE */
+.timeline{
+max-width:800px;
+margin:auto;
+}
+
+.timeline-item{
+background:var(--card);
+padding:20px;
+border-radius:16px;
+margin-bottom:18px;
+transition:.3s;
+}
+
+.timeline-item:hover{
+transform:translateX(10px);
+}
+
+/* CAMPUS */
+.campus{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:25px;
+}
+
+.lab{
+background:var(--card);
+padding:30px;
+border-radius:20px;
+text-align:center;
+cursor:pointer;
+transition:.3s;
+}
+
+.lab:hover{
+transform:translateY(-10px);
+background:#ccdbfd;
+}
+
+/* FOOTER */
+footer{
+text-align:center;
+padding:60px;
+opacity:.7;
+}
+
+/* MOBILE */
+@media(max-width:900px){
+.hero{
+grid-template-columns:1fr;
+text-align:center;
+padding-top:120px;
+}
+.hero-image{margin-top:30px}
+.hero h1{font-size:48px}
+.nav-links{flex-wrap:wrap}
 }
 </style>
 </head>
 
 <body>
 
-<div class="hero">
-  <div>
-    <h1>Chelsea Ogbonna</h1>
-    <p>Biomedical • Mechanical • Research Engineer</p>
+<!-- NAV (UNCHANGED) -->
+<nav>
+  <a href="index.html" class="logo">Chelsea Ogbonna</a>
+
+  <div class="nav-links">
+    <a href="about.html">About</a>
+    <a href="projects.html">Projects</a>
+    <a href="research.html">Research</a>
+     <a href="leadership.html">Leadership</a>
+    <a href="contact.html">Contact</a>
   </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+<div class="hero-text">
+<h1>Chelsea Ogbonna</h1>
+<h2>Biomedical • Mechanical • Research Engineer</h2>
+<p>Engineering healthcare solutions through microfluidics, implantable devices, and embedded systems.</p>
+<a href="projects.html" class="button">Explore My Work →</a>
 </div>
 
-<div class="section">
-  <h2>Projects</h2>
-  <div class="card">Microfluidic Device</div>
-  <div class="card">Implantable Systems</div>
-  <div class="card">Terrain Analysis Platform</div>
+<div class="hero-image">
+<img src="Chelseaprofilepics.JPG" alt="Chelsea Ogbonna">
+</div>
+</section>
+
+<!-- STATS -->
+<section class="section">
+<h2 class="section-title">Highlights</h2>
+<div class="stats">
+<div class="stat"><h3>5+</h3><p>Projects</p></div>
+<div class="stat"><h3>3+</h3><p>Research Labs</p></div>
+<div class="stat"><h3>50+</h3><p>Students Mentored</p></div>
+</div>
+</section>
+
+<!-- PROJECTS -->
+<section class="section">
+<h2 class="section-title">Featured Projects</h2>
+
+<div class="projects">
+<div class="project">
+<div class="project-img">Microfluidics</div>
+<div class="project-content">
+<h3>Syncytial Knot Device</h3>
+</div>
 </div>
 
-<div class="section">
-  <h2>Leadership</h2>
-  <div class="card">NSBE Academic Chair</div>
+<div class="project">
+<div class="project-img">Implant</div>
+<div class="project-content">
+<h3>TAVI Pacemaker</h3>
+</div>
+</div>
+</div>
+</section>
+
+<!-- RESEARCH -->
+<section class="section">
+<h2 class="section-title">Research Interests</h2>
+
+<div class="tags">
+<div class="tag">Biomedical Devices</div>
+<div class="tag">Microfluidics</div>
+<div class="tag">Implantable Systems</div>
+<div class="tag">Embedded Systems</div>
+<div class="tag">Mechanics</div>
+</div>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section class="section">
+<h2 class="section-title">Achievements Timeline</h2>
+
+<div class="timeline">
+<div class="timeline-item"><strong>2026</strong> — M.S. Mechanical Engineering Candidate</div>
+<div class="timeline-item"><strong>2025</strong> — Rogers Lab Research Assistant</div>
+<div class="timeline-item"><strong>2025</strong> — Solutions Lab Research Assistant</div>
+<div class="timeline-item"><strong>2025</strong> — Microfluidic Device Lead</div>
+</div>
+</section>
+
+<!-- CAMPUS -->
+<section class="section">
+<h2 class="section-title">Interactive Campus</h2>
+
+<div class="campus">
+<div class="lab" onclick="alert('Microfluidics Research')">🧬 Microfluidics Lab</div>
+<div class="lab" onclick="alert('Implantable Devices Research')">❤️ Implantables Lab</div>
+<div class="lab" onclick="alert('Embedded Systems')">🚗 Embedded Systems Lab</div>
+<div class="lab" onclick="alert('Leadership')">🏆 Leadership Center</div>
 </div>
 
-<div class="section">
-  <h2>Contact</h2>
-  <div class="card">Email • LinkedIn • GitHub</div>
-</div>
+</section>
 
-<script>
-const sections = document.querySelectorAll(".section");
-
-function reveal() {
-  sections.forEach(s => {
-    const top = s.getBoundingClientRect().top;
-    if (top < window.innerHeight - 100) {
-      s.classList.add("visible");
-    }
-  });
-}
-
-window.addEventListener("scroll", reveal);
-reveal();
-
-// particles
-for (let i = 0; i < 30; i++) {
-  let p = document.createElement("div");
-  p.className = "particle";
-  p.style.left = Math.random() * window.innerWidth + "px";
-  p.style.top = Math.random() * window.innerHeight + "px";
-  p.style.animationDuration = (5 + Math.random() * 10) + "s";
-  document.body.appendChild(p);
-}
-</script>
+<footer>
+© 2026 Chelsea Ogbonna
+</footer>
 
 </body>
 </html>
