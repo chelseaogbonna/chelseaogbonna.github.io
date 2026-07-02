@@ -255,7 +255,7 @@
     }
 
     /* ==========================================
-    WHY IT MATTERS & INSIGHTS
+    WHY IT MATTERS & INSIGHTS & CORE GRIDS
     ========================================== */
     .importance, .insight-grid, .progress-grid {
       display: grid;
@@ -593,15 +593,15 @@
     }
 
     /* ==========================================
-    CHALLENGES & TAKEAWAYS
+    CHALLENGES
     ========================================== */
-    .challenge-grid, .takeaway-grid {
+    .challenge-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 30px;
     }
     
-    .challenge-card, .takeaway-card {
+    .challenge-card {
       background: var(--card);
       padding: 35px;
       border-radius: 22px;
@@ -609,17 +609,17 @@
       box-shadow: var(--shadow);
     }
     
-    .challenge-card:hover, .takeaway-card:hover {
+    .challenge-card:hover {
       transform: translateY(-10px);
       background: var(--card-hover);
     }
     
-    .challenge-icon, .takeaway-icon {
+    .challenge-icon {
       font-size: 42px;
       margin-bottom: 20px;
     }
     
-    .challenge-card h3, .takeaway-card h3 {
+    .challenge-card h3 {
       margin-bottom: 12px;
       font-weight: 700;
     }
@@ -630,7 +630,7 @@
       font-weight: 700;
     }
     
-    .challenge-card p, .takeaway-card p {
+    .challenge-card p {
       line-height: 1.8;
       color: #4b5563;
     }
@@ -684,76 +684,219 @@
     }
 
     /* ==========================================
-    PROJECT GALLERY
+    PROJECT GALLERY (BENTO GRID STYLE)
     ========================================== */
-    .gallery {
+    .gallery-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
     }
     
-    .gallery img {
-      width: 100%;
-      height: 240px;
-      object-fit: cover;
-      border-radius: 16px;
+    .gallery-item {
+      background: var(--card);
+      border-radius: 20px;
+      overflow: hidden;
+      transition: .35s;
       box-shadow: var(--shadow);
-      transition: transform 0.3s ease;
     }
     
-    .gallery img:hover {
-      transform: scale(1.04);
+    .gallery-item:hover {
+      transform: translateY(-10px);
+      background: var(--card-hover);
+    }
+    
+    .gallery-item.large {
+      grid-column: span 3;
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      align-items: center;
+    }
+    
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      min-height: 250px;
+      object-fit: cover;
+      display: block;
+    }
+    
+    .gallery-caption {
+      padding: 25px;
+    }
+    
+    .gallery-caption h3 {
+      margin-bottom: 12px;
+      font-size: 24px;
+      font-weight: 800;
+    }
+    
+    .gallery-caption p {
+      line-height: 1.8;
+      color: #4b5563;
     }
 
     /* ==========================================
-    NEXT PAGE CTA BUTTON
+    ENGINEERING SKILLS
     ========================================== */
-    .next-page-container {
-      text-align: center;
-      margin: 80px 0 20px 0;
-      padding: 20px;
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
     }
-
-    .next-page-container p {
-      font-size: 14px;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      color: #6b7280;
-      margin-bottom: 10px;
-      font-weight: 600;
-    }
-
-    .next-page-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
+    
+    .skill-card {
       background: var(--card);
-      color: var(--text);
-      text-decoration: none;
-      padding: 18px 36px;
-      border-radius: 999px;
-      font-size: 18px;
-      font-weight: 700;
+      padding: 30px;
+      border-radius: 20px;
+      transition: .35s;
       box-shadow: var(--shadow);
-      border: 1px solid rgba(193, 211, 254, 0.6);
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .skill-card:hover {
+      transform: translateY(-10px);
+      background: var(--card-hover);
+    }
+    
+    .skill-icon {
+      font-size: 42px;
+      margin-bottom: 20px;
+    }
+    
+    .skill-card h3 {
+      margin-bottom: 15px;
+      font-weight: 700;
+    }
+    
+    .skill-card p {
+      line-height: 1.8;
+      margin-bottom: 20px;
+      color: #4b5563;
+    }
+    
+    .skill-level {
+      height: 10px;
+      background: white;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+    
+    .skill-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #6C8EF5, #abc4ff);
+      border-radius: 999px;
     }
 
-    .next-page-btn .arrow {
-      transition: transform 0.3s ease;
+    /* ==========================================
+    DOCUMENTS
+    ========================================== */
+    .documents-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 25px;
+    }
+    
+    .document-card {
+      background: var(--card);
+      padding: 30px;
+      border-radius: 20px;
+      text-decoration: none;
+      color: var(--text);
+      transition: .35s;
+      box-shadow: var(--shadow);
+    }
+    
+    .document-card:hover {
+      transform: translateY(-10px);
+      background: var(--card-hover);
+    }
+    
+    .document-icon {
+      font-size: 42px;
+      margin-bottom: 20px;
+    }
+    
+    .document-card h3 {
+      margin-bottom: 15px;
+      font-weight: 700;
+    }
+    
+    .document-card p {
+      line-height: 1.8;
+      margin-bottom: 20px;
+      color: #4b5563;
+    }
+    
+    .document-card span {
+      font-weight: 700;
+      color: #6C8EF5;
     }
 
-    .next-page-btn:hover {
-      background: var(--accent);
-      transform: translateY(-4px);
-      box-shadow: 0 15px 35px rgba(171, 196, 255, 0.4);
+    /* ==========================================
+    MORE PROJECTS CROSS-LINKER
+    ========================================== */
+    .more-projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 25px;
+    }
+    
+    .more-project-card {
+      display: flex;
+      flex-direction: column;
+      background: var(--card);
+      border-radius: 20px;
+      overflow: hidden;
+      text-decoration: none;
+      color: var(--text);
+      transition: .35s;
+      box-shadow: var(--shadow);
+    }
+    
+    .more-project-card:hover {
+      transform: translateY(-10px);
+      background: var(--card-hover);
+    }
+    
+    .more-project-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+    
+    .more-project-info {
+      padding: 25px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .more-project-info h3 {
+      margin-bottom: 15px;
+      font-weight: 700;
+    }
+    
+    .more-project-info p {
+      line-height: 1.8;
+      margin-bottom: 20px;
+      color: #4b5563;
+      flex-grow: 1;
+    }
+    
+    .more-project-info span {
+      font-weight: 700;
+      color: #6C8EF5;
+      margin-top: auto;
+    }
+    
+    .more-project-card.featured {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: linear-gradient(135deg, #abc4ff, #d7e3fc);
     }
 
-    .next-page-btn:hover .arrow {
-      transform: translateX(6px);
-    }
-
-    /* SCROLL REVEAL STRUCT CORE */
+    /* SCROLL REVEAL UTILITIES */
     .hidden {
       opacity: 0;
       transform: translateY(40px);
@@ -771,6 +914,8 @@
       .problem-grid { grid-template-columns: 1fr; }
       .design-card { grid-template-columns: 1fr; }
       .future-line { display: none; }
+      .gallery-grid { grid-template-columns: 1fr; }
+      .gallery-item.large { grid-template-columns: 1fr; grid-column: span 1; }
     }
   </style>
 </head>
@@ -792,7 +937,7 @@
       <h1>🧬 Syncytial Knot Isolation Device</h1>
       <h2>Microfluidic Device Design for Placental Research</h2>
       <p>
-        Designed and developed a passive microfluidic device to isolate syncytial knots from placental explant tissue. This project combines biomedical engineering, CAD, COMSOL simulations, microfabrication, and experimental validation to improve research into pregnancy-related diseases.
+        Designed and developed a passive crossflow microfluidic device to isolate syncytial knots from placental explant tissue. This project combines biomedical engineering, CAD, COMSOL simulations, microfabrication, and experimental validation to improve research into pregnancy-related diseases.
       </p>
       <a href="#problem" class="button">Explore the Project ↓</a>
     </div>
@@ -846,21 +991,15 @@
     <div class="importance">
       <div class="importance-card">
         <h3>🔬 Research</h3>
-        <p>
-          More efficient syncytial knot isolation enables researchers to better understand placental biology and investigate pregnancy-related diseases.
-        </p>
+        <p>More efficient syncytial knot isolation enables researchers to better understand placental biology and investigate pregnancy-related diseases.</p>
       </div>
       <div class="importance-card">
         <h3>🏥 Clinical Impact</h3>
-        <p>
-          Improved isolation methods could contribute to future diagnostic tools for pregnancy complications including preeclampsia and fetal growth restriction.
-        </p>
+        <p>Improved isolation methods could contribute to future diagnostic tools for pregnancy complications including preeclampsia and fetal growth restriction.</p>
       </div>
       <div class="importance-card">
         <h3>⚙ Engineering Challenge</h3>
-        <p>
-          The device had to separate particles based primarily on size while maintaining continuous flow and minimizing clogging.
-        </p>
+        <p>The device had to separate particles based primarily on size while maintaining continuous flow and minimizing clogging.</p>
       </div>
     </div>
   </section>
@@ -870,27 +1009,19 @@
     <div class="role-grid">
       <div class="role-card">
         <h3>👩‍💻 CAD Design</h3>
-        <p>
-          Designed multiple microfluidic geometries in SolidWorks while optimizing channel dimensions, pillar spacing, and manufacturability.
-        </p>
+        <p>Designed multiple microfluidic geometries in SolidWorks while optimizing channel dimensions, pillar spacing, and manufacturability.</p>
       </div>
       <div class="role-card">
         <h3>🧪 Simulation</h3>
-        <p>
-          Performed COMSOL simulations to evaluate flow behavior, pressure distribution, and particle trajectories across multiple device iterations.
-        </p>
+        <p>Performed COMSOL simulations to evaluate flow behavior, pressure distribution, and particle trajectories across multiple device iterations.</p>
       </div>
       <div class="role-card">
         <h3>🧬 Experimental Design</h3>
-        <p>
-          Developed testing protocols using fluorescent microparticles to evaluate recovery efficiency and particle separation.
-        </p>
+        <p>Developed testing protocols using fluorescent microparticles to evaluate recovery efficiency and particle separation.</p>
       </div>
       <div class="role-card">
         <h3>📊 Data Analysis</h3>
-        <p>
-          Analyzed experimental performance, compared design iterations, and identified improvements for future fabrication and testing.
-        </p>
+        <p>Analyzed experimental performance, compared design iterations, and identified improvements for future fabrication and testing.</p>
       </div>
     </div>
   </section>
@@ -1255,54 +1386,185 @@
   </section>
 
   <section class="section">
-    <h2 class="section-title">What I Gained as an Engineer</h2>
+    <h2 class="section-title">Project Gallery</h2>
     <p class="section-subtitle">
-      Beyond the technical outcomes, this project strengthened my ability to
-      approach complex biomedical engineering challenges through interdisciplinary
-      thinking, iterative design, and evidence-based decision making.
+      A visual walkthrough of the engineering process—from initial concepts to CAD,
+      simulation, fabrication, and experimental validation.
     </p>
-    <div class="takeaway-grid">
-      <div class="takeaway-card">
-        <div class="takeaway-icon">💡</div>
-        <h3>Design Thinking</h3>
-        <p>Learned to translate biological challenges into practical engineering solutions through structured problem solving.</p>
+    <div class="gallery-grid">
+      <div class="gallery-item large">
+        <img src="finaldevice.webp" alt="Final CAD Model">
+        <div class="gallery-caption">
+          <h3>Final Device Design</h3>
+          <p>The completed crossflow microfluidic device developed for syncytial knot isolation.</p>
+        </div>
       </div>
-      <div class="takeaway-card">
-        <div class="takeaway-icon">📊</div>
-        <h3>Simulation-Driven Design</h3>
-        <p>Used computational modeling to guide design decisions before fabrication, reducing unnecessary iterations.</p>
+      <div class="gallery-item">
+        <img src="cadmodel.webp" alt="CAD">
+        <div class="gallery-caption">
+          <h3>CAD Development</h3>
+          <p>SolidWorks model used throughout the iterative design process.</p>
+        </div>
       </div>
-      <div class="takeaway-card">
-        <div class="takeaway-icon">🧪</div>
-        <h3>Experimental Planning</h3>
-        <p>Designed validation experiments that connected engineering performance with biological outcomes.</p>
+      <div class="gallery-item">
+        <img src="comsol.webp" alt="COMSOL">
+        <div class="gallery-caption">
+          <h3>Flow Simulation</h3>
+          <p>COMSOL velocity analysis used to optimize fluid flow.</p>
+        </div>
       </div>
-      <div class="takeaway-card">
-        <div class="takeaway-icon">🤝</div>
-        <h3>Leadership</h3>
-        <p>Led project planning, coordinated design iterations, and communicated ideas across an interdisciplinary research team.</p>
+      <div class="gallery-item">
+        <img src="photomask.webp" alt="Photomask">
+        <div class="gallery-caption">
+          <h3>Photomask Layout</h3>
+          <p>Fabrication-ready photomask prepared for SUEX lithography.</p>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <img src="testing.webp" alt="Testing">
+        <div class="gallery-caption">
+          <h3>Experimental Testing</h3>
+          <p>Prototype validation using fluorescent microparticles.</p>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <img src="microscopy.webp" alt="Microscopy">
+        <div class="gallery-caption">
+          <h3>Microscopy</h3>
+          <p>Visualization of isolated particles and biological structures.</p>
+        </div>
       </div>
     </div>
   </section>
 
   <section class="section">
-    <h2 class="section-title">Project Gallery</h2>
-    <p class="section-subtitle">Snapshots from the design, simulation, fabrication, and testing process.</p>
-    <div class="gallery">
-      <img src="gallery1.webp" alt="CAD Model">
-      <img src="gallery2.webp" alt="COMSOL">
-      <img src="gallery3.webp" alt="Prototype">
-      <img src="gallery4.webp" alt="Testing">
-      <img src="gallery5.webp" alt="Microscopy">
-      <img src="gallery6.webp" alt="Research Team">
+    <h2 class="section-title">Engineering Skills Demonstrated</h2>
+    <p class="section-subtitle">
+      This project required integrating engineering design, computational modeling,
+      biomedical research, and experimental planning. The skills below were developed
+      throughout the project lifecycle.
+    </p>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-icon">💻</div>
+        <h3>CAD Design</h3>
+        <p>Designed multiple microfluidic device iterations in SolidWorks while balancing manufacturability and biological requirements.</p>
+        <div class="skill-level"><div class="skill-fill" style="width:95%;"></div></div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🌊</div>
+        <h3>COMSOL Simulation</h3>
+        <p>Performed fluid dynamics simulations to optimize flow behavior before fabrication.</p>
+        <div class="skill-level"><div class="skill-fill" style="width:90%;"></div></div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🧬</div>
+        <h3>Biomedical Engineering</h3>
+        <p>Applied biological knowledge to solve engineering problems involving placental tissue.</p>
+        <div class="skill-level"><div class="skill-fill" style="width:95%;"></div></div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🧪</div>
+        <h3>Experimental Design</h3>
+        <p>Developed validation protocols including recovery efficiency, LDH assays, and immunofluorescence microscopy.</p>
+        <div class="skill-level"><div class="skill-fill" style="width:92%;"></div></div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">👩‍🔬</div>
+        <h3>Research</h3>
+        <p>Conducted literature review, experimental planning, and iterative engineering analysis throughout the project.</p>
+        <div class="skill-level"><div class="skill-fill" style="width:94%;"></div></div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🤝</div>
+        <h3>Leadership</h3>
+        <p>Led the project team, coordinated design decisions, and managed progress throughout the research process.</p>
+        <div class="skill-level"><div class="skill-fill" style="width:93%;"></div></div>
+      </div>
     </div>
   </section>
 
-  <section class="next-page-container">
-    <p>Finished exploring my research?</p>
-    <a href="leadership.html" class="next-page-btn">
-      View My Leadership <span class="arrow">→</span>
-    </a>
+  <section class="section">
+    <h2 class="section-title">Documents & Presentations</h2>
+    <p class="section-subtitle">
+      Additional materials developed throughout the project, including technical
+      documentation, presentations, and supporting resources.
+    </p>
+    <div class="documents-grid">
+      <a href="proposal.pdf" class="document-card" target="_blank">
+        <div class="document-icon">📄</div>
+        <h3>Research Proposal</h3>
+        <p>Read the original proposal outlining the motivation, design objectives, experimental plan, and anticipated outcomes.</p>
+        <span>Open PDF →</span>
+      </a>
+      <a href="poster.pdf" class="document-card" target="_blank">
+        <div class="document-icon">🖼️</div>
+        <h3>Research Poster</h3>
+        <p>A concise overview of the project highlighting the engineering process, results, and future work.</p>
+        <span>View Poster →</span>
+      </a>
+      <a href="presentation.pdf" class="document-card" target="_blank">
+        <div class="document-icon">📊</div>
+        <h3>Project Presentation</h3>
+        <p>Presentation slides used to communicate the project to faculty, researchers, and peers.</p>
+        <span>View Slides →</span>
+      </a>
+      <a href="github.html" class="document-card">
+        <div class="document-icon">💻</div>
+        <h3>Source Files</h3>
+        <p>Explore CAD models, code, simulations, and additional engineering documentation.</p>
+        <span>Explore Files →</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Explore More Projects</h2>
+    <p class="section-subtitle">
+      Interested in more? Here are additional projects spanning biomedical
+      engineering, robotics, software, and mechanical design.
+    </p>
+    <div class="more-projects-grid">
+      <a href="tavi.html" class="more-project-card">
+        <img src="tavi.webp" alt="TAVI Pacemaker">
+        <div class="more-project-info">
+          <h3>❤️ TAVI Integrated Pacemaker</h3>
+          <p>Developing a wireless pacing system integrated into transcatheter aortic valve replacement.</p>
+          <span>View Project →</span>
+        </div>
+      </a>
+      <a href="movinghelper.html" class="more-project-card">
+        <img src="movinghelper.webp" alt="Moving Helper">
+        <div class="more-project-info">
+          <h3>📦 Everyday Moving Helper</h3>
+          <p>A powered expandable platform designed to simplify transporting everyday cargo.</p>
+          <span>View Project →</span>
+        </div>
+      </a>
+      <a href="terrainrobot.html" class="more-project-card">
+        <img src="terrain.webp" alt="Terrain Robot">
+        <div class="more-project-info">
+          <h3>🤖 Terrain Detection Robot</h3>
+          <p>Embedded sensing system capable of classifying terrain using force sensors and inertial measurement units.</p>
+          <span>View Project →</span>
+        </div>
+      </a>
+      <a href="imu.html" class="more-project-card">
+        <img src="imu.webp" alt="IMU Analysis">
+        <div class="more-project-info">
+          <h3>📈 IMU Motion Analysis</h3>
+          <p>Python-based analysis of human movement using inertial measurement unit data.</p>
+          <span>View Project →</span>
+        </div>
+      </a>
+      <a href="projects.html" class="more-project-card featured">
+        <div class="more-project-info">
+          <h3>🚀 View All Projects</h3>
+          <p>Browse my complete engineering portfolio, including research, design projects, robotics, biomedical engineering, and software.</p>
+          <span>Explore Portfolio →</span>
+        </div>
+      </a>
+    </div>
   </section>
 
   <footer style="margin-top:100px; padding:45px; text-align:center; border-top: 1px solid var(--border); color:#4b5563;">
@@ -1319,7 +1581,7 @@
       });
     }, { threshold: 0.05 });
 
-    document.querySelectorAll(".stat, .problem-card, .importance-card, .role-card, .process-card, .requirement-card, .design-card, .analysis-card, .validation-card, .workflow-step, .progress-card, .insight-card, .challenge-card, .future-step, .takeaway-card, .gallery img, .next-page-container").forEach(el => {
+    document.querySelectorAll(".stat, .problem-card, .importance-card, .role-card, .process-card, .requirement-card, .design-card, .analysis-card, .validation-card, .workflow-step, .progress-card, .insight-card, .challenge-card, .future-step, .gallery-item, .skill-card, .document-card, .more-project-card").forEach(el => {
       el.classList.add("hidden");
       observer.observe(el);
     });
