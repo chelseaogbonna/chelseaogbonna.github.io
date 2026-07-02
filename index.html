@@ -2,164 +2,137 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Chelsea Ogbonna | Game Portfolio</title>
+<title>Chelsea Ogbonna | Cinematic Portfolio</title>
 
 <style>
 body {
   margin: 0;
-  overflow: hidden;
-  background: #0b0f19;
   font-family: Arial;
-}
-
-/* MAP */
-#map {
-  width: 2000px;
-  height: 1200px;
-  background: linear-gradient(#1c2333, #0b0f19);
-  position: relative;
-}
-
-/* PLAYER */
-#player {
-  width: 40px;
-  height: 40px;
-  background: #abc4ff;
-  position: absolute;
-  border-radius: 8px;
-  box-shadow: 0 0 20px #abc4ff;
-}
-
-/* BUILDINGS */
-.building {
-  width: 140px;
-  height: 140px;
-  background: #1f2937;
-  border: 2px solid #abc4ff;
-  position: absolute;
-  border-radius: 12px;
+  background: #0b0f19;
   color: white;
+  overflow-x: hidden;
+}
+
+/* HERO */
+.hero {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
-  padding-top: 55px;
-  font-size: 14px;
-  transition: 0.2s;
+  background: radial-gradient(circle at center, #1c2333, #0b0f19);
 }
 
-.building:hover {
-  transform: scale(1.05);
+.hero h1 {
+  font-size: 70px;
+  animation: fadeUp 1.2s ease;
 }
 
-/* POSITIONS */
-#about { top: 200px; left: 300px; }
-#projects { top: 500px; left: 900px; }
-#leadership { top: 800px; left: 500px; }
-#contact { top: 300px; left: 1400px; }
-
-/* UI */
-#hint {
-  position: fixed;
-  bottom: 20px;
-  left: 20px;
-  color: white;
+.hero p {
   opacity: 0.7;
+  animation: fadeUp 1.6s ease;
 }
 
-/* POPUP */
-#popup {
+/* SCROLL SECTIONS */
+.section {
+  min-height: 100vh;
+  padding: 100px;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: 1s ease;
+}
+
+.section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* CARDS */
+.card {
+  background: #1f2937;
+  padding: 30px;
+  border-radius: 15px;
+  margin-top: 20px;
+  border: 1px solid #abc4ff;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: scale(1.03);
+}
+
+/* FLOATING PARTICLES */
+.particle {
   position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: #111827;
-  border: 2px solid #abc4ff;
-  padding: 25px;
-  border-radius: 12px;
-  color: white;
-  display: none;
-  width: 320px;
+  width: 6px;
+  height: 6px;
+  background: #abc4ff;
+  border-radius: 50%;
+  opacity: 0.3;
+  animation: float 10s infinite;
 }
 
-button {
-  margin-top: 10px;
-  padding: 8px 12px;
-  background: #abc4ff;
-  border: none;
-  cursor: pointer;
+@keyframes float {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-100vh); }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 </style>
 </head>
 
 <body>
 
-<div id="map">
-
-  <div id="player"></div>
-
-  <div class="building" id="about">About</div>
-  <div class="building" id="projects">Projects</div>
-  <div class="building" id="leadership">Leadership</div>
-  <div class="building" id="contact">Contact</div>
-
+<div class="hero">
+  <div>
+    <h1>Chelsea Ogbonna</h1>
+    <p>Biomedical • Mechanical • Research Engineer</p>
+  </div>
 </div>
 
-<div id="hint">
-  Move: WASD / Arrow Keys | Press E near buildings
+<div class="section">
+  <h2>Projects</h2>
+  <div class="card">Microfluidic Device</div>
+  <div class="card">Implantable Systems</div>
+  <div class="card">Terrain Analysis Platform</div>
 </div>
 
-<div id="popup">
-  <h2 id="title"></h2>
-  <p>This section will load your content here.</p>
-  <button onclick="closePopup()">Close</button>
+<div class="section">
+  <h2>Leadership</h2>
+  <div class="card">NSBE Academic Chair</div>
+</div>
+
+<div class="section">
+  <h2>Contact</h2>
+  <div class="card">Email • LinkedIn • GitHub</div>
 </div>
 
 <script>
-let player = document.getElementById("player");
+const sections = document.querySelectorAll(".section");
 
-let x = 100;
-let y = 100;
-
-const speed = 10;
-
-document.addEventListener("keydown", (e) => {
-
-  if (e.key === "ArrowRight" || e.key === "d") x += speed;
-  if (e.key === "ArrowLeft" || e.key === "a") x -= speed;
-  if (e.key === "ArrowUp" || e.key === "w") y -= speed;
-  if (e.key === "ArrowDown" || e.key === "s") y += speed;
-
-  player.style.left = x + "px";
-  player.style.top = y + "px";
-
-  if (e.key === "e") checkInteraction();
-});
-
-function checkInteraction() {
-  const buildings = ["about","projects","leadership","contact"];
-
-  buildings.forEach(id => {
-    let b = document.getElementById(id);
-    let rect1 = player.getBoundingClientRect();
-    let rect2 = b.getBoundingClientRect();
-
-    let overlap =
-      !(rect1.right < rect2.left ||
-        rect1.left > rect2.right ||
-        rect1.bottom < rect2.top ||
-        rect1.top > rect2.bottom);
-
-    if (overlap) {
-      openPopup(id);
+function reveal() {
+  sections.forEach(s => {
+    const top = s.getBoundingClientRect().top;
+    if (top < window.innerHeight - 100) {
+      s.classList.add("visible");
     }
   });
 }
 
-function openPopup(id) {
-  document.getElementById("popup").style.display = "block";
-  document.getElementById("title").innerText = id.toUpperCase();
-}
+window.addEventListener("scroll", reveal);
+reveal();
 
-function closePopup() {
-  document.getElementById("popup").style.display = "none";
+// particles
+for (let i = 0; i < 30; i++) {
+  let p = document.createElement("div");
+  p.className = "particle";
+  p.style.left = Math.random() * window.innerWidth + "px";
+  p.style.top = Math.random() * window.innerHeight + "px";
+  p.style.animationDuration = (5 + Math.random() * 10) + "s";
+  document.body.appendChild(p);
 }
 </script>
 
