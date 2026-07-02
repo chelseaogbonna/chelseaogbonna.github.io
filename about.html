@@ -4,21 +4,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>About | Chelsea Ogbonna</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      /* COLORS */
       --bg: #edf2fb;
       --card: #d7e3fc;
-      --card-hover: #ccdbfd;
-      --white: #ffffff;
+      --accent: #abc4ff;
       --text: #1f2937;
-      --muted: #5f6b7a;
-      --accent: #6C8EF5;
+      --border: #c1d3fe;
+      --card-hover: #ccdbfd;
       --shadow: 0 12px 30px rgba(0, 0, 0, .08);
     }
 
@@ -33,40 +31,67 @@
     }
 
     body {
+      font-family: Inter, sans-serif;
       background: var(--bg);
-      font-family: "Poppins", sans-serif;
       color: var(--text);
       line-height: 1.7;
+      overflow-x: hidden;
     }
 
+    /* =========================
+    NAV (MATCHES PORTFOLIO SYSTEM)
+    ========================= */
     nav {
-      width: 100%;
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(1100px, 92%);
       display: flex;
-      justify-content: center;
-      gap: 45px;
-      padding: 25px;
-      position: sticky;
-      top: 0;
-      backdrop-filter: blur(12px);
-      background: rgba(237, 242, 251, .75);
+      justify-content: space-between;
+      align-items: center;
       z-index: 1000;
     }
 
-    nav a {
+    .logo {
+      font-weight: 800;
+      font-size: 18px;
       text-decoration: none;
       color: var(--text);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 10px;
+      padding: 8px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .78);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(193, 211, 254, .45);
+      box-shadow: 0 12px 35px rgba(0, 0, 0, .10);
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text);
+      padding: 10px 14px;
+      border-radius: 10px;
+      transition: .25s;
       font-weight: 500;
-      transition: .3s;
     }
 
-    nav a:hover {
-      color: var(--accent);
+    .nav-links a:hover {
+      background: var(--accent);
+      transform: translateY(-2px);
     }
 
+    /* =========================
+    LAYOUT WRAPPER
+    ========================= */
     .content {
       width: min(1200px, 90%);
       margin: auto;
-      padding: 60px 0 100px;
+      padding: 140px 0 100px;
     }
 
     /* HERO */
@@ -87,24 +112,25 @@
 
     .hero h1 {
       font-size: 52px;
-      font-weight: 700;
+      font-weight: 800;
       margin-bottom: 12px;
     }
 
     .subtitle {
       font-size: 20px;
-      color: var(--muted);
+      color: #4b5563;
+      font-weight: 500;
       margin-bottom: 15px;
     }
 
     .hero-description {
-      max-width: 700px;
+      max-width: 750px;
       margin: auto;
-      color: var(--muted);
+      color: #4b5563;
       font-size: 17px;
     }
 
-    /* GRID */
+    /* GRID CORES */
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
@@ -128,34 +154,38 @@
 
     .about-box h2 {
       margin-bottom: 20px;
-      color: #3558d4;
+      font-weight: 800;
+      color: var(--text);
     }
 
     .about-box p {
       font-size: 16px;
+      color: #4b5563;
     }
 
-    /* PHILOSOPHY TAGS */
+    /* PILLS / TAGS */
     .pill {
       display: inline-block;
-      background: white;
+      background: rgba(255, 255, 255, 0.6);
       border-radius: 30px;
       padding: 10px 18px;
       margin: 6px;
       font-weight: 500;
       font-size: 14px;
+      border: 1px solid rgba(193, 211, 254, 0.5);
     }
 
-    /* TIMELINE */
+    /* TIMELINE STRUCT */
     .timeline {
-      margin: 80px 0;
+      margin: 100px 0;
     }
 
     .timeline h2 {
       text-align: center;
       margin-bottom: 60px;
-      color: #3558d4;
+      color: var(--text);
       font-size: 36px;
+      font-weight: 800;
     }
 
     .timeline-line {
@@ -183,7 +213,7 @@
       height: 22px;
       border-radius: 50%;
       background: var(--accent);
-      border: 5px solid white;
+      border: 5px solid var(--bg);
       box-shadow: var(--shadow);
     }
 
@@ -202,11 +232,12 @@
 
     .timeline-content h3 {
       margin-bottom: 10px;
-      color: #3558d4;
+      color: var(--text);
+      font-weight: 700;
     }
 
     .timeline-content p {
-      color: var(--text);
+      color: #4b5563;
     }
 
     /* COUNTER STATS */
@@ -217,7 +248,8 @@
 
     .stats-section h2 {
       font-size: 36px;
-      color: #3558d4;
+      font-weight: 800;
+      color: var(--text);
       margin-bottom: 10px;
     }
 
@@ -233,15 +265,24 @@
       padding: 35px;
       border-radius: 25px;
       box-shadow: var(--shadow);
+      transition: .3s;
+    }
+
+    .stat:hover {
+      background: var(--card-hover);
+      transform: translateY(-5px);
     }
 
     .stat h1 {
       font-size: 60px;
-      color: #3558d4;
+      font-weight: 800;
+      color: var(--text);
     }
 
     .stat p {
-      font-size: 18px;
+      font-size: 16px;
+      font-weight: 500;
+      color: #4b5563;
     }
 
     /* ENGINEERING DNA */
@@ -252,7 +293,8 @@
 
     .engineering-dna h2 {
       font-size: 36px;
-      color: #3558d4;
+      font-weight: 800;
+      color: var(--text);
       margin-bottom: 10px;
     }
 
@@ -267,6 +309,7 @@
       background: var(--card);
       padding: 35px;
       border-radius: 25px;
+      box-shadow: var(--shadow);
       transition: .3s;
     }
 
@@ -280,15 +323,26 @@
       margin-bottom: 15px;
     }
 
+    .dna-card h3 {
+      font-weight: 700;
+      margin-bottom: 5px;
+    }
+
+    .dna-card p {
+      font-size: 14px;
+      color: #4b5563;
+    }
+
     /* WHAT I LOVE BUILDING */
     .skills-section {
-      margin: 90px 0;
+      margin: 100px 0;
     }
 
     .skills-section h2 {
       text-align: center;
       font-size: 36px;
-      color: #3558d4;
+      font-weight: 800;
+      color: var(--text);
       margin-bottom: 40px;
     }
 
@@ -296,29 +350,32 @@
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 18px;
+      gap: 15px;
     }
 
     .skills span {
-      background: white;
-      padding: 14px 22px;
+      background: rgba(255, 255, 255, 0.6);
+      padding: 12px 22px;
       border-radius: 999px;
-      font-weight: 600;
+      font-weight: 500;
+      font-size: 15px;
       box-shadow: var(--shadow);
+      border: 1px solid rgba(193, 211, 254, 0.4);
       transition: .3s;
       cursor: default;
     }
 
     .skills span:hover {
       transform: translateY(-6px);
-      background: var(--card-hover);
+      background: rgba(255, 255, 255, 0.95);
+      border-color: var(--accent);
     }
 
-    /* SCROLL REVEAL ANIMATIONS */
+    /* SCROLL REVEAL STRUCT CORE */
     .hidden {
       opacity: 0;
-      transform: translateY(60px);
-      transition: all .8s ease;
+      transform: translateY(40px);
+      transition: all .7s ease-out;
     }
 
     .show {
@@ -330,15 +387,20 @@
 
 <body>
 
+  <!-- NAV -->
   <nav>
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="projects.html">Projects</a>
-    <a href="research.html">Research</a>
-    <a href="leadership.html">Leadership</a>
-    <a href="contact.html">Contact</a>
+    <a href="index.html" class="logo">Chelsea Ogbonna</a>
+
+    <div class="nav-links">
+      <a href="about.html">About</a>
+      <a href="projects.html">Projects</a>
+      <a href="research.html">Research</a>
+      <a href="leadership.html">Leadership</a>
+      <a href="contact.html">Contact</a>
+    </div>
   </nav>
 
+  <!-- CONTENT WRAPPER -->
   <div class="content">
 
     <div class="hero">
@@ -387,13 +449,14 @@
         <p>
           I believe engineering is most impactful when it starts with understanding people. Every project should solve a real problem through thoughtful design, careful experimentation, collaboration, and continuous improvement.
         </p>
-        <br>
-        <div class="pill">🧠 Human-Centered Design</div>
-        <div class="pill">🔬 Research-Driven</div>
-        <div class="pill">⚙️ Build → Test → Improve</div>
-        <div class="pill">🤝 Collaboration</div>
-        <div class="pill">💡 Creative Problem Solving</div>
-        <div class="pill">📈 Continuous Learning</div>
+        <div style="margin-top: 20px;">
+          <div class="pill">🧠 Human-Centered Design</div>
+          <div class="pill">🔬 Research-Driven</div>
+          <div class="pill">⚙️ Build → Test → Improve</div>
+          <div class="pill">🤝 Collaboration</div>
+          <div class="pill">💡 Creative Problem Solving</div>
+          <div class="pill">📈 Continuous Learning</div>
+        </div>
       </div>
     </div>
 
@@ -512,7 +575,7 @@
         <p>
           Outside of engineering, I enjoy mentoring students, leading multidisciplinary teams, and creating opportunities that help others grow. Whether through research, leadership, or outreach, I value collaboration and believe that innovation is strongest when people from different backgrounds work together.
         </p>
-        <p>
+        <p style="margin-top: 15px;">
           I'm also passionate about giving back to my community and hope to inspire future engineers—especially those who may not have always seen themselves represented in STEM.
         </p>
       </div>
@@ -522,29 +585,30 @@
         <p>
           My long-term goal is to develop medical technologies that improve patient care around the world, particularly in underserved communities. I hope to work at the intersection of research, engineering, and product development, bringing ideas from concept to real-world clinical impact.
         </p>
-        <p>
+        <p style="margin-top: 15px;">
           As I continue growing as an engineer, I'm excited to contribute to multidisciplinary teams tackling some of healthcare's most meaningful challenges.
         </p>
       </div>
     </div>
 
     <section style="margin-top:90px; text-align:center;">
-      <h2 style="font-size:32px; color:#3558d4; margin-bottom:25px;">
+      <h2 style="font-size:32px; color:var(--text); margin-bottom:25px; font-weight: 800;">
         A Personal Motto
       </h2>
-      <p style="max-width:750px; margin:auto; font-size:20px; font-style:italic; color:var(--muted); line-height:1.8;">
+      <p style="max-width:750px; margin:auto; font-size:20px; font-style:italic; color:#4b5563; line-height:1.8;">
         "Engineering is more than building devices—it's about creating solutions that improve lives and expand what's possible."
       </p>
     </section>
 
   </div>
 
-  <footer style="margin-top:100px; padding:40px; text-align:center; background:rgba(255,255,255,.35); color:var(--muted); font-size:15px;">
-    <p>© 2026 Chelsea Ogbonna</p>
-    <p style="margin-top:10px;">Designed & Built with HTML, CSS, and ❤️</p>
+  <!-- FOOTER -->
+  <footer style="margin-top:100px; padding:45px; text-align:center; border-top: 1px solid var(--border); color:#4b5563;">
+    <p style="font-size:18px; font-weight:600;">© 2026 Chelsea Ogbonna</p>
+    <p style="margin-top:10px; font-size:14px;">Designed & Built with HTML, CSS, and ❤️</p>
   </footer>
 
-
+  <!-- SYSTEM INTERACTION SCRIPTS -->
   <script>
     // Intersection Observer for Smooth Scroll Fade-In Reveal
     const observer = new IntersectionObserver((entries) => {
@@ -553,22 +617,22 @@
           entry.target.classList.add("show");
         }
       });
-    }, { threshold: 0.1 });
+    }, { threshold: 0.05 });
 
-    document.querySelectorAll(".about-box, .timeline-item, .skills-section, .stats-section, .engineering-dna").forEach(el => {
+    document.querySelectorAll(".about-box, .timeline-item, .skills-section, .stats-section, .engineering-dna, .hero").forEach(el => {
       el.classList.add("hidden");
       observer.observe(el);
     });
 
-    // Clean Counter Engine
+    // Numerical Counter Metrics Engine
     const counters = document.querySelectorAll(".counter");
     counters.forEach(counter => {
-      counter.innerText = "0"; // Initialize cleanly
+      counter.innerText = "0";
       
       const update = () => {
         const target = +counter.dataset.target;
         const current = parseInt(counter.innerText, 10);
-        const increment = Math.ceil(target / 50); // Normalized speed regardless of size
+        const increment = Math.ceil(target / 50);
 
         if (current < target) {
           const nextVal = current + increment;
@@ -583,7 +647,6 @@
         }
       }
       
-      // Trigger counter when elements come into viewport context
       const counterObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if(entry.isIntersecting && counter.innerText === "0") {
