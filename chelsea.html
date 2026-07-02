@@ -1,371 +1,627 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>🤫 You Found the Secret Page</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
-<style>
-
-:root{
---bg:#edf2fb;
---card:#d7e3fc;
---accent:#abc4ff;
---text:#1f2937;
---border:#c1d3fe;
-}
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
-
-body{
-font-family:Inter,sans-serif;
-background:var(--bg);
-color:var(--text);
-overflow-x:hidden;
-}
-
-.hero{
-
-min-height:100vh;
-
-display:flex;
-
-justify-content:center;
-
-align-items:center;
-
-padding:100px 10%;
-
-}
-
-.container{
-
-max-width:900px;
-
-}
-
-.card{
-
-background:var(--card);
-
-padding:40px;
-
-border-radius:24px;
-
-box-shadow:0 20px 50px rgba(0,0,0,.08);
-
-animation:fadeUp .8s ease;
-
-}
-
-h1{
-
-font-size:56px;
-
-margin-bottom:10px;
-
-}
-
-.subtitle{
-
-font-size:22px;
-
-opacity:.75;
-
-margin-bottom:35px;
-
-}
-
-p{
-
-font-size:18px;
-
-line-height:1.8;
-
-margin-bottom:18px;
-
-}
-
-.grid{
-
-display:grid;
-
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-
-gap:20px;
-
-margin:40px 0;
-
-}
-
-.small-card{
-
-background:white;
-
-padding:22px;
-
-border-radius:18px;
-
-transition:.3s;
-
-}
-
-.small-card:hover{
-
-transform:translateY(-8px);
-
-}
-
-.small-card h3{
-
-margin-bottom:12px;
-
-}
-
-.button{
-
-display:inline-block;
-
-margin-top:35px;
-
-padding:16px 28px;
-
-background:var(--accent);
-
-border-radius:14px;
-
-text-decoration:none;
-
-font-weight:700;
-
-color:black;
-
-transition:.3s;
-
-}
-
-.button:hover{
-
-transform:translateY(-4px);
-
-}
-
-footer{
-
-margin-top:50px;
-
-text-align:center;
-
-opacity:.7;
-
-}
-
-@keyframes fadeUp{
-
-from{
-
-opacity:0;
-
-transform:translateY(40px);
-
-}
-
-to{
-
-opacity:1;
-
-transform:translateY(0);
-
-}
-
-}
-
-</style>
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chelsea Ogbonna | Please Hire Me</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0b0f19;
+      --pink: #ff6eb4;
+      --yellow: #ffe156;
+      --blue: #7eb8f7;
+      --white: #f5f0ff;
+      --muted: rgba(245,240,255,0.5);
+      --card: rgba(255,255,255,0.05);
+      --border: rgba(255,255,255,0.1);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* BACK LINK */
+    .back {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      color: var(--muted);
+      text-decoration: none;
+      padding: 1.25rem 2rem;
+      transition: color 0.15s;
+    }
+    .back:hover { color: var(--white); }
+    .back svg { width: 14px; height: 14px; }
+
+    /* HERO */
+    .hero {
+      text-align: center;
+      padding: 2rem 2rem 0;
+      position: relative;
+    }
+
+    .wobble-badge {
+      display: inline-block;
+      background: var(--pink);
+      color: #000;
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 99px;
+      margin-bottom: 1.5rem;
+      animation: wobble 2.5s ease-in-out infinite;
+    }
+    @keyframes wobble {
+      0%, 100% { transform: rotate(-2deg); }
+      50% { transform: rotate(2deg); }
+    }
+
+    .hero h1 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(36px, 8vw, 72px);
+      line-height: 1.05;
+      color: var(--white);
+    }
+    .hero h1 .pink { color: var(--pink); }
+    .hero h1 .yellow { color: var(--yellow); }
+
+    .hero-sub {
+      font-size: 16px;
+      color: var(--muted);
+      max-width: 480px;
+      margin: 1.25rem auto 0;
+      line-height: 1.7;
+    }
+
+    /* FLOATING EMOJIS */
+    .emoji-float {
+      position: absolute;
+      font-size: 28px;
+      animation: float 4s ease-in-out infinite;
+      pointer-events: none;
+      user-select: none;
+    }
+    .e1 { top: 10%; left: 5%; animation-delay: 0s; }
+    .e2 { top: 20%; right: 6%; animation-delay: 0.8s; }
+    .e3 { top: 55%; left: 3%; animation-delay: 1.4s; }
+    .e4 { top: 45%; right: 4%; animation-delay: 2s; }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+
+    /* SCROLL HINT */
+    .scroll-hint {
+      margin-top: 2rem;
+      font-size: 12px;
+      color: var(--muted);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+    .scroll-arrow {
+      width: 20px;
+      height: 20px;
+      border-right: 2px solid var(--muted);
+      border-bottom: 2px solid var(--muted);
+      transform: rotate(45deg);
+      animation: bounce 1.5s ease-in-out infinite;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: rotate(45deg) translateY(0); }
+      50% { transform: rotate(45deg) translateY(5px); }
+    }
+
+    /* WRAP */
+    .wrap {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 2rem 4rem;
+    }
+
+    /* DIVIDER */
+    .divider {
+      text-align: center;
+      font-size: 20px;
+      padding: 2rem 0 1rem;
+      letter-spacing: 0.2em;
+      opacity: 0.3;
+    }
+
+    /* SECTION LABEL */
+    .slabel {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--pink);
+      margin-bottom: 0.75rem;
+    }
+
+    /* THE BEG SECTION */
+    .beg-block {
+      background: var(--card);
+      border: 0.5px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem;
+      margin-bottom: 1rem;
+      position: relative;
+    }
+    .beg-block h2 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 22px;
+      margin-bottom: 0.75rem;
+    }
+    .beg-block p {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+    .beg-block .tag {
+      position: absolute;
+      top: -12px;
+      right: 20px;
+      background: var(--yellow);
+      color: #000;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 99px;
+    }
+    .beg-block .highlight {
+      color: var(--white);
+      font-weight: 500;
+    }
+
+    /* REASONS LIST */
+    .reasons {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 1.5rem;
+    }
+    .reason {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      background: var(--card);
+      border: 0.5px solid var(--border);
+      border-radius: 12px;
+      padding: 1rem 1.25rem;
+      transition: border-color 0.2s, transform 0.2s;
+      cursor: default;
+    }
+    .reason:hover {
+      border-color: var(--pink);
+      transform: translateX(4px);
+    }
+    .reason-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--pink);
+      min-width: 28px;
+    }
+    .reason-body h3 {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 3px;
+    }
+    .reason-body p {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    /* CHAOS QUOTE */
+    .chaos-quote {
+      background: linear-gradient(135deg, rgba(255,110,180,0.15), rgba(126,184,247,0.1));
+      border: 0.5px solid rgba(255,110,180,0.3);
+      border-radius: 16px;
+      padding: 2rem;
+      text-align: center;
+      margin: 1.5rem 0;
+    }
+    .chaos-quote blockquote {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(16px, 3vw, 22px);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.4;
+    }
+    .chaos-quote cite {
+      display: block;
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 10px;
+      font-style: normal;
+    }
+
+    /* FUN FACTS */
+    .facts-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .fact-card {
+      background: var(--card);
+      border: 0.5px solid var(--border);
+      border-radius: 12px;
+      padding: 1.25rem;
+      transition: border-color 0.2s;
+    }
+    .fact-card:hover { border-color: var(--blue); }
+    .fact-card .emoji { font-size: 24px; margin-bottom: 8px; display: block; }
+    .fact-card h3 {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+    .fact-card p {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* PROMISE BOX */
+    .promise {
+      background: var(--card);
+      border: 0.5px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem;
+      margin-top: 1.5rem;
+      text-align: center;
+    }
+    .promise h2 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 20px;
+      margin-bottom: 0.75rem;
+    }
+    .promise p {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+    .promise-checks {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 1.25rem;
+    }
+    .check-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      color: var(--white);
+      background: rgba(126,184,247,0.1);
+      border: 0.5px solid rgba(126,184,247,0.25);
+      border-radius: 99px;
+      padding: 5px 12px;
+    }
+    .check-item span { color: var(--blue); }
+
+    /* CTA */
+    .cta-row {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+    .btn-pink {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      padding: 12px 24px;
+      background: var(--pink);
+      color: #000;
+      border: none;
+      border-radius: 99px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform 0.15s, opacity 0.15s;
+    }
+    .btn-pink:hover { transform: scale(1.04); }
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      padding: 12px 24px;
+      background: transparent;
+      color: var(--white);
+      border: 0.5px solid rgba(255,255,255,0.25);
+      border-radius: 99px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.15s;
+    }
+    .btn-outline:hover { background: rgba(255,255,255,0.07); }
+
+    /* TICKER */
+    .ticker-wrap {
+      overflow: hidden;
+      border-top: 0.5px solid var(--border);
+      border-bottom: 0.5px solid var(--border);
+      padding: 10px 0;
+      margin: 2.5rem 0;
+      white-space: nowrap;
+    }
+    .ticker {
+      display: inline-block;
+      animation: ticker 18s linear infinite;
+    }
+    .ticker span {
+      font-family: 'Syne', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-right: 2rem;
+    }
+    .ticker span.accent { color: var(--pink); }
+    @keyframes ticker {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* FOOTER NOTE */
+    .footer-note {
+      text-align: center;
+      font-size: 12px;
+      color: var(--muted);
+      padding-top: 2rem;
+      border-top: 0.5px solid var(--border);
+    }
+
+    @media (max-width: 560px) {
+      .facts-grid { grid-template-columns: 1fr; }
+      .emoji-float { display: none; }
+    }
+  </style>
 </head>
-
 <body>
 
-<section class="hero">
-
-<div class="container">
-
-<div class="card">
-
-<h1>🤫 You Found the Secret Page.</h1>
-
-<p class="subtitle">
-Congratulations. Curiosity looks good on you.
-</p>
-
-<p>
-
-If you're reading this, one of three things happened...
-
-</p>
-
-<p>
-
-① You accidentally clicked my name.
-
-<br><br>
-
-② You're avoiding reviewing another résumé.
-
-<br><br>
-
-③ You're genuinely curious about who I am.
-
-</p>
-
-<p>
-
-If it's #3... I think we're off to a pretty good start.
-
-🙂
-
-</p>
-
-<div class="grid">
-
-<div class="small-card">
-
-<h3>🏆 Why You Should Hire Me</h3>
-
-<p>
-
-I love solving difficult engineering problems, asking lots of questions, and learning quickly. I genuinely enjoy turning ideas into something that works.
-
-</p>
-
-</div>
-
-<div class="small-card">
-
-<h3>🔬 Things I Get Weirdly Excited About</h3>
-
-<p>
-
-Microfluidics.
-
-Medical devices.
-
-Clean CAD sketches.
-
-When the code runs on the first try.
-
-(It almost never does.)
-
-</p>
-
-</div>
-
-<div class="small-card">
-
-<h3>☕ Fun Facts</h3>
-
-<p>
-
-• Coffee consumed: A concerning amount
-
-<br>
-
-• COMSOL crashes survived: Too many
-
-<br>
-
-• Times I've said "one more experiment": At least 50
-
-</p>
-
-</div>
-
-<div class="small-card">
-
-<h3>📁 Hidden Skills</h3>
-
-<p>
-
-✔ Organizing chaotic folders
-
-<br>
-
-✔ Making PowerPoints look nice
-
-<br>
-
-✔ Labeling files correctly
-
-<br>
-
-✔ Explaining engineering without making everyone's eyes glaze over
-
-</p>
-
-</div>
-
-<div class="small-card">
-
-<h3>🤝 If We Worked Together...</h3>
-
-<p>
-
-I'd ask thoughtful questions, own my mistakes, keep learning, and probably volunteer to document everything.
-
-</p>
-
-</div>
-
-<div class="small-card">
-
-<h3>🎯 Final Pitch</h3>
-
-<p>
-
-Thanks for exploring my portfolio.
-
-Whether you're a recruiter, engineer, professor, or just someone who clicked the wrong button...
-
-I hope something here made you smile.
-
-(But if you're hiring, that's an even bigger bonus.)
-
-😉
-
-</p>
-
-</div>
-
-</div>
-
-<a href="index.html" class="button">
-
-← Return to the Professional Portfolio
-
-</a>
-
-<footer>
-
-Made with curiosity, caffeine, and probably too many browser tabs.
-
-</footer>
-
-</div>
-
-</div>
-
-</section>
-
+  <a href="index.html" class="back">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    back to the professional one
+  </a>
+
+  <!-- FLOATING EMOJIS -->
+  <span class="emoji-float e1">🔬</span>
+  <span class="emoji-float e2">✨</span>
+  <span class="emoji-float e3">⚙️</span>
+  <span class="emoji-float e4">💡</span>
+
+  <div class="hero">
+    <div class="wobble-badge">⚠️ Not a drill — please hire me</div>
+    <h1>
+      Hi, I'm Chelsea<br />
+      and I <span class="pink">really, really</span><br />
+      want to work for <span class="yellow">you.</span>
+    </h1>
+    <p class="hero-sub">
+      This is the part of my portfolio where I stop being professional and just… beg. Respectfully. With engineering credentials.
+    </p>
+    <div class="scroll-hint">
+      <span>let me make my case</span>
+      <div class="scroll-arrow"></div>
+    </div>
+  </div>
+
+  <!-- TICKER -->
+  <div class="ticker-wrap">
+    <div class="ticker">
+      <span>Northwestern Engineering</span>
+      <span class="accent">★</span>
+      <span>Will show up on time</span>
+      <span class="accent">★</span>
+      <span>Will not break the CAD model</span>
+      <span class="accent">★</span>
+      <span>Biomedical + Mechanical</span>
+      <span class="accent">★</span>
+      <span>Does not eat other people's lunch</span>
+      <span class="accent">★</span>
+      <span>Actually reads the documentation</span>
+      <span class="accent">★</span>
+      <span>Northwestern Engineering</span>
+      <span class="accent">★</span>
+      <span>Will show up on time</span>
+      <span class="accent">★</span>
+      <span>Will not break the CAD model</span>
+      <span class="accent">★</span>
+      <span>Biomedical + Mechanical</span>
+      <span class="accent">★</span>
+      <span>Does not eat other people's lunch</span>
+      <span class="accent">★</span>
+      <span>Actually reads the documentation</span>
+      <span class="accent">★</span>
+    </div>
+  </div>
+
+  <div class="wrap">
+
+    <!-- THE BEG -->
+    <p class="slabel">the opening argument</p>
+    <div class="beg-block">
+      <div class="tag">Exhibit A</div>
+      <h2>Okay. Here's the thing.</h2>
+      <p>
+        I'm a <span class="highlight">Biomedical + Mechanical Engineering student at Northwestern</span> who genuinely gets excited about designing things that help people. Like, actually excited. Not "I wrote that in my cover letter" excited — more like "I stayed up until 2am optimizing a linkage mechanism because it was <em>fun</em>" excited.
+      </p>
+      <p style="margin-top: 0.75rem;">
+        I know how to <span class="highlight">build stuff, break stuff (deliberately), analyze why it broke, and build it better.</span> I can do this in SolidWorks, in a lab, in MATLAB, and probably in a coffee shop with questionable WiFi.
+      </p>
+    </div>
+
+    <!-- REASONS -->
+    <p class="slabel" style="margin-top:2rem;">10 reasons to hire me</p>
+    <div class="reasons">
+      <div class="reason">
+        <div class="reason-num">01</div>
+        <div class="reason-body">
+          <h3>I am extremely good at Googling things</h3>
+          <p>This is genuinely an underrated skill. I will find the answer. I will find it fast. I will also understand it.</p>
+        </div>
+      </div>
+      <div class="reason">
+        <div class="reason-num">02</div>
+        <div class="reason-body">
+          <h3>I study TWO types of engineering simultaneously</h3>
+          <p>Biomedical AND Mechanical. At Northwestern. I did not come here to play games (well, except for the ASME design challenge, which I took very seriously).</p>
+        </div>
+      </div>
+      <div class="reason">
+        <div class="reason-num">03</div>
+        <div class="reason-body">
+          <h3>I will bring snacks to team meetings</h3>
+          <p>This is an unprompted offer and I stand by it. Morale matters. I know this because I lead organizations.</p>
+        </div>
+      </div>
+      <div class="reason">
+        <div class="reason-num">04</div>
+        <div class="reason-body">
+          <h3>I do not give up mid-project</h3>
+          <p>I have stared at a finite element analysis mesh for three hours. I did not leave. I will not leave your team either.</p>
+        </div>
+      </div>
+      <div class="reason">
+        <div class="reason-num">05</div>
+        <div class="reason-body">
+          <h3>I ask good questions</h3>
+          <p>Not too many. Not too few. Just the right amount to not build the wrong thing entirely.</p>
+        </div>
+      </div>
+      <div class="reason">
+        <div class="reason-num">06</div>
+        <div class="reason-body">
+          <h3>I have leadership experience</h3>
+          <p>I have organized humans — which is, objectively, harder than most engineering problems. Ask me about it.</p>
+        </div>
+      </div>
+      <div class="reason">
+        <div class="reason-num">07</div>
+        <div class="reason-body">
+          <h3>I care about the work being meaningful</h3>
+          <p>I'm in biomedical engineering because I want the things I build to actually help people. Not just to exist in a drawer somewhere.</p>
+        </div>
+      </div>
+      <div class="reason">
+        <div class="reason-num">08</div>
+        <div class="reason-body">
+          <h3>I respond to emails</h3>
+          <p>Promptly. With correct spelling. In full sentences. I know, I know. Rare.</p>
+        </div>
+      </div>
+      <div class="reason">
+        <div class="reason-num">09</div>
+        <div class="reason-body">
+          <h3>I have a sense of humor</h3>
+          <p>Exhibit: this entire webpage. I made this on purpose. I thought it was a good idea. I still think it's a good idea.</p>
+        </div>
+      </div>
+      <div class="reason">
+        <div class="reason-num">10</div>
+        <div class="reason-body">
+          <h3>I really, really want this</h3>
+          <p>I built a whole extra secret page on my portfolio to prove it. If that's not dedication, I don't know what is.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- CHAOS QUOTE -->
+    <div class="chaos-quote" style="margin-top: 2rem;">
+      <blockquote>
+        "Chelsea is the kind of engineer who will redesign the entire prototype at midnight<br />
+        because she had 'a better idea.' The new design was, in fact, better."
+      </blockquote>
+      <cite>— Chelsea Ogbonna, about herself, probably</cite>
+    </div>
+
+    <!-- FUN FACTS -->
+    <p class="slabel">fun facts (to make me seem human)</p>
+    <div class="facts-grid">
+      <div class="fact-card">
+        <span class="emoji">🧬</span>
+        <h3>Double engineering major</h3>
+        <p>Biomedical + Mechanical. I contain multitudes. I also contain a lot of stress.</p>
+      </div>
+      <div class="fact-card">
+        <span class="emoji">🏆</span>
+        <h3>Competitive by nature</h3>
+        <p>I entered the ASME design challenge and I brought the same energy I bring to everything: way too much of it.</p>
+      </div>
+      <div class="fact-card">
+        <span class="emoji">🔩</span>
+        <h3>I love making things</h3>
+        <p>If it can be prototyped, I have thought about prototyping it. If it can be 3D printed, even better.</p>
+      </div>
+      <div class="fact-card">
+        <span class="emoji">🩺</span>
+        <h3>Healthcare is personal</h3>
+        <p>I want to build medical devices that actually make it to patients. That's the whole point for me.</p>
+      </div>
+    </div>
+
+    <!-- PROMISE -->
+    <div class="promise">
+      <h2>My solemn professional vow ✋</h2>
+      <p>If you hire me, I promise to show up, work hard, ask smart questions, and never, ever microwave fish in the office kitchen.</p>
+      <div class="promise-checks">
+        <div class="check-item"><span>✓</span> Will be on time</div>
+        <div class="check-item"><span>✓</span> Will not break prod</div>
+        <div class="check-item"><span>✓</span> Will bring snacks</div>
+        <div class="check-item"><span>✓</span> Will use version control</div>
+        <div class="check-item"><span>✓</span> Will actually read the brief</div>
+        <div class="check-item"><span>✓</span> No fish in the microwave</div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-row">
+      <a href="mailto:chelsea@u.northwestern.edu" class="btn-pink">
+        📧 Okay fine, hire me
+      </a>
+      <a href="index.html" class="btn-outline">
+        ← See the professional version
+      </a>
+    </div>
+
+    <div class="divider">· · ·</div>
+
+    <p class="footer-note">
+      This page was made with love, desperation, and a healthy amount of caffeine.<br />
+      The rest of this portfolio is much more professional. I promise. Go look.
+    </p>
+
+  </div>
 </body>
-
 </html>
