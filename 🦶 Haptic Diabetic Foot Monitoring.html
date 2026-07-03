@@ -256,7 +256,7 @@
             <img src="sensor_noise_chart.webp" alt="Graph displaying raw sensor signal noise">
           </div>
           <p style="font-size: 14px; color: var(--text-muted);">
-            Motion artifacts and high-frequency noise introduced variance into raw sensor payloads during trial baselines. Additionally, software-side timestamp mismatches disrupted real-time tracking streams.
+            During initial testing, the breadboard was mounted directly on the leg. However, the USB cable connecting the microcontroller to the computer was too short, causing the connection to slip during walking trials and interrupt data collection.          
           </p>
         </div>
         
@@ -266,7 +266,7 @@
             <img src="filtered_data_chart.webp" alt="Graph showcasing clean filtered sensor payload">
           </div>
           <p style="font-size: 14px; color: var(--text-muted);">
-            Developed low-pass filtering algorithms directly inside custom Python scripts to clear signal spikes, while establishing unified clock tracking protocols across the hardware loop.
+            To improve reliability, the hardware configuration was redesigned by relocating the breadboard to the participant's shin, where it experienced less movement and reduced cable strain. This modification provided a more secure connection, minimized interruptions during data acquisition, and improved the consistency of the collected gait data.          
           </p>
         </div>
       </div>
