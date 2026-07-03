@@ -214,16 +214,38 @@
     </section>
 
     <section class="main-section">
-      <h2 class="section-title">02 \ The Experiment</h2>
+      <h2 class="section-title">02 The Experiment</h2>
       <div class="split-row">
         <div class="text-block">
           <p>
-            Built an integrated in-sole hardware system evaluated through sequential, synchronized user walking paths:
+            A wearable gait monitoring system was developed using two sensing modalities to capture both motion and force during walking.         
+          </p>
+            The motion-based system consisted of
           </p>
           <ul>
-            <li><strong>Sensing Matrix:</strong> Mapped Force Sensitive Resistors (FSRs) at primary plantar loading zones alongside an MPU6050 IMU on the foot.</li>
+            <li><strong>MPU6050 inertial measurement unit (IMU)</strong> This mapped out three-axis acceleration, angular velocity, and orientation (pitch and roll).</li>
+            <li><strong>Force-sensitive resistors (FSRs)</strong> This measures plantar pressure and foot-ground contact throughout the gait cycle. </li>
             <li><strong>Hardware Hub:</strong> Used a Raspberry Pi Pico 2 to aggregate real-time sensor streams over custom low-latency Python acquisition scripts.</li>
           </ul>
+          </p>
+          Walking trials were performed under five conditions to simulate both normal and abnormal gait patterns:          
+          <p>
+            - Normal Walking
+          
+            - Lean Left
+          
+            - Lean Right
+          
+            - Lean Forward
+          
+            - Lean Back
+            
+            For analysis, the walking conditions were grouped into two categories:
+            
+            - Normal Gait
+            
+            - Incorrect Gait
+        </p>
         </div>
         <div class="img-holder">
           <img src="hardware_prototype.webp" alt="Wearable hardware array prototype setup">
