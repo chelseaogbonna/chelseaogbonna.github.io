@@ -99,11 +99,33 @@
       overflow: hidden;
       box-shadow: var(--shadow);
     }
+    
+    /* Interactive Image Click Clues */
+    .img-holder {
+      cursor: zoom-in;
+    }
     .img-holder img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      pointer-events: none; /* Passes click tracking directly to parent frame */
     }
+
+    /* Fixed Layout Fix for Split Dual Images */
+    .dual-images {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      padding: 12px;
+      width: 100%;
+      height: 100%;
+    }
+    .dual-images img {
+      border-radius: 8px;
+      cursor: zoom-in;
+      pointer-events: auto !important; /* Re-enables clicking on individual images */
+    }
+
     .video-holder video {
       width: 100%;
       height: 100%;
@@ -187,17 +209,12 @@
     @media (max-width: 800px) {
       .split-row, .result-block, .sub-grid { grid-template-columns: 1fr; gap: 20px; }
       body { padding: 60px 5%; }
+      .dual-images { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
 
-.img-holder {
-  cursor: zoom-in;
-}
-.img-holder img {
-  pointer-events: none; /* Helps pass the click to the parent container */
-}
   <div class="portfolio-wrapper">
     
     <header>
@@ -207,7 +224,7 @@
     </header>
 
     <section class="main-section">
-      <h2 class="section-title">01 Problem Statement</h2>
+      <h2 class="section-title">01 \ Problem Statement</h2>
       <div class="split-row">
         <div class="text-block">
           <p>
@@ -224,7 +241,7 @@
     </section>
 
     <section class="main-section">
-      <h2 class="section-title">02 Design Approach & Setup</h2>
+      <h2 class="section-title">02 \ Design Approach & Setup</h2>
       <div class="split-row">
         <div class="text-block">
           <p>
@@ -236,8 +253,10 @@
           </ul>
         </div>
         <div class="img-holder">
-          <img src="ekg.webp" alt="Schematic diagrams of the multi-stage filter circuitry">
-          <img src="breadboardekg.webp" alt="Schematic diagrams of the multi-stage filter circuitry">
+          <div class="dual-images">
+            <img src="ekg.webp" alt="Schematic diagrams of the multi-stage filter circuitry">
+            <img src="breadboardekg.webp" alt="Breadboard hardware implementation prototype loop">
+          </div>
         </div>
       </div>
 
@@ -245,19 +264,21 @@
         <div class="sub-card">
           <h4>Engineering Challenges</h4>
           <p style="font-size: 14px; color: var(--text-muted);">
-            One of the primary challenges was distinguishing the weak EKG signal from surrounding electrical noise. Small body movements, changes in electrode placement, and electromagnetic interference could significantly distort the waveform.          </p>
+            One of the primary challenges was distinguishing the weak EKG signal from surrounding electrical noise. Small body movements, changes in electrode placement, and electromagnetic interference could significantly distort the waveform.
+          </p>
         </div>
         
         <div class="sub-card">
           <h4>Implemented Solutions</h4>
           <p style="font-size: 14px; color: var(--text-muted);">
-            Careful filter selection and grounding strategies were required to balance noise reduction while preserving critical cardiac features such as the P wave, QRS complex, and T wave.          </p>
+            Careful filter selection and grounding strategies were required to balance noise reduction while preserving critical cardiac features such as the P wave, QRS complex, and T wave.
+          </p>
         </div>
       </div>
     </section>
 
     <section class="main-section">
-      <h2 class="section-title">03 Results</h2>
+      <h2 class="section-title">03 \ Results</h2>
       
       <div class="result-block">
         <div class="text-block">
@@ -268,7 +289,7 @@
         </div>
         <div class="video-holder" style="aspect-ratio: 16/10;">
           <video controls preload="metadata" poster="video_thumbnail.webp">
-            <source src="IMG_1703 2 (1) (1) (1) (1) (1).mov" type="video/mp4">
+            <source src="IMG_1703 2 (1) (1) (1) (1) (1).mov" type="video/quicktime">
             Your browser does not support the video tag.
           </video>
         </div>
@@ -283,25 +304,27 @@
       <p>© 2026 Chelsea Ogbonna • Portfolio Case Study Documentation</p>
     </footer>
 
-  <div id="lightbox" onclick="closeLightbox()" style="display: none; position: fixed; z-index: 9999; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); align-items: center; justify-content: center; cursor: zoom-out;">
-  <img id="lightbox-img" src="" style="max-width: 90%; max-height: 90%; border-radius: 8px; box-shadow: 0 10px 40px rgba(0,0,0,0.5); object-fit: contain;">
   </div>
-    <script>
-      // Find all image holders and listen for a click
-      document.querySelectorAll('.img-holder').forEach(holder => {
-        holder.addEventListener('click', () => {
-          const img = holder.querySelector('img');
-          if (img) {
-            document.getElementById('lightbox-img').src = img.src;
-            document.getElementById('lightbox').style.display = 'flex';
-          }
-        });
+
+  <div id="lightbox" onclick="closeLightbox()" style="display: none; position: fixed; z-index: 9999; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); align-items: center; justify-content: center; cursor: zoom-out;">
+    <img id="lightbox-img" src="" style="max-width: 90%; max-height: 90%; border-radius: 8px; box-shadow: 0 10px 40px rgba(0,0,0,0.5); object-fit: contain;">
+  </div>
+
+  <script>
+    // Targets individual images within simple holders or custom dual containers
+    document.querySelectorAll('.img-holder img').forEach(img => {
+      img.addEventListener('click', (e) => {
+        e.stopPropagation(); // Prevents instant loop closure bubbles
+        document.getElementById('lightbox-img').src = img.src;
+        document.getElementById('lightbox').style.display = 'flex';
       });
-      // Close the window when clicked anywhere
-      function closeLightbox() {
-        document.getElementById('lightbox').style.display = 'none';
-      }
-</script>
+    });
+
+    // Close lightbox on click
+    function closeLightbox() {
+      document.getElementById('lightbox').style.display = 'none';
+    }
+  </script>
     
 </body>
 </html>
