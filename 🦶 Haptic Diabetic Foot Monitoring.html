@@ -304,7 +304,7 @@ These limitations highlight the need for a wearable system that is low-cost, por
       
       <div class="result-block">
         <div class="text-block">
-          <h3>Plantar Pressure Mapping (Kinetic Data)</h3>
+          <h3> Pitch roll by condition (IMU Results)</h3>
           <p>
             We compared walking under different postures: normal, leaning back, leaning forward, and leaning left or right. Normal walking showed higher gyroscope values with more consistent patterns. Leaning back had lower gyroscope values and more spread, indicating less controlled motion. Leaning in other directions produced more variability and less consistent movement. Normal walking is smooth and efficient, while leaning makes movement less stable i.e. leaning back appears “stiff” and cautious, whereas other leans appear “messy” and unstable. This demonstrates that the IMU can clearly identify when walking posture is incorrect.          </p>
         </div>
@@ -315,25 +315,25 @@ These limitations highlight the need for a wearable system that is low-cost, por
 
       <div class="result-block">
         <div class="text-block">
-          <h3>Motion Signature Profiles (Kinematic Data)</h3>
+          <h3> Feature Comparison Normal vs Abnormal Walking (IMU Results)</h3>
           <p>
-            The inertial array precisely isolated acceleration patterns during swing-to-strike changes, capturing crisp kinematic cadence marks.
+            There is a huge difference between the Normal vs Abnormal walking therefore the IMU sensor can sense the differences between walking styles.
           </p>
         </div>
         <div class="img-holder" style="aspect-ratio: 16/10;">
-          <img src="kinematic_imu_plot.webp" alt="IMU acceleration tracking wave plot">
+          <img src="imu_feature_comparison.png" alt="IMU acceleration tracking wave plot">
         </div>
       </div>
 
       <div class="result-block">
         <div class="text-block">
-          <h3>Multimodal Data Fusion</h3>
+          <h3> Peak Force (Force Sensor Results)</h3>
           <p>
-            By combining force mapping inputs side-by-side with spatial motion curves, the system successfully mapped out cohesive, clear representations of individual strides.
+            The typical maximum force applied during each step. In our measurements, normal walking shows a slightly higher and more variable peak force (median ~800) compared to incorrect walking (~790). This suggests that normal gait involves stronger, more confident heel strikes, whereas incorrect walking results in slightly softer and more controlled steps. However, the difference between normal and incorrect walking is small, so this feature alone is not a highly reliable indicator of gait abnormalities.          </p>
           </p>
         </div>
         <div class="img-holder" style="aspect-ratio: 16/10;">
-          <img src="fused_gait_metrics.webp" alt="Fused multi-sensor analysis visualization">
+          <img src="avg_peak_force_normal_vs_abnormal.png" alt="Fused multi-sensor analysis visualization">
         </div>
       </div>
 
