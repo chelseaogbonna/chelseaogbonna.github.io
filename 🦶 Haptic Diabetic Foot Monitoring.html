@@ -199,12 +199,27 @@
       <h2 class="section-title">01 Problem Statement</h2>
       <div class="split-row">
         <div class="text-block">
+         <p>
+           Diabetic foot ulcers (DFUs) are a major complication of diabetes, often caused by peripheral neuropathy and abnormal gait patterns that increase localized pressure on the foot. Because these changes develop gradually and may go unnoticed, early detection is essential for preventing ulcers, infection, and lower-limb amputation.
+         </p>
           <p>
-            Diabetic foot ulcers (DFUs) are a major complication of diabetes, often caused by peripheral neuropathy and abnormal gait patterns that increase localized pressure on the foot. Because these changes develop gradually and may go unnoticed, early detection is essential for preventing ulcers, infection, and lower-limb amputation.          </p>
+            Conventional gait assessment methods have several limitations that make continuous, everyday monitoring difficult, preventing early intervention.
+          </p>
+          <ol>
+            <li>
+              <strong>Laboratory-based motion capture systems</strong> provide highly accurate measurements using optical cameras and reflective markers. However, these systems are expensive, require specialized facilities and trained personnel, and only capture a patient's gait during short clinical visits.
+            </li>
+
+            <li>
+              <strong>Force plates and pressure-sensitive walkways</strong> are considered the gold standard for gait analysis, but they only collect data during a few walking steps in a controlled laboratory environment.
+            </li>
+           
+            <li>
+              <strong>Commercial smart insoles</strong> are often prohibitively expensive. Since this project is intended for rural communities and low-resource settings, purchasing such equipment is often unrealistic.
+            </li>
+          </ol>
           <p>
-            This project explores two low-cost wearable sensing systems for continuous gait monitoring: an inertial measurement unit (MPU6050) that measures acceleration, angular velocity, and body orientation, and force-sensitive resistors (FSRs) that capture plantar pressure distribution during walking.          
-          <p>      
-            By comparing motion- and force-based sensing approaches, the project evaluates which sensor features most effectively identify gait abnormalities, demonstrating how embedded systems and wearable technology can support early intervention and improve diabetic foot care.
+These limitations highlight the need for a wearable system that is low-cost, portable, continous monitoring and non-invasive.
           </p>
         </div>
         <div class="img-holder">
@@ -227,6 +242,8 @@
             <li><strong>Force-sensitive resistors (FSRs)</strong> This measures plantar pressure and foot-ground contact throughout the gait cycle. </li>
             <li><strong>Hardware Hub:</strong> Used a Raspberry Pi Pico 2 to aggregate real-time sensor streams over custom low-latency Python acquisition scripts.</li>
           </ul>
+          <p>
+            By comparing motion- and force-based sensing approaches, the project evaluates which sensor features most effectively identify gait abnormalities, demonstrating how embedded systems and wearable technology can support early intervention and improve diabetic foot care.
           </p>
           Walking trials were performed under five conditions to simulate both normal and abnormal gait patterns:          
           <p>The following walking conditions were tested:</p>
