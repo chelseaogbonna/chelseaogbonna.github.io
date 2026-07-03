@@ -10,10 +10,12 @@
   <style>
     :root {
       --bg: #edf2fb;
+      --card: #d7e3fc;
       --accent: #abc4ff;
       --text-main: #1f2937;
       --text-muted: #4b5563;
-      --line-color: #c1d3fe;
+      --border: #c1d3fe;
+      --shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
     }
     
     * {
@@ -27,11 +29,11 @@
       background: var(--bg);
       color: var(--text-main);
       line-height: 1.7;
-      padding: 90px 8% 60px;
+      padding: 80px 8% 60px;
     }
 
     .portfolio-wrapper {
-      max-width: 750px;
+      max-width: 1000px;
       margin: 0 auto;
     }
 
@@ -41,104 +43,124 @@
       color: #6C8EF5;
       font-weight: 600;
       font-size: 14px;
-      letter-spacing: -0.3px;
       display: inline-flex;
       align-items: center;
       gap: 6px;
       margin-bottom: 25px;
       transition: transform 0.2s;
     }
-    
-    .back-btn:hover {
-      transform: translateX(-4px);
-    }
+    .back-btn:hover { transform: translateX(-4px); }
 
-    header {
-      margin-bottom: 70px;
-    }
-
-    h1 {
-      font-size: 40px;
-      font-weight: 800;
-      letter-spacing: -1px;
-      line-height: 1.2;
-      margin-bottom: 12px;
-    }
-
-    .subtitle {
-      font-size: 18px;
-      color: var(--text-muted);
-      font-weight: 400;
-    }
+    header { margin-bottom: 60px; }
+    h1 { font-size: 40px; font-weight: 800; letter-spacing: -1px; line-height: 1.2; margin-bottom: 12px; }
+    .subtitle { font-size: 18px; color: var(--text-muted); font-weight: 400; }
 
     /* ==========================================
-    TIMELINE FLOW LAYOUT
+    LAYOUT STRUCTS
     ========================================== */
-    .timeline {
-      position: relative;
-      border-left: 3px solid var(--line-color);
-      padding-left: 35px;
-      margin-left: 5px;
+    .main-section {
+      margin-bottom: 80px;
     }
 
-    .step-block {
-      position: relative;
-      margin-bottom: 60px;
-      transition: transform 0.25s ease;
-    }
-    
-    .step-block:hover {
-      transform: translateX(4px);
-    }
-
-    .step-block:last-child {
-      margin-bottom: 0;
-    }
-
-    /* NODE DOTS */
-    .step-block::before {
-      content: "";
-      position: absolute;
-      left: -48px;
-      top: 4px;
-      width: 18px;
-      height: 18px;
-      border-radius: 50%;
-      background: #edf2fb;
-      border: 4px solid #6C8EF5;
-      box-shadow: 0 0 0 4px #abc4ff;
-      z-index: 2;
-    }
-
-    h2 {
-      font-size: 20px;
+    .section-title {
+      font-size: 24px;
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 1.5px;
       color: #6C8EF5;
-      margin-bottom: 15px;
+      margin-bottom: 30px;
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
     }
 
-    p {
+    /* Side-by-Side Split Row */
+    .split-row {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 40px;
+      align-items: center;
+      margin-bottom: 35px;
+    }
+
+    .text-block p {
       font-size: 16px;
-      color: var(--text-main);
       margin-bottom: 15px;
+    }
+    .text-block p:last-child { margin-bottom: 0; }
+
+    /* Image Containers */
+    .img-holder {
+      background: var(--card);
+      border-radius: 16px;
+      aspect-ratio: 4/3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    .img-holder img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Nested Sub-Grid for Challenges */
+    .sub-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      margin-top: 40px;
+    }
+    .sub-card {
+      background: rgba(255, 255, 255, 0.4);
+      border: 1px solid var(--border);
+      padding: 25px;
+      border-radius: 16px;
+    }
+    .sub-card h4 {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 15px;
+      text-transform: uppercase;
+      color: var(--text-main);
+    }
+
+    /* Stacked List Style for Results Blocks */
+    .result-block {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 40px;
+      align-items: center;
+      padding: 25px 0;
+      border-bottom: 1px dashed var(--border);
+    }
+    .result-block:last-of-type { border-bottom: none; }
+    
+    .result-block h3 {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .final-summary {
+      background: var(--card);
+      padding: 30px;
+      border-radius: 16px;
+      margin-top: 30px;
+      box-shadow: var(--shadow);
     }
 
     ul {
       list-style: none;
       padding-left: 0;
     }
-
     li {
       position: relative;
-      padding-left: 22px;
-      margin-bottom: 12px;
+      padding-left: 20px;
+      margin-bottom: 10px;
       color: var(--text-muted);
-      font-size: 15.5px;
     }
-
-    /* CUSTOM ACCENT BULLETS */
     li::before {
       content: "→";
       position: absolute;
@@ -147,27 +169,19 @@
       font-weight: 700;
     }
 
-    strong {
-      color: var(--text-main);
-      font-weight: 600;
-    }
-
     /* FOOTER */
     footer {
       text-align: center;
       margin-top: 100px;
       padding-top: 30px;
-      border-top: 1px solid var(--line-color);
+      border-top: 1px solid var(--border);
       color: var(--text-muted);
       font-size: 13px;
-      letter-spacing: 0.5px;
     }
 
-    @media (max-width: 600px) {
-      body { padding: 60px 6%; }
-      h1 { font-size: 32px; }
-      .timeline { padding-left: 20px; }
-      .step-block::before { left: -30px; width: 14px; height: 14px; border-width: 3px; }
+    @media (max-width: 800px) {
+      .split-row, .result-block, .sub-grid { grid-template-columns: 1fr; gap: 20px; }
+      body { padding: 60px 5%; }
     }
   </style>
 </head>
@@ -181,53 +195,123 @@
       <p class="subtitle">Embedded Sensor Integration & Kinematic Gait Analysis</p>
     </header>
 
-    <div class="timeline">
+    <section class="main-section">
+      <h2 class="section-title">01 \ Problem Statement</h2>
+      <div class="split-row">
+        <div class="text-block">
+          <p>
+            Diabetic foot ulcers are a severe clinical complication, frequently resulting in infection and lower-limb amputations. Due to peripheral neuropathy, patients lose sensation and cannot detect the repetitive pressure and abnormal gait changes that cause tissue breakdown.
+          </p>
+          <p>
+            Because standard clinical checks only offer intermittent assessments, this project aimed to develop an in-shoe wearable system to monitor walking mechanics continuously and catch early risk profiles.
+          </p>
+        </div>
+        <div class="img-holder">
+          <img src="problem_clinical_context.webp" alt="Clinical context of diabetic foot ulcers">
+        </div>
+      </div>
+    </section>
 
-      <div class="step-block">
-        <h2>01 \ Problem Statement</h2>
-        <p>
-          Diabetic foot ulcers are a severe clinical complication, frequently resulting in infection and lower-limb amputations. Due to peripheral neuropathy, patients lose sensation and cannot detect the repetitive pressure and abnormal gait changes that cause tissue breakdown.
-        </p>
-        <p>
-          Because standard clinical checks only offer intermittent assessments, this project aimed to develop an in-shoe wearable system to monitor walking mechanics continuously and catch early risk profiles.
-        </p>
+    <section class="main-section">
+      <h2 class="section-title">02 \ The Experiment</h2>
+      <div class="split-row">
+        <div class="text-block">
+          <p>
+            Built an integrated in-sole hardware system evaluated through sequential, synchronized user walking paths:
+          </p>
+          <ul>
+            <li><strong>Sensing Matrix:</strong> Mapped Force Sensitive Resistors (FSRs) at primary plantar loading zones alongside an MPU6050 IMU on the foot.</li>
+            <li><strong>Hardware Hub:</strong> Used a Raspberry Pi Pico 2 to aggregate real-time sensor streams over custom low-latency Python acquisition scripts.</li>
+          </ul>
+        </div>
+        <div class="img-holder">
+          <img src="hardware_prototype.webp" alt="Wearable hardware array prototype setup">
+        </div>
       </div>
 
-      <div class="step-block">
-        <h2>02 \ The Experiment</h2>
-        <p>
-          Built an integrated in-sole hardware system evaluated through sequential, synchronized user walking paths:
-        </p>
-        <ul>
-          <li><strong>Sensing Matrix:</strong> Mapped Force Sensitive Resistors (FSRs) at primary plantar loading zones alongside an MPU6050 IMU on the foot to record dynamic force and 3-axis motion profiles simultaneously.</li>
-          <li><strong>Hardware Hub:</strong> Used a Raspberry Pi Pico 2 to aggregate real-time sensor streams over custom low-latency Python acquisition scripts.</li>
-          <li><strong>Data Rigor:</strong> Performed successive walking trials to verify time-synchronization across modalities and reduce recording variance.</li>
-        </ul>
+      <div class="sub-grid">
+        <div class="sub-card">
+          <h4>Engineering Challenges</h4>
+          <div class="img-holder" style="margin-bottom: 15px; aspect-ratio: 16/9;">
+            <img src="sensor_noise_chart.webp" alt="Graph displaying raw sensor signal noise">
+          </div>
+          <p style="font-size: 14px; color: var(--text-muted);">
+            Motion artifacts and high-frequency noise introduced variance into raw sensor payloads during trial baselines. Additionally, software-side timestamp mismatches disrupted real-time tracking streams.
+          </p>
+        </div>
+        
+        <div class="sub-card">
+          <h4>Implemented Solutions</h4>
+          <div class="img-holder" style="margin-bottom: 15px; aspect-ratio: 16/9;">
+            <img src="filtered_data_chart.webp" alt="Graph showcasing clean filtered sensor payload">
+          </div>
+          <p style="font-size: 14px; color: var(--text-muted);">
+            Developed low-pass filtering algorithms directly inside custom Python scripts to clear signal spikes, while establishing unified clock tracking protocols across the hardware loop.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="main-section">
+      <h2 class="section-title">03 \ Results</h2>
+      
+      <div class="result-block">
+        <div class="text-block">
+          <h3>Plantar Pressure Mapping (Kinetic Data)</h3>
+          <p>
+            The FSR force sensors successfully targeted local load variances across the heel, midfoot, and metatarsal zones throughout consecutive stance intervals.
+          </p>
+        </div>
+        <div class="img-holder" style="aspect-ratio: 16/10;">
+          <img src="kinetic_pressure_map.webp" alt="Plantar pressure heatmap chart">
+        </div>
       </div>
 
-      <div class="step-block">
-        <h2>03 \ Results</h2>
-        <p>
-          The system accurately aligned and processed multi-modal sensor telemetry to map distinct stride features:
-        </p>
-        <ul>
-          <li><strong>Kinetic Capture:</strong> Force array data explicitly mapped dynamic plantar pressure transfer throughout the stance phases.</li>
-          <li><strong>Kinematic Tracking:</strong> IMU spatial measurements isolated clear acceleration and angular velocity signatures for swing-to-strike transitions.</li>
-          <li><strong>Sensor Fusion:</strong> Merging pressure data with inertial movement arrays captured a complete representation of gait stability that single-sensor architectures miss.</li>
-        </ul>
+      <div class="result-block">
+        <div class="text-block">
+          <h3>Motion Signature Profiles (Kinematic Data)</h3>
+          <p>
+            The inertial array precisely isolated acceleration patterns during swing-to-strike changes, capturing crisp kinematic cadence marks.
+          </p>
+        </div>
+        <div class="img-holder" style="aspect-ratio: 16/10;">
+          <img src="kinematic_imu_plot.webp" alt="IMU acceleration tracking wave plot">
+        </div>
       </div>
 
-      <div class="step-block">
-        <h2>04 \ Discussion</h2>
-        <p>
-          The project proves that combining in-shoe pressure maps with spatial motion tracking creates a powerful framework for continuous biomechanical screening. While clinical patient trials are the next step, the prototype delivers a high-fidelity foundation for passive ulcer-prevention tools.
-        </p>
-        <p>
-          Developing this platform advanced core competencies across hardware-software integration, real-time data streaming, signal processing loops, and experimental hardware testing.
-        </p>
+      <div class="result-block">
+        <div class="text-block">
+          <h3>Multimodal Data Fusion</h3>
+          <p>
+            By combining force mapping inputs side-by-side with spatial motion curves, the system successfully mapped out cohesive, clear representations of individual strides.
+          </p>
+        </div>
+        <div class="img-holder" style="aspect-ratio: 16/10;">
+          <img src="fused_gait_metrics.webp" alt="Fused multi-sensor analysis visualization">
+        </div>
       </div>
 
-    </div>
+      <div class="final-summary">
+        <p><strong>Summary of Findings:</strong> Synchronized data fusion proved that isolated point-tracking lacks the resolution needed for high-risk profiles. Merging crossflow pressure points alongside step trajectories provides a comprehensive view of walking symmetry that single-modality tracking systems miss.</p>
+      </div>
+    </section>
+
+    <section class="main-section">
+      <h2 class="section-title">04 \ Discussion</h2>
+      <div class="split-row">
+        <div class="text-block">
+          <p>
+            The project proves that combining in-shoe pressure maps with spatial motion tracking creates a powerful framework for continuous biomechanical screening. While clinical patient trials are the next step, the prototype delivers a high-fidelity foundation for passive ulcer-prevention tools.
+          </p>
+          <p>
+            Developing this platform advanced core competencies across hardware-software integration, real-time data streaming, signal processing loops, and experimental hardware testing.
+          </p>
+        </div>
+        <div class="img-holder">
+          <img src="future_clinical_concept.webp" alt="Concept map for remote patient diagnostic monitoring">
+        </div>
+      </div>
+    </section>
 
     <footer>
       <p>© 2026 Chelsea Ogbonna • Engineering Case Study Portfolio</p>
