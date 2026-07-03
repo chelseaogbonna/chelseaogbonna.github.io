@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Diabetic Foot Monitoring System | Chelsea Ogbonna</title>
+  <title>Gait Analysis System | Chelsea Ogbonna</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   
@@ -14,8 +14,7 @@
       --accent: #abc4ff;
       --text: #1f2937;
       --border: #c1d3fe;
-      --card-hover: #ccdbfd;
-      --shadow: 0 12px 30px rgba(0, 0, 0, .08);
+      --shadow: 0 4px 20px rgba(0, 0, 0, .05);
     }
     
     * {
@@ -24,522 +23,159 @@
       box-sizing: border-box;
     }
     
-    html {
-      scroll-behavior: smooth;
-    }
-    
     body {
       font-family: Inter, sans-serif;
       background: var(--bg);
       color: var(--text);
-      line-height: 1.7;
-      overflow-x: hidden;
-    }
-    
-    /* ===========================
-    NAVIGATION
-    =========================== */
-    nav {
-      position: fixed;
-      top: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: min(1100px, 92%);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      z-index: 1000;
-    }
-    
-    .logo {
-      font-weight: 800;
-      font-size: 18px;
-      text-decoration: none;
-      color: var(--text);
-    }
-    
-    .nav-links {
-      display: flex;
-      gap: 10px;
-      padding: 8px;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, .78);
-      backdrop-filter: blur(16px);
-      border: 1px solid rgba(193, 211, 254, .45);
-      box-shadow: 0 12px 35px rgba(0, 0, 0, .10);
-    }
-    
-    .nav-links a {
-      text-decoration: none;
-      color: var(--text);
-      padding: 10px 14px;
-      border-radius: 10px;
-      transition: .25s;
-      font-weight: 500;
-    }
-    
-    .nav-links a:hover {
-      background: var(--accent);
-      transform: translateY(-2px);
-    }
-    
-    /* ===========================
-    HERO
-    =========================== */
-    .hero {
-      min-height: 95vh;
-      display: grid;
-      grid-template-columns: 1.2fr .8fr;
-      align-items: center;
-      padding: 140px 10% 60px;
-      position: relative;
-    }
-    
-    .hero::before {
-      content: "";
-      position: absolute;
-      width: 650px;
-      height: 650px;
-      background: var(--accent);
-      filter: blur(150px);
-      opacity: .30;
-      top: -150px;
-      left: -150px;
-    }
-    
-    .hero-text {
-      position: relative;
-      z-index: 2;
-    }
-    
-    .hero h1 {
-      font-size: 54px;
-      margin-bottom: 20px;
-      line-height: 1.1;
-      font-weight: 800;
-    }
-    
-    .hero h2 {
-      font-weight: 500;
-      opacity: .75;
-      margin-bottom: 25px;
-      font-size: 22px;
-    }
-    
-    .hero p {
-      font-size: 18px;
       line-height: 1.8;
-      max-width: 620px;
-      color: #374151;
+      padding: 80px 5%;
     }
-    
-    .button {
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    /* ===========================
+    HEADER & NAV
+    =========================== */
+    header {
+      margin-bottom: 60px;
+    }
+
+    .back-link {
+      text-decoration: none;
+      color: #6C8EF5;
+      font-weight: 600;
+      font-size: 15px;
       display: inline-block;
-      margin-top: 30px;
-      padding: 15px 28px;
-      background: var(--accent);
-      border-radius: 14px;
-      font-weight: 700;
-      color: var(--text);
-      text-decoration: none;
-      transition: .3s;
-      box-shadow: var(--shadow);
+      margin-bottom: 20px;
     }
-    
-    .button:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 15px 30px rgba(171, 196, 255, 0.4);
-    }
-    
-    .hero-image img {
-      width: 100%;
-      max-width: 420px;
-      border-radius: 24px;
-      box-shadow: 0 25px 60px rgba(0, 0, 0, .15);
-    }
-    
-    .section {
-      padding: 90px 10%;
-    }
-    
-    .section-title {
+
+    h1 {
       font-size: 42px;
-      text-align: center;
-      margin-bottom: 50px;
       font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 10px;
     }
-    
-    .section-subtitle {
-      max-width: 850px;
-      margin: 0 auto 60px;
-      text-align: center;
-      line-height: 1.8;
+
+    .subtitle {
+      font-size: 18px;
       color: #4b5563;
-      font-size: 17px;
+      font-weight: 400;
     }
 
     /* ===========================
-    PROJECT SNAPSHOT
+    SECTION STYLE
     =========================== */
-    .snapshot {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 25px;
-    }
-    
-    .stat {
+    .section {
       background: var(--card);
-      padding: 30px;
-      border-radius: 18px;
-      text-align: center;
-      transition: .3s;
+      padding: 40px;
+      border-radius: 20px;
+      margin-bottom: 30px;
       box-shadow: var(--shadow);
-    }
-    
-    .stat:hover {
-      transform: translateY(-10px);
-      background: var(--card-hover);
-    }
-    
-    .stat h3 {
-      font-size: 18px;
-      margin-bottom: 12px;
-      font-weight: 700;
-    }
-    
-    .stat p {
-      font-size: 16px;
-      line-height: 1.6;
-      color: #4b5563;
     }
 
-    /* ==========================================
-    PROBLEM STATEMENT & DISCUSSION INFO CARDS
-    ========================================== */
-    .problem-grid {
-      display: grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap: 40px;
-      align-items: center;
-    }
-    
-    .info-card {
-      background: var(--card);
-      padding: 35px;
-      border-radius: 22px;
-      box-shadow: var(--shadow);
-      transition: .3s;
-    }
-    
-    .info-card p {
-      line-height: 1.9;
-      color: #4b5563;
+    h2 {
+      font-size: 22px;
+      font-weight: 700;
       margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #111827;
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      display: inline-block;
     }
-    
-    .info-card p:last-child {
+
+    p {
+      color: #374151;
+      font-size: 16px;
+      margin-bottom: 15px;
+    }
+
+    p:last-child {
       margin-bottom: 0;
     }
 
-    /* ==========================================
-    CORE GRID FRAMEWORKS (TRIALS, SENSORS, CHALLENGES, SOLUTIONS, RESULTS)
-    ========================================== */
-    .trial-grid, .sensor-grid, .challenge-grid, .solution-grid, .results-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 25px;
-    }
-    
-    .trial-card, .sensor-card, .challenge-card, .solution-card, .result-card {
-      background: var(--card);
-      padding: 30px;
-      border-radius: 20px;
-      transition: .35s;
-      box-shadow: var(--shadow);
-    }
-    
-    .trial-card:hover, .sensor-card:hover, .challenge-card:hover, .solution-card:hover, .result-card:hover {
-      transform: translateY(-10px);
-      background: var(--card-hover);
-    }
-    
-    .trial-card h3, .sensor-card h3, .challenge-card h3, .solution-card h3, .result-card h3 {
+    ul {
+      padding-left: 20px;
       margin-bottom: 15px;
-      font-weight: 700;
-      font-size: 20px;
+      color: #374151;
     }
-    
-    .trial-card p, .sensor-card p, .challenge-card p, .solution-card p, .result-card p {
-      line-height: 1.8;
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      margin-top: 60px;
       color: #4b5563;
-    }
-
-    /* SCROLL REVEAL UTILITIES */
-    .hidden {
-      opacity: 0;
-      transform: translateY(40px);
-      transition: all .7s ease-out;
-    }
-    
-    .show {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    @media(max-width:900px){
-      .hero { grid-template-columns: 1fr; text-align: center; padding-top: 100px; }
-      .hero-image { display: flex; justify-content: center; margin-top: 40px; }
-      .problem-grid { grid-template-columns: 1fr; }
+      font-size: 14px;
     }
   </style>
 </head>
 <body>
 
-  <nav>
-    <a href="index.html" class="logo">Chelsea Ogbonna</a>
-    <div class="nav-links">
-      <a href="about.html">About</a>
-      <a href="projects.html">Projects</a>
-      <a href="research.html">Research</a>
-      <a href="leadership.html">Leadership</a>
-      <a href="contact.html">Contact</a>
-    </div>
-  </nav>
+  <div class="container">
+    
+    <header>
+      <a href="projects.html" class="back-link">← Back to Projects</a>
+      <h1>Wearable Diabetic Foot Monitoring System</h1>
+      <p class="subtitle">Embedded Sensor Integration & Kinematic Gait Analysis</p>
+    </header>
 
-  <section class="hero">
-    <div class="hero-text">
-      <h1>🧦 Wearable Diabetic Foot Monitoring System</h1>
-      <h2>Multimodal In-Shoe Kinematic & Kinetic Gait Analysis</h2>
+    <section class="section">
+      <h2>Problem Statement</h2>
       <p>
-        Developed an integrated wearable hardware platform utilizing synchronized plantar pressure mapping and inertial tracking array systems. This system continuously monitors quantitative gait parameters to capture diagnostic insights into high-risk patterns linked to diabetic neuropathy and foot ulcer development.
-      </p>
-      <a href="#problem" class="button">Explore Project Metrics ↓</a>
-    </div>
-    <div class="hero-image">
-      <img src="gait_device_hero.webp" alt="Diabetic Foot Monitoring System Hardware Prototype">
-    </div>
-  </section>
-
-  <section class="section">
-    <h2 class="section-title">Project Snapshot</h2>
-    <div class="snapshot">
-      <div class="stat">
-        <h3>👩‍🔬 System Architecture</h3>
-        <p>Embedded Systems Design<br>& Sensor Fusion</p>
-      </div>
-      <div class="stat">
-        <h3>🛠 Core Stack</h3>
-        <p>Raspberry Pi Pico 2<br>Python Signal Processing<br>FSR Array + MPU6050</p>
-      </div>
-      <div class="stat">
-        <h3>📅 Project Lifecycle</h3>
-        <p>Academic Research & Validation</p>
-      </div>
-      <div class="stat">
-        <h3>🎯 Target Scope</h3>
-        <p>Biomechanical Analysis<br>& Diagnostic Assistive Tech</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="problem">
-    <h2 class="section-title">Problem Statement</h2>
-    <p class="section-subtitle">
-      Diabetic foot ulcers are among the most common and severe complications of diabetes,
-      often leading to infection, hospitalization, and lower-limb amputation.
-      Many ulcers develop gradually due to repetitive pressure and abnormal gait patterns
-      that patients cannot detect because of peripheral neuropathy.
-    </p>
-    <div class="info-card">
-      <p>
-        Traditional clinical assessments provide only periodic snapshots of a patient's
-        walking behavior and may miss early warning signs of tissue damage.
-        The goal of this project was to develop a wearable sensing system capable of
-        continuously monitoring gait characteristics and providing data that could be
-        used to identify movement patterns associated with increased ulcer risk.
-      </p>
-    </div>
-  </section>
-
-  <section class="section">
-    <h2 class="section-title">Walking Trials</h2>
-    <p class="section-subtitle">
-      Walking experiments were conducted to evaluate the wearable sensing system
-      under controlled conditions while collecting synchronized force and motion data.
-    </p>
-    <div class="trial-grid">
-      <div class="trial-card">
-        <h3>🏃‍♀️ Normal Walking</h3>
-        <p>
-          Participants walked at a comfortable pace across a predefined walking path to
-          establish baseline gait characteristics.
-        </p>
-      </div>
-      <div class="trial-card">
-        <h3>🔁 Repeated Trials</h3>
-        <p>
-          Multiple walking trials were collected to ensure repeatability and reduce
-          variability between individual recordings.
-        </p>
-      </div>
-      <div class="trial-card">
-        <h3>📊 Data Collection</h3>
-        <p>
-          Sensor measurements were recorded continuously throughout each walking trial
-          and synchronized for later analysis.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <h2 class="section-title">Sensors Used</h2>
-    <div class="sensor-grid">
-      <div class="sensor-card">
-        <h3>⚡ Force Sensitive Resistors (FSRs)</h3>
-        <p>
-          FSRs were positioned beneath the foot to measure plantar pressure throughout
-          the gait cycle. Pressure distribution provides insight into areas experiencing
-          repeated loading that may contribute to ulcer formation.
-        </p>
-      </div>
-      <div class="sensor-card">
-        <h3>🧭 Inertial Measurement Unit (MPU6050)</h3>
-        <p>
-          The IMU measured three-axis acceleration and angular velocity to characterize
-          foot motion, walking stability, cadence, and stride dynamics.
-        </p>
-      </div>
-      <div class="sensor-card">
-        <h3>💻 Microcontroller</h3>
-        <p>
-          A Raspberry Pi Pico 2 collected sensor data in real time and transmitted the
-          measurements for analysis using custom Python software.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <h2 class="section-title">Challenges Encountered</h2>
-    <div class="challenge-grid">
-      <div class="challenge-card">
-        <h3>⚠️ Sensor Noise</h3>
-        <p>
-          Motion artifacts and electrical noise introduced variability into the sensor
-          signals during walking.
-        </p>
-      </div>
-      <div class="challenge-card">
-        <h3>📍 Sensor Placement</h3>
-        <p>
-          Small changes in sensor positioning influenced force measurements between trials.
-        </p>
-      </div>
-      <div class="challenge-card">
-        <h3>⏱️ Data Synchronization</h3>
-        <p>
-          Maintaining synchronized force and IMU recordings required careful software
-          timing and data management.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <h2 class="section-title">Engineering Solutions</h2>
-    <div class="solution-grid">
-      <div class="solution-card">
-        <h3>📈 Signal Processing</h3>
-        <p>
-          Python filtering techniques reduced measurement noise while preserving
-          important gait characteristics.
-        </p>
-      </div>
-      <div class="solution-card">
-        <h3>📐 Standardized Setup</h3>
-        <p>
-          Consistent sensor placement procedures improved repeatability across walking trials.
-        </p>
-      </div>
-      <div class="solution-card">
-        <h3>⚙️ Automated Analysis</h3>
-        <p>
-          Custom Python scripts synchronized sensor data and generated visualizations
-          for rapid interpretation.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <h2 class="section-title">Results</h2>
-    <p class="section-subtitle">
-      Analysis demonstrated that combining force sensors with inertial measurement
-      data provides a comprehensive representation of walking mechanics.
-    </p>
-    <div class="results-grid">
-      <div class="result-card">
-        <h3>🦶 Pressure Data</h3>
-        <p>
-          Force sensors successfully identified changes in plantar loading throughout
-          the gait cycle.
-        </p>
-      </div>
-      <div class="result-card">
-        <h3>📉 Motion Data</h3>
-        <p>
-          IMU measurements captured acceleration patterns associated with walking
-          and changes in foot movement.
-        </p>
-      </div>
-      <div class="result-card">
-        <h3>🔀 Integrated Analysis</h3>
-        <p>
-          Combining both sensing modalities produced a more complete assessment of
-          walking behavior than either sensor alone.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <h2 class="section-title">Discussion</h2>
-    <div class="info-card">
-      <p>
-        This project demonstrated the value of integrating pressure sensing and
-        inertial measurements for wearable gait analysis. While additional testing
-        with diabetic patients is necessary, the platform provides a foundation for
-        future systems capable of detecting gait abnormalities associated with diabetic
-        foot ulcer development.
+        Diabetic foot ulcers are among the most common and severe complications of diabetes, often leading to infection, hospitalization, and lower-limb amputation. Many ulcers develop gradually due to repetitive pressure and abnormal gait patterns that patients cannot detect because of peripheral neuropathy.
       </p>
       <p>
-        Beyond the clinical application, the project strengthened skills in embedded
-        systems, sensor integration, signal processing, experimental design, and
-        biomechanical data analysis.
+        Traditional clinical assessments provide only periodic snapshots of a patient's walking behavior and miss early warning signs of tissue damage. The goal of this project was to develop a wearable sensing system capable of continuously monitoring gait characteristics to identify movement patterns associated with increased ulcer risk.
       </p>
-    </div>
-  </section>
+    </section>
 
-  <footer style="margin-top:100px; padding:45px; text-align:center; border-top: 1px solid var(--border); color:#4b5563;">
-    <p style="font-size:18px; font-weight:600;">© 2026 Chelsea Ogbonna</p>
-    <p style="margin-top:10px; font-size:14px;">Designed & Built with HTML, CSS, and ❤️</p>
-  </footer>
+    <section class="section">
+      <h2>The Experiment</h2>
+      <p>
+        To track kinematic and kinetic parameters continuously, a custom in-shoe hardware prototype was designed and evaluated under controlled walking trials:
+      </p>
+      <ul>
+        <li><strong>Sensing Architecture:</strong> Positioned Force Sensitive Resistors (FSRs) beneath high-risk plantar loading zones to measure dynamic force distribution, paired with an MPU6050 Inertial Measurement Unit (IMU) to capture 3-axis acceleration and angular velocity.</li>
+        <li><strong>Data Acquisition:</strong> Integrated a Raspberry Pi Pico 2 to stream real-time sensor payloads over custom low-latency Python software loops.</li>
+        <li><strong>Execution Strategy:</strong> Conducted successive walking trials along uniform baselines to collect synchronized datasets, minimizing variability and validating hardware timing accuracy across continuous intervals.</li>
+      </ul>
+    </section>
 
-  <script>
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("show");
-        }
-      });
-    }, { threshold: 0.05 });
+    <section class="section">
+      <h2>Results</h2>
+      <p>
+        The system successfully cross-referenced sensor streams to map individual strides cleanly:
+      </p>
+      <ul>
+        <li><strong>Kinetic Capture:</strong> Force profiles successfully targeted changes in localized plantar load distribution across the complete stance phases.</li>
+        <li><strong>Kinematic Capture:</strong> IMU spatial measurements accurately isolated swing and strike acceleration signatures, defining distinct cadence metrics.</li>
+        <li><strong>Sensor Fusion:</strong> Combining force map inputs directly alongside inertial patterns provided a comprehensive diagnostic view of gait stability that single-modality tracking systems miss.</li>
+      </ul>
+    </section>
 
-    document.querySelectorAll(".stat, .info-card, .trial-card, .sensor-card, .challenge-card, .solution-card, .result-card").forEach(el => {
-      el.classList.add("hidden");
-      observer.observe(el);
-    });
-  </script>
+    <section class="section">
+      <h2>Discussion</h2>
+      <p>
+        This work confirms that pairing in-sole pressure maps with foot-motion telemetry provides a reliable framework for remote, real-time biomechanical monitoring. While future clinical deployments will require diagnostic validation with neuropathic patient paths, this system offers a functional foundation for early ulcer screening devices.
+      </p>
+      <p>
+        From an engineering perspective, developing this platform directly strengthened core skills across hardware-software co-design, real-time sensor synchronization, digital signal filtering, and experimental research execution.
+      </p>
+    </section>
+
+    <footer>
+      <p>© 2026 Chelsea Ogbonna • Portfolio Engineering Documentation</p>
+    </footer>
+
+  </div>
 
 </body>
 </html>
