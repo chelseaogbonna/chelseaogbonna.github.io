@@ -3,18 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gait Analysis System | Chelsea Ogbonna</title>
+  <title>Gait Analysis Project | Chelsea Ogbonna</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   
   <style>
     :root {
       --bg: #edf2fb;
-      --card: #d7e3fc;
       --accent: #abc4ff;
-      --text: #1f2937;
-      --border: #c1d3fe;
-      --shadow: 0 4px 20px rgba(0, 0, 0, .05);
+      --text-main: #1f2937;
+      --text-muted: #4b5563;
+      --line-color: #c1d3fe;
     }
     
     * {
@@ -24,155 +23,214 @@
     }
     
     body {
-      font-family: Inter, sans-serif;
+      font-family: 'Inter', sans-serif;
       background: var(--bg);
-      color: var(--text);
-      line-height: 1.8;
-      padding: 80px 5%;
+      color: var(--text-main);
+      line-height: 1.7;
+      padding: 90px 8% 60px;
     }
 
-    .container {
-      max-width: 800px;
+    .portfolio-wrapper {
+      max-width: 750px;
       margin: 0 auto;
     }
 
-    /* ===========================
-    HEADER & NAV
-    =========================== */
-    header {
-      margin-bottom: 60px;
-    }
-
-    .back-link {
+    /* BACK LINK & HEADER */
+    .back-btn {
       text-decoration: none;
       color: #6C8EF5;
       font-weight: 600;
-      font-size: 15px;
-      display: inline-block;
-      margin-bottom: 20px;
+      font-size: 14px;
+      letter-spacing: -0.3px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 25px;
+      transition: transform 0.2s;
+    }
+    
+    .back-btn:hover {
+      transform: translateX(-4px);
+    }
+
+    header {
+      margin-bottom: 70px;
     }
 
     h1 {
-      font-size: 42px;
+      font-size: 40px;
       font-weight: 800;
+      letter-spacing: -1px;
       line-height: 1.2;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
     }
 
     .subtitle {
       font-size: 18px;
-      color: #4b5563;
+      color: var(--text-muted);
       font-weight: 400;
     }
 
-    /* ===========================
-    SECTION STYLE
-    =========================== */
-    .section {
-      background: var(--card);
-      padding: 40px;
-      border-radius: 20px;
-      margin-bottom: 30px;
-      box-shadow: var(--shadow);
+    /* ==========================================
+    TIMELINE FLOW LAYOUT
+    ========================================== */
+    .timeline {
+      position: relative;
+      border-left: 3px solid var(--line-color);
+      padding-left: 35px;
+      margin-left: 5px;
     }
 
-    h2 {
-      font-size: 22px;
-      font-weight: 700;
-      margin-bottom: 20px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      color: #111827;
-      border-bottom: 2px solid var(--border);
-      padding-bottom: 8px;
-      display: inline-block;
+    .step-block {
+      position: relative;
+      margin-bottom: 60px;
+      transition: transform 0.25s ease;
+    }
+    
+    .step-block:hover {
+      transform: translateX(4px);
     }
 
-    p {
-      color: #374151;
-      font-size: 16px;
-      margin-bottom: 15px;
-    }
-
-    p:last-child {
+    .step-block:last-child {
       margin-bottom: 0;
     }
 
-    ul {
-      padding-left: 20px;
+    /* NODE DOTS */
+    .step-block::before {
+      content: "";
+      position: absolute;
+      left: -48px;
+      top: 4px;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #edf2fb;
+      border: 4px solid #6C8EF5;
+      box-shadow: 0 0 0 4px #abc4ff;
+      z-index: 2;
+    }
+
+    h2 {
+      font-size: 20px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: #6C8EF5;
       margin-bottom: 15px;
-      color: #374151;
+    }
+
+    p {
+      font-size: 16px;
+      color: var(--text-main);
+      margin-bottom: 15px;
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 0;
     }
 
     li {
-      margin-bottom: 8px;
+      position: relative;
+      padding-left: 22px;
+      margin-bottom: 12px;
+      color: var(--text-muted);
+      font-size: 15.5px;
+    }
+
+    /* CUSTOM ACCENT BULLETS */
+    li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: #6C8EF5;
+      font-weight: 700;
+    }
+
+    strong {
+      color: var(--text-main);
+      font-weight: 600;
     }
 
     /* FOOTER */
     footer {
       text-align: center;
-      margin-top: 60px;
-      color: #4b5563;
-      font-size: 14px;
+      margin-top: 100px;
+      padding-top: 30px;
+      border-top: 1px solid var(--line-color);
+      color: var(--text-muted);
+      font-size: 13px;
+      letter-spacing: 0.5px;
+    }
+
+    @media (max-width: 600px) {
+      body { padding: 60px 6%; }
+      h1 { font-size: 32px; }
+      .timeline { padding-left: 20px; }
+      .step-block::before { left: -30px; width: 14px; height: 14px; border-width: 3px; }
     }
   </style>
 </head>
 <body>
 
-  <div class="container">
+  <div class="portfolio-wrapper">
     
     <header>
-      <a href="projects.html" class="back-link">← Back to Projects</a>
+      <a href="projects.html" class="back-btn">← Back to Projects</a>
       <h1>Wearable Diabetic Foot Monitoring System</h1>
       <p class="subtitle">Embedded Sensor Integration & Kinematic Gait Analysis</p>
     </header>
 
-    <section class="section">
-      <h2>Problem Statement</h2>
-      <p>
-        Diabetic foot ulcers are among the most common and severe complications of diabetes, often leading to infection, hospitalization, and lower-limb amputation. Many ulcers develop gradually due to repetitive pressure and abnormal gait patterns that patients cannot detect because of peripheral neuropathy.
-      </p>
-      <p>
-        Traditional clinical assessments provide only periodic snapshots of a patient's walking behavior and miss early warning signs of tissue damage. The goal of this project was to develop a wearable sensing system capable of continuously monitoring gait characteristics to identify movement patterns associated with increased ulcer risk.
-      </p>
-    </section>
+    <div class="timeline">
 
-    <section class="section">
-      <h2>The Experiment</h2>
-      <p>
-        To track kinematic and kinetic parameters continuously, a custom in-shoe hardware prototype was designed and evaluated under controlled walking trials:
-      </p>
-      <ul>
-        <li><strong>Sensing Architecture:</strong> Positioned Force Sensitive Resistors (FSRs) beneath high-risk plantar loading zones to measure dynamic force distribution, paired with an MPU6050 Inertial Measurement Unit (IMU) to capture 3-axis acceleration and angular velocity.</li>
-        <li><strong>Data Acquisition:</strong> Integrated a Raspberry Pi Pico 2 to stream real-time sensor payloads over custom low-latency Python software loops.</li>
-        <li><strong>Execution Strategy:</strong> Conducted successive walking trials along uniform baselines to collect synchronized datasets, minimizing variability and validating hardware timing accuracy across continuous intervals.</li>
-      </ul>
-    </section>
+      <div class="step-block">
+        <h2>01 \ Problem Statement</h2>
+        <p>
+          Diabetic foot ulcers are a severe clinical complication, frequently resulting in infection and lower-limb amputations. Due to peripheral neuropathy, patients lose sensation and cannot detect the repetitive pressure and abnormal gait changes that cause tissue breakdown.
+        </p>
+        <p>
+          Because standard clinical checks only offer intermittent assessments, this project aimed to develop an in-shoe wearable system to monitor walking mechanics continuously and catch early risk profiles.
+        </p>
+      </div>
 
-    <section class="section">
-      <h2>Results</h2>
-      <p>
-        The system successfully cross-referenced sensor streams to map individual strides cleanly:
-      </p>
-      <ul>
-        <li><strong>Kinetic Capture:</strong> Force profiles successfully targeted changes in localized plantar load distribution across the complete stance phases.</li>
-        <li><strong>Kinematic Capture:</strong> IMU spatial measurements accurately isolated swing and strike acceleration signatures, defining distinct cadence metrics.</li>
-        <li><strong>Sensor Fusion:</strong> Combining force map inputs directly alongside inertial patterns provided a comprehensive diagnostic view of gait stability that single-modality tracking systems miss.</li>
-      </ul>
-    </section>
+      <div class="step-block">
+        <h2>02 \ The Experiment</h2>
+        <p>
+          Built an integrated in-sole hardware system evaluated through sequential, synchronized user walking paths:
+        </p>
+        <ul>
+          <li><strong>Sensing Matrix:</strong> Mapped Force Sensitive Resistors (FSRs) at primary plantar loading zones alongside an MPU6050 IMU on the foot to record dynamic force and 3-axis motion profiles simultaneously.</li>
+          <li><strong>Hardware Hub:</strong> Used a Raspberry Pi Pico 2 to aggregate real-time sensor streams over custom low-latency Python acquisition scripts.</li>
+          <li><strong>Data Rigor:</strong> Performed successive walking trials to verify time-synchronization across modalities and reduce recording variance.</li>
+        </ul>
+      </div>
 
-    <section class="section">
-      <h2>Discussion</h2>
-      <p>
-        This work confirms that pairing in-sole pressure maps with foot-motion telemetry provides a reliable framework for remote, real-time biomechanical monitoring. While future clinical deployments will require diagnostic validation with neuropathic patient paths, this system offers a functional foundation for early ulcer screening devices.
-      </p>
-      <p>
-        From an engineering perspective, developing this platform directly strengthened core skills across hardware-software co-design, real-time sensor synchronization, digital signal filtering, and experimental research execution.
-      </p>
-    </section>
+      <div class="step-block">
+        <h2>03 \ Results</h2>
+        <p>
+          The system accurately aligned and processed multi-modal sensor telemetry to map distinct stride features:
+        </p>
+        <ul>
+          <li><strong>Kinetic Capture:</strong> Force array data explicitly mapped dynamic plantar pressure transfer throughout the stance phases.</li>
+          <li><strong>Kinematic Tracking:</strong> IMU spatial measurements isolated clear acceleration and angular velocity signatures for swing-to-strike transitions.</li>
+          <li><strong>Sensor Fusion:</strong> Merging pressure data with inertial movement arrays captured a complete representation of gait stability that single-sensor architectures miss.</li>
+        </ul>
+      </div>
+
+      <div class="step-block">
+        <h2>04 \ Discussion</h2>
+        <p>
+          The project proves that combining in-shoe pressure maps with spatial motion tracking creates a powerful framework for continuous biomechanical screening. While clinical patient trials are the next step, the prototype delivers a high-fidelity foundation for passive ulcer-prevention tools.
+        </p>
+        <p>
+          Developing this platform advanced core competencies across hardware-software integration, real-time data streaming, signal processing loops, and experimental hardware testing.
+        </p>
+      </div>
+
+    </div>
 
     <footer>
-      <p>© 2026 Chelsea Ogbonna • Portfolio Engineering Documentation</p>
+      <p>© 2026 Chelsea Ogbonna • Engineering Case Study Portfolio</p>
     </footer>
 
   </div>
