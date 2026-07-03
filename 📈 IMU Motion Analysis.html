@@ -237,28 +237,21 @@
         </div>
         <div class="img-holder">
           <img src="ekg.webp" alt="Schematic diagrams of the multi-stage filter circuitry">
+          <img src="breadboardekg.webp" alt="Schematic diagrams of the multi-stage filter circuitry">
         </div>
       </div>
 
       <div class="sub-grid">
         <div class="sub-card">
           <h4>Engineering Challenges</h4>
-          <div class="img-holder" style="margin-bottom: 15px; aspect-ratio: 16/9;">
-            <img src="ekg_noise_challenge.webp" alt="Raw unconditioned signal showing baseline drift and noise spikes">
-          </div>
           <p style="font-size: 14px; color: var(--text-muted);">
-            High-amplitude power line artifacts (60 Hz noise) and sudden baseline wander from subject movement threatened to completely swamp the microscopic cardiac wave features.
-          </p>
+            One of the primary challenges was distinguishing the weak EKG signal from surrounding electrical noise. Small body movements, changes in electrode placement, and electromagnetic interference could significantly distort the waveform.          </p>
         </div>
         
         <div class="sub-card">
           <h4>Implemented Solutions</h4>
-          <div class="img-holder" style="margin-bottom: 15px; aspect-ratio: 16/9;">
-            <img src="ekg_filter_response.webp" alt="Frequency response analysis of the hardware filter loop">
-          </div>
           <p style="font-size: 14px; color: var(--text-muted);">
-            Careful analog filter component selection and tuning matched cutoffs precisely to specific physiological bandwidths while optimizing limb ground connection consistency to clear noise floor envelopes.
-          </p>
+            Careful filter selection and grounding strategies were required to balance noise reduction while preserving critical cardiac features such as the P wave, QRS complex, and T wave.          </p>
         </div>
       </div>
     </section>
