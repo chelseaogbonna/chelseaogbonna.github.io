@@ -219,44 +219,47 @@
     
     <header>
       <a href="projects.html" class="back-btn">← Back to Projects</a>
-      <h1>Low-Cost EKG Signal Acquisition System</h1>
-      <p class="subtitle">Analog Signal Conditioning & Biosignal Processing</p>
+      <h1>Low-Cost EMG Signal Acquisition System</h1>
+      <p class="subtitle">Analog Signal Conditioning & Real-Time Game Interface Integration</p>
     </header>
 
     <section class="main-section">
-      <h2 class="section-title">01 Problem Statement</h2>
+      <h2 class="section-title">01 \ Problem Statement</h2>
       <div class="split-row">
         <div class="text-block">
           <p>
-            Electromyography (EMG) is a technique used to measure the electrical activity produced by skeletal muscles during contraction. EMG signals are widely used in rehabilitation, prosthetics, human-computer interaction, and assistive technologies, but their low amplitude and susceptibility to electrical noise make reliable signal acquisition challenging.          </p>
+            Electromyography (EMG) is a technique used to measure the electrical activity produced by skeletal muscles during contraction. EMG signals are widely used in rehabilitation, prosthetics, human-computer interaction, and assistive technologies, but their low amplitude and susceptibility to electrical noise make reliable signal acquisition challenging.
+          </p>
           <p>
-            This project focused on designing a low-cost analog EMG acquisition system capable of amplifying, filtering, and processing muscle activation signals for real-time control of an interactive application.          
+            Raw EMG signals are typically only a few millivolts in amplitude and are easily corrupted by motion artifacts, power-line interference, and surrounding electrical noise. To produce a stable control signal, the system must amplify weak muscle activity, reject common-mode noise, remove unwanted frequency components, and smooth the rapidly fluctuating waveform without introducing excessive delay.
+          </p>
           <p>
-            The final system converted forearm muscle contractions into voltage outputs ranging from approximately -5 V (relaxed) to +5 V (flexed), enabling intuitive control of a paddle in a Python-based Pong game.
+            Designing an affordable circuit that performs all of these functions while maintaining reliable real-time performance presents a significant biomedical signal processing challenge. The final system converted forearm muscle contractions into voltage outputs ranging from approximately -5 V (relaxed) to +5 V (flexed), enabling intuitive control of a paddle in a Python-based Pong game.
           </p>
         </div>
         <div class="img-holder">
-          <img src="profileekg.jpeg" alt="Visual representation of raw cardiac signal scale and diagnostic context">
+          <img src="profileemg.jpeg" alt="Forearm electrode placement configuration map and signal testing frame">
         </div>
       </div>
     </section>
 
     <section class="main-section">
-      <h2 class="section-title">02 Design Approach & Setup</h2>
+      <h2 class="section-title">02 \ Design Approach & Setup</h2>
       <div class="split-row">
         <div class="text-block">
           <p>
-            This system establishes clean biosignal acquisition utilizing basic, high-accessibility hardware components combined with focused multi-stage analog filter design blocks:
+            The EMG acquisition system was built around the INA121 instrumentation amplifier, which amplified the small differential voltages generated during muscle contractions while rejecting common-mode interference. The system design meets stringent parameters:
           </p>
           <ul>
-            <li><strong>Filter Topology:</strong> Integrates a 1 Hz high-pass active filter block to arrest slow baseline wander alongside a tuned low-pass filter to block high-frequency muscle interference.</li>
-            <li><strong>Ground Topology:</strong> Implements an intentional limb ground reference electrode placed on the elbow to reduce body-capacitance noise loops.</li>
+            <li><strong>Signal Path Topology:</strong> A 50 Hz high-pass filter removes motion artifacts and low-frequency noise before the signal passes through a half-wave rectifier, converting the bipolar EMG waveform into a unipolar signal.</li>
+            <li><strong>Envelope Extraction:</strong> A resistor-capacitor network acts as a low-pass filter to smooth the rapidly fluctuating waveform. The processed signal is further amplified to scale output levels perfectly from -5 V up to +5 V.</li>
+            <li><strong>Software Interface:</strong> The conditioned analog output is integrated seamlessly with pong2025.py through the nLab API to maps physical arm movements to real-time gameplay controls.</li>
           </ul>
         </div>
         <div class="img-holder">
           <div class="dual-images">
-            <img src="ekg.webp" alt="Schematic diagrams of the multi-stage filter circuitry">
-            <img src="breadboardekg.webp" alt="Breadboard hardware implementation prototype loop">
+            <img src="emg_schematic.webp" alt="Analog conditioning schematic detailing INA121 and filter stages">
+            <img src="breadboardemg.webp" alt="Breadboard layout hardware prototype trace validation">
           </div>
         </div>
       </div>
@@ -265,21 +268,21 @@
         <div class="sub-card">
           <h4>Engineering Challenges</h4>
           <p style="font-size: 14px; color: var(--text-muted);">
-            One of the primary challenges was distinguishing the weak EKG signal from surrounding electrical noise. Small body movements, changes in electrode placement, and electromagnetic interference could significantly distort the waveform.
+            One of the primary challenges was extracting a clean and stable muscle activation signal from the inherently noisy EMG waveform. Small changes in electrode placement, muscle fatigue, and motion artifacts introduced significant variability that could interfere with real-time control latency metrics.
           </p>
         </div>
         
         <div class="sub-card">
           <h4>Implemented Solutions</h4>
           <p style="font-size: 14px; color: var(--text-muted);">
-            Careful filter selection and grounding strategies were required to balance noise reduction while preserving critical cardiac features such as the P wave, QRS complex, and T wave.
+            Selecting appropriate amplification stages, filter cutoff frequencies, and envelope detection parameters required balancing noise reduction with system responsiveness to ensure smooth, responsive, and reliable paddle movement inside the interactive game window.
           </p>
         </div>
       </div>
     </section>
 
     <section class="main-section">
-      <h2 class="section-title">03 Results</h2>
+      <h2 class="section-title">03 \ Results</h2>
       
       <div class="result-block">
         <div class="text-block">
@@ -290,14 +293,14 @@
         </div>
         <div class="video-holder" style="aspect-ratio: 16/10;">
           <video controls preload="metadata" poster="video_thumbnail.webp">
-            <source src="IMG_1703 2 (1) (1) (1) (1) (1).mov" type="video/mp4">
+            <source src="IMG_1703 2 (1) (1) (1) (1) (1).mov" type="video/quicktime">
             Your browser does not support the video tag.
           </video>
         </div>
       </div>
 
       <div class="final-summary">
-        <p><strong>Summary of Findings:</strong> The final circuit successfully captured recognizable EKG waveforms and demonstrated the effectiveness of analog filtering for biosignal acquisition. The filtering stages reduced baseline drift and high-frequency noise, producing a cleaner signal suitable for visualization and basic cardiac analysis.</p>
+        <p><strong>Summary of Findings:</strong> The completed EMG system successfully detected muscle contractions and converted them into a stable analog control signal suitable for real-time human-computer interaction. The amplifier and filtering stages effectively reduced electrical noise while preserving muscle activation patterns, allowing users to control the Pong paddle through forearm flexion and relaxation with smooth, responsive movement.</p>
       </div>
     </section>
 
