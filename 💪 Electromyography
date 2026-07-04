@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Low-Cost EMG Signal Acquisition System | Chelsea Ogbonna</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg: #edf2fb;
+      --card: #d7e3fc;
+      --accent: #abc4ff;
+      --text-main: #1f2937;
+      --text-muted: #4b5563;
+      --border: #c1d3fe;
+      --shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text-main);
+      line-height: 1.7;
+      padding: 80px 8% 60px;
+    }
+
+    .portfolio-wrapper {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    /* BACK LINK & HEADER */
+    .back-btn {
+      text-decoration: none;
+      color: #6C8EF5;
+      font-weight: 600;
+      font-size: 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 25px;
+      transition: transform 0.2s;
+    }
+    .back-btn:hover { transform: translateX(-4px); }
+
+    header { margin-bottom: 60px; }
+    h1 { font-size: 40px; font-weight: 800; letter-spacing: -1px; line-height: 1.2; margin-bottom: 12px; }
+    .subtitle { font-size: 18px; color: var(--text-muted); font-weight: 400; }
+
+    /* ==========================================
+    LAYOUT STRUCTS
+    ========================================== */
+    .main-section {
+      margin-bottom: 80px;
+    }
+
+    .section-title {
+      font-size: 24px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: #6C8EF5;
+      margin-bottom: 30px;
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+    }
+
+    /* Side-by-Side Split Row */
+    .split-row {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 40px;
+      align-items: center;
+      margin-bottom: 35px;
+    }
+
+    .text-block p {
+      font-size: 16px;
+      margin-bottom: 15px;
+    }
+    .text-block p:last-child { margin-bottom: 0; }
+
+    /* Image & Video Containers */
+    .img-holder, .video-holder {
+      background: var(--card);
+      border-radius: 16px;
+      aspect-ratio: 4/3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    
+    /* Interactive Image Click Clues */
+    .img-holder {
+      cursor: zoom-in;
+    }
+    .img-holder img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      pointer-events: none; /* Passes click tracking directly to parent frame */
+    }
+
+    /* Fixed Layout Fix for Split Dual Images */
+    .dual-images {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      padding: 12px;
+      width: 100%;
+      height: 100%;
+    }
+    .dual-images img {
+      border-radius: 8px;
+      cursor: zoom-in;
+      pointer-events: auto !important; /* Re-enables clicking on individual images */
+    }
+
+    .video-holder video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Nested Sub-Grid for Challenges */
+    .sub-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      margin-top: 40px;
+    }
+    .sub-card {
+      background: rgba(255, 255, 255, 0.4);
+      border: 1px solid var(--border);
+      padding: 25px;
+      border-radius: 16px;
+    }
+    .sub-card h4 {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 15px;
+      text-transform: uppercase;
+      color: var(--text-main);
+    }
+
+    /* Stacked List Style for Results Blocks */
+    .result-block {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 40px;
+      align-items: center;
+      padding: 25px 0;
+      border-bottom: 1px dashed var(--border);
+    }
+    .result-block:last-of-type { border-bottom: none; }
+    
+    .result-block h3 {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .final-summary {
+      background: var(--card);
+      padding: 30px;
+      border-radius: 16px;
+      margin-top: 30px;
+      box-shadow: var(--shadow);
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    li {
+      position: relative;
+      padding-left: 20px;
+      margin-bottom: 10px;
+      color: var(--text-muted);
+    }
+    li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: #6C8EF5;
+      font-weight: 700;
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      margin-top: 100px;
+      padding-top: 30px;
+      border-top: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 13px;
+    }
+
+    @media (max-width: 800px) {
+      .split-row, .result-block, .sub-grid { grid-template-columns: 1fr; gap: 20px; }
+      body { padding: 60px 5%; }
+      .dual-images { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="portfolio-wrapper">
+    
+    <header>
+      <a href="projects.html" class="back-btn">← Back to Projects</a>
+      <h1>Low-Cost EKG Signal Acquisition System</h1>
+      <p class="subtitle">Analog Signal Conditioning & Biosignal Processing</p>
+    </header>
+
+    <section class="main-section">
+      <h2 class="section-title">01 Problem Statement</h2>
+      <div class="split-row">
+        <div class="text-block">
+          <p>
+            Electromyography (EMG) is a technique used to measure the electrical activity produced by skeletal muscles during contraction. EMG signals are widely used in rehabilitation, prosthetics, human-computer interaction, and assistive technologies, but their low amplitude and susceptibility to electrical noise make reliable signal acquisition challenging.          </p>
+          <p>
+            This project focused on designing a low-cost analog EMG acquisition system capable of amplifying, filtering, and processing muscle activation signals for real-time control of an interactive application.          
+          <p>
+            The final system converted forearm muscle contractions into voltage outputs ranging from approximately -5 V (relaxed) to +5 V (flexed), enabling intuitive control of a paddle in a Python-based Pong game.
+          </p>
+        </div>
+        <div class="img-holder">
+          <img src="profileekg.jpeg" alt="Visual representation of raw cardiac signal scale and diagnostic context">
+        </div>
+      </div>
+    </section>
+
+    <section class="main-section">
+      <h2 class="section-title">02 Design Approach & Setup</h2>
+      <div class="split-row">
+        <div class="text-block">
+          <p>
+            This system establishes clean biosignal acquisition utilizing basic, high-accessibility hardware components combined with focused multi-stage analog filter design blocks:
+          </p>
+          <ul>
+            <li><strong>Filter Topology:</strong> Integrates a 1 Hz high-pass active filter block to arrest slow baseline wander alongside a tuned low-pass filter to block high-frequency muscle interference.</li>
+            <li><strong>Ground Topology:</strong> Implements an intentional limb ground reference electrode placed on the elbow to reduce body-capacitance noise loops.</li>
+          </ul>
+        </div>
+        <div class="img-holder">
+          <div class="dual-images">
+            <img src="ekg.webp" alt="Schematic diagrams of the multi-stage filter circuitry">
+            <img src="breadboardekg.webp" alt="Breadboard hardware implementation prototype loop">
+          </div>
+        </div>
+      </div>
+
+      <div class="sub-grid">
+        <div class="sub-card">
+          <h4>Engineering Challenges</h4>
+          <p style="font-size: 14px; color: var(--text-muted);">
+            One of the primary challenges was distinguishing the weak EKG signal from surrounding electrical noise. Small body movements, changes in electrode placement, and electromagnetic interference could significantly distort the waveform.
+          </p>
+        </div>
+        
+        <div class="sub-card">
+          <h4>Implemented Solutions</h4>
+          <p style="font-size: 14px; color: var(--text-muted);">
+            Careful filter selection and grounding strategies were required to balance noise reduction while preserving critical cardiac features such as the P wave, QRS complex, and T wave.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="main-section">
+      <h2 class="section-title">03 Results</h2>
+      
+      <div class="result-block">
+        <div class="text-block">
+          <h3>Live System Demonstration</h3>
+          <p>
+            Real-time validation tracking demonstrating responsive hardware signal output stabilization and active trace mapping during human subject trials.
+          </p>
+        </div>
+        <div class="video-holder" style="aspect-ratio: 16/10;">
+          <video controls preload="metadata" poster="video_thumbnail.webp">
+            <source src="IMG_1703 2 (1) (1) (1) (1) (1).mov" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+
+      <div class="final-summary">
+        <p><strong>Summary of Findings:</strong> The final circuit successfully captured recognizable EKG waveforms and demonstrated the effectiveness of analog filtering for biosignal acquisition. The filtering stages reduced baseline drift and high-frequency noise, producing a cleaner signal suitable for visualization and basic cardiac analysis.</p>
+      </div>
+    </section>
+
+    <footer>
+      <p>© 2026 Chelsea Ogbonna • Portfolio Case Study Documentation</p>
+    </footer>
+
+  </div>
+
+  <div id="lightbox" onclick="closeLightbox()" style="display: none; position: fixed; z-index: 9999; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); align-items: center; justify-content: center; cursor: zoom-out;">
+    <img id="lightbox-img" src="" style="max-width: 90%; max-height: 90%; border-radius: 8px; box-shadow: 0 10px 40px rgba(0,0,0,0.5); object-fit: contain;">
+  </div>
+
+  <script>
+    // Targets individual images within simple holders or custom dual containers
+    document.querySelectorAll('.img-holder img').forEach(img => {
+      img.addEventListener('click', (e) => {
+        e.stopPropagation(); // Prevents instant loop closure bubbles
+        document.getElementById('lightbox-img').src = img.src;
+        document.getElementById('lightbox').style.display = 'flex';
+      });
+    });
+
+    // Close lightbox on click
+    function closeLightbox() {
+      document.getElementById('lightbox').style.display = 'none';
+    }
+  </script>
+    
+</body>
+</html>
