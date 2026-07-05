@@ -1,1 +1,662 @@
-x
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User-Centered Recycling Condominium Redesign | Chelsea Ogbonna</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg: #edf2fb;
+      --card: #d7e3fc;
+      --accent: #abc4ff;
+      --text-main: #1f2937;
+      --text-muted: #4b5563;
+      --border: #c1d3fe;
+      --shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text-main);
+      line-height: 1.7;
+      padding: 80px 8% 60px;
+    }
+
+    .portfolio-wrapper {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    /* BACK LINK & HEADER */
+    .back-btn {
+      text-decoration: none;
+      color: #6C8EF5;
+      font-weight: 600;
+      font-size: 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 25px;
+      transition: transform 0.2s;
+    }
+    .back-btn:hover { transform: translateX(-4px); }
+
+    header { margin-bottom: 60px; }
+    h1 { font-size: 40px; font-weight: 800; letter-spacing: -1px; line-height: 1.2; margin-bottom: 12px; }
+    .subtitle { font-size: 18px; color: var(--text-muted); font-weight: 400; }
+
+    /* ==========================================
+    LAYOUT STRUCTS
+    ========================================== */
+    .main-section {
+      margin-bottom: 80px;
+    }
+
+    .section-title {
+      font-size: 24px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: #6C8EF5;
+      margin-bottom: 30px;
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+    }
+
+    .design-iteration-header {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--text-main);
+      margin: 40px 0 20px 0;
+      padding-bottom: 4px;
+      border-bottom: 1px dashed var(--border);
+    }
+
+    /* Side-by-Side Split Row */
+    .split-row {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 40px;
+      align-items: flex-start;
+      margin-bottom: 35px;
+    }
+
+    .text-block p {
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+    .text-block p:last-child { margin-bottom: 0; }
+
+    /* Image Stack for Problem Statement */
+    .problem-image-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .problem-image-stack .image-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .problem-image-stack span {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #6C8EF5;
+      padding-left: 4px;
+    }
+
+    /* Image Containers */
+    .img-holder {
+      background: var(--card);
+      border-radius: 16px;
+      aspect-ratio: 4/3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      cursor: zoom-in;
+      width: 100%;
+    }
+    .img-holder img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      pointer-events: none;
+    }
+
+    /* Split layouts inside holders */
+    .dual-images {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      padding: 8px;
+      width: 100%;
+      height: 100%;
+    }
+    .dual-images img {
+      border-radius: 8px;
+      cursor: zoom-in;
+      pointer-events: auto !important;
+    }
+
+    .triple-images {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 10px;
+      padding: 10px;
+      width: 100%;
+      height: 100%;
+    }
+    .triple-images img {
+      border-radius: 8px;
+      cursor: zoom-in;
+      pointer-events: auto !important;
+    }
+
+    /* ==========================================
+    HORIZONTAL THREE-BOX TIMELINE GRID WITH ARROWS
+    ========================================== */
+    .timeline-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 40px;
+      margin-top: 20px;
+      position: relative;
+      margin-bottom: 40px;
+    }
+
+    .timeline-card {
+      background: rgba(255, 255, 255, 0.4);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    /* Connecting Arrows between sequential cards */
+    .timeline-card:not(:last-child)::after {
+      content: "→";
+      position: absolute;
+      right: -28px;
+      top: 25%;
+      transform: translateY(-50%);
+      font-size: 28px;
+      color: #6C8EF5;
+      font-weight: 700;
+      z-index: 10;
+    }
+
+    .timeline-card h3 {
+      font-size: 18px;
+      font-weight: 800;
+      margin: 15px 0 8px;
+      color: var(--text-main);
+    }
+
+    .timeline-card .desc {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+      line-height: 1.5;
+    }
+
+    .timeline-card h5 {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin: 10px 0 5px;
+      color: #6C8EF5;
+    }
+
+    /* Standard Lists inside grids */
+    ul {
+      list-style: none;
+      padding-left: 0;
+      margin-top: 5px;
+    }
+    li {
+      position: relative;
+      padding-left: 18px;
+      margin-bottom: 6px;
+      color: var(--text-muted);
+      font-size: 14px;
+      line-height: 1.4;
+    }
+    li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: #6C8EF5;
+      font-weight: 700;
+    }
+
+    /* Sub-Grids for Results and Renders */
+    .sub-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      margin-top: 40px;
+    }
+    .sub-card {
+      background: rgba(255, 255, 255, 0.4);
+      border: 1px solid var(--border);
+      padding: 25px;
+      border-radius: 16px;
+    }
+    .sub-card h4 {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 15px;
+      text-transform: uppercase;
+      color: var(--text-main);
+    }
+
+    .final-summary {
+      background: var(--card);
+      padding: 30px;
+      border-radius: 16px;
+      margin-top: 30px;
+      box-shadow: var(--shadow);
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      margin-top: 100px;
+      padding-top: 30px;
+      border-top: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 13px;
+    }
+
+    /* Responsive Flow Changes */
+    @media (max-width: 900px) {
+      .timeline-container { grid-template-columns: 1fr; gap: 50px; }
+      .timeline-card:not(:last-child)::after {
+        content: "↓";
+        right: auto;
+        left: 50%;
+        bottom: -45px;
+        top: auto;
+        transform: translateX(-50%);
+      }
+      .split-row, .sub-grid, .dual-images, .triple-images { grid-template-columns: 1fr; gap: 20px; }
+      body { padding: 60px 5%; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="portfolio-wrapper">
+    
+    <header>
+      <a href="projects.html" class="back-btn">← Back to Projects</a>
+      <h1>User-Centered Recycling Condominium Redesign</h1>
+      <p class="subtitle">Infrastructure Design, CAD Optimization & Human-Centered Engineering</p>
+    </header>
+
+    <!-- SECTION 01 -->
+    <section class="main-section">
+      <h2 class="section-title">01 Problem Statement & Criteria</h2>
+      <div class="split-row">
+        <div class="text-block">
+          <p>
+            Our site assessment revealed several barriers that prevented the condominium's recycling system from functioning effectively. 
+          </p>
+          <p>
+            <strong>First</strong>, the recycling bins contained a significant amount of non-recyclable waste. According to the City of Chicago's recycling guidelines, entire truckloads can be rejected at the processing facility if their contamination threshold exceeds just 5% to 10% and sent to a landfill instead of being recycled. Based on our qualitative observations, interviews, and waste audits, we concluded that a large portion of the condominium's recyclable materials were likely being diverted to landfills due to contamination.
+          </p>
+          <p>
+            <strong>Second</strong>, the educational signage was ineffective. The instructions relied almost entirely on English text, assuming that all residents could read and interpret the information correctly. The signage also required residents to actively read through long lists of recyclable items before disposing of their waste, creating unnecessary cognitive effort. Additionally, some of the information was very vague, ie "NO Trash", which further contributes to improper waste sorting.
+          </p>
+          <p>
+            <strong>Finally</strong>, we analyzed the resident recycling journey and found that convenience strongly influenced disposal behavior. Throwing waste into the trash chute required only a short walk from each residential floor, whereas recycling required residents to collect their recyclables, take the elevator to the ground floor, walk through the garage, and locate the recycling room. This significantly longer and less convenient process discouraged participation and increased the likelihood that recyclable materials would instead be disposed of as general waste.
+          </p>
+          <p>
+            Collectively, these issues demonstrated that the existing recycling center was not simply an infrastructure problem, but a <strong>human-centered design problem</strong>. Our objective was to redesign the recycling experience to improve accessibility, reduce contamination, encourage resident participation, and create a more intuitive, efficient, and sustainable waste management system.
+          </p>
+        </div>
+        
+        <div class="problem-image-stack">
+          <div class="image-group">
+            <span>Observation 1: Bin Contamination</span>
+            <div class="img-holder" style="aspect-ratio: 4/3;">
+              <img src="Screen Shot 2026-07-04 at 8.56.46 PM.png" alt="Non-recyclable waste contaminating structural recycling canisters">
+            </div>
+          </div>
+          
+          <div class="image-group">
+            <span>Observation 2: Ineffective Signage</span>
+            <div class="img-holder" style="aspect-ratio: 4/3;">
+              <img src="Screen Shot 2026-07-04 at 8.57.08 PM.png" alt="Outdated and text-heavy recycling instruction placard">
+            </div>
+          </div>
+          
+          <div class="image-group">
+            <span>Observation 3: Resident Journey Map</span>
+            <div class="img-holder" style="aspect-ratio: 4/3;">
+              <img src="Screen Shot 2026-07-04 at 8.57.19 PM.png" alt="Flow diagram comparing proximity of trash chute versus remote recycling room accessibility routes">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sub-grid">
+        <div class="sub-card">
+          <h4>Core User Requirements</h4>
+          <ul>
+            <li>Improve general user accessibility thresholds</li>
+            <li>Maximize available site floor space and sorting pathways</li>
+            <li>Simplify sorting protocols to drastically reduce batch contamination</li>
+            <li>Maintain an aesthetically clean and welcoming appearance</li>
+          </ul>
+        </div>
+        <div class="sub-card">
+          <h4>Operational Requirements</h4>
+          <ul>
+            <li>Improve daily maintenance workflow loops</li>
+            <li>Increase bulk storage volume capacities</li>
+            <li>Create a completely modular, scalable architectural layout</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 02 -->
+    <section class="main-section">
+      <h2 class="section-title">02 The Iterative Design Process</h2>      
+      <div class="text-block" style="margin-bottom: 40px;">
+          <p>
+            We identified three main issues: lack of collection containers in individual units, the cumbersome transportation of recyclables, and unclear recycling guidelines.
+          </p>  
+          <p>
+            To address these, we proposed a five-part system: <strong>the Recycling Rig</strong>, <strong>the Cardboard Caddy</strong>, <strong>updated recycling signage</strong>, <strong>location-specific posters</strong>, and <strong>repainting recycling room doors</strong> to reinforce recycling habits. 
+          </p>
+      </div>
+
+      <!-- DESIGN MODULE #1: RECYCLING RIG -->
+      <h3 class="design-iteration-header">Design #1: Recycling Rig</h3>
+      <div class="timeline-container">
+        
+        <div class="timeline-card">
+          <div class="img-holder" style="aspect-ratio: 16/11;">
+            <div class="dual-images">
+              <img src="Screen Shot 2026-07-04 at 10.14.41 PM.png" alt="Initial ideation sketches for Design 1">
+              <img src="Screen Shot 2026-07-04 at 10.15.44 PM.png" alt="Initial primitive CAD geometry blocks for Design 1">
+            </div>
+          </div>
+          <h3>Design 1 — Initial Concept</h3>
+          <p class="desc">
+            The initial concept focused on providing residents with a dedicated container for collecting recyclable materials inside their apartments.
+          </p>
+          <h5>Key Features</h5>
+          <ul>
+            <li>Open recycling container</li>
+            <li>Lightweight construction</li>
+            <li>Sized for apartment use</li>
+          </ul>
+          <h5>Why We Changed It</h5>
+          <ul>
+            <li>Did not utilize space efficiently</li>
+            <li>Was hard for single user condominium layout</li>
+            <li>User traffic flow became congested during peak hours</li>
+          </ul>
+        </div>
+
+        <div class="timeline-card">
+          <div class="img-holder" style="aspect-ratio: 16/11;">
+            <img src="Screen Shot 2026-07-04 at 10.03.22 PM.png" alt="Design 2 geometric iterations and floor plan modifications">
+          </div>
+          <h3>Design 2 — Improving Accessibility</h3>
+          <p class="desc">
+            The second iteration added portability features, making it easier for residents to transport sorting containers from individual apartment floors down to the central repository.
+          </p>
+          <h5>Improvements</h5>
+          <ul>
+            <li>Adjustable capacity for compact storage if needed</li>
+            <li>Lightweight wooden frame with 3D-printed joints</li>
+            <li>Waterproof canvas exterior to prevent leaks</li>
+          </ul>
+          <h5>What Still Needed Improvement</h5>
+          <ul>
+            <li>Visual sorting instructions inside the unit were still missing, leaving user error thresholds too high.</li>
+          </ul>
+        </div>
+
+        <div class="timeline-card">
+          <div class="img-holder" style="aspect-ratio: 16/11;">
+            <div class="dual-images">
+              <img src="Screen Shot 2026-07-04 at 10.20.47 PM.png" alt="Final rig sketches">
+              <img src="Screen Shot 2026-07-04 at 10.18.32 PM.png" alt="Final rig CAD geometries">
+            </div>
+          </div>
+          <h3>Design 3 — Modular Layout</h3>
+          <p class="desc">
+            The final Recycling Rig became a modular, collapsible recycling system capable of adapting to different household needs and explicitly isolating high-risk item batches.
+          </p>
+          <h5>Final Improvements</h5>
+          <ul>
+            <li>Adjustable capacity parameters</li>
+            <li>Fully modular partition system organization</li>
+            <li>Highly visible colored canvas sorting boundaries</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- DESIGN MODULE #2: CARDBOARD CADDY -->
+      <h3 class="design-iteration-header">Design #2: Cardboard Caddy</h3>
+      <div class="timeline-container">
+        
+        <div class="timeline-card">
+          <div class="img-holder" style="aspect-ratio: 16/11;">
+            <div class="dual-images">
+              <img src="Screen Shot 2026-07-04 at 10.59.10 PM.png" alt="Initial ideation sketches for Cardboard Concept">
+              <img src="Screen Shot 2026-07-04 at 10.59.25 PM.png" alt="Initial primitive CAD geometry blocks for Cardboard Concept">
+            </div>
+          </div>
+          <h3>Design 1 — Initial Cardboard Concept</h3>
+          <p class="desc">
+            The initial concept proposed separating cardboard from mixed recyclables by introducing a dedicated collection area inside the recycling room.
+          </p>
+          <h5>Key Features</h5>
+          <ul>
+            <li>Single storage area for flattened cardboard</li>
+            <li>Stationary wall-anchored bracket</li>
+            <li>Reduced primary recycling bin volume overflow</li>
+          </ul>
+          <h5>Why We Changed It</h5>
+          <ul>
+            <li>A single storage compartment quickly became cluttered and overloaded.</li>
+            <li>Maintenance staff still faced vertical lifting issues trying to remove compressed heavy bundles.</li>
+          </ul>
+        </div>
+
+        <div class="timeline-card">
+          <div class="img-holder" style="aspect-ratio: 16/11;">
+            <img src="Screen Shot 2026-07-04 at 10.57.43 PM.png" alt="Design 2 geometric iterations and multi-compartment layouts">
+          </div>
+          <h3>Design 2 — Multi-Compartment Storage System</h3>
+          <p class="desc">
+            The second iteration introduced multiple distinct storage compartments sized for standard shipping and package box dimensions.
+          </p>
+          <h5>Improvements</h5>
+          <ul>
+            <li>Size-specific organizational tracking bays</li>
+            <li>Flexible nylon dividers to keep boxes upright</li>
+            <li>Low-friction acrylic sliding paths for easier loading</li>
+          </ul>
+          <h5>What Still Needed Improvement</h5>
+          <ul>
+            <li>The structure remained fixed to the floor, requiring maintenance teams to make manual, repetitive haul trips across the room.</li>
+          </ul>
+        </div>
+
+        <div class="timeline-card">
+          <div class="img-holder" style="aspect-ratio: 16/11;">
+            <img src="Screen Shot 2026-07-04 at 10.57.04 PM.png" alt="Final design drawings of the mobile caddy structure">
+          </div>
+          <h3>Design 3 — Mobile Cardboard Caddy</h3>
+          <p class="desc">
+            The final Cardboard Caddy became a fully mobile collection station engineered to slide directly along building maintenance workflow lines.
+          </p>
+          <h5>Final Improvements</h5>
+          <ul>
+            <li>Heavy-duty directional lockable caster wheels</li>
+            <li>Dimensions structurally optimized to clear standard door frame widths</li>
+            <li>Drop-down side door panels for slide-out cleaning cycles</li>
+          </ul>
+          <h5>Final Outcome</h5>
+          <ul>
+            <li>Residents sort boxes by size seamlessly, while maintenance staff roll the unit out directly to garbage collection arrays without manual re-handling steps.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- DESIGN MODULE #3: SIGNAGE -->
+      <h3 class="design-iteration-header">Design #3, 4, & 5: Updated Signage, Location Posters, & Door Painting</h3>
+      <div class="timeline-container">
+        
+        <div class="timeline-card">
+          <div class="img-holder" style="aspect-ratio: 16/11;">
+            <div class="dual-images">
+              <img src="Screen Shot 2026-07-04 at 11.26.06 PM.png" alt="Draft layout designs for signage graphic elements">
+              <img src="Screen Shot 2026-07-04 at 11.26.38 PM.png" alt="Text alignment spacing configurations">
+            </div>
+          </div>
+          <h3>Design 1 — Information Overhaul</h3>
+          <p class="desc">
+            The updated recycling signage replaced text-heavy instructions with clear, image-based graphics that highlighted accepted recyclable materials. This simplified recycling guidelines, reduced confusion, and helped residents make more accurate disposal decisions.          </p>
+        </div>
+
+        <div class="timeline-card">
+          <div class="img-holder" style="aspect-ratio: 16/11;">
+            <img src="Screen Shot 2026-07-04 at 11.27.24 PM.png" alt="Iconography integration drafts and color palettes">
+          </div>
+          <h3>Design 2 — Iconography & Visual Cues</h3>
+          <p class="desc">
+           The recycling room door was repainted using LRS's signature recycling blue to increase visibility and create a stronger visual association with the recycling area. The updated appearance encouraged residents to notice the redesigned recycling system and reinforced a consistent recycling identity throughout the building.
+          </p>
+        </div>
+
+        <div class="timeline-card">
+          <div class="img-holder" style="aspect-ratio: 16/11;">
+            <div class="dual-images">
+              <img src="Screen Shot 2026-07-04 at 11.27.55 PM.png" alt="Color testing layout blueprints for doors">
+              <img src="Screen Shot 2026-07-04 at 11.28.08 PM.png" alt="Wayfinding paths layout scheme">
+            </div>
+          </div>
+          <h3>Design 3 — Spatial Environmental System</h3>
+          <p class="desc">
+            Location-specific posters were placed where recyclable items are commonly generated, such as the mailroom and laundry room, to provide timely reminders for residents. By tailoring the graphics to each location, the posters reinforced proper recycling habits at the point of disposal.          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 03 -->
+    <section class="main-section">
+      <h2 class="section-title">03 Final Optimized Architecture</h2>
+      <div class="split-row">
+        <div class="text-block">
+          <p>
+            The final design combined the strongest elements from every previous iteration into a fully optimized infrastructure solution. It merges the modular flexibility of Design 3 with the streamlined user corridors verified in Design 2.
+          </p>
+          <p><strong>Validated System Engineering Features:</strong></p>
+          <ul>
+            <li><strong>Optimized Human Factors:</strong> Clear access points for users of all mobility levels with highly visible, anti-contamination sorting labels.</li>
+            <li><strong>Simplified Operations:</strong> Hinged, front-loading panels allow maintenance staff to pull heavy bins directly out without vertical lifting strains.</li>
+            <li><strong>Scalable Implementation:</strong> Standard structural panels enable quick adaptation to different residential footprint dimensions.</li>
+          </ul>
+        </div>
+        <div class="img-holder">
+          <img src="final_large_cad_render.webp" alt="High-fidelity final CAD render of the recycling condominium structure">
+        </div>
+      </div>
+
+      <div class="sub-grid" style="margin-top: 20px;">
+        <div class="sub-card" style="grid-column: 1 / -1;">
+          <h4 style="margin-bottom: 15px;">System Exploded Views & Spatial Mapping</h4>
+          <div class="img-holder" style="aspect-ratio: 21/9; margin-bottom: 15px;">
+            <div class="dual-images" style="gap: 15px; padding: 0;">
+              <img src="exploded_view_cad.webp" alt="Exploded CAD assembly mapping structural panel components">
+              <img src="annotated_layout_dimensions.webp" alt="Annotated top-down layout drawing detailing path clearances">
+            </div>
+          </div>
+          <p style="font-size: 14px; color: var(--text-muted);">
+            Left: Exploded manufacturing assembly detailing modular panel interfaces and structural frame fast-points. Right: Dimensioned operational layouts proving adherence to regulatory accessibility corridor widths.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 04 -->
+    <section class="main-section">
+      <h2 class="section-title">04 Project Results & Impact</h2>
+      <div class="split-row">
+        <div class="text-block">
+          <p>
+            The final recycling condominium design successfully satisfied all initial engineering requirements and stakeholder criteria. By evaluating physical and operational trade-offs across multiple design loops, the final solution maximizes space efficiency and simplifies maintenance workflows.
+          </p>
+          <p>
+            <strong>Engineering Recognition:</strong> This human-centered engineering system was awarded the <strong>Best Design Team Award</strong>, validating both our rigorous design process and the technical viability of the final solution.
+          </p>
+        </div>
+        <div class="img-holder">
+          <div class="triple-images">
+            <img src="presentation_board.webp" alt="Engineering design presentation board summary graphic">
+            <img src="presentation_defense_photos.jpg" alt="Team presenting the design review defense panel">
+            <img src="best_design_award.jpg" alt="Best Design Team Award certificate confirmation frame">
+          </div>
+        </div>
+      </div>
+
+      <div class="final-summary">
+        <p><strong>Key Takeaway:</strong> This project highlights how iterative product development can solve real-world infrastructure challenges. Balancing user behaviors with manufacturing and spatial constraints results in practical solutions that promote long-term community participation and operational sustainability.</p>
+      </div>
+    </section>
+
+    <footer>
+      <p>© 2026 Chelsea Ogbonna • Case Study Documentation Portfolio</p>
+    </footer>
+
+  </div>
+
+  <!-- LIGHTBOX MODAL OVERLAY -->
+  <div id="lightbox" onclick="closeLightbox()" style="display: none; position: fixed; z-index: 9999; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); align-items: center; justify-content: center; cursor: zoom-out;">
+    <img id="lightbox-img" src="" style="max-width: 90%; max-height: 90%; border-radius: 8px; box-shadow: 0 10px 40px rgba(0,0,0,0.5); object-fit: contain;">
+  </div>
+
+  <!-- RUNTIME SCRIPTS -->
+  <script>
+    document.querySelectorAll('.img-holder img').forEach(img => {
+      img.addEventListener('click', (e) => {
+        e.stopPropagation();
+        document.getElementById('lightbox-img').src = img.src;
+        document.getElementById('lightbox').style.display = 'flex';
+      });
+    });
+
+    function closeLightbox() {
+      document.getElementById('lightbox').style.display = 'none';
+    }
+  </script>
+    
+</body>
+</html>
