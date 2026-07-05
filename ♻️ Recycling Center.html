@@ -55,9 +55,7 @@
     h1 { font-size: 40px; font-weight: 800; letter-spacing: -1px; line-height: 1.2; margin-bottom: 12px; }
     .subtitle { font-size: 18px; color: var(--text-muted); font-weight: 400; }
 
-    /* ==========================================
-    LAYOUT STRUCTS
-    ========================================== */
+    /* LAYOUT STRUCTURES */
     .main-section {
       margin-bottom: 80px;
     }
@@ -129,14 +127,16 @@
       justify-content: center;
       overflow: hidden;
       box-shadow: var(--shadow);
-      cursor: zoom-in;
       width: 100%;
     }
+    
+    /* FIX: Enabled pointer events and unified cursor behavior across all images */
     .img-holder img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      pointer-events: none;
+      cursor: zoom-in;
+      pointer-events: auto; 
     }
 
     /* Split layouts inside holders */
@@ -150,8 +150,6 @@
     }
     .dual-images img {
       border-radius: 8px;
-      cursor: zoom-in;
-      pointer-events: auto !important;
     }
 
     .triple-images {
@@ -164,13 +162,9 @@
     }
     .triple-images img {
       border-radius: 8px;
-      cursor: zoom-in;
-      pointer-events: auto !important;
     }
 
-    /* ==========================================
-    HORIZONTAL THREE-BOX TIMELINE GRID WITH ARROWS
-    ========================================== */
+    /* HORIZONTAL THREE-BOX TIMELINE GRID WITH ARROWS */
     .timeline-container {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
@@ -313,7 +307,6 @@
       <p class="subtitle">Infrastructure Design, CAD Optimization & Human-Centered Engineering</p>
     </header>
 
-    <!-- SECTION 01 -->
     <section class="main-section">
       <h2 class="section-title">01 Problem Statement & Criteria</h2>
       <div class="split-row">
@@ -380,7 +373,6 @@
       </div>
     </section>
 
-    <!-- SECTION 02 -->
     <section class="main-section">
       <h2 class="section-title">02 The Iterative Design Process</h2>      
       <div class="text-block" style="margin-bottom: 40px;">
@@ -392,7 +384,6 @@
           </p>
       </div>
 
-      <!-- DESIGN MODULE #1: RECYCLING RIG -->
       <h3 class="design-iteration-header">Design #1: Recycling Rig</h3>
       <div class="timeline-container">
         
@@ -461,7 +452,6 @@
         </div>
       </div>
 
-      <!-- DESIGN MODULE #2: CARDBOARD CADDY -->
       <h3 class="design-iteration-header">Design #2: Cardboard Caddy</h3>
       <div class="timeline-container">
         
@@ -530,7 +520,6 @@
         </div>
       </div>
 
-      <!-- DESIGN MODULE #3: SIGNAGE -->
       <h3 class="design-iteration-header">Design #3, 4, & 5: Updated Signage, Location Posters, & Door Painting</h3>
       <div class="timeline-container">
         
@@ -570,10 +559,43 @@
       </div>
     </section>
 
-
-    <!-- SECTION 04 -->
     <section class="main-section">
-      <h2 class="section-title">03 Project Results & Impact</h2>
+      <h2 class="section-title">03 Final Optimized Architecture</h2>
+      <div class="split-row">
+        <div class="text-block">
+          <p>
+            The final design combined the strongest elements from every previous iteration into a fully optimized infrastructure solution. It merges the modular flexibility of Design 3 with the streamlined user corridors verified in Design 2.
+          </p>
+          <p><strong>Validated System Engineering Features:</strong></p>
+          <ul>
+            <li><strong>Optimized Human Factors:</strong> Clear access points for users of all mobility levels with highly visible, anti-contamination sorting labels.</li>
+            <li><strong>Simplified Operations:</strong> Hinged, front-loading panels allow maintenance staff to pull heavy bins directly out without vertical lifting strains.</li>
+            <li><strong>Scalable Implementation:</strong> Standard structural panels enable quick adaptation to different residential footprint dimensions.</li>
+          </ul>
+        </div>
+        <div class="img-holder">
+          <img src="final_large_cad_render.webp" alt="High-fidelity final CAD render of the recycling condominium structure">
+        </div>
+      </div>
+
+      <div class="sub-grid" style="margin-top: 20px;">
+        <div class="sub-card" style="grid-column: 1 / -1;">
+          <h4 style="margin-bottom: 15px;">System Exploded Views & Spatial Mapping</h4>
+          <div class="img-holder" style="aspect-ratio: 21/9; margin-bottom: 15px;">
+            <div class="dual-images" style="gap: 15px; padding: 0;">
+              <img src="exploded_view_cad.webp" alt="Exploded CAD assembly mapping structural panel components">
+              <img src="annotated_layout_dimensions.webp" alt="Annotated top-down layout drawing detailing path clearances">
+            </div>
+          </div>
+          <p style="font-size: 14px; color: var(--text-muted);">
+            Left: Exploded manufacturing assembly detailing modular panel interfaces and structural frame fast-points. Right: Dimensioned operational layouts proving adherence to regulatory accessibility corridor widths.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="main-section">
+      <h2 class="section-title">04 Project Results & Impact</h2>
       <div class="split-row">
         <div class="text-block">
           <p>
@@ -601,13 +623,12 @@
 
   </div>
 
-  <!-- LIGHTBOX MODAL OVERLAY -->
   <div id="lightbox" onclick="closeLightbox()" style="display: none; position: fixed; z-index: 9999; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); align-items: center; justify-content: center; cursor: zoom-out;">
     <img id="lightbox-img" src="" style="max-width: 90%; max-height: 90%; border-radius: 8px; box-shadow: 0 10px 40px rgba(0,0,0,0.5); object-fit: contain;">
   </div>
 
-  <!-- RUNTIME SCRIPTS -->
   <script>
+    // Targets every single img element nested within any image holder layout variant
     document.querySelectorAll('.img-holder img').forEach(img => {
       img.addEventListener('click', (e) => {
         e.stopPropagation();
