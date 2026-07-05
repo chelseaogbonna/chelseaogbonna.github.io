@@ -1,22 +1,399 @@
-<div class="project-small">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User-Centered Recycling Condominium Redesign | Chelsea Ogbonna</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg: #edf2fb;
+      --card: #d7e3fc;
+      --accent: #abc4ff;
+      --text-main: #1f2937;
+      --text-muted: #4b5563;
+      --border: #c1d3fe;
+      --shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text-main);
+      line-height: 1.7;
+      padding: 80px 8% 60px;
+    }
 
-<img src="recyclingcenter.webp">
+    .portfolio-wrapper {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
 
-<div class="project-info">
+    /* BACK LINK & HEADER */
+    .back-btn {
+      text-decoration: none;
+      color: #6C8EF5;
+      font-weight: 600;
+      font-size: 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 25px;
+      transition: transform 0.2s;
+    }
+    .back-btn:hover { transform: translateX(-4px); }
 
-<h3>♻️ Sustainable Recycling Center</h3>
+    header { margin-bottom: 60px; }
+    h1 { font-size: 40px; font-weight: 800; letter-spacing: -1px; line-height: 1.2; margin-bottom: 12px; }
+    .subtitle { font-size: 18px; color: var(--text-muted); font-weight: 400; }
 
-<p>
-Designed a sustainable waste management system for a residential complex, improving efficiency and usability.
-</p>
+    /* ==========================================
+    LAYOUT STRUCTS
+    ========================================== */
+    .main-section {
+      margin-bottom: 80px;
+    }
 
-<div class="tags">
-<span class="tag">Sustainability</span>
-<span class="tag">Design</span>
-<span class="tag">CAD</span>
-</div>
+    .section-title {
+      font-size: 24px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: #6C8EF5;
+      margin-bottom: 30px;
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+    }
 
-<a href="#">Coming Soon →</a>
+    /* Side-by-Side Split Row */
+    .split-row {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 40px;
+      align-items: center;
+      margin-bottom: 35px;
+    }
 
-</div>
-</div>
+    .text-block p {
+      font-size: 16px;
+      margin-bottom: 15px;
+    }
+    .text-block p:last-child { margin-bottom: 0; }
+
+    /* Image Containers */
+    .img-holder {
+      background: var(--card);
+      border-radius: 16px;
+      aspect-ratio: 4/3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      cursor: zoom-in;
+    }
+    .img-holder img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      pointer-events: none; /* Directs click event to parent frame */
+    }
+
+    /* Fixed Layout Fix for Split Dual Images */
+    .dual-images {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      padding: 12px;
+      width: 100%;
+      height: 100%;
+    }
+    .dual-images img {
+      border-radius: 8px;
+      cursor: zoom-in;
+      pointer-events: auto !important;
+    }
+
+    /* Three-Image Grid Box */
+    .triple-images {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 10px;
+      padding: 10px;
+      width: 100%;
+      height: 100%;
+    }
+    .triple-images img {
+      border-radius: 8px;
+      cursor: zoom-in;
+      pointer-events: auto !important;
+    }
+
+    /* Nested Sub-Grid for Comparative Iterations */
+    .sub-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      margin-top: 40px;
+    }
+    .sub-card {
+      background: rgba(255, 255, 255, 0.4);
+      border: 1px solid var(--border);
+      padding: 25px;
+      border-radius: 16px;
+    }
+    .sub-card h4 {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 15px;
+      text-transform: uppercase;
+      color: var(--text-main);
+    }
+
+    /* Custom Unordered Lists */
+    ul {
+      list-style: none;
+      padding-left: 0;
+      margin-top: 10px;
+    }
+    li {
+      position: relative;
+      padding-left: 20px;
+      margin-bottom: 10px;
+      color: var(--text-muted);
+    }
+    li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: #6C8EF5;
+      font-weight: 700;
+    }
+
+    .final-summary {
+      background: var(--card);
+      padding: 30px;
+      border-radius: 16px;
+      margin-top: 30px;
+      box-shadow: var(--shadow);
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      margin-top: 100px;
+      padding-top: 30px;
+      border-top: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 13px;
+    }
+
+    @media (max-width: 800px) {
+      .split-row, .sub-grid, .dual-images, .triple-images { grid-template-columns: 1fr; gap: 20px; }
+      body { padding: 60px 5%; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="portfolio-wrapper">
+    
+    <header>
+      <a href="projects.html" class="back-btn">← Back to Projects</a>
+      <h1>User-Centered Recycling Condominium Redesign</h1>
+      <p class="subtitle">Infrastructure Design, CAD Optimization & Human-Centered Engineering</p>
+    </header>
+
+    <section class="main-section">
+      <h2 class="section-title">01 \ Problem Statement & Criteria</h2>
+      <div class="split-row">
+        <div class="text-block">
+          <p>
+            The existing neighborhood recycling center was difficult to navigate, inefficient for both residents and maintenance staff, and lacked an intuitive layout for waste sorting. Limited space, poor organization, accessibility concerns, and frequent sorting contamination drastically reduced recycling efficiency and discouraged proper community use.
+          </p>
+          <p>
+            The objective was to redesign the space into a functional, user-centered recycling condominium system that balanced sustainability, clear usability, and efficient structural manufacturability.
+          </p>
+        </div>
+        <div class="img-holder">
+          <img src="existing_center_baseline.jpg" alt="Existing recycling center showing space layout and congestion baselines">
+        </div>
+      </div>
+
+      <div class="sub-grid">
+        <div class="sub-card">
+          <h4>Core User Requirements</h4>
+          <ul>
+            <li>Improve general user accessibility thresholds</li>
+            <li>Maximize available site floor space and sorting pathways</li>
+            <li>Simplify sorting protocols to drastically reduce batch contamination</li>
+            <li>Maintain an aesthetically clean and welcoming appearance</li>
+          </ul>
+        </div>
+        <div class="sub-card">
+          <h4>Operational Requirements</h4>
+          <ul>
+            <li>Improve daily maintenance workflow loops</li>
+            <li>Increase bulk storage volume capacities</li>
+            <li>Create a completely modular, scalable architectural layout</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="main-section">
+      <h2 class="section-title">02 \ The Iterative Design Process</h2>
+
+      <div class="split-row" style="margin-bottom: 60px;">
+        <div class="text-block">
+          <h3>Design 1 — Initial Concept</h3>
+          <p style="margin-top: 10px;">
+            The initial concept focused on a basic linear containment structural shell. It attempted to address simple containment barriers and organize the bins cleanly away from open viewing.
+          </p>
+          <p><strong>Why We Changed It:</strong></p>
+          <ul>
+            <li>Did not utilize the corner areas or vertical space efficiently</li>
+            <li>Maintenance clearance access vectors were highly restricted</li>
+            <li>User traffic flow became congested during peak hours</li>
+          </ul>
+        </div>
+        <div class="img-holder">
+          <div class="dual-images">
+            <img src="design1_sketch.webp" alt="Initial ideation sketches for Design 1">
+            <img src="design1_cad.webp" alt="Initial primitive CAD geometry blocks for Design 1">
+          </div>
+        </div>
+      </div>
+
+      <div class="split-row" style="margin-bottom: 60px;">
+        <div class="text-block">
+          <h3>Design 2 — Improving Accessibility</h3>
+          <p style="margin-top: 10px;">
+            The second iteration shifted bin angles and path corridors to prioritize pedestrian traffic flow. It integrated dedicated drop-off zones to keep clear paths open.
+          </p>
+          <p><strong>What Still Needed Improvement:</strong></p>
+          <ul>
+            <li>General structural accessibility parameters could still be broadened</li>
+            <li>Fixed corner bin placements created regional collection bottlenecks</li>
+            <li>The rigid framing system remained complex and difficult to expand modularly</li>
+          </ul>
+        </div>
+        <div class="img-holder">
+          <img src="design2_iterations.webp" alt="Design 2 geometric iterations and floor plan modifications">
+        </div>
+      </div>
+
+      <div class="split-row">
+        <div class="text-block">
+          <h3>Design 3 — Modular Layout</h3>
+          <p style="margin-top: 10px;">
+            Design 3 introduced independent structural containment modules. By standardizing components, it improved assembly speed, enhanced user navigation workflows, and simplified standard cleaning access configurations.
+          </p>
+          <p><strong>Remaining Challenges:</strong></p>
+          <ul>
+            <li>Identified small dead-space zones along the rear wall envelopes</li>
+            <li>High material tracking complexity due to interlocking component joints</li>
+          </ul>
+        </div>
+        <div class="img-holder">
+          <img src="design3_modular_layout.webp" alt="Design 3 modular system layouts and structural models">
+        </div>
+      </div>
+    </section>
+
+    <section class="main-section">
+      <h2 class="section-title">03 \ Final Optimized Architecture</h2>
+      <div class="split-row">
+        <div class="text-block">
+          <p>
+            The final design combined the strongest elements from every previous iteration into a fully optimized infrastructure solution. It merges the modular flexibility of Design 3 with the streamlined user corridors verified in Design 2.
+          </p>
+          <p><strong>Validated System Engineering Features:</strong></p>
+          <ul>
+            <li><strong>Optimized Human Factors:</strong> Clear access points for users of all mobility levels with highly visible, anti-contamination sorting labels.</li>
+            <li><strong>Simplified Operations:</strong> Hinged, front-loading panels allow maintenance staff to pull heavy bins directly out without vertical lifting strains.</li>
+            <li><strong>Scalable Implementation:</strong> Standard structural panels enable quick adaptation to different residential footprint dimensions.</li>
+          </ul>
+        </div>
+        <div class="img-holder">
+          <img src="final_large_cad_render.webp" alt="High-fidelity final CAD render of the recycling condominium structure">
+        </div>
+      </div>
+
+      <div class="sub-grid" style="margin-top: 20px;">
+        <div class="sub-card" style="grid-column: 1 / -1;">
+          <h4 style="margin-bottom: 15px;">System Exploded Views & Spatial Mapping</h4>
+          <div class="img-holder" style="aspect-ratio: 21/9; margin-bottom: 15px;">
+            <div class="dual-images" style="gap: 15px; padding: 0;">
+              <img src="exploded_view_cad.webp" alt="Exploded CAD assembly mapping structural panel components">
+              <img src="annotated_layout_dimensions.webp" alt="Annotated top-down layout drawing detailing path clearances">
+            </div>
+          </div>
+          <p style="font-size: 14px; color: var(--text-muted);">
+            Left: Exploded manufacturing assembly detailing modular panel interfaces and structural frame fast-points. Right: Dimensioned operational layouts proving adherence to regulatory accessibility corridor widths.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="main-section">
+      <h2 class="section-title">04 \ Project Results & Impact</h2>
+      <div class="split-row">
+        <div class="text-block">
+          <p>
+            The final recycling condominium design successfully satisfied all initial engineering requirements and stakeholder criteria. By evaluating physical and operational trade-offs across multiple design loops, the final solution maximizes space efficiency and simplifies maintenance workflows.
+          </p>
+          <p>
+            <strong>Engineering Recognition:</strong> This human-centered engineering system was awarded the <strong>Best Design Team Award</strong>, validating both our rigorous design process and the technical viability of the final solution.
+          </p>
+        </div>
+        <div class="img-holder">
+          <div class="triple-images">
+            <img src="presentation_board.webp" alt="Engineering design presentation board summary graphic">
+            <img src="presentation_defense_photos.jpg" alt="Team presenting the design review defense panel">
+            <img src="best_design_award.jpg" alt="Best Design Team Award certificate confirmation frame">
+          </div>
+        </div>
+      </div>
+
+      <div class="final-summary">
+        <p><strong>Key Takeaway:</strong> This project highlights how iterative product development can solve real-world infrastructure challenges. Balancing user behaviors with manufacturing and spatial constraints results in practical solutions that promote long-term community participation and operational sustainability.</p>
+      </div>
+    </section>
+
+    <footer>
+      <p>© 2026 Chelsea Ogbonna • Case Study Documentation Portfolio</p>
+    </footer>
+
+  </div>
+
+  <div id="lightbox" onclick="closeLightbox()" style="display: none; position: fixed; z-index: 9999; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); align-items: center; justify-content: center; cursor: zoom-out;">
+    <img id="lightbox-img" src="" style="max-width: 90%; max-height: 90%; border-radius: 8px; box-shadow: 0 10px 40px rgba(0,0,0,0.5); object-fit: contain;">
+  </div>
+
+  <script>
+    // Intercepts click events on any image nested inside an .img-holder container
+    document.querySelectorAll('.img-holder img').forEach(img => {
+      img.addEventListener('click', (e) => {
+        e.stopPropagation(); // Stops immediate event bubbling closures
+        document.getElementById('lightbox-img').src = img.src;
+        document.getElementById('lightbox').style.display = 'flex';
+      });
+    });
+
+    // Closes overlay window safely
+    function closeLightbox() {
+      document.getElementById('lightbox').style.display = 'none';
+    }
+  </script>
+    
+</body>
+</html>
