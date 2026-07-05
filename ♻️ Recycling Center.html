@@ -73,6 +73,15 @@
       padding-bottom: 8px;
     }
 
+    .design-iteration-header {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--text-main);
+      margin: 40px 0 20px 0;
+      padding-bottom: 4px;
+      border-bottom: 1px dashed var(--border);
+    }
+
     /* Side-by-Side Split Row */
     .split-row {
       display: grid;
@@ -168,6 +177,7 @@
       gap: 40px;
       margin-top: 20px;
       position: relative;
+      margin-bottom: 40px;
     }
 
     .timeline-card {
@@ -304,17 +314,17 @@
     </header>
 
     <section class="main-section">
-      <h2 class="section-title">01 Problem Statement & Criteria</h2>
+      <h2 class="section-title">01 \ Problem Statement & Criteria</h2>
       <div class="split-row">
         <div class="text-block">
           <p>
             Our site assessment revealed several barriers that prevented the condominium's recycling system from functioning effectively. 
           </p>
           <p>
-            <strong>First</strong>, the recycling bins contained a significant amount of non-recyclable waste. According to the City of Chicago's recycling guidelines, when the entire truckloads can be rejected at the processing facility if their contamination threshold exceeds just 5% to 10% and sent to a landfill instead of being recycled. Based on our qualitative observations, interviews, and waste audits, we concluded that a large portion of the condominium's recyclable materials were likely being diverted to landfills due to contamination.
+            <strong>First</strong>, the recycling bins contained a significant amount of non-recyclable waste. According to the City of Chicago's recycling guidelines, entire truckloads can be rejected at the processing facility if their contamination threshold exceeds just 5% to 10% and sent to a landfill instead of being recycled. Based on our qualitative observations, interviews, and waste audits, we concluded that a large portion of the condominium's recyclable materials were likely being diverted to landfills due to contamination.
           </p>
           <p>
-            <strong>Second</strong>, the educational signage was ineffective. The instructions relied almost entirely on English text, assuming that all residents could read and interpret the information correctly. The signage also required residents to actively read through long lists of recyclable items before disposing of their waste, creating unnecessary cognitive effort. Additionally, some of the information was very vague, ie NO Trash, this further contributes to improper waste sorting.
+            <strong>Second</strong>, the educational signage was ineffective. The instructions relied almost entirely on English text, assuming that all residents could read and interpret the information correctly. The signage also required residents to actively read through long lists of recyclable items before disposing of their waste, creating unnecessary cognitive effort. Additionally, some of the information was very vague, ie "NO Trash", which further contributes to improper waste sorting.
           </p>
           <p>
             <strong>Finally</strong>, we analyzed the resident recycling journey and found that convenience strongly influenced disposal behavior. Throwing waste into the trash chute required only a short walk from each residential floor, whereas recycling required residents to collect their recyclables, take the elevator to the ground floor, walk through the garage, and locate the recycling room. This significantly longer and less convenient process discouraged participation and increased the likelihood that recyclable materials would instead be disposed of as general waste.
@@ -370,149 +380,223 @@
     </section>
 
     <section class="main-section">
-      <h2 class="section-title">02 The Iterative Design Process</h2>      
+      <h2 class="section-title">02 \ The Iterative Design Process</h2>      
       <div class="text-block" style="margin-bottom: 40px;">
           <p>
             We identified three main issues: lack of collection containers in individual units, the cumbersome transportation of recyclables, and unclear recycling guidelines.
           </p>  
-          
           <p>
             To address these, we proposed a five-part system: <strong>the Recycling Rig</strong>, <strong>the Cardboard Caddy</strong>, <strong>updated recycling signage</strong>, <strong>location-specific posters</strong>, and <strong>repainting recycling room doors</strong> to reinforce recycling habits. 
           </p>
-      </div> <!-- This closing tag was missing! -->
-
-      <h3>Design #1: Recycling Rig<h3>
-      <div class="timeline-container">
-        
-        <div class="timeline-card">
-          <div class="img-holder" style="aspect-ratio: 16/11;">
-            <div class="dual-images">
-              <img src="Screen Shot 2026-07-04 at 10.14.41 PM.png" alt="Initial ideation sketches for Design 1">
-              <img src="Screen Shot 2026-07-04 at 10.15.44 PM.png" alt="Initial primitive CAD geometry blocks for Design 1">
-            </div>
-          </div>
-          <h3>Design 1 — Initial Concept</h3>
-          <p class="desc">
-            The initial concept focused on providing residents with a dedicated container for collecting recyclable materials inside their apartments.          </p>
-          <h5>Key Features</h5>
-          <ul>
-            <li>Open recycling container</li>
-            <li>Lightweight construction</li>
-            <li>Sized for apartment use</li>
-          </ul>
-          <h5>Why We Changed It</h5>
-          <ul>
-            <li>Did not utilize space efficiently</li>
-            <li>Was hard for single user condomonium</li>
-            <li>User traffic flow became congested during peak hours</li>
-          </ul>
-        </div>
-
-        <div class="timeline-card">
-          <div class="img-holder" style="aspect-ratio: 16/11;">
-            <img src="Screen Shot 2026-07-04 at 10.03.22 PM.png" alt="Design 2 geometric iterations and floor plan modifications">
-          </div>
-          <h3>Design 2 — Improving Accessibility</h3>
-          <p class="desc">
-            The final Recycling Rig became a modular, collapsible recycling system capable of adapting to different household needs. Rather than functioning as a fixed container, it could expand or collapse depending on recycling volume while maintaining convenient transportation features.          </p>
-          <h5>Improvements</h5>
-          <ul>
-            <li>Adjustable capacity for compact storage if needed</li>
-            <li>Lightweight wooden frame with 3D-printed joints</li>
-            <li>Waterproof canvas exterior to prevent spills from glass bottles soaking and ruining the recycling rig</li>
-          </ul>
-          <h5>What Still Needed Improvement</h5>
-          <ul>
-            <li>Confusing on what was recyclable and what wasn't</li>
-          </ul>
-        </div>
-
-        <div class="timeline-card">
-          <div class="img-holder" style="aspect-ratio: 16/11;">
-            <img src="Screen Shot 2026-07-04 at 10.20.47 PM.png" alt="Initial ideation sketches for Design 1">
-            <img src="Screen Shot 2026-07-04 at 10.18.32 PM.png" alt="Initial primitive CAD geometry blocks for Design 1">
-          </div>
-          <h3>Design 3 — Modular Layout</h3>
-          <p class="desc">
-            The final Recycling Rig became a modular, collapsible recycling system capable of adapting to different household needs. Rather than functioning as a fixed container, it could expand or collapse depending on recycling volume while maintaining convenient transportation features. 
-          </p>
-          <h5>Final Improvements</h5>
-          <ul>
-            <li>Adjustable capacity for compact storage if needed</li>
-            <li>Fully modular partition system organization</li>
-            <li>Waterproof canvas exterior to prevent spills from glass bottles soaking and ruining the recycling rig</li>
-          </ul>
-        </div>
-        
-      <h3>Design #2: Cardboard Caddy<h3>
-      <div class="timeline-container">
-        
-        <div class="timeline-card">
-          <div class="img-holder" style="aspect-ratio: 16/11;">
-            <div class="dual-images">
-              <img src="Screen Shot 2026-07-04 at 10.14.41 PM.png" alt="Initial ideation sketches for Design 1">
-              <img src="Screen Shot 2026-07-04 at 10.15.44 PM.png" alt="Initial primitive CAD geometry blocks for Design 1">
-            </div>
-          </div>
-          <h3>Design 1 — Initial Concept</h3>
-          <p class="desc">
-            The initial concept focused on providing residents with a dedicated container for collecting recyclable materials inside their apartments.          </p>
-          <h5>Key Features</h5>
-          <ul>
-            <li>Open recycling container</li>
-            <li>Lightweight construction</li>
-            <li>Sized for apartment use</li>
-          </ul>
-          <h5>Why We Changed It</h5>
-          <ul>
-            <li>Did not utilize space efficiently</li>
-            <li>Was hard for single user condomonium</li>
-            <li>User traffic flow became congested during peak hours</li>
-          </ul>
-        </div>
-
-        <div class="timeline-card">
-          <div class="img-holder" style="aspect-ratio: 16/11;">
-            <img src="Screen Shot 2026-07-04 at 10.03.22 PM.png" alt="Design 2 geometric iterations and floor plan modifications">
-          </div>
-          <h3>Design 2 — Improving Accessibility</h3>
-          <p class="desc">
-            The final Recycling Rig became a modular, collapsible recycling system capable of adapting to different household needs. Rather than functioning as a fixed container, it could expand or collapse depending on recycling volume while maintaining convenient transportation features.          </p>
-          <h5>Improvements</h5>
-          <ul>
-            <li>Adjustable capacity for compact storage if needed</li>
-            <li>Lightweight wooden frame with 3D-printed joints</li>
-            <li>Waterproof canvas exterior to prevent spills from glass bottles soaking and ruining the recycling rig</li>
-          </ul>
-          <h5>What Still Needed Improvement</h5>
-          <ul>
-            <li>Confusing on what was recyclable and what wasn't</li>
-          </ul>
-        </div>
-
-        <div class="timeline-card">
-          <div class="img-holder" style="aspect-ratio: 16/11;">
-            <img src="Screen Shot 2026-07-04 at 10.20.47 PM.png" alt="Initial ideation sketches for Design 1">
-            <img src="Screen Shot 2026-07-04 at 10.18.32 PM.png" alt="Initial primitive CAD geometry blocks for Design 1">
-          </div>
-          <h3>Design 3 — Modular Layout</h3>
-          <p class="desc">
-            The final Recycling Rig became a modular, collapsible recycling system capable of adapting to different household needs. Rather than functioning as a fixed container, it could expand or collapse depending on recycling volume while maintaining convenient transportation features. 
-          </p>
-          <h5>Final Improvements</h5>
-          <ul>
-            <li>Adjustable capacity for compact storage if needed</li>
-            <li>Fully modular partition system organization</li>
-            <li>Waterproof canvas exterior to prevent spills from glass bottles soaking and ruining the recycling rig</li>
-          </ul>
-        </div>
-
       </div>
+
+      <h3 class="design-iteration-header">Design #1: Recycling Rig</h3>
+      <div class="timeline-container">
+        
+        <div class="timeline-card">
+          <div class="img-holder" style="aspect-ratio: 16/11;">
+            <div class="dual-images">
+              <img src="Screen Shot 2026-07-04 at 10.14.41 PM.png" alt="Initial ideation sketches for Design 1">
+              <img src="Screen Shot 2026-07-04 at 10.15.44 PM.png" alt="Initial primitive CAD geometry blocks for Design 1">
+            </div>
+          </div>
+          <h3>Design 1 — Initial Concept</h3>
+          <p class="desc">
+            The initial concept focused on providing residents with a dedicated container for collecting recyclable materials inside their apartments.
+          </p>
+          <h5>Key Features</h5>
+          <ul>
+            <li>Open recycling container</li>
+            <li>Lightweight construction</li>
+            <li>Sized for apartment use</li>
+          </ul>
+          <h5>Why We Changed It</h5>
+          <ul>
+            <li>Did not utilize space efficiently</li>
+            <li>Was hard for single user condominium layout</li>
+            <li>User traffic flow became congested during peak hours</li>
+          </ul>
+        </div>
+
+        <div class="timeline-card">
+          <div class="img-holder" style="aspect-ratio: 16/11;">
+            <img src="Screen Shot 2026-07-04 at 10.03.22 PM.png" alt="Design 2 geometric iterations and floor plan modifications">
+          </div>
+          <h3>Design 2 — Improving Accessibility</h3>
+          <p class="desc">
+            The final Recycling Rig became a modular, collapsible recycling system capable of adapting to different household needs. Rather than functioning as a fixed container, it could expand or collapse depending on recycling volume while maintaining convenient transportation features.
+          </p>
+          <h5>Improvements</h5>
+          <ul>
+            <li>Adjustable capacity for compact storage if needed</li>
+            <li>Lightweight wooden frame with 3D-printed joints</li>
+            <li>Waterproof canvas exterior to prevent spills from glass bottles soaking and ruining the recycling rig</li>
+          </ul>
+          <h5>What Still Needed Improvement</h5>
+          <ul>
+            <li>Confusing on what was recyclable and what wasn't</li>
+          </ul>
+        </div>
+
+        <div class="timeline-card">
+          <div class="img-holder" style="aspect-ratio: 16/11;">
+            <div class="dual-images">
+              <img src="Screen Shot 2026-07-04 at 10.20.47 PM.png" alt="Initial ideation sketches for Design 1">
+              <img src="Screen Shot 2026-07-04 at 10.18.32 PM.png" alt="Initial primitive CAD geometry blocks for Design 1">
+            </div>
+          </div>
+          <h3>Design 3 — Modular Layout</h3>
+          <p class="desc">
+            The final Recycling Rig became a modular, collapsible recycling system capable of adapting to different household needs. Rather than functioning as a fixed container, it could expand or collapse depending on recycling volume while maintaining convenient transportation features. 
+          </p>
+          <h5>Final Improvements</h5>
+          <ul>
+            <li>Adjustable capacity for compact storage if needed</li>
+            <li>Fully modular partition system organization</li>
+            <li>Waterproof canvas exterior to prevent spills from glass bottles soaking and ruining the recycling rig</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3 class="design-iteration-header">Design #2: Cardboard Caddy</h3>
+      <div class="timeline-container">
+        
+        <div class="timeline-card">
+          <div class="img-holder" style="aspect-ratio: 16/11;">
+            <div class="dual-images">
+              <img src="Screen Shot 2026-07-04 at 10.14.41 PM.png" alt="Initial ideation sketches for Design 1">
+              <img src="Screen Shot 2026-07-04 at 10.15.44 PM.png" alt="Initial primitive CAD geometry blocks for Design 1">
+            </div>
+          </div>
+          <h3>Design 1 — Initial Concept</h3>
+          <p class="desc">
+            The initial concept focused on providing residents with a dedicated container for collecting recyclable materials inside their apartments.
+          </p>
+          <h5>Key Features</h5>
+          <ul>
+            <li>Open recycling container</li>
+            <li>Lightweight construction</li>
+            <li>Sized for apartment use</li>
+          </ul>
+          <h5>Why We Changed It</h5>
+          <ul>
+            <li>Did not utilize space efficiently</li>
+            <li>Was hard for single user condominium layout</li>
+            <li>User traffic flow became congested during peak hours</li>
+          </ul>
+        </div>
+
+        <div class="timeline-card">
+          <div class="img-holder" style="aspect-ratio: 16/11;">
+            <img src="Screen Shot 2026-07-04 at 10.03.22 PM.png" alt="Design 2 geometric iterations and floor plan modifications">
+          </div>
+          <h3>Design 2 — Improving Accessibility</h3>
+          <p class="desc">
+            The final Recycling Rig became a modular, collapsible recycling system capable of adapting to different household needs. Rather than functioning as a fixed container, it could expand or collapse depending on recycling volume while maintaining convenient transportation features.
+          </p>
+          <h5>Improvements</h5>
+          <ul>
+            <li>Adjustable capacity for compact storage if needed</li>
+            <li>Lightweight wooden frame with 3D-printed joints</li>
+            <li>Waterproof canvas exterior to prevent spills from glass bottles soaking and ruining the recycling rig</li>
+          </ul>
+          <h5>What Still Needed Improvement</h5>
+          <ul>
+            <li>Confusing on what was recyclable and what wasn't</li>
+          </ul>
+        </div>
+
+        <div class="timeline-card">
+          <div class="img-holder" style="aspect-ratio: 16/11;">
+            <div class="dual-images">
+              <img src="Screen Shot 2026-07-04 at 10.20.47 PM.png" alt="Initial ideation sketches for Design 1">
+              <img src="Screen Shot 2026-07-04 at 10.18.32 PM.png" alt="Initial primitive CAD geometry blocks for Design 1">
+            </div>
+          </div>
+          <h3>Design 3 — Modular Layout</h3>
+          <p class="desc">
+            The final Recycling Rig became a modular, collapsible recycling system capable of adapting to different household needs. Rather than functioning as a fixed container, it could expand or collapse depending on recycling volume while maintaining convenient transportation features.
+          </p>
+          <h5>Final Improvements</h5>
+          <ul>
+            <li>Adjustable capacity for compact storage if needed</li>
+            <li>Fully modular partition system organization</li>
+            <li>Waterproof canvas exterior to prevent spills from glass bottles soaking and ruining the recycling rig</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3 class="design-iteration-header">Design #3, 4, & 5: Updated Signage, Location Posters, & Door Painting</h3>
+      <div class="timeline-container">
+        
+        <div class="timeline-card">
+          <div class="img-holder" style="aspect-ratio: 16/11;">
+            <div class="dual-images">
+              <img src="Screen Shot 2026-07-04 at 10.14.41 PM.png" alt="Initial ideation sketches for Design 1">
+              <img src="Screen Shot 2026-07-04 at 10.15.44 PM.png" alt="Initial primitive CAD geometry blocks for Design 1">
+            </div>
+          </div>
+          <h3>Design 1 — Initial Concept</h3>
+          <p class="desc">
+            The initial concept focused on providing residents with a dedicated container for collecting recyclable materials inside their apartments.
+          </p>
+          <h5>Key Features</h5>
+          <ul>
+            <li>Open recycling container</li>
+            <li>Lightweight construction</li>
+            <li>Sized for apartment use</li>
+          </ul>
+          <h5>Why We Changed It</h5>
+          <ul>
+            <li>Did not utilize space efficiently</li>
+            <li>Was hard for single user condominium layout</li>
+            <li>User traffic flow became congested during peak hours</li>
+          </ul>
+        </div>
+
+        <div class="timeline-card">
+          <div class="img-holder" style="aspect-ratio: 16/11;">
+            <img src="Screen Shot 2026-07-04 at 10.03.22 PM.png" alt="Design 2 geometric iterations and floor plan modifications">
+          </div>
+          <h3>Design 2 — Improving Accessibility</h3>
+          <p class="desc">
+            The final Recycling Rig became a modular, collapsible recycling system capable of adapting to different household needs. Rather than functioning as a fixed container, it could expand or collapse depending on recycling volume while maintaining convenient transportation features.
+          </p>
+          <h5>Improvements</h5>
+          <ul>
+            <li>Adjustable capacity for compact storage if needed</li>
+            <li>Lightweight wooden frame with 3D-printed joints</li>
+            <li>Waterproof canvas exterior to prevent spills from glass bottles soaking and ruining the recycling rig</li>
+          </ul>
+          <h5>What Still Needed Improvement</h5>
+          <ul>
+            <li>Confusing on what was recyclable and what wasn't</li>
+          </ul>
+        </div>
+
+        <div class="timeline-card">
+          <div class="img-holder" style="aspect-ratio: 16/11;">
+            <div class="dual-images">
+              <img src="Screen Shot 2026-07-04 at 10.20.47 PM.png" alt="Initial ideation sketches for Design 1">
+              <img src="Screen Shot 2026-07-04 at 10.18.32 PM.png" alt="Initial primitive CAD geometry blocks for Design 1">
+            </div>
+          </div>
+          <h3>Design 3 — Modular Layout</h3>
+          <p class="desc">
+            The final Recycling Rig became a modular, collapsible recycling system capable of adapting to different household needs. Rather than functioning as a fixed container, it could expand or collapse depending on recycling volume while maintaining convenient transportation features.
+          </p>
+          <h5>Final Improvements</h5>
+          <ul>
+            <li>Adjustable capacity for compact storage if needed</li>
+            <li>Fully modular partition system organization</li>
+            <li>Waterproof canvas exterior to prevent spills from glass bottles soaking and ruining the recycling rig</li>
+          </ul>
+        </div>
       </div>
     </section>
 
     <section class="main-section">
-      <h2 class="section-title">03 Final Optimized Architecture</h2>
+      <h2 class="section-title">03 \ Final Optimized Architecture</h2>
       <div class="split-row">
         <div class="text-block">
           <p>
@@ -547,7 +631,7 @@
     </section>
 
     <section class="main-section">
-      <h2 class="section-title">04 Project Results & Impact</h2>
+      <h2 class="section-title">04 \ Project Results & Impact</h2>
       <div class="split-row">
         <div class="text-block">
           <p>
