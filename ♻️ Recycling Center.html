@@ -78,15 +78,37 @@
       display: grid;
       grid-template-columns: 1.1fr 0.9fr;
       gap: 40px;
-      align-items: center;
+      align-items: flex-start;
       margin-bottom: 35px;
     }
 
     .text-block p {
       font-size: 16px;
-      margin-bottom: 15px;
+      margin-bottom: 20px;
     }
     .text-block p:last-child { margin-bottom: 0; }
+
+    /* Image Stack for Problem Statement */
+    .problem-image-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .problem-image-stack .image-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .problem-image-stack span {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #6C8EF5;
+      padding-left: 4px;
+    }
 
     /* Image Containers */
     .img-holder {
@@ -282,18 +304,47 @@
     </header>
 
     <section class="main-section">
-      <h2 class="section-title">01 Problem Statement & Criteria</h2>
+      <h2 class="section-title">01 \ Problem Statement & Criteria</h2>
       <div class="split-row">
         <div class="text-block">
           <p>
-            The existing neighborhood recycling center was difficult to navigate, inefficient for both residents and maintenance staff, and lacked an intuitive layout for waste sorting. Limited space, poor organization, accessibility concerns, and frequent sorting contamination drastically reduced recycling efficiency and discouraged proper community use.
+            Our site assessment revealed several barriers that prevented the condominium's recycling system from functioning effectively. 
           </p>
           <p>
-            The objective was to redesign the space into a functional, user-centered recycling condominium system that balanced sustainability, clear usability, and efficient structural manufacturability.
+            <strong>First</strong>, the recycling bins contained a significant amount of non-recyclable waste. According to the City of Chicago's recycling guidelines, when a recycling load exceeds the allowable contamination threshold, the entire load may be rejected and sent to a landfill instead of being recycled. Based on our qualitative observations, interviews, and waste audits, we concluded that a large portion of the condominium's recyclable materials were likely being diverted to landfills due to contamination.
+          </p>
+          <p>
+            <strong>Second</strong>, the educational signage was ineffective. The instructions relied almost entirely on English text, assuming that all residents could read and interpret the information correctly. The signage also required residents to actively read through long lists of recyclable items before disposing of their waste, creating unnecessary cognitive effort. Additionally, some of the information was inaccurate or outdated—for example, the signage incorrectly stated that Styrofoam was recyclable—further contributing to improper waste sorting.
+          </p>
+          <p>
+            <strong>Finally</strong>, we analyzed the resident recycling journey and found that convenience strongly influenced disposal behavior. Throwing waste into the trash chute required only a short walk from each residential floor, whereas recycling required residents to collect their recyclables, take the elevator to the ground floor, walk through the garage, and locate the recycling room. This significantly longer and less convenient process discouraged participation and increased the likelihood that recyclable materials would instead be disposed of as general waste.
+          </p>
+          <p>
+            Collectively, these issues demonstrated that the existing recycling center was not simply an infrastructure problem, but a <strong>human-centered design problem</strong>. Our objective was to redesign the recycling experience to improve accessibility, reduce contamination, encourage resident participation, and create a more intuitive, efficient, and sustainable waste management system.
           </p>
         </div>
-        <div class="img-holder">
-          <img src="existing_center_baseline.jpg" alt="Existing recycling center showing space layout and congestion baselines">
+        
+        <div class="problem-image-stack">
+          <div class="image-group">
+            <span>Observation 1: Bin Contamination</span>
+            <div class="img-holder" style="aspect-ratio: 4/3;">
+              <img src="bin_contamination.jpg" alt="Non-recyclable waste contaminating structural recycling canisters">
+            </div>
+          </div>
+          
+          <div class="image-group">
+            <span>Observation 2: Ineffective Signage</span>
+            <div class="img-holder" style="aspect-ratio: 4/3;">
+              <img src="ineffective_signage.jpg" alt="Outdated and text-heavy recycling instruction placard">
+            </div>
+          </div>
+          
+          <div class="image-group">
+            <span>Observation 3: Resident Journey Map</span>
+            <div class="img-holder" style="aspect-ratio: 4/3;">
+              <img src="resident_journey_map.jpg" alt="Flow diagram comparing proximity of trash chute versus remote recycling room accessibility routes">
+            </div>
+          </div>
         </div>
       </div>
 
@@ -319,7 +370,7 @@
     </section>
 
     <section class="main-section">
-      <h2 class="section-title">02 The Iterative Design Process</h2>
+      <h2 class="section-title">02 \ The Iterative Design Process</h2>
       
       <div class="timeline-container">
         
@@ -395,7 +446,7 @@
     </section>
 
     <section class="main-section">
-      <h2 class="section-title">03 Final Optimized Architecture</h2>
+      <h2 class="section-title">03 \ Final Optimized Architecture</h2>
       <div class="split-row">
         <div class="text-block">
           <p>
@@ -430,7 +481,7 @@
     </section>
 
     <section class="main-section">
-      <h2 class="section-title">04 Project Results & Impact</h2>
+      <h2 class="section-title">04 \ Project Results & Impact</h2>
       <div class="split-row">
         <div class="text-block">
           <p>
