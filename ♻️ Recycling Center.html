@@ -33,7 +33,7 @@
     }
 
     .portfolio-wrapper {
-      max-width: 1000px;
+      max-width: 1100px;
       margin: 0 auto;
     }
 
@@ -99,20 +99,21 @@
       overflow: hidden;
       box-shadow: var(--shadow);
       cursor: zoom-in;
+      width: 100%;
     }
     .img-holder img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      pointer-events: none; /* Directs click event to parent frame */
+      pointer-events: none;
     }
 
-    /* Fixed Layout Fix for Split Dual Images */
+    /* Split layouts inside holders */
     .dual-images {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      padding: 12px;
+      gap: 8px;
+      padding: 8px;
       width: 100%;
       height: 100%;
     }
@@ -122,7 +123,6 @@
       pointer-events: auto !important;
     }
 
-    /* Three-Image Grid Box */
     .triple-images {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
@@ -137,7 +137,86 @@
       pointer-events: auto !important;
     }
 
-    /* Nested Sub-Grid for Comparative Iterations */
+    /* ==========================================
+    HORIZONTAL THREE-BOX TIMELINE GRID WITH ARROWS
+    ========================================== */
+    .timeline-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 40px;
+      margin-top: 20px;
+      position: relative;
+    }
+
+    .timeline-card {
+      background: rgba(255, 255, 255, 0.4);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    /* Connecting Arrows between sequential cards */
+    .timeline-card:not(:last-child)::after {
+      content: "→";
+      position: absolute;
+      right: -28px;
+      top: 25%;
+      transform: translateY(-50%);
+      font-size: 28px;
+      color: #6C8EF5;
+      font-weight: 700;
+      z-index: 10;
+    }
+
+    .timeline-card h3 {
+      font-size: 18px;
+      font-weight: 800;
+      margin: 15px 0 8px;
+      color: var(--text-main);
+    }
+
+    .timeline-card .desc {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+      line-height: 1.5;
+    }
+
+    .timeline-card h5 {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin: 10px 0 5px;
+      color: #6C8EF5;
+    }
+
+    /* Standard Lists inside grids */
+    ul {
+      list-style: none;
+      padding-left: 0;
+      margin-top: 5px;
+    }
+    li {
+      position: relative;
+      padding-left: 18px;
+      margin-bottom: 6px;
+      color: var(--text-muted);
+      font-size: 14px;
+      line-height: 1.4;
+    }
+    li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: #6C8EF5;
+      font-weight: 700;
+    }
+
+    /* Sub-Grids for Results and Renders */
     .sub-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -158,26 +237,6 @@
       color: var(--text-main);
     }
 
-    /* Custom Unordered Lists */
-    ul {
-      list-style: none;
-      padding-left: 0;
-      margin-top: 10px;
-    }
-    li {
-      position: relative;
-      padding-left: 20px;
-      margin-bottom: 10px;
-      color: var(--text-muted);
-    }
-    li::before {
-      content: "→";
-      position: absolute;
-      left: 0;
-      color: #6C8EF5;
-      font-weight: 700;
-    }
-
     .final-summary {
       background: var(--card);
       padding: 30px;
@@ -196,7 +255,17 @@
       font-size: 13px;
     }
 
-    @media (max-width: 800px) {
+    /* Responsive Flow Changes */
+    @media (max-width: 900px) {
+      .timeline-container { grid-template-columns: 1fr; gap: 50px; }
+      .timeline-card:not(:last-child)::after {
+        content: "↓";
+        right: auto;
+        left: 50%;
+        bottom: -45px;
+        top: auto;
+        transform: translateX(-50%);
+      }
       .split-row, .sub-grid, .dual-images, .triple-images { grid-template-columns: 1fr; gap: 20px; }
       body { padding: 60px 5%; }
     }
@@ -251,61 +320,77 @@
 
     <section class="main-section">
       <h2 class="section-title">02 \ The Iterative Design Process</h2>
-
-      <div class="split-row" style="margin-bottom: 60px;">
-        <div class="text-block">
+      
+      <div class="timeline-container">
+        
+        <div class="timeline-card">
+          <div class="img-holder" style="aspect-ratio: 16/11;">
+            <div class="dual-images">
+              <img src="design1_sketch.webp" alt="Initial ideation sketches for Design 1">
+              <img src="design1_cad.webp" alt="Initial primitive CAD geometry blocks for Design 1">
+            </div>
+          </div>
           <h3>Design 1 — Initial Concept</h3>
-          <p style="margin-top: 10px;">
-            The initial concept focused on a basic linear containment structural shell. It attempted to address simple containment barriers and organize the bins cleanly away from open viewing.
+          <p class="desc">
+            A basic linear containment structural shell. It attempted to address simple containment barriers and organize the bins cleanly away from open viewing vectors.
           </p>
-          <p><strong>Why We Changed It:</strong></p>
+          <h5>Key Features</h5>
           <ul>
-            <li>Did not utilize the corner areas or vertical space efficiently</li>
-            <li>Maintenance clearance access vectors were highly restricted</li>
+            <li>Enclosed perimeter boundary</li>
+            <li>Standard single-point path access</li>
+            <li>Uniform baseline footprint sizing</li>
+          </ul>
+          <h5>Why We Changed It</h5>
+          <ul>
+            <li>Did not utilize space efficiently</li>
+            <li>Maintenance clearance access was highly restricted</li>
             <li>User traffic flow became congested during peak hours</li>
           </ul>
         </div>
-        <div class="img-holder">
-          <div class="dual-images">
-            <img src="design1_sketch.webp" alt="Initial ideation sketches for Design 1">
-            <img src="design1_cad.webp" alt="Initial primitive CAD geometry blocks for Design 1">
+
+        <div class="timeline-card">
+          <div class="img-holder" style="aspect-ratio: 16/11;">
+            <img src="design2_iterations.webp" alt="Design 2 geometric iterations and floor plan modifications">
           </div>
-        </div>
-      </div>
-
-      <div class="split-row" style="margin-bottom: 60px;">
-        <div class="text-block">
           <h3>Design 2 — Improving Accessibility</h3>
-          <p style="margin-top: 10px;">
-            The second iteration shifted bin angles and path corridors to prioritize pedestrian traffic flow. It integrated dedicated drop-off zones to keep clear paths open.
+          <p class="desc">
+            This second loop shifted bin angles and regional path corridors to directly prioritize pedestrian user tracking and ease structural bottleneck constraints.
           </p>
-          <p><strong>What Still Needed Improvement:</strong></p>
+          <h5>Improvements</h5>
           <ul>
-            <li>General structural accessibility parameters could still be broadened</li>
-            <li>Fixed corner bin placements created regional collection bottlenecks</li>
-            <li>The rigid framing system remained complex and difficult to expand modularly</li>
+            <li>Better regional traffic flow mapping</li>
+            <li>Improved functional bin category organization</li>
+            <li>Increased localized site storage volumes</li>
+          </ul>
+          <h5>What Still Needed Improvement</h5>
+          <ul>
+            <li>General physical accessibility could be broadened further</li>
+            <li>Corner bin placements created loading bottlenecks</li>
+            <li>Rigid framework was difficult to expand modularly</li>
           </ul>
         </div>
-        <div class="img-holder">
-          <img src="design2_iterations.webp" alt="Design 2 geometric iterations and floor plan modifications">
-        </div>
-      </div>
 
-      <div class="split-row">
-        <div class="text-block">
+        <div class="timeline-card">
+          <div class="img-holder" style="aspect-ratio: 16/11;">
+            <img src="design3_modular_layout.webp" alt="Design 3 modular system layouts and structural models">
+          </div>
           <h3>Design 3 — Modular Layout</h3>
-          <p style="margin-top: 10px;">
-            Design 3 introduced independent structural containment modules. By standardizing components, it improved assembly speed, enhanced user navigation workflows, and simplified standard cleaning access configurations.
+          <p class="desc">
+            Design 3 introduced completely independent architectural containment modules to optimize regional layout flexibility and construction tracking speed.
           </p>
-          <p><strong>Remaining Challenges:</strong></p>
+          <h5>Improvements</h5>
           <ul>
-            <li>Identified small dead-space zones along the rear wall envelopes</li>
-            <li>High material tracking complexity due to interlocking component joints</li>
+            <li>Fully modular partition system organization</li>
+            <li>Better streamlined resident workflow vectors</li>
+            <li>Easier routine maintenance access profiles</li>
+          </ul>
+          <h5>Remaining Challenges</h5>
+          <ul>
+            <li>Identified small dead-space zones along rear walls</li>
+            <li>High interlocking joint material tracking complexity</li>
           </ul>
         </div>
-        <div class="img-holder">
-          <img src="design3_modular_layout.webp" alt="Design 3 modular system layouts and structural models">
-        </div>
+
       </div>
     </section>
 
@@ -380,16 +465,14 @@
   </div>
 
   <script>
-    // Intercepts click events on any image nested inside an .img-holder container
     document.querySelectorAll('.img-holder img').forEach(img => {
       img.addEventListener('click', (e) => {
-        e.stopPropagation(); // Stops immediate event bubbling closures
+        e.stopPropagation();
         document.getElementById('lightbox-img').src = img.src;
         document.getElementById('lightbox').style.display = 'flex';
       });
     });
 
-    // Closes overlay window safely
     function closeLightbox() {
       document.getElementById('lightbox').style.display = 'none';
     }
