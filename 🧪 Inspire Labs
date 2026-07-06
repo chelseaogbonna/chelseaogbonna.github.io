@@ -1,22 +1,944 @@
-<div class="project-small">
+<!DOCTYPE html>
+<html lang="en">
 
-<img src="inspirelabs.webp">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<div class="project-info">
+<title>Inspire Labs | Chelsea Ogbonna</title>
 
-<h3>🧪 Inspire Labs</h3>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+    --bg:#edf2fb;
+    --card:#d7e3fc;
+    --accent:#abc4ff;
+    --text:#1f2937;
+    --border:#c1d3fe;
+    --shadow:0 18px 45px rgba(0,0,0,.08);
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Inter,sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.7;
+}
+
+/*==============================
+NAVIGATION
+==============================*/
+
+.header{
+    position:fixed;
+    top:20px;
+    left:50%;
+    transform:translateX(-50%);
+    width:min(1200px,92%);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    z-index:1000;
+}
+
+.logo{
+    text-decoration:none;
+    color:var(--text);
+    font-size:24px;
+    font-weight:800;
+}
+
+nav{
+    display:flex;
+    gap:8px;
+    background:rgba(255,255,255,.82);
+    backdrop-filter:blur(18px);
+    padding:8px;
+    border-radius:999px;
+    border:1px solid rgba(193,211,254,.45);
+    box-shadow:0 12px 30px rgba(0,0,0,.08);
+}
+
+nav a{
+    text-decoration:none;
+    color:var(--text);
+    font-weight:500;
+    padding:11px 18px;
+    border-radius:999px;
+    transition:.25s;
+}
+
+nav a:hover{
+    background:var(--accent);
+    transform:translateY(-2px);
+}
+
+/*==============================
+HERO
+==============================*/
+
+.hero{
+    min-height:95vh;
+    display:grid;
+    grid-template-columns:1.1fr .9fr;
+    align-items:center;
+    padding:0 10%;
+    gap:70px;
+    position:relative;
+}
+
+.hero::before{
+    content:"";
+    position:absolute;
+    width:650px;
+    height:650px;
+    border-radius:50%;
+    background:var(--accent);
+    filter:blur(160px);
+    opacity:.25;
+    left:-200px;
+    top:-120px;
+}
+
+.hero-text{
+    position:relative;
+    z-index:2;
+}
+
+.hero h1{
+    font-size:70px;
+    font-weight:800;
+    margin-bottom:18px;
+}
+
+.hero h2{
+    font-size:26px;
+    color:#556070;
+    font-weight:500;
+    margin-bottom:24px;
+}
+
+.hero p{
+    font-size:18px;
+    max-width:620px;
+}
+
+.hero-buttons{
+    margin-top:35px;
+    display:flex;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.button{
+    text-decoration:none;
+    background:var(--accent);
+    color:#000;
+    font-weight:700;
+    padding:15px 28px;
+    border-radius:14px;
+    transition:.3s;
+}
+
+.button:hover{
+    transform:translateY(-4px);
+}
+
+.button.secondary{
+    background:white;
+    border:1px solid var(--border);
+}
+
+.hero-image{
+    display:flex;
+    justify-content:center;
+}
+
+.hero-image img{
+    width:100%;
+    max-width:460px;
+    border-radius:24px;
+    border:6px solid white;
+    box-shadow:0 25px 55px rgba(0,0,0,.15);
+    transition:.35s;
+}
+
+.hero-image img:hover{
+    transform:scale(1.03) rotate(1deg);
+}
+
+/*==============================
+GENERAL SECTIONS
+==============================*/
+
+.section{
+    padding:90px 10%;
+}
+
+.section-title{
+    text-align:center;
+    font-size:42px;
+    margin-bottom:18px;
+}
+
+.section-subtitle{
+    max-width:900px;
+    margin:auto;
+    text-align:center;
+    font-size:18px;
+    margin-bottom:45px;
+    color:#5d6878;
+}
+
+/*==============================
+INFO CARD
+==============================*/
+
+.info-card{
+    max-width:1000px;
+    margin:auto;
+    background:var(--card);
+    padding:40px;
+    border-radius:22px;
+    box-shadow:var(--shadow);
+}
+
+.info-card p{
+    margin-bottom:18px;
+}
+
+.info-card p:last-child{
+    margin-bottom:0;
+}
+
+/*==============================
+SOLUTION GRID
+==============================*/
+
+.solution-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(270px,1fr));
+    gap:24px;
+}
+
+.solution-card{
+    background:var(--card);
+    padding:35px;
+    border-radius:20px;
+    transition:.3s;
+    box-shadow:var(--shadow);
+}
+
+.solution-card:hover{
+    transform:translateY(-10px);
+}
+
+.solution-card h3{
+    margin-bottom:15px;
+    font-size:24px;
+}
+
+/*==============================
+ARCHITECTURE
+==============================*/
+
+.architecture{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:18px;
+}
+
+.arch-box{
+    width:170px;
+    min-height:140px;
+    background:var(--card);
+    border-radius:20px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    font-size:22px;
+    font-weight:700;
+    padding:20px;
+    transition:.3s;
+    box-shadow:var(--shadow);
+}
+
+.arch-box:hover{
+    transform:translateY(-8px);
+}
+
+.arrow{
+    font-size:34px;
+    font-weight:700;
+}
+
+/*==============================
+IMAGE GALLERY
+==============================*/
+
+.gallery-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:28px;
+}
+
+.gallery-item{
+    overflow:hidden;
+    border-radius:20px;
+    background:var(--card);
+    box-shadow:var(--shadow);
+    transition:.3s;
+}
+
+.gallery-item:hover{
+    transform:translateY(-10px);
+}
+
+.gallery-item img{
+    width:100%;
+    height:240px;
+    object-fit:cover;
+}
+
+.gallery-caption{
+    padding:25px;
+}
+
+.gallery-caption h3{
+    margin-bottom:12px;
+}
+/*==============================
+PROJECT IMPACT STATS
+==============================*/
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:24px;
+    margin-top:20px;
+}
+
+.stat{
+    background:var(--card);
+    padding:35px 20px;
+    border-radius:20px;
+    text-align:center;
+    box-shadow:var(--shadow);
+    transition:.3s;
+}
+
+.stat:hover{
+    transform:translateY(-8px);
+}
+
+.stat h3{
+    font-size:42px;
+    margin-bottom:10px;
+    color:var(--text);
+}
+
+/*==============================
+RESOURCES
+==============================*/
+
+.resources{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:24px;
+}
+
+.resource-card{
+    background:var(--card);
+    padding:30px;
+    border-radius:20px;
+    box-shadow:var(--shadow);
+    transition:.3s;
+}
+
+.resource-card:hover{
+    transform:translateY(-8px);
+}
+
+.resource-card h3{
+    margin-bottom:15px;
+}
+
+/*==============================
+FOOTER
+==============================*/
+
+footer{
+    text-align:center;
+    padding:60px 20px;
+    color:#666;
+}
+
+/*==============================
+RESPONSIVE
+==============================*/
+
+@media(max-width:900px){
+
+.hero{
+grid-template-columns:1fr;
+padding-top:120px;
+text-align:center;
+}
+
+.hero-image{
+order:-1;
+}
+
+.hero h1{
+font-size:48px;
+}
+
+.header{
+width:95%;
+}
+
+nav{
+flex-wrap:wrap;
+justify-content:center;
+}
+
+.architecture{
+flex-direction:column;
+}
+
+.arrow{
+transform:rotate(90deg);
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- ==========================
+HEADER
+=========================== -->
+
+<div class="header">
+
+<a href="index.html" class="logo">
+Chelsea Ogbonna
+</a>
+
+<nav>
+
+<a href="about.html">About</a>
+
+<a href="projects.html">Projects</a>
+
+<a href="leadership.html">Leadership</a>
+
+<a href="contact.html">Contact</a>
+
+</nav>
+
+</div>
+
+<!-- ==========================
+HERO
+=========================== -->
+
+<section class="hero">
+
+<div class="hero-text">
+
+<h1>Inspire Labs</h1>
+
+<h2>Making STEM Accessible Through Hands-On Learning</h2>
 
 <p>
-Developed STEM outreach engineering modules to teach high school students engineering concepts through hands-on projects.
+
+Inspire Labs was a community outreach initiative designed to introduce
+elementary school students to engineering through interactive science
+experiments, educational videos, and mentorship. The goal was to make STEM
+engaging, approachable, and accessible for every student regardless of their
+background.
+
 </p>
 
-<div class="tags">
-<span class="tag">Leadership</span>
-<span class="tag">Education</span>
-<span class="tag">Outreach</span>
+<div class="hero-buttons">
+
+<a href="#overview" class="button">
+Project Overview
+</a>
+
+<a href="#impact" class="button secondary">
+Project Impact
+</a>
+
 </div>
 
-<a href="#">Coming Soon →</a>
+</div>
+
+<div class="hero-image">
+
+<img src="inspirelabs.jpg" alt="Inspire Labs">
 
 </div>
+
+</section>
+
+<!-- ==========================
+PROJECT OVERVIEW
+=========================== -->
+
+<section class="section" id="overview">
+
+<h2 class="section-title">
+Project Overview
+</h2>
+
+<p class="section-subtitle">
+
+Inspire Labs combined engineering education, mentorship, and hands-on
+experimentation to inspire curiosity in science among elementary school
+students. The program integrated custom-designed activity kits, engaging video
+lessons, and guidance from high school mentors to create an interactive
+learning experience.
+
+</p>
+
+<div class="info-card">
+
+<p>
+
+Students watched short educational videos introducing scientific concepts,
+completed experiments using supplied science kits, and received mentorship from
+older students throughout each activity.
+
+</p>
+
+<p>
+
+Rather than relying solely on traditional classroom lectures, Inspire Labs
+encouraged active participation and exploration, helping students develop
+confidence while learning through experimentation.
+
+</p>
+
 </div>
+
+</section>
+
+<!-- ==========================
+PROBLEM STATEMENT
+=========================== -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Problem Statement
+
+</h2>
+
+<p class="section-subtitle">
+
+Many elementary school students, particularly those from underrepresented
+communities, have limited access to engaging STEM education and relatable role
+models. Without early exposure to science and engineering, students may miss
+opportunities to develop confidence, curiosity, and interest in technical
+careers.
+
+</p>
+
+<div class="info-card">
+
+<p>
+
+Traditional classroom instruction often provides limited opportunities for
+hands-on experimentation and individualized mentorship. As a result, many
+students struggle to see how science connects to their everyday lives or
+imagine themselves pursuing STEM in the future.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- ==========================
+OUR SOLUTION
+=========================== -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Our Solution
+
+</h2>
+
+<div class="solution-grid">
+
+<div class="solution-card">
+
+<h3>🎥 Interactive Video Lessons</h3>
+
+<p>
+
+Created engaging YouTube lessons that introduced scientific concepts in a fun,
+age-appropriate format while guiding students through each activity step by
+step.
+
+</p>
+
+</div>
+
+<div class="solution-card">
+
+<h3>🧪 Hands-On Science Kits</h3>
+
+<p>
+
+Designed experiment kits containing all required materials so students could
+actively explore STEM concepts while following the instructional videos.
+
+</p>
+
+</div>
+
+<div class="solution-card">
+
+<h3>🤝 High School Mentorship</h3>
+
+<p>
+
+Partnered with Evanston Township High School students who mentored elementary
+school students, answered questions, and encouraged confidence in STEM.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ==========================
+PROGRAM DESIGN
+=========================== -->
+
+<section class="section">
+
+<h2 class="section-title">
+Program Design
+</h2>
+
+<div class="architecture">
+
+<div class="arch-box">
+🎥<br>
+Video Lesson
+</div>
+
+<div class="arrow">→</div>
+
+<div class="arch-box">
+📦<br>
+Science Kit
+</div>
+
+<div class="arrow">→</div>
+
+<div class="arch-box">
+🧑‍🏫<br>
+Mentor Support
+</div>
+
+<div class="arrow">→</div>
+
+<div class="arch-box">
+🧪<br>
+Hands-On Learning
+</div>
+
+<div class="arrow">→</div>
+
+<div class="arch-box">
+🚀<br>
+STEM Confidence
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ==========================
+HANDS-ON LEARNING
+=========================== -->
+
+<section class="section">
+
+<h2 class="section-title">
+Hands-On Learning Experience
+</h2>
+
+<div class="gallery-grid">
+
+<div class="gallery-item">
+
+<img src="sciencekit.webp" alt="Science Kit">
+
+<div class="gallery-caption">
+
+<h3>Science Kits</h3>
+
+<p>
+Students completed experiments using customized science kits containing all
+materials needed to reinforce each lesson through active learning.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="gallery-item">
+
+<img src="youtube.webp" alt="YouTube Lesson">
+
+<div class="gallery-caption">
+
+<h3>Interactive Video Lessons</h3>
+
+<p>
+Each experiment was paired with a step-by-step instructional video that made
+scientific concepts engaging and easy to understand.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="gallery-item">
+
+<img src="students.webp" alt="Students Learning">
+
+<div class="gallery-caption">
+
+<h3>Student Collaboration</h3>
+
+<p>
+Students worked together, asked questions, and learned scientific principles
+through teamwork and experimentation.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ==========================
+PROJECT IMPACT
+=========================== -->
+
+<section class="section" id="impact">
+
+<h2 class="section-title">
+Project Impact
+</h2>
+
+<p class="section-subtitle">
+The program combined engineering, education, and mentorship to create an
+engaging STEM experience that encouraged curiosity, collaboration, and
+problem-solving.
+</p>
+
+<div class="stats">
+
+<div class="stat">
+<h3>3rd</h3>
+<p>Grade Students</p>
+</div>
+
+<div class="stat">
+<h3>2</h3>
+<p>Partner Schools</p>
+</div>
+
+<div class="stat">
+<h3>1</h3>
+<p>Interactive Curriculum</p>
+</div>
+
+<div class="stat">
+<h3>100%</h3>
+<p>Hands-On Learning</p>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ==========================
+REFLECTION
+=========================== -->
+
+<section class="section">
+
+<h2 class="section-title">
+Reflection
+</h2>
+
+<div class="info-card">
+
+<p>
+
+Inspire Labs demonstrated that engineering extends beyond designing devices—it
+also involves designing meaningful learning experiences. Working on this
+project strengthened my communication, teamwork, curriculum development, and
+human-centered design skills while reinforcing my passion for making STEM more
+accessible.
+
+</p>
+
+<p>
+
+Collaborating with educators and student mentors highlighted the importance of
+representation in STEM and the lasting impact that early exposure can have on a
+student's confidence and future aspirations.
+
+</p>
+
+</div>
+
+</section>
+
+
+<!-- ==========================
+RESOURCES
+=========================== -->
+
+<section class="section">
+
+<h2 class="section-title">
+Program Resources
+</h2>
+
+<div class="resources">
+
+<div class="resource-card">
+
+<h3>🧪 Try the Experiment</h3>
+
+<p>
+Recreate the activity using the provided science kit and follow along with the
+video lesson.
+</p>
+
+</div>
+
+
+<div class="resource-card">
+
+<h3>📄 Activity Sheet</h3>
+
+<p>
+Printable instructions and guided questions to reinforce the engineering and
+scientific concepts introduced during the lesson.
+</p>
+
+</div>
+
+
+<div class="resource-card">
+
+<h3>🎥 YouTube Lesson</h3>
+
+<p>
+Watch the accompanying instructional video that walks students through each
+step of the experiment.
+</p>
+
+</div>
+
+
+<div class="resource-card">
+
+<h3>📦 Materials List</h3>
+
+<p>
+A complete list of materials required to safely complete the hands-on activity.
+</p>
+
+</div>
+
+
+<div class="resource-card">
+
+<h3>⏱ Time Required</h3>
+
+<p>
+Approximately <strong>20–30 minutes</strong> from introduction to experiment
+completion.
+</p>
+
+</div>
+
+
+<div class="resource-card">
+
+<h3>🎯 Learning Objective</h3>
+
+<p>
+Develop curiosity, creativity, and confidence through interactive engineering
+activities while introducing the scientific method and problem-solving skills.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ==========================
+FOOTER
+=========================== -->
+
+<footer>
+
+<p>
+Designed & Built by Chelsea Ogbonna
+</p>
+
+<p>
+© 2026 Chelsea Ogbonna. All Rights Reserved.
+</p>
+
+</footer>
+
+</body>
+</html>
