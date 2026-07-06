@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Inspire Labs Case Study | Chelsea Ogbonna</title>
+  <title>Inspire Labs: STEM Achievement Gap Solution | Chelsea Ogbonna</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   
@@ -15,7 +15,7 @@
       --text-main: #1f2937;
       --text-muted: #4b5563;
       --border: #c1d3fe;
-      --shadow: 0 15px 35px rgba(0, 0, 0, 0.06);
+      --shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
     }
     
     * {
@@ -29,25 +29,16 @@
       background: var(--bg);
       color: var(--text-main);
       line-height: 1.7;
-      padding: 60px 5% 60px;
+      padding: 80px 8% 60px;
     }
 
-    .container {
-      max-width: 1200px;
+    .portfolio-wrapper {
+      max-width: 1100px;
       margin: 0 auto;
     }
 
-    /* PROJECT HEADER SECTION */
-    header {
-      background: white;
-      padding: 40px;
-      border-radius: 24px;
-      box-shadow: var(--shadow);
-      margin-bottom: 40px;
-      border: 1px solid rgba(255,255,255,0.8);
-    }
-    
-    .back-link {
+    /* BACK LINK & HEADER */
+    .back-btn {
       text-decoration: none;
       color: #6C8EF5;
       font-weight: 600;
@@ -55,540 +46,543 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      margin-bottom: 20px;
+      margin-bottom: 25px;
       transition: transform 0.2s;
     }
-    .back-link:hover { transform: translateX(-4px); }
+    .back-btn:hover { transform: translateX(-4px); }
 
-    h1 { 
-      font-size: 42px; 
-      font-weight: 800; 
-      letter-spacing: -1px; 
-      line-height: 1.2; 
-      margin-bottom: 8px; 
-    }
-    
-    .tagline { 
-      font-size: 20px; 
-      color: var(--text-muted); 
-      font-weight: 500; 
-      margin-bottom: 30px;
-    }
+    header { margin-bottom: 60px; }
+    h1 { font-size: 40px; font-weight: 800; letter-spacing: -1px; line-height: 1.2; margin-bottom: 12px; }
+    .subtitle { font-size: 18px; color: var(--text-muted); font-weight: 400; }
 
-    /* METADATA GRID */
-    .meta-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 24px;
-      padding-top: 25px;
-      border-top: 1px solid var(--border);
+    /* ROLE & SKILLS METADATA BADGES */
+    .meta-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      margin-bottom: 40px;
+      padding-bottom: 25px;
+      border-bottom: 1px solid var(--border);
     }
-    
-    .meta-item h5 {
+    .meta-block h5 {
       font-size: 11px;
       text-transform: uppercase;
       letter-spacing: 1px;
       color: #6C8EF5;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
     }
-    
-    .meta-item p {
+    .meta-block p {
       font-size: 15px;
       font-weight: 600;
+      color: var(--text-main);
     }
-    
-    .skills-flex {
+    .skills-tag-container {
       display: flex;
       flex-wrap: wrap;
-      gap: 6px;
+      gap: 8px;
+      max-width: 700px;
     }
-    
-    .skill-badge {
-      background: var(--bg);
+    .skill-tag {
+      background: rgba(255, 255, 255, 0.5);
       border: 1px solid var(--border);
-      padding: 3px 10px;
-      border-radius: 6px;
+      padding: 4px 12px;
+      border-radius: 999px;
       font-size: 12px;
-      color: var(--text-main);
       font-weight: 500;
+      color: var(--text-muted);
     }
 
-    /* MAIN ASYMMETRIC GRID SYSTEM */
-    .dossier-grid {
-      display: grid;
-      grid-template-columns: 1.4fr 0.9fr;
-      gap: 40px;
-      align-items: flex-start;
+    /* LAYOUT STRUCTURES */
+    .main-section {
+      margin-bottom: 80px;
     }
 
-    /* CARD BLOCKS */
-    .dossier-card {
-      background: white;
-      padding: 40px;
-      border-radius: 24px;
-      box-shadow: var(--shadow);
-      margin-bottom: 40px;
-      border: 1px solid rgba(255,255,255,0.6);
-    }
-
-    .dossier-card.sticky-sidebar {
-      position: sticky;
-      top: 40px;
-      background: rgba(255, 255, 255, 0.7);
-      backdrop-filter: blur(10px);
-    }
-
-    h2 {
+    .section-title {
       font-size: 24px;
       font-weight: 800;
-      letter-spacing: -0.5px;
-      margin-bottom: 20px;
-      color: var(--text-main);
-      display: flex;
-      align-items: center;
-      gap: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: #6C8EF5;
+      margin-bottom: 30px;
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
     }
+
+    /* Side-by-Side Split Row */
+    .split-row {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 40px;
+      align-items: flex-start;
+      margin-bottom: 35px;
+    }
+
+    .text-block p {
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+    .text-block p:last-child { margin-bottom: 0; }
 
     h3 {
-      font-size: 18px;
+      font-size: 19px;
       font-weight: 700;
-      margin: 25px 0 10px 0;
-      color: #6C8EF5;
-    }
-
-    p {
-      font-size: 15px;
-      color: var(--text-muted);
-      margin-bottom: 16px;
-      line-height: 1.6;
-    }
-    
-    strong {
       color: var(--text-main);
+      margin: 25px 0 12px 0;
     }
 
-    /* LISTS ELEMENTS */
-    ul {
-      list-style: none;
-      margin-bottom: 20px;
-    }
-
-    li {
-      position: relative;
-      padding-left: 22px;
-      margin-bottom: 8px;
-      font-size: 14px;
-      color: var(--text-muted);
-    }
-
-    li::before {
-      content: "▪";
-      position: absolute;
-      left: 4px;
-      color: #6C8EF5;
-      font-size: 16px;
-      top: -1px;
-    }
-
-    /* MEDIA & HARDWARE HOLDERS */
-    .gallery-container {
-      display: grid;
-      grid-template-columns: 1fr;
+    /* Image Stack */
+    .image-stack {
+      display: flex;
+      flex-direction: column;
       gap: 20px;
-      margin: 20px 0;
     }
 
-    .asset-box {
-      background: var(--card);
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: inset 0 0 20px rgba(0,0,0,0.02);
-      border: 1px solid var(--border);
+    .image-stack .image-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
     }
 
-    .asset-box img {
-      width: 100%;
-      height: 240px;
-      object-fit: cover;
-      display: block;
-      cursor: zoom-in;
-      transition: transform 0.3s;
-    }
-    .asset-box img:hover {
-      transform: scale(1.02);
-    }
-
-    .asset-label {
-      padding: 12px 16px;
-      background: white;
+    .image-stack span {
       font-size: 12px;
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.5px;
-      color: var(--text-muted);
-      border-top: 1px solid var(--border);
+      color: #6C8EF5;
+      padding-left: 4px;
     }
 
-    /* TWO COLUMN SUB-BLOCKS */
-    .sub-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
-      margin-top: 15px;
-    }
-
-    .block-node {
-      background: var(--bg);
-      padding: 20px;
+    /* Image Containers */
+    .img-holder {
+      background: var(--card);
       border-radius: 16px;
-      border: 1px solid var(--border);
-      margin-bottom: 15px;
-    }
-
-    .block-node h4 {
-      font-size: 14px;
-      font-weight: 800;
-      color: var(--text-main);
-      margin-bottom: 8px;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-
-    /* INFRASTRUCTURE BOX CHIPS */
-    .flow-node {
-      background: white;
-      border: 1px solid var(--border);
-      padding: 16px;
-      border-radius: 14px;
-      margin-bottom: 12px;
+      aspect-ratio: 4/3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
       box-shadow: var(--shadow);
+      width: 100%;
     }
     
-    .flow-node h4 {
-      font-size: 15px;
-      font-weight: 700;
-      color: var(--text-main);
-      margin-bottom: 4px;
+    .img-holder img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      cursor: zoom-in;
     }
 
-    /* FOOTER BAR */
+    /* HORIZONTAL 4-BOX ARCHITECTURE GRID WITH ARROWS */
+    .timeline-container {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      margin: 30px 0 40px;
+    }
+
+    .timeline-card {
+      background: rgba(255, 255, 255, 0.4);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 25px 20px;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    /* Connecting Arrows between sequential cards */
+    .timeline-card:not(:last-child)::after {
+      content: "→";
+      position: absolute;
+      right: -14px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 22px;
+      color: #6C8EF5;
+      font-weight: 700;
+      z-index: 10;
+    }
+
+    .timeline-card h4 {
+      font-size: 15px;
+      font-weight: 800;
+      margin: 10px 0 8px;
+      color: var(--text-main);
+    }
+
+    .timeline-card .desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* Sub-Grids for Features, Findings, and Specs */
+    .sub-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-top: 25px;
+      margin-bottom: 35px;
+    }
+    .sub-card {
+      background: rgba(255, 255, 255, 0.4);
+      border: 1px solid var(--border);
+      padding: 25px;
+      border-radius: 16px;
+    }
+    .sub-card h4 {
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      color: var(--text-main);
+      border-bottom: 1px dashed var(--border);
+      padding-bottom: 6px;
+    }
+
+    /* Standard Lists inside grids */
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    li {
+      position: relative;
+      padding-left: 18px;
+      margin-bottom: 8px;
+      color: var(--text-muted);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: #6C8EF5;
+      font-weight: 700;
+    }
+
+    .final-summary {
+      background: var(--card);
+      padding: 30px;
+      border-radius: 16px;
+      margin-top: 40px;
+      box-shadow: var(--shadow);
+    }
+
+    /* FOOTER */
     footer {
       text-align: center;
-      margin-top: 60px;
-      padding: 30px 20px;
+      margin-top: 100px;
+      padding-top: 30px;
       border-top: 1px solid var(--border);
       color: var(--text-muted);
       font-size: 13px;
     }
 
-    /* BREAKPOINTS RESPONSIVITY */
-    @media (max-width: 950px) {
-      .dossier-grid { grid-template-columns: 1fr; }
-      .dossier-card.sticky-sidebar { position: relative; top: 0; }
-      body { padding: 40px 4%; }
-      h1 { font-size: 32px; }
+    /* Responsive Flow Changes */
+    @media (max-width: 900px) {
+      .timeline-container { grid-template-columns: 1fr; gap: 30px; }
+      .timeline-card:not(:last-child)::after {
+        content: "↓";
+        right: auto;
+        left: 50%;
+        bottom: -24px;
+        top: auto;
+        transform: translateX(-50%);
+      }
+      .split-row { grid-template-columns: 1fr; gap: 20px; }
+      body { padding: 60px 5%; }
     }
   </style>
 </head>
 <body>
 
-  <div class="container">
+  <div class="portfolio-wrapper">
     
-    <!-- SYSTEM LEVEL HEADER -->
     <header>
-      <a href="projects.html" class="back-link">← Portfolio Index</a>
+      <a href="projects.html" class="back-btn">← Back to Projects</a>
       <h1>Inspire Labs</h1>
-      <div class="tagline">Bridging the STEM Achievement Gap Through Accessible, Community-Driven Learning</div>
-      
-      <div class="meta-grid">
-        <div class="meta-item">
-          <h5>Timeline Bounds</h5>
-          <p>April 2023 – June 2023</p>
-        </div>
-        <div class="meta-item">
-          <h5>Assigned Engineering Role</h5>
-          <p>Human-Centered Design Engineer | Researcher | Curriculum & Program Designer</p>
-        </div>
-        <div class="meta-item">
-          <h5>Applied Core Skillsets</h5>
-          <div class="skills-flex">
-            <span class="skill-badge">Human-Centered Design</span>
-            <span class="skill-badge">User Research</span>
-            <span class="skill-badge">Educational Design</span>
-            <span class="skill-badge">Stakeholder Interviews</span>
-            <span class="skill-badge">Prototype Development</span>
-            <span class="skill-badge">Curriculum Design</span>
-            <span class="skill-badge">Video Production Planning</span>
-            <span class="skill-badge">Community Outreach</span>
-            <span class="skill-badge">Systems Thinking</span>
-          </div>
-        </div>
-      </div>
+      <p class="subtitle">Bridging the STEM Achievement Gap Through Accessible, Community-Driven Learning</p>
     </header>
 
-    <!-- MAIN INTERACTIVE LAYOUT FRAMEWORK -->
-    <div class="dossier-grid">
-      
-      <!-- LEFT MODULE: COMPREHENSIVE TEXT FLOW -->
-      <div class="main-dossier-flow">
-        
-        <!-- PROJECT OVERVIEW BLOCK -->
-        <div class="dossier-card">
-          <h2>Project Overview</h2>
+    <div class="meta-container">
+      <div class="meta-block">
+        <h5>Duration</h5>
+        <p>April 2023 – June 2023</p>
+      </div>
+      <div class="meta-block">
+        <h5>Role</h5>
+        <p>Human-Centered Design Engineer | Researcher | Curriculum & Program Designer</p>
+      </div>
+      <div class="meta-block">
+        <h5>Skills Applied</h5>
+        <div class="skills-tag-container" style="margin-top: 8px;">
+          <span class="skill-tag">Human-Centered Design</span>
+          <span class="skill-tag">User Research</span>
+          <span class="skill-tag">Educational Design</span>
+          <span class="skill-tag">Stakeholder Interviews</span>
+          <span class="skill-tag">Prototype Development</span>
+          <span class="skill-tag">Curriculum Design</span>
+          <span class="skill-tag">Video Production Planning</span>
+          <span class="skill-tag">Community Outreach</span>
+          <span class="skill-tag">Systems Thinking</span>
+        </div>
+      </div>
+    </div>
+
+    <section class="main-section">
+      <h2 class="section-title">01 Project Overview & Problem Landscape</h2>
+      <div class="split-row">
+        <div class="text-block">
+          <h3>Ecosystem Definition</h3>
           <p>
-            <strong>Inspire Labs</strong> is a community-centered STEM education initiative designed to reduce the achievement gap among elementary school students of color by making science education more accessible, engaging, and culturally relevant. The program combines hands-on experiment kits with short YouTube tutorials created by high school student mentors, allowing students to complete curriculum-aligned STEM activities from home while seeing role models who share similar backgrounds.
+            Inspire Labs is a community-centered STEM education initiative designed to reduce the achievement gap among elementary school students of color by making science education more accessible, engaging, and culturally relevant. The program combines hands-on experiment kits with short YouTube tutorials created by high school student mentors, allowing students to complete curriculum-aligned STEM activities from home while seeing role models who share similar backgrounds.
           </p>
           <p>
             Rather than creating another after-school program, our team focused on designing a scalable, low-cost educational ecosystem that could continue supporting students even outside the classroom. The solution leveraged existing school resources, student volunteers, and online content to maximize accessibility while minimizing operational costs.
           </p>
-        </div>
-
-        <!-- PROBLEM FRAMEWORK BLOCK -->
-        <div class="dossier-card">
-          <h2>The Problem & The Challenge</h2>
-          <h3>The Context</h3>
-          <p>
-            Although historical initiatives such as Project Excite successfully increased participation of students of color in advanced STEM coursework, these initiatives required significant financial support and eventually became unsustainable over time. 
-          </p>
-          <h3>The Persistent Barriers</h3>
-          <p>
-            When these heavily funded programs ended, students continued to face systemic barriers including limited access to engaging STEM enrichment outside school hours, a lack of relatable STEM role models, and reduced confidence in pursuing advanced academic paths.
-          </p>
           
-          <h3>The Core Design Challenge</h3>
-          <p>Our explicit engineering challenge was to design an integrated educational program capable of executing against six interdependent targets:</p>
-          <ul>
-            <li>Increase baseline STEM engagement metrics inside target student groups.</li>
-            <li>Build resilient academic self-confidence.</li>
-            <li>Provide localized representation through programmatic mentorship pipelines.</li>
-            <li>Align experiments explicitly with elementary school classroom curricula.</li>
-            <li>Operate significantly less expensively than historic outreach paradigms.</li>
-            <li>Scale cleanly across multiple variable school systems.</li>
-          </ul>
-        </div>
-
-        <!-- TRIANGULATED USER RESEARCH BLOCK -->
-        <div class="dossier-card">
-          <h2>User Research & Discovery</h2>
+          <h3>The Historical Problem</h3>
           <p>
-            Before formulating technical design parameters, we conducted targeted stakeholder interviews, field-level classroom observations, and active user testing loops with educators to map the explicit needs of students, teachers, and families.
+            Although programs such as Project Excite successfully increased participation of students of color in advanced STEM coursework, these initiatives required significant financial support and eventually became unsustainable. Students continued to face barriers including limited access to engaging STEM enrichment, a lack of relatable STEM role models, and reduced confidence in pursuing advanced academic opportunities.
           </p>
-
-          <h3>Stakeholder Phase 1: Client Interview</h3>
-          <p>
-            We interviewed our project sponsor to analyze why the achievement gap persisted despite equal access to school-day resources.
-          </p>
-          <div class="block-node">
-            <h4>Key Sponsor Discoveries</h4>
-            <ul>
-              <li>A lack of systemic belonging often outweighed a lack of technical ability.</li>
-              <li>Many students did not see successful STEM professionals who looked like them.</li>
-              <li>Previous programs succeeded because they made learning enjoyable rather than simply more rigorous.</li>
-            </ul>
-          </div>
-
-          <h3>Stakeholder Phase 2: Classroom Observation</h3>
-          <p>
-            Our team observed an active elementary STEM classroom environment to track how students naturally interacted with educational content.
-          </p>
-          <div class="block-node">
-            <h4>Key Field Observations</h4>
-            <ul>
-              <li>Students exhibited peak engagement indicators during game-based and hands-on structural activities.</li>
-              <li>Hardware technology access was widely available via school-issued Chromebook infrastructures.</li>
-              <li>Students preferred interactive physical learning configurations over passive, closed educational software.</li>
-              <li>Teachers emphasized the overarching importance of maintaining core curiosity through open experimentation.</li>
-            </ul>
-          </div>
-
-          <h3>Stakeholder Phase 3: Expert User Testing</h3>
-          <p>
-            We presented our early concept models directly to education specialists, classroom teachers, and dedicated intervention specialists.
-          </p>
-          <div class="block-node">
-            <h4>Formative Feedback Adjustments</h4>
-            <ul>
-              <li>Increase explicit at-home parent support materials.</li>
-              <li>Keep all digital video modules short and highly direct for easy comprehension.</li>
-              <li>Align home experiments directly with classroom-taught curriculum nodes.</li>
-              <li>Develop a highly sustainable, low-cost funding model.</li>
-              <li>Include classroom teachers directly throughout all stages of localized implementation.</li>
-              <li>Ensure complete platform accessibility for families with diverse backgrounds.</li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- INTEGRATED SOLUTION INFRASTRUCTURE -->
-        <div class="dossier-card">
-          <h2>The Final Integrated Solution</h2>
-          <p>
-            Inspire Labs evolved past isolated components into an integrated educational platform consisting of four connected operational pillars:
-          </p>
-
-          <div class="flow-node">
-            <h4>🧪 STEM Experiment Kits</h4>
-            <p style="font-size: 14px; margin-bottom: 0;">
-              Students receive monthly experiment boxes containing all required physical materials, printed instructional guides, and integrated QR codes linking directly to designated instructional videos. The kits fully eliminate the need for families to purchase additional baseline supplies while making STEM activities uniformly accessible from home.
-            </p>
-          </div>
-
-          <div class="flow-node">
-            <h4>🎥 YouTube Learning Platform</h4>
-            <p style="font-size: 14px; margin-bottom: 0;">
-              Each experiment is accompanied by a short instructional video asset hosted entirely by high school students of color. Beyond demonstrating the basic mechanical experiment steps, many videos intentionally include personal stories and introductions that help younger students develop meaningful psychological connections with relatable role models.
-            </p>
-          </div>
-
-          <div class="flow-node">
-            <h4>🤝 High School Mentor Program</h4>
-            <p style="font-size: 14px; margin-bottom: 0;">
-              A student-led Inspire Labs club recruits active volunteers from Evanston Township High School to develop educational content, record videos, and mentor younger students. This structures a sustainable, cascading mentorship pipeline while providing leadership development loops for high school students.
-            </p>
-          </div>
-
-          <div class="flow-node">
-            <h4>💻 Parent Support Community</h4>
-            <p style="font-size: 14px; margin-bottom: 0;">
-              Families are seamlessly connected through an online parent community portal where they can ask questions, troubleshoot experiment failure modes, share student progress, and receive ongoing platform support throughout the program.
-            </p>
-          </div>
-        </div>
-
-        <!-- DESIGN PARADIGM HIGHLIGHTS -->
-        <div class="dossier-card">
-          <h2>Design Highlights</h2>
-          
-          <h3>Representation Matters</h3>
-          <p>
-            Instead of opting for professional adult presenters, we intentionally selected high school students of color as primary instructors. This design decision directly provided elementary students with accessible mentors they could naturally identify with while actively promoting confidence and long-term belonging in STEM fields.
-          </p>
-
-          <h3>Curriculum Alignment</h3>
-          <p>
-            Every physical experiment was reverse-engineered around Illinois third-grade science standards so that all at-home activities cleanly reinforced concepts students were already learning in school, avoiding unrelated or distracting enrichment strain.
-          </p>
-
-          <h3>Accessibility Optimization</h3>
-          <p>The platform systematically minimized historic participation barriers by:</p>
-          <ul>
-            <li>Delivering all required experiment materials directly to students' homes.</li>
-            <li>Utilizing YouTube as a universal, free-access digital distribution ecosystem.</li>
-            <li>Including QR codes for simplified navigation across household devices.</li>
-            <li>Keeping instructional videos short, high-energy, and age-appropriate.</li>
-            <li>Supporting parents through an active, low-friction online community framework.</li>
-          </ul>
-        </div>
-
-        <!-- IMPACT, FUTURE & CLOSING REFLECTION -->
-        <div class="dossier-card">
-          <h2>Project Impact & Future Trajectories</h2>
-          
-          <h3>Anticipated Systemic Impact</h3>
-          <p>By combining hands-on experimentation, peer mentorship, and accessible digital learning architectures, Inspire Labs addresses multiple systemic factors contributing to educational inequity:</p>
-          <ul>
-            <li>Increase measurable STEM engagement indicators among elementary cohorts.</li>
-            <li>Improve foundational academic self-confidence.</li>
-            <li>Strengthen representation structures inside local STEM education.</li>
-            <li>Create highly sustainable, self-generating student mentorship loops.</li>
-            <li>Provide a highly scalable, significantly lower-cost alternative to previous outreach investments.</li>
-            <li>Foster stronger communication partnerships between elementary schools, high schools, and families.</li>
-          </ul>
-
-          <h3>Future Development Trajectories</h3>
-          <p>Future structural iterations of Inspire Labs are configured to expand impact via:</p>
-          <ul>
-            <li>Translating all print and media materials into multiple heritage languages.</li>
-            <li>Hosting local, in-person STEM workshops and integrated community science fairs.</li>
-            <li>Creating an interconnected alumni mentorship network to track long-term student trajectories.</li>
-            <li>Expanding the distribution framework into additional school districts.</li>
-            <li>Partnering with corporate sponsors and nonprofit networks to reinforce long-term structural sustainability.</li>
-          </ul>
-        </div>
-
-      </div>
-
-      <!-- RIGHT MODULE: STICKY Side-panel containing design specs, requirements & tracking assets -->
-      <div class="main-dossier-sidebar">
-        
-        <div class="dossier-card sticky-sidebar">
-          
-          <h2>System Requirements Matrix</h2>
-          <p style="font-size: 13px; margin-bottom: 20px;">Rigorous design requirements derived directly from discovery phase triangulation:</p>
-          
-          <div class="sub-grid" style="grid-template-columns: 1fr; gap: 15px;">
-            <div class="block-node">
-              <h4>Economic Bound</h4>
-              <p style="font-size: 13px; margin-bottom: 0;">Fully accessible regardless of volatile household income brackets; zero out-of-pocket kit expenses.</p>
-            </div>
-            <div class="block-node">
-              <h4>Engagement Standard</h4>
-              <p style="font-size: 13px; margin-bottom: 0;">Activities must be highly interactive and fun to keep elementary students intrinsically motivated.</p>
-            </div>
-            <div class="block-node">
-              <h4>Temporal Constraint</h4>
-              <p style="font-size: 13px; margin-bottom: 0;">All digital instructional video modules must remain strictly under five minutes to match target cognitive attention spans.</p>
-            </div>
-            <div class="block-node">
-              <h4>Curriculum Target</h4>
-              <p style="font-size: 13px; margin-bottom: 0;">Directly mapped to Illinois third-grade science standards to provide classroom lesson scaffolding.</p>
-            </div>
-            <div class="block-node">
-              <h4>User Autonomy</h4>
-              <p style="font-size: 13px; margin-bottom: 0;">Kits must be completely safe, intuitive, and simple enough for families to deploy independently without professional oversight.</p>
-            </div>
-            <div class="block-node">
-              <h4>Cultural Relevance</h4>
-              <p style="font-size: 13px; margin-bottom: 0;">Content must represent diverse student backgrounds to build immediate psychological safety and inclusion.</p>
-            </div>
-            <div class="block-node">
-              <h4>Measurability</h4>
-              <p style="font-size: 13px; margin-bottom: 0;">Program framework must include feedback mechanisms to assess student growth and participation.</p>
-            </div>
-          </div>
-
-          <h2 style="margin-top: 35px; border-top: 1px solid var(--border); padding-top: 25px;">Ecosystem Artifact Validation</h2>
-          <div class="gallery-container">
-            <div class="asset-box">
-              <img src="sciencekit.webp" alt="Assembled and sorted modular instructional science kits">
-              <div class="asset-label">Hardware Artifact: Monthly Experiment Boxes</div>
-            </div>
-            <div class="asset-box">
-              <img src="youtube.webp" alt="Step by step YouTube lesson user interface guide">
-              <div class="asset-label">Distribution Layer: YouTube Platform</div>
-            </div>
-            <div class="asset-box">
-              <img src="students.webp" alt="Students collaborating over structural workspace elements">
-              <div class="asset-label">Validation Loop: User Interaction Sandbox</div>
-            </div>
-          </div>
-
-          <h2 style="margin-top: 35px; border-top: 1px solid var(--border); padding-top: 25px;">What I Learned</h2>
-          <p style="font-size: 13px; line-height: 1.6; margin-bottom: 0;">
-            This project strengthened my ability to apply engineering design principles to complex social challenges. I learned how qualitative research, stakeholder interviews, and iterative user feedback can guide the development of solutions that extend beyond technical functionality to create meaningful community impact. Working on Inspire Labs reinforced the importance of designing systems that are not only innovative, but also accessible, scalable, and centered around the needs of the people they serve.
-          </p>
-
         </div>
         
+        <div class="image-stack">
+          <div class="image-group">
+            <span>Primary Outreach Interface</span>
+            <div class="img-holder">
+              <img src="inspirelabs.jpg" alt="Inspire Labs learning framework placeholder">
+            </div>
+          </div>
+        </div>
       </div>
 
-    </div>
+      <div class="sub-grid">
+        <div class="sub-card">
+          <h4>Our Core Challenge</h4>
+          <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 12px;">Our challenge was to design an educational program that could successfully:</p>
+          <ul>
+            <li>Increase STEM engagement</li>
+            <li>Build self-confidence</li>
+            <li>Provide representation through mentorship</li>
+            <li>Align with elementary school curriculum</li>
+            <li>Be significantly less expensive than existing programs</li>
+            <li>Scale across multiple schools</li>
+          </ul>
+        </div>
+      </div>
+    </section>
 
-    <!-- SYSTEM FOOTER -->
+    <section class="main-section">
+      <h2 class="section-title">02 User Research & Discovery Insights</h2>
+      <div class="text-block">
+        <p>
+          Before designing the solution, we conducted interviews, classroom observations, and user testing with educators to better understand the needs of students, teachers, and families.
+        </p>
+      </div>
+
+      <div class="sub-grid">
+        <div class="sub-card">
+          <h4>Client Interview</h4>
+          <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 12px;">
+            We interviewed our project sponsor to understand why the achievement gap persisted despite equal access to school resources.
+          </p>
+          <h5>Key Findings:</h5>
+          <ul>
+            <li>Lack of belonging often outweighed lack of ability.</li>
+            <li>Many students did not see successful STEM professionals who looked like them.</li>
+            <li>Previous programs succeeded because they made learning enjoyable rather than simply more rigorous.</li>
+          </ul>
+        </div>
+
+        <div class="sub-card">
+          <h4>Classroom Observation</h4>
+          <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 12px;">
+            Our team observed an elementary STEM classroom to understand how students naturally interacted with educational content.
+          </p>
+          <h5>Key Findings:</h5>
+          <ul>
+            <li>Students were highly engaged during game-based and hands-on activities.</li>
+            <li>Technology was widely available through school-issued Chromebooks.</li>
+            <li>Students preferred interactive learning over passive educational software.</li>
+            <li>Teachers emphasized the importance of maintaining curiosity through experimentation.</li>
+          </ul>
+        </div>
+
+        <div class="sub-card">
+          <h4>Expert User Testing</h4>
+          <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 12px;">
+            We presented our concept to education specialists, classroom teachers, and intervention specialists.
+          </p>
+          <h5>Key Improvements Highlighted:</h5>
+          <ul>
+            <li>Increase parent support</li>
+            <li>Keep videos short and easy to understand</li>
+            <li>Align experiments directly with classroom curriculum</li>
+            <li>Develop a sustainable funding model</li>
+            <li>Include teachers throughout implementation</li>
+            <li>Ensure accessibility for families with diverse backgrounds</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="sub-grid" style="margin-top: 0;">
+        <div class="sub-card">
+          <h4>Derived Design Requirements</h4>
+          <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 12px;">From our research synthesis loops, we established several key design requirements:</p>
+          <ul style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 4px;">
+            <li>Accessible regardless of household income</li>
+            <li>Fun and engaging for elementary students</li>
+            <li>Videos under five minutes</li>
+            <li>Curriculum aligned</li>
+            <li>Easy for families to follow independently</li>
+            <li>Culturally relevant</li>
+            <li>Measurable student outcomes</li>
+            <li>Representation through relatable mentors</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="main-section">
+      <h2 class="section-title">03 Integrated Platform Architecture</h2>
+      <div class="text-block">
+        <p>
+          Inspire Labs evolved into an integrated educational platform consisting of four connected components.
+        </p>
+      </div>
+
+      <div class="timeline-container">
+        <div class="timeline-card">
+          <div style="font-size: 22px; margin-bottom: 4px;">📦</div>
+          <h4>1. Experiment Kits</h4>
+          <p class="desc">Monthly boxes containing all supplies, instructions, and navigation QR loops.</p>
+        </div>
+        <div class="timeline-card">
+          <div style="font-size: 22px; margin-bottom: 4px;">🎥</div>
+          <h4>2. YouTube Platform</h4>
+          <p class="desc">Short tutorials featuring high school mentors sharing personal stories.</p>
+        </div>
+        <div class="timeline-card">
+          <div style="font-size: 22px; margin-bottom: 4px;">🤝</div>
+          <h4>3. Mentor Program</h4>
+          <p class="desc">Student-led ETHS recruitment pipeline for content generation loops.</p>
+        </div>
+        <div class="timeline-card">
+          <div style="font-size: 22px; margin-bottom: 4px;">💻</div>
+          <h4>4. Parent Community</h4>
+          <p class="desc">Online support hub for tracking experiment progress and active troubleshooting.</p>
+        </div>
+      </div>
+
+      <div class="sub-grid">
+        <div class="sub-card">
+          <h4>STEM Experiment Kits Detailed Framework</h4>
+          <p style="font-size: 14px; color: var(--text-muted);">
+            Students receive monthly experiment boxes containing all required materials, printed instructions, and QR codes linking directly to instructional videos. The kits eliminate the need for families to purchase additional supplies while making STEM activities accessible from home.
+          </p>
+        </div>
+        <div class="sub-card">
+          <h4>YouTube Learning Platform Detailed Framework</h4>
+          <p style="font-size: 14px; color: var(--text-muted);">
+            Each experiment is accompanied by a short instructional video hosted by high school students of color. Beyond demonstrating the experiment, many videos include personal stories and introductions that help younger students develop meaningful connections with relatable role models.
+          </p>
+        </div>
+      </div>
+      
+      <div class="sub-grid" style="margin-top: 0;">
+        <div class="sub-card">
+          <h4>High School Mentor Program Structure</h4>
+          <p style="font-size: 14px; color: var(--text-muted);">
+            A student-led Inspire Labs club recruits volunteers from Evanston Township High School to develop educational content, record videos, and mentor younger students. This creates a sustainable mentorship pipeline while providing leadership opportunities for high school students.
+          </p>
+        </div>
+        <div class="sub-card">
+          <h4>Parent Support Community Infrastructure</h4>
+          <p style="font-size: 14px; color: var(--text-muted);">
+            Families are connected through an online parent community where they can ask questions, troubleshoot experiments, share progress, and receive ongoing support throughout the program.
+          </p>
+        </div>
+      </div>
+
+      <div class="split-row" style="margin-top: 40px;">
+        <div class="text-block">
+          <h3>Design Highlights</h3>
+          <p>
+            <strong>Representation Matters:</strong> Instead of using professional presenters, we intentionally selected high school students of color as instructors. This design decision provided elementary students with mentors they could identify with while promoting confidence and belonging in STEM fields.
+          </p>
+          <p>
+            <strong>Curriculum Alignment:</strong> Every experiment was designed around Illinois third-grade science standards so that activities reinforced concepts students were already learning in school instead of adding unrelated enrichment.
+          </p>
+          <p>
+            <strong>Accessibility:</strong> The platform minimized barriers by delivering materials directly, using YouTube for universal access, embedding QR codes for simple navigation, keeping videos short/age-appropriate, and supporting parents via an online community framework.
+          </p>
+        </div>
+        
+        <div class="image-stack">
+          <div class="image-group">
+            <span>Ecosystem Artifact Context</span>
+            <div class="img-holder" style="aspect-ratio: 16/10;">
+              <img src="sciencekit.webp" alt="Modular experiment kits validation">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="main-section">
+      <h2 class="section-title">04 Project Impact & Future Scaling Matrix</h2>
+      
+      <div class="sub-grid">
+        <div class="sub-card">
+          <h4>Targeted Systemic Intentions</h4>
+          <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 12px;">By combining hands-on experimentation, mentorship, and accessible digital learning, Inspire Labs addressed multiple factors contributing to educational inequity. The proposed program aimed to:</p>
+          <ul>
+            <li>Increase STEM engagement among elementary students</li>
+            <li>Improve academic confidence</li>
+            <li>Strengthen representation in STEM education</li>
+            <li>Create sustainable mentorship opportunities</li>
+            <li>Provide a scalable, lower-cost alternative to previous outreach programs</li>
+            <li>Foster stronger partnerships between elementary schools, high schools, and families</li>
+          </ul>
+        </div>
+
+        <div class="sub-card">
+          <h4>Future Development Pathways</h4>
+          <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 12px;">Future iterations of Inspire Labs could further expand its impact by:</p>
+          <ul>
+            <li>Translating materials into multiple languages</li>
+            <li>Hosting in-person STEM workshops and science fairs</li>
+            <li>Creating an alumni mentorship network</li>
+            <li>Expanding into additional school districts</li>
+            <li>Partnering with corporate sponsors and nonprofit organizations to improve long-term sustainability</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="final-summary">
+        <h3>What I Learned</h3>
+        <p style="font-size: 15px; color: var(--text-muted); margin-top: 10px;">
+          This project strengthened my ability to apply engineering design principles to complex social challenges. I learned how qualitative research, stakeholder interviews, and iterative user feedback can guide the development of solutions that extend beyond technical functionality to create meaningful community impact. Working on Inspire Labs reinforced the importance of designing systems that are not only innovative, but also accessible, scalable, and centered around the needs of the people they serve.
+        </p>
+      </div>
+    </section>
+
     <footer>
-      <p>Designed & Engineered by Chelsea Ogbonna • Portfolio Case Study Dossier</p>
+      <p>Designed & Built by Chelsea Ogbonna • Case Study Documentation Portfolio</p>
       <p>© 2026 Chelsea Ogbonna. All Rights Reserved.</p>
     </footer>
 
   </div>
 
-  <!-- LIGHTBOX MODAL OVERLAY -->
   <div id="lightbox" onclick="closeLightbox()" style="display: none; position: fixed; z-index: 9999; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); align-items: center; justify-content: center; cursor: zoom-out;">
     <img id="lightbox-img" src="" style="max-width: 90%; max-height: 90%; border-radius: 8px; box-shadow: 0 10px 40px rgba(0,0,0,0.5); object-fit: contain;">
   </div>
 
-  <!-- LIGHTBOX CONTROLLER SCRIPT -->
   <script>
-    document.querySelectorAll('.asset-box img').forEach(img => {
+    document.querySelectorAll('.img-holder img').forEach(img => {
       img.addEventListener('click', (e) => {
         e.stopPropagation();
         document.getElementById('lightbox-img').src = img.src;
