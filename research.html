@@ -39,54 +39,6 @@
     }
 
     /* =========================
-NEXT PAGE CTA BUTTON
-========================= */
-    .next-page-container {
-      text-align: center;
-      margin: 80px 0 20px 0;
-      padding: 20px;
-    }
-
-    .next-page-container p {
-      font-size: 14px;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      color: #6b7280;
-      margin-bottom: 10px;
-      font-weight: 600;
-    }
-
-    .next-page-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      background: var(--card);
-      color: var(--text);
-      text-decoration: none;
-      padding: 18px 36px;
-      border-radius: 999px;
-      font-size: 18px;
-      font-weight: 700;
-      box-shadow: var(--shadow);
-      border: 1px solid rgba(193, 211, 254, 0.6);
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .next-page-btn .arrow {
-      transition: transform 0.3s ease;
-    }
-
-    /* Hover Engine Effects */
-    .next-page-btn:hover {
-      background: var(--accent);
-      transform: translateY(-4px);
-      box-shadow: 0 15px 35px rgba(171, 196, 255, 0.4);
-    }
-
-    .next-page-btn:hover .arrow {
-      transform: translateX(6px);
-    }
-    /* =========================
     NAV (MATCHES PORTFOLIO SYSTEM)
     ========================= */
     nav {
@@ -185,7 +137,23 @@ NEXT PAGE CTA BUTTON
       font-size: 28px;
       font-weight: 700;
       color: var(--text);
-      margin-bottom: 20px;
+      margin-bottom: 8px;
+    }
+
+    .research-card h3 {
+      font-size: 18px;
+      font-weight: 600;
+      color: #4b5563;
+      margin-bottom: 24px;
+    }
+
+    .research-card h4 {
+      font-size: 16px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin: 25px 0 12px 0;
+      color: var(--text);
     }
 
     .research-card p {
@@ -193,6 +161,42 @@ NEXT PAGE CTA BUTTON
       font-size: 16px;
       line-height: 1.8;
       margin-bottom: 20px;
+    }
+
+    /* LAYOUT INNER ELEMENTS */
+    .inner-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      margin: 20px 0;
+    }
+
+    .inner-block {
+      background: rgba(255, 255, 255, 0.4);
+      padding: 20px;
+      border-radius: 12px;
+      border: 1px solid rgba(193, 211, 254, 0.5);
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    li {
+      position: relative;
+      padding-left: 20px;
+      margin-bottom: 8px;
+      font-size: 15px;
+      color: #4b5563;
+    }
+
+    li::before {
+      content: "▪";
+      position: absolute;
+      left: 4px;
+      color: #6C8EF5;
+      font-size: 14px;
+      top: -1px;
     }
 
     .research-card img {
@@ -207,6 +211,22 @@ NEXT PAGE CTA BUTTON
 
     .research-card img:hover {
       transform: scale(1.02);
+    }
+
+    /* LINK ACTIONS */
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+      color: #6C8EF5;
+      font-weight: 700;
+      margin-top: 25px;
+      transition: transform 0.2s;
+    }
+
+    .project-link:hover {
+      transform: translateX(4px);
     }
 
     /* SKILL TAGS */
@@ -232,6 +252,54 @@ NEXT PAGE CTA BUTTON
     .research-card:hover .tag {
       background: rgba(255, 255, 255, 0.85);
       border-color: var(--accent);
+    }
+
+    /* =========================
+    NEXT PAGE CTA BUTTON
+    ========================= */
+    .next-page-container {
+      text-align: center;
+      margin: 80px 0 20px 0;
+      padding: 20px;
+    }
+
+    .next-page-container p {
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #6b7280;
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+
+    .next-page-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--card);
+      color: var(--text);
+      text-decoration: none;
+      padding: 18px 36px;
+      border-radius: 999px;
+      font-size: 18px;
+      font-weight: 700;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(193, 211, 254, 0.6);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .next-page-btn .arrow {
+      transition: transform 0.3s ease;
+    }
+
+    .next-page-btn:hover {
+      background: var(--accent);
+      transform: translateY(-4px);
+      box-shadow: 0 15px 35px rgba(171, 196, 255, 0.4);
+    }
+
+    .next-page-btn:hover .arrow {
+      transform: translateX(6px);
     }
 
     /* SCROLL REVEAL STRUCTURE */
@@ -275,6 +343,9 @@ NEXT PAGE CTA BUTTON
     <section class="section">
       <div class="research-card">
         <h2>Microfluidic Device Design for Syncytial Knot Isolation</h2>
+        <h3>Academic Lab Initiative</h3>
+        
+        <h4>Objective</h4>
         <p>
           Led the development of a deterministic lateral displacement (DLD)
           microfluidic device for the isolation of placental syncytial knots.
@@ -302,59 +373,102 @@ NEXT PAGE CTA BUTTON
 
     <section class="section">
       <div class="research-card">
-        <h2>TAVI-Integrated Pacemaker Research</h2>
+        <h2>❤️ Rogers Lab | TAVI Integrated Pacemaker</h2>
+        <h3>Implantable Bio-Electronics</h3>
+        
+        <h4>Objective</h4>
         <p>
-          Contributed to the development of a battery-less pacemaker integrated
-          into transcatheter aortic valve implantation (TAVI) systems.
-          Research focused on wireless power transfer and device reliability.
+          Develop a wireless battery-free pacemaker integrated into transcatheter aortic valve replacement (TAVI) procedures to reduce complications following valve implantation.
         </p>
 
         <img src="pacemaker.jpg" alt="Pacemaker Bio-Electronics Integration">
 
-        <p>
-          Built and tested electronic systems, assembled PCB circuits,
-          optimized impedance matching, and supported device aging studies.
-        </p>
+        <div class="inner-grid">
+          <div class="inner-block">
+            <h4>My Contributions & Technical Skills</h4>
+            <ul>
+              <li><strong>Fabricated prototype components:</strong> PCB Soldering</li>
+              <li><strong>Built and tested RF coils:</strong> Electronics</li>
+              <li><strong>Performed flow-loop testing:</strong> Mechanical Testing</li>
+              <li><strong>Tuned impedance for wireless power transfer:</strong> RF Systems</li>
+              <li><strong>Assisted with prototype manufacturing:</strong> Medical Devices</li>
+            </ul>
+          </div>
+          
+          <div class="inner-block">
+            <h4>Current Focus</h4>
+            <ul>
+              <li>Prototype optimization</li>
+              <li>Flow testing</li>
+              <li>Manufacturing processes</li>
+            </ul>
+          </div>
+        </div>
 
         <div class="skills">
-          <span class="tag">Wireless Power Transfer</span>
-          <span class="tag">Biomedical Devices</span>
-          <span class="tag">PCB Design</span>
+          <span class="tag">Medical Devices</span>
+          <span class="tag">Manufacturing</span>
           <span class="tag">Electronics</span>
+          <span class="tag">Testing</span>
+          <span class="tag">Wireless Power Transfer</span>
+          <span class="tag">PCB Design</span>
           <span class="tag">Medical Implants</span>
         </div>
+        
+        <a href="tavi-project.html" class="project-link">→ View Full Project</a>
       </div>
     </section>
 
     <section class="section">
       <div class="research-card">
-        <h2>Biomechanics & Sensor Systems</h2>
+        <h2>🚶 Solutions Lab | Wearable Gait Monitoring</h2>
+        <h3>Biomechanics & Sensing Systems</h3>
+        
+        <h4>Objective</h4>
         <p>
-          Designed and analyzed sensing platforms incorporating force sensors,
-          microcontrollers, and inertial measurement units (IMUs) for terrain
-          classification and mechanical system evaluation.
+          Develop wearable sensing systems that analyze gait using force sensors and IMUs to better understand human movement and improve healthcare monitoring.
         </p>
 
         <img src="terrain.jpg" alt="Sensor and Biomechanics Signal Pipeline">
 
-        <p>
-          Developed data collection workflows, performed signal analysis,
-          and evaluated terrain-dependent loading and vibration responses.
-        </p>
+        <div class="inner-grid">
+          <div class="inner-block">
+            <h4>My Contributions & Technical Skills</h4>
+            <ul>
+              <li><strong>Integrated IMU and FSR sensors:</strong> Embedded Systems</li>
+              <li><strong>Developed Python analysis pipelines:</strong> Python</li>
+              <li><strong>Processed motion datasets:</strong> Signal Processing</li>
+              <li><strong>Visualized walking trials:</strong> Data Analysis</li>
+              <li><strong>Managed participant testing:</strong> Experimental Design</li>
+            </ul>
+          </div>
+          
+          <div class="inner-block">
+            <h4>Current Focus</h4>
+            <ul>
+              <li>Improving gait analysis algorithms</li>
+              <li>Expanding sensor validation</li>
+              <li>Automating data processing</li>
+            </ul>
+          </div>
+        </div>
 
         <div class="skills">
-          <span class="tag">Embedded Systems</span>
           <span class="tag">Python</span>
+          <span class="tag">Wearable Sensors</span>
+          <span class="tag">Biomechanics</span>
+          <span class="tag">Embedded Systems</span>
           <span class="tag">Data Analysis</span>
           <span class="tag">Sensors</span>
-          <span class="tag">Biomechanics</span>
         </div>
+
+        <a href="gait-project.html" class="project-link">→ View Full Project</a>
       </div>
     </section>
 
     <section class="next-page-container">
       <p>Finished reading?</p>
-      <a href="leadership.html" class="next-page-btn">See My Leadership <span class="arrow">→</span></a>      </a>
+      <a href="leadership.html" class="next-page-btn">See My Leadership <span class="arrow">→</span></a>
     </section>
  
   </div>
