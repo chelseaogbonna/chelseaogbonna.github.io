@@ -46,8 +46,8 @@
     }
 
     /* =========================
-NEXT PAGE CTA BUTTON
-========================= */
+    NEXT PAGE CTA BUTTON
+    ========================= */
     .next-page-container {
       text-align: center;
       margin: 80px 0 20px 0;
@@ -83,7 +83,6 @@ NEXT PAGE CTA BUTTON
       transition: transform 0.3s ease;
     }
 
-    /* Hover Engine Effects */
     .next-page-btn:hover {
       background: var(--accent);
       transform: translateY(-4px);
@@ -93,6 +92,7 @@ NEXT PAGE CTA BUTTON
     .next-page-btn:hover .arrow {
       transform: translateX(6px);
     }
+
     /* =========================
     NAV (MATCHES HOMEPAGE & PROJECTS)
     ========================= */
@@ -265,6 +265,34 @@ NEXT PAGE CTA BUTTON
       margin-bottom: 0;
     }
 
+    /* COMBINED COMBINED NSBE FULL-SCREEN STYLING */
+    .nsbe-split-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      align-items: stretch;
+    }
+
+    .nsbe-col {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .nsbe-image-showcase {
+      display: grid;
+      grid-template-rows: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .nsbe-image-showcase img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 14px;
+      margin-bottom: 0;
+    }
+
     /* SCROLL REVEAL STRUCTURE */
     .hidden {
       opacity: 0;
@@ -275,6 +303,16 @@ NEXT PAGE CTA BUTTON
     .show {
       opacity: 1;
       transform: translateY(0);
+    }
+
+    /* Responsive adjustment for small screens */
+    @media (max-width: 768px) {
+      .nsbe-split-layout {
+        grid-template-columns: 1fr;
+      }
+      .nsbe-image-showcase {
+        grid-template-rows: auto auto;
+      }
     }
   </style>
 </head>
@@ -343,52 +381,43 @@ NEXT PAGE CTA BUTTON
       </div>
     </section>
 
+    <!-- COMBINED NSBE ONE SCREEN LAYOUT -->
     <section class="section">
       <h2>
         <img src="nsbe.webp" class="icon">
         National Society of Black Engineers
       </h2>
       
-      <div class="card">
-        <img src="NSBE Pictures.webp" alt="NSBE Leadership">
-        <h3>Academic Excellence Chair</h3>
-        <p>
-          As Academic Excellence Chair for the National Society of Black Engineers (NSBE) for the 2024-2025 at
-          Northwestern University, I focused on strengthening academic support,
-          encouraging collaboration, and building a stronger engineering community.
-        </p>
-        <p>
-          I organized programs that connected students across multiple engineering
-          organizations, helping create spaces where students could learn from one
-          another, build relationships, and succeed together.
-        </p>
-        <p>
-          One of my favorite initiatives was organizing a collaborative study session
-          that brought together students from NSBE, SHPE, SWE, and WIC. More than
-          50 students attended, creating an inclusive environment where students could
-          study together, share resources, and build relationships across organizations.
-        </p>
-        <p>
-          Through intentional outreach, event planning, and social media engagement,
-          I also helped increase NSBE meeting attendance by more than 60 students,
-          strengthening chapter involvement and creating a more connected engineering
-          community.
-        </p>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="card">
-        <img src="studypictures.webp" alt="Collaborative Study Session">
-        <h3>Cross-Organization Collaboration</h3>
-        <p>
-          One of my proudest accomplishments was helping organize a collaborative study
-          session that united students from multiple engineering organizations.
-          Instead of studying separately, students from NSBE, SHPE, SWE, and WIC came
-          together to prepare for exams, exchange knowledge, and support one another.
-          This event demonstrated how collaboration—not competition—creates stronger
-          engineering communities.
-        </p>
+      <div class="card nsbe-split-layout">
+        <div class="nsbe-col">
+          <h3>Academic Excellence Chair</h3>
+          <p>
+            As Academic Excellence Chair for the National Society of Black Engineers (NSBE) for 2024-2025 at
+            Northwestern University, I focused on strengthening academic support,
+            encouraging collaboration, and building a stronger engineering community.
+          </p>
+          <p>
+            One of my favorite initiatives was organizing a collaborative study session
+            that brought together students from NSBE, SHPE, SWE, and WIC. More than
+            50 students attended, creating an inclusive environment where students could
+            study together, share resources, and build relationships across organizations.
+          </p>
+          <p>
+            Instead of studying separately, students united to prepare for exams, exchange knowledge, 
+            and support one another. This demonstrated how collaboration—not competition—creates 
+            stronger engineering environments.
+          </p>
+          <p>
+            Through intentional outreach, event planning, and social media engagement,
+            I also helped increase NSBE meeting attendance by more than 60 students,
+            strengthening chapter involvement overall.
+          </p>
+        </div>
+        
+        <div class="nsbe-col nsbe-image-showcase">
+          <img src="NSBE Pictures.webp" alt="NSBE Leadership">
+          <img src="studypictures.webp" alt="Collaborative Study Session">
+        </div>
       </div>
     </section>
 
@@ -470,7 +499,7 @@ NEXT PAGE CTA BUTTON
 
     <section class="next-page-container">
       <p>Finished reading?</p>
-      <a href="contact.html" class="next-page-btn">Let's Connect <span class="arrow">→</span></a>      </a>
+      <a href="contact.html" class="next-page-btn">Let's Connect <span class="arrow">→</span></a>
     </section>
  
   </div>
