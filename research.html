@@ -39,7 +39,7 @@
     }
 
     /* =========================
-    NAV (MATCHES PORTFOLIO SYSTEM)
+    NAVBAR
     ========================= */
     nav {
       position: fixed;
@@ -114,7 +114,9 @@
       line-height: 1.8;
     }
 
-    /* RESEARCH CARDS */
+    /* =========================
+    COMPLEX GRID STRUCTURE
+    ========================= */
     .section {
       margin: 60px 0;
     }
@@ -130,54 +132,87 @@
 
     .research-card:hover {
       background: var(--card-hover);
-      transform: translateY(-8px);
+      transform: translateY(-4px);
     }
 
     .research-card h2 {
       font-size: 28px;
       font-weight: 700;
       color: var(--text);
-      margin-bottom: 8px;
+      margin-bottom: 4px;
     }
 
     .research-card h3 {
-      font-size: 18px;
+      font-size: 16px;
       font-weight: 600;
-      color: #4b5563;
-      margin-bottom: 24px;
+      color: #6C8EF5;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 30px;
     }
 
     .research-card h4 {
-      font-size: 16px;
+      font-size: 15px;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.5px;
-      margin: 25px 0 12px 0;
+      margin-bottom: 12px;
       color: var(--text);
     }
 
     .research-card p {
       color: #4b5563;
       font-size: 16px;
-      line-height: 1.8;
-      margin-bottom: 20px;
+      line-height: 1.7;
     }
 
-    /* LAYOUT INNER ELEMENTS */
-    .inner-grid {
+    /* ROW 1: Objective Left, Image Right */
+    .top-split-row {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 40px;
+      align-items: center;
+      margin-bottom: 35px;
+    }
+
+    .img-frame {
+      width: 100%;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, .05);
+      border: 1px solid rgba(255,255,255,0.4);
+      aspect-ratio: 4/3;
+    }
+
+    .img-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.3s;
+    }
+    .img-frame img:hover {
+      transform: scale(1.03);
+    }
+
+    /* ROW 2: Contributions & Focus Bottom Grid */
+    .bottom-specs-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 25px;
-      margin: 20px 0;
+      margin-top: 20px;
+      border-top: 1px solid rgba(193, 211, 254, 0.5);
+      padding-top: 30px;
     }
 
-    .inner-block {
+    .info-block {
       background: rgba(255, 255, 255, 0.4);
-      padding: 20px;
-      border-radius: 12px;
+      padding: 25px;
+      border-radius: 14px;
       border: 1px solid rgba(193, 211, 254, 0.5);
     }
 
+    /* INNER LIST ELEMENTS */
     ul {
       list-style: none;
     }
@@ -186,7 +221,7 @@
       position: relative;
       padding-left: 20px;
       margin-bottom: 8px;
-      font-size: 15px;
+      font-size: 14px;
       color: #4b5563;
     }
 
@@ -199,21 +234,7 @@
       top: -1px;
     }
 
-    .research-card img {
-      width: 100%;
-      max-width: 700px;
-      display: block;
-      margin: 30px auto;
-      border-radius: 18px;
-      box-shadow: 0 15px 35px rgba(0, 0, 0, .08);
-      transition: .35s;
-    }
-
-    .research-card img:hover {
-      transform: scale(1.02);
-    }
-
-    /* LINK ACTIONS */
+    /* INTERACTION & SKILLS */
     .project-link {
       display: inline-flex;
       align-items: center;
@@ -221,32 +242,31 @@
       text-decoration: none;
       color: #6C8EF5;
       font-weight: 700;
-      margin-top: 25px;
+      margin-top: 30px;
       transition: transform 0.2s;
+      font-size: 15px;
     }
 
     .project-link:hover {
       transform: translateX(4px);
     }
 
-    /* SKILL TAGS */
     .skills {
-      margin-top: 25px;
+      margin-top: 30px;
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
+      gap: 8px;
     }
 
     .tag {
       display: inline-block;
       background: rgba(255, 255, 255, 0.6);
       color: var(--text);
-      padding: 8px 16px;
+      padding: 6px 14px;
       border-radius: 999px;
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 500;
       border: 1px solid rgba(193, 211, 254, 0.5);
-      transition: .25s;
     }
 
     .research-card:hover .tag {
@@ -255,7 +275,7 @@
     }
 
     /* =========================
-    NEXT PAGE CTA BUTTON
+    NEXT PAGE CALL TO ACTION
     ========================= */
     .next-page-container {
       text-align: center;
@@ -302,16 +322,30 @@
       transform: translateX(6px);
     }
 
-    /* SCROLL REVEAL STRUCTURE */
+    /* ANIMATION UTILITIES */
     .hidden {
       opacity: 0;
-      transform: translateY(40px);
-      transition: all .7s ease-out;
+      transform: translateY(30px);
+      transition: all .6s ease-out;
     }
 
     .show {
       opacity: 1;
       transform: translateY(0);
+    }
+
+    /* RESPONSIVE DESIGN ADJUSTMENTS */
+    @media (max-width: 850px) {
+      .top-split-row {
+        grid-template-columns: 1fr;
+        gap: 25px;
+      }
+      .img-frame {
+        order: -1; /* Pushes image to top on mobile layouts */
+        aspect-ratio: 16/10;
+      }
+      body { padding: 40px 4%; }
+      .hero h1 { font-size: 40px; }
     }
   </style>
 </head>
@@ -345,21 +379,31 @@
         <h2>Microfluidic Device Design for Syncytial Knot Isolation</h2>
         <h3>Academic Lab Initiative</h3>
         
-        <h4>Objective</h4>
-        <p>
-          Led the development of a deterministic lateral displacement (DLD)
-          microfluidic device for the isolation of placental syncytial knots.
-          The project focused on improving separation efficiency while reducing
-          the time required for manual isolation procedures.
-        </p>
+        <div class="top-split-row">
+          <div class="objective-text">
+            <h4>Objective</h4>
+            <p>
+              Led the development of a deterministic lateral displacement (DLD)
+              microfluidic device for the isolation of placental syncytial knots.
+              The project focused on improving separation efficiency while reducing
+              the time required for manual isolation procedures.
+            </p>
+          </div>
+          <div class="img-frame">
+            <img src="microfluidics.jpg" alt="Microfluidic Device Design Layout">
+          </div>
+        </div>
 
-        <img src="microfluidics.jpg" alt="Microfluidic Device Design Layout">
-
-        <p>
-          Responsibilities included CAD design, COMSOL simulations,
-          device optimization, fabrication planning, and experimental testing
-          using microspheres as biological surrogates.
-        </p>
+        <div class="bottom-specs-grid">
+          <div class="info-block" style="grid-column: span 2;">
+            <h4>Methodology & Setup</h4>
+            <p style="font-size: 14px;">
+              Responsibilities included CAD design, COMSOL simulations,
+              device optimization, fabrication planning, and experimental testing
+              using microspheres as biological surrogates.
+            </p>
+          </div>
+        </div>
 
         <div class="skills">
           <span class="tag">Microfluidics</span>
@@ -376,15 +420,20 @@
         <h2>❤️ Rogers Lab | TAVI Integrated Pacemaker</h2>
         <h3>Implantable Bio-Electronics</h3>
         
-        <h4>Objective</h4>
-        <p>
-          Develop a wireless battery-free pacemaker integrated into transcatheter aortic valve replacement (TAVI) procedures to reduce complications following valve implantation.
-        </p>
+        <div class="top-split-row">
+          <div class="objective-text">
+            <h4>Objective</h4>
+            <p>
+              Develop a wireless battery-free pacemaker integrated into transcatheter aortic valve replacement (TAVI) procedures to reduce complications following valve implantation.
+            </p>
+          </div>
+          <div class="img-frame">
+            <img src="pacemaker.jpg" alt="Pacemaker Bio-Electronics Integration">
+          </div>
+        </div>
 
-        <img src="Screen Shot 2026-07-06 at 5.30.45 PM.png" alt="Pacemaker Bio-Electronics Integration">
-
-        <div class="inner-grid">
-          <div class="inner-block">
+        <div class="bottom-specs-grid">
+          <div class="info-block">
             <h4>My Contributions & Technical Skills</h4>
             <ul>
               <li><strong>Fabricated prototype components:</strong> PCB Soldering</li>
@@ -395,7 +444,7 @@
             </ul>
           </div>
           
-          <div class="inner-block">
+          <div class="info-block">
             <h4>Current Focus</h4>
             <ul>
               <li>Prototype optimization</li>
@@ -412,7 +461,6 @@
           <span class="tag">Testing</span>
           <span class="tag">Wireless Power Transfer</span>
           <span class="tag">PCB Design</span>
-          <span class="tag">Medical Implants</span>
         </div>
         
         <a href="tavi-project.html" class="project-link">→ View Full Project</a>
@@ -424,15 +472,20 @@
         <h2>🚶 Solutions Lab | Wearable Gait Monitoring</h2>
         <h3>Biomechanics & Sensing Systems</h3>
         
-        <h4>Objective</h4>
-        <p>
-          Develop wearable sensing systems that analyze gait using force sensors and IMUs to better understand human movement and improve healthcare monitoring.
-        </p>
+        <div class="top-split-row">
+          <div class="objective-text">
+            <h4>Objective</h4>
+            <p>
+              Develop wearable sensing systems that analyze gait using force sensors and IMUs to better understand human movement and improve healthcare monitoring.
+            </p>
+          </div>
+          <div class="img-frame">
+            <img src="terrain.jpg" alt="Sensor and Biomechanics Signal Pipeline">
+          </div>
+        </div>
 
-        <img src="terrain.jpg" alt="Sensor and Biomechanics Signal Pipeline">
-
-        <div class="inner-grid">
-          <div class="inner-block">
+        <div class="bottom-specs-grid">
+          <div class="info-block">
             <h4>My Contributions & Technical Skills</h4>
             <ul>
               <li><strong>Integrated IMU and FSR sensors:</strong> Embedded Systems</li>
@@ -443,7 +496,7 @@
             </ul>
           </div>
           
-          <div class="inner-block">
+          <div class="info-block">
             <h4>Current Focus</h4>
             <ul>
               <li>Improving gait analysis algorithms</li>
@@ -459,7 +512,6 @@
           <span class="tag">Biomechanics</span>
           <span class="tag">Embedded Systems</span>
           <span class="tag">Data Analysis</span>
-          <span class="tag">Sensors</span>
         </div>
 
         <a href="gait-project.html" class="project-link">→ View Full Project</a>
