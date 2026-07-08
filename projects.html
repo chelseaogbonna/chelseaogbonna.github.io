@@ -32,7 +32,7 @@
       color: var(--text);
       overflow-x: hidden;
     }
-   
+    
     /* =========================
 NEXT PAGE CTA BUTTON
 ========================= */
@@ -359,6 +359,8 @@ NEXT PAGE CTA BUTTON
       font-size: 15px;
       font-weight: 600;
       cursor: pointer;
+      text-decoration: none;
+      color: inherit;
       transition: .3s;
     }
 
@@ -578,7 +580,7 @@ NEXT PAGE CTA BUTTON
     <h2 class="section-title">Featured Projects</h2>
     <p class="section-subtitle">
       The projects below highlight some of my favorite engineering experiences,
-      showcasing research, design, prototyping, testing, and innovation.
+      showcase research, design, prototyping, testing, and innovation.
     </p>
     <div class="featured-grid">
       <div class="feature-card">
@@ -597,7 +599,8 @@ NEXT PAGE CTA BUTTON
             <span class="tag">CAD</span>
             <span class="tag">Research</span>
           </div>
-            <a href="🧬 syncytial knot isolation.html" class="project-button">View Project →</a>        </div>
+          <a href="🧬 syncytial knot isolation.html" class="project-button">View Project →</a>
+        </div>
       </div>
 
       <div class="feature-card">
@@ -616,7 +619,7 @@ NEXT PAGE CTA BUTTON
             <span class="tag">PCB</span>
             <span class="tag">3D Printing</span>
           </div>
-            <a href="❤️ TAVI Pacemaker.html" class="project-button">View Project →</a>        </div>
+          <a href="❤️ TAVI Pacemaker.html" class="project-button">View Project →</a>
         </div>
       </div>
 
@@ -636,7 +639,7 @@ NEXT PAGE CTA BUTTON
             <span class="tag">Prototyping</span>
             <span class="tag">Innovation</span>
           </div>
-            <a href="🤖 Everyday Moving Helper.html" class="project-button">View Project →</a>        </div>
+          <a href="🤖 Everyday Moving Helper.html" class="project-button">View Project →</a>
         </div>
       </div>
     </div>
@@ -648,16 +651,15 @@ NEXT PAGE CTA BUTTON
       Browse projects by engineering discipline and area of focus.
     </p>
     <div class="filter-bar">
-      <button class="filter active">All</button>
-      <button class="filter">Medical Devices</button>
-      <button class="filter">Research</button>
-      <button class="filter">Robotics</button>
-      <button class="filter">Software</button>
-      <button class="filter">Manufacturing</button>
+      <a href="#medical-devices" class="filter">Medical Devices</a>
+      <a href="#robotics-mechatronics" class="filter">Robotics</a>
+      <a href="#software-data" class="filter">Software & Data</a>
+      <a href="#design-manufacturing" class="filter">Design & Manufacturing</a>
     </div>
   </section>
 
-  <section class="section">
+  <!-- MEDICAL DEVICES CATEGORY -->
+  <section class="section" id="medical-devices">
     <h2 class="section-title">🔬 Medical Devices</h2>
     <div class="project-grid">
       <div class="project-small">
@@ -671,7 +673,7 @@ NEXT PAGE CTA BUTTON
             <span class="tag">3D Printing</span>
             <span class="tag">Testing</span>
           </div>
-            <a href="❤️ TAVI Pacemaker.html" class="project-button">View Project →</a>
+          <a href="❤️ TAVI Pacemaker.html" class="project-button">View Project →</a>
         </div>
       </div>
 
@@ -686,7 +688,7 @@ NEXT PAGE CTA BUTTON
             <span class="tag">Research</span>
             <span class="tag">CAD</span>
           </div>
-            <a href="🧬 syncytial knot isolation.html" class="project-button">View Project →</a>
+          <a href="🧬 syncytial knot isolation.html" class="project-button">View Project →</a>
         </div>
       </div>
 
@@ -701,16 +703,17 @@ NEXT PAGE CTA BUTTON
             <span class="tag">Sensors</span>
             <span class="tag">Research</span>
           </div>
-            <a href="🦶 Haptic Diabetic Foot Monitoring.html" class="project-button">View Project →</a>
+          <a href="🦶 Haptic Diabetic Foot Monitoring.html" class="project-button">View Project →</a>
         </div>
       </div>
     </div>
     <div style="text-align:center; margin-top:50px;">
-      <a href="#" class="button">View All Medical Device Projects →</a>
+      <a href="#medical-devices" class="button">View All Medical Device Projects ↓</a>
     </div>
   </section>
 
-  <section class="section">
+  <!-- ROBOTICS & MECHATRONICS CATEGORY -->
+  <section class="section" id="robotics-mechatronics">
     <h2 class="section-title">🤖 Robotics & Mechatronics</h2>
     <div class="project-grid">
       <div class="project-small">
@@ -724,46 +727,32 @@ NEXT PAGE CTA BUTTON
             <span class="tag">Innovation</span>
             <span class="tag">Prototyping</span>
           </div>
-            <a href="🤖 Everyday Moving Helper.html" class="project-button">View Project →</a>
+          <a href="🤖 Everyday Moving Helper.html" class="project-button">View Project →</a>
         </div>
       </div>
 
       <div class="project-small">
         <img src="terrainrobot.webp" alt="Terrain Detection Robot">
         <div class="project-info">
-          <h3>💪 Electromyography</h3>
-          <p>Built a robotic sensing system capable of identifying different terrain types using force sensors and inertial measurement units with real-time data collection.</p>
+          <h3>🤖 Terrain Detection Robot</h3>
+          <p>Built an autonomous mobile sensing system equipped with force sensors and IMUs to accurately recognize and classify distinct outdoor walking terrains.</p>
           <div class="tags">
             <span class="tag">Robotics</span>
             <span class="tag">Embedded Systems</span>
             <span class="tag">Sensors</span>
-            <span class="tag">Python</span>
+            <span class="tag">Hardware</span>
           </div>
-            <a href="💪 Electromyography.html" class="project-button">View Project →</a>
-        </div>
-      </div>
-
-      <div class="project-small">
-        <img src="electrocardiogram.webp" alt="Electrocardiogram">
-        <div class="project-info">
-          <h3>🫀 Electrocardiogram</h3>
-          <p>Applied signal processing techniques to interpret physiological and motion signals, improving data quality and extracting meaningful trends.</p>
-          <div class="tags">
-            <span class="tag">Python</span>
-            <span class="tag">Data Analysis</span>
-            <span class="tag">Signal Processing</span>
-            <span class="tag">Research</span>
-          </div>
-            <a href="🫀 Electrocardiogram.html" class="project-button">View Project →</a>
+          <a href="#" class="project-button">Coming Soon →</a>
         </div>
       </div>
     </div>
     <div style="text-align:center; margin-top:50px;">
-      <a href="#" class="button">View All Robotics Projects →</a>
+      <a href="#robotics-mechatronics" class="button">View All Robotics Projects ↓</a>
     </div>
   </section>
 
-  <section class="section">
+  <!-- SOFTWARE & DATA CATEGORY -->
+  <section class="section" id="software-data">
     <h2 class="section-title">💻 Software & Data</h2>
     <p class="section-subtitle">
       Engineering isn't just about building hardware—it's also about transforming
@@ -771,17 +760,16 @@ NEXT PAGE CTA BUTTON
       signal processing, and computational tools.
     </p>
     <div class="project-grid">
-
       <div class="project-small">
-        <img src="signals.webp" alt=" Electrocardiogram">
+        <img src="signals.webp" alt="Electrocardiogram Analysis">
         <div class="project-info">
-          <h3>🫀 Electrocardiogram</h3>
-          <p>Applied signal processing techniques to interpret physiological and motion signals, improving data quality and extracting meaningful trends.</p>
+          <h3>🫀 Electrocardiogram Processing</h3>
+          <p>Applied signal processing techniques in MATLAB to filter ambient electrical noise from biological signals and interpret cardiorespiratory trends.</p>
           <div class="tags">
             <span class="tag">MATLAB</span>
             <span class="tag">Signals</span>
-            <span class="tag">Engineering</span>
-            <span class="tag">Research</span>
+            <span class="tag">Signal Processing</span>
+            <span class="tag">Data Analysis</span>
           </div>
           <a href="🫀 Electrocardiogram.html" class="project-button">View Project →</a>
         </div>
@@ -790,27 +778,28 @@ NEXT PAGE CTA BUTTON
       <div class="project-small">
         <img src="forcesensors.webp" alt="Force Sensor Analysis">
         <div class="project-info">
-          <h3>💪 Electromyography</h3>
-          <p>Analyzed force sensor data collected across different terrains to classify walking surfaces and evaluate system performance.</p>
+          <h3>💪 Electromyography & Gait ML Classifier</h3>
+          <p>Developed custom Python machine learning models to sort active sensor signals and evaluate physical kinetic output across multiple structural paths.</p>
           <div class="tags">
             <span class="tag">Python</span>
             <span class="tag">Sensors</span>
             <span class="tag">Machine Learning</span>
-            <span class="tag">Testing</span>
+            <span class="tag">Data Science</span>
           </div>
-          <a href="#" class="project-button">Coming Soon →</a>
+          <a href="💪 Electromyography.html" class="project-button">View Project →</a>
         </div>
       </div>
     </div>
     <div style="text-align:center; margin-top:50px;">
-      <a href="💪 Electromyography.html" class="project-button">View Project →</a>
+      <a href="#software-data" class="button">View All Software Projects ↓</a>
     </div>
   </section>
 
-  <section class="section">
+  <!-- DESIGN & MANUFACTURING CATEGORY -->
+  <section class="section" id="design-manufacturing">
     <h2 class="section-title">⚙️ Design & Manufacturing</h2>
     <p class="section-subtitle">
-      From CAD modeling to manufacturing, these projects
+      From CAD modeling to rapid prototyping and manufacturing, these projects
       highlight the engineering process of turning ideas into functional devices.
     </p>
     <div class="project-grid">
@@ -818,7 +807,7 @@ NEXT PAGE CTA BUTTON
         <img src="cad.webp" alt="CAD Design">
         <div class="project-info">
           <h3>📐 CAD Design Portfolio</h3>
-          <p>Designed mechanical components and biomedical devices using SolidWorks, Siemens NX, and COMSOL, balancing functionality, manufacturability, and performance.</p>
+          <p>Designed complex mechanical assemblies and biological chambers using SolidWorks, Siemens NX, and COMSOL while balancing manufacturing layout rules.</p>
           <div class="tags">
             <span class="tag">SolidWorks</span>
             <span class="tag">Siemens NX</span>
@@ -830,25 +819,41 @@ NEXT PAGE CTA BUTTON
       </div>
 
       <div class="project-small">
+        <img src="3dprinting.webp" alt="3D Printing">
+        <div class="project-info">
+          <h3>🖨️ Rapid Prototyping</h3>
+          <p>Fabricated engineering structures using additive manufacturing to evaluate structural fit and visual styling limits prior to structural verification tests.</p>
+          <div class="tags">
+            <span class="tag">3D Printing</span>
+            <span class="tag">Prototype</span>
+            <span class="tag">Manufacturing</span>
+            <span class="tag">Testing</span>
+          </div>
+          <a href="#" class="project-button">Coming Soon →</a>
+        </div>
+      </div>
+
+      <div class="project-small">
         <img src="pcb.webp" alt="PCB Assembly">
         <div class="project-info">
           <h3>🔧 PCB Assembly & Electronics</h3>
-          <p>Assembled, soldered, and tested printed circuit boards for implantable medical device prototypes while improving manufacturing consistency and device reliability.</p>
+          <p>Assembled, soldered, and tested custom system boards for active tracking components, minimizing path resistance and boosting electrical efficiency.</p>
           <div class="tags">
             <span class="tag">PCB</span>
             <span class="tag">Soldering</span>
             <span class="tag">Electronics</span>
-            <span class="tag">Medical Devices</span>
+            <span class="tag">Hardware</span>
           </div>
           <a href="#" class="project-button">Coming Soon →</a>
         </div>
       </div>
     </div>
     <div style="text-align:center; margin-top:50px;">
-      <a href="#" class="button">View All Design Projects →</a>
+      <a href="#design-manufacturing" class="button">View All Design Projects ↓</a>
     </div>
   </section>
 
+  <!-- ADDITIONAL EXPERIENCE -->
   <section class="section">
     <h2 class="section-title">📁 Additional Engineering Experience</h2>
     <p class="section-subtitle">
@@ -898,12 +903,13 @@ NEXT PAGE CTA BUTTON
             <span class="tag">Sensors</span>
             <span class="tag">Biomechanics</span>
           </div>
-            <a href="🦶 Haptic Diabetic Foot Monitoring.html" class="project-button">View Project →</a>
+          <a href="🦶 Haptic Diabetic Foot Monitoring.html" class="project-button">View Project →</a>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- ENGINEERING PROCESS -->
   <section class="section">
     <h2 class="section-title">⚙️ My Engineering Process</h2>
     <p class="section-subtitle">
@@ -949,7 +955,6 @@ NEXT PAGE CTA BUTTON
     </div>
   </section>
 
-
   <section class="section" style="margin-bottom: 60px;">
     <h2 class="section-title">🚀 Currently Building</h2>
     <p class="section-subtitle">
@@ -966,7 +971,7 @@ NEXT PAGE CTA BUTTON
 
   <section class="next-page-container">
     <p>Finished reading?</p>
-    <a href="research.html" class="next-page-btn">Explore My Research <span class="arrow">→</span></a>    </a>
+    <a href="research.html" class="next-page-btn">Explore My Research <span class="arrow">→</span></a>
   </section>
  
   <footer style="padding: 40px 10%; text-align: center; color: var(--text); border-top: 1px solid var(--border); font-size: 15px; font-weight: 500;">
