@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Medical Devices | Chelsea Ogbonna</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg: #edf2fb;
+      --card: #d7e3fc;
+      --accent: #abc4ff;
+      --text: #1f2937;
+      --border: #c1d3fe;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Inter, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+   
+    /* =========================
+    NAV
+    ========================= */
+    nav {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(1100px, 92%);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-weight: 800;
+      font-size: 18px;
+      text-decoration: none;
+      color: var(--text);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 10px;
+      padding: 8px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .78);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(193, 211, 254, .45);
+      box-shadow: 0 12px 35px rgba(0, 0, 0, .10);
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text);
+      padding: 10px 14px;
+      border-radius: 10px;
+      transition: .25s;
+      font-weight: 500;
+    }
+
+    .nav-links a:hover {
+      background: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .nav-links a.active {
+      background: var(--accent);
+    }
+
+    /* =========================
+    HERO / HEADER
+    ========================= */
+    .page-header {
+      padding: 160px 10% 40px;
+      text-align: center;
+      position: relative;
+    }
+
+    .page-header::before {
+      content: "";
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      background: var(--accent);
+      filter: blur(140px);
+      opacity: .25;
+      left: 50%;
+      top: 0;
+      transform: translateX(-50%);
+    }
+
+    .page-title {
+      font-size: 52px;
+      font-weight: 800;
+      margin-bottom: 15px;
+    }
+
+    .page-subtitle {
+      max-width: 700px;
+      margin: 0 auto;
+      color: #6b7280;
+      font-size: 18px;
+      line-height: 1.6;
+    }
+
+    /* =========================
+    PROJECT GRID SYSTEM
+    ========================= */
+    .section {
+      padding: 40px 10% 80px;
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+    }
+
+    .project-card {
+      background: var(--card);
+      border-radius: 24px;
+      overflow: hidden;
+      transition: .35s;
+      box-shadow: 0 18px 45px rgba(0, 0, 0, .08);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 25px 55px rgba(0, 0, 0, .15);
+    }
+
+    .project-image-wrapper {
+      height: 220px;
+      overflow: hidden;
+      background: #dbeafe;
+    }
+
+    .project-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: .45s;
+    }
+
+    .project-card:hover .project-image-wrapper img {
+      transform: scale(1.06);
+    }
+
+    .project-content {
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .project-content h3 {
+      font-size: 26px;
+      margin-bottom: 12px;
+    }
+
+    .project-content p {
+      color: #4b5563;
+      font-size: 15px;
+      line-height: 1.7;
+      margin-bottom: 22px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 25px;
+      margin-top: auto;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 8px 14px;
+      background: white;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 600;
+      transition: .25s;
+    }
+
+    .tag:hover {
+      background: var(--accent);
+    }
+
+    .project-button {
+      display: inline-block;
+      padding: 12px 20px;
+      background: var(--accent);
+      color: black;
+      text-decoration: none;
+      font-weight: 700;
+      border-radius: 12px;
+      text-align: center;
+      transition: .3s;
+    }
+
+    .project-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 25px rgba(0, 0, 0, .12);
+    }
+
+    /* =========================
+    BACK TO PORTFOLIO CTA
+    ========================= */
+    .back-container {
+      text-align: center;
+      margin: 40px 0 60px;
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(255, 255, 255, .7);
+      color: var(--text);
+      text-decoration: none;
+      padding: 16px 32px;
+      border-radius: 999px;
+      font-size: 16px;
+      font-weight: 700;
+      border: 1px solid var(--border);
+      transition: all 0.3s ease;
+    }
+
+    .back-btn:hover {
+      background: var(--accent);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 25px rgba(0, 0, 0, .08);
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="chelsea.html" class="logo">Chelsea Ogbonna</a>
+    <div class="nav-links">
+      <a href="about.html">About</a>
+      <a href="projects.html" class="active">Projects</a>
+      <a href="research.html">Research</a>
+      <a href="leadership.html">Leadership</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
+
+  <header class="page-header">
+    <h1 class="page-title">🔬 Medical Devices & Bioengineering</h1>
+    <p class="page-subtitle">
+      Translating physiology and medicine into functional clinical solutions, including wearable sensors, microfluidics, and life-saving implantable system components.
+    </p>
+  </header>
+
+  <main class="section">
+    <div class="project-grid">
+
+      <!-- PROJECT CARD 1 -->
+      <div class="project-card">
+        <div class="project-image-wrapper">
+          <img src="tavipacemaker.webp" alt="TAVI Pacemaker">
+        </div>
+        <div class="project-content">
+          <h3>❤️ TAVI-Integrated Pacemaker</h3>
+          <p>Contributed to the development and testing of a wireless implantable pacemaker designed for integration with transcatheter aortic valve replacement procedures.</p>
+          <div class="tags">
+            <span class="tag">Medical Devices</span>
+            <span class="tag">PCB</span>
+            <span class="tag">3D Printing</span>
+            <span class="tag">Testing</span>
+          </div>
+          <a href="❤️ TAVI Pacemaker.html" class="project-button">View Project →</a>
+        </div>
+      </div>
+
+      <!-- PROJECT CARD 2 -->
+      <div class="project-card">
+        <div class="project-image-wrapper">
+          <img src="syncytialknots.webp" alt="Syncytial Knot Device">
+        </div>
+        <div class="project-content">
+          <h3>🧬 Syncytial Knot Isolation</h3>
+          <p>Developed a crossflow microfluidic device for isolating placental syncytial knots using computational modeling, CAD, and experimental validation.</p>
+          <div class="tags">
+            <span class="tag">Microfluidics</span>
+            <span class="tag">COMSOL</span>
+            <span class="tag">Research</span>
+            <span class="tag">CAD</span>
+          </div>
+          <a href="🧬 syncytial knot isolation.html" class="project-button">View Project →</a>
+        </div>
+      </div>
+
+      <!-- PROJECT CARD 3 -->
+      <div class="project-card">
+        <div class="project-image-wrapper">
+          <img src="diabeticfoot.webp" alt="Haptic Diabetic Foot Project">
+        </div>
+        <div class="project-content">
+          <h3>🦶 Haptic Diabetic Foot Monitoring</h3>
+          <p>Led the development of a wearable sensing system designed to improve gait monitoring and reduce complications associated with diabetic foot ulcers.</p>
+          <div class="tags">
+            <span class="tag">Wearables</span>
+            <span class="tag">Biomechanics</span>
+            <span class="tag">Sensors</span>
+            <span class="tag">Research</span>
+          </div>
+          <a href="🦶 Haptic Diabetic Foot Monitoring.html" class="project-button">View Project →</a>
+        </div>
+      </div>
+
+      <!-- Extra slots ready for your future medical device cards -->
+
+    </div>
+  </main>
+
+  <div class="back-container">
+    <a href="projects.html" class="back-btn">← Back to All Project Categories</a>
+  </div>
+ 
+  <footer style="padding: 40px 10%; text-align: center; color: var(--text); border-top: 1px solid var(--border); font-size: 15px; font-weight: 500;">
+    © 2026 Chelsea Ogbonna • Designed & Built by Chelsea
+  </footer>
+
+</body>
+</html>
