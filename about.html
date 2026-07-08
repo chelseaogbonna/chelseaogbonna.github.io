@@ -94,8 +94,8 @@ NEXT PAGE CTA BUTTON
     .next-page-btn:hover .arrow {
       transform: translateX(6px);
     }
-    /* =========================
-    NAV (MATCHES PORTFOLIO SYSTEM)
+/* =========================
+    NAV (FIXED PORTFOLIO SYSTEM)
     ========================= */
     nav {
       position: fixed;
@@ -114,17 +114,19 @@ NEXT PAGE CTA BUTTON
       font-size: 18px;
       text-decoration: none;
       color: var(--text);
+      white-space: nowrap; /* Prevents name from breaking into two lines */
     }
 
     .nav-links {
       display: flex;
-      gap: 10px;
+      gap: 5px;
       padding: 8px;
       border-radius: 999px;
       background: rgba(255, 255, 255, .78);
       backdrop-filter: blur(16px);
       border: 1px solid rgba(193, 211, 254, .45);
       box-shadow: 0 12px 35px rgba(0, 0, 0, .10);
+      flex-wrap: nowrap; /* Keeps all links tightly together in one row */
     }
 
     .nav-links a {
@@ -134,11 +136,18 @@ NEXT PAGE CTA BUTTON
       border-radius: 10px;
       transition: .25s;
       font-weight: 500;
+      font-size: 15px;
     }
 
     .nav-links a:hover {
       background: var(--accent);
       transform: translateY(-2px);
+    }
+
+    /* Added this active class so the current page stays visually highlighted */
+    .nav-links a.active {
+      background: var(--accent);
+      font-weight: 700;
     }
 
     /* =========================
