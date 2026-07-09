@@ -10,284 +10,521 @@
 
 <style>
 :root{
---bg:#edf2fb;
---card:#d7e3fc;
---accent:#abc4ff;
---text:#1f2937;
---border:#c1d3fe;
+  --bg:#edf2fb;
+  --card:#d7e3fc;
+  --accent:#abc4ff;
+  --text:#1f2937;
+  --border:#c1d3fe;
+  --card-hover: #ccdbfd;
+  --shadow: 0 12px 30px rgba(0, 0, 0, .06);
 }
 
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 
 body{
-margin:0;
-font-family:Inter,sans-serif;
-background:var(--bg);
-color:var(--text);
-overflow-x:hidden;
+  margin:0;
+  font-family:Inter,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  overflow-x:hidden;
+  line-height: 1.6;
 }
 
 /* =========================
    NAV (UNCHANGED - DO NOT MODIFY)
 ========================= */
-
 nav{
-position:fixed;
-top:20px;
-left:50%;
-transform:translateX(-50%);
-width:min(1100px,92%);
-display:flex;
-justify-content:space-between;
-align-items:center;
-z-index:1000;
+  position:fixed;
+  top:20px;
+  left:50%;
+  transform:translateX(-50%);
+  width:min(1100px,92%);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  z-index:1000;
 }
 
 .logo{
-font-weight:800;
-font-size:18px;
-color:var(--text);
-text-decoration:none;
+  font-weight:800;
+  font-size:18px;
+  color:var(--text);
+  text-decoration:none;
 }
 
 .nav-links{
-display:flex;
-gap:10px;
-padding:8px;
-border-radius:999px;
-background:rgba(255,255,255,.78);
-backdrop-filter:blur(16px);
-border:1px solid rgba(193,211,254,.45);
-box-shadow:0 12px 35px rgba(0,0,0,.10);
+  display:flex;
+  gap:10px;
+  padding:8px;
+  border-radius:999px;
+  background:rgba(255, 255, 255, .78);
+  backdrop-filter:blur(16px);
+  border:1px solid rgba(193, 211, 254, .45);
+  box-shadow:0 12px 35px rgba(0,0,0,.10);
 }
 
 .nav-links a{
-text-decoration:none;
-color:var(--text);
-padding:10px 14px;
-border-radius:10px;
-transition:.25s;
-font-weight:500;
+  text-decoration:none;
+  color:var(--text);
+  padding:10px 14px;
+  border-radius:10px;
+  transition:.25s;
+  font-weight:500;
 }
 
 .nav-links a:hover{
-background:var(--accent);
-transform:translateY(-2px);
+  background:var(--accent);
+  transform:translateY(-2px);
 }
 
 /* =========================
    HERO
 ========================= */
-
 .hero{
-min-height:100vh;
-display:grid;
-grid-template-columns:1.2fr .8fr;
-align-items:center;
-padding:0 10%;
-position:relative;
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1.2fr .8fr;
+  align-items: center;
+  padding: 0 10%;
+  position: relative;
+  gap: 40px;
 }
 
 .hero:before{
-content:"";
-position:absolute;
-width:700px;
-height:700px;
-background:var(--accent);
-filter:blur(150px);
-opacity:.35;
-left:-200px;
-top:-150px;
+  content:"";
+  position:absolute;
+  width:700px;
+  height:700px;
+  background:var(--accent);
+  filter:blur(150px);
+  opacity:.35;
+  left:-200px;
+  top:-150px;
 }
 
-.hero-text{position:relative;z-index:2}
+.hero-text{position:relative; z-index:2}
 
 .hero h1{
-font-size:72px;
-margin:0;
-animation:floaty 4s ease-in-out infinite;
+  font-size:72px;
+  font-weight: 800;
+  margin:0 0 10px 0;
+  line-height: 1.1;
 }
 
-.hero h2{font-weight:500;opacity:.8}
-
-.hero-image img{
-width:340px;
-max-width:100%;
-border-radius:24px;
-border:5px solid white;
-box-shadow:0 25px 60px rgba(0,0,0,.15);
-transition:.3s;
+.hero h2{
+  font-size: 24px;
+  font-weight:600;
+  color: #5171e6;
+  margin: 0 0 20px 0;
 }
 
-.hero-image img:hover{
-transform:rotate(2deg) scale(1.05);
+.hero p {
+  font-size: 18px;
+  color: #4b5563;
+  max-width: 580px;
+  margin-bottom: 35px;
 }
 
-@keyframes floaty{
-50%{transform:translateY(-8px)}
+.cta-group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 15px;
 }
 
 .button{
-display:inline-block;
-margin-top:20px;
-padding:14px 22px;
-background:var(--accent);
-border-radius:12px;
-text-decoration:none;
-color:black;
-font-weight:700;
+  display:inline-flex;
+  align-items: center;
+  padding:14px 28px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius:14px;
+  text-decoration:none;
+  color: var(--text);
+  font-weight:700;
+  transition: .3s;
+  box-shadow: var(--shadow);
+}
+
+.button.primary {
+  background: var(--accent);
+  color: var(--text);
+}
+
+.button:hover{
+  transform:translateY(-3px);
+  background: var(--card-hover);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, .1);
+}
+
+.resume-link {
+  color: #4b5563;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 15px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: 10px;
+  transition: .2s;
+}
+
+.resume-link:hover {
+  color: #5171e6;
+  text-decoration: underline;
+}
+
+.hero-image {
+  display: flex;
+  justify-content: center;
+}
+
+.hero-image img{
+  width:360px;
+  height: 450px;
+  object-fit: cover;
+  max-width:100%;
+  border-radius:32px;
+  border: 8px solid white;
+  box-shadow:0 30px 70px rgba(0,0,0,.12);
+  transition:.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.hero-image img:hover{
+  transform:rotate(2sdeg) scale(1.03) translateY(-5px);
 }
 
 /* =========================
-   SECTIONS
+   SECTIONS GENERAL
 ========================= */
-
 .section{
-padding:90px 10%;
+  padding:100px 10%;
+  max-width: 1300px;
+  margin: auto;
 }
 
 .section-title{
-text-align:center;
-font-size:42px;
-margin-bottom:50px;
+  text-align:center;
+  font-size:42px;
+  font-weight: 800;
+  margin-bottom:12px;
 }
 
-/* STATS */
+.section-subtitle {
+  text-align: center;
+  color: #4b5563;
+  font-size: 16px;
+  max-width: 600px;
+  margin: 0 auto 60px auto;
+}
+
+/* HIGHLIGHT STATS */
 .stats{
-display:flex;
-justify-content:center;
-gap:25px;
-flex-wrap:wrap;
+  display:flex;
+  justify-content:center;
+  gap:30px;
+  flex-wrap:wrap;
 }
 
 .stat{
-width:230px;
-background:var(--card);
-padding:30px;
-border-radius:18px;
-text-align:center;
-transition:.3s;
+  flex: 1;
+  min-width:250px;
+  background:var(--card);
+  padding:35px 30px;
+  border-radius:24px;
+  text-align:center;
+  box-shadow: var(--shadow);
+  transition:.3s;
+  border: 1px solid rgba(255,255,255,0.4);
 }
 
 .stat:hover{
-transform:translateY(-12px) scale(1.04);
+  transform:translateY(-8px);
+  background: var(--card-hover);
 }
 
 .stat h3{
-font-size:42px;
-margin:0;
+  font-size:48px;
+  font-weight: 800;
+  margin:0 0 5px 0;
+  color: #3b5cc4;
 }
 
-/* PROJECTS */
+.stat p {
+  margin: 0;
+  font-weight: 600;
+  color: var(--text);
+  font-size: 16px;
+}
+
+/* FEATURED PROJECTS */
 .projects{
-display:flex;
-flex-wrap:wrap;
-justify-content:center;
-gap:25px;
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  gap:30px;
 }
 
 .project{
-width:320px;
-background:var(--card);
-border-radius:18px;
-overflow:hidden;
-transition:.3s;
+  background:var(--card);
+  border-radius:24px;
+  overflow:hidden;
+  transition:.3s;
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(255,255,255,0.4);
+  display: flex;
+  flex-direction: column;
 }
 
 .project:hover{
-transform:translateY(-12px) rotate(-1deg);
-box-shadow:0 20px 40px rgba(0,0,0,.12);
+  transform:translateY(-8px);
+  background: var(--card-hover);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
 }
 
 .project-img{
-height:180px;
-background:#2d3138;
-display:flex;
-align-items:center;
-justify-content:center;
-color:white;
-font-weight:700;
+  height:200px;
+  background:#2d3138;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:white;
+  font-weight:700;
+  font-size: 20px;
+  letter-spacing: 1px;
 }
 
-.project-content{padding:20px}
+.project-content{
+  padding:30px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
 
-/* TAGS */
+.project-content h3{
+  font-size: 22px;
+  margin: 0 0 10px 0;
+}
+
+.project-content p{
+  color: #4b5563;
+  font-size: 15px;
+  margin: 0 0 20px 0;
+  line-height: 1.6;
+}
+
+.project-link {
+  margin-top: auto;
+  color: #5171e6;
+  text-decoration: none;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 15px;
+}
+
+/* REAL LIFE EXPERIENCE SECTION (PROJECT CURE) */
+.experience-wrapper {
+  background: rgba(255,255,255,0.5);
+  border: 1px solid var(--border);
+  border-radius: 28px;
+  padding: 40px;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 40px;
+  align-items: center;
+  box-shadow: var(--shadow);
+}
+
+.exp-header h3 {
+  font-size: 26px;
+  margin: 0 0 4px 0;
+}
+
+.exp-header h4 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #5171e6;
+  text-transform: uppercase;
+  margin: 0 0 20px 0;
+  letter-spacing: 0.5px;
+}
+
+.exp-header p {
+  color: #4b5563;
+  font-size: 15px;
+  line-height: 1.7;
+  margin: 0;
+}
+
+.exp-details {
+  background: white;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: inset 0 2px 8px rgba(0,0,0,0.02);
+}
+
+.exp-details h5 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.exp-details ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.exp-details li {
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 12px;
+  font-size: 14px;
+  color: #4b5563;
+}
+
+.exp-details li::before {
+  content: "▪";
+  position: absolute;
+  left: 4px;
+  color: #5171e6;
+}
+
+/* RESEARCH TAGS */
 .tags{
-display:flex;
-justify-content:center;
-flex-wrap:wrap;
-gap:12px;
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:15px;
+  max-width: 800px;
+  margin: auto;
 }
 
 .tag{
-background:var(--card);
-padding:12px 18px;
-border-radius:999px;
-transition:.25s;
+  background:var(--card);
+  padding:14px 24px;
+  border-radius:999px;
+  font-weight: 600;
+  transition:.25s;
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(255,255,255,0.4);
 }
 
 .tag:hover{
-background:var(--accent);
-transform:translateY(-5px);
+  background:var(--accent);
+  transform:translateY(-4px);
 }
 
 /* TIMELINE */
 .timeline{
-max-width:800px;
-margin:auto;
+  max-width:850px;
+  margin:auto;
 }
 
 .timeline-item{
-background:var(--card);
-padding:20px;
-border-radius:16px;
-margin-bottom:18px;
-transition:.3s;
+  background:var(--card);
+  padding:25px;
+  border-radius:20px;
+  margin-bottom:20px;
+  transition:.3s;
+  box-shadow: var(--shadow);
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  border: 1px solid rgba(255,255,255,0.4);
 }
 
 .timeline-item:hover{
-transform:translateX(10px);
+  transform:translateX(10px);
+  background: var(--card-hover);
 }
 
-/* CAMPUS */
+.timeline-year {
+  font-size: 20px;
+  font-weight: 800;
+  color: #3b5cc4;
+  min-width: 60px;
+}
+
+.timeline-desc {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+/* INTERACTIVE CAMPUS */
 .campus{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:25px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:25px;
 }
 
 .lab{
-background:var(--card);
-padding:30px;
-border-radius:20px;
-text-align:center;
-cursor:pointer;
-transition:.3s;
+  background:var(--card);
+  padding:35px 25px;
+  border-radius:24px;
+  text-align:center;
+  cursor:pointer;
+  transition:.3s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(255,255,255,0.4);
+}
+
+.lab h3 {
+  margin: 0 0 10px 0;
+  font-size: 18px;
+}
+
+.lab p {
+  margin: 0;
+  font-size: 13px;
+  color: #4b5563;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: .3s;
 }
 
 .lab:hover{
-transform:translateY(-10px);
-background:#ccdbfd;
+  transform:translateY(-10px);
+  background:#ccdbfd;
+  box-shadow: 0 20px 35px rgba(0,0,0,0.08);
+}
+
+.lab:hover p {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* FOOTER */
 footer{
-text-align:center;
-padding:60px;
-opacity:.7;
+  text-align:center;
+  padding:60px;
+  border-top: 1px solid var(--border);
+  margin-top: 60px;
+  color: #4b5563;
 }
 
-/* MOBILE */
+/* MOBILE RESPONSIVENESS */
 @media(max-width:900px){
-.hero{
-grid-template-columns:1fr;
-text-align:center;
-padding-top:120px;
-}
-.hero-image{margin-top:30px}
-.hero h1{font-size:48px}
-.nav-links{flex-wrap:wrap}
+  .hero{
+    grid-template-columns:1fr;
+    text-align:center;
+    padding-top:140px;
+    min-height: auto;
+    padding-bottom: 60px;
+  }
+  .hero-image{
+    margin-top:20px;
+    order: -1;
+  }
+  .hero h1{font-size:52px}
+  .hero p {margin: 0 auto 30px auto;}
+  .cta-group { justify-content: center; }
+  .nav-links{flex-wrap:wrap; justify-content: center;}
+  .experience-wrapper { grid-template-columns: 1fr; gap: 25px; }
+  .section { padding: 60px 6%; }
 }
 </style>
 </head>
@@ -302,7 +539,7 @@ padding-top:120px;
     <a href="about.html">About</a>
     <a href="projects.html">Projects</a>
     <a href="research.html">Research</a>
-     <a href="leadership.html">Leadership</a>
+    <a href="leadership.html">Leadership</a>
     <a href="contact.html">Contact</a>
   </div>
 </nav>
@@ -310,90 +547,139 @@ padding-top:120px;
 <!-- HERO -->
 <section class="hero">
 <div class="hero-text">
-<h1>Chelsea Ogbonna</h1>
-<h2>Biomedical • Mechanical • Research Engineer</h2>
-<p>Engineering healthcare solutions through microfluidics, implantable devices, and embedded systems.</p>
-<a href="projects.html" class="button">Explore My Work →</a>
-<a href="contact.html" class="button">Contact →</a>
-<a href="Ogbonna_Chelsea_BS_MS_Northwestern .pdf" target="_blank" class="resume-btn" style="margin-bottom: 25px;"> 📄 Download Resume </a>
+  <h1>Chelsea Ogbonna</h1>
+  <h2>Biomedical • Mechanical • Research Engineer</h2>
+  <p>Engineering future-focused healthcare solutions at the intersection of microfluidics, bio-electronics, and adaptive mechanical design.</p>
+  
+  <div class="cta-group">
+    <a href="projects.html" class="button primary">Explore Work →</a>
+    <a href="contact.html" class="button">Let's Connect</a>
+    <a href="Ogbonna_Chelsea_BS_MS_Northwestern .pdf" target="_blank" class="resume-link">📄 View Resume</a>
+  </div>
 </div>
 
 <div class="hero-image">
-<img src="Chelseaprofilepics.JPG" alt="Chelsea Ogbonna">
+  <img src="Chelseaprofilepics.JPG" alt="Chelsea Ogbonna">
 </div>
 </section>
 
 <!-- STATS -->
 <section class="section">
-<h2 class="section-title">Highlights</h2>
+<h2 class="section-title">At a Glance</h2>
+<p class="section-subtitle">A quick metric snapshot of my academic engineering and project background.</p>
 <div class="stats">
-<div class="stat"><h3>5+</h3><p>Projects</p></div>
-<div class="stat"><h3>3+</h3><p>Research Labs</p></div>
-<div class="stat"><h3>50+</h3><p>Students Mentored</p></div>
+  <div class="stat"><h3>5+</h3><p>R&D Engineering Projects</p></div>
+  <div class="stat"><h3>3+</h3><p>Academic Research Labs</p></div>
+  <div class="stat"><h3>50+</h3><p>Peers & Students Mentored</p></div>
+</div>
+</section>
+
+<!-- REAL LIFE EXPERIENCE SHOWCASE -->
+<section class="section" style="background: rgba(171, 196, 255, 0.15); border-radius: 40px; padding: 80px 10%;">
+<h2 class="section-title">Industry & Global Health Impact</h2>
+<p class="section-subtitle">Bridging engineering design paradigms with actionable real-world healthcare execution.</p>
+
+<div class="experience-wrapper">
+  <div class="exp-header">
+    <h3>🌍 Project C.U.R.E.</h3>
+    <h4>Global Health Engineering Intern</h4>
+    <p>
+      Worked on reinforcing localized medical infrastructures within resource-constrained global healthcare operations. Evaluated structural integrity, systems deployment layouts, and compliance measures for systems shipped internationally.
+    </p>
+  </div>
+  <div class="exp-details">
+    <h5>Core Operations & Skills</h5>
+    <ul>
+      <li>Inspected and validated functional parameters of donated clinical diagnostic instrumentation.</li>
+      <li>Optimized cross-border logistical architectures supporting healthcare nodes across 10+ target nations.</li>
+      <li>Analyzed supply chain tracking systems to map facility requests directly to hardware distribution arrays.</li>
+      <li>Applied Human Factors principles to match technical equipment features to field environment restrictions.</li>
+    </ul>
+  </div>
 </div>
 </section>
 
 <!-- PROJECTS -->
 <section class="section">
 <h2 class="section-title">Featured Projects</h2>
+<p class="section-subtitle">Selected engineering prototypes balancing biomechanical principles and deep automation.</p>
 
 <div class="projects">
-<div class="project">
-<div class="project-img">Microfluidics</div>
-<div class="project-content">
-<h3>Syncytial Knot Device</h3>
-</div>
-</div>
+  <div class="project">
+    <div class="project-img" style="background: linear-gradient(135deg, #2d3138, #3b5cc4);">🧬 Microfluidics</div>
+    <div class="project-content">
+      <h3>Syncytial Knot Isolation Device</h3>
+      <p>Designed custom macrofluidic and microfluidic sorting models optimizing structural isolation protocols for cellular microenvironments.</p>
+      <a href="projects.html" class="project-link">Analyze Device Architecture →</a>
+    </div>
+  </div>
 
-<div class="project">
-<div class="project-img">Implant</div>
-<div class="project-content">
-<h3>TAVI Pacemaker</h3>
-</div>
-</div>
+  <div class="project">
+    <div class="project-img" style="background: linear-gradient(135deg, #2d3138, #c43b5c);">❤️ Implantables</div>
+    <div class="project-content">
+      <h3>TAVI Integrated Pacemaker</h3>
+      <p>Coordinated operational prototyping loops for battery-free, wireless bio-electronic pacing hardware embedded natively into structural heart valve designs.</p>
+      <a href="projects.html" class="project-link">View RF Tuning Process →</a>
+    </div>
+  </div>
 </div>
 </section>
 
 <!-- RESEARCH -->
 <section class="section">
-<h2 class="section-title">Research Interests</h2>
+<h2 class="section-title">Research Focus Areas</h2>
+<p class="section-subtitle">Investigating structural questions across core technical mechanics domains.</p>
 
 <div class="tags">
-<div class="tag">Biomedical Devices</div>
-<div class="tag">Microfluidics</div>
-<div class="tag">Implantable Systems</div>
-<div class="tag">Embedded Systems</div>
-<div class="tag">Mechanics</div>
+  <div class="tag">Biomedical Devices</div>
+  <div class="tag">Microfluidics Engineering</div>
+  <div class="tag">Implantable Bio-Electronics</div>
+  <div class="tag">Embedded Hardware Systems</div>
+  <div class="tag">Viscoelastic Mechanics</div>
+  <div class="tag">Additive Manufacturing</div>
 </div>
 </section>
 
 <!-- ACHIEVEMENTS -->
 <section class="section">
-<h2 class="section-title">Achievements Timeline</h2>
+<h2 class="section-title">Milestones</h2>
+<p class="section-subtitle">Chronological progression of institutional engineering appointments and degrees.</p>
 
 <div class="timeline">
-<div class="timeline-item"><strong>2026</strong> — M.S. Mechanical Engineering Candidate</div>
-<div class="timeline-item"><strong>2025</strong> — Rogers Lab Research Assistant</div>
-<div class="timeline-item"><strong>2025</strong> — Solutions Lab Research Assistant</div>
-<div class="timeline-item"><strong>2025</strong> — Microfluidic Device Lead</div>
+  <div class="timeline-item"><span class="timeline-year">2026</span><span class="timeline-desc">M.S. Mechanical Engineering Specialization Target</span></div>
+  <div class="timeline-item"><span class="timeline-year">2025</span><span class="timeline-desc">Rogers Lab • Bio-Electronics Graduate Research Assistant</span></div>
+  <div class="timeline-item"><span class="timeline-year">2025</span><span class="timeline-desc">Solutions Lab • Systems Analysis Research Associate</span></div>
+  <div class="timeline-item"><span class="timeline-year">2025</span><span class="timeline-desc">Microfluidic Platform Core Manufacturing Lead</span></div>
 </div>
 </section>
 
 <!-- CAMPUS -->
 <section class="section">
-<h2 class="section-title">Interactive Campus</h2>
+<h2 class="section-title">Interactive Campus Hub</h2>
+<p class="section-subtitle">Click into any domain node to explore my associated research footprints.</p>
 
 <div class="campus">
-<div class="lab" onclick="alert('Microfluidics Research')">🧬 Microfluidics Lab</div>
-<div class="lab" onclick="alert('Implantable Devices Research')">❤️ Implantables Lab</div>
-<div class="lab" onclick="alert('Embedded Systems')">🚗 Embedded Systems Lab</div>
-<div class="lab" onclick="alert('Leadership')">🏆 Leadership Center</div>
+  <div class="lab" onclick="alert('Navigating to Microfluidics Research Details')">
+    <h3>🧬 Microfluidics Lab</h3>
+    <p>Cell sorting assays & shear diagnostics</p>
+  </div>
+  <div class="lab" onclick="alert('Navigating to Implantable Devices Systems')">
+    <h3>❤️ Implantables Lab</h3>
+    <p>RF circuits & wireless power transfer</p>
+  </div>
+  <div class="lab" onclick="alert('Navigating to Embedded Sensor Pipelines')">
+    <h3>🚗 Embedded Systems</h3>
+    <p>Firmware structures & data processing arrays</p>
+  </div>
+  <div class="lab" onclick="alert('Navigating to Team Operations & Initiatives')">
+    <h3>🏆 Leadership Center</h3>
+    <p>Peer guidance & project framework architecture</p>
+  </div>
 </div>
-
 </section>
 
 <footer>
-© 2026 Chelsea Ogbonna
+  <p style="margin: 0; font-size: 15px; font-weight: 500;">© 2026 Chelsea Ogbonna • Built with Clean Code Foundations</p>
 </footer>
 
 </body>
