@@ -34,8 +34,8 @@
     }
    
     /* =========================
-NEXT PAGE CTA BUTTON
-========================= */
+    NEXT PAGE CTA BUTTON
+    ========================= */
     .next-page-container {
       text-align: center;
       margin: 80px 0 20px 0;
@@ -71,7 +71,6 @@ NEXT PAGE CTA BUTTON
       transition: transform 0.3s ease;
     }
 
-    /* Hover Engine Effects */
     .next-page-btn:hover {
       background: var(--accent);
       transform: translateY(-4px);
@@ -81,6 +80,7 @@ NEXT PAGE CTA BUTTON
     .next-page-btn:hover .arrow {
       transform: translateX(6px);
     }
+
     /* =========================
     NAV
     ========================= */
@@ -201,9 +201,7 @@ NEXT PAGE CTA BUTTON
     }
 
     @keyframes floaty {
-      50% {
-        transform: translateY(-8px);
-      }
+      50% { transform: translateY(-8px); }
     }
 
     .button {
@@ -258,6 +256,8 @@ NEXT PAGE CTA BUTTON
       overflow: hidden;
       transition: .35s;
       box-shadow: 0 18px 45px rgba(0, 0, 0, .08);
+      display: flex;
+      flex-direction: column;
     }
 
     .feature-card:hover {
@@ -265,28 +265,35 @@ NEXT PAGE CTA BUTTON
       box-shadow: 0 25px 55px rgba(0, 0, 0, .15);
     }
 
+    /* FIX: Added proper background canvas frame to display non-standard shapes safely */
     .feature-image {
       height: 240px;
       overflow: hidden;
-      background: #dbeafe;
+      background: #f1f5f9; 
       display: flex;
       align-items: center;
       justify-content: center;
+      padding: 10px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
     }
 
+    /* FIX: Switched from cover to contain to preserve full image scaling aspects */
     .feature-image img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
       transition: .45s;
     }
 
     .feature-card:hover .feature-image img {
-      transform: scale(1.08);
+      transform: scale(1.03);
     }
 
     .feature-content {
       padding: 28px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
     }
 
     .feature-content h3 {
@@ -305,6 +312,7 @@ NEXT PAGE CTA BUTTON
       flex-wrap: wrap;
       gap: 10px;
       margin-bottom: 25px;
+      margin-top: auto; /* Pushes the tag system nicely above button alignment lines */
     }
 
     .tag {
@@ -331,6 +339,7 @@ NEXT PAGE CTA BUTTON
       font-weight: 700;
       border-radius: 12px;
       transition: .3s;
+      text-align: center;
     }
 
     .project-button:hover {
@@ -377,6 +386,7 @@ NEXT PAGE CTA BUTTON
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 28px;
+      width: 100%;
     }
 
     .project-small {
@@ -385,6 +395,8 @@ NEXT PAGE CTA BUTTON
       overflow: hidden;
       transition: .3s;
       box-shadow: 0 12px 30px rgba(0, 0, 0, .08);
+      display: flex;
+      flex-direction: column;
     }
 
     .project-small:hover {
@@ -392,14 +404,28 @@ NEXT PAGE CTA BUTTON
       box-shadow: 0 18px 40px rgba(0, 0, 0, .12);
     }
 
-    .project-small img {
-      width: 100%;
+    /* FIX: Secondary inner-frame adjustment loop preventing image cutting on grid loops */
+    .project-small-img-container {
       height: 180px;
-      object-fit: cover;
+      background: #f1f5f9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .project-small-img-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
     }
 
     .project-info {
       padding: 24px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
     }
 
     .project-info h3 {
@@ -488,52 +514,6 @@ NEXT PAGE CTA BUTTON
       100% { left: 100%; }
     }
 
-    .toolkit-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 30px;
-      margin-top: 50px;
-    }
-
-    .toolkit-card {
-      background: var(--card);
-      padding: 30px;
-      border-radius: 22px;
-      box-shadow: 0 12px 30px rgba(0, 0, 0, .08);
-      transition: .3s;
-    }
-
-    .toolkit-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 18px 45px rgba(0, 0, 0, .12);
-      background: #e4ecff;
-    }
-
-    .toolkit-card h3 {
-      margin-bottom: 20px;
-      font-size: 22px;
-    }
-
-    .tool-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .tool-tags span {
-      background: white;
-      padding: 10px 16px;
-      border-radius: 999px;
-      font-size: 14px;
-      font-weight: 600;
-      transition: .25s;
-    }
-
-    .tool-tags span:hover {
-      background: var(--accent);
-      transform: translateY(-3px);
-    }
-
     /* Responsive adjustments */
     @media(max-width: 1300px) {
       .connector { display: none; }
@@ -600,7 +580,8 @@ NEXT PAGE CTA BUTTON
             <span class="tag">CAD</span>
             <span class="tag">Research</span>
           </div>
-            <a href="🧬 syncytial knot isolation.html" class="project-button">View Project →</a>        </div>
+          <a href="🧬 syncytial knot isolation.html" class="project-button">View Project →</a>
+        </div>
       </div>
 
       <div class="feature-card">
@@ -619,7 +600,7 @@ NEXT PAGE CTA BUTTON
             <span class="tag">PCB</span>
             <span class="tag">3D Printing</span>
           </div>
-            <a href="❤️ TAVI Pacemaker.html" class="project-button">View Project →</a>        </div>
+          <a href="❤️ TAVI Pacemaker.html" class="project-button">View Project →</a>
         </div>
       </div>
 
@@ -639,7 +620,7 @@ NEXT PAGE CTA BUTTON
             <span class="tag">Prototyping</span>
             <span class="tag">Innovation</span>
           </div>
-            <a href="🤖 Everyday Moving Helper.html" class="project-button">View Project →</a>        </div>
+          <a href="🤖 Everyday Moving Helper.html" class="project-button">View Project →</a>
         </div>
       </div>
     </div>
@@ -661,11 +642,14 @@ NEXT PAGE CTA BUTTON
     </div>
   </section>
 
+  <!-- MEDICAL DEVICES SECTION -->
   <section class="section" id="medical-devices">
     <h2 class="section-title">🔬 Medical Devices</h2>
     <div class="project-grid">
       <div class="project-small">
-        <img src="tavipacemaker.webp" alt="TAVI Pacemaker">
+        <div class="project-small-img-container">
+          <img src="tavipacemaker.webp" alt="TAVI Pacemaker">
+        </div>
         <div class="project-info">
           <h3>❤️ TAVI-Integrated Pacemaker</h3>
           <p>Contributed to the development and testing of a wireless implantable pacemaker designed for integration with transcatheter aortic valve replacement procedures.</p>
@@ -675,12 +659,14 @@ NEXT PAGE CTA BUTTON
             <span class="tag">3D Printing</span>
             <span class="tag">Testing</span>
           </div>
-            <a href="❤️ TAVI Pacemaker.html" class="project-button">View Project →</a>
+          <a href="❤️ TAVI Pacemaker.html" class="project-button">View Project →</a>
         </div>
       </div>
 
       <div class="project-small">
-        <img src="syncytialknots.webp" alt="Syncytial Knot Device">
+        <div class="project-small-img-container">
+          <img src="syncytialknots.webp" alt="Syncytial Knot Device">
+        </div>
         <div class="project-info">
           <h3>🧬 Syncytial Knot Isolation</h3>
           <p>Developed a crossflow microfluidic device for isolating placental syncytial knots using computational modeling, CAD, and experimental validation.</p>
@@ -690,12 +676,14 @@ NEXT PAGE CTA BUTTON
             <span class="tag">Research</span>
             <span class="tag">CAD</span>
           </div>
-            <a href="🧬 syncytial knot isolation.html" class="project-button">View Project →</a>
+          <a href="🧬 syncytial knot isolation.html" class="project-button">View Project →</a>
         </div>
       </div>
 
       <div class="project-small">
-        <img src="IMG_3705 Small.jpeg" alt="Haptic Diabetic Foot Project">
+        <div class="project-small-img-container">
+          <img src="IMG_3705 Small.jpeg" alt="Haptic Diabetic Foot Project">
+        </div>
         <div class="project-info">
           <h3>🦶 Haptic Diabetic Foot Monitoring</h3>
           <p>Led the development of a wearable sensing system designed to improve gait monitoring and reduce complications associated with diabetic foot ulcers.</p>
@@ -705,7 +693,7 @@ NEXT PAGE CTA BUTTON
             <span class="tag">Sensors</span>
             <span class="tag">Research</span>
           </div>
-            <a href="🦶 Haptic Diabetic Foot Monitoring.html" class="project-button">View Project →</a>
+          <a href="🦶 Haptic Diabetic Foot Monitoring.html" class="project-button">View Project →</a>
         </div>
       </div>
     </div>
@@ -714,11 +702,14 @@ NEXT PAGE CTA BUTTON
     </div>
   </section>
 
+  <!-- ROBOTICS & MECHATRONICS SECTION -->
   <section class="section" id="robotics-mechatronics">
     <h2 class="section-title">🤖 Robotics & Mechatronics</h2>
     <div class="project-grid">
       <div class="project-small">
-        <img src="everydaymovinghelper.webp" alt="Everyday Moving Helper">
+        <div class="project-small-img-container">
+          <img src="everydaymovinghelper.webp" alt="Everyday Moving Helper">
+        </div>
         <div class="project-info">
           <h3>📦 Everyday Moving Helper</h3>
           <p>Designed a modular powered cargo platform that assists users with transporting everyday items through adaptable mechanical design and user-centered engineering.</p>
@@ -728,12 +719,14 @@ NEXT PAGE CTA BUTTON
             <span class="tag">Innovation</span>
             <span class="tag">Prototyping</span>
           </div>
-            <a href="🤖 Everyday Moving Helper.html" class="project-button">View Project →</a>
+          <a href="🤖 Everyday Moving Helper.html" class="project-button">View Project →</a>
         </div>
       </div>
 
       <div class="project-small">
-        <img src="EMGbreadboard.webp" alt="Terrain Detection Robot">
+        <div class="project-small-img-container">
+          <img src="EMGbreadboard.webp" alt="Terrain Detection Robot">
+        </div>
         <div class="project-info">
           <h3>💪 Electromyography</h3>
           <p>Built a robotic sensing system capable of identifying different terrain types using force sensors and inertial measurement units with real-time data collection.</p>
@@ -743,12 +736,14 @@ NEXT PAGE CTA BUTTON
             <span class="tag">Sensors</span>
             <span class="tag">Python</span>
           </div>
-            <a href="💪 Electromyography.html" class="project-button">View Project →</a>
+          <a href="💪 Electromyography.html" class="project-button">View Project →</a>
         </div>
       </div>
 
       <div class="project-small">
-        <img src="breadboardekg.webp" alt="Electrocardiogram">
+        <div class="project-small-img-container">
+          <img src="breadboardekg.webp" alt="Electrocardiogram">
+        </div>
         <div class="project-info">
           <h3>🫀 Electrocardiogram</h3>
           <p>Applied signal processing techniques to interpret physiological and motion signals, improving data quality and extracting meaningful trends.</p>
@@ -758,7 +753,7 @@ NEXT PAGE CTA BUTTON
             <span class="tag">Signal Processing</span>
             <span class="tag">Research</span>
           </div>
-            <a href="🫀 Electrocardiogram.html" class="project-button">View Project →</a>
+          <a href="🫀 Electrocardiogram.html" class="project-button">View Project →</a>
         </div>
       </div>
     </div>
@@ -767,6 +762,7 @@ NEXT PAGE CTA BUTTON
     </div>
   </section>
 
+  <!-- SOFTWARE & DATA SECTION -->
   <section class="section" id="software-data">
     <h2 class="section-title">💻 Software & Data</h2>
     <p class="section-subtitle">
@@ -775,9 +771,10 @@ NEXT PAGE CTA BUTTON
       signal processing, and computational tools.
     </p>
     <div class="project-grid">
-
       <div class="project-small">
-        <img src="breadboardekg.webp" alt=" Electrocardiogram">
+        <div class="project-small-img-container">
+          <img src="breadboardekg.webp" alt="Electrocardiogram">
+        </div>
         <div class="project-info">
           <h3>🫀 Electrocardiogram</h3>
           <p>Applied signal processing techniques to interpret physiological and motion signals, improving data quality and extracting meaningful trends.</p>
@@ -792,7 +789,9 @@ NEXT PAGE CTA BUTTON
       </div>
 
       <div class="project-small">
-        <img src="EMGbreadboard.webp" alt="Force Sensor Analysis">
+        <div class="project-small-img-container">
+          <img src="EMGbreadboard.webp" alt="Force Sensor Analysis">
+        </div>
         <div class="project-info">
           <h3>💪 Electromyography</h3>
           <p>Analyzed force sensor data collected across different terrains to classify walking surfaces and evaluate system performance.</p>
@@ -811,15 +810,18 @@ NEXT PAGE CTA BUTTON
     </div>
   </section>
 
+  <!-- DESIGN & MANUFACTURING SECTION -->
   <section class="section" id="design-manufacturing">
     <h2 class="section-title">⚙️ Design & Manufacturing</h2>
     <p class="section-subtitle">
       From CAD modeling to manufacturing, these projects
       highlight the engineering process of turning ideas into functional devices.
     </p>
-    <div class="project-grid">
+    <div class="project-grid" style="margin-bottom: 40px;">
       <div class="project-small">
-        <img src="recyclingcenter.webp" alt="Sustainable Recycling Center">
+        <div class="project-small-img-container">
+          <img src="recyclingcenter.webp" alt="Sustainable Recycling Center">
+        </div>
         <div class="project-info">
           <h3>♻️ Sustainable Recycling Center</h3>
           <p>Designed a sustainable recycling center for a Chicago condominium, developing an accessible solution that improved waste management while earning Best Design Team recognition.</p>
@@ -834,7 +836,9 @@ NEXT PAGE CTA BUTTON
       </div>
 
       <div class="project-small">
-        <img src="inspirelabs.webp" alt="Engineering Outreach">
+        <div class="project-small-img-container">
+          <img src="inspirelabs.webp" alt="Engineering Outreach">
+        </div>
         <div class="project-info">
           <h3>🧪 Inspire Labs</h3>
           <p>Designed hands-on engineering activities and educational demonstrations to introduce high school students to engineering through project-based learning.</p>
@@ -848,9 +852,10 @@ NEXT PAGE CTA BUTTON
         </div>
       </div>
       
-    <div class="project-grid">
       <div class="project-small">
-        <img src="cad.webp" alt="CAD Design">
+        <div class="project-small-img-container">
+          <img src="cad.webp" alt="CAD Design">
+        </div>
         <div class="project-info">
           <h3>📐 CAD Design Portfolio</h3>
           <p>Designed mechanical components and biomedical devices using SolidWorks, Siemens NX, and COMSOL, balancing functionality, manufacturability, and performance.</p>
@@ -869,6 +874,7 @@ NEXT PAGE CTA BUTTON
     </div>
   </section>
 
+  <!-- ADDITIONAL ENGINEERING EXPERIENCE -->
   <section class="section">
     <h2 class="section-title">📁 Additional Engineering Experience</h2>
     <p class="section-subtitle">
@@ -878,7 +884,9 @@ NEXT PAGE CTA BUTTON
     </p>
     <div class="project-grid">
       <div class="project-small">
-        <img src="recyclingcenter.webp" alt="Sustainable Recycling Center">
+        <div class="project-small-img-container">
+          <img src="recyclingcenter.webp" alt="Sustainable Recycling Center">
+        </div>
         <div class="project-info">
           <h3>♻️ Sustainable Recycling Center</h3>
           <p>Designed a sustainable recycling center for a Chicago condominium, developing an accessible solution that improved waste management while earning Best Design Team recognition.</p>
@@ -893,7 +901,9 @@ NEXT PAGE CTA BUTTON
       </div>
 
       <div class="project-small">
-        <img src="inspirelabs.webp" alt="Engineering Outreach">
+        <div class="project-small-img-container">
+          <img src="inspirelabs.webp" alt="Engineering Outreach">
+        </div>
         <div class="project-info">
           <h3>🧪 Inspire Labs</h3>
           <p>Designed hands-on engineering activities and educational demonstrations to introduce high school students to engineering through project-based learning.</p>
@@ -908,7 +918,9 @@ NEXT PAGE CTA BUTTON
       </div>
 
       <div class="project-small">
-        <img src="IMG_3705 Small.jpeg" alt="Wearable Gait Monitoring">
+        <div class="project-small-img-container">
+          <img src="IMG_3705 Small.jpeg" alt="Wearable Gait Monitoring">
+        </div>
         <div class="project-info">
           <h3>🚶 Wearable Gait Monitoring</h3>
           <p>Developed wearable sensing systems integrating IMUs and force sensors to analyze gait, classify movement, and support biomechanics research.</p>
@@ -918,12 +930,13 @@ NEXT PAGE CTA BUTTON
             <span class="tag">Sensors</span>
             <span class="tag">Biomechanics</span>
           </div>
-            <a href="🦶 Haptic Diabetic Foot Monitoring.html" class="project-button">View Project →</a>
+          <a href="🦶 Haptic Diabetic Foot Monitoring.html" class="project-button">View Project →</a>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- ENGINEERING PROCESS -->
   <section class="section">
     <h2 class="section-title">⚙️ My Engineering Process</h2>
     <p class="section-subtitle">
@@ -969,7 +982,7 @@ NEXT PAGE CTA BUTTON
     </div>
   </section>
 
-
+  <!-- CURRENTLY BUILDING -->
   <section class="section" style="margin-bottom: 60px;">
     <h2 class="section-title">🚀 Currently Building</h2>
     <p class="section-subtitle">
