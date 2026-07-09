@@ -15,7 +15,7 @@
       --text: #1f2937;
       --border: #c1d3fe;
       --card-hover: #ccdbfd;
-      --shadow: 0 12px 30px rgba(0, 0, 0, .08);
+      --shadow: 0 12px 30px rgba(0, 0, 0, .06);
     }
     
     * {
@@ -29,10 +29,10 @@
     }
     
     body {
-      font-family: Inter, sans-serif;
+      font-family: 'Inter', sans-serif;
       background: var(--bg);
       color: var(--text);
-      line-height: 1.7;
+      line-height: 1.6;
       overflow-x: hidden;
     }
     
@@ -87,12 +87,13 @@
     HERO
     =========================== */
     .hero {
-      min-height: 95vh;
+      min-height: 80vh;
       display: grid;
       grid-template-columns: 1.2fr .8fr;
       align-items: center;
       padding: 140px 10% 60px;
       position: relative;
+      gap: 50px;
     }
     
     .hero::before {
@@ -103,8 +104,8 @@
       background: var(--accent);
       filter: blur(150px);
       opacity: .30;
-      top: -150px;
       left: -150px;
+      top: -150px;
     }
     
     .hero-text {
@@ -113,9 +114,9 @@
     }
     
     .hero h1 {
-      font-size: 54px;
-      margin-bottom: 20px;
-      line-height: 1.1;
+      font-size: 48px;
+      margin-bottom: 15px;
+      line-height: 1.15;
       font-weight: 800;
     }
     
@@ -123,22 +124,23 @@
       font-weight: 500;
       opacity: .75;
       margin-bottom: 25px;
-      font-size: 22px;
+      font-size: 20px;
+      color: #4b5563;
     }
     
     .hero p {
-      font-size: 18px;
-      line-height: 1.8;
+      font-size: 17px;
+      line-height: 1.7;
       max-width: 620px;
       color: #374151;
     }
     
     .button {
       display: inline-block;
-      margin-top: 30px;
-      padding: 15px 28px;
+      margin-top: 20px;
+      padding: 14px 26px;
       background: var(--accent);
-      border-radius: 14px;
+      border-radius: 12px;
       font-weight: 700;
       color: var(--text);
       text-decoration: none;
@@ -147,783 +149,478 @@
     }
     
     .button:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 15px 30px rgba(171, 196, 255, 0.4);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 25px rgba(171, 196, 255, 0.5);
     }
     
     .hero-image img {
       width: 100%;
-      max-width: 420px;
-      border-radius: 24px;
-      box-shadow: 0 25px 60px rgba(0, 0, 0, .15);
+      max-width: 380px;
+      border-radius: 20px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, .12);
+      cursor: zoom-in;
     }
     
     .section {
-      padding: 90px 10%;
+      padding: 80px 10%;
     }
     
     .section-title {
-      font-size: 42px;
+      font-size: 36px;
       text-align: center;
-      margin-bottom: 50px;
+      margin-bottom: 10px;
       font-weight: 800;
     }
     
     .section-subtitle {
-      max-width: 850px;
-      margin: 0 auto 60px;
+      max-width: 750px;
+      margin: 0 auto 50px;
       text-align: center;
-      line-height: 1.8;
-      color: #4b5563;
-      font-size: 17px;
-    }
-
-    /* ===========================
-    PROJECT SNAPSHOT
-    =========================== */
-    .snapshot {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 25px;
-    }
-    
-    .stat {
-      background: var(--card);
-      padding: 30px;
-      border-radius: 18px;
-      text-align: center;
-      transition: .3s;
-      box-shadow: var(--shadow);
-    }
-    
-    .stat:hover {
-      transform: translateY(-10px);
-      background: var(--card-hover);
-    }
-    
-    .stat h3 {
-      font-size: 18px;
-      margin-bottom: 12px;
-      font-weight: 700;
-    }
-    
-    .stat p {
-      font-size: 16px;
       line-height: 1.6;
-      color: #4b5563;
+      color: #6b7280;
+      font-size: 16px;
     }
 
     /* ==========================================
-    PROBLEM SECTION
+    BACKGROUND & IMPORTANCE ROW SPLITS
     ========================================== */
-    .problem-grid {
+    .narrative-row {
       display: grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap: 40px;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 50px;
       align-items: center;
+      margin-bottom: 60px;
     }
-    
-    .problem-card {
-      background: var(--card);
-      padding: 35px;
-      border-radius: 22px;
-      box-shadow: var(--shadow);
-      transition: .3s;
+
+    .narrative-row.reverse {
+      grid-template-columns: 0.9fr 1.1fr;
     }
-    
-    .problem-card:hover {
-      transform: translateY(-8px);
-      background: var(--card-hover);
+
+    .narrative-text h3 {
+      font-size: 24px;
+      margin-bottom: 15px;
+      font-weight: 800;
+      color: var(--text);
     }
-    
-    .problem-card img {
+
+    .narrative-text p {
+      font-size: 16px;
+      color: #4b5563;
+      margin-bottom: 15px;
+      line-height: 1.7;
+    }
+
+    .narrative-text ol {
+      padding-left: 20px;
+      font-size: 15px;
+      color: #4b5563;
+      margin-bottom: 15px;
+    }
+
+    .narrative-text li {
+      margin-bottom: 10px;
+    }
+
+    .narrative-image {
       width: 100%;
-      border-radius: 18px;
+      aspect-ratio: 4/3;
+      background: var(--card);
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+    }
+
+    .narrative-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      cursor: zoom-in;
+      display: block;
+      transition: transform 0.3s;
+    }
+
+    .narrative-image img:hover {
+      transform: scale(1.02);
+    }
+
+    /* ==========================================
+    COMPACT PROCESS & REQUIREMENT CUBES
+    ========================================== */
+    .cubes-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      margin-bottom: 40px;
+    }
+
+    .cube-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 35px;
       box-shadow: var(--shadow);
     }
-    
-    .problem-card h3 {
+
+    .cube-card h3 {
+      font-size: 22px;
+      font-weight: 800;
       margin-bottom: 20px;
-      font-size: 28px;
+      border-bottom: 2px solid var(--bg);
+      padding-bottom: 10px;
+    }
+
+    .compact-steps {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+    }
+
+    .step-item {
+      background: var(--bg);
+      padding: 12px 15px;
+      border-radius: 12px;
+      font-size: 13px;
+    }
+
+    .step-item strong {
+      display: block;
+      font-size: 14px;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .requirements-inner {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .req-category h4 {
+      font-size: 14px;
+      text-transform: uppercase;
+      color: #6C8EF5;
+      margin-bottom: 6px;
+      letter-spacing: 0.5px;
+    }
+
+    .req-category ul {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      list-style: none;
+    }
+
+    .req-category li {
+      background: var(--bg);
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    /* ==========================================
+    THREE ARCHITECTURES (MEDIA FOCUS)
+    ========================================== */
+    .arch-container {
+      display: flex;
+      flex-direction: column;
+      gap: 60px;
+    }
+
+    .arch-card {
+      background: white;
+      border-radius: 28px;
+      border: 1px solid var(--border);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .arch-header {
+      background: linear-gradient(135deg, var(--card), var(--accent));
+      padding: 30px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .arch-header h3 {
+      font-size: 26px;
       font-weight: 800;
     }
-    
-    .problem-card p {
+
+    .arch-badge {
+      background: white;
+      padding: 6px 16px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+      color: #5171e6;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+    }
+
+    .arch-body {
+      padding: 40px;
+    }
+
+    /* 2x2 Clean Sub-Grid for high-impact media spacing */
+    .arch-media-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+
+    .media-card {
+      background: #f8fafc;
+      border: 1px solid rgba(0,0,0,0.04);
+      border-radius: 20px;
+      padding: 25px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .media-card h4 {
+      font-size: 16px;
+      font-weight: 800;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .media-card p {
+      font-size: 14px;
+      color: #4b5563;
       margin-bottom: 20px;
-      line-height: 1.9;
-      color: #4b5563;
+      line-height: 1.6;
     }
 
-    /* ==========================================
-    WHY IT MATTERS & INSIGHTS & CORE GRIDS
-    ========================================== */
-    .importance, .insight-grid, .progress-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 25px;
-    }
-    
-    .importance-card, .insight-card, .progress-card {
-      background: var(--card);
-      padding: 30px;
-      border-radius: 18px;
-      transition: .3s;
-      box-shadow: var(--shadow);
-    }
-    
-    .importance-card { text-align: center; }
-    
-    .importance-card:hover, .insight-card:hover, .progress-card:hover {
-      transform: translateY(-10px);
-      background: var(--card-hover);
-    }
-    
-    .importance-card h3, .insight-card h3, .progress-card h3 {
-      margin-bottom: 15px;
-      font-weight: 700;
-    }
-    
-    .importance-card p, .insight-card p {
-      color: #4b5563;
-      font-size: 15px;
-    }
-
-    /* ==========================================
-    ROLE & REQUIREMENTS & ANALYSIS
-    ========================================== */
-    .role-grid, .requirements-grid, .analysis-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 25px;
-    }
-    
-    .role-card, .requirement-card, .analysis-card {
-      background: var(--card);
-      padding: 28px;
-      border-radius: 18px;
-      transition: .3s;
-      box-shadow: var(--shadow);
-    }
-    
-    .role-card:hover, .requirement-card:hover, .analysis-card:hover {
-      transform: translateY(-8px);
-      background: var(--card-hover);
-    }
-    
-    .role-card h3, .requirement-card h3, .analysis-card h3 {
-      margin-bottom: 15px;
-      font-weight: 700;
-    }
-    
-    .role-card p, .analysis-card p {
-      line-height: 1.8;
-      color: #4b5563;
-      font-size: 15px;
-    }
-    
-    .requirement-card ul {
-      padding-left: 20px;
-      line-height: 2;
-      color: #4b5563;
-    }
-    
-    .analysis-card img {
+    /* Standardized Video/Image Media Player Framework */
+    .media-frame {
       width: 100%;
-      border-radius: 15px;
-      margin-bottom: 20px;
+      aspect-ratio: 16/10;
+      background: #e2e8f0;
+      border-radius: 12px;
+      overflow: hidden;
+      position: relative;
+      margin-top: auto; /* Aligns all content cleanly bottomward */
+      box-shadow: inset 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .media-frame img, .media-frame video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      cursor: zoom-in;
+    }
+
+    .video-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: #64748b;
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    .video-icon {
+      font-size: 32px;
+      margin-bottom: 8px;
+      animation: pulsate 2.5s infinite ease-in-out;
+    }
+
+    @keyframes pulsate {
+      0%, 100% { opacity: 0.6; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.08); }
+    }
+
+    .mechanism-icon { color: #3b82f6; }
+    .action-icon { color: #10b981; }
+    .challenge-icon { color: #ef4444; }
+    .redesign-icon { color: #8b5cf6; }
+
+    /* ==========================================
+    OVERALL CHALLENGES & FUTURE WORK
+    ========================================== */
+    .closing-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 40px;
+      margin-top: 40px;
+    }
+
+    .closing-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 35px;
       box-shadow: var(--shadow);
     }
 
+    .closing-card h3 {
+      font-size: 22px;
+      font-weight: 800;
+      margin-bottom: 15px;
+    }
+
+    .closing-card p {
+      font-size: 15px;
+      color: #4b5563;
+      margin-bottom: 20px;
+    }
+
+    .closing-card ul {
+      list-style: none;
+    }
+
+    .closing-card li {
+      position: relative;
+      padding-left: 20px;
+      margin-bottom: 12px;
+      font-size: 14px;
+      color: #4b5563;
+    }
+
+    .closing-card li::before {
+      content: "▪";
+      position: absolute;
+      left: 4px;
+      color: #6C8EF5;
+    }
+
     /* ==========================================
-    ENGINEERING PROCESS
+    PROJECT ASSETS REGISTRY
     ========================================== */
-    .process {
+    .assets-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 25px;
     }
-    
-    .process-card {
+
+    .asset-card {
       background: var(--card);
+      border-radius: 20px;
       padding: 30px;
-      border-radius: 20px;
-      transition: .35s;
-      position: relative;
-      box-shadow: var(--shadow);
-    }
-    
-    .process-card:hover {
-      transform: translateY(-10px);
-      background: var(--card-hover);
-    }
-    
-    .number {
-      width: 55px;
-      height: 55px;
-      border-radius: 50%;
-      background: var(--accent);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      margin-bottom: 18px;
-      font-size: 22px;
-    }
-    
-    .process-card h3 {
-      margin-bottom: 15px;
-      font-weight: 700;
-    }
-    
-    .process-card p {
-      line-height: 1.8;
-      color: #4b5563;
-    }
-
-    /* ==========================================
-    DESIGN EVOLUTION
-    ========================================== */
-    .design-timeline {
-      max-width: 1000px;
-      margin: auto;
-    }
-    
-    .design-card {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
-      align-items: center;
-      background: var(--card);
-      padding: 35px;
-      border-radius: 22px;
-      margin-bottom: 35px;
-      box-shadow: var(--shadow);
-      transition: .35s;
-    }
-    
-    .design-card:hover {
-      transform: translateY(-8px);
-      background: var(--card-hover);
-    }
-    
-    .design-card img {
-      width: 100%;
-      border-radius: 18px;
-      box-shadow: 0 10px 25px rgba(0,0,0,.10);
-    }
-    
-    .design-content h3 {
-      font-size: 30px;
-      margin-bottom: 8px;
-      font-weight: 800;
-    }
-    
-    .design-content h4 {
-      font-weight: 600;
-      color: #4b5563;
-      margin-bottom: 18px;
-    }
-    
-    .design-content p {
-      line-height: 1.9;
-      margin-bottom: 25px;
-      color: #4b5563;
-    }
-    
-    .design-box {
-      padding: 18px;
-      border-radius: 14px;
-    }
-    
-    .problem { background: #ffe7e7; }
-    .improve { background: #fff7d6; }
-    .success { background: #e5f7e8; }
-    
-    .design-box ul {
-      margin-top: 10px;
-      padding-left: 20px;
-      line-height: 1.8;
-    }
-    
-    .arrow {
-      font-size: 48px;
-      text-align: center;
-      margin: 15px 0 35px;
-      font-weight: 700;
-      opacity: .5;
-    }
-
-    /* ==========================================
-    TECHNICAL SPECS
-    ========================================== */
-    .specs {
-      max-width: 900px;
-      margin: auto;
-      background: var(--card);
-      border-radius: 20px;
-      padding: 20px 35px;
-      box-shadow: var(--shadow);
-    }
-    
-    .spec-row {
-      display: flex;
-      justify-content: space-between;
-      padding: 18px 0;
-      border-bottom: 1px solid rgba(0,0,0,.08);
-    }
-    
-    .spec-row:last-child {
-      border-bottom: none;
-    }
-    
-    .spec-name {
-      font-weight: 700;
-    }
-    
-    .spec-value {
-      color: #4b5563;
-    }
-
-    /* ==========================================
-    VALIDATION & WORKFLOW
-    ========================================== */
-    .validation-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
-    }
-    
-    .validation-card {
-      background: var(--card);
-      border-radius: 20px;
-      padding: 25px;
-      transition: .35s;
-      box-shadow: var(--shadow);
-    }
-    
-    .validation-card:hover {
-      transform: translateY(-10px);
-      background: var(--card-hover);
-    }
-    
-    .validation-card img {
-      width: 100%;
-      border-radius: 15px;
-      margin-bottom: 20px;
-      box-shadow: var(--shadow);
-    }
-    
-    .validation-card h3 {
-      margin-bottom: 15px;
-      font-weight: 700;
-    }
-    
-    .validation-card p {
-      line-height: 1.8;
-      margin-bottom: 20px;
-      color: #4b5563;
-    }
-    
-    .status {
-      display: inline-block;
-      padding: 8px 18px;
-      border-radius: 999px;
-      font-weight: 600;
-      font-size: 14px;
-    }
-    
-    .planned { background: #fff5cc; }
-    
-    .workflow {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 20px;
-    }
-    
-    .workflow-step {
-      background: var(--card);
-      padding: 25px;
-      border-radius: 18px;
-      width: 220px;
       text-align: center;
       transition: .3s;
       box-shadow: var(--shadow);
-    }
-    
-    .workflow-step:hover {
-      transform: translateY(-8px);
-      background: var(--card-hover);
-    }
-    
-    .workflow-number {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      background: var(--accent);
+      border: 1px solid transparent;
       display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      margin: 0 auto 18px;
+      flex-direction: column;
+      justify-content: space-between;
     }
-    
-    .workflow-arrow {
+
+    .asset-card:hover {
+      transform: translateY(-5px);
+      background: var(--card-hover);
+      border-color: var(--border);
+    }
+
+    .asset-icon {
       font-size: 40px;
-      opacity: .4;
-      font-weight: 700;
-    }
-
-    /* ==========================================
-    PROGRESS BAR ELEMENTS
-    ========================================== */
-    .progress-bar {
-      height: 12px;
-      background: white;
-      border-radius: 999px;
-      overflow: hidden;
       margin-bottom: 15px;
     }
-    
-    .progress-fill {
-      height: 100%;
-      background: var(--accent);
-      border-radius: 999px;
+
+    .asset-card h3 {
+      font-size: 18px;
+      margin-bottom: 10px;
+      font-weight: 700;
     }
 
-    /* ==========================================
-    CHALLENGES
-    ========================================== */
-    .challenge-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
-    }
-    
-    .challenge-card {
-      background: var(--card);
-      padding: 35px;
-      border-radius: 22px;
-      transition: .35s;
-      box-shadow: var(--shadow);
-    }
-    
-    .challenge-card:hover {
-      transform: translateY(-10px);
-      background: var(--card-hover);
-    }
-    
-    .challenge-icon {
-      font-size: 42px;
+    .asset-card p {
+      font-size: 14px;
+      color: #4b5563;
       margin-bottom: 20px;
     }
-    
-    .challenge-card h3 {
-      margin-bottom: 12px;
-      font-weight: 700;
-    }
-    
-    .challenge-card h4 {
-      margin-top: 25px;
-      margin-bottom: 12px;
-      font-weight: 700;
-    }
-    
-    .challenge-card p {
-      line-height: 1.8;
-      color: #4b5563;
-    }
 
-    /* ==========================================
-    FUTURE WORK
-    ========================================== */
-    .future-timeline {
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      flex-wrap: wrap;
-      gap: 20px;
-      margin-top: 40px;
-    }
-    
-    .future-step {
-      background: var(--card);
-      padding: 30px;
-      border-radius: 20px;
-      width: 260px;
-      text-align: center;
-      transition: .35s;
-      box-shadow: var(--shadow);
-    }
-    
-    .future-step:hover {
-      transform: translateY(-8px);
-      background: var(--card-hover);
-    }
-    
-    .future-circle {
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      background: var(--accent);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 22px;
-      font-weight: 700;
-      margin: 0 auto 20px;
-    }
-    
-    .future-line {
-      width: 60px;
-      height: 4px;
-      background: var(--accent);
-      margin-top: 70px;
-      opacity: .5;
-    }
-
-    /* ==========================================
-    PROJECT GALLERY (BENTO GRID STYLE)
-    ========================================== */
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 25px;
-    }
-    
-    .gallery-item {
-      background: var(--card);
-      border-radius: 20px;
-      overflow: hidden;
-      transition: .35s;
-      box-shadow: var(--shadow);
-    }
-    
-    .gallery-item:hover {
-      transform: translateY(-10px);
-      background: var(--card-hover);
-    }
-    
-    .gallery-item.large {
-      grid-column: span 3;
-      display: grid;
-      grid-template-columns: 1.2fr .8fr;
-      align-items: center;
-    }
-    
-    .gallery-item img {
-      width: 100%;
-      height: 100%;
-      min-height: 250px;
-      object-fit: cover;
-      display: block;
-    }
-    
-    .gallery-caption {
-      padding: 25px;
-    }
-    
-    .gallery-caption h3 {
-      margin-bottom: 12px;
-      font-size: 24px;
-      font-weight: 800;
-    }
-    
-    .gallery-caption p {
-      line-height: 1.8;
-      color: #4b5563;
-    }
-
-    /* ==========================================
-    ENGINEERING SKILLS
-    ========================================== */
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
-    }
-    
-    .skill-card {
-      background: var(--card);
-      padding: 30px;
-      border-radius: 20px;
-      transition: .35s;
-      box-shadow: var(--shadow);
-    }
-    
-    .skill-card:hover {
-      transform: translateY(-10px);
-      background: var(--card-hover);
-    }
-    
-    .skill-icon {
-      font-size: 42px;
-      margin-bottom: 20px;
-    }
-    
-    .skill-card h3 {
-      margin-bottom: 15px;
-      font-weight: 700;
-    }
-    
-    .skill-card p {
-      line-height: 1.8;
-      margin-bottom: 20px;
-      color: #4b5563;
-    }
-    
-    .skill-level {
-      height: 10px;
+    .asset-link {
+      display: inline-block;
+      padding: 10px 20px;
       background: white;
-      border-radius: 999px;
-      overflow: hidden;
-    }
-    
-    .skill-fill {
-      height: 100%;
-      background: linear-gradient(90deg, #6C8EF5, #abc4ff);
-      border-radius: 999px;
-    }
-
-    /* ==========================================
-    DOCUMENTS
-    ========================================== */
-    .documents-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 25px;
-    }
-    
-    .document-card {
-      background: var(--card);
-      padding: 30px;
-      border-radius: 20px;
+      border-radius: 10px;
       text-decoration: none;
       color: var(--text);
-      transition: .35s;
-      box-shadow: var(--shadow);
-    }
-    
-    .document-card:hover {
-      transform: translateY(-10px);
-      background: var(--card-hover);
-    }
-    
-    .document-icon {
-      font-size: 42px;
-      margin-bottom: 20px;
-    }
-    
-    .document-card h3 {
-      margin-bottom: 15px;
-      font-weight: 700;
-    }
-    
-    .document-card p {
-      line-height: 1.8;
-      margin-bottom: 20px;
-      color: #4b5563;
-    }
-    
-    .document-card span {
-      font-weight: 700;
-      color: #6C8EF5;
+      font-weight: 600;
+      font-size: 14px;
+      transition: .2s;
+      border: 1px solid rgba(0,0,0,0.05);
     }
 
-    /* ==========================================
-    MORE PROJECTS CROSS-LINKER
-    ========================================== */
-    .more-projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 25px;
+    .asset-link:hover {
+      background: var(--text);
+      color: white;
     }
-    
-    .more-project-card {
-      display: flex;
-      flex-direction: column;
-      background: var(--card);
-      border-radius: 20px;
-      overflow: hidden;
-      text-decoration: none;
-      color: var(--text);
-      transition: .35s;
-      box-shadow: var(--shadow);
-    }
-    
-    .more-project-card:hover {
-      transform: translateY(-10px);
-      background: var(--card-hover);
-    }
-    
-    .more-project-card img {
+
+    /* =========================
+    LIGHTBOX MODAL
+    ========================= */
+    .lightbox-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
       width: 100%;
-      height: 220px;
-      object-fit: cover;
-    }
-    
-    .more-project-info {
-      padding: 25px;
-      flex-grow: 1;
-      display: flex;
-      flex-direction: column;
-    }
-    
-    .more-project-info h3 {
-      margin-bottom: 15px;
-      font-weight: 700;
-    }
-    
-    .more-project-info p {
-      line-height: 1.8;
-      margin-bottom: 20px;
-      color: #4b5563;
-      flex-grow: 1;
-    }
-    
-    .more-project-info span {
-      font-weight: 700;
-      color: #6C8EF5;
-      margin-top: auto;
-    }
-    
-    .more-project-card.featured {
+      height: 100%;
+      background: rgba(15, 23, 42, 0.92);
+      backdrop-filter: blur(8px);
+      z-index: 2000;
       display: flex;
       justify-content: center;
       align-items: center;
-      text-align: center;
-      background: linear-gradient(135deg, #abc4ff, #d7e3fc);
-    }
-
-    /* SCROLL REVEAL UTILITIES */
-    .hidden {
       opacity: 0;
-      transform: translateY(40px);
-      transition: all .7s ease-out;
-    }
-    
-    .show {
-      opacity: 1;
-      transform: translateY(0);
+      pointer-events: none;
+      transition: opacity 0.4s ease;
     }
 
-    @media(max-width:900px){
-      .hero { grid-template-columns: 1fr; text-align: center; padding-top: 100px; }
-      .hero-image { display: flex; justify-content: center; margin-top: 40px; }
-      .problem-grid { grid-template-columns: 1fr; }
-      .design-card { grid-template-columns: 1fr; }
-      .future-line { display: none; }
-      .gallery-grid { grid-template-columns: 1fr; }
-      .gallery-item.large { grid-template-columns: 1fr; grid-column: span 1; }
+    .lightbox-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .lightbox-img {
+      max-width: 90%;
+      max-height: 85vh;
+      border-radius: 12px;
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+      transform: scale(0.95);
+      transition: transform 0.4s ease;
+      cursor: zoom-out;
+    }
+
+    .lightbox-overlay.active .lightbox-img {
+      transform: scale(1);
+    }
+
+    /* RESPONSIVE LAYOUT BREAKPOINTS */
+    @media(max-width:950px){
+      .hero { grid-template-columns: 1fr; text-align: center; padding-top: 100px; min-height: auto; }
+      .hero-image { display: flex; justify-content: center; margin-top: 30px; }
+      .narrative-row, .narrative-row.reverse { grid-template-columns: 1fr; gap: 30px; }
+      .narrative-row.reverse .narrative-image { order: -1; }
+      .cubes-grid { grid-template-columns: 1fr; gap: 20px; }
+      .arch-header { flex-direction: column; align-items: flex-start; gap: 10px; }
+      .arch-media-grid { grid-template-columns: 1fr; gap: 30px; }
+      .closing-grid { grid-template-columns: 1fr; }
+      .section { padding: 50px 6%; }
     }
   </style>
 </head>
 <body>
 
+  <!-- LIGHTBOX MODAL OVERLAY -->
+  <div class="lightbox-overlay" id="lightbox">
+    <img src="" alt="Enlarged visualization" class="lightbox-img" id="lightboxImg">
+  </div>
+
   <nav>
     <a href="chelsea.html" class="logo">Chelsea Ogbonna</a>
     <div class="nav-links">
+      <a href="index.html">Home</a>
       <a href="about.html">About</a>
       <a href="projects.html">Projects</a>
       <a href="research.html">Research</a>
@@ -932,667 +629,392 @@
     </div>
   </nav>
 
+  <!-- HERO SECTION -->
   <section class="hero">
     <div class="hero-text">
       <h1>🧬 Syncytial Knot Isolation Device</h1>
-      <h2>Microfluidic Device Design for Placental Research</h2>
+      <h2>Microfluidic Sorting Solutions for Placental Pathology</h2>
       <p>
-        Designed and developed a microfluidic device to isolate syncytial knots from placental explant tissue. 
-        
-        This project combines biomedical engineering, CAD, COMSOL simulations, microfabrication, and experimental validation to improve research into maternal and fetal health.
+        Developing microfluidic diagnostics to isolate syncytial knots ($50\text{–}150\text{ }\mu\text{m}$) from placenta tissue architectures. This structural research aids the clinical identification of early preeclampsia and fetal growth restriction constraints.
       </p>
-      <a href="#problem" class="button">Explore the Project ↓</a>
+      <a href="#architectures" class="button">Explore Design Approaches ↓</a>
     </div>
     <div class="hero-image">
-      <img src="syncytialhero.webp" alt="Syncytial Knot Device">
+      <img src="syncytialhero.webp" alt="Syncytial Knot Isolation Concept">
     </div>
   </section>
 
-  <section class="section">
-    <h2 class="section-title">Project Snapshot</h2>
-    <div class="snapshot">
-      <div class="stat">
-        <h3>👩‍🔬 Role</h3>
-        <p>Team Lead<br>Device Designer</p>
+  <!-- BACKGROUND & IMPORTANCE ROW SPLITS -->
+  <section class="section" style="background: rgba(255,255,255,0.4); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+    
+    <!-- Background row -->
+    <div class="narrative-row">
+      <div class="narrative-text">
+        <h3>🩺 Clinical Background</h3>
+        <p>
+          Syncytial knots are multinucleated trophoblast structures naturally shed from the placenta throughout pregnancy. Their concentration and morphology are direct biomarkers associated with numerous high-risk pregnancy complications, including preeclampsia, fetal growth restriction (FGR), hypoxia, and placental dysfunction. 
+        </p>
+        <p>
+          Historically, extracting these knots from biological tissue has been incredibly difficult. Conventional centrifugation methods introduce physical stress that ruptures cellular envelopes, while membrane filters clog quickly due to dense background debris.
+        </p>
       </div>
-      <div class="stat">
-        <h3>🛠 Tools</h3>
-        <p>SolidWorks<br>COMSOL<br>Python</p>
-      </div>
-      <div class="stat">
-        <h3>📅 Duration</h3>
-        <p>September 2025 – Present</p>
-      </div>
-      <div class="stat">
-        <h3>🎯 Focus</h3>
-        <p>Microfluidics<br>Biomedical Devices</p>
+      <div class="narrative-image">
+        <img src="placentaoverview.webp" alt="Placenta tissue structure and syncytial knots">
       </div>
     </div>
-  </section>
 
-  <section class="section" id="problem">
-    <h2 class="section-title">The Problem</h2>
-    <div class="problem-grid">
-      <div class="problem-card">
-        <h3>🩺 Background</h3>       
+    <!-- Importance row -->
+    <div class="narrative-row reverse">
+      <div class="narrative-image">
+        <img src="clinical_impact.webp" alt="Clinical pathology representation of syncytial knots" onerror="this.src='syncytialhero.webp'">
+      </div>
+      <div class="narrative-text">
+        <h3>🔬 Importance of This Project</h3>
         <p>
-          Syncytial knots are multinucleated trophoblast structures naturally shed from the placenta throughout pregnancy. Their concentration and morphology have been associated with numerous pregnancy complications including preeclampsia, fetal growth restriction, hypoxia, and placental dysfunction.        </p>
-        <p>
-          <p> Unfortunately, current isolation techniques suffer from several major limitations: 
-          </p>
+          Developing a reliable, high-yield isolation platform creates groundbreaking diagnostic and therapeutic pathways:
+        </p>
         <ol>
-          <li>Manually picking syncytial knots is labor intensive and highly operator dependent.</li>
-          <li>Centrifugation methods introduce mechanical stress that can rupture syncytial knots and do not effectively separate them from other contaminants present in the sample.</li>
-          <li>Conventional membrane filtration frequently clogs due to placental debris and often traps desired particles alongside contaminants.</li>
+          <li><strong>Early Detection:</strong> Spotting changes in syncytial knot count allows clinicians to identify placental failure long before symptoms appear.</li>
+          <li><strong>Prenatal Genetics:</strong> Isolating intact knots provides high-quality fetal DNA and intact nuclei, drastically improving non-invasive prenatal testing (NIPT) resolution.</li>
+          <li><strong>Targeted Drug Delivery:</strong> Since syncytial knots circulate the maternal body without triggers, understanding their surface mechanics opens up safe, rejection-free drug carriage research.</li>
         </ol>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- PROCESS & REQUIREMENTS CUBES SIDE-BY-SIDE -->
+  <section class="section">
+    <div class="cubes-grid">
+      
+      <!-- Cube 1: Process -->
+      <div class="cube-card">
+        <h3>⚙️ Design Process</h3>
+        <div class="compact-steps">
+          <div class="step-item"><strong>1. Research</strong> placental cell dynamics and morphology.</div>
+          <div class="step-item"><strong>2. Define</strong> size cutoff and shear limits.</div>
+          <div class="step-item"><strong>3. Model</strong> microfluidic channel shapes in CAD.</div>
+          <div class="step-item"><strong>4. Simulate</strong> flow streamlines and velocities.</div>
+          <div class="step-item"><strong>5. Fabricate</strong> photolithography SUEX molds.</div>
+          <div class="step-item"><strong>6. Test</strong> separation using microparticle controls.</div>
+        </div>
+      </div>
+
+      <!-- Cube 2: Requirements -->
+      <div class="cube-card">
+        <h3>🎯 Requirements</h3>
+        <div class="requirements-inner">
+          <div class="req-category">
+            <h4>Biological</h4>
+            <ul>
+              <li>Knot Size: 50–150 µm</li>
+              <li>Low Shear Stress</li>
+              <li>Viability Retention</li>
+            </ul>
+          </div>
+          <div class="req-category">
+            <h4>Engineering</h4>
+            <ul>
+              <li>Max Channel H: 200 µm</li>
+              <li>Pillar Space: 35 µm</li>
+              <li>Zero Pressure Leak</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- THE THREE ARCHITECTURES (MEDIA FOCUS) -->
+  <section class="section" id="architectures">
+    <h2 class="section-title">Design Architectures Explored</h2>
+    <p class="section-subtitle">
+      Our team researched, modeled, and structured three microfluidic separation systems. These cards host high-impact visuals capturing our mechanism layouts, video test sweeps, and redesign iterations.
+    </p>
+
+    <div class="arch-container">
+      
+      <!-- DESIGN 1: DLD -->
+      <div class="arch-card">
+        <div class="arch-header">
+          <h3>1. Deterministic Lateral Displacement (DLD)</h3>
+          <div class="arch-badge">Pillar Array Trajectory</div>
+        </div>
+        <div class="arch-body">
+          <div class="arch-media-grid">
+            
+            <!-- Block A: Overview -->
+            <div class="media-card">
+              <h4><span class="mechanism-icon">⛯</span> Overview & Mechanism</h4>
+              <p>Uses an offset, asymmetric cylinder array grid. Target cells larger than the critical cutoff ($D_c$) hit pillars and displace laterally, while smaller debris passes straight through.</p>
+              <div class="media-frame">
+                <img src="dld_schematic.webp" alt="DLD pillar array vector schematic" onerror="this.src='syncytialhero.webp'">
+              </div>
+            </div>
+
+            <!-- Block B: In-Action -->
+            <div class="media-card">
+              <h4><span class="action-icon">▶</span> Design In Action</h4>
+              <p>High-resolution microscopic feed demonstrating bead trajectories and sorting boundaries inside the main displacement channel under constant flow rate.</p>
+              <div class="media-frame">
+                <video src="dld_action.mp4" controls preload="metadata" poster="dld_action_poster.webp">
+                  <div class="video-placeholder">
+                    <span class="video-icon">🎥</span>
+                    <span>DLD Separation Video Loop Placeholder</span>
+                  </div>
+                </video>
+              </div>
+            </div>
+
+            <!-- Block C: Challenges -->
+            <div class="media-card">
+              <h4><span class="challenge-icon">⚠️</span> Encountered Challenges</h4>
+              <p>Tight gap spacing causes massive accumulation of large, sticky placenta tissue aggregates. High input boundary clogging disrupts fluidic streamlines, rendering sorting arrays inaccurate.</p>
+              <div class="media-frame">
+                <video src="dld_clogging.mp4" controls preload="metadata" poster="dld_clogging_poster.webp">
+                  <div class="video-placeholder">
+                    <span class="video-icon">🎥</span>
+                    <span>Clogging Failure-Mode Video Loop Placeholder</span>
+                  </div>
+                </video>
+              </div>
+            </div>
+
+            <!-- Block D: Redesign -->
+            <div class="media-card">
+              <h4><span class="redesign-icon">⟳</span> Proposed Redesign</h4>
+              <p>V2 layout uses airfoil-shaped pillars and dynamic boundary widening filters to reduce shear forces, minimize stagnant flow pockets, and eliminate debris traps.</p>
+              <div class="media-frame">
+                <img src="dld_redesign_cad.webp" alt="Airfoil pillar CAD concept geometry" onerror="this.src='syncytialhero.webp'">
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- DESIGN 2: CROSSFLOW -->
+      <div class="arch-card">
+        <div class="arch-header">
+          <h3>2. Crossflow Filtration</h3>
+          <div class="arch-badge">Slotted Micro-Barrier</div>
+        </div>
+        <div class="arch-body">
+          <div class="arch-media-grid">
+            
+            <!-- Block A: Overview -->
+            <div class="media-card">
+              <h4><span class="mechanism-icon">⛯</span> Overview & Mechanism</h4>
+              <p>Drives raw fluid parallel to a micropillar barrier. Perpendicular pressure drops draw tiny background debris through slot openings while target knots are swept onward.</p>
+              <div class="media-frame">
+                <img src="crossflow_schematic.webp" alt="Crossflow microfluidic barrier design" onerror="this.src='syncytialhero.webp'">
+              </div>
+            </div>
+
+            <!-- Block B: In-Action -->
+            <div class="media-card">
+              <h4><span class="action-icon">▶</span> Design In Action</h4>
+              <p>Real-time verification showing parallel sweep mechanics and small background particle clearance without dead-end filter blockages.</p>
+              <div class="media-frame">
+                <video src="crossflow_action.mp4" controls preload="metadata" poster="crossflow_action_poster.webp">
+                  <div class="video-placeholder">
+                    <span class="video-icon">🎥</span>
+                    <span>Crossflow Continuous Separation Video Placeholder</span>
+                  </div>
+                </video>
+              </div>
+            </div>
+
+            <!-- Block C: Challenges -->
+            <div class="media-card">
+              <h4><span class="challenge-icon">⚠️</span> Encountered Challenges</h4>
+              <p>Unbalanced transmembrane pressures. Localized drops below thresholds draw target knots sideways into filter slots, trapping or rupturing them.</p>
+              <div class="media-frame">
+                <video src="crossflow_imbalance.mp4" controls preload="metadata" poster="crossflow_imbalance_poster.webp">
+                  <div class="video-placeholder">
+                    <span class="video-icon">🎥</span>
+                    <span>Pressure Differential Back-flow Failure Video Placeholder</span>
+                  </div>
+                </video>
+              </div>
+            </div>
+
+            <!-- Block D: Redesign -->
+            <div class="media-card">
+              <h4><span class="redesign-icon">⟳</span> Proposed Redesign</h4>
+              <p>V2 layout angles the micro-barrier wall and incorporates a variable-height channel to guarantee uniform trans-barrier pressure fields throughout.</p>
+              <div class="media-frame">
+                <img src="crossflow_redesign_cad.webp" alt="Variable channel depth crossflow mold" onerror="this.src='syncytialhero.webp'">
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- DESIGN 3: SPIRAL -->
+      <div class="arch-card">
+        <div class="arch-header">
+          <h3>3. Spiral Inertial Microfluidics</h3>
+          <div class="arch-badge">Inertial Sorting Velocity</div>
+        </div>
+        <div class="arch-body">
+          <div class="arch-media-grid">
+            
+            <!-- Block A: Overview -->
+            <div class="media-card">
+              <h4><span class="mechanism-icon">⛯</span> Overview & Mechanism</h4>
+              <p>Utilizes asymmetrical velocity profiles to establish twin Dean vortex loops. The balance of lift and drag focusses knots into tight streams based on size.</p>
+              <div class="media-frame">
+                <img src="spiral_schematic.webp" alt="Dean vortex forces in spiral channel" onerror="this.src='syncytialhero.webp'">
+              </div>
+            </div>
+
+            <!-- Block B: In-Action -->
+            <div class="media-card">
+              <h4><span class="action-icon">▶</span> Design In Action</h4>
+              <p>Steady-state visualization of distinct particle streams aligning along separate cross-sectional coordinates before split-outlet harvesting.</p>
+              <div class="media-frame">
+                <video src="spiral_action.mp4" controls preload="metadata" poster="spiral_action_poster.webp">
+                  <div class="video-placeholder">
+                    <span class="video-icon">🎥</span>
+                    <span>High-Speed Spiral Inertial Focusing Video Placeholder</span>
+                  </div>
+                </video>
+              </div>
+            </div>
+
+            <!-- Block C: Challenges -->
+            <div class="media-card">
+              <h4><span class="challenge-icon">⚠️</span> Encountered Challenges</h4>
+              <p>Requires high flow velocities. Elevated pressures risk structural deformation of PDMS channels or bond failures, changing flow profiles completely.</p>
+              <div class="media-frame">
+                <video src="spiral_leak.mp4" controls preload="metadata" poster="spiral_leak_poster.webp">
+                  <div class="video-placeholder">
+                    <span class="video-icon">🎥</span>
+                    <span>High-Pressure Delamination Failure Video Placeholder</span>
+                  </div>
+                </video>
+              </div>
+            </div>
+
+            <!-- Block D: Redesign -->
+            <div class="media-card">
+              <h4><span class="redesign-icon">⟳</span> Proposed Redesign</h4>
+              <p>V2 switches to a trapezoidal cross-section mold. This squashes the vortex structures to sharpen lateral separation at lower flow rates.</p>
+              <div class="media-frame">
+                <img src="spiral_redesign_cad.webp" alt="Trapezoidal cross-section mold layout" onerror="this.src='syncytialhero.webp'">
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- OVERALL CHALLENGES & FUTURE WORK -->
+  <section class="section" style="background: rgba(255,255,255,0.4); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+    <h2 class="section-title">Global Progress Synthesis</h2>
+    <p class="section-subtitle">Evaluating overarching project system constraints alongside programmatic next steps.</p>
+    
+    <div class="closing-grid">
+      <!-- Card 1: Project Challenges -->
+      <div class="closing-card">
+        <h3>⚠️ Overarching Project Challenges</h3>
         <p>
-      </div>
-      <div class="problem-card">
-        <img src="placentaoverview.webp" alt="Placenta Overview">
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <h2 class="section-title">Importance of this project</h2>
-    <div class="importance">
-      <div class="importance-card">
-        <h3>🔬 Earlier Detection of Pregnancy Complications</h3>
-        <p>Changes in syncytial knot formation and shedding have been associated with several major pregnancy disorders, including: Preeclampsia, Fetal Growth Restriction (FGR).</p>
-        <p>A reliable isolation platform could enable clinicians to detect placental dysfunction before clinical symptoms become apparent, allowing earlier monitoring, treatment, and improved pregnancy management.</p>
-      </div>
-      <div class="importance-card">
-        <h3>🏥 Advancing Fetal Genetic Analysis </h3>
-        <p>Since syncytial knots originate from fetal-derived trophoblast cells, they contain fetal DNA, RNA, and intact nuclei. Current non-invasive prenatal testing (NIPT) relies primarily on fragmented cell-free fetal DNA (cffDNA), which represents only small pieces of the fetal genome and can limit downstream analyses.</p>
-        <p>By isolating intact syncytial knots, researchers may be able to obtain higher-quality genetic material capable of supporting whole-genome sequencing, epigenetic analysis, gene expression profiling, and more. </p>
-      </div>
-      <div class="importance-card">
-        <h3>⚙ Improving Drug Delivery Research</h3>
-        <p>Since syncytial knots are able to circulate the maternal body without any rejection, hence drug delivery can be an option fix this </p>
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <h2 class="section-title">My Contributions</h2>
-    <div class="role-grid">
-      <div class="role-card">
-        <h3>👩‍💻 CAD Design</h3>
-        <p>Designed multiple microfluidic geometries in SolidWorks while optimizing channel dimensions, pillar spacing, and manufacturability.</p>
-      </div>
-      <div class="role-card">
-        <h3>🧪 Simulation</h3>
-        <p>Performed COMSOL simulations to evaluate flow behavior, pressure distribution, and particle trajectories across multiple device iterations.</p>
-      </div>
-      <div class="role-card">
-        <h3>🧬 Experimental Design</h3>
-        <p>Developed testing protocols using fluorescent microparticles to evaluate recovery efficiency and particle separation.</p>
-      </div>
-      <div class="role-card">
-        <h3>📊 Data Analysis</h3>
-        <p>Analyzed experimental performance, compared design iterations, and identified improvements for future fabrication and testing.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <h2 class="section-title">Engineering Design Process</h2>
-    <p class="section-subtitle">
-      Every design decision was guided by biological constraints, fabrication
-      limitations, and fluid mechanics. The goal was to create a device that could
-      efficiently isolate syncytial knots while remaining manufacturable and easy to test.
-    </p>
-    <div class="process">
-      <div class="process-card">
-        <div class="number">01</div>
-        <h3>Research</h3>
-        <p>Studied placental biology, syncytial knot morphology, and existing isolation methods to identify shortcomings and define engineering requirements.</p>
-      </div>
-      <div class="process-card">
-        <div class="number">02</div>
-        <h3>Requirements</h3>
-        <p>Established design constraints including particle size, channel height, pillar spacing, throughput, and compatibility with SUEX fabrication.</p>
-      </div>
-      <div class="process-card">
-        <div class="number">03</div>
-        <h3>CAD Design</h3>
-        <p>Designed multiple microfluidic geometries in SolidWorks and iteratively refined channel layouts based on expected particle behavior.</p>
-      </div>
-      <div class="process-card">
-        <div class="number">04</div>
-        <h3>Simulation</h3>
-        <p>Used COMSOL Multiphysics to evaluate flow velocity, pressure distribution, and particle trajectories before fabrication.</p>
-      </div>
-      <div class="process-card">
-        <div class="number">05</div>
-        <h3>Fabrication</h3>
-        <p>Prepared photomask-ready designs compatible with SUEX photoresist manufacturing constraints.</p>
-      </div>
-      <div class="process-card">
-        <div class="number">06</div>
-        <h3>Validation</h3>
-        <p>Tested devices using fluorescent microparticles and evaluated recovery efficiency, clogging behavior, and flow stability.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <h2 class="section-title">Design Requirements</h2>
-    <div class="requirements-grid">
-      <div class="requirement-card">
-        <h3>🎯 Biological Constraints</h3>
+          Managing the separation process required balancing trade-offs across all three device platforms:
+        </p>
         <ul>
-          <li>Syncytial knots: 50–150 µm</li>
-          <li>Minimize cellular damage</li>
-          <li>Continuous sample flow</li>
-          <li>Preserve particle integrity</li>
+          <li><strong>Sample Variability:</strong> Explant tissue matrices contain irregular biological sizes and highly variable fluid viscosity, requiring real-time flow monitoring.</li>
+          <li><strong>Fabrication Accuracy:</strong> Achieving high aspect ratios in thick structural SUEX photoresist molds required strict, sub-micron resolution exposure limits.</li>
+          <li><strong>Yield Optimization:</strong> Scaling separation throughput without subjecting delicate multinucleated syncytial knots to damaging shear gradients.</li>
         </ul>
       </div>
-      <div class="requirement-card">
-        <h3>⚙ Engineering Constraints</h3>
+
+      <!-- Card 2: Future Work -->
+      <div class="closing-card">
+        <h3>🚀 Future Implementation Work</h3>
+        <p>
+          Next development steps focus on automating the diagnostic workflow to improve device usability in clinical settings:
+        </p>
         <ul>
-          <li>200 µm maximum channel height</li>
-          <li>35 µm pillar spacing</li>
-          <li>Low pressure drop</li>
-          <li>Minimal clogging</li>
-        </ul>
-      </div>
-      <div class="requirement-card">
-        <h3>🧪 Experimental Goals</h3>
-        <ul>
-          <li>High recovery efficiency</li>
-          <li>Reliable particle separation</li>
-          <li>Repeatable experiments</li>
-          <li>Easy fabrication</li>
+          <li><strong>Multiplexing Devices:</strong> Stacking multiple trapezoidal spiral designs in parallel to process sample volumes up to 10x faster.</li>
+          <li><strong>Smart Monitoring:</strong> Integrating high-speed CMOS optical tracking on-chip to count and verify syncytial knots automatically during sorting.</li>
+          <li><strong>Clinical Validation:</strong> Transitioning from fluorescent control microparticles to processing human placenta explant specimens.</li>
         </ul>
       </div>
     </div>
   </section>
 
+  <!-- PROJECT ASSETS REGISTRY -->
   <section class="section">
-    <h2 class="section-title">Design Evolution</h2>
+    <h2 class="section-title">Project Assets Registry</h2>
     <p class="section-subtitle">
-      The device was developed through multiple design iterations. Each version
-      addressed limitations discovered during analysis and moved the project closer
-      to a manufacturable and effective solution.
+      Access the foundational CAD geometry files, finite element analysis (FEA) fluid models, and technical project reports below.
     </p>
-    <div class="design-timeline">
-      <div class="design-card">
-        <img src="design1.webp" alt="Design 1">
-        <div class="design-content">
-          <h3>Design 1</h3>
-          <h4>Initial Concept</h4>
-          <p>The first prototype explored a simple crossflow geometry to evaluate whether size-based separation could be achieved while maintaining continuous flow.</p>
-          <div class="design-box problem">
-            <strong>Challenge</strong>
-            <ul>
-              <li>High risk of clogging</li>
-              <li>Limited particle guidance</li>
-              <li>Flow distribution needed improvement</li>
-            </ul>
-          </div>
+    
+    <div class="assets-grid">
+      <div class="asset-card">
+        <div>
+          <div class="asset-icon">📐</div>
+          <h3>CAD Models & Geometries</h3>
+          <p>Complete SolidWorks 3D models and production-ready .STEP vector layout configurations for all three architecture molds.</p>
         </div>
+        <a href="#" class="asset-link">Download CAD files (.STEP)</a>
       </div>
-      
-      <div class="arrow">↓</div>
-      
-      <div class="design-card">
-        <img src="design2.webp" alt="Design 2">
-        <div class="design-content">
-          <h3>Design 2</h3>
-          <h4>Geometry Optimization</h4>
-          <p>Pillar spacing and channel geometry were modified to improve flow behavior, reduce clogging, and better guide larger particles toward the collection outlet.</p>
-          <div class="design-box improve">
-            <strong>Improvements</strong>
-            <ul>
-              <li>Optimized pillar arrangement</li>
-              <li>Improved particle guidance</li>
-              <li>More uniform flow field</li>
-            </ul>
-          </div>
+
+      <div class="asset-card">
+        <div>
+          <div class="asset-icon">🧪</div>
+          <h3>COMSOL Multi-Physics Models</h3>
+          <p>Navier-Stokes fluid velocity fields, trans-barrier pressure drops, and particle trajectory tracking datasets.</p>
         </div>
+        <a href="#" class="asset-link">Download Simulation files (.MPH)</a>
       </div>
-      
-      <div class="arrow">↓</div>
-      
-      <div class="design-card">
-        <img src="finaldesign.webp" alt="Final Design">
-        <div class="design-content">
-          <h3>Final Design</h3>
-          <h4>Crossflow Microfluidic Device</h4>
-          <p>The final design balanced manufacturability, continuous flow, particle separation efficiency, and compatibility with experimental testing.</p>
-          <div class="design-box success">
-            <strong>Final Features</strong>
-            <ul>
-              <li>35 μm pillar spacing</li>
-              <li>200 μm channel height</li>
-              <li>Crossflow separation</li>
-              <li>SUEX compatible</li>
-            </ul>
-          </div>
+
+      <div class="asset-card">
+        <div>
+          <div class="asset-icon">📄</div>
+          <h3>Final Research Paper & Reports</h3>
+          <p>Our complete peer-reviewed academic engineering thesis detailing validation results and microfabrication parameters.</p>
         </div>
+        <a href="#" class="asset-link">View Documentation (.PDF)</a>
       </div>
     </div>
   </section>
 
-  <section class="section">
-    <h2 class="section-title">Engineering Analysis</h2>
-    <p class="section-subtitle">
-      Before fabrication, each design was evaluated using COMSOL Multiphysics to
-      better understand fluid behavior, optimize geometry, and reduce the need for
-      trial-and-error manufacturing.
-    </p>
-    <div class="analysis-grid">
-      <div class="analysis-card">
-        <img src="velocityfield.webp" alt="Velocity Field">
-        <h3>Velocity Field</h3>
-        <p>Simulations were used to visualize flow velocity throughout the device, ensuring smooth transport while minimizing stagnant regions where particles could accumulate.</p>
-      </div>
-      <div class="analysis-card">
-        <img src="pressuredistribution.webp" alt="Pressure Distribution">
-        <h3>Pressure Distribution</h3>
-        <p>Pressure contours helped identify regions of elevated resistance and guided geometry modifications that improved overall flow performance.</p>
-      </div>
-      <div class="analysis-card">
-        <img src="particletrajectory.webp" alt="Particle Trajectories">
-        <h3>Particle Trajectories</h3>
-        <p>Particle tracing simulations predicted how different particle sizes would move through the crossflow device and informed design decisions before fabrication.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <h2 class="section-title">Technical Specifications</h2>
-    <div class="specs">
-      <div class="spec-row">
-        <div class="spec-name">Device Height</div>
-        <div class="spec-value">200 μm</div>
-      </div>
-      <div class="spec-row">
-        <div class="spec-name">Pillar Gap</div>
-        <div class="spec-value">35 μm</div>
-      </div>
-      <div class="spec-row">
-        <div class="spec-name">Target Particle Size</div>
-        <div class="spec-value">50–150 μm</div>
-      </div>
-      <div class="spec-row">
-        <div class="spec-name">Fabrication Material</div>
-        <div class="spec-value">SUEX Photoresist</div>
-      </div>
-      <div class="spec-row">
-        <div class="spec-name">Flow Strategy</div>
-        <div class="spec-value">Passive Crossflow</div>
-      </div>
-      <div class="spec-row">
-        <div class="spec-name">Design Software</div>
-        <div class="spec-value">SolidWorks + COMSOL</div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <h2 class="section-title">Experimental Validation</h2>
-    <p class="section-subtitle">
-      To evaluate device performance, multiple experiments were designed to assess
-      particle separation efficiency, flow stability, cytotoxicity, and biological
-      identification of isolated syncytial knots.
-    </p>
-    <div class="validation-grid">
-      <div class="validation-card">
-        <img src="recoverytest.webp" alt="Recovery Efficiency">
-        <h3>Recovery Efficiency</h3>
-        <p>Fluorescent microparticles ranging from 30–150 μm were used to quantify particle recovery and verify successful size-based separation.</p>
-        <div class="status planned">Planned Experiment</div>
-      </div>
-      <div class="validation-card">
-        <img src="ldhassay.webp" alt="LDH Assay">
-        <h3>LDH Cytotoxicity Assay</h3>
-        <p>An LDH assay will evaluate whether the microfluidic device preserves cell viability by measuring membrane damage after processing.</p>
-        <div class="status planned">Planned Experiment</div>
-      </div>
-      <div class="validation-card">
-        <img src="microscopy.webp" alt="Microscopy">
-        <h3>Immunofluorescence</h3>
-        <p>DAPI and Cytokeratin-7 staining will confirm the biological identity of isolated syncytial knots following device separation.</p>
-        <div class="status planned">Planned Experiment</div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <h2 class="section-title">Testing Workflow</h2>
-    <div class="workflow">
-      <div class="workflow-step">
-        <div class="workflow-number">1</div>
-        <h3>Fabricate Device</h3>
-        <p>Create the microfluidic device using SUEX photoresist.</p>
-      </div>
-      <div class="workflow-arrow">→</div>
-      <div class="workflow-step">
-        <div class="workflow-number">2</div>
-        <h3>Prepare Samples</h3>
-        <p>Introduce fluorescent particles or placental explant samples.</p>
-      </div>
-      <div class="workflow-arrow">→</div>
-      <div class="workflow-step">
-        <div class="workflow-number">3</div>
-        <h3>Run Device</h3>
-        <p>Operate the device using controlled syringe pump flow rates.</p>
-      </div>
-      <div class="workflow-arrow">→</div>
-      <div class="workflow-step">
-        <div class="workflow-number">4</div>
-        <h3>Analyze Results</h3>
-        <p>Measure recovery, microscopy images, and biological markers.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <h2 class="section-title">Current Progress</h2>
-    <p class="section-subtitle">
-      The project is currently progressing through fabrication and experimental
-      validation. While complete biological testing is ongoing, engineering analysis
-      and prototype development have provided valuable insights that continue to
-      guide design improvements.
-    </p>
-    <div class="progress-grid">
-      <div class="progress-card">
-        <h3>📈 Design Progress</h3>
-        <div class="progress-bar"><div class="progress-fill" style="width:100%"></div></div>
-        <p>CAD Development</p>
-      </div>
-      <div class="progress-card">
-        <h3>🖥 Simulation</h3>
-        <div class="progress-bar"><div class="progress-fill" style="width:100%"></div></div>
-        <p>COMSOL Analysis</p>
-      </div>
-      <div class="progress-card">
-        <h3>🧪 Fabrication</h3>
-        <div class="progress-bar"><div class="progress-fill" style="width:70%"></div></div>
-        <p>Prototype Development</p>
-      </div>
-      <div class="progress-card">
-        <h3>🔬 Validation</h3>
-        <div class="progress-bar"><div class="progress-fill" style="width:45%"></div></div>
-        <p>Experimental Testing</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <h2 class="section-title">Key Engineering Insights</h2>
-    <div class="insight-grid">
-      <div class="insight-card">
-        <h3>⚙ Crossflow Matters</h3>
-        <p>Crossflow geometry reduced the likelihood of particle accumulation while maintaining continuous movement through the device.</p>
-      </div>
-      <div class="insight-card">
-        <h3>🧬 Size-Based Separation</h3>
-        <p>Particle dimensions strongly influenced transport behavior, reinforcing the importance of carefully selecting pillar spacing.</p>
-      </div>
-      <div class="insight-card">
-        <h3>📐 Iteration Was Critical</h3>
-        <p>Each CAD revision addressed challenges discovered during analysis, resulting in a design that better balanced manufacturability and performance.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <h2 class="section-title">Challenges & Lessons Learned</h2>
-    <p class="section-subtitle">
-      Every engineering project comes with constraints and unexpected challenges.
-      Each obstacle provided an opportunity to refine the design and improve the
-      overall performance of the device.
-    </p>
-    <div class="challenge-grid">
-      <div class="challenge-card">
-        <div class="challenge-icon">⚠️</div>
-        <h3>Challenge</h3>
-        <p>Preventing clogging while maintaining efficient size-based particle separation.</p>
-        <h4>Solution</h4>
-        <p>Redesigned the pillar arrangement and optimized spacing to improve flow distribution while reducing regions where particles could accumulate.</p>
-      </div>
-      <div class="challenge-card">
-        <div class="challenge-icon">🧪</div>
-        <h3>Challenge</h3>
-        <p>Designing a device that could be fabricated within the limitations of SUEX photoresist while maintaining biological functionality.</p>
-        <h4>Solution</h4>
-        <p>Adjusted channel height and feature dimensions to satisfy fabrication constraints without compromising device performance.</p>
-      </div>
-      <div class="challenge-card">
-        <div class="challenge-icon">📊</div>
-        <h3>Challenge</h3>
-        <p>Balancing computational simulations with practical experimental validation.</p>
-        <h4>Solution</h4>
-        <p>Used simulations to guide design decisions before fabrication, reducing trial-and-error during prototype development.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <h2 class="section-title">Future Work</h2>
-    <div class="future-timeline">
-      <div class="future-step">
-        <div class="future-circle">1</div>
-        <h3>Complete Fabrication</h3>
-        <p>Fabricate the optimized device using SUEX photoresist.</p>
-      </div>
-      <div class="future-line"></div>
-      <div class="future-step">
-        <div class="future-circle">2</div>
-        <h3>Biological Testing</h3>
-        <p>Evaluate syncytial knot recovery using placental explant samples.</p>
-      </div>
-      <div class="future-line"></div>
-      <div class="future-step">
-        <div class="future-circle">3</div>
-        <h3>Clinical Translation</h3>
-        <p>Expand the platform toward applications in placental diagnostics and maternal health research.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <h2 class="section-title">Project Gallery</h2>
-    <p class="section-subtitle">
-      A visual walkthrough of the engineering process—from initial concepts to CAD,
-      simulation, fabrication, and experimental validation.
-    </p>
-    <div class="gallery-grid">
-      <div class="gallery-item large">
-        <img src="finaldevice.webp" alt="Final CAD Model">
-        <div class="gallery-caption">
-          <h3>Final Device Design</h3>
-          <p>The completed crossflow microfluidic device developed for syncytial knot isolation.</p>
-        </div>
-      </div>
-      <div class="gallery-item">
-        <img src="cadmodel.webp" alt="CAD">
-        <div class="gallery-caption">
-          <h3>CAD Development</h3>
-          <p>SolidWorks model used throughout the iterative design process.</p>
-        </div>
-      </div>
-      <div class="gallery-item">
-        <img src="comsol.webp" alt="COMSOL">
-        <div class="gallery-caption">
-          <h3>Flow Simulation</h3>
-          <p>COMSOL velocity analysis used to optimize fluid flow.</p>
-        </div>
-      </div>
-      <div class="gallery-item">
-        <img src="photomask.webp" alt="Photomask">
-        <div class="gallery-caption">
-          <h3>Photomask Layout</h3>
-          <p>Fabrication-ready photomask prepared for SUEX lithography.</p>
-        </div>
-      </div>
-      <div class="gallery-item">
-        <img src="testing.webp" alt="Testing">
-        <div class="gallery-caption">
-          <h3>Experimental Testing</h3>
-          <p>Prototype validation using fluorescent microparticles.</p>
-        </div>
-      </div>
-      <div class="gallery-item">
-        <img src="microscopy.webp" alt="Microscopy">
-        <div class="gallery-caption">
-          <h3>Microscopy</h3>
-          <p>Visualization of isolated particles and biological structures.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <h2 class="section-title">Engineering Skills Demonstrated</h2>
-    <p class="section-subtitle">
-      This project required integrating engineering design, computational modeling,
-      biomedical research, and experimental planning. The skills below were developed
-      throughout the project lifecycle.
-    </p>
-    <div class="skills-grid">
-      <div class="skill-card">
-        <div class="skill-icon">💻</div>
-        <h3>CAD Design</h3>
-        <p>Designed multiple microfluidic device iterations in SolidWorks while balancing manufacturability and biological requirements.</p>
-        <div class="skill-level"><div class="skill-fill" style="width:95%;"></div></div>
-      </div>
-      <div class="skill-card">
-        <div class="skill-icon">🌊</div>
-        <h3>COMSOL Simulation</h3>
-        <p>Performed fluid dynamics simulations to optimize flow behavior before fabrication.</p>
-        <div class="skill-level"><div class="skill-fill" style="width:90%;"></div></div>
-      </div>
-      <div class="skill-card">
-        <div class="skill-icon">🧬</div>
-        <h3>Biomedical Engineering</h3>
-        <p>Applied biological knowledge to solve engineering problems involving placental tissue.</p>
-        <div class="skill-level"><div class="skill-fill" style="width:95%;"></div></div>
-      </div>
-      <div class="skill-card">
-        <div class="skill-icon">🧪</div>
-        <h3>Experimental Design</h3>
-        <p>Developed validation protocols including recovery efficiency, LDH assays, and immunofluorescence microscopy.</p>
-        <div class="skill-level"><div class="skill-fill" style="width:92%;"></div></div>
-      </div>
-      <div class="skill-card">
-        <div class="skill-icon">👩‍🔬</div>
-        <h3>Research</h3>
-        <p>Conducted literature review, experimental planning, and iterative engineering analysis throughout the project.</p>
-        <div class="skill-level"><div class="skill-fill" style="width:94%;"></div></div>
-      </div>
-      <div class="skill-card">
-        <div class="skill-icon">🤝</div>
-        <h3>Leadership</h3>
-        <p>Led the project team, coordinated design decisions, and managed progress throughout the research process.</p>
-        <div class="skill-level"><div class="skill-fill" style="width:93%;"></div></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <h2 class="section-title">Documents & Presentations</h2>
-    <p class="section-subtitle">
-      Additional materials developed throughout the project, including technical
-      documentation, presentations, and supporting resources.
-    </p>
-    <div class="documents-grid">
-      <a href="proposal.pdf" class="document-card" target="_blank">
-        <div class="document-icon">📄</div>
-        <h3>Research Proposal</h3>
-        <p>Read the original proposal outlining the motivation, design objectives, experimental plan, and anticipated outcomes.</p>
-        <span>Open PDF →</span>
-      </a>
-      <a href="poster.pdf" class="document-card" target="_blank">
-        <div class="document-icon">🖼️</div>
-        <h3>Research Poster</h3>
-        <p>A concise overview of the project highlighting the engineering process, results, and future work.</p>
-        <span>View Poster →</span>
-      </a>
-      <a href="presentation.pdf" class="document-card" target="_blank">
-        <div class="document-icon">📊</div>
-        <h3>Project Presentation</h3>
-        <p>Presentation slides used to communicate the project to faculty, researchers, and peers.</p>
-        <span>View Slides →</span>
-      </a>
-      <a href="github.html" class="document-card">
-        <div class="document-icon">💻</div>
-        <h3>Source Files</h3>
-        <p>Explore CAD models, code, simulations, and additional engineering documentation.</p>
-        <span>Explore Files →</span>
-      </a>
-    </div>
-  </section>
-
-  <section class="section">
-    <h2 class="section-title">Explore More Projects</h2>
-    <p class="section-subtitle">
-      Interested in more? Here are additional projects spanning biomedical
-      engineering, robotics, software, and mechanical design.
-    </p>
-    <div class="more-projects-grid">
-      <a href="tavi.html" class="more-project-card">
-        <img src="tavi.webp" alt="TAVI Pacemaker">
-        <div class="more-project-info">
-          <h3>❤️ TAVI Integrated Pacemaker</h3>
-          <p>Developing a wireless pacing system integrated into transcatheter aortic valve replacement.</p>
-          <span>View Project →</span>
-        </div>
-      </a>
-      <a href="movinghelper.html" class="more-project-card">
-        <img src="movinghelper.webp" alt="Moving Helper">
-        <div class="more-project-info">
-          <h3>📦 Everyday Moving Helper</h3>
-          <p>A powered expandable platform designed to simplify transporting everyday cargo.</p>
-          <span>View Project →</span>
-        </div>
-      </a>
-      <a href="terrainrobot.html" class="more-project-card">
-        <img src="terrain.webp" alt="Terrain Robot">
-        <div class="more-project-info">
-          <h3>🤖 Terrain Detection Robot</h3>
-          <p>Embedded sensing system capable of classifying terrain using force sensors and inertial measurement units.</p>
-          <span>View Project →</span>
-        </div>
-      </a>
-      <a href="imu.html" class="more-project-card">
-        <img src="imu.webp" alt="IMU Analysis">
-        <div class="more-project-info">
-          <h3>📈 IMU Motion Analysis</h3>
-          <p>Python-based analysis of human movement using inertial measurement unit data.</p>
-          <span>View Project →</span>
-        </div>
-      </a>
-      <a href="projects.html" class="more-project-card featured">
-        <div class="more-project-info">
-          <h3>🚀 View All Projects</h3>
-          <p>Browse my complete engineering portfolio, including research, design projects, robotics, biomedical engineering, and software.</p>
-          <span>Explore Portfolio →</span>
-        </div>
-      </a>
-    </div>
-  </section>
-
-  <footer style="margin-top:100px; padding:45px; text-align:center; border-top: 1px solid var(--border); color:#4b5563;">
-    <p style="font-size:18px; font-weight:600;">© 2026 Chelsea Ogbonna</p>
-    <p style="margin-top:10px; font-size:14px;">Designed & Built with HTML, CSS, and ❤️</p>
+  <footer style="padding: 40px 10%; text-align: center; color: var(--text); font-size: 14px; font-weight: 500;">
+    © 2026 Chelsea Ogbonna • Designed & Built by Chelsea
   </footer>
 
   <script>
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("show");
-        }
-      });
-    }, { threshold: 0.05 });
+    // Universal Lightbox zoom mechanics for every image
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const images = document.querySelectorAll('img');
 
-    document.querySelectorAll(".stat, .problem-card, .importance-card, .role-card, .process-card, .requirement-card, .design-card, .analysis-card, .validation-card, .workflow-step, .progress-card, .insight-card, .challenge-card, .future-step, .gallery-item, .skill-card, .document-card, .more-project-card").forEach(el => {
-      el.classList.add("hidden");
-      observer.observe(el);
+    images.forEach(img => {
+      img.addEventListener('click', (e) => {
+        // Exclude small navigational icons/logo
+        if (img.classList.contains('logo') || img.closest('nav')) return;
+        
+        e.stopPropagation();
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt;
+        lightbox.classList.add('active');
+      });
+    });
+
+    // Dismiss overlay on outside/inside click
+    lightbox.addEventListener('click', () => {
+      lightbox.classList.remove('active');
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') lightbox.classList.remove('active');
     });
   </script>
 
