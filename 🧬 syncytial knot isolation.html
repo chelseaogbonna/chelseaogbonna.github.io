@@ -442,8 +442,139 @@
 
     .mechanism-icon { color: #3b82f6; }
     .action-icon { color: #10b981; }
-    .challenge-icon { color: #ef4444; }
+    .challenge-icon-tag { color: #ef4444; }
     .redesign-icon { color: #8b5cf6; }
+
+    /* ==========================================
+    CHALLENGES & SOLUTIONS (DETAILED CARDS)
+    ========================================== */
+    .challenge-container {
+      display: flex;
+      flex-direction: column;
+      gap: 35px;
+      margin-bottom: 50px;
+    }
+
+    .challenge-card {
+      display: grid;
+      grid-template-columns: 1.4fr 0.6fr;
+      gap: 35px;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 35px;
+      box-shadow: var(--shadow);
+      align-items: center;
+    }
+
+    .challenge-text .challenge-icon {
+      font-size: 30px;
+      margin-bottom: 12px;
+    }
+
+    .challenge-text h3 {
+      font-size: 20px;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    .challenge-text h4 {
+      font-size: 13px;
+      text-transform: uppercase;
+      color: #6C8EF5;
+      margin-top: 16px;
+      margin-bottom: 6px;
+      letter-spacing: 0.5px;
+    }
+
+    .challenge-text p {
+      font-size: 14px;
+      color: #4b5563;
+      line-height: 1.7;
+    }
+
+    .challenge-images {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .image-placeholder {
+      background: #f8fafc;
+      border: 1px solid rgba(0,0,0,0.04);
+      border-radius: 16px;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .image-placeholder img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      display: block;
+      cursor: zoom-in;
+    }
+
+    .image-placeholder p {
+      font-size: 11px;
+      font-weight: 700;
+      color: #6b7280;
+      padding: 8px 0;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* ==========================================
+    EXPERIMENTAL VALIDATION
+    ========================================== */
+    .validation-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
+    }
+
+    .validation-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+
+    .validation-card img {
+      width: 100%;
+      aspect-ratio: 16/10;
+      object-fit: cover;
+      border-radius: 14px;
+      margin-bottom: 18px;
+      cursor: zoom-in;
+    }
+
+    .validation-card h3 {
+      font-size: 18px;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    .validation-card p {
+      font-size: 14px;
+      color: #4b5563;
+      margin-bottom: 16px;
+    }
+
+    .status {
+      display: inline-block;
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .status.planned {
+      background: #fef3c7;
+      color: #92400e;
+    }
 
     /* ==========================================
     OVERALL CHALLENGES & FUTURE WORK
@@ -605,8 +736,14 @@
       .cubes-grid { grid-template-columns: 1fr; gap: 20px; }
       .arch-header { flex-direction: column; align-items: flex-start; gap: 10px; }
       .arch-media-grid { grid-template-columns: 1fr; gap: 30px; }
+      .challenge-card { grid-template-columns: 1fr; }
+      .challenge-images { flex-direction: row; }
       .closing-grid { grid-template-columns: 1fr; }
       .section { padding: 50px 6%; }
+    }
+
+    @media(max-width:600px){
+      .challenge-images { flex-direction: column; }
     }
   </style>
 </head>
@@ -774,7 +911,7 @@
 
             <!-- Block C: Challenges -->
             <div class="media-card">
-              <h4><span class="challenge-icon">⚠️</span> Encountered Challenges</h4>
+              <h4><span class="challenge-icon-tag">⚠️</span> Encountered Challenges</h4>
               <p>Air bubbles disrupted flow through the pillar array, reducing separation reliability. Particles occasionally entered the incorrect outlet due to outlet flow distribution.</p>
               <div class="media-frame">
                 <video src="dld_clogging.mp4" controls preload="metadata" poster="dld_clogging_poster.webp">
@@ -833,7 +970,7 @@
 
             <!-- Block C: Challenges -->
             <div class="media-card">
-              <h4><span class="challenge-icon">⚠️</span> Encountered Challenges</h4>
+              <h4><span class="challenge-icon-tag">⚠️</span> Encountered Challenges</h4>
               <p>Air bubbles disrupted inertial and Dean flow, causing particles to follow incorrect trajectories.</p>
               <div class="media-frame">
                 <video src="spiral_leak.mp4" controls preload="metadata" poster="spiral_leak_poster.webp">
@@ -857,9 +994,6 @@
           </div>
         </div>
       </div>
-
-    </div>
-
 
       <!-- DESIGN 3: CROSSFLOW -->
       <div class="arch-card">
@@ -895,9 +1029,8 @@
 
             <!-- Block C: Challenges -->
             <div class="media-card">
-              <h4><span class="challenge-icon">⚠️</span> Encountered Challenges</h4>
-              <p>Leakage between adjacent channels reduced separation efficiency.</p>
-              <p>Leakage occurred near inlet and outlet connections under higher pressures.</p>
+              <h4><span class="challenge-icon-tag">⚠️</span> Encountered Challenges</h4>
+              <p>Leakage between adjacent channels reduced separation efficiency. Leakage also occurred near inlet and outlet connections under higher pressures.</p>
               <div class="media-frame">
                 <video src="crossflow_imbalance.mp4" controls preload="metadata" poster="crossflow_imbalance_poster.webp">
                   <div class="video-placeholder">
@@ -920,191 +1053,145 @@
           </div>
         </div>
       </div>
+    </div>
   </section>
 
-  <!-- OVERALL CHALLENGES & FUTURE WORK -->
+  <!-- CHALLENGES & SOLUTIONS -->
   <section class="section" style="background: rgba(255,255,255,0.4); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
-    <h2 class="section-title">Global Progress Synthesis</h2>
-    <p class="section-subtitle">Evaluating overarching project system constraints alongside programmatic next steps.</p>
+    <h2 class="section-title">Challenges & Solutions</h2>
+    <p class="section-subtitle">
+      Throughout development, several engineering challenges affected device
+      performance. Each issue required iterative testing and design modifications
+      to improve reliability and repeatability.
+    </p>
 
-<section class="section">
+    <div class="challenge-container">
 
-  <h2 class="section-title">Challenges & Solutions</h2>
-
-  <p class="section-subtitle">
-    Throughout development, several engineering challenges affected device
-    performance. Each issue required iterative testing and design modifications
-    to improve reliability and repeatability.
-  </p>
-
-  <div class="challenge-container">
-
-    <!-- Challenge 1 -->
-    <div class="challenge-card">
-
-      <div class="challenge-text">
-
-        <div class="challenge-icon">⚠️</div>
-
-        <h3>Particle Settling During Syringe Preparation</h3>
-
-        <h4>Challenge</h4>
-
-        <p>
-          The 100 μm polystyrene beads settled rapidly due to their relatively
-          large size and density. This caused inconsistent particle
-          concentrations between experiments and reduced repeatability.
-        </p>
-
-        <h4>Solution</h4>
-
-        <p>
-          The suspension was vortexed for 5–10 seconds immediately before each
-          experiment and gently mixed prior to loading. Syringes were filled
-          directly through the needle and experiments were started immediately
-          after preparation to minimize settling.
-        </p>
-
+      <!-- Challenge 1 -->
+      <div class="challenge-card">
+        <div class="challenge-text">
+          <div class="challenge-icon">⚠️</div>
+          <h3>Particle Settling During Syringe Preparation</h3>
+          <h4>Challenge</h4>
+          <p>
+            The 100 μm polystyrene beads settled rapidly due to their relatively
+            large size and density. This caused inconsistent particle
+            concentrations between experiments and reduced repeatability.
+          </p>
+          <h4>Solution</h4>
+          <p>
+            The suspension was vortexed for 5–10 seconds immediately before each
+            experiment and gently mixed prior to loading. Syringes were filled
+            directly through the needle, and experiments were started immediately
+            after preparation to minimize settling.
+          </p>
+        </div>
+        <div class="challenge-images">
+          <div class="image-placeholder">
+            <img src="settling-before.jpg" alt="Particle settling in syringe" onerror="this.src='syncytialhero.webp'">
+            <p>Challenge</p>
+          </div>
+          <div class="image-placeholder">
+            <img src="settling-after.jpg" alt="Mixed, uniform particle suspension" onerror="this.src='syncytialhero.webp'">
+            <p>Solution</p>
+          </div>
+        </div>
       </div>
 
-      <div class="challenge-images">
-
-        <div class="image-placeholder">
-          <img src="settling-before.jpg" alt="Particle settling">
-          <p>Challenge</p>
+      <!-- Challenge 2 -->
+      <div class="challenge-card">
+        <div class="challenge-text">
+          <div class="challenge-icon">🧪</div>
+          <h3>Air Bubbles in the Microfluidic Device</h3>
+          <h4>Challenge</h4>
+          <p>
+            Air bubbles frequently disrupted flow through the device, altered
+            particle trajectories, and occasionally blocked sections of the
+            microchannels, reducing separation efficiency.
+          </p>
+          <h4>Solution</h4>
+          <p>
+            Syringes were carefully filled and degassed before testing. The system
+            was flushed prior to introducing the sample, and future designs could
+            incorporate an upstream bubble trap to prevent bubbles from entering
+            the device.
+          </p>
         </div>
-
-        <div class="image-placeholder">
-          <img src="settling-after.jpg" alt="Mixed particle suspension">
-          <p>Solution</p>
+        <div class="challenge-images">
+          <div class="image-placeholder">
+            <img src="bubble-before.jpg" alt="Air bubble disrupting channel flow" onerror="this.src='syncytialhero.webp'">
+            <p>Challenge</p>
+          </div>
+          <div class="image-placeholder">
+            <img src="bubble-after.jpg" alt="Bubble-free, stable flow" onerror="this.src='syncytialhero.webp'">
+            <p>Solution</p>
+          </div>
         </div>
-
       </div>
 
-    </div>
-
-    <!-- Challenge 2 -->
-    <div class="challenge-card">
-
-      <div class="challenge-text">
-
-        <div class="challenge-icon">🧪</div>
-
-        <h3>Air Bubbles in the Microfluidic Device</h3>
-
-        <h4>Challenge</h4>
-
-        <p>
-          Air bubbles frequently disrupted flow through the device, altered
-          particle trajectories, and occasionally blocked sections of the
-          microchannels, reducing separation efficiency.
-        </p>
-
-        <h4>Solution</h4>
-
-        <p>
-          Syringes were carefully filled and degassed before testing. The system
-          was flushed prior to introducing the sample, and future designs could
-          incorporate an upstream bubble trap to prevent bubbles from entering
-          the device.
-        </p>
-
-      </div>
-
-      <div class="challenge-images">
-
-        <div class="image-placeholder">
-          <img src="bubble-before.jpg" alt="Air bubble in channel">
-          <p>Challenge</p>
+      <!-- Challenge 3 -->
+      <div class="challenge-card">
+        <div class="challenge-text">
+          <div class="challenge-icon">📊</div>
+          <h3>Particle Settling Inside the Syringe Pump</h3>
+          <h4>Challenge</h4>
+          <p>
+            During longer experiments, particles settled toward the back of the
+            syringe while mounted on the syringe pump. This produced an uneven
+            particle concentration throughout testing.
+          </p>
+          <h4>Solution</h4>
+          <p>
+            A mechanical shaker was first tested to keep particles suspended,
+            but it did not produce enough vertical motion to effectively resuspend
+            the beads. The syringe pump was instead positioned in a near-vertical
+            orientation, which reduced bead accumulation and improved the
+            consistency of particle delivery throughout testing.
+          </p>
         </div>
-
-        <div class="image-placeholder">
-          <img src="bubble-after.jpg" alt="Bubble-free flow">
-          <p>Solution</p>
+        <div class="challenge-images">
+          <div class="image-placeholder">
+            <img src="pump-before.jpg" alt="Settled particles at the back of the syringe" onerror="this.src='syncytialhero.webp'">
+            <p>Challenge</p>
+          </div>
+          <div class="image-placeholder">
+            <img src="pump-after.jpg" alt="Improved syringe pump orientation and mixing" onerror="this.src='syncytialhero.webp'">
+            <p>Solution</p>
+          </div>
         </div>
-
-      </div>
-
-    </div>
-
-    <!-- Challenge 3 -->
-    <div class="challenge-card">
-
-      <div class="challenge-text">
-
-        <div class="challenge-icon">📊</div>
-
-        <h3>Particle Settling Inside the Syringe Pump</h3>
-
-        <h4>Challenge</h4>
-
-        <p>
-          During longer experiments, particles settled toward the back of the
-          syringe while mounted on the syringe pump. This produced an uneven
-          particle concentration throughout testing.
-        </p>
-
-        <h4>Solution</h4>
-
-        <p>
-          The syringe was periodically mixed between trials and experiments were
-          kept as short as possible. Future work could include a syringe mixer
-          or continuous agitation system to maintain a homogeneous suspension.
-        </p>
-
-      </div>
-
-      <div class="challenge-images">
-
-        <div class="image-placeholder">
-          <img src="pump-before.jpg" alt="Settled particles in syringe">
-          <p>Challenge</p>
-        </div>
-
-        <div class="image-placeholder">
-          <img src="pump-after.jpg" alt="Improved syringe mixing">
-          <p>Solution</p>
-        </div>
-
       </div>
 
     </div>
 
-  </div>
-
-
-    
     <div class="closing-grid">
-      <!-- Card 1: Project Challenges -->
+      <!-- Card 1: System-Wide Considerations -->
       <div class="closing-card">
-        <h3>⚠️ Overarching Project Challenges</h3>
+        <h3>⚠️ System-Wide Considerations</h3>
         <p>
-          Managing the separation process required balancing trade-offs across all three device platforms:
+          Beyond the three fixes above, scaling the platform raised broader trade-offs across all three device architectures:
         </p>
         <ul>
-          <li><strong>Particle Settling During Syringe Preparation:</strong> One of the primary challenges encountered during testing was particle settling, particularly for the 100 μm polystyrene beads due to their relatively large size and density. Uniform particle distribution is critical for obtaining consistent separation results.</li>
-          <li><strong>Particle Settling in the Syringe Pump:</strong> Particle settling continued even after the syringe was mounted on the syringe pump. As testing progressed, beads accumulated near the back of the syringe, causing inconsistent particle delivery. This made it difficult to maintain a constant particle concentration during long experiments.</li>
-          <li><strong>Air Bubbles:</strong> Scaling separation throughput without subjecting delicate multinucleated syncytial knots to damaging shear gradients.</li>
+          <li><strong>Throughput vs. Cell Integrity:</strong> Scaling separation throughput without subjecting delicate multinucleated syncytial knots to damaging shear gradients.</li>
+          <li><strong>Consistent Delivery:</strong> Maintaining a uniform particle concentration across an entire run, not just at the moment of loading.</li>
         </ul>
       </div>
 
       <!-- Card 2: Future Work -->
       <div class="closing-card">
-        <h3>Potential Solution</h3>
+        <h3>🚀 Future Work</h3>
         <p>
-          These are the potential solutions for the general challenges that we faced throughout the experiment:
+          Building on the solutions above, next steps for the platform include:
         </p>
         <ul>
-          <li><strong>Syringe Preparation Solution:</strong> The bead suspension was vortexed for 5–10 seconds and gently swirled immediately before each experiment to redistribute the particles. The suspension was loaded into the syringe and tested as quickly as possible to minimize settling. Syringes were also filled directly through the needle, giving better control during loading and reducing particle loss.</li>
-          <li><strong>Syringe Pump Solution</strong> A mechanical shaker was first tested to keep the particles suspended, but it did not produce enough vertical motion to effectively resuspend the beads. The syringe pump was then positioned in a near-vertical orientation instead. This reduced bead accumulation and improved the consistency of particle delivery throughout testing.</li>
-          <li><strong>Clinical Validation:</strong> Transitioning from fluorescent control microparticles to processing human placenta explant specimens.</li>
+          <li><strong>Automated Agitation:</strong> Add a syringe mixer or continuous agitation system to maintain a homogeneous suspension without manual intervention.</li>
+          <li><strong>Upstream Bubble Trap:</strong> Integrate a dedicated bubble trap into future device designs to prevent air from entering the channel network at all.</li>
+          <li><strong>Clinical Validation:</strong> Transition from fluorescent control microparticles to processing human placenta explant specimens.</li>
         </ul>
       </div>
     </div>
   </section>
 
   <!-- EXPERIMENTAL VALIDATION -->
-
   <section class="section">
     <h2 class="section-title">Experimental Validation</h2>
     <p class="section-subtitle">
@@ -1114,19 +1201,19 @@
     </p>
     <div class="validation-grid">
       <div class="validation-card">
-        <img src="recoverytest.webp" alt="Recovery Efficiency">
+        <img src="recoverytest.webp" alt="Recovery Efficiency" onerror="this.src='syncytialhero.webp'">
         <h3>Recovery Efficiency</h3>
         <p>Fluorescent microparticles ranging from 30–150 μm were used to quantify particle recovery and verify successful size-based separation.</p>
         <div class="status planned">Planned Experiment</div>
       </div>
       <div class="validation-card">
-        <img src="ldhassay.webp" alt="LDH Assay">
+        <img src="ldhassay.webp" alt="LDH Assay" onerror="this.src='syncytialhero.webp'">
         <h3>LDH Cytotoxicity Assay</h3>
         <p>An LDH assay will evaluate whether the microfluidic device preserves cell viability by measuring membrane damage after processing.</p>
         <div class="status planned">Planned Experiment</div>
       </div>
       <div class="validation-card">
-        <img src="microscopy.webp" alt="Microscopy">
+        <img src="microscopy.webp" alt="Microscopy" onerror="this.src='syncytialhero.webp'">
         <h3>Immunofluorescence</h3>
         <p>DAPI and Cytokeratin-7 staining will confirm the biological identity of isolated syncytial knots following device separation.</p>
         <div class="status planned">Planned Experiment</div>
