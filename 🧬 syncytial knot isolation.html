@@ -748,7 +748,7 @@
             <!-- Block A: Overview -->
             <div class="media-card">
               <h4><span class="mechanism-icon">⛯</span> Overview & Mechanism</h4>
-              <p>Uses an offset, asymmetric cylinder array grid. Target cells larger than the critical cutoff ($D_c$) hit pillars and displace laterally, while smaller debris passes straight through.</p>
+              <p>Uses an offset, asymmetric micropillar array to separate particles by size, with particles larger than the critical diameter (D_c) displaced laterally while smaller particles continue straight along the fluid streamlines.</p>
               <div class="media-frame">
                 <img src="dld_schematic.webp" alt="DLD pillar array vector schematic" onerror="this.src='syncytialhero.webp'">
               </div>
@@ -795,69 +795,10 @@
         </div>
       </div>
 
-      <!-- DESIGN 2: CROSSFLOW -->
+      <!-- DESIGN 2: SPIRAL -->
       <div class="arch-card">
         <div class="arch-header">
-          <h3>2. Crossflow Filtration</h3>
-          <div class="arch-badge">Slotted Micro-Barrier</div>
-        </div>
-        <div class="arch-body">
-          <div class="arch-media-grid">
-            
-            <!-- Block A: Overview -->
-            <div class="media-card">
-              <h4><span class="mechanism-icon">⛯</span> Overview & Mechanism</h4>
-              <p>Drives raw fluid parallel to a micropillar barrier. Perpendicular pressure drops draw tiny background debris through slot openings while target knots are swept onward.</p>
-              <div class="media-frame">
-                <img src="crossflow_schematic.webp" alt="Crossflow microfluidic barrier design" onerror="this.src='syncytialhero.webp'">
-              </div>
-            </div>
-
-            <!-- Block B: In-Action -->
-            <div class="media-card">
-              <h4><span class="action-icon">▶</span> Design In Action</h4>
-              <p>Real-time verification showing parallel sweep mechanics and small background particle clearance without dead-end filter blockages.</p>
-              <div class="media-frame">
-                <video src="crossflow_action.mp4" controls preload="metadata" poster="crossflow_action_poster.webp">
-                  <div class="video-placeholder">
-                    <span class="video-icon">🎥</span>
-                    <span>Crossflow Continuous Separation Video Placeholder</span>
-                  </div>
-                </video>
-              </div>
-            </div>
-
-            <!-- Block C: Challenges -->
-            <div class="media-card">
-              <h4><span class="challenge-icon">⚠️</span> Encountered Challenges</h4>
-              <p>Unbalanced transmembrane pressures. Localized drops below thresholds draw target knots sideways into filter slots, trapping or rupturing them.</p>
-              <div class="media-frame">
-                <video src="crossflow_imbalance.mp4" controls preload="metadata" poster="crossflow_imbalance_poster.webp">
-                  <div class="video-placeholder">
-                    <span class="video-icon">🎥</span>
-                    <span>Pressure Differential Back-flow Failure Video Placeholder</span>
-                  </div>
-                </video>
-              </div>
-            </div>
-
-            <!-- Block D: Redesign -->
-            <div class="media-card">
-              <h4><span class="redesign-icon">⟳</span> Proposed Redesign</h4>
-              <p>V2 layout angles the micro-barrier wall and incorporates a variable-height channel to guarantee uniform trans-barrier pressure fields throughout.</p>
-              <div class="media-frame">
-                <img src="crossflow_redesign_cad.webp" alt="Variable channel depth crossflow mold" onerror="this.src='syncytialhero.webp'">
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </div>
-
-      <!-- DESIGN 3: SPIRAL -->
-      <div class="arch-card">
-        <div class="arch-header">
-          <h3>3. Spiral Inertial Microfluidics</h3>
+          <h3>2. Spiral Inertial Microfluidics</h3>
           <div class="arch-badge">Inertial Sorting Velocity</div>
         </div>
         <div class="arch-body">
@@ -866,7 +807,7 @@
             <!-- Block A: Overview -->
             <div class="media-card">
               <h4><span class="mechanism-icon">⛯</span> Overview & Mechanism</h4>
-              <p>Utilizes asymmetrical velocity profiles to establish twin Dean vortex loops. The balance of lift and drag focusses knots into tight streams based on size.</p>
+              <p>Uses curved spiral channels to separate particles by size through the combined effects of inertial lift forces and Dean flow.</p>
               <div class="media-frame">
                 <img src="spiral_schematic.webp" alt="Dean vortex forces in spiral channel" onerror="this.src='syncytialhero.webp'">
               </div>
@@ -914,6 +855,66 @@
       </div>
 
     </div>
+
+
+      <!-- DESIGN 3: CROSSFLOW -->
+      <div class="arch-card">
+        <div class="arch-header">
+          <h3>3. Crossflow Filtration</h3>
+          <div class="arch-badge">Slotted Micro-Barrier</div>
+        </div>
+        <div class="arch-body">
+          <div class="arch-media-grid">
+            
+            <!-- Block A: Overview -->
+            <div class="media-card">
+              <h4><span class="mechanism-icon">⛯</span> Overview & Mechanism</h4>
+              <p>The sample flows tangentially along the main channel, where a size-selective pillar array directs smaller particles into the permeate outlet while larger particles remain in the primary flow and continue downstream to the retentate outlet.</p>
+              <div class="media-frame">
+                <img src="crossflow_schematic.webp" alt="Crossflow microfluidic barrier design" onerror="this.src='syncytialhero.webp'">
+              </div>
+            </div>
+
+            <!-- Block B: In-Action -->
+            <div class="media-card">
+              <h4><span class="action-icon">▶</span> Design In Action</h4>
+              <p>Real-time verification showing parallel sweep mechanics and small background particle clearance without dead-end filter blockages.</p>
+              <div class="media-frame">
+                <video src="crossflow_action.mp4" controls preload="metadata" poster="crossflow_action_poster.webp">
+                  <div class="video-placeholder">
+                    <span class="video-icon">🎥</span>
+                    <span>Crossflow Continuous Separation Video Placeholder</span>
+                  </div>
+                </video>
+              </div>
+            </div>
+
+            <!-- Block C: Challenges -->
+            <div class="media-card">
+              <h4><span class="challenge-icon">⚠️</span> Encountered Challenges</h4>
+              <p>Unbalanced transmembrane pressures. Localized drops below thresholds draw target knots sideways into filter slots, trapping or rupturing them.</p>
+              <div class="media-frame">
+                <video src="crossflow_imbalance.mp4" controls preload="metadata" poster="crossflow_imbalance_poster.webp">
+                  <div class="video-placeholder">
+                    <span class="video-icon">🎥</span>
+                    <span>Pressure Differential Back-flow Failure Video Placeholder</span>
+                  </div>
+                </video>
+              </div>
+            </div>
+
+            <!-- Block D: Redesign -->
+            <div class="media-card">
+              <h4><span class="redesign-icon">⟳</span> Proposed Redesign</h4>
+              <p>V2 layout angles the micro-barrier wall and incorporates a variable-height channel to guarantee uniform trans-barrier pressure fields throughout.</p>
+              <div class="media-frame">
+                <img src="crossflow_redesign_cad.webp" alt="Variable channel depth crossflow mold" onerror="this.src='syncytialhero.webp'">
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
   </section>
 
   <!-- OVERALL CHALLENGES & FUTURE WORK -->
