@@ -265,7 +265,6 @@
       box-shadow: 0 25px 55px rgba(0, 0, 0, .15);
     }
 
-    /* FIX: Added proper background canvas frame to display non-standard shapes safely */
     .feature-image {
       height: 240px;
       overflow: hidden;
@@ -277,7 +276,6 @@
       border-bottom: 1px solid rgba(0, 0, 0, 0.05);
     }
 
-    /* FIX: Switched from cover to contain to preserve full image scaling aspects */
     .feature-image img {
       width: 100%;
       height: 100%;
@@ -312,7 +310,7 @@
       flex-wrap: wrap;
       gap: 10px;
       margin-bottom: 25px;
-      margin-top: auto; /* Pushes the tag system nicely above button alignment lines */
+      margin-top: auto; 
     }
 
     .tag {
@@ -404,7 +402,6 @@
       box-shadow: 0 18px 40px rgba(0, 0, 0, .12);
     }
 
-    /* FIX: Secondary inner-frame adjustment loop preventing image cutting on grid loops */
     .project-small-img-container {
       height: 180px;
       background: #f1f5f9;
@@ -412,6 +409,8 @@
       align-items: center;
       justify-content: center;
       padding: 8px;
+      overflow: hidden; /* Clips elements safely during rotation runs */
+      position: relative;
       border-bottom: 1px solid rgba(0, 0, 0, 0.05);
     }
 
@@ -419,6 +418,18 @@
       width: 100%;
       height: 100%;
       object-fit: contain;
+    }
+
+    /* ========================================================
+       NEW CSS: SIDEWAYS FILL ROTATION ENGINE FOR ELECTRONICS
+       ======================================================== */
+    .project-small-img-container img.sideways-fill {
+      transform: rotate(90deg);
+      width: 180px;  /* Binds width to container height bounds */
+      height: 300px; /* Binds height to container width bounds */
+      object-fit: cover;
+      max-width: none;
+      max-height: none;
     }
 
     .project-info {
@@ -682,7 +693,8 @@
 
       <div class="project-small">
         <div class="project-small-img-container">
-          <img src="IMG_3705 Small.jpeg" alt="Haptic Diabetic Foot Project">
+          <!-- Sideways rotation applied to protect circuit/haptic image parameters -->
+          <img src="IMG_3705 Small.jpeg" class="sideways-fill" alt="Haptic Diabetic Foot Project">
         </div>
         <div class="project-info">
           <h3>🦶 Haptic Diabetic Foot Monitoring</h3>
@@ -725,7 +737,8 @@
 
       <div class="project-small">
         <div class="project-small-img-container">
-          <img src="EMGbreadboard.webp" alt="Terrain Detection Robot">
+          <!-- Sideways rotation applied to landscape breadboard image -->
+          <img src="EMGbreadboard.webp" class="sideways-fill" alt="Terrain Detection Robot">
         </div>
         <div class="project-info">
           <h3>💪 Electromyography</h3>
@@ -742,7 +755,8 @@
 
       <div class="project-small">
         <div class="project-small-img-container">
-          <img src="breadboardekg.webp" alt="Electrocardiogram">
+          <!-- Sideways rotation applied to landscape hardware board image -->
+          <img src="breadboardekg.webp" class="sideways-fill" alt="Electrocardiogram">
         </div>
         <div class="project-info">
           <h3>🫀 Electrocardiogram</h3>
@@ -773,7 +787,8 @@
     <div class="project-grid">
       <div class="project-small">
         <div class="project-small-img-container">
-          <img src="breadboardekg.webp" alt="Electrocardiogram">
+          <!-- Sideways rotation applied to landscape hardware board image -->
+          <img src="breadboardekg.webp" class="sideways-fill" alt="Electrocardiogram">
         </div>
         <div class="project-info">
           <h3>🫀 Electrocardiogram</h3>
@@ -790,7 +805,8 @@
 
       <div class="project-small">
         <div class="project-small-img-container">
-          <img src="EMGbreadboard.webp" alt="Force Sensor Analysis">
+          <!-- Sideways rotation applied to landscape breadboard image -->
+          <img src="EMGbreadboard.webp" class="sideways-fill" alt="Force Sensor Analysis">
         </div>
         <div class="project-info">
           <h3>💪 Electromyography</h3>
@@ -919,7 +935,8 @@
 
       <div class="project-small">
         <div class="project-small-img-container">
-          <img src="IMG_3705 Small.jpeg" alt="Wearable Gait Monitoring">
+          <!-- Sideways rotation applied to gait analysis device/circuit -->
+          <img src="IMG_3705 Small.jpeg" class="sideways-fill" alt="Wearable Gait Monitoring">
         </div>
         <div class="project-info">
           <h3>🚶 Wearable Gait Monitoring</h3>
@@ -1008,3 +1025,6 @@
 
 </body>
 </html>
+```eof
+
+I've integrated those rotational CSS mechanics to make the wide electronics images fill the frame completely. Let me know if you would like me to adjust any other files!
