@@ -727,6 +727,10 @@
     </div>
   </section>
 
+  <section class="section" id="Experimental Setup">
+    <h2 class="section-title">Experimental Setup</h2>
+  </section>
+  
   <!-- THE THREE ARCHITECTURES (MEDIA FOCUS) -->
   <section class="section" id="architectures">
     <h2 class="section-title">Design Architectures Explored</h2>
@@ -922,6 +926,153 @@
   <section class="section" style="background: rgba(255,255,255,0.4); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
     <h2 class="section-title">Global Progress Synthesis</h2>
     <p class="section-subtitle">Evaluating overarching project system constraints alongside programmatic next steps.</p>
+
+<section class="section">
+
+  <h2 class="section-title">Challenges & Solutions</h2>
+
+  <p class="section-subtitle">
+    Throughout development, several engineering challenges affected device
+    performance. Each issue required iterative testing and design modifications
+    to improve reliability and repeatability.
+  </p>
+
+  <div class="challenge-container">
+
+    <!-- Challenge 1 -->
+    <div class="challenge-card">
+
+      <div class="challenge-text">
+
+        <div class="challenge-icon">⚠️</div>
+
+        <h3>Particle Settling During Syringe Preparation</h3>
+
+        <h4>Challenge</h4>
+
+        <p>
+          The 100 μm polystyrene beads settled rapidly due to their relatively
+          large size and density. This caused inconsistent particle
+          concentrations between experiments and reduced repeatability.
+        </p>
+
+        <h4>Solution</h4>
+
+        <p>
+          The suspension was vortexed for 5–10 seconds immediately before each
+          experiment and gently mixed prior to loading. Syringes were filled
+          directly through the needle and experiments were started immediately
+          after preparation to minimize settling.
+        </p>
+
+      </div>
+
+      <div class="challenge-images">
+
+        <div class="image-placeholder">
+          <img src="settling-before.jpg" alt="Particle settling">
+          <p>Challenge</p>
+        </div>
+
+        <div class="image-placeholder">
+          <img src="settling-after.jpg" alt="Mixed particle suspension">
+          <p>Solution</p>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Challenge 2 -->
+    <div class="challenge-card">
+
+      <div class="challenge-text">
+
+        <div class="challenge-icon">🧪</div>
+
+        <h3>Air Bubbles in the Microfluidic Device</h3>
+
+        <h4>Challenge</h4>
+
+        <p>
+          Air bubbles frequently disrupted flow through the device, altered
+          particle trajectories, and occasionally blocked sections of the
+          microchannels, reducing separation efficiency.
+        </p>
+
+        <h4>Solution</h4>
+
+        <p>
+          Syringes were carefully filled and degassed before testing. The system
+          was flushed prior to introducing the sample, and future designs could
+          incorporate an upstream bubble trap to prevent bubbles from entering
+          the device.
+        </p>
+
+      </div>
+
+      <div class="challenge-images">
+
+        <div class="image-placeholder">
+          <img src="bubble-before.jpg" alt="Air bubble in channel">
+          <p>Challenge</p>
+        </div>
+
+        <div class="image-placeholder">
+          <img src="bubble-after.jpg" alt="Bubble-free flow">
+          <p>Solution</p>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Challenge 3 -->
+    <div class="challenge-card">
+
+      <div class="challenge-text">
+
+        <div class="challenge-icon">📊</div>
+
+        <h3>Particle Settling Inside the Syringe Pump</h3>
+
+        <h4>Challenge</h4>
+
+        <p>
+          During longer experiments, particles settled toward the back of the
+          syringe while mounted on the syringe pump. This produced an uneven
+          particle concentration throughout testing.
+        </p>
+
+        <h4>Solution</h4>
+
+        <p>
+          The syringe was periodically mixed between trials and experiments were
+          kept as short as possible. Future work could include a syringe mixer
+          or continuous agitation system to maintain a homogeneous suspension.
+        </p>
+
+      </div>
+
+      <div class="challenge-images">
+
+        <div class="image-placeholder">
+          <img src="pump-before.jpg" alt="Settled particles in syringe">
+          <p>Challenge</p>
+        </div>
+
+        <div class="image-placeholder">
+          <img src="pump-after.jpg" alt="Improved syringe mixing">
+          <p>Solution</p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
     
     <div class="closing-grid">
       <!-- Card 1: Project Challenges -->
@@ -931,27 +1082,58 @@
           Managing the separation process required balancing trade-offs across all three device platforms:
         </p>
         <ul>
-          <li><strong>Sample Variability:</strong> Explant tissue matrices contain irregular biological sizes and highly variable fluid viscosity, requiring real-time flow monitoring.</li>
-          <li><strong>Fabrication Accuracy:</strong> Achieving high aspect ratios in thick structural SUEX photoresist molds required strict, sub-micron resolution exposure limits.</li>
-          <li><strong>Yield Optimization:</strong> Scaling separation throughput without subjecting delicate multinucleated syncytial knots to damaging shear gradients.</li>
+          <li><strong>Particle Settling During Syringe Preparation:</strong> One of the primary challenges encountered during testing was particle settling, particularly for the 100 μm polystyrene beads due to their relatively large size and density. Uniform particle distribution is critical for obtaining consistent separation results.</li>
+          <li><strong>Particle Settling in the Syringe Pump:</strong> Particle settling continued even after the syringe was mounted on the syringe pump. As testing progressed, beads accumulated near the back of the syringe, causing inconsistent particle delivery. This made it difficult to maintain a constant particle concentration during long experiments.</li>
+          <li><strong>Air Bubbles:</strong> Scaling separation throughput without subjecting delicate multinucleated syncytial knots to damaging shear gradients.</li>
         </ul>
       </div>
 
       <!-- Card 2: Future Work -->
       <div class="closing-card">
-        <h3>🚀 Future Implementation Work</h3>
+        <h3>Potential Solution</h3>
         <p>
-          Next development steps focus on automating the diagnostic workflow to improve device usability in clinical settings:
+          These are the potential solutions for the general challenges that we faced throughout the experiment:
         </p>
         <ul>
-          <li><strong>Multiplexing Devices:</strong> Stacking multiple trapezoidal spiral designs in parallel to process sample volumes up to 10x faster.</li>
-          <li><strong>Smart Monitoring:</strong> Integrating high-speed CMOS optical tracking on-chip to count and verify syncytial knots automatically during sorting.</li>
+          <li><strong>Syringe Preparation Solution:</strong> The bead suspension was vortexed for 5–10 seconds and gently swirled immediately before each experiment to redistribute the particles. The suspension was loaded into the syringe and tested as quickly as possible to minimize settling. Syringes were also filled directly through the needle, giving better control during loading and reducing particle loss.</li>
+          <li><strong>Syringe Pump Solution</strong> A mechanical shaker was first tested to keep the particles suspended, but it did not produce enough vertical motion to effectively resuspend the beads. The syringe pump was then positioned in a near-vertical orientation instead. This reduced bead accumulation and improved the consistency of particle delivery throughout testing.</li>
           <li><strong>Clinical Validation:</strong> Transitioning from fluorescent control microparticles to processing human placenta explant specimens.</li>
         </ul>
       </div>
     </div>
   </section>
 
+  <!-- EXPERIMENTAL VALIDATION -->
+
+  <section class="section">
+    <h2 class="section-title">Experimental Validation</h2>
+    <p class="section-subtitle">
+      To evaluate device performance, multiple experiments were designed to assess
+      particle separation efficiency, flow stability, cytotoxicity, and biological
+      identification of isolated syncytial knots.
+    </p>
+    <div class="validation-grid">
+      <div class="validation-card">
+        <img src="recoverytest.webp" alt="Recovery Efficiency">
+        <h3>Recovery Efficiency</h3>
+        <p>Fluorescent microparticles ranging from 30–150 μm were used to quantify particle recovery and verify successful size-based separation.</p>
+        <div class="status planned">Planned Experiment</div>
+      </div>
+      <div class="validation-card">
+        <img src="ldhassay.webp" alt="LDH Assay">
+        <h3>LDH Cytotoxicity Assay</h3>
+        <p>An LDH assay will evaluate whether the microfluidic device preserves cell viability by measuring membrane damage after processing.</p>
+        <div class="status planned">Planned Experiment</div>
+      </div>
+      <div class="validation-card">
+        <img src="microscopy.webp" alt="Microscopy">
+        <h3>Immunofluorescence</h3>
+        <p>DAPI and Cytokeratin-7 staining will confirm the biological identity of isolated syncytial knots following device separation.</p>
+        <div class="status planned">Planned Experiment</div>
+      </div>
+    </div>
+  </section>
+  
   <!-- PROJECT ASSETS REGISTRY -->
   <section class="section">
     <h2 class="section-title">Project Assets Registry</h2>
