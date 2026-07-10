@@ -166,7 +166,7 @@
       line-height: 1.7;
     }
 
-    /* Main Dynamic Layout Grid */
+    /* Main Layout Grid */
     .card-layout-grid {
       display: grid;
       grid-template-columns: 1.1fr 0.9fr;
@@ -174,17 +174,25 @@
       align-items: start;
     }
 
-    /* Content grouping for tight text alignment */
+    /* Left and Right Columns */
     .text-column-left {
       display: flex;
       flex-direction: column;
-      gap: 25px;
+      gap: 20px;
     }
 
     .media-column-right {
       display: flex;
       flex-direction: column;
-      gap: 25px;
+      gap: 20px;
+    }
+
+    /* Styled Container Boxes for Content Blocks */
+    .info-block {
+      background: rgba(255, 255, 255, 0.4);
+      padding: 25px;
+      border-radius: 14px;
+      border: 1px solid rgba(193, 211, 254, 0.5);
     }
 
     .img-frame {
@@ -208,13 +216,13 @@
       transform: scale(1.03);
     }
 
-    /* Impact layout adaptation */
+    /* Impact Box Structure */
     .impact-container {
       background: rgba(255, 255, 255, 0.4);
       padding: 25px;
       border-radius: 14px;
       border: 1px solid rgba(193, 211, 254, 0.5);
-      margin-top: 10px;
+      margin-top: 20px;
     }
 
     /* INNER LIST ELEMENTS */
@@ -248,7 +256,7 @@
       text-decoration: none;
       color: #6C8EF5;
       font-weight: 700;
-      margin-top: 10px;
+      margin-top: 5px;
       transition: transform 0.2s;
       font-size: 15px;
     }
@@ -257,14 +265,12 @@
       transform: translateX(4px);
     }
 
+    /* Clean tag assembly (No Outer Container Box) */
     .skills {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
-      background: rgba(255, 255, 255, 0.3);
-      padding: 20px;
-      border-radius: 14px;
-      border: 1px solid rgba(193, 211, 254, 0.3);
+      padding-top: 5px;
     }
 
     .tag {
@@ -389,7 +395,7 @@
         
         <div class="card-layout-grid">
           <div class="text-column-left">
-            <div>
+            <div class="info-block">
               <h4>Objective</h4>
               <p>
                 Support healthcare systems in areas with limited resources 
@@ -398,7 +404,7 @@
               </p>
             </div>
             
-            <div>
+            <div class="info-block">
               <h4>My Contributions & Technical Skills</h4>
               <ul>
                 <li>Inspected donated medical equipment for functionality and usability <strong>Medical Equipment</strong></li>
@@ -452,14 +458,14 @@
         
         <div class="card-layout-grid">
           <div class="text-column-left">
-            <div>
+            <div class="info-block">
               <h4>Objective</h4>
               <p>
                 Develop a wireless battery-free pacemaker integrated into transcatheter aortic valve replacement (TAVI) procedures to reduce complications following valve implantation.
               </p>
             </div>
             
-            <div>
+            <div class="info-block">
               <h4>My Contributions & Technical Skills</h4>
               <ul>
                 <li><strong>Fabricated prototype components:</strong> PCB Soldering</li>
@@ -502,14 +508,14 @@
         
         <div class="card-layout-grid">
           <div class="text-column-left">
-            <div>
+            <div class="info-block">
               <h4>Objective</h4>
               <p>
                 The Solutions Lab partners with nonprofit organizations, public agencies, and community stakeholders to design research-driven solutions for complex societal challenges. As a research assistant I worked with police officers and trained them on transparency statements to better improve communnity relations.
               </p>
             </div>
             
-            <div>
+            <div class="info-block">
               <h4>My Contributions & Technical Skills</h4>
               <ul>
                 <li>Designed data collection workflows for behavioral research involving 150+ participants - <strong>Research Design</strong></li>
