@@ -97,7 +97,7 @@
     /* HERO / HEADER */
     .hero {
       text-align: center;
-      margin-bottom: 80px;
+      margin-bottom: 60px;
     }
 
     .hero h1 {
@@ -118,7 +118,7 @@
     COMPLEX GRID STRUCTURE
     ========================= */
     .section {
-      margin: 60px 0;
+      margin: 40px 0;
     }
 
     .research-card {
@@ -166,13 +166,25 @@
       line-height: 1.7;
     }
 
-    /* ROW 1: Objective Left, Image Right (Balanced 50/50 for bigger images) */
-    .top-split-row {
+    /* Main Dynamic Layout Grid */
+    .card-layout-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1.1fr 0.9fr;
       gap: 40px;
-      align-items: center;
-      margin-bottom: 35px;
+      align-items: start;
+    }
+
+    /* Content grouping for tight text alignment */
+    .text-column-left {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+    }
+
+    .media-column-right {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
     }
 
     .img-frame {
@@ -196,21 +208,13 @@
       transform: scale(1.03);
     }
 
-    /* ROW 2: Contributions & Focus Bottom Grid */
-    .bottom-specs-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 25px;
-      margin-top: 20px;
-      border-top: 1px solid rgba(193, 211, 254, 0.5);
-      padding-top: 30px;
-    }
-
-    .info-block {
+    /* Impact layout adaptation */
+    .impact-container {
       background: rgba(255, 255, 255, 0.4);
       padding: 25px;
       border-radius: 14px;
       border: 1px solid rgba(193, 211, 254, 0.5);
+      margin-top: 10px;
     }
 
     /* INNER LIST ELEMENTS */
@@ -221,9 +225,10 @@
     li {
       position: relative;
       padding-left: 20px;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
       font-size: 14px;
       color: #4b5563;
+      line-height: 1.6;
     }
 
     li::before {
@@ -243,7 +248,7 @@
       text-decoration: none;
       color: #6C8EF5;
       font-weight: 700;
-      margin-top: 30px;
+      margin-top: 10px;
       transition: transform 0.2s;
       font-size: 15px;
     }
@@ -256,6 +261,10 @@
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
+      background: rgba(255, 255, 255, 0.3);
+      padding: 20px;
+      border-radius: 14px;
+      border: 1px solid rgba(193, 211, 254, 0.3);
     }
 
     .tag {
@@ -335,13 +344,15 @@
     }
 
     /* RESPONSIVE DESIGN ADJUSTMENTS */
-    @media (max-width: 850px) {
-      .top-split-row {
+    @media (max-width: 900px) {
+      .card-layout-grid {
         grid-template-columns: 1fr;
-        gap: 25px;
+        gap: 30px;
+      }
+      .media-column-right {
+        order: -1;
       }
       .img-frame {
-        order: -1;
         aspect-ratio: 16/10;
       }
       body { padding: 40px 4%; }
@@ -376,51 +387,51 @@
         <h2>🌍 Project CURE</h2>
         <h3>Global Health Engineering Intern</h3>
         
-        <div class="top-split-row">
-          <div class="objective-text">
-            <h4>Objective</h4>
-            <p>
-              Support healthcare systems in areas with limited resources 
-              by inspecting, organizing, and preparing donated medical 
-              equipment for distribution to hospitals and clinics around the world.
-            </p>
+        <div class="card-layout-grid">
+          <div class="text-column-left">
+            <div>
+              <h4>Objective</h4>
+              <p>
+                Support healthcare systems in areas with limited resources 
+                by inspecting, organizing, and preparing donated medical 
+                equipment for distribution to hospitals and clinics around the world.
+              </p>
+            </div>
+            
+            <div>
+              <h4>My Contributions & Technical Skills</h4>
+              <ul>
+                <li>Inspected donated medical equipment for functionality and usability <strong>Medical Equipment</strong></li>
+                <li>Organized supplies according to hospital and clinical needs <strong>Inventory Management</strong></li>
+                <li>Assisted with preparing international medical shipments <strong>Global Health Logistics</strong></li>
+                <li>Collaborated with volunteers to improve workflow efficiency <strong>Teamwork</strong></li>
+                <li>Learned how donated equipment supports healthcare systems worldwide <strong>Healthcare Systems</strong></li>
+              </ul>
+            </div>
           </div>
-          <div class="img-frame">
-            <img src="Screen Shot 2026-07-06 at 9.50.03 PM.png" alt="Microfluidic Device Design Layout">
+
+          <div class="media-column-right">
+            <div class="img-frame">
+              <img src="Screen Shot 2026-07-06 at 9.50.03 PM.png" alt="Microfluidic Device Design Layout">
+            </div>
+            <div>
+              <h4>Core Competencies</h4>
+              <div class="skills">
+                <span class="tag">Global Health</span>
+                <span class="tag">Quality Inspection</span>
+                <span class="tag">Human Factors Engineering</span>
+                <span class="tag">Biomedical Engineering</span>
+                <span class="tag">Team Collaboration</span>
+              </div>
+            </div>
           </div>
         </div>
 
-        <div class="bottom-specs-grid">
-          <div class="info-block" style="grid-column: span 2;">
-            <h4>Impact</h4>
-            <p style="font-size: 14px;">
-              Project CURE reinforced the importance of designing healthcare technologies that remain effective beyond the laboratory. Seeing the types of equipment requested by hospitals around the world and helping over 10+ countries have strengthened my understanding of global healthcare disparities and the role engineers play in improving access to quality medical care. The experience also emphasized that innovation is most impactful when it is accessible, sustainable, and responsive to the needs of the communities it serves.
-            </p>
-          </div>
-        </div>
-        
-        <div class="bottom-specs-grid">
-          <div class="info-block">
-            <h4>My Contributions & Technical Skills</h4>
-            <ul>
-              <li>Inspected donated medical equipment for functionality and usability <strong>Medical Equipment</strong></li>
-              <li>Organized supplies according to hospital and clinical needs <strong>Inventory Management</strong></li>
-              <li>Assisted with preparing international medical shipments <strong>Global Health Logistics</strong></li>
-              <li>Collaborated with volunteers to improve workflow efficiency <strong>Teamwork</strong></li>
-              <li>Learned how donated equipment supports healthcare systems worldwide <strong>Healthcare Systems</strong></li>
-            </ul>
-          </div>
-          
-          <div class="info-block">
-            <h4>Core Competencies</h4>
-            <div class="skills">
-              <span class="tag">Global Health</span>
-              <span class="tag">Quality Inspection</span>
-              <span class="tag">Human Factors Engineering</span>
-              <span class="tag">Biomedical Engineering</span>
-              <span class="tag">Team Collaboration</span>
-            </div>
-          </div>
+        <div class="impact-container">
+          <h4>Impact</h4>
+          <p style="font-size: 14px;">
+            Project CURE reinforced the importance of designing healthcare technologies that remain effective beyond the laboratory. Seeing the types of equipment requested by hospitals around the world and helping over 10+ countries have strengthened my understanding of global healthcare disparities and the role engineers play in improving access to quality medical care. The experience also emphasized that innovation is most impactful when it is accessible, sustainable, and responsive to the needs of the communities it serves.
+          </p>
         </div>
       </div>
     </section>
@@ -439,44 +450,48 @@
         <h2>❤️ Rogers Lab | TAVI Integrated Pacemaker</h2>
         <h3>Implantable Bio-Electronics</h3>
         
-        <div class="top-split-row">
-          <div class="objective-text">
-            <h4>Objective</h4>
-            <p>
-              Develop a wireless battery-free pacemaker integrated into transcatheter aortic valve replacement (TAVI) procedures to reduce complications following valve implantation.
-            </p>
+        <div class="card-layout-grid">
+          <div class="text-column-left">
+            <div>
+              <h4>Objective</h4>
+              <p>
+                Develop a wireless battery-free pacemaker integrated into transcatheter aortic valve replacement (TAVI) procedures to reduce complications following valve implantation.
+              </p>
+            </div>
+            
+            <div>
+              <h4>My Contributions & Technical Skills</h4>
+              <ul>
+                <li><strong>Fabricated prototype components:</strong> PCB Soldering</li>
+                <li><strong>Built and tested RF coils:</strong> Electronics</li>
+                <li><strong>Performed flow-loop testing:</strong> Mechanical Testing</li>
+                <li><strong>Tuned impedance for wireless power transfer:</strong> RF Systems</li>
+                <li><strong>Assisted with prototype manufacturing:</strong> Medical Devices</li>
+              </ul>
+            </div>
+            
+            <div>
+              <a href="tavi-project.html" class="project-link">→ View Full Project</a>
+            </div>
           </div>
-          <div class="img-frame">
-            <img src="Screen Shot 2026-07-06 at 5.30.45 PM.png" alt="Pacemaker Bio-Electronics Integration">
-          </div>
-        </div>
 
-        <div class="bottom-specs-grid">
-          <div class="info-block">
-            <h4>My Contributions & Technical Skills</h4>
-            <ul>
-              <li><strong>Fabricated prototype components:</strong> PCB Soldering</li>
-              <li><strong>Built and tested RF coils:</strong> Electronics</li>
-              <li><strong>Performed flow-loop testing:</strong> Mechanical Testing</li>
-              <li><strong>Tuned impedance for wireless power transfer:</strong> RF Systems</li>
-              <li><strong>Assisted with prototype manufacturing:</strong> Medical Devices</li>
-            </ul>
-          </div>
-          
-          <div class="info-block">
-            <h4>Core Competencies</h4>
-            <div class="skills">
-              <span class="tag">Medical Devices</span>
-              <span class="tag">Manufacturing</span>
-              <span class="tag">Electronics</span>
-              <span class="tag">Testing</span>
-              <span class="tag">Wireless Power Transfer</span>
-              <span class="tag">PCB Design</span>
+          <div class="media-column-right">
+            <div class="img-frame">
+              <img src="Screen Shot 2026-07-06 at 5.30.45 PM.png" alt="Pacemaker Bio-Electronics Integration">
+            </div>
+            <div>
+              <h4>Core Competencies</h4>
+              <div class="skills">
+                <span class="tag">Medical Devices</span>
+                <span class="tag">Manufacturing</span>
+                <span class="tag">Electronics</span>
+                <span class="tag">Testing</span>
+                <span class="tag">Wireless Power Transfer</span>
+                <span class="tag">PCB Design</span>
+              </div>
             </div>
           </div>
         </div>
-        
-        <a href="tavi-project.html" class="project-link">→ View Full Project</a>
       </div>
     </section>
 
@@ -485,41 +500,45 @@
         <h2>🚶 Solutions Lab | Research Assistant</h2>
         <h3>Conducting evidence-based research to help community organizations and public service agencies develop practical solutions that improve community well-being.</h3>
         
-        <div class="top-split-row">
-          <div class="objective-text">
-            <h4>Objective</h4>
-            <p>
-              The Solutions Lab partners with nonprofit organizations, public agencies, and community stakeholders to design research-driven solutions for complex societal challenges. As a research assistant I worked with police officers and trained them on transparency statements to better improve communnity relations.
-            </p>
+        <div class="card-layout-grid">
+          <div class="text-column-left">
+            <div>
+              <h4>Objective</h4>
+              <p>
+                The Solutions Lab partners with nonprofit organizations, public agencies, and community stakeholders to design research-driven solutions for complex societal challenges. As a research assistant I worked with police officers and trained them on transparency statements to better improve communnity relations.
+              </p>
+            </div>
+            
+            <div>
+              <h4>My Contributions & Technical Skills</h4>
+              <ul>
+                <li>Designed data collection workflows for behavioral research involving 150+ participants - <strong>Research Design</strong></li>
+                <li>Supported data collection for community-focused studies - <strong>Data Collection</strong></li>
+                <li>Coded transparency statement to quantify how effective transparency statements are - <strong>Python</strong></li>
+              </ul>
+            </div>
+            
+            <div>
+              <a href="gait-project.html" class="project-link">→ View Full Project</a>
+            </div>
           </div>
-          <div class="img-frame">
-            <img src="TSL_Logo_A_Full_Color_Dark.webp" alt="Sensor and Biomechanics Signal Pipeline">
-          </div>
-        </div>
 
-        <div class="bottom-specs-grid">
-          <div class="info-block">
-            <h4>My Contributions & Technical Skills</h4>
-            <ul>
-              <li>Designed data collection workflows for behavioral research involving 150+ participants - <strong>Research Design</strong></li>
-              <li>Supported data collection for community-focused studies - <strong>Data Collection</strong></li>
-              <li>Coded transparency statement to quantify how effective transparency statements are - <strong>Python</strong></li>
-            </ul>
-          </div>
-          
-          <div class="info-block">
-            <h4>Core Competencies</h4>
-            <div class="skills">
-              <span class="tag">Python</span>
-              <span class="tag">Wearable Sensors</span>
-              <span class="tag">Biomechanics</span>
-              <span class="tag">Embedded Systems</span>
-              <span class="tag">Data Analysis</span>
+          <div class="media-column-right">
+            <div class="img-frame">
+              <img src="TSL_Logo_A_Full_Color_Dark.webp" alt="Sensor and Biomechanics Signal Pipeline">
+            </div>
+            <div>
+              <h4>Core Competencies</h4>
+              <div class="skills">
+                <span class="tag">Python</span>
+                <span class="tag">Wearable Sensors</span>
+                <span class="tag">Biomechanics</span>
+                <span class="tag">Embedded Systems</span>
+                <span class="tag">Data Analysis</span>
+              </div>
             </div>
           </div>
         </div>
-
-        <a href="gait-project.html" class="project-link">→ View Full Project</a>
       </div>
     </section>
 
