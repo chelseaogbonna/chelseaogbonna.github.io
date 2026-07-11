@@ -1,22 +1,1207 @@
-<div class="project-small">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ModuCargo | Chelsea Ogbonna</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+  
+  <style>
+    :root {
+      --bg: #edf2fb;
+      --card: #d7e3fc;
+      --accent: #abc4ff;
+      --text: #1f2937;
+      --text-muted: #4b5563;
+      --border: #c1d3fe;
+      --card-hover: #ccdbfd;
+      --shadow: 0 12px 30px rgba(0, 0, 0, .06);
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    
+    /* ===========================
+       NAVIGATION
+       =========================== */
+    nav {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(1100px, 92%);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+    }
+    
+    .logo {
+      font-weight: 800;
+      font-size: 18px;
+      text-decoration: none;
+      color: var(--text);
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: 10px;
+      padding: 8px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .78);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(193, 211, 254, .45);
+      box-shadow: 0 12px 35px rgba(0, 0, 0, .10);
+    }
+    
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text);
+      padding: 10px 14px;
+      border-radius: 10px;
+      transition: .25s;
+      font-weight: 500;
+    }
+    
+    .nav-links a:hover {
+      background: var(--accent);
+      transform: translateY(-2px);
+    }
+    
+    /* ===========================
+       HERO
+       =========================== */
+    .hero {
+      min-height: 80vh;
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      align-items: center;
+      padding: 140px 10% 60px;
+      position: relative;
+      gap: 50px;
+    }
+    
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 650px;
+      height: 650px;
+      background: var(--accent);
+      filter: blur(150px);
+      opacity: .30;
+      left: -150px;
+      top: -150px;
+      pointer-events: none;
+    }
+    
+    .hero-text {
+      position: relative;
+      z-index: 2;
+    }
+    
+    .hero-eyebrow {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: #6C8EF5;
+      margin-bottom: 1rem;
+    }
+    
+    .hero h1 {
+      font-size: 48px;
+      margin-bottom: 15px;
+      line-height: 1.15;
+      font-weight: 800;
+    }
+    
+    .hero p {
+      font-size: 17px;
+      line-height: 1.7;
+      max-width: 620px;
+      color: #374151;
+      margin-bottom: 25px;
+    }
+    
+    .button {
+      display: inline-block;
+      padding: 14px 26px;
+      background: var(--accent);
+      border-radius: 12px;
+      font-weight: 700;
+      color: var(--text);
+      text-decoration: none;
+      transition: .3s;
+      box-shadow: var(--shadow);
+    }
+    
+    .button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 25px rgba(171, 196, 255, 0.5);
+    }
+    
+    .hero-image img {
+      width: 100%;
+      max-width: 380px;
+      border-radius: 20px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, .12);
+      cursor: zoom-in;
+    }
+    
+    .section {
+      padding: 80px 10%;
+    }
+    
+    .section-title {
+      font-size: 36px;
+      text-align: center;
+      margin-bottom: 10px;
+      font-weight: 800;
+    }
+    
+    .section-subtitle {
+      max-width: 750px;
+      margin: 0 auto 50px;
+      text-align: center;
+      line-height: 1.6;
+      color: #6b7280;
+      font-size: 16px;
+    }
 
-<img src="everydaymovinghelper.webp">
+    /* ==========================================
+       STATS BAR & SPLIT ROWS
+       ========================================== */
+    .snapshot-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      margin-bottom: 50px;
+    }
 
-<div class="project-info">
+    .snapshot-card {
+      background: var(--card);
+      padding: 25px 20px;
+      border-radius: 18px;
+      text-align: center;
+      box-shadow: var(--shadow);
+      transition: .3s;
+    }
 
-<h3>🤖 Everyday Moving Helper</h3>
+    .snapshot-card:hover {
+      transform: translateY(-5px);
+      background: var(--card-hover);
+    }
 
-<p>
-Designed a modular motorized cargo platform to assist with transporting everyday loads using adaptive mechanical design.
-</p>
+    .snapshot-card h3 {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
 
-<div class="tags">
-<span class="tag">CAD</span>
-<span class="tag">Mechanical Design</span>
-<span class="tag">Prototyping</span>
-</div>
+    .snapshot-card p {
+      font-size: 13px;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
 
-<a href="#">Coming Soon →</a>
+    .narrative-row {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 50px;
+      align-items: center;
+      margin-bottom: 60px;
+    }
 
-</div>
-</div>
+    .narrative-row.reverse {
+      grid-template-columns: 0.9fr 1.1fr;
+    }
+
+    .narrative-text h3 {
+      font-size: 24px;
+      margin-bottom: 15px;
+      font-weight: 800;
+      color: var(--text);
+    }
+
+    .narrative-text p {
+      font-size: 16px;
+      color: var(--text-muted);
+      margin-bottom: 15px;
+      line-height: 1.7;
+    }
+
+    .narrative-image {
+      width: 100%;
+      aspect-ratio: 4/3;
+      background: var(--card);
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+    }
+
+    .narrative-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      cursor: zoom-in;
+      display: block;
+      transition: transform 0.3s;
+    }
+
+    .narrative-image img:hover {
+      transform: scale(1.02);
+    }
+
+    /* ==========================================
+       GRID / CUBES SYSTEM
+       ========================================== */
+    .cubes-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      margin-bottom: 40px;
+    }
+
+    .cube-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 35px;
+      box-shadow: var(--shadow);
+    }
+
+    .cube-card h3 {
+      font-size: 22px;
+      font-weight: 800;
+      margin-bottom: 20px;
+      border-bottom: 2px solid var(--bg);
+      padding-bottom: 10px;
+    }
+
+    .compact-steps {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+    }
+
+    .step-item {
+      background: var(--bg);
+      padding: 12px 15px;
+      border-radius: 12px;
+      font-size: 13px;
+    }
+
+    .step-item strong {
+      display: block;
+      font-size: 14px;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .requirements-inner {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .req-category h4 {
+      font-size: 14px;
+      text-transform: uppercase;
+      color: #6C8EF5;
+      margin-bottom: 6px;
+      letter-spacing: 0.5px;
+    }
+
+    .req-category ul {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      list-style: none;
+    }
+
+    .req-category li {
+      background: var(--bg);
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    /* ==========================================
+       SUB-GRIDS & TRIPLE CARDS
+       ========================================== */
+    .sub-grid-triple {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 15px;
+    }
+
+    .sub-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 25px;
+      box-shadow: var(--shadow);
+      transition: .3s;
+    }
+
+    .sub-card:hover {
+      transform: translateY(-6px);
+      background: var(--bg);
+    }
+
+    .sub-card-icon {
+      font-size: 24px;
+      margin-bottom: 12px;
+    }
+
+    .sub-card h3 {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .sub-card p {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* Terrain Special Borders */
+    .sub-card.t-smooth { border-top: 4px solid var(--accent); }
+    .sub-card.t-carpet { border-top: 4px solid #1baf7a; }
+    .sub-card.t-rough { border-top: 4px solid #e34948; }
+
+    .terrain-metric-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      padding: 6px 0;
+      border-top: 1px dashed var(--border);
+      margin-top: 8px;
+    }
+
+    /* ==========================================
+       CHARTS
+       ========================================== */
+    .chart-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 30px;
+      margin-bottom: 35px;
+      box-shadow: var(--shadow);
+    }
+
+    .chart-header {
+      margin-bottom: 20px;
+    }
+
+    .chart-title {
+      font-size: 18px;
+      font-weight: 800;
+      margin-bottom: 4px;
+    }
+
+    .chart-desc {
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    .chart-container {
+      width: 100%;
+      height: 280px;
+      position: relative;
+    }
+
+    .finding-alert {
+      background: var(--bg);
+      border-left: 4px solid #6C8EF5;
+      padding: 15px 20px;
+      border-radius: 0 12px 12px 0;
+      margin-top: 20px;
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    .finding-alert strong {
+      color: var(--text);
+    }
+
+    /* ==========================================
+       CONTROL LOGIC TABLE
+       ========================================== */
+    .table-responsive {
+      width: 100%;
+      overflow-x: auto;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      margin-top: 25px;
+      background: white;
+      box-shadow: var(--shadow);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 14px;
+    }
+
+    th {
+      background: var(--card);
+      color: var(--text);
+      font-weight: 700;
+      padding: 16px;
+      text-transform: uppercase;
+      font-size: 11px;
+      letter-spacing: 0.5px;
+    }
+
+    td {
+      padding: 16px;
+      border-bottom: 1px solid var(--bg);
+      color: var(--text-muted);
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    .pill {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 20px;
+      text-transform: uppercase;
+    }
+    
+    .pill-green { background: #e6f5ee; color: #0a6638; }
+    .pill-amber { background: #fef3dc; color: #7a4d00; }
+    .pill-red { background: #fdeaea; color: #8b1e1e; }
+
+    /* ==========================================
+       CHALLENGES (STACKED LIST)
+       ========================================== */
+    .challenge-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      margin-top: 30px;
+    }
+
+    .challenge-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .ch-title-bar {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      padding: 20px 30px;
+      background: linear-gradient(135deg, var(--card), var(--accent));
+      border-bottom: 1px solid var(--border);
+    }
+
+    .ch-num {
+      font-size: 24px;
+      font-weight: 800;
+      color: #6C8EF5;
+    }
+
+    .ch-title {
+      font-size: 16px;
+      font-weight: 800;
+    }
+
+    .ch-split-body {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .ch-panel {
+      padding: 25px 30px;
+    }
+
+    .ch-panel:first-child {
+      border-right: 1px solid var(--border);
+    }
+
+    .ch-panel:last-child {
+      background: var(--bg);
+    }
+
+    .ch-label {
+      font-size: 10px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #6C8EF5;
+      margin-bottom: 8px;
+    }
+
+    .ch-panel p {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* ==========================================
+       TECH STACK & FUTURE WORK
+       ========================================== */
+    .tech-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 25px;
+    }
+
+    .tech-card {
+      background: white;
+      border: 1px solid var(--border);
+      padding: 20px;
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      transition: .3s;
+    }
+
+    .tech-card:hover {
+      transform: translateY(-3px);
+      background: var(--card-hover);
+    }
+
+    .tech-title {
+      font-size: 15px;
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+
+    .tech-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* =========================
+       LIGHTBOX MODAL
+       ========================= */
+    .lightbox-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(15, 23, 42, 0.92);
+      backdrop-filter: blur(8px);
+      z-index: 2000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+    }
+
+    .lightbox-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .lightbox-img {
+      max-width: 90%;
+      max-height: 85vh;
+      border-radius: 12px;
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+      transform: scale(0.95);
+      transition: transform 0.4s ease;
+      cursor: zoom-out;
+    }
+
+    .lightbox-overlay.active .lightbox-img {
+      transform: scale(1);
+    }
+
+    /* RESPONSIVE LAYOUT BREAKPOINTS */
+    @media(max-width:950px){
+      .hero { grid-template-columns: 1fr; text-align: center; padding-top: 140px; min-height: auto; }
+      .hero-image { display: flex; justify-content: center; margin-top: 30px; }
+      .narrative-row, .narrative-row.reverse { grid-template-columns: 1fr; gap: 30px; }
+      .narrative-row.reverse .narrative-image { order: -1; }
+      .cubes-grid, .sub-grid-triple, .tech-grid { grid-template-columns: 1fr; gap: 20px; }
+      .ch-split-body { grid-template-columns: 1fr; }
+      .ch-panel:first-child { border-right: none; border-bottom: 1px solid var(--border); }
+      .section { padding: 60px 6%; }
+      .snapshot-row { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- LIGHTBOX MODAL OVERLAY -->
+  <div class="lightbox-overlay" id="lightbox">
+    <img src="" alt="Enlarged visualization" class="lightbox-img" id="lightboxImg">
+  </div>
+
+  <nav>
+    <a href="chelsea.html" class="logo">Chelsea Ogbonna</a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="projects.html">Projects</a>
+      <a href="research.html">Research</a>
+      <a href="leadership.html">Leadership</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <div class="hero-text">
+      <p class="hero-eyebrow">Masters Independent Project · Embedded Systems · 2024</p>
+      <h1>ModuCargo</h1>
+      <h2>A Terrain-Aware Motorized Cargo Platform</h2>
+      <p>
+        Designed to assist populations struggling with weight transit—from elderly individuals to parents managing strollers. Employs integrated payload cell calibrations, dynamic IMU tilt controls, and multi-directional Mecanum kinematics.
+      </p>
+      <a href="#motivation" class="button">Explore the Project ↓</a>
+    </div>
+    <div class="hero-image">
+      <img src="projecthero.jpg" alt="ModuCargo physical setup concept" onerror="this.src='everydaymovinghelper.webp'">
+    </div>
+  </section>
+
+  <!-- HIGHLIGHTS / SNAPSHOT -->
+  <section class="section">
+    <div class="snapshot-row">
+      <div class="snapshot-card"><h3>500g</h3><p>Target Payload Bounds</p></div>
+      <div class="snapshot-card"><h3>360</h3><p>Calibration Readings Collected</p></div>
+      <div class="snapshot-card"><h3>3</h3><p>Real-World Terrains Evaluated</p></div>
+      <div class="snapshot-card"><h3>6</h3><p>Software Safety Safeguards</p></div>
+    </div>
+  </section>
+
+  <!-- MOTIVATION -->
+  <section class="section" id="motivation" style="background: rgba(255,255,255,0.4); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+    <div class="narrative-row">
+      <div class="narrative-text">
+        <h3>👴 The Problem Worth Solving</h3>
+        <p>
+          Carrying loads is something most people take for granted — but for elderly individuals, parents pushing strollers, or anyone recovering from an injury, transporting groceries, laundry, or equipment across a building is a daily physical strain and safety risk. Falls caused by carrying heavy items are among the leading causes of injury in older adults.
+        </p>
+        <p>
+          ModuCargo started as a straightforward question: could a small, affordable robotic platform reduce that physical burden? Not a warehouse-scale AGV costing tens of thousands of dollars — but something built from hobbyist hardware that could navigate the same floors people actually live on.
+        </p>
+      </div>
+      <div class="narrative-image">
+        <img src="everydaymovinghelper.webp" alt="ModuCargo operational scenario representation">
+      </div>
+    </div>
+
+    <!-- Motivation triple cards -->
+    <div class="sub-grid-triple">
+      <div class="sub-card">
+        <div class="sub-card-icon">👴</div>
+        <h3>Elderly Independence</h3>
+        <p>Reduces the need to carry heavy loads between rooms, helping older adults maintain autonomy without physical strain or fall risk.</p>
+      </div>
+      <div class="sub-card">
+        <div class="sub-card-icon">👶</div>
+        <h3>Parents & Caregivers</h3>
+        <p>Parents managing a young child in one arm have no free hand for heavy bags. A follow-along cargo platform changes that equation.</p>
+      </div>
+      <div class="sub-card">
+        <div class="sub-card-icon">🏗️</div>
+        <h3>Accessible Hardware</h3>
+        <p>Proving the concept works with a sub-$50 parts list matters — accessibility of the technology is as important as the technology itself.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SYSTEM OVERVIEW & CUBES -->
+  <section class="section">
+    <h2 class="section-title">Ecosystem Architecture</h2>
+    <p class="section-subtitle">How our custom control loops translate load and environment vibrations into real-time safety variables.</p>
+    
+    <div class="narrative-row reverse">
+      <div class="narrative-image">
+        <img src="robothero.jpg" alt="Omnidirectional mecanum driving chassis layout" onerror="this.src='everydaymovinghelper.webp'">
+      </div>
+      <div class="narrative-text">
+        <h3>How ModuCargo Works</h3>
+        <p>
+          The platform is built on the Cokoino CKK0015 4WD Mecanum chassis, controlled by a Raspberry Pi Pico running MicroPython. Two sensor systems run in parallel — a load cell that measures how much weight is on the deck, and an IMU that monitors tilt angle and terrain vibration. Every 250ms, a decision loop reads both sensors and adjusts motor speed accordingly.
+        </p>
+        <p>
+          Mecanum wheels were chosen specifically because they allow sideways movement without rotating the chassis. For a cargo platform following a person through a narrow hallway or doorway, this matters: the platform can slide into position without the load shifting.
+        </p>
+      </div>
+    </div>
+
+    <!-- Cubes mapping -->
+    <div class="cubes-grid">
+      <div class="cube-card">
+        <h3>⚡ Control Features</h3>
+        <div class="compact-steps">
+          <div class="step-item"><strong>Mecanum Drive</strong> Side-slip slide movement without turning.</div>
+          <div class="step-item"><strong>Load Cells</strong> HX711 24-bit resolution mass tracking.</div>
+          <div class="step-item"><strong>IMU Scans</strong> Real-time high gyro roughness metrics.</div>
+          <div class="step-item"><strong>Graduated Loops</strong> Progressive safety speed reductions.</div>
+        </div>
+      </div>
+      <div class="cube-card">
+        <h3>🎯 Safety Metrics</h3>
+        <div class="requirements-inner">
+          <div class="req-category">
+            <h4>Calibration Bounds</h4>
+            <ul>
+              <li>Deck Mass Offset: ~448g</li>
+              <li>Frequency: 250ms Loops</li>
+              <li>Standard Safe Limit: 500g</li>
+            </ul>
+          </div>
+          <div class="req-category">
+            <h4>Active Thresholds</h4>
+            <ul>
+              <li>Overload Trip: &gt;1050g</li>
+              <li>Tilt Lockout: &gt;15°</li>
+              <li>Gyro Friction: &gt;5 dps</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEST METHODOLOGY & TERRAIN RATIONALE -->
+  <section class="section" style="background: rgba(255,255,255,0.4); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+    <h2 class="section-title">Test Methodology & Terrains</h2>
+    <p class="section-subtitle">Evaluating sensor performances across three real-world surface conditions to establish safe operational limits.</p>
+    
+    <div class="sub-grid-triple">
+      <div class="sub-card t-smooth">
+        <div class="sub-card-icon">🏢</div>
+        <h3>Smooth Floor</h3>
+        <p>Represents tiled or polished concrete — common in lobbies and hallways. Serves as the performance baseline.</p>
+        <div class="terrain-metric-row"><span>Force std dev</span><span>±8.7g</span></div>
+        <div class="terrain-metric-row"><span>Mean tilt</span><span>1.9°</span></div>
+        <div class="terrain-metric-row"><span>Gyro noise</span><span>0.94 dps</span></div>
+      </div>
+      
+      <div class="sub-card t-carpet">
+        <div class="sub-card-icon">🏠</div>
+        <h3>Carpet Pile</h3>
+        <p>Represents typical home flooring. Pile introduces wheel drag resistance and dynamic transient vibration spikes.</p>
+        <div class="terrain-metric-row"><span>Force std dev</span><span>±27.1g</span></div>
+        <div class="terrain-metric-row"><span>Mean tilt</span><span>3.9°</span></div>
+        <div class="terrain-metric-row"><span>Gyro noise</span><span>2.95 dps</span></div>
+      </div>
+
+      <div class="sub-card t-rough">
+        <div class="sub-card-icon">🧱</div>
+        <h3>Rough Terrains</h3>
+        <p>Represents pavement, roads, or bricks. The stress limit where safety safeguards actually activate.</p>
+        <div class="terrain-metric-row"><span>Force std dev</span><span>±58.1g</span></div>
+        <div class="terrain-metric-row"><span>Mean tilt</span><span>8.8°</span></div>
+        <div class="terrain-metric-row"><span>Gyro noise</span><span>8.90 dps</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHARTS (DYNAMIC PLOTTING VIA CHART.JS) -->
+  <section class="section">
+    <h2 class="section-title">Quantitative System Performance</h2>
+    <p class="section-subtitle">Real-time analytical trends captured over 30-second test sweeps with a 500g payload.</p>
+
+    <!-- Chart 1: Force -->
+    <div class="chart-card">
+      <div class="chart-header">
+        <h4 class="chart-title">Force Sensor Readings over Time (XFW-HX711)</h4>
+        <p class="chart-desc">Total measured weight in grams — 500g payload + ~448g platform = ~948g baseline. Spikes indicate dynamic impact loads from terrain.</p>
+      </div>
+      <div class="chart-container">
+        <canvas id="forceChart"></canvas>
+      </div>
+      <div class="finding-alert">
+        <strong>Key Finding:</strong> Standard deviation scales 6.7× from smooth (±8.7g) to rough (±58.1g). The overload stop threshold of 1050g was breached on rough terrain approximately 18% of the time — consistent with the wheel-impact model. On smooth and carpet surfaces, the threshold was never reached under a 500g payload.
+      </div>
+    </div>
+
+    <!-- Chart 2: Tilt -->
+    <div class="chart-card">
+      <div class="chart-header">
+        <h4 class="chart-title">Platform Tilt Angle over Time (MPU6050)</h4>
+        <p class="chart-desc">Tilt angle in degrees derived from accelerometer. The red dashed line marks the 15° safety stop threshold.</p>
+      </div>
+      <div class="chart-container">
+        <canvas id="tiltChart"></canvas>
+      </div>
+      <div class="finding-alert">
+        <strong>Key Finding:</strong> Rough terrain produced a tilt spike of 19.32° — 4.32° above the stop threshold. Carpet peaked at 8.58°, comfortably within the caution zone but not triggering a stop. This confirms the terrain classification is meaningful: the same sensor produces qualitatively different behaviour on each surface type.
+      </div>
+    </div>
+
+    <!-- Chart 3: Noise -->
+    <div class="chart-card">
+      <div class="chart-header">
+        <h4 class="chart-title">Sensor Noise Comparison — Standard Deviation by Surface</h4>
+        <p class="chart-desc">How much each sensor varies across the three surfaces. Higher variance = noisier signal = harder terrain. All three sensors scale consistently.</p>
+      </div>
+      <div class="chart-container">
+        <canvas id="noiseChart"></canvas>
+      </div>
+      <div class="finding-alert">
+        <strong>Key Finding:</strong> All three sensors scale in the same direction — confirming they are independently detecting the same physical phenomenon. Gyroscope noise is the most sensitive indicator (9.9× increase from smooth to rough vs. 6.7× for force and 4.5× for tilt), making it the best candidate for early terrain detection before dangerous conditions develop.
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTROL LOGIC -->
+  <section class="section" style="background: rgba(255,255,255,0.4); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+    <h2 class="section-title">Control Logic</h2>
+    <p class="section-subtitle">Graduated safety bounds calculated to map active hazard conditions while avoiding false-stop failures on surface joints.</p>
+
+    <div class="table-responsive">
+      <table>
+        <thead>
+          <tr>
+            <th>Condition</th>
+            <th>Sensor Node</th>
+            <th>Threshold Parameter</th>
+            <th>Response Execution</th>
+            <th>Triggered On</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Normal Operation</td>
+            <td>Force</td>
+            <td>&lt; 1000g</td>
+            <td>Full speed</td>
+            <td><span class="pill pill-green">All surfaces</span></td>
+          </tr>
+          <tr>
+            <td>Overload Warning</td>
+            <td>Force</td>
+            <td>1000–1050g</td>
+            <td>Reduce speed 50%</td>
+            <td><span class="pill pill-amber">Carpet, rough</span></td>
+          </tr>
+          <tr>
+            <td>Overload Stop</td>
+            <td>Force</td>
+            <td>&gt; 1050g sustained</td>
+            <td>Stop motors</td>
+            <td><span class="pill pill-red">Rough terrain</span></td>
+          </tr>
+          <tr>
+            <td>Tilt Caution</td>
+            <td>MPU6050 Accel</td>
+            <td>&gt; 10°</td>
+            <td>Reduce speed 50%</td>
+            <td><span class="pill pill-amber">Rough terrain</span></td>
+          </tr>
+          <tr>
+            <td>Tilt Stop</td>
+            <td>MPU6050 Accel</td>
+            <td>&gt; 15°</td>
+            <td>Stop motors</td>
+            <td><span class="pill pill-red">Rough (t≈21.5s)</span></td>
+          </tr>
+          <tr>
+            <td>Rough Terrain Detect</td>
+            <td>Gyro Std Dev</td>
+            <td>&gt; 5 dps</td>
+            <td>Reduce speed 30%</td>
+            <td><span class="pill pill-red">Rough terrain</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- CHALLENGES -->
+  <section class="section">
+    <h2 class="section-title">Engineering Challenges</h2>
+    <p class="section-subtitle">What was hard — and how we resolved the gap between wiring a component and extracting reliable biological/hardware data.</p>
+
+    <div class="challenge-stack">
+      
+      <!-- Challenge 1 -->
+      <div class="challenge-card">
+        <div class="ch-title-bar">
+          <div class="ch-num">01</div>
+          <div class="ch-title">Distinguishing Terrain Impact Spikes from Overload</div>
+        </div>
+        <div class="ch-split-body">
+          <div class="ch-panel">
+            <div class="ch-label">The Problem</div>
+            <p>A mecanum wheel hitting a floor seam or small obstacle causes a momentary 100–120g spike on the force sensor — identical in magnitude to a genuine cargo overload. A naive threshold check would trigger a false stop every time the platform crossed a tile joint, making it unusable on anything but perfectly smooth floors.</p>
+          </div>
+          <div class="ch-panel">
+            <div class="ch-label">The Solution</div>
+            <p>Replaced single-sample threshold checks with a rolling 5-sample window average. The overload stop only triggers when the mean of the last five readings exceeds 1050g — roughly 1.25 seconds of sustained overload. Momentary spikes average out and do not trigger the stop. This was validated against the rough terrain dataset, where 18% of individual samples exceeded 1050g but no 5-sample window mean did.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Challenge 2 -->
+      <div class="challenge-card">
+        <div class="ch-title-bar">
+          <div class="ch-num">02</div>
+          <div class="ch-title">MPU6050 Silent Data Corruption from Incorrect Supply Voltage</div>
+        </div>
+        <div class="ch-split-body">
+          <div class="ch-panel">
+            <div class="ch-label">The Problem</div>
+            <p>The MPU6050 is a 3.3V device. Connecting its VCC to the Pico's VBUS (5V) doesn't destroy the sensor — it appears to function, the I2C bus is acknowledged, and readings come back. But the values are silently corrupted: accelerometer outputs were stuck near ±2g regardless of orientation, and gyroscope readings showed constant DC offset drift. There was no error flag and no obvious visual indication.</p>
+          </div>
+          <div class="ch-panel">
+            <div class="ch-label">The Solution</div>
+            <p>Identified by comparing expected gravity vector magnitude (should read exactly 1.0g on the Z-axis when flat) against actual readings. When the magnitude deviated by more than 15%, voltage rails were inspected. Rewiring VCC to the Pico's 3.3V output pin immediately produced correct readings. Added a startup self-check to the firmware that reads the Z-axis accel, computes the magnitude, and halts with an error if it falls outside 0.90–1.10g.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Challenge 3 -->
+      <div class="challenge-card">
+        <div class="ch-title-bar">
+          <div class="ch-num">03</div>
+          <div class="ch-title">Mecanum Wheel Orientation Causing Unintended Diagonal Drift</div>
+        </div>
+        <div class="ch-split-body">
+          <div class="ch-panel">
+            <div class="ch-label">The Problem</div>
+            <p>Mecanum wheels must be arranged so their 45° rollers form an X pattern when viewed from above — two wheels with rollers angled one way, two angled the opposite way. A single incorrectly mounted wheel causes the platform to drift diagonally during any commanded movement. This is not immediately obvious because the platform still moves in roughly the right direction — it just drifts 15–20° off axis, which only becomes apparent over a longer run.</p>
+          </div>
+          <div class="ch-panel">
+            <div class="ch-label">The Solution</div>
+            <p>Diagnosed by running each motor pair independently and observing the resulting chassis movement. Correct front-left + rear-right pairing should produce a pure lateral slide — if it produced rotation instead, a wheel was misoriented. After remounting the front-right wheel (roller angle was mirrored), all four movement directions — forward, backward, strafe left, strafe right — produced clean straight-line motion without drift. Assembly notes now include an explicit roller-angle diagram for each wheel position.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Challenge 4 -->
+      <div class="challenge-card">
+        <div class="ch-title-bar">
+          <div class="ch-num">04</div>
+          <div class="ch-title">HX711 Zero-Point Drift Across Power Cycles</div>
+        </div>
+        <div class="ch-split-body">
+          <div class="ch-panel">
+            <div class="ch-label">The Problem</div>
+            <p>The load cell requires calibration against a known weight to convert raw ADC counts into grams. Without storing this calibration value, every power cycle produced a different zero-point offset — readings drifted by ±30g between sessions. This was large enough to produce false overload warnings on carpet even with no payload, making the system unreliable across sessions.</p>
+          </div>
+          <div class="ch-panel">
+            <div class="ch-label">The Solution</div>
+            <p>Calibration data (zero offset and scale factor) is now written to the Pico's onboard flash memory after each calibration run using MicroPython's <code>uos</code> and file I/O. On boot, the firmware reads the stored values before taking any sensor readings. A re-calibration flag can be triggered by holding a GPIO pin low during startup, prompting a new calibration sequence. After this fix, zero-point consistency across 20 power cycles was within ±4g.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- TECH STACK -->
+  <section class="section" style="background: rgba(255,255,255,0.4); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+    <h2 class="section-title">Technical Stack</h2>
+    <p class="section-subtitle">Pristine coordination between rapid microcontrollers, physical drivers, and statistical processing.</p>
+
+    <div class="tech-grid">
+      <div class="tech-card">
+        <div class="tech-title">Raspberry Pi Pico</div>
+        <p class="tech-desc">Main controller — RP2040 dual-core running MicroPython. Chosen over Arduino for native file operations and scalable Python library support.</p>
+      </div>
+      <div class="tech-card">
+        <div class="tech-title">L298N Motor Shield</div>
+        <p class="tech-desc">Dual H-Bridge driver regulating 4x DC motors. Dynamic pulse-width modulation (PWM) scales speed variables between 0-100%.</p>
+      </div>
+      <div class="tech-card">
+        <div class="tech-title">XFW-HX711 + 3921 Load Cell</div>
+        <p class="tech-desc">24-bit analog-to-digital converter reading high-accuracy strain-gauge deck weights. Calibrates values natively on boot.</p>
+      </div>
+      <div class="tech-card">
+        <div class="tech-title">MPU6050 IMU</div>
+        <p class="tech-desc">6-axis accelerometer & gyroscope mapping motion. Uses a strict 3.3V power routing layout with startup gravity vector validation checks.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FUTURE WORK -->
+  <section class="section">
+    <h2 class="section-title">Future Development Work</h2>
+    <p class="section-subtitle">Project roadmap moving from virtual data validation loops toward physical assemblies.</p>
+
+    <div class="sub-grid-triple">
+      <div class="sub-card">
+        <div class="sub-card-icon">🔧</div>
+        <h3>Phase 2: Build & Match</h3>
+        <p>Assemble the physical chassis, mount the hardware, and test real terrain variables to reconcile simulated predictions against raw motor friction spikes.</p>
+      </div>
+      <div class="sub-card">
+        <div class="sub-card-icon">🎛️</div>
+        <h3>Phase 3: Adaptive Deck</h3>
+        <p>Incorporate servo-driven rails to automatically secure payloads based on asymmetrical cargo weight shifts detected by load cells.</p>
+      </div>
+      <div class="sub-card">
+        <div class="sub-card-icon">📡</div>
+        <h3>Phase 4: Wifi Telemetry</h3>
+        <p>Deploy the Raspberry Pi Pico W to broadcast live data packets, introducing wireless monitoring and cooperative follow-me algorithms.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer style="padding: 40px 10%; text-align: center; color: var(--text); border-top: 1px solid var(--border); font-size: 14px; font-weight: 500;">
+    © 2026 Chelsea Ogbonna • Designed & Built by Chelsea
+  </footer>
+
+  <!-- CHARTS INITIALIZATION SCRIPT -->
+  <script>
+    // Generates simulated datasets derived precisely from standard deviation and noise bounds
+    function generateSeries(baseline, stdDev, length, trendType) {
+      let data = [];
+      for (let i = 0; i < length; i++) {
+        let noise = (Math.random() - 0.5) * 2 * (stdDev * 1.5);
+        let val = baseline + noise;
+        
+        // Add specific spikes based on terrain patterns
+        if (trendType === 'rough' && i % 8 === 0) {
+          val += (Math.random() > 0.5 ? 1 : -1) * (stdDev * 2.5);
+        }
+        if (trendType === 'carpet' && i % 12 === 0) {
+          val += (Math.random() > 0.5 ? 1 : -1) * (stdDev * 1.8);
+        }
+        data.push({ x: i * 0.25, y: parseFloat(val.toFixed(2)) });
+      }
+      return data;
+    }
+
+    const tSmoothForce = generateSeries(948, 8.7, 120, 'smooth');
+    const tCarpetForce = generateSeries(952, 27.1, 120, 'carpet');
+    const tRoughForce = generateSeries(948, 58.1, 120, 'rough');
+
+    const tSmoothTilt = generateSeries(1.9, 0.5, 120, 'smooth');
+    const tCarpetTilt = generateSeries(3.9, 1.2, 120, 'carpet');
+    const tRoughTilt = generateSeries(8.8, 3.8, 120, 'rough');
+
+    // Force Chart Config
+    new Chart(document.getElementById('forceChart'), {
+      type: 'line',
+      data: {
+        datasets: [
+          { label: 'Smooth Floor', data: tSmoothForce, borderColor: '#2a78d6', borderWidth: 2, pointRadius: 0, fill: false },
+          { label: 'Carpet Pile', data: tCarpetForce, borderColor: '#1baf7a', borderWidth: 2, pointRadius: 0, fill: false },
+          { label: 'Rough Terrains', data: tRoughForce, borderColor: '#e34948', borderWidth: 2, pointRadius: 0, fill: false }
+        ]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          x: { type: 'linear', title: { display: true, text: 'Time (Seconds)' } },
+          y: { title: { display: true, text: 'Measured Force (Grams)' }, min: 700, max: 1150 }
+        }
+      }
+    });
+
+    // Tilt Chart Config
+    new Chart(document.getElementById('tiltChart'), {
+      type: 'line',
+      data: {
+        datasets: [
+          { label: 'Smooth Floor', data: tSmoothTilt, borderColor: '#2a78d6', borderWidth: 2, pointRadius: 0, fill: false },
+          { label: 'Carpet Pile', data: tCarpetTilt, borderColor: '#1baf7a', borderWidth: 2, pointRadius: 0, fill: false },
+          { label: 'Rough Terrains', data: tRoughTilt, borderColor: '#e34948', borderWidth: 2, pointRadius: 0, fill: false },
+          {
+            label: '15° Limit',
+            data: [{ x: 0, y: 15 }, { x: 30, y: 15 }],
+            borderColor: '#e34948',
+            borderWidth: 1.5,
+            borderDash: [6, 6],
+            pointRadius: 0,
+            fill: false
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          x: { type: 'linear', title: { display: true, text: 'Time (Seconds)' } },
+          y: { title: { display: true, text: 'Tilt Angle (Degrees)' }, min: 0, max: 22 }
+        }
+      }
+    });
+
+    // Noise Bar Chart Config
+    new Chart(document.getElementById('noiseChart'), {
+      type: 'bar',
+      data: {
+        labels: ['Smooth Floor', 'Carpet Pile', 'Rough Terrains'],
+        datasets: [
+          { label: 'Force Standard Deviation (g)', data: [8.7, 27.1, 58.1], backgroundColor: '#2a78d6' },
+          { label: 'Tilt Standard Deviation (°)', data: [0.5, 1.2, 3.8], backgroundColor: '#1baf7a' },
+          { label: 'Gyro Standard Deviation (dps)', data: [0.94, 2.95, 8.90], backgroundColor: '#eda100' }
+        ]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          y: { title: { display: true, text: 'Standard Deviation Units' }, type: 'logarithmic' }
+        }
+      }
+    });
+
+    // Lightbox / Zoom Controllers
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const zoomableImages = document.querySelectorAll('img');
+
+    zoomableImages.forEach(img => {
+      img.addEventListener('click', (e) => {
+        if (img.closest('nav')) return; // Ignore navbar logo/elements
+        e.stopPropagation();
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt;
+        lightbox.classList.add('active');
+      });
+    });
+
+    lightbox.addEventListener('click', () => {
+      lightbox.classList.remove('active');
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') lightbox.classList.remove('active');
+    });
+  </script>
+
+</body>
+</html>
