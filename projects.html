@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Chelsea Ogbonna | Projects Portfolio</title>
 
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
@@ -162,7 +163,7 @@
       padding: 0 5%;
       display: flex;
       flex-direction: column;
-      gap: 40px;
+      gap: 50px;
     }
 
     .project-card {
@@ -210,11 +211,25 @@
       letter-spacing: 0.3px;
     }
 
-    /* Dashboard Layout */
+    /* 3-Column Split Dashboard Layout */
     .project-body {
       display: grid;
       grid-template-columns: 1.1fr 0.9fr;
       gap: 30px;
+    }
+
+    /* =========================
+       NEW: EXPLICIT SUMMARY BOX
+    ========================= */
+    .summary-box {
+      background: #f8fafc;
+      border: 1.5px solid var(--border);
+      border-radius: 20px;
+      padding: 25px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      box-shadow: inset 0 2px 8px rgba(0,0,0,0.01);
     }
 
     .panel-left {
@@ -259,7 +274,25 @@
       margin-bottom: 0;
     }
 
-    /* Troubleshoot Boxes */
+    /* Skills Pill Array inside Summary Box */
+    .skills-section {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .skill-pill {
+      background: white;
+      border: 1px solid var(--border);
+      color: var(--highlight);
+      font-size: 12px;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 999px;
+    }
+
+    /* Troubleshooting Boxes */
     .troubleshoot-box {
       border-radius: 16px;
       padding: 20px;
@@ -296,6 +329,63 @@
     }
 
     /* =========================
+       NEW: INTERACTIVE LINK DECK
+    ========================= */
+    .link-deck {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 15px;
+      flex-wrap: wrap;
+      background: var(--bg);
+      border-radius: 16px;
+      padding: 15px 25px;
+      border: 1.5px solid var(--border);
+    }
+
+    .link-deck-title {
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--highlight);
+      letter-spacing: 0.5px;
+      margin-right: 10px;
+    }
+
+    .deck-link {
+      text-decoration: none;
+      color: var(--text);
+      background: white;
+      border: 1px solid var(--border);
+      font-size: 13.5px;
+      font-weight: 700;
+      padding: 8px 16px;
+      border-radius: 10px;
+      transition: .25s;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .deck-link:hover {
+      background: var(--highlight);
+      color: white;
+      border-color: var(--highlight);
+      transform: translateY(-2px);
+    }
+
+    .deck-link.primary {
+      background: var(--highlight);
+      color: white;
+      border-color: var(--highlight);
+    }
+
+    .deck-link.primary:hover {
+      background: #3b5cc4;
+      border-color: #3b5cc4;
+    }
+
+    /* =========================
        FOOTER
     ========================= */
     footer {
@@ -318,6 +408,11 @@
       }
       .projects-hero h1 {
         font-size: 36px;
+      }
+      .link-deck {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
       }
     }
   </style>
@@ -365,21 +460,34 @@
       </div>
       <div class="project-body">
         <div class="panel-left">
-          <div class="info-section">
-            <h4>Project Overview</h4>
-            <p>Placental syncytial knots (SKs) are multicellular structures associated with pregnancy complications such as preeclampsia and fetal growth restriction. Current isolation techniques are labor-intensive, low-throughput, and rely heavily on manual processing. This project aimed to design a passive microfluidic platform capable of continuously separating syncytial knots from placental tissue based on size boundaries from $50\text{–}150\text{ }\mu\text{m}$.</p>
-          </div>
-          <div class="info-section">
-            <h4>My Contributions</h4>
-            <ul>
-              <li>Led a multidisciplinary engineering team throughout the design process.</li>
-              <li>Designed, simulated, and fabricated DLD, crossflow, and spiral microfluidic devices using SolidWorks, COMSOL, and SUEX photoresist.</li>
-              <li>Developed experimental protocols and evaluated device performance using fluorescent microparticles.</li>
-            </ul>
-          </div>
-          <div class="info-section">
-            <h4>Results</h4>
-            <p>Successfully designed and tested multiple microfluidic prototypes while identifying the strengths and limitations of each separation method. Experimental testing informed several design iterations that improved particle sorting and reduced clogging. The project established a foundation for future biological validation using placental tissue.</p>
+          <!-- CONSOLIDATED SUMMARY BOX -->
+          <div class="summary-box">
+            <div class="info-section">
+              <h4>Project Overview</h4>
+              <p>Placental syncytial knots (SKs) are multicellular structures associated with pregnancy complications such as preeclampsia and fetal growth restriction. Current isolation techniques are labor-intensive, low-throughput, and rely heavily on manual processing. This project aimed to design a passive microfluidic platform capable of continuously separating syncytial knots from placental tissue based on size boundaries from $50\text{–}150\text{ }\mu\text{m}$.</p>
+            </div>
+            <div class="info-section">
+              <h4>My Contributions</h4>
+              <ul>
+                <li>Led a multidisciplinary engineering team throughout the design process.</li>
+                <li>Designed, simulated, and fabricated DLD, crossflow, and spiral microfluidic devices using SolidWorks, COMSOL, and SUEX photoresist.</li>
+                <li>Developed experimental protocols and evaluated performance using fluorescent microparticles.</li>
+              </ul>
+            </div>
+            <div class="info-section">
+              <h4>Results</h4>
+              <p>Successfully designed and tested multiple microfluidic prototypes while identifying the strengths and limitations of each separation method. Experimental testing informed several design iterations that improved particle sorting and reduced clogging.</p>
+            </div>
+            <div class="info-section">
+              <h4>Skills Utilized</h4>
+              <div class="skills-section">
+                <span class="skill-pill">COMSOL Multiphysics</span>
+                <span class="skill-pill">SolidWorks CAD</span>
+                <span class="skill-pill">Photolithography</span>
+                <span class="skill-pill">SUEX Photoresist</span>
+                <span class="skill-pill">Fluidic Assays</span>
+              </div>
+            </div>
           </div>
         </div>
         <div class="panel-right">
@@ -393,6 +501,13 @@
           </div>
         </div>
       </div>
+      <!-- RESOURCE & LINKS DECK -->
+      <div class="link-deck">
+        <div class="link-deck-title">Project Resources:</div>
+        <a href="syncytial-knots.html" class="deck-link primary">Read Case Study →</a>
+        <a href="#" class="deck-link">Download CAD Mesh (.STEP)</a>
+        <a href="#" class="deck-link">Simulation Models (.MPH)</a>
+      </div>
     </div>
 
     <!-- PROJECT 2 -->
@@ -405,21 +520,34 @@
       </div>
       <div class="project-body">
         <div class="panel-left">
-          <div class="info-section">
-            <h4>Project Overview</h4>
-            <p>A condominium recycling center experienced low recycling participation because residents were unsure what could be recycled and the collection area was difficult to navigate. This project redesigned the recycling center using human-centered design principles to improve accessibility, organization, and recycling behavior.</p>
-          </div>
-          <div class="info-section">
-            <h4>My Contributions</h4>
-            <ul>
-              <li>Led the engineering design process from user research through implementation.</li>
-              <li>Designed custom recycling bins, cardboard collection systems, and educational signage using SolidWorks and Siemens NX.</li>
-              <li>Conducted user interviews and observations to identify barriers to proper recycling.</li>
-            </ul>
-          </div>
-          <div class="info-section">
-            <h4>Results</h4>
-            <p>The redesigned recycling center increased recycling participation by approximately $40\%$ and received the Best Design Team Award. The final design improved user understanding while reducing contamination of recyclable materials.</p>
+          <!-- CONSOLIDATED SUMMARY BOX -->
+          <div class="summary-box">
+            <div class="info-section">
+              <h4>Project Overview</h4>
+              <p>A condominium recycling center experienced low recycling participation because residents were unsure what could be recycled and the collection area was difficult to navigate. This project redesigned the recycling center using human-centered design principles to improve accessibility, organization, and recycling behavior.</p>
+            </div>
+            <div class="info-section">
+              <h4>My Contributions</h4>
+              <ul>
+                <li>Led the engineering design process from user research through implementation.</li>
+                <li>Designed custom recycling bins, cardboard collection systems, and educational signage using SolidWorks and Siemens NX.</li>
+                <li>Conducted user interviews and observations to identify barriers to proper recycling.</li>
+              </ul>
+            </div>
+            <div class="info-section">
+              <h4>Results</h4>
+              <p>The redesigned recycling center increased recycling participation by approximately $40\%$ and received the Best Design Team Award. The final design improved user understanding while reducing contamination of recyclable materials.</p>
+            </div>
+            <div class="info-section">
+              <h4>Skills Utilized</h4>
+              <div class="skills-section">
+                <span class="skill-pill">Siemens NX</span>
+                <span class="skill-pill">SolidWorks</span>
+                <span class="skill-pill">Human-Centered Design</span>
+                <span class="skill-pill">User Research</span>
+                <span class="skill-pill">Rapid Prototyping</span>
+              </div>
+            </div>
           </div>
         </div>
         <div class="panel-right">
@@ -433,6 +561,12 @@
           </div>
         </div>
       </div>
+      <!-- RESOURCE & LINKS DECK -->
+      <div class="link-deck">
+        <div class="link-deck-title">Project Resources:</div>
+        <a href="#" class="deck-link">Download Design Layout (.PDF)</a>
+        <a href="#" class="deck-link">Signage Vector Assets</a>
+      </div>
     </div>
 
     <!-- PROJECT 3 -->
@@ -445,21 +579,34 @@
       </div>
       <div class="project-body">
         <div class="panel-left">
-          <div class="info-section">
-            <h4>Project Overview</h4>
-            <p>Diabetic foot ulcers often develop because patients cannot detect excessive pressure or abnormal gait until significant tissue damage has already occurred. This project developed a wearable monitoring system capable of identifying gait abnormalities using motion and force sensors.</p>
-          </div>
-          <div class="info-section">
-            <h4>My Contributions</h4>
-            <ul>
-              <li>Designed a wearable sensing system using an MPU6050 IMU and force-sensitive resistors.</li>
-              <li>Developed Python programs to analyze walking data and identify gait characteristics.</li>
-              <li>Integrated hardware and software to collect synchronized biomechanical data.</li>
-            </ul>
-          </div>
-          <div class="info-section">
-            <h4>Results</h4>
-            <p>Successfully demonstrated the ability to collect and analyze gait information across different walking conditions. The system showed potential for non-invasive monitoring of patients at risk of diabetic foot ulcers.</p>
+          <!-- CONSOLIDATED SUMMARY BOX -->
+          <div class="summary-box">
+            <div class="info-section">
+              <h4>Project Overview</h4>
+              <p>Diabetic foot ulcers often develop because patients cannot detect excessive pressure or abnormal gait until significant tissue damage has already occurred. This project developed a wearable monitoring system capable of identifying gait abnormalities using motion and force sensors.</p>
+            </div>
+            <div class="info-section">
+              <h4>My Contributions</h4>
+              <ul>
+                <li>Designed a wearable sensing system using an MPU6050 IMU and force-sensitive resistors.</li>
+                <li>Developed Python programs to analyze walking data and identify gait characteristics.</li>
+                <li>Integrated hardware and software to collect synchronized biomechanical data.</li>
+              </ul>
+            </div>
+            <div class="info-section">
+              <h4>Results</h4>
+              <p>Successfully demonstrated the ability to collect and analyze gait information across different walking conditions. The system showed potential for non-invasive monitoring of patients at risk of diabetic foot ulcers.</p>
+            </div>
+            <div class="info-section">
+              <h4>Skills Utilized</h4>
+              <div class="skills-section">
+                <span class="skill-pill">Python</span>
+                <span class="skill-pill">MPU6050 IMU</span>
+                <span class="skill-pill">Force-Sensitive Resistors</span>
+                <span class="skill-pill">Signal Filtering</span>
+                <span class="skill-pill">Gait Kinematics</span>
+              </div>
+            </div>
           </div>
         </div>
         <div class="panel-right">
@@ -473,6 +620,12 @@
           </div>
         </div>
       </div>
+      <!-- RESOURCE & LINKS DECK -->
+      <div class="link-deck">
+        <div class="link-deck-title">Project Resources:</div>
+        <a href="#" class="deck-link">Python Signal Analysis Code</a>
+        <a href="#" class="deck-link">Hardware Wiring Layout</a>
+      </div>
     </div>
 
     <!-- PROJECT 4 -->
@@ -485,21 +638,34 @@
       </div>
       <div class="project-body">
         <div class="panel-left">
-          <div class="info-section">
-            <h4>Project Overview</h4>
-            <p>Transporting groceries, luggage, laundry, and household items often requires multiple trips and significant physical effort. This project developed a modular powered cargo platform capable of adapting to different load sizes through an expandable frame and configurable supports.</p>
-          </div>
-          <div class="info-section">
-            <h4>My Contributions</h4>
-            <ul>
-              <li>Designed the complete mechanical system in SolidWorks.</li>
-              <li>Performed load, stability, and terrain analyses to optimize performance.</li>
-              <li>Evaluated multiple design concepts before selecting the final modular architecture.</li>
-            </ul>
-          </div>
-          <div class="info-section">
-            <h4>Results</h4>
-            <p>Produced a powered cargo platform capable of safely transporting loads up to $30\text{ lbs}$ across multiple terrain conditions while maintaining stability and adaptability.</p>
+          <!-- CONSOLIDATED SUMMARY BOX -->
+          <div class="summary-box">
+            <div class="info-section">
+              <h4>Project Overview</h4>
+              <p>Transporting groceries, luggage, laundry, and household items often requires multiple trips and significant physical effort. This project developed a modular powered cargo platform capable of adapting to different load sizes through an expandable frame and configurable supports.</p>
+            </div>
+            <div class="info-section">
+              <h4>My Contributions</h4>
+              <ul>
+                <li>Designed the complete mechanical system in SolidWorks.</li>
+                <li>Performed load, stability, and terrain analyses to optimize performance.</li>
+                <li>Evaluated multiple design concepts before selecting the final modular architecture.</li>
+              </ul>
+            </div>
+            <div class="info-section">
+              <h4>Results</h4>
+              <p>Produced a powered cargo platform capable of safely transporting loads up to $30\text{ lbs}$ across multiple terrain conditions while maintaining stability and adaptability.</p>
+            </div>
+            <div class="info-section">
+              <h4>Skills Utilized</h4>
+              <div class="skills-section">
+                <span class="skill-pill">SolidWorks CAD</span>
+                <span class="skill-pill">Finite Element Analysis (FEA)</span>
+                <span class="skill-pill">Structural Mechanics</span>
+                <span class="skill-pill">Mecanum Kinematics</span>
+                <span class="skill-pill">Physical Prototyping</span>
+              </div>
+            </div>
           </div>
         </div>
         <div class="panel-right">
@@ -513,6 +679,13 @@
           </div>
         </div>
       </div>
+      <!-- RESOURCE & LINKS DECK -->
+      <div class="link-deck">
+        <div class="link-deck-title">Project Resources:</div>
+        <a href="moducargo.html" class="deck-link primary">Read ModuCargo Case Study →</a>
+        <a href="#" class="deck-link">Download Assembly File (.SLDASM)</a>
+        <a href="#" class="deck-link">Terrain Load Data Chart</a>
+      </div>
     </div>
 
     <!-- PROJECT 5 -->
@@ -525,21 +698,34 @@
       </div>
       <div class="project-body">
         <div class="panel-left">
-          <div class="info-section">
-            <h4>Project Overview</h4>
-            <p>Commercial electromyography (EMG) systems are often expensive and inaccessible for educational and research environments. This project developed a low-cost analog EMG acquisition system capable of recording and processing muscle activity.</p>
-          </div>
-          <div class="info-section">
-            <h4>My Contributions</h4>
-            <ul>
-              <li>Designed and built an analog EMG acquisition circuit.</li>
-              <li>Implemented amplification and filtering stages to improve signal quality.</li>
-              <li>Validated system performance through experimental testing.</li>
-            </ul>
-          </div>
-          <div class="info-section">
-            <h4>Results</h4>
-            <p>Produced a functional EMG system while reducing hardware costs by more than $90\%$ compared to commercial alternatives.</p>
+          <!-- CONSOLIDATED SUMMARY BOX -->
+          <div class="summary-box">
+            <div class="info-section">
+              <h4>Project Overview</h4>
+              <p>Commercial electromyography (EMG) systems are often expensive and inaccessible for educational and research environments. This project developed a low-cost analog EMG acquisition system capable of recording and processing muscle activity.</p>
+            </div>
+            <div class="info-section">
+              <h4>My Contributions</h4>
+              <ul>
+                <li>Designed and built an analog EMG acquisition circuit.</li>
+                <li>Implemented amplification and filtering stages to improve signal quality.</li>
+                <li>Validated system performance through experimental testing.</li>
+              </ul>
+            </div>
+            <div class="info-section">
+              <h4>Results</h4>
+              <p>Produced a functional EMG system while reducing hardware costs by more than $90\%$ compared to commercial alternatives.</p>
+            </div>
+            <div class="info-section">
+              <h4>Skills Utilized</h4>
+              <div class="skills-section">
+                <span class="skill-pill">Analog Circuit Design</span>
+                <span class="skill-pill">Bandpass Filtering</span>
+                <span class="skill-pill">Op-Amp Configurations</span>
+                <span class="skill-pill">Signal Amplification</span>
+                <span class="skill-pill">Noise Minimization</span>
+              </div>
+            </div>
           </div>
         </div>
         <div class="panel-right">
@@ -553,6 +739,12 @@
           </div>
         </div>
       </div>
+      <!-- RESOURCE & LINKS DECK -->
+      <div class="link-deck">
+        <div class="link-deck-title">Project Resources:</div>
+        <a href="#" class="deck-link">Analog Schematic Layout</a>
+        <a href="#" class="deck-link">Signal Waveform Logs</a>
+      </div>
     </div>
 
     <!-- PROJECT 6 -->
@@ -565,21 +757,34 @@
       </div>
       <div class="project-body">
         <div class="panel-left">
-          <div class="info-section">
-            <h4>Project Overview</h4>
-            <p>Electrocardiograms provide valuable information about heart rhythm and cardiac function. This project focused on developing a low-cost EKG acquisition system capable of accurately measuring electrical activity from the heart.</p>
-          </div>
-          <div class="info-section">
-            <h4>My Contributions</h4>
-            <ul>
-              <li>Designed and assembled analog EKG circuitry.</li>
-              <li>Developed Python-based FFT analysis to evaluate signal quality.</li>
-              <li>Tested system performance using physiological measurements.</li>
-            </ul>
-          </div>
-          <div class="info-section">
-            <h4>Results</h4>
-            <p>Successfully acquired and processed cardiac signals while significantly reducing equipment cost compared to commercial devices.</p>
+          <!-- CONSOLIDATED SUMMARY BOX -->
+          <div class="summary-box">
+            <div class="info-section">
+              <h4>Project Overview</h4>
+              <p>Electrocardiograms provide valuable information about heart rhythm and cardiac function. This project focused on developing a low-cost EKG acquisition system capable of accurately measuring electrical activity from the heart.</p>
+            </div>
+            <div class="info-section">
+              <h4>My Contributions</h4>
+              <ul>
+                <li>Designed and assembled analog EKG circuitry.</li>
+                <li>Developed Python-based FFT analysis to evaluate signal quality.</li>
+                <li>Tested system performance using physiological measurements.</li>
+              </ul>
+            </div>
+            <div class="info-section">
+              <h4>Results</h4>
+              <p>Successfully acquired and processed cardiac signals while significantly reducing equipment cost compared to commercial devices.</p>
+            </div>
+            <div class="info-section">
+              <h4>Skills Utilized</h4>
+              <div class="skills-section">
+                <span class="skill-pill">Python FFT</span>
+                <span class="skill-pill">Instrumentation Amplifiers</span>
+                <span class="skill-pill">Notch Filtering (60Hz)</span>
+                <span class="skill-pill">Oscilloscope Verification</span>
+                <span class="skill-pill">Bio-Sensory Inputs</span>
+              </div>
+            </div>
           </div>
         </div>
         <div class="panel-right">
@@ -593,6 +798,12 @@
           </div>
         </div>
       </div>
+      <!-- RESOURCE & LINKS DECK -->
+      <div class="link-deck">
+        <div class="link-deck-title">Project Resources:</div>
+        <a href="#" class="deck-link">Python FFT Analysis Code</a>
+        <a href="#" class="deck-link">Component Datasheets</a>
+      </div>
     </div>
 
     <!-- PROJECT 7 -->
@@ -605,21 +816,34 @@
       </div>
       <div class="project-body">
         <div class="panel-left">
-          <div class="info-section">
-            <h4>Project Overview</h4>
-            <p>Blood pressure monitoring is an essential diagnostic tool used in healthcare. This project developed a complete blood pressure measurement system capable of extracting systolic, diastolic, mean arterial pressure, and heart rate from acquired signals.</p>
-          </div>
-          <div class="info-section">
-            <h4>My Contributions</h4>
-            <ul>
-              <li>Designed the analog signal acquisition circuitry.</li>
-              <li>Developed algorithms to process oscillometric pressure data.</li>
-              <li>Validated blood pressure measurements through experimental testing.</li>
-            </ul>
-          </div>
-          <div class="info-section">
-            <h4>Results</h4>
-            <p>Successfully measured and calculated physiological cardiovascular parameters using a fully integrated custom-built system.</p>
+          <!-- CONSOLIDATED SUMMARY BOX -->
+          <div class="summary-box">
+            <div class="info-section">
+              <h4>Project Overview</h4>
+              <p>Blood pressure monitoring is an essential diagnostic tool used in healthcare. This project developed a complete blood pressure measurement system capable of extracting systolic, diastolic, mean arterial pressure, and heart rate from acquired signals.</p>
+            </div>
+            <div class="info-section">
+              <h4>My Contributions</h4>
+              <ul>
+                <li>Designed the analog signal acquisition circuitry.</li>
+                <li>Developed algorithms to process oscillometric pressure data.</li>
+                <li>Validated blood pressure measurements through experimental testing.</li>
+              </ul>
+            </div>
+            <div class="info-section">
+              <h4>Results</h4>
+              <p>Successfully measured and calculated physiological cardiovascular parameters using a fully integrated custom-built system.</p>
+            </div>
+            <div class="info-section">
+              <h4>Skills Utilized</h4>
+              <div class="skills-section">
+                <span class="skill-pill">Pressure Transducer Tuning</span>
+                <span class="skill-pill">Oscillometric Algorithms</span>
+                <span class="skill-pill">Signal Peak Detection</span>
+                <span class="skill-pill">Clinical Standards</span>
+                <span class="skill-pill">MATLAB Processing</span>
+              </div>
+            </div>
           </div>
         </div>
         <div class="panel-right">
@@ -633,6 +857,12 @@
           </div>
         </div>
       </div>
+      <!-- RESOURCE & LINKS DECK -->
+      <div class="link-deck">
+        <div class="link-deck-title">Project Resources:</div>
+        <a href="#" class="deck-link">Peak Detection Script</a>
+        <a href="#" class="deck-link">Pneumatic Connection Manual</a>
+      </div>
     </div>
 
     <!-- PROJECT 8 -->
@@ -645,21 +875,34 @@
       </div>
       <div class="project-body">
         <div class="panel-left">
-          <div class="info-section">
-            <h4>Project Overview</h4>
-            <p>Many K–12 students have limited exposure to hands-on engineering and STEM activities. This project developed interactive educational experiences to introduce engineering concepts through engaging, project-based learning.</p>
-          </div>
-          <div class="info-section">
-            <h4>My Contributions</h4>
-            <ul>
-              <li>Designed and led engineering outreach activities for local students.</li>
-              <li>Developed hands-on experiments and coding activities that demonstrated fundamental engineering principles.</li>
-              <li>Mentored students throughout the design and problem-solving process.</li>
-            </ul>
-          </div>
-          <div class="info-section">
-            <h4>Results</h4>
-            <p>Engaged students in interactive STEM learning while increasing confidence, participation, and interest in engineering through hands-on activities.</p>
+          <!-- CONSOLIDATED SUMMARY BOX -->
+          <div class="summary-box">
+            <div class="info-section">
+              <h4>Project Overview</h4>
+              <p>Many K–12 students have limited exposure to hands-on engineering and STEM activities. This project developed interactive educational experiences to introduce engineering concepts through engaging, project-based learning.</p>
+            </div>
+            <div class="info-section">
+              <h4>My Contributions</h4>
+              <ul>
+                <li>Designed and led engineering outreach activities for local students.</li>
+                <li>Developed hands-on experiments and coding activities that demonstrated fundamental engineering principles.</li>
+                <li>Mentored students throughout the design and problem-solving process.</li>
+              </ul>
+            </div>
+            <div class="info-section">
+              <h4>Results</h4>
+              <p>Engaged students in interactive STEM learning while increasing confidence, participation, and interest in engineering through hands-on activities.</p>
+            </div>
+            <div class="info-section">
+              <h4>Skills Utilized</h4>
+              <div class="skills-section">
+                <span class="skill-pill">Curriculum Architecture</span>
+                <span class="skill-pill">Human Factors</span>
+                <span class="skill-pill">Interactive Programming</span>
+                <span class="skill-pill">Team Mentorship</span>
+                <span class="skill-pill">Science Communication</span>
+              </div>
+            </div>
           </div>
         </div>
         <div class="panel-right">
@@ -672,6 +915,12 @@
             <p>Designed visual demonstrations, interactive experiments, and project-based activities that made complex engineering concepts accessible to younger learners.</p>
           </div>
         </div>
+      </div>
+      <!-- RESOURCE & LINKS DECK -->
+      <div class="link-deck">
+        <div class="link-deck-title">Project Resources:</div>
+        <a href="#" class="deck-link">Download Lesson Manifests (.PDF)</a>
+        <a href="#" class="deck-link">Outreach Event Photos</a>
       </div>
     </div>
 
