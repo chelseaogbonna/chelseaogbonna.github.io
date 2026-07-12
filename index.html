@@ -708,6 +708,23 @@
       color: #4b5563;
       line-height: 1.6;
     }
+    
+    .popup-button{
+      display:inline-block;
+      margin-top:20px;
+      padding:12px 22px;
+      background:var(--accent);
+      color:var(--text);
+      text-decoration:none;
+      border-radius:12px;
+      font-weight:600;
+      transition:.25s;
+    }
+
+    .popup-button:hover{
+      transform:translateY(-3px);
+      box-shadow:0 10px 20px rgba(0,0,0,.12);
+    }
 
     /* =========================
        NEW: LET'S CONNECT (CONTACT ENGINE)
@@ -1260,28 +1277,47 @@
        MODAL POPUP CONTROLLERS (ZERO NATIVE ALERT CALLS)
        ======================================================== */
     const labDetails = {
-      fluidic: {
-        title: "🧬 Microfluidics Research Detail",
-        body: "Researching microfluidic sorting models using asymmetric pillar geometries to separate placental cells ($50\text{–}150\text{ }\mu\text{m}$). Includes COMSOL multi-physics validation of Navier-Stokes velocity boundaries and pressure fields."
-      },
-      implant: {
-        title: "❤️ Implantable Devices Detail",
-        body: "Developing battery-free, RF-tuned pacing nodes embedded natively into transcatheter heart valves. Includes configuring inductive coils, matching resonant loops, and validating wireless transfer fields."
-      },
-      embed: {
-        title: "🚗 Embedded Systems Detail",
-        body: "Programming adaptive feedback filters for hardware assemblies. Highlights include integrating load cells, MPU6050 gyroscopes, and dual H-Bridge PWM motor speed scaling models."
-      },
-      leader: {
-        title: "🏆 Engineering Leadership Detail",
-        body: "Guiding diverse student engineering organizations, aligning multi-disciplinary project milestones, and presenting clinical design proposals to regional healthcare boards."
-      }
-    };
+        fluidic: {
+          title: "🧬 Microfluidics Research Detail",
+          body: "Researching microfluidic sorting models using asymmetric pillar geometries to separate placental cells (50–150 μm). Includes COMSOL multiphysics validation of Navier-Stokes velocity boundaries and pressure fields.",
+          link: "projects/microfluidics.html",
+          button: "View Project"
+        },
 
+        implant: {
+          title: "❤️ Implantable Devices Detail",
+          body: "Developing battery-free, RF-tuned pacing nodes embedded into transcatheter heart valves.",
+          link: "projects/pacemaker.html",
+          button: "View Project"
+        },
+
+        embed: {
+          title: "🚗 Embedded Systems Detail",
+          body: "Programming adaptive feedback filters using load cells, MPU6050 IMUs, and motor controllers.",
+          link: "projects/moducargo.html",
+          button: "View Project"
+        },
+
+        leader: {
+          title: "🏆 Engineering Leadership Detail",
+          body: "Leading engineering organizations and interdisciplinary design teams.",
+          link: "leadership.html",
+          button: "Learn More"
+        }
+      };
+    
     function triggerNodeModal(nodeKey) {
       const data = labDetails[nodeKey];
+
       document.getElementById('mTitle').innerText = data.title;
-      document.getElementById('mBody').innerText = data.body;
+      document.getElementById('mBody').innerHTML = `
+        <p>${data.body}</p>
+
+        <a href="${data.link}" class="popup-button">
+          ${data.button} →
+        </a>
+  `    ;
+
       document.getElementById('modalNode').classList.add('active');
     }
 
