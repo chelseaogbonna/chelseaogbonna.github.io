@@ -131,13 +131,14 @@
     /* =========================
     HERO
     ========================= */
-    .hero {
-      min-height: 70vh;
-      display: grid;
-      grid-template-columns: 1.2fr .8fr;
-      align-items: center;
-      padding: 120px 10% 60px;
-      position: relative;
+    .hero{
+      min-height:100vh;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      align-items:center;
+      gap:80px;
+      padding:120px 10% 60px;
+      position:relative;
     }
 
     .hero::before {
@@ -150,16 +151,6 @@
       opacity: .35;
       left: -180px;
       top: -120px;
-    }
-
-    .hero{
-      min-height:100vh;
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      align-items:center;
-      gap:80px;
-      padding:0 10%;
-      position:relative;
     }
 
     .hero-left h1{
@@ -583,14 +574,19 @@
   </nav>
 
   <section class="hero">
-    <div class="hero-text">
-      <h1>Engineering Portfolio</h1>
+    <div class="hero-left">
+        <h1>Engineering Portfolio</h1>
+    </div>
+    
+    <div class="hero-right">
       <h2>From concept to prototype to real-world impact.</h2>
+     
       <p>
         Each project represents an opportunity to solve a meaningful problem through
         engineering. My work spans medical devices, biomechanics, robotics,
         manufacturing, embedded systems, and computational analysis.
       </p>
+     
       <a href="#featured" class="button">View Featured Projects ↓</a>
     </div>
   </section>
