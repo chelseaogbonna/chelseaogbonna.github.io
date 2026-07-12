@@ -3,10 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Engineering Portfolio | Chelsea Ogbonna</title>
+  <title>Projects | Chelsea Ogbonna</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  
+
   <style>
     :root {
       --bg: #edf2fb;
@@ -14,75 +15,25 @@
       --accent: #abc4ff;
       --text: #1f2937;
       --border: #c1d3fe;
+      --card-hover: #ccdbfd;
+      --shadow: 0 12px 30px rgba(0, 0, 0, .06);
+      --highlight: #5171e6;
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
 
     body {
-      font-family: Inter, sans-serif;
+      margin: 0;
+      font-family: 'Inter', sans-serif;
       background: var(--bg);
       color: var(--text);
       overflow-x: hidden;
-    }
-   
-    /* =========================
-    NEXT PAGE CTA BUTTON
-    ========================= */
-    .next-page-container {
-      text-align: center;
-      margin: 80px 0 20px 0;
-      padding: 20px;
-    }
-
-    .next-page-container p {
-      font-size: 14px;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      color: #6b7280;
-      margin-bottom: 10px;
-      font-weight: 600;
-    }
-
-    .next-page-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      background: var(--card);
-      color: var(--text);
-      text-decoration: none;
-      padding: 18px 36px;
-      border-radius: 999px;
-      font-size: 18px;
-      font-weight: 700;
-      box-shadow: var(--shadow);
-      border: 1px solid rgba(193, 211, 254, 0.6);
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .next-page-btn .arrow {
-      transition: transform 0.3s ease;
-    }
-
-    .next-page-btn:hover {
-      background: var(--accent);
-      transform: translateY(-4px);
-      box-shadow: 0 15px 35px rgba(171, 196, 255, 0.4);
-    }
-
-    .next-page-btn:hover .arrow {
-      transform: translateX(6px);
+      line-height: 1.6;
     }
 
     /* =========================
-    NAV
+       NAV (UNCHANGED)
     ========================= */
     nav {
       position: fixed;
@@ -99,8 +50,8 @@
     .logo {
       font-weight: 800;
       font-size: 18px;
-      text-decoration: none;
       color: var(--text);
+      text-decoration: none;
     }
 
     .nav-links {
@@ -123,849 +74,287 @@
       font-weight: 500;
     }
 
-    .nav-links a:hover {
+    .nav-links a:hover, .nav-links a.active {
       background: var(--accent);
       transform: translateY(-2px);
     }
 
     /* =========================
-    HERO
+       HEADER
     ========================= */
-    .hero{
-      min-height:100vh;
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      align-items:center;
-      gap:80px;
-      padding:120px 10% 60px;
-      position:relative;
+    .header-section {
+      padding: 140px 10% 40px;
+      text-align: center;
+      max-width: 1000px;
+      margin: 0 auto;
     }
 
-    .hero::before {
-      content: "";
-      position: absolute;
-      width: 650px;
-      height: 650px;
-      background: var(--accent);
-      filter: blur(150px);
-      opacity: .35;
-      left: -180px;
-      top: -120px;
-    }
-
-    .hero-left h1{
-      font-size:clamp(60px,7vw,100px);
-      line-height:1;
-      margin:0;
-      font-weight:800;
-    }
-
-    .hero-right{
-      max-width:550px;
-    }
-
-    .hero-right h2{
-      font-size:32px;
-      font-weight:600;
-      margin-top:0;
-      margin-bottom:20px;
-    }
-
-    .hero-right p{
-      font-size:18px;
-      line-height:1.8;
-      margin-bottom:30px;
-    }
-    
-
-    .hero h1 {
-      font-size: 68px;
+    .header-section h1 {
+      font-size: 48px;
       font-weight: 800;
-      line-height: 1.05;
-      margin-bottom: 20px;
-      animation: floaty 4s ease-in-out infinite;
+      margin-bottom: 12px;
+      line-height: 1.1;
     }
 
-    .hero h2 {
-      font-size: 24px;
-      font-weight: 500;
-      color: #4b5563;
-      margin-bottom: 25px;
-    }
-
-    .hero p {
+    .header-section p {
       font-size: 18px;
-      line-height: 1.8;
+      color: #4b5563;
       max-width: 650px;
-      margin-bottom: 35px;
-    }
-
-    .hero-image {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      position: relative;
-      z-index: 2;
-    }
-
-    .hero-image img {
-      width: 420px;
-      max-width: 100%;
-      border-radius: 28px;
-      border: 6px solid white;
-      box-shadow: 0 25px 60px rgba(0, 0, 0, .15);
-      transition: .35s;
-    }
-
-    .hero-image img:hover {
-      transform: rotate(2deg) scale(1.04);
-    }
-
-    @keyframes floaty {
-      50% { transform: translateY(-8px); }
-    }
-
-    .button {
-      display: inline-block;
-      padding: 16px 28px;
-      background: var(--accent);
-      color: black;
-      text-decoration: none;
-      font-weight: 700;
-      border-radius: 14px;
-      transition: .3s;
-    }
-
-    .button:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 15px 35px rgba(0, 0, 0, .12);
+      margin: 0 auto 30px;
     }
 
     /* =========================
-    SECTION GENERALS
+       FILTERS & SEARCH
     ========================= */
-    .section {
-      padding: 90px 10% 40px;
+    .filter-container {
+      max-width: 1100px;
+      margin: 0 auto 40px;
+      padding: 0 5%;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      align-items: center;
     }
 
-    .section-title {
-      text-align: center;
-      font-size: 46px;
+    .search-bar {
+      width: 100%;
+      max-width: 500px;
+      padding: 12px 20px;
+      border-radius: 12px;
+      border: 1.5px solid var(--border);
+      font-family: inherit;
+      font-size: 14.5px;
+      outline: none;
+      background: white;
+      box-shadow: var(--shadow);
+    }
+
+    .search-bar:focus {
+      border-color: var(--highlight);
+    }
+
+    .filter-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .filter-tab {
+      padding: 8px 18px;
+      border: 1.5px solid var(--border);
+      border-radius: 999px;
+      background: white;
+      font-family: inherit;
+      font-weight: 600;
+      font-size: 13.5px;
+      color: var(--text);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .filter-tab.active, .filter-tab:hover {
+      background: var(--highlight);
+      color: white;
+      border-color: var(--highlight);
+    }
+
+    /* =========================
+       PROJECT CARDS & SUMMARY BOXES
+    ========================= */
+    .projects-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 5% 100px;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    .project-card {
+      background: white;
+      border: 1.5px solid var(--border);
+      border-radius: 28px;
+      padding: 35px;
+      box-shadow: var(--shadow);
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+
+    .project-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+    }
+
+    /* Standardized Summary Box Layout */
+    .summary-box {
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 25px;
+      margin-bottom: 25px;
+    }
+
+    .project-type-tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--highlight);
+      background: rgba(81, 113, 230, 0.1);
+      padding: 5px 12px;
+      border-radius: 999px;
       margin-bottom: 15px;
     }
 
-    .section-subtitle {
-      text-align: center;
-      max-width: 700px;
-      margin: 0 auto 60px;
-      color: #6b7280;
-      font-size: 18px;
-    }
-
-    /* =========================
-    GRID LAYOUTS
-    ========================= */
-    .featured-grid {
+    .summary-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-      gap: 35px;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 30px;
     }
 
-    .feature-card {
-      background: var(--card);
-      border-radius: 24px;
-      overflow: hidden;
-      transition: .35s;
-      box-shadow: 0 18px 45px rgba(0, 0, 0, .08);
-      display: flex;
-      flex-direction: column;
-    }
-
-    .feature-card:hover {
-      transform: translateY(-12px);
-      box-shadow: 0 25px 55px rgba(0, 0, 0, .15);
-    }
-
-    .feature-image {
-      height: 240px;
-      overflow: hidden;
-      background: #f1f5f9; 
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 10px;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-    }
-
-    .feature-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      transition: .45s;
-    }
-
-    .feature-card:hover .feature-image img {
-      transform: scale(1.03);
-    }
-
-    .feature-content {
-      padding: 28px;
-      display: flex;
-      flex-direction: column;
-      flex-grow: 1;
-    }
-
-    .feature-content h3 {
-      font-size: 28px;
-      margin-bottom: 12px;
-    }
-
-    .feature-content p {
+    .summary-panel h3 {
+      font-size: 14px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
       color: #4b5563;
-      margin-bottom: 22px;
-      line-height: 1.7;
+      margin: 0 0 8px 0;
     }
 
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 25px;
-      margin-top: auto; 
+    .summary-panel p, .summary-panel li {
+      font-size: 14.5px;
+      color: #374151;
+      line-height: 1.6;
+      margin: 0;
     }
 
-    .tag {
-      display: inline-block;
-      padding: 8px 14px;
+    .summary-panel ul {
+      margin: 0;
+      padding-left: 20px;
+    }
+
+    .summary-panel li {
+      margin-bottom: 6px;
+    }
+
+    .summary-panel li:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Challenge Box specifically highlighted */
+    .challenge-panel {
       background: white;
-      border-radius: 999px;
-      font-size: 13px;
-      font-weight: 600;
-      transition: .25s;
+      border-left: 4px solid #ef4444;
+      border-radius: 0 12px 12px 0;
+      padding: 16px 20px;
+      border-top: 1px solid rgba(0,0,0,0.02);
+      border-right: 1px solid rgba(0,0,0,0.02);
+      border-bottom: 1px solid rgba(0,0,0,0.02);
     }
 
-    .tag:hover {
-      background: var(--accent);
-      transform: translateY(-2px);
+    .challenge-panel h3 {
+      color: #ef4444;
     }
 
-    .project-button {
-      display: inline-block;
-      padding: 12px 20px;
-      background: var(--accent);
-      color: black;
-      text-decoration: none;
-      font-weight: 700;
-      border-radius: 12px;
-      transition: .3s;
-      text-align: center;
-    }
-
-    .project-button:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 12px 25px rgba(0, 0, 0, .12);
-    }
-
-    /* =========================
-    EXPLORE & FILTERS
-    ========================= */
-    .filter-bar {
+    /* Card Footer Action Links */
+    .card-footer {
       display: flex;
-      justify-content: center;
+      justify-content: space-between;
+      align-items: center;
       flex-wrap: wrap;
-      gap: 14px;
-      margin-top: -20px;
-      margin-bottom: 60px;
+      gap: 15px;
+      border-top: 1.5px solid var(--bg);
+      padding-top: 20px;
     }
 
-    .filter {
-      border: none;
-      background: var(--card);
-      padding: 14px 22px;
-      border-radius: 999px;
-      font-family: inherit;
-      font-size: 15px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: .3s;
-      text-decoration: none;
+    .project-title {
+      font-size: 22px;
+      font-weight: 800;
+      margin: 0;
       color: var(--text);
     }
 
-    .filter:hover {
-      background: var(--accent);
-      transform: translateY(-3px);
-    }
-
-    .filter.active {
-      background: var(--accent);
-    }
-
-    .project-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 28px;
-      width: 100%;
-    }
-
-    .project-small {
-      background: var(--card);
-      border-radius: 20px;
-      overflow: hidden;
-      transition: .3s;
-      box-shadow: 0 12px 30px rgba(0, 0, 0, .08);
-      display: flex;
-      flex-direction: column;
-    }
-
-    .project-small:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 18px 40px rgba(0, 0, 0, .12);
-    }
-
-    .project-small-img-container {
-      height: 180px;
-      background: #f1f5f9;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 8px;
-      overflow: hidden; /* Clips elements safely during rotation runs */
-      position: relative;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-    }
-
-    .project-small-img-container img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
-
-    /* ========================================================
-       NEW CSS: SIDEWAYS FILL ROTATION ENGINE FOR ELECTRONICS
-       ======================================================== */
-    .project-small-img-container img.sideways-fill {
-      transform: rotate(90deg);
-      width: 180px;  /* Binds width to container height bounds */
-      height: 300px; /* Binds height to container width bounds */
-      object-fit: cover;
-      max-width: none;
-      max-height: none;
-    }
-
-    .project-info {
-      padding: 24px;
-      display: flex;
-      flex-direction: column;
-      flex-grow: 1;
-    }
-
-    .project-info h3 {
-      margin-bottom: 12px;
-      font-size: 24px;
-    }
-
-    .project-info p {
-      color: #4b5563;
-      font-size: 15px;
-      line-height: 1.7;
-      margin-bottom: 18px;
-    }
-
-    /* =====================================
-    PROCESS & TOOLKIT ADDITIONS
-    ====================================== */
-    .process-line {
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      flex-wrap: wrap;
-      gap: 0;
-      margin-top: 70px;
-    }
-
-    .step {
-      width: 150px;
-      text-align: center;
-      position: relative;
-    }
-
-    .circle {
-      width: 70px;
-      height: 70px;
-      margin: auto;
-      border-radius: 50%;
-      background: var(--accent);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 26px;
+    .project-action-link {
+      color: var(--highlight);
+      text-decoration: none;
       font-weight: 700;
-      box-shadow: 0 12px 25px rgba(0, 0, 0, .08);
-      transition: .35s;
+      font-size: 15px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.2s;
     }
 
-    .step:hover .circle {
-      transform: scale(1.12);
-      background: #9bb7ff;
+    .project-action-link:hover {
+      color: #3b5cc4;
+      text-decoration: underline;
     }
 
-    .connector {
-      width: 50px;
-      height: 4px;
-      background: var(--border);
-      margin-top: 34px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .connector::after {
-      content: "";
-      position: absolute;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: #7ca1ff;
-      animation: flow 3s linear infinite;
-    }
-
-    .step h3 {
-      margin: 22px 0 12px;
-      font-size: 20px;
-    }
-
-    .step p {
-      font-size: 14px;
-      line-height: 1.6;
+    /* =========================
+       FOOTER
+    ========================= */
+    footer {
+      text-align: center;
+      padding: 60px;
+      border-top: 1px solid var(--border);
       color: #4b5563;
-      padding: 0 4px;
+      background: white;
     }
 
-    @keyframes flow {
-      0% { left: -100%; }
-      100% { left: 100%; }
-    }
-
-    /* Responsive adjustments */
-    @media(max-width: 1300px) {
-      .connector { display: none; }
-      .process-line { gap: 40px; }
-      .step { width: 230px; }
-    }
-
-    @media(max-width: 768px) {
-      .process-line { flex-direction: column; align-items: center; }
-      .step { width: 100%; max-width: 380px; }
+    /* MOBILE RESPONSIVENESS */
+    @media(max-width:900px) {
+      .header-section { padding-top: 120px; }
+      .header-section h1 { font-size: 36px; }
+      .summary-grid { grid-template-columns: 1fr; gap: 20px; }
+      .project-card { padding: 25px; }
     }
   </style>
 </head>
+
 <body>
 
+  <!-- NAV -->
   <nav>
-    <a href="chelsea.html" class="logo">Chelsea Ogbonna</a>
+    <a href="index.html" class="logo">Chelsea Ogbonna</a>
+
     <div class="nav-links">
-      <a href="index.html">Home</a>
       <a href="about.html">About</a>
-      <a href="projects.html">Projects</a>
+      <a href="projects.html" class="active">Projects</a>
       <a href="experiences.html">Experiences</a>
       <a href="leadership.html">Leadership</a>
       <a href="contact.html">Contact</a>
     </div>
   </nav>
 
-  <section class="hero">
-    <div class="hero-left">
-        <h1>Engineering Portfolio</h1>
-    </div>
+  <!-- HEADER -->
+  <section class="header-section">
+    <h1>Engineering Portfolio</h1>
+    <p>A comprehensive directory of research initiatives, clinical devices, instrumentation, and human-centered mechanics.</p>
+  </section>
+
+  <!-- FILTERS & SEARCH -->
+  <section class="filter-container">
+    <input type="text" id="projectSearch" class="search-bar" placeholder="🔍 Search projects by keyword, software, or sensor..." onkeyup="filterProjects()">
     
-    <div class="hero-right">
-      <h2>From concept to prototype to real-world impact.</h2>
-     
-      <p>
-        Each project represents an opportunity to solve a meaningful problem through
-        engineering. My work spans medical devices, biomechanics, robotics,
-        manufacturing, embedded systems, and computational analysis.
-      </p>
-     
-      <a href="#featured" class="button">View Featured Projects ↓</a>
+    <div class="filter-tabs">
+      <button class="filter-tab active" onclick="setActiveFilter('all', this)">All Projects</button>
+      <button class="filter-tab" onclick="setActiveFilter('microfluidics', this)">Biomedical &amp; Microfluidics</button>
+      <button class="filter-tab" onclick="setActiveFilter('wearable', this)">Wearable Devices</button>
+      <button class="filter-tab" onclick="setActiveFilter('instrumentation', this)">Instrumentation</button>
+      <button class="filter-tab" onclick="setActiveFilter('design', this)">Product Design &amp; Education</button>
     </div>
   </section>
 
-  <section class="section" id="featured">
-    <h2 class="section-title">Featured Projects</h2>
-    <p class="section-subtitle">
-      The projects below highlight some of my favorite engineering experiences,
-      showcase research, design, prototyping, testing, and innovation.
-    </p>
-    <div class="featured-grid">
-      <div class="feature-card">
-        <div class="feature-image">
-          <img src="Screen Shot 2026-07-10 at 9.12.40 AM.png" alt="Syncytial Knot Isolation Device">
-        </div>
-        <div class="feature-content">
-          <h3>🧬 Syncytial Knot Isolation Device</h3>
-          <p>
-            Designed a novel microfluidic platform to isolate syncytial knots
-            from placental tissue, pushing maternal-fetal health research forward.
-          </p>
-          <div class="tags">
-            <span class="tag">Microfluidics</span>
-            <span class="tag">COMSOL</span>
-            <span class="tag">CAD</span>
-            <span class="tag">Research</span>
-          </div>
-          <a href="🧬 syncytial knot isolation.html" class="project-button">View Project →</a>
-        </div>
-      </div>
+  <!-- PROJECTS INTERACTIVE PORTAL -->
+  <section class="projects-container" id="projectsBox">
 
-      <div class="feature-card">
-        <div class="feature-image">
-          <img src="Screen Shot 2026-07-04 at 11.46.59 PM.png" alt="Sustainable Recycling Center">
-        </div>
-        <div class="feature-content">
-          <h3>♻️ Sustainable Recycling Center</h3>
-          <p>Designed a sustainable recycling center for a Chicago condominium, developing an accessible solution that improved waste management while earning Best Design Team recognition.</p>
-          <div class="tags">
-            <span class="tag">Design</span>
-            <span class="tag">Sustainability</span>
-            <span class="tag">Teamwork</span>
-            <span class="tag">CAD</span>
-          </div>
-          <a href="♻️ Recycling Center.html" class="project-button">View Project →</a>
-        </div>
-      </div>
-      
-
-      <div class="feature-card">
-        <div class="feature-image">
-          <img src="Screen Shot 2026-07-10 at 7.54.54 PM.png" alt="Everyday Moving Helper">
-        </div>
-        <div class="feature-content">
-          <h3>🤖 Everyday Moving Helper</h3>
-          <p>
-            Designed a modular powered cargo platform that assists users in transporting
-            everyday items through adaptable mechanical design and user-centered engineering.
-          </p>
-          <div class="tags">
-            <span class="tag">Mechanical Design</span>
-            <span class="tag">CAD</span>
-            <span class="tag">Prototyping</span>
-            <span class="tag">Innovation</span>
-          </div>
-          <a href="🤖 Everyday Moving Helper.html" class="project-button">View Project →</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <h2 class="section-title">Explore More Projects</h2>
-    <p class="section-subtitle">
-      Browse projects by engineering discipline and area of focus.
-    </p>
-
-    <div class="filter-bar">
-      <a href="#" class="filter active">All</a>
-      <a href="#medical-devices" class="filter">Medical Devices</a>
-      <a href="experiences.html#research-experience" class="filter">Research</a>      
-      <a href="#robotics-mechatronics" class="filter">Robotics</a>
-      <a href="#software-data" class="filter">Software & Data</a>
-      <a href="#design-manufacturing" class="filter">Design & Manufacturing</a>
-    </div>
-  </section>
-
-  <!-- MEDICAL DEVICES SECTION -->
-  <section class="section" id="medical-devices">
-    <h2 class="section-title">🔬 Medical Devices</h2>
-    <div class="project-grid">
-      <div class="project-small">
-        <div class="project-small-img-container">
-          <img src="Screen Shot 2026-07-10 at 9.12.40 AM.png" alt="Syncytial Knot Device">
-        </div>
-        <div class="project-info">
-          <h3>🧬 Syncytial Knot Isolation</h3>
-          <p>Developed a crossflow microfluidic device for isolating placental syncytial knots using computational modeling, CAD, and experimental validation.</p>
-          <div class="tags">
-            <span class="tag">Microfluidics</span>
-            <span class="tag">COMSOL</span>
-            <span class="tag">Research</span>
-            <span class="tag">CAD</span>
-          </div>
-          <a href="🧬 syncytial knot isolation.html" class="project-button">View Project →</a>
-        </div>
-      </div>
-
-      <div class="project-small">
-        <div class="project-small-img-container">
-          <!-- Sideways rotation applied to protect circuit/haptic image parameters -->
-          <img src="IMG_3705 Small.jpeg" class="sideways-fill" alt="Haptic Diabetic Foot Project">
-        </div>
-        <div class="project-info">
-          <h3>🦶 Haptic Diabetic Foot Monitoring</h3>
-          <p>Led the development of a wearable sensing system designed to improve gait monitoring and reduce complications associated with diabetic foot ulcers.</p>
-          <div class="tags">
-            <span class="tag">Wearables</span>
-            <span class="tag">Biomechanics</span>
-            <span class="tag">Sensors</span>
-            <span class="tag">Research</span>
-          </div>
-          <a href="🦶 Haptic Diabetic Foot Monitoring.html" class="project-button">View Project →</a>
-        </div>
-      </div>
-    </div>
-    <div style="text-align:center; margin-top:50px;">
-      <a href="medical-devices.html" class="button">View All Medical Device Projects →</a>
-    </div>
-  </section>
-
-  <!-- ROBOTICS & MECHATRONICS SECTION -->
-  <section class="section" id="robotics-mechatronics">
-    <h2 class="section-title">🤖 Robotics & Mechatronics</h2>
-    <div class="project-grid">
-      <div class="project-small">
-        <div class="project-small-img-container">
-          <img src="Screen Shot 2026-07-10 at 7.54.54 PM.png" alt="Everyday Moving Helper">
-        </div>
-        <div class="project-info">
-          <h3>📦 Everyday Moving Helper</h3>
-          <p>Designed a modular powered cargo platform that assists users with transporting everyday items through adaptable mechanical design and user-centered engineering.</p>
-          <div class="tags">
-            <span class="tag">Mechanical Design</span>
-            <span class="tag">CAD</span>
-            <span class="tag">Innovation</span>
-            <span class="tag">Prototyping</span>
-          </div>
-          <a href="🤖 Everyday Moving Helper.html" class="project-button">View Project →</a>
-        </div>
-      </div>
-
-      <div class="project-small">
-        <div class="project-small-img-container">
-          <!-- Sideways rotation applied to landscape breadboard image -->
-          <img src="EMGbreadboard.webp" class="sideways-fill" alt="Terrain Detection Robot">
-        </div>
-        <div class="project-info">
-          <h3>💪 Electromyography</h3>
-          <p>Built a robotic sensing system capable of identifying different terrain types using force sensors and inertial measurement units with real-time data collection.</p>
-          <div class="tags">
-            <span class="tag">Robotics</span>
-            <span class="tag">Embedded Systems</span>
-            <span class="tag">Sensors</span>
-            <span class="tag">Python</span>
-          </div>
-          <a href="💪 Electromyography.html" class="project-button">View Project →</a>
-        </div>
-      </div>
-
-      <div class="project-small">
-        <div class="project-small-img-container">
-          <!-- Sideways rotation applied to landscape hardware board image -->
-          <img src="breadboardekg.webp" class="sideways-fill" alt="Electrocardiogram">
-        </div>
-        <div class="project-info">
-          <h3>🫀 Electrocardiogram</h3>
-          <p>Applied signal processing techniques to interpret physiological and motion signals, improving data quality and extracting meaningful trends.</p>
-          <div class="tags">
-            <span class="tag">Python</span>
-            <span class="tag">Data Analysis</span>
-            <span class="tag">Signal Processing</span>
-            <span class="tag">Research</span>
-          </div>
-          <a href="🫀 Electrocardiogram.html" class="project-button">View Project →</a>
-        </div>
-      </div>
-    </div>
-    <div style="text-align:center; margin-top:50px;">
-      <a href="Robotics.html" class="button">View All Robotics Projects →</a>
-    </div>
-  </section>
-
-  <!-- SOFTWARE & DATA SECTION -->
-  <section class="section" id="software-data">
-    <h2 class="section-title">💻 Software & Data</h2>
-    <p class="section-subtitle">
-      Engineering isn't just about building hardware—it's also about transforming
-      data into meaningful insights. These projects focus on data analysis,
-      signal processing, and computational tools.
-    </p>
-    <div class="project-grid">
-      <div class="project-small">
-        <div class="project-small-img-container">
-          <!-- Sideways rotation applied to landscape hardware board image -->
-          <img src="breadboardekg.webp" class="sideways-fill" alt="Electrocardiogram">
-        </div>
-        <div class="project-info">
-          <h3>🫀 Electrocardiogram</h3>
-          <p>Applied signal processing techniques to interpret physiological and motion signals, improving data quality and extracting meaningful trends.</p>
-          <div class="tags">
-            <span class="tag">MATLAB</span>
-            <span class="tag">Signals</span>
-            <span class="tag">Engineering</span>
-            <span class="tag">Research</span>
-          </div>
-          <a href="🫀 Electrocardiogram.html" class="project-button">View Project →</a>
-        </div>
-      </div>
-
-      <div class="project-small">
-        <div class="project-small-img-container">
-          <!-- Sideways rotation applied to landscape breadboard image -->
-          <img src="EMGbreadboard.webp" class="sideways-fill" alt="Force Sensor Analysis">
-        </div>
-        <div class="project-info">
-          <h3>💪 Electromyography</h3>
-          <p>Analyzed force sensor data collected across different terrains to classify walking surfaces and evaluate system performance.</p>
-          <div class="tags">
-            <span class="tag">Python</span>
-            <span class="tag">Sensors</span>
-            <span class="tag">Machine Learning</span>
-            <span class="tag">Testing</span>
-          </div>
-          <a href="💪 Electromyography.html" class="project-button">View Project →</a>
-        </div>
-      </div>
-    </div>
-    <div style="text-align:center; margin-top:50px;">
-      <a href="software-data.html" class="project-button">View All Project →</a>
-    </div>
-  </section>
-
-  <!-- DESIGN & MANUFACTURING SECTION -->
-  <section class="section" id="design-manufacturing">
-    <h2 class="section-title">⚙️ Design & Manufacturing</h2>
-    <p class="section-subtitle">
-      From CAD modeling to manufacturing, these projects
-      highlight the engineering process of turning ideas into functional devices.
-    </p>
-    <div class="project-grid" style="margin-bottom: 40px;">
-      <div class="project-small">
-        <div class="project-small-img-container">
-          <img src="Screen Shot 2026-07-04 at 11.46.59 PM.png" alt="Sustainable Recycling Center">
-        </div>
-        <div class="project-info">
-          <h3>♻️ Sustainable Recycling Center</h3>
-          <p>Designed a sustainable recycling center for a Chicago condominium, developing an accessible solution that improved waste management while earning Best Design Team recognition.</p>
-          <div class="tags">
-            <span class="tag">Design</span>
-            <span class="tag">Sustainability</span>
-            <span class="tag">Teamwork</span>
-            <span class="tag">CAD</span>
-          </div>
-          <a href="♻️ Recycling Center.html" class="project-button">View Project →</a>
-        </div>
-      </div>
-
-      <div class="project-small">
-        <div class="project-small-img-container">
-          <img src="Screen Shot 2026-07-08 at 8.34.48 PM.png" alt="Engineering Outreach">
-        </div>
-        <div class="project-info">
-          <h3>🧪 Inspire Labs</h3>
-          <p>Designed hands-on engineering activities and educational demonstrations to introduce high school students to engineering through project-based learning.</p>
-          <div class="tags">
-            <span class="tag">STEM Outreach</span>
-            <span class="tag">Leadership</span>
-            <span class="tag">Education</span>
-            <span class="tag">Design</span>
-          </div>
-          <a href="🧪 Inspire Labs.html" class="project-button">View Project →</a>
-        </div>
-      </div>
-      
-      <div class="project-small">
-        <div class="project-small-img-container">
-          <img src="cad.webp" alt="CAD Design">
-        </div>
-        <div class="project-info">
-          <h3>📐 CAD Design Portfolio</h3>
-          <p>Designed mechanical components and biomedical devices using SolidWorks, Siemens NX, and COMSOL, balancing functionality, manufacturability, and performance.</p>
-          <div class="tags">
-            <span class="tag">SolidWorks</span>
-            <span class="tag">Siemens NX</span>
-            <span class="tag">CAD</span>
-            <span class="tag">Design</span>
-          </div>
-          <a href="#" class="project-button">Coming Soon →</a>
-        </div>
-      </div>
-    </div>
-    <div style="text-align:center; margin-top:50px;">
-      <a href="design-manufacturing.html" class="button">View All Design Projects →</a>
-    </div>
-  </section>
-
-  <!-- ENGINEERING PROCESS -->
-  <section class="section">
-    <h2 class="section-title">⚙️ My Engineering Process</h2>
-    <p class="section-subtitle">
-      Every project follows the same philosophy: understand the problem, design
-      thoughtfully, validate experimentally, and continuously improve.
-    </p>
-    <div class="process-line">
-      <div class="step">
-        <div class="circle">1</div>
-        <h3>Identify</h3>
-        <p>Understand the problem, define user needs, and establish engineering constraints.</p>
-      </div>
-      <div class="connector"></div>
-      <div class="step">
-        <div class="circle">2</div>
-        <h3>Research</h3>
-        <p>Study existing solutions, literature, and technical requirements before designing.</p>
-      </div>
-      <div class="connector"></div>
-      <div class="step">
-        <div class="circle">3</div>
-        <h3>Design</h3>
-        <p>Develop concepts through CAD, calculations, simulations, and engineering analysis.</p>
-      </div>
-      <div class="connector"></div>
-      <div class="step">
-        <div class="circle">4</div>
-        <h3>Prototype</h3>
-        <p>Build functional prototypes using manufacturing and rapid prototyping techniques.</p>
-      </div>
-      <div class="connector"></div>
-      <div class="step">
-        <div class="circle">5</div>
-        <h3>Test</h3>
-        <p>Collect data, validate performance, troubleshoot issues, and analyze results.</p>
-      </div>
-      <div class="connector"></div>
-      <div class="step">
-        <div class="circle">6</div>
-        <h3>Iterate</h3>
-        <p>Improve the design through multiple iterations until the engineering goals are met.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- CURRENTLY BUILDING -->
-  <section class="section" style="margin-bottom: 60px;">
-    <h2 class="section-title">🚀 Currently Building</h2>
-    <p class="section-subtitle">
-      I'm continuously expanding this portfolio with detailed engineering case
-      studies, CAD models, videos, design iterations, and technical documentation.
-      Each project page will provide a deeper look into the engineering process—
-      from defining the problem and exploring design alternatives to testing,
-      validation, and final outcomes.
-    </p>
-    <div style="text-align:center; margin-top:40px;">
-      <a href="contact.html" class="button">Let's Connect →</a>
-    </div>
-  </section>
-
-  <section class="next-page-container">
-    <p>Finished reading?</p>
-    <a href="research.html" class="next-page-btn">Explore My Research <span class="arrow">→</span></a>
-  </section>
- 
-  <footer style="padding: 40px 10%; text-align: center; color: var(--text); border-top: 1px solid var(--border); font-size: 15px; font-weight: 500;">
-    © 2026 Chelsea Ogbonna • Designed & Built by Chelsea
-  </footer>
-
-</body>
-</html>
-```eof
-
-I've integrated those rotational CSS mechanics to make the wide electronics images fill the frame completely. Let me know if you would like me to adjust any other files!
+    <!-- PROJECT 1 -->
+    <div class="project-card" data-category="microfluidics" data-keywords="comsol solidworks suex separation preeclampsia cells sorting fetal">
+      <div class="summary-box">
+        <span class="project-type-tag">Project Type: Biomedical Research / Microfluidics</span>
+        <div class="summary-grid">
+          <div>
+            <div class="summary-panel" style="margin-bottom: 20px;">
+              <h3>Project Overview</h3>
+              <p>Placental syncytial knots (SKs) are multicellular structures associated with pregnancy complications such as preeclampsia and fetal growth restriction. Current isolation techniques are labor-intensive, low-throughput, and rely heavily on
