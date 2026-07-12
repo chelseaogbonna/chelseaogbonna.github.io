@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Projects | Chelsea Ogbonna</title>
+  <title>Chelsea Ogbonna | Projects Portfolio</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -14,6 +14,7 @@
       --card: #d7e3fc;
       --accent: #abc4ff;
       --text: #1f2937;
+      --text-muted: #4b5563;
       --border: #c1d3fe;
       --card-hover: #ccdbfd;
       --shadow: 0 12px 30px rgba(0, 0, 0, .06);
@@ -74,98 +75,91 @@
       font-weight: 500;
     }
 
-    .nav-links a:hover, .nav-links a.active {
+    .nav-links a:hover {
       background: var(--accent);
       transform: translateY(-2px);
     }
 
     /* =========================
-       HEADER
+       HERO
     ========================= */
-    .header-section {
+    .projects-hero {
       padding: 140px 10% 40px;
       text-align: center;
-      max-width: 1000px;
-      margin: 0 auto;
+      position: relative;
     }
 
-    .header-section h1 {
+    .projects-hero:before {
+      content: "";
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      background: var(--accent);
+      filter: blur(130px);
+      opacity: .25;
+      left: 50%;
+      top: -100px;
+      transform: translateX(-50%);
+      pointer-events: none;
+    }
+
+    .projects-hero h1 {
       font-size: 48px;
       font-weight: 800;
-      margin-bottom: 12px;
+      margin: 0 0 12px 0;
       line-height: 1.1;
     }
 
-    .header-section p {
+    .projects-hero p {
       font-size: 18px;
-      color: #4b5563;
+      color: var(--text-muted);
       max-width: 650px;
-      margin: 0 auto 30px;
+      margin: 0 auto 30px auto;
     }
 
     /* =========================
-       FILTERS & SEARCH
+       FILTER BAR
     ========================= */
-    .filter-container {
-      max-width: 1100px;
-      margin: 0 auto 40px;
-      padding: 0 5%;
+    .filter-bar {
       display: flex;
-      flex-direction: column;
-      gap: 15px;
-      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 50px;
     }
 
-    .search-bar {
-      width: 100%;
-      max-width: 500px;
-      padding: 12px 20px;
-      border-radius: 12px;
-      border: 1.5px solid var(--border);
-      font-family: inherit;
-      font-size: 14.5px;
-      outline: none;
+    .filter-btn {
       background: white;
+      border: 1px solid var(--border);
+      padding: 10px 20px;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.2s ease;
       box-shadow: var(--shadow);
     }
 
-    .search-bar:focus {
-      border-color: var(--highlight);
-    }
-
-    .filter-tabs {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 10px;
-    }
-
-    .filter-tab {
-      padding: 8px 18px;
-      border: 1.5px solid var(--border);
-      border-radius: 999px;
-      background: white;
-      font-family: inherit;
-      font-weight: 600;
-      font-size: 13.5px;
+    .filter-btn:hover {
+      background: var(--card);
       color: var(--text);
-      cursor: pointer;
-      transition: all 0.2s;
+      transform: translateY(-2px);
     }
 
-    .filter-tab.active, .filter-tab:hover {
+    .filter-btn.active {
       background: var(--highlight);
       color: white;
       border-color: var(--highlight);
     }
 
     /* =========================
-       PROJECT CARDS & SUMMARY BOXES
+       PROJECT DOSSIER STACK
     ========================= */
-    .projects-container {
+    .project-stack {
       max-width: 1100px;
       margin: 0 auto;
-      padding: 0 5% 100px;
+      padding: 0 5%;
       display: flex;
       flex-direction: column;
       gap: 40px;
@@ -173,122 +167,132 @@
 
     .project-card {
       background: white;
-      border: 1.5px solid var(--border);
+      border: 1px solid var(--border);
       border-radius: 28px;
       padding: 35px;
       box-shadow: var(--shadow);
-      transition: transform 0.25s, box-shadow 0.25s;
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+      transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
     }
 
     .project-card:hover {
       transform: translateY(-4px);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+      box-shadow: 0 18px 45px rgba(0, 0, 0, .08);
+      border-color: var(--highlight);
     }
 
-    /* Standardized Summary Box Layout */
-    .summary-box {
-      background: #f8fafc;
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 25px;
-      margin-bottom: 25px;
-    }
-
-    .project-type-tag {
-      display: inline-block;
-      font-size: 11px;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.8px;
-      color: var(--highlight);
-      background: rgba(81, 113, 230, 0.1);
-      padding: 5px 12px;
-      border-radius: 999px;
-      margin-bottom: 15px;
-    }
-
-    .summary-grid {
-      display: grid;
-      grid-template-columns: 1fr 1.1fr;
-      gap: 30px;
-    }
-
-    .summary-panel h3 {
-      font-size: 14px;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      color: #4b5563;
-      margin: 0 0 8px 0;
-    }
-
-    .summary-panel p, .summary-panel li {
-      font-size: 14.5px;
-      color: #374151;
-      line-height: 1.6;
-      margin: 0;
-    }
-
-    .summary-panel ul {
-      margin: 0;
-      padding-left: 20px;
-    }
-
-    .summary-panel li {
-      margin-bottom: 6px;
-    }
-
-    .summary-panel li:last-child {
-      margin-bottom: 0;
-    }
-
-    /* Challenge Box specifically highlighted */
-    .challenge-panel {
-      background: white;
-      border-left: 4px solid #ef4444;
-      border-radius: 0 12px 12px 0;
-      padding: 16px 20px;
-      border-top: 1px solid rgba(0,0,0,0.02);
-      border-right: 1px solid rgba(0,0,0,0.02);
-      border-bottom: 1px solid rgba(0,0,0,0.02);
-    }
-
-    .challenge-panel h3 {
-      color: #ef4444;
-    }
-
-    /* Card Footer Action Links */
-    .card-footer {
+    .project-header {
       display: flex;
       justify-content: space-between;
-      align-items: center;
+      align-items: flex-start;
+      border-bottom: 2px solid var(--bg);
+      padding-bottom: 18px;
       flex-wrap: wrap;
       gap: 15px;
-      border-top: 1.5px solid var(--bg);
-      padding-top: 20px;
     }
 
-    .project-title {
-      font-size: 22px;
+    .project-title h2 {
+      font-size: 24px;
       font-weight: 800;
-      margin: 0;
+      margin: 0 0 6px 0;
       color: var(--text);
     }
 
-    .project-action-link {
+    .project-type-badge {
+      background: var(--card);
       color: var(--highlight);
-      text-decoration: none;
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 13px;
       font-weight: 700;
-      font-size: 15px;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      transition: color 0.2s;
+      letter-spacing: 0.3px;
     }
 
-    .project-action-link:hover {
-      color: #3b5cc4;
-      text-decoration: underline;
+    /* Dashboard Layout */
+    .project-body {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 30px;
+    }
+
+    .panel-left {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .panel-right {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .info-section h4 {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--highlight);
+      margin: 0 0 6px 0;
+    }
+
+    .info-section p {
+      font-size: 14.5px;
+      color: var(--text-muted);
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    .info-section ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    .info-section li {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .info-section li:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Troubleshoot Boxes */
+    .troubleshoot-box {
+      border-radius: 16px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .troubleshoot-box.challenge {
+      background: #fff8f8;
+      border-left: 4.5px solid #ef4444;
+    }
+
+    .troubleshoot-box.solution {
+      background: #f4fbf7;
+      border-left: 4.5px solid #10b981;
+    }
+
+    .troubleshoot-box h4 {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin: 0;
+    }
+
+    .troubleshoot-box.challenge h4 { color: #b91c1c; }
+    .troubleshoot-box.solution h4 { color: #047857; }
+
+    .troubleshoot-box p {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin: 0;
+      line-height: 1.55;
     }
 
     /* =========================
@@ -298,20 +302,26 @@
       text-align: center;
       padding: 60px;
       border-top: 1px solid var(--border);
-      color: #4b5563;
-      background: white;
+      margin-top: 80px;
+      color: var(--text-muted);
     }
 
     /* MOBILE RESPONSIVENESS */
     @media(max-width:900px) {
-      .header-section { padding-top: 120px; }
-      .header-section h1 { font-size: 36px; }
-      .summary-grid { grid-template-columns: 1fr; gap: 20px; }
-      .project-card { padding: 25px; }
+      .project-body {
+        grid-template-columns: 1fr;
+        gap: 25px;
+      }
+      .project-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .projects-hero h1 {
+        font-size: 36px;
+      }
     }
   </style>
 </head>
-
 <body>
 
   <!-- NAV -->
@@ -320,41 +330,386 @@
 
     <div class="nav-links">
       <a href="about.html">About</a>
-      <a href="projects.html" class="active">Projects</a>
+      <a href="projects.html" style="background: var(--accent); transform: translateY(-2px);">Projects</a>
       <a href="experiences.html">Experiences</a>
       <a href="leadership.html">Leadership</a>
       <a href="contact.html">Contact</a>
     </div>
   </nav>
 
-  <!-- HEADER -->
-  <section class="header-section">
-    <h1>Engineering Portfolio</h1>
-    <p>A comprehensive directory of research initiatives, clinical devices, instrumentation, and human-centered mechanics.</p>
-  </section>
+  <!-- HERO -->
+  <section class="projects-hero">
+    <h1>Project Portfolio</h1>
+    <p>A master dossier tracking biomedical instrumentation, soft wearable patches, and modular systems engineering loops.</p>
 
-  <!-- FILTERS & SEARCH -->
-  <section class="filter-container">
-    <input type="text" id="projectSearch" class="search-bar" placeholder="🔍 Search projects by keyword, software, or sensor..." onkeyup="filterProjects()">
-    
-    <div class="filter-tabs">
-      <button class="filter-tab active" onclick="setActiveFilter('all', this)">All Projects</button>
-      <button class="filter-tab" onclick="setActiveFilter('microfluidics', this)">Biomedical &amp; Microfluidics</button>
-      <button class="filter-tab" onclick="setActiveFilter('wearable', this)">Wearable Devices</button>
-      <button class="filter-tab" onclick="setActiveFilter('instrumentation', this)">Instrumentation</button>
-      <button class="filter-tab" onclick="setActiveFilter('design', this)">Product Design &amp; Education</button>
+    <!-- FILTER BAR -->
+    <div class="filter-bar">
+      <button class="filter-btn active" onclick="filterProjects('all')">All Projects</button>
+      <button class="filter-btn" onclick="filterProjects('biomedical')">Biomedical &amp; Wearables</button>
+      <button class="filter-btn" onclick="filterProjects('instrumentation')">Instrumentation</button>
+      <button class="filter-btn" onclick="filterProjects('mechanical')">Product &amp; MechE</button>
+      <button class="filter-btn" onclick="filterProjects('education')">Human Factors &amp; Ed</button>
     </div>
   </section>
 
-  <!-- PROJECTS INTERACTIVE PORTAL -->
-  <section class="projects-container" id="projectsBox">
+  <!-- STACK CONTAINER -->
+  <section class="project-stack">
 
     <!-- PROJECT 1 -->
-    <div class="project-card" data-category="microfluidics" data-keywords="comsol solidworks suex separation preeclampsia cells sorting fetal">
-      <div class="summary-box">
-        <span class="project-type-tag">Project Type: Biomedical Research / Microfluidics</span>
-        <div class="summary-grid">
-          <div>
-            <div class="summary-panel" style="margin-bottom: 20px;">
-              <h3>Project Overview</h3>
-              <p>Placental syncytial knots (SKs) are multicellular structures associated with pregnancy complications such as preeclampsia and fetal growth restriction. Current isolation techniques are labor-intensive, low-throughput, and rely heavily on
+    <div class="project-card" data-category="biomedical">
+      <div class="project-header">
+        <div class="project-title">
+          <h2>Syncytial Knot Isolation Microfluidic Device</h2>
+        </div>
+        <div class="project-type-badge">Biomedical Research / Microfluidics</div>
+      </div>
+      <div class="project-body">
+        <div class="panel-left">
+          <div class="info-section">
+            <h4>Project Overview</h4>
+            <p>Placental syncytial knots (SKs) are multicellular structures associated with pregnancy complications such as preeclampsia and fetal growth restriction. Current isolation techniques are labor-intensive, low-throughput, and rely heavily on manual processing. This project aimed to design a passive microfluidic platform capable of continuously separating syncytial knots from placental tissue based on size boundaries from $50\text{–}150\text{ }\mu\text{m}$.</p>
+          </div>
+          <div class="info-section">
+            <h4>My Contributions</h4>
+            <ul>
+              <li>Led a multidisciplinary engineering team throughout the design process.</li>
+              <li>Designed, simulated, and fabricated DLD, crossflow, and spiral microfluidic devices using SolidWorks, COMSOL, and SUEX photoresist.</li>
+              <li>Developed experimental protocols and evaluated device performance using fluorescent microparticles.</li>
+            </ul>
+          </div>
+          <div class="info-section">
+            <h4>Results</h4>
+            <p>Successfully designed and tested multiple microfluidic prototypes while identifying the strengths and limitations of each separation method. Experimental testing informed several design iterations that improved particle sorting and reduced clogging. The project established a foundation for future biological validation using placental tissue.</p>
+          </div>
+        </div>
+        <div class="panel-right">
+          <div class="troubleshoot-box challenge">
+            <h4>Engineering Challenges</h4>
+            <p>Maintaining consistent particle flow was difficult due to particle settling, air bubbles, and channel leakage. Different microfluidic designs also introduced unique challenges, including outlet mixing and flow instability.</p>
+          </div>
+          <div class="troubleshoot-box solution">
+            <h4>How They Were Solved</h4>
+            <p>Optimized syringe preparation, redesigned outlet geometries, increased channel spacing, and proposed bubble traps and improved inlet designs to improve separation reliability.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROJECT 2 -->
+    <div class="project-card" data-category="education">
+      <div class="project-header">
+        <div class="project-title">
+          <h2>Sustainable Recycling Center</h2>
+        </div>
+        <div class="project-type-badge">Human-Centered Product Design</div>
+      </div>
+      <div class="project-body">
+        <div class="panel-left">
+          <div class="info-section">
+            <h4>Project Overview</h4>
+            <p>A condominium recycling center experienced low recycling participation because residents were unsure what could be recycled and the collection area was difficult to navigate. This project redesigned the recycling center using human-centered design principles to improve accessibility, organization, and recycling behavior.</p>
+          </div>
+          <div class="info-section">
+            <h4>My Contributions</h4>
+            <ul>
+              <li>Led the engineering design process from user research through implementation.</li>
+              <li>Designed custom recycling bins, cardboard collection systems, and educational signage using SolidWorks and Siemens NX.</li>
+              <li>Conducted user interviews and observations to identify barriers to proper recycling.</li>
+            </ul>
+          </div>
+          <div class="info-section">
+            <h4>Results</h4>
+            <p>The redesigned recycling center increased recycling participation by approximately $40\%$ and received the Best Design Team Award. The final design improved user understanding while reducing contamination of recyclable materials.</p>
+          </div>
+        </div>
+        <div class="panel-right">
+          <div class="troubleshoot-box challenge">
+            <h4>Engineering Challenges</h4>
+            <p>Residents frequently placed non-recyclable materials in recycling bins because of confusing signage and poor system organization.</p>
+          </div>
+          <div class="troubleshoot-box solution">
+            <h4>How They Were Solved</h4>
+            <p>Developed intuitive collection stations, simplified instructional graphics, and redesigned the recycling layout to improve usability and reduce sorting errors.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROJECT 3 -->
+    <div class="project-card" data-category="biomedical">
+      <div class="project-header">
+        <div class="project-title">
+          <h2>Haptic Diabetic Foot Ulcer Detection</h2>
+        </div>
+        <div class="project-type-badge">Wearable Medical Device</div>
+      </div>
+      <div class="project-body">
+        <div class="panel-left">
+          <div class="info-section">
+            <h4>Project Overview</h4>
+            <p>Diabetic foot ulcers often develop because patients cannot detect excessive pressure or abnormal gait until significant tissue damage has already occurred. This project developed a wearable monitoring system capable of identifying gait abnormalities using motion and force sensors.</p>
+          </div>
+          <div class="info-section">
+            <h4>My Contributions</h4>
+            <ul>
+              <li>Designed a wearable sensing system using an MPU6050 IMU and force-sensitive resistors.</li>
+              <li>Developed Python programs to analyze walking data and identify gait characteristics.</li>
+              <li>Integrated hardware and software to collect synchronized biomechanical data.</li>
+            </ul>
+          </div>
+          <div class="info-section">
+            <h4>Results</h4>
+            <p>Successfully demonstrated the ability to collect and analyze gait information across different walking conditions. The system showed potential for non-invasive monitoring of patients at risk of diabetic foot ulcers.</p>
+          </div>
+        </div>
+        <div class="panel-right">
+          <div class="troubleshoot-box challenge">
+            <h4>Engineering Challenges</h4>
+            <p>Synchronizing force and motion data while minimizing sensor noise affected measurement accuracy.</p>
+          </div>
+          <div class="troubleshoot-box solution">
+            <h4>How They Were Solved</h4>
+            <p>Applied signal processing techniques, calibrated sensors, and refined data acquisition workflows to improve measurement consistency.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROJECT 4 -->
+    <div class="project-card" data-category="mechanical">
+      <div class="project-header">
+        <div class="project-title">
+          <h2>Everyday Moving Helper</h2>
+        </div>
+        <div class="project-type-badge">Mechanical Product Design</div>
+      </div>
+      <div class="project-body">
+        <div class="panel-left">
+          <div class="info-section">
+            <h4>Project Overview</h4>
+            <p>Transporting groceries, luggage, laundry, and household items often requires multiple trips and significant physical effort. This project developed a modular powered cargo platform capable of adapting to different load sizes through an expandable frame and configurable supports.</p>
+          </div>
+          <div class="info-section">
+            <h4>My Contributions</h4>
+            <ul>
+              <li>Designed the complete mechanical system in SolidWorks.</li>
+              <li>Performed load, stability, and terrain analyses to optimize performance.</li>
+              <li>Evaluated multiple design concepts before selecting the final modular architecture.</li>
+            </ul>
+          </div>
+          <div class="info-section">
+            <h4>Results</h4>
+            <p>Produced a powered cargo platform capable of safely transporting loads up to $30\text{ lbs}$ across multiple terrain conditions while maintaining stability and adaptability.</p>
+          </div>
+        </div>
+        <div class="panel-right">
+          <div class="troubleshoot-box challenge">
+            <h4>Engineering Challenges</h4>
+            <p>Balancing portability with structural rigidity while maintaining stability across different terrains required multiple design iterations.</p>
+          </div>
+          <div class="troubleshoot-box solution">
+            <h4>How They Were Solved</h4>
+            <p>Optimized frame geometry, weight distribution, and wheel placement through iterative CAD modeling and mechanical analysis.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROJECT 5 -->
+    <div class="project-card" data-category="instrumentation">
+      <div class="project-header">
+        <div class="project-title">
+          <h2>EMG Signal Acquisition System</h2>
+        </div>
+        <div class="project-type-badge">Biomedical Instrumentation</div>
+      </div>
+      <div class="project-body">
+        <div class="panel-left">
+          <div class="info-section">
+            <h4>Project Overview</h4>
+            <p>Commercial electromyography (EMG) systems are often expensive and inaccessible for educational and research environments. This project developed a low-cost analog EMG acquisition system capable of recording and processing muscle activity.</p>
+          </div>
+          <div class="info-section">
+            <h4>My Contributions</h4>
+            <ul>
+              <li>Designed and built an analog EMG acquisition circuit.</li>
+              <li>Implemented amplification and filtering stages to improve signal quality.</li>
+              <li>Validated system performance through experimental testing.</li>
+            </ul>
+          </div>
+          <div class="info-section">
+            <h4>Results</h4>
+            <p>Produced a functional EMG system while reducing hardware costs by more than $90\%$ compared to commercial alternatives.</p>
+          </div>
+        </div>
+        <div class="panel-right">
+          <div class="troubleshoot-box challenge">
+            <h4>Engineering Challenges</h4>
+            <p>Muscle signals are extremely small and highly susceptible to environmental electromagnetic and electrical noise.</p>
+          </div>
+          <div class="troubleshoot-box solution">
+            <h4>How They Were Solved</h4>
+            <p>Optimized analog filtering and amplification stages to improve signal-to-noise ratio and reduce common-mode interference.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROJECT 6 -->
+    <div class="project-card" data-category="instrumentation">
+      <div class="project-header">
+        <div class="project-title">
+          <h2>EKG Signal Acquisition System</h2>
+        </div>
+        <div class="project-type-badge">Biomedical Instrumentation</div>
+      </div>
+      <div class="project-body">
+        <div class="panel-left">
+          <div class="info-section">
+            <h4>Project Overview</h4>
+            <p>Electrocardiograms provide valuable information about heart rhythm and cardiac function. This project focused on developing a low-cost EKG acquisition system capable of accurately measuring electrical activity from the heart.</p>
+          </div>
+          <div class="info-section">
+            <h4>My Contributions</h4>
+            <ul>
+              <li>Designed and assembled analog EKG circuitry.</li>
+              <li>Developed Python-based FFT analysis to evaluate signal quality.</li>
+              <li>Tested system performance using physiological measurements.</li>
+            </ul>
+          </div>
+          <div class="info-section">
+            <h4>Results</h4>
+            <p>Successfully acquired and processed cardiac signals while significantly reducing equipment cost compared to commercial devices.</p>
+          </div>
+        </div>
+        <div class="panel-right">
+          <div class="troubleshoot-box challenge">
+            <h4>Engineering Challenges</h4>
+            <p>Power-line interference ($60\text{ Hz}$ noise) and motion artifacts reduced signal quality during acquisition.</p>
+          </div>
+          <div class="troubleshoot-box solution">
+            <h4>How They Were Solved</h4>
+            <p>Applied analog filtering techniques and FFT-based digital signal analysis to improve waveform quality and measurement accuracy.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROJECT 7 -->
+    <div class="project-card" data-category="instrumentation">
+      <div class="project-header">
+        <div class="project-title">
+          <h2>Blood Pressure Measurement System</h2>
+        </div>
+        <div class="project-type-badge">Biomedical Instrumentation</div>
+      </div>
+      <div class="project-body">
+        <div class="panel-left">
+          <div class="info-section">
+            <h4>Project Overview</h4>
+            <p>Blood pressure monitoring is an essential diagnostic tool used in healthcare. This project developed a complete blood pressure measurement system capable of extracting systolic, diastolic, mean arterial pressure, and heart rate from acquired signals.</p>
+          </div>
+          <div class="info-section">
+            <h4>My Contributions</h4>
+            <ul>
+              <li>Designed the analog signal acquisition circuitry.</li>
+              <li>Developed algorithms to process oscillometric pressure data.</li>
+              <li>Validated blood pressure measurements through experimental testing.</li>
+            </ul>
+          </div>
+          <div class="info-section">
+            <h4>Results</h4>
+            <p>Successfully measured and calculated physiological cardiovascular parameters using a fully integrated custom-built system.</p>
+          </div>
+        </div>
+        <div class="panel-right">
+          <div class="troubleshoot-box challenge">
+            <h4>Engineering Challenges</h4>
+            <p>Accurately identifying oscillometric peaks was difficult because of signal noise and pressure fluctuations.</p>
+          </div>
+          <div class="troubleshoot-box solution">
+            <h4>How They Were Solved</h4>
+            <p>Applied digital signal processing and filtering techniques to improve peak detection and measurement accuracy.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROJECT 8 -->
+    <div class="project-card" data-category="education">
+      <div class="project-header">
+        <div class="project-title">
+          <h2>Inspire Labs</h2>
+        </div>
+        <div class="project-type-badge">STEM Education &amp; Outreach</div>
+      </div>
+      <div class="project-body">
+        <div class="panel-left">
+          <div class="info-section">
+            <h4>Project Overview</h4>
+            <p>Many K–12 students have limited exposure to hands-on engineering and STEM activities. This project developed interactive educational experiences to introduce engineering concepts through engaging, project-based learning.</p>
+          </div>
+          <div class="info-section">
+            <h4>My Contributions</h4>
+            <ul>
+              <li>Designed and led engineering outreach activities for local students.</li>
+              <li>Developed hands-on experiments and coding activities that demonstrated fundamental engineering principles.</li>
+              <li>Mentored students throughout the design and problem-solving process.</li>
+            </ul>
+          </div>
+          <div class="info-section">
+            <h4>Results</h4>
+            <p>Engaged students in interactive STEM learning while increasing confidence, participation, and interest in engineering through hands-on activities.</p>
+          </div>
+        </div>
+        <div class="panel-right">
+          <div class="troubleshoot-box challenge">
+            <h4>Engineering Challenges</h4>
+            <p>Engineering concepts needed to be simplified without losing their educational value or reducing student engagement.</p>
+          </div>
+          <div class="troubleshoot-box solution">
+            <h4>How They Were Solved</h4>
+            <p>Designed visual demonstrations, interactive experiments, and project-based activities that made complex engineering concepts accessible to younger learners.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 Chelsea Ogbonna • Built with Clean Code Foundations</p>
+  </footer>
+
+  <!-- FILTER LOGIC SCRIPT -->
+  <script>
+    function filterProjects(category) {
+      // Toggle button active classes
+      const buttons = document.querySelectorAll('.filter-btn');
+      buttons.forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+
+      // Filter cards
+      const cards = document.querySelectorAll('.project-card');
+      cards.forEach(card => {
+        const cardCategory = card.getAttribute('data-category');
+        if (category === 'all' || cardCategory === category) {
+          card.style.display = 'flex';
+          setTimeout(() => {
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
+          }, 10);
+        } else {
+          card.style.opacity = '0';
+          card.style.transform = 'translateY(15px)';
+          setTimeout(() => {
+            card.style.display = 'none';
+          }, 150);
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>
