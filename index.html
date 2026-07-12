@@ -5,8 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Chelsea Ogbonna | Interactive Portfolio</title>
 
+<!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<!-- Tailwind for modern utilities (preserving custom theme configuration) -->
+<script src="https://cdn.tailwindcss.com"></script>
 
 <style>
 :root{
@@ -17,23 +20,22 @@
   --border:#c1d3fe;
   --card-hover: #ccdbfd;
   --shadow: 0 12px 30px rgba(0, 0, 0, .06);
-  --primary-glow: rgba(81, 113, 230, 0.15);
 }
 
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
+html { scroll-behavior: smooth; }
 
 body{
   margin:0;
   font-family: 'Inter', sans-serif;
-  background:var(--bg);
-  color:var(--text);
-  overflow-x:hidden;
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
   line-height: 1.6;
 }
 
 /* =========================
-   NAV (UNCHANGED NAVIGATION)
+   NAV (UNCHANGED - KEEPING ORIGINAL STRUCTURE)
 ========================= */
 nav{
   position:fixed;
@@ -80,6 +82,7 @@ nav{
 }
 
 /* =========================
+   HERO STYLE REFINEMENTS
 ========================= */
 .hero{
   min-height: 100vh;
@@ -101,6 +104,7 @@ nav{
   opacity:.35;
   left:-200px;
   top:-150px;
+  pointer-events: none;
 }
 
 .hero-text{position:relative; z-index:2}
@@ -145,7 +149,6 @@ nav{
   font-weight:700;
   transition: .3s;
   box-shadow: var(--shadow);
-  cursor: pointer;
 }
 
 .button.primary {
@@ -193,11 +196,11 @@ nav{
 }
 
 .hero-image img:hover{
-  transform:rotate(2deg) scale(1.03) translateY(-5px);
+  transform: rotate(2deg) scale(1.03) translateY(-5px);
 }
 
 /* =========================
-   SECTIONS GENERAL
+   SECTIONS GENERAL & CARDS
 ========================= */
 .section{
   padding:100px 10%;
@@ -218,148 +221,6 @@ nav{
   font-size: 16px;
   max-width: 600px;
   margin: 0 auto 60px auto;
-}
-
-/* =========================
-   NEW: ABOUT & INTERESTS SECTION
-========================= */
-.about-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 50px;
-  align-items: flex-start;
-  margin-top: 40px;
-}
-
-.about-text h3 {
-  font-size: 28px;
-  font-weight: 800;
-  margin-bottom: 20px;
-  color: #3b5cc4;
-}
-
-.about-text p {
-  color: #4b5563;
-  font-size: 16px;
-  line-height: 1.75;
-  margin-bottom: 20px;
-}
-
-.about-highlight {
-  border-left: 4px solid var(--accent);
-  padding-left: 20px;
-  font-style: italic;
-  color: #374151;
-  font-weight: 500;
-  margin: 25px 0;
-}
-
-.interests-container {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-}
-
-.interest-item {
-  background: white;
-  padding: 24px;
-  border-radius: 20px;
-  box-shadow: var(--shadow);
-  border: 1px solid var(--border);
-  transition: .3s;
-}
-
-.interest-item:hover {
-  transform: translateY(-5px);
-  border-color: var(--accent);
-  box-shadow: 0 15px 30px rgba(81, 113, 230, 0.08);
-}
-
-.interest-icon {
-  font-size: 32px;
-  margin-bottom: 12px;
-  display: block;
-}
-
-.interest-item h4 {
-  font-size: 16px;
-  font-weight: 700;
-  margin: 0 0 8px 0;
-}
-
-.interest-item p {
-  font-size: 13.5px;
-  color: #6b7280;
-  margin: 0;
-  line-height: 1.5;
-}
-
-/* =========================
-   NEW: DYNAMIC COMPANY ALIGNER
-========================= */
-.aligner-card {
-  background: white;
-  border-radius: 28px;
-  border: 1px solid var(--border);
-  padding: 35px;
-  margin-bottom: 40px;
-  box-shadow: var(--shadow);
-}
-
-.aligner-header {
-  text-align: center;
-  margin-bottom: 30px;
-}
-
-.aligner-header h3 {
-  font-size: 22px;
-  font-weight: 800;
-  margin-bottom: 8px;
-}
-
-.aligner-header p {
-  font-size: 14.5px;
-  color: #6b7280;
-}
-
-.aligner-selectors {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  flex-wrap: wrap;
-  margin-top: 20px;
-}
-
-.aligner-btn {
-  background: var(--bg);
-  border: 1px solid var(--border);
-  padding: 10px 20px;
-  border-radius: 99px;
-  font-weight: 700;
-  font-size: 13.5px;
-  cursor: pointer;
-  color: var(--text);
-  transition: .25s;
-}
-
-.aligner-btn.active, .aligner-btn:hover {
-  background: #3b5cc4;
-  color: white;
-  border-color: #3b5cc4;
-  box-shadow: 0 8px 20px rgba(59, 92, 196, 0.25);
-  transform: translateY(-2px);
-}
-
-.alignment-banner {
-  text-align: center;
-  font-size: 15px;
-  font-weight: 600;
-  color: #3b5cc4;
-  background: var(--bg);
-  padding: 12px 25px;
-  border-radius: 12px;
-  margin-top: 20px;
-  border: 1px dashed var(--border);
 }
 
 /* HIGHLIGHT STATS */
@@ -399,85 +260,6 @@ nav{
   font-weight: 600;
   color: var(--text);
   font-size: 16px;
-}
-
-/* =========================
-========================= */
-.projects{
-  display:grid;
-  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-  gap:30px;
-}
-
-.project{
-  background:var(--card);
-  border-radius:24px;
-  overflow:hidden;
-  transition:.3s cubic-bezier(0.175, 0.885, 0.32, 1.1);
-  box-shadow: var(--shadow);
-  border: 1px solid rgba(255,255,255,0.4);
-  display: flex;
-  flex-direction: column;
-}
-
-.project:hover{
-  transform:translateY(-8px);
-  background: var(--card-hover);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-}
-
-.project-img{
-  height:200px;
-  background:#2d3138;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:white;
-  font-weight:700;
-  font-size: 20px;
-  letter-spacing: 1px;
-}
-
-.project-content{
-  padding:30px;
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-}
-
-.project-content h3{
-  font-size: 22px;
-  margin: 0 0 10px 0;
-  font-weight: 800;
-}
-
-.project-content p{
-  color: #4b5563;
-  font-size: 15px;
-  margin: 0 0 20px 0;
-  line-height: 1.65;
-}
-
-.alignment-fit-badge {
-  background: white;
-  border: 1px solid var(--border);
-  padding: 8px 14px;
-  border-radius: 8px;
-  font-size: 12.5px;
-  font-weight: 700;
-  color: #3b5cc4;
-  margin-bottom: 20px;
-  margin-top: auto;
-}
-
-.project-link {
-  color: #5171e6;
-  text-decoration: none;
-  font-weight: 700;
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  font-size: 15px;
 }
 
 /* REAL LIFE EXPERIENCE SECTION (PROJECT CURE) */
@@ -610,14 +392,11 @@ nav{
   font-weight: 500;
 }
 
-/* ==========================================
-   INTERACTIVE CAMPUS HUB (REPLACING ALERTS)
-========================================== */
+/* CAMPUS HUB NODES */
 .campus{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
   gap:25px;
-  margin-bottom: 30px;
 }
 
 .lab{
@@ -656,204 +435,249 @@ nav{
   transform: translateY(0);
 }
 
-/* Elegant built-in details drawer */
-.campus-details-box {
-  background: white;
-  border: 1px solid var(--border);
-  border-radius: 24px;
-  padding: 35px;
-  box-shadow: var(--shadow);
-  margin-top: 30px;
-  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-  display: none;
-}
-
-.campus-details-box.active {
-  display: block;
-  animation: slideDownFade 0.4s forwards;
-}
-
-@keyframes slideDownFade {
-  from { opacity: 0; transform: translateY(-15px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.campus-details-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 2px solid var(--bg);
-  padding-bottom: 15px;
-  margin-bottom: 20px;
-}
-
-.campus-details-header h3 {
-  font-size: 22px;
-  font-weight: 800;
-  color: #3b5cc4;
-  margin: 0;
-}
-
-.close-campus-btn {
-  background: var(--bg);
-  border: none;
-  border-radius: 50%;
-  width: 32px;
-  height: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  font-weight: 800;
-  color: #4b5563;
-  transition: .2s;
-}
-
-.close-campus-btn:hover {
-  background: var(--accent);
-  color: var(--text);
-}
-
-.campus-content-grid {
-  display: grid;
-  grid-template-columns: 1.2fr .8fr;
-  gap: 30px;
-}
-
-.campus-content-main p {
-  color: #4b5563;
-  font-size: 15.5px;
-  line-height: 1.7;
-}
-
-.campus-content-sidebar {
-  background: var(--bg);
-  padding: 20px;
-  border-radius: 16px;
-  border: 1px solid var(--border);
-}
-
-.campus-content-sidebar h4 {
-  font-size: 13px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  margin: 0 0 10px 0;
-  color: #3b5cc4;
-}
-
-.campus-content-sidebar ul {
-  padding-left: 20px;
-  margin: 0;
-}
-
-.campus-content-sidebar li {
-  font-size: 13.5px;
-  color: #4b5563;
-  margin-bottom: 8px;
-}
-
 /* ==========================================
-   NEW: LET'S CONNECT CONSOLE
+   INTERACTIVE SIDE-DRAWER (ALERT() REMOVAL)
 ========================================== */
-.connect-container {
-  display: grid;
-  grid-template-columns: 1fr 1.2fr;
-  gap: 50px;
-  margin-top: 40px;
+.drawer-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(15, 23, 42, 0.4);
+  backdrop-filter: blur(4px);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.30s ease;
+  z-index: 2000;
 }
-
-.connect-info h3 {
-  font-size: 28px;
-  font-weight: 800;
-  color: #3b5cc4;
-  margin-bottom: 15px;
+.drawer-overlay.active {
+  opacity: 1;
+  visibility: visible;
 }
-
-.connect-info p {
-  color: #4b5563;
-  font-size: 16px;
-  line-height: 1.7;
-  margin-bottom: 30px;
-}
-
-.contact-meta {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.meta-item {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-}
-
-.meta-icon {
-  width: 44px;
-  height: 44px;
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 20px;
-}
-
-.meta-text span {
-  display: block;
-  font-size: 12px;
-  color: #6b7280;
-  text-transform: uppercase;
-  font-weight: 600;
-}
-
-.meta-text a, .meta-text p {
-  margin: 0;
-  font-size: 15px;
-  font-weight: 700;
-  color: var(--text);
-  text-decoration: none;
-}
-
-.meta-text a:hover {
-  color: #5171e6;
-  text-decoration: underline;
-}
-
-.connect-console {
+.drawer-panel {
+  position: fixed;
+  top: 0;
+  right: -450px;
+  width: min(450px, 100%);
+  height: 100%;
   background: white;
-  border: 1px solid var(--border);
-  border-radius: 28px;
-  padding: 35px;
-  box-shadow: var(--shadow);
-}
-
-.console-field {
+  box-shadow: -10px 0 40px rgba(0,0,0,0.15);
+  z-index: 2001;
+  transition: right 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  padding: 40px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  margin-bottom: 20px;
+  justify-content: space-between;
+}
+.drawer-panel.active {
+  right: 0;
 }
 
-.console-field label {
-  font-size: 11px;
-  text-transform: uppercase;
-  font-weight: 800;
-  letter-spacing: 0.5px;
-  color: #3b5cc4;
+/* FOOTER */
+footer{
+  text-align:center;
+  padding:60px;
+  border-top: 1px solid var(--border);
+  margin-top: 60px;
+  color: #4b5563;
 }
 
-.console-field input, .console-field textarea {
-  background: var(--bg);
-  border: 1px solid var(--border);
-  padding: 12px 16px;
-  border-radius: 12px;
-  font-family: inherit;
-  font-size: 14.5px;
-  color: var(--text);
-  outline: none;
-  transition: .25s;
+/* MOBILE RESPONSIVENESS */
+@media(max-width:900px){
+  .hero{
+    grid-template-columns:1fr;
+    text-align:center;
+    padding-top:140px;
+    min-height: auto;
+    padding-bottom: 60px;
+  }
+  .hero-image{
+    margin-top:20px;
+    order: -1;
+  }
+  .hero h1{font-size:52px}
+  .hero p {margin: 0 auto 30px auto;}
+  .cta-group { justify-content: center; }
+  .nav-links{flex-wrap:wrap; justify-content: center;}
+  .experience-wrapper { grid-template-columns: 1fr; gap: 25px; }
+  .section { padding: 60px 6%; }
 }
+</style>
+</head>
 
-.console-field input:focus, .console-
+<body>
+
+<!-- NAV (UNCHANGED) -->
+<nav>
+  <a href="index.html" class="logo">Chelsea Ogbonna</a>
+
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#experience">Experiences</a>
+    <a href="#leadership">Leadership</a>
+    <a href="#connect">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+<div class="hero-text">
+  <h1>Chelsea Ogbonna</h1>
+  <h2>Biomedical • Mechanical • Research Engineer</h2>
+  <p>Engineering future-focused healthcare solutions at the intersection of microfluidics, bio-electronics, and adaptive mechanical design.</p>
+  
+  <div class="cta-group">
+    <a href="#projects" class="button primary">Explore Work →</a>
+    <a href="#connect" class="button">Let's Connect</a>
+    <a href="Ogbonna_Chelsea_BS_MS_Northwestern .pdf" target="_blank" class="resume-link">📄 View Resume</a>
+  </div>
+</div>
+
+<div class="hero-image">
+  <img src="Chelseaprofilepics.JPG" alt="Chelsea Ogbonna" onerror="this.src='https://placehold.co/360x450/abc4ff/1f2937?text=Chelsea+Ogbonna'">
+</div>
+</section>
+
+<!-- STATS SNAPSHOT -->
+<section class="section">
+<h2 class="section-title">At a Glance</h2>
+<p class="section-subtitle">A quick metric snapshot of my academic engineering and project background.</p>
+<div class="stats">
+  <div class="stat"><h3>5+</h3><p>R&D Engineering Projects</p></div>
+  <div class="stat"><h3>3+</h3><p>Academic Research Labs</p></div>
+  <div class="stat"><h3>50+</h3><p>Peers & Students Mentored</p></div>
+</div>
+</section>
+
+<!-- NEW: DETAILED SLIGHT ABOUT ME & INTERESTS SECTION -->
+<section class="section border-t border-slate-200" id="about">
+  <h2 class="section-title">Who I Am & Where I'm Heading</h2>
+  <p class="section-subtitle">A quick dive into my engineering motivation and core mechanical-biological focus areas.</p>
+  
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start mt-8">
+    <div class="lg:col-span-5 bg-white p-8 rounded-3xl border border-slate-200 shadow-sm">
+      <div class="text-xs font-bold tracking-widest text-[#5171e6] uppercase mb-3">Academic Mission</div>
+      <h3 class="text-2xl font-extrabold mb-4 text-slate-800">Double-Major Discipline</h3>
+      <p class="text-slate-600 mb-4 text-[15px] leading-relaxed">
+        Completing a double curriculum in <strong>Biomedical and Mechanical Engineering at Northwestern University</strong> means living at the friction point where biological complexities meet rigorous structural mechanics.
+      </p>
+      <p class="text-slate-600 mb-6 text-[15px] leading-relaxed">
+        My engineering philosophy is focused entirely on <strong>translational impact</strong>: creating mechanical structures, fluidic environments, and wireless systems designed to move from cleanrooms directly to clinical bedsides.
+      </p>
+      <div class="flex items-center gap-3 p-3 bg-slate-50 rounded-xl border border-dashed border-slate-200">
+        <span class="text-2xl">🏫</span>
+        <span class="text-xs text-slate-500 font-semibold">Rogers Lab Bio-Electronics Research Assistant & ASME Designer</span>
+      </div>
+    </div>
+    
+    <div class="lg:col-span-7 grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="bg-[#d7e3fc] p-6 rounded-2xl border border-slate-200 shadow-sm transition hover:-translate-y-1 hover:bg-[#ccdbfd]">
+        <div class="text-2xl mb-3">🧬</div>
+        <h4 class="font-bold text-slate-800 mb-2">Microfluidics R&D</h4>
+        <p class="text-xs text-slate-600 leading-relaxed">Modeling precise laminar flow regimes and fabricating photolithographic molds to isolate sensitive cellular biomarkers safely.</p>
+      </div>
+      <div class="bg-[#d7e3fc] p-6 rounded-2xl border border-slate-200 shadow-sm transition hover:-translate-y-1 hover:bg-[#ccdbfd]">
+        <div class="text-2xl mb-3">🧠</div>
+        <h4 class="font-bold text-slate-800 mb-2">Implantable Devices</h4>
+        <p class="text-xs text-slate-600 leading-relaxed">Integrating wireless RF transfer and inductive loops into transient bio-electronic configurations that survive physiological environments.</p>
+      </div>
+      <div class="bg-[#d7e3fc] p-6 rounded-2xl border border-slate-200 shadow-sm transition hover:-translate-y-1 hover:bg-[#ccdbfd]">
+        <div class="text-2xl mb-3">🦾</div>
+        <h4 class="font-bold text-slate-800 mb-2">Adaptive Prototyping</h4>
+        <p class="text-xs text-slate-600 leading-relaxed">Employing FEA modeling, CAD tolerance stacks, and additive manufacturing to build complex kinematics platforms like ModuCargo.</p>
+      </div>
+      <div class="bg-[#d7e3fc] p-6 rounded-2xl border border-slate-200 shadow-sm transition hover:-translate-y-1 hover:bg-[#ccdbfd]">
+        <div class="text-2xl mb-3">🏥</div>
+        <h4 class="font-bold text-slate-800 mb-2">Clinical Usability</h4>
+        <p class="text-xs text-slate-600 leading-relaxed">Validating diagnostic tool integrity and optimizing systems under strict quality controls for trans-border clinical deployments.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEW: INTERACTIVE RECRUITER ALIGNMENT SELECTOR -->
+<section class="section border-t border-slate-200 bg-slate-50/50" id="projects">
+  <h2 class="section-title">Featured Work Alignment</h2>
+  <p class="section-subtitle">Select your organization below to dynamically align my project descriptions directly with your therapeutic pipelines.</p>
+  
+  <div class="flex flex-wrap justify-center gap-3 mb-12">
+    <button class="px-5 py-2.5 rounded-full text-xs font-bold border transition duration-200 shadow-sm alignment-btn bg-[#abc4ff] text-slate-800 border-[#abc4ff]" onclick="alignPortfolio('general', this)">
+      🌟 General R&D Focus
+    </button>
+    <button class="px-5 py-2.5 rounded-full text-xs font-bold border transition duration-200 shadow-sm alignment-btn bg-white text-slate-600 border-slate-200 hover:bg-slate-100" onclick="alignPortfolio('medtronic', this)">
+      💙 Medtronic Focus
+    </button>
+    <button class="px-5 py-2.5 rounded-full text-xs font-bold border transition duration-200 shadow-sm alignment-btn bg-white text-slate-600 border-slate-200 hover:bg-slate-100" onclick="alignPortfolio('abbott', this)">
+      ❤️ Abbott Focus
+    </button>
+    <button class="px-5 py-2.5 rounded-full text-xs font-bold border transition duration-200 shadow-sm alignment-btn bg-white text-slate-600 border-slate-200 hover:bg-slate-100" onclick="alignPortfolio('boston', this)">
+      💛 Boston Scientific Focus
+    </button>
+    <button class="px-5 py-2.5 rounded-full text-xs font-bold border transition duration-200 shadow-sm alignment-btn bg-white text-slate-600 border-slate-200 hover:bg-slate-100" onclick="alignPortfolio('baxter', this)">
+      🧡 Baxter Focus
+    </button>
+  </div>
+
+  <!-- THE THREE FEATURED PROJECTS WITH DYNAMIC ALIGNMENT WRAPPER -->
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    
+    <!-- PROJECT 1: SYNCYTIAL KNOT ISOLATION -->
+    <div class="bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden flex flex-col transition hover:shadow-md hover:-translate-y-1">
+      <div class="h-44 bg-gradient-to-r from-blue-900 to-indigo-950 flex items-center justify-center text-white text-lg font-extrabold tracking-wide relative">
+        <span>🧬 Microfluidics</span>
+        <span class="absolute top-3 right-3 text-[10px] uppercase font-extrabold bg-[#abc4ff] text-slate-800 px-2.5 py-1 rounded-full shadow-sm" id="p1-badge">R&D Diagnostic</span>
+      </div>
+      <div class="p-6 flex flex-col flex-grow">
+        <h3 class="font-extrabold text-lg text-slate-800 mb-2">Syncytial Knot Isolation Device</h3>
+        <p class="text-xs text-[#5171e6] font-bold uppercase tracking-wider mb-3" id="p1-highlight">Translational Cell Diagnostics</p>
+        <p class="text-slate-600 text-sm leading-relaxed mb-6 flex-grow transition-opacity duration-300" id="p1-desc">
+          Designed custom microfluidic sorting channels optimizing the physical isolation of syncytial knots ($50\text{–}150\text{ }\mu\text{m}$) from placenta tissue specimens. Research maps directly to automated diagnostic pipelines for early preeclampsia discovery.
+        </p>
+        <a href="syncytial-knots.html" class="inline-flex items-center gap-1.5 text-xs font-bold text-[#5171e6] hover:underline mt-auto">
+          Analyze Device Architecture →
+        </a>
+      </div>
+    </div>
+
+    <!-- PROJECT 2: TAVI INTEGRATED PACEMAKER -->
+    <div class="bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden flex flex-col transition hover:shadow-md hover:-translate-y-1">
+      <div class="h-44 bg-gradient-to-r from-rose-900 to-red-950 flex items-center justify-center text-white text-lg font-extrabold tracking-wide relative">
+        <span>❤️ Implantables</span>
+        <span class="absolute top-3 right-3 text-[10px] uppercase font-extrabold bg-[#abc4ff] text-slate-800 px-2.5 py-1 rounded-full shadow-sm" id="p2-badge">Bio-Electronics</span>
+      </div>
+      <div class="p-6 flex flex-col flex-grow">
+        <h3 class="font-extrabold text-lg text-slate-800 mb-2">TAVI Integrated Pacemaker</h3>
+        <p class="text-xs text-[#5171e6] font-bold uppercase tracking-wider mb-3" id="p2-highlight">Inductive Heart Pacing</p>
+        <p class="text-slate-600 text-sm leading-relaxed mb-6 flex-grow transition-opacity duration-300" id="p2-desc">
+          Coordinated physical modeling and RF antenna optimization for battery-free pacing loops. Co-integrates transient pacing electrodes natively within heart valve geometry to reduce clinical post-TAVI conduction blocks.
+        </p>
+        <a href="projects.html" class="inline-flex items-center gap-1.5 text-xs font-bold text-[#5171e6] hover:underline mt-auto">
+          View RF Tuning Process →
+        </a>
+      </div>
+    </div>
+
+    <!-- PROJECT 3: MODUCARGO PLATFORM -->
+    <div class="bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden flex flex-col transition hover:shadow-md hover:-translate-y-1">
+      <div class="h-44 bg-gradient-to-r from-slate-800 to-slate-900 flex items-center justify-center text-white text-lg font-extrabold tracking-wide relative">
+        <span>🚗 Robotics &amp; Hardware</span>
+        <span class="absolute top-3 right-3 text-[10px] uppercase font-extrabold bg-[#abc4ff] text-slate-800 px-2.5 py-1 rounded-full shadow-sm" id="p3-badge">Closed-Loop Controls</span>
+      </div>
+      <div class="p-6 flex flex-col flex-grow">
+        <h3 class="font-extrabold text-lg text-slate-800 mb-2">ModuCargo Assist Platform</h3>
+        <p class="text-xs text-[#5171e6] font-bold uppercase tracking-wider mb-3" id="p3-highlight">Smart Mecanum Transit</p>
+        <p class="text-slate-600 text-sm leading-relaxed mb-6 flex-grow transition-opacity duration-300" id="p3-desc">
+          Designed a terrain-adaptive motorized platform using load-cell mass calibrators and real-time IMU tilt stabilizers on a 4WD Mecanum chassis. Programmed complex speed profiles to prevent cargo slips over rough surfaces.
+        </p>
+        <a href="moducargo.html" class="inline-flex items-center gap-1.5 text-xs font-bold text-[#5171e6] hover:underline mt-auto">
+          Explore Embedded Layout →
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- REAL LIFE EXPERIENCE SHOW
