@@ -33,20 +33,24 @@
       overflow-x: hidden;
       line-height: 1.6;
     }
+    
     .project-image{
       width:100%;
       border-radius:20px;
       overflow:hidden;
       margin-bottom:25px;
       background:var(--card);
+      display:flex;
+      justify-content:center;
+      align-items:center;
     }
 
     .project-image img{
       width:100%;
-      height:250px;
-      object-fit:cover;
+      height:auto;
+      max-height:400px;
+      object-fit:contain;
       display:block;
-      transition:.3s;
     }
 
     .project-image img:hover{
