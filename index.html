@@ -1,683 +1,1313 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Chelsea Ogbonna | Interactive Portfolio</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chelsea Ogbonna | Interactive Portfolio</title>
 
-<!-- Fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<!-- Tailwind for modern utilities (preserving custom theme configuration) -->
-<script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-<style>
-:root{
-  --bg:#edf2fb;
-  --card:#d7e3fc;
-  --accent:#abc4ff;
-  --text:#1f2937;
-  --border:#c1d3fe;
-  --card-hover: #ccdbfd;
-  --shadow: 0 12px 30px rgba(0, 0, 0, .06);
-}
+  <style>
+    :root {
+      --bg: #edf2fb;
+      --card: #d7e3fc;
+      --accent: #abc4ff;
+      --text: #1f2937;
+      --border: #c1d3fe;
+      --card-hover: #ccdbfd;
+      --shadow: 0 12px 30px rgba(0, 0, 0, .06);
+      --highlight: #5171e6;
+    }
 
-*{box-sizing:border-box}
-html { scroll-behavior: smooth; }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
 
-body{
-  margin:0;
-  font-family: 'Inter', sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  overflow-x: hidden;
-  line-height: 1.6;
-}
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
 
-/* =========================
-   NAV (UNCHANGED - KEEPING ORIGINAL STRUCTURE)
-========================= */
-nav{
-  position:fixed;
-  top:20px;
-  left:50%;
-  transform:translateX(-50%);
-  width:min(1100px,92%);
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  z-index:1000;
-}
+    /* =========================
+       NAV (UNCHANGED - DO NOT MODIFY)
+    ========================= */
+    nav {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(1100px, 92%);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+    }
 
-.logo{
-  font-weight:800;
-  font-size:18px;
-  color:var(--text);
-  text-decoration:none;
-}
+    .logo {
+      font-weight: 800;
+      font-size: 18px;
+      color: var(--text);
+      text-decoration: none;
+    }
 
-.nav-links{
-  display:flex;
-  gap:10px;
-  padding:8px;
-  border-radius:999px;
-  background:rgba(255, 255, 255, .78);
-  backdrop-filter:blur(16px);
-  border:1px solid rgba(193, 211, 254, .45);
-  box-shadow:0 12px 35px rgba(0,0,0,.10);
-}
+    .nav-links {
+      display: flex;
+      gap: 10px;
+      padding: 8px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .78);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(193, 211, 254, .45);
+      box-shadow: 0 12px 35px rgba(0, 0, 0, .10);
+    }
 
-.nav-links a{
-  text-decoration:none;
-  color:var(--text);
-  padding:10px 14px;
-  border-radius:10px;
-  transition:.25s;
-  font-weight:500;
-}
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text);
+      padding: 10px 14px;
+      border-radius: 10px;
+      transition: .25s;
+      font-weight: 500;
+    }
 
-.nav-links a:hover{
-  background:var(--accent);
-  transform:translateY(-2px);
-}
+    .nav-links a:hover {
+      background: var(--accent);
+      transform: translateY(-2px);
+    }
 
-/* =========================
-   HERO STYLE REFINEMENTS
-========================= */
-.hero{
-  min-height: 100vh;
-  display: grid;
-  grid-template-columns: 1.2fr .8fr;
-  align-items: center;
-  padding: 0 10%;
-  position: relative;
-  gap: 40px;
-}
+    /* =========================
+       HERO
+    ========================= */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      align-items: center;
+      padding: 0 10%;
+      position: relative;
+      gap: 40px;
+    }
 
-.hero:before{
-  content:"";
-  position:absolute;
-  width:700px;
-  height:700px;
-  background:var(--accent);
-  filter:blur(150px);
-  opacity:.35;
-  left:-200px;
-  top:-150px;
-  pointer-events: none;
-}
+    .hero:before {
+      content: "";
+      position: absolute;
+      width: 700px;
+      height: 700px;
+      background: var(--accent);
+      filter: blur(150px);
+      opacity: .35;
+      left: -200px;
+      top: -150px;
+      pointer-events: none;
+    }
 
-.hero-text{position:relative; z-index:2}
+    .hero-text { position: relative; z-index: 2; }
 
-.hero h1{
-  font-size:72px;
-  font-weight: 800;
-  margin:0 0 10px 0;
-  line-height: 1.1;
-}
+    .hero h1 {
+      font-size: 72px;
+      font-weight: 800;
+      margin: 0 0 10px 0;
+      line-height: 1.1;
+    }
 
-.hero h2{
-  font-size: 24px;
-  font-weight:600;
-  color: #5171e6;
-  margin: 0 0 20px 0;
-}
+    .hero h2 {
+      font-size: 24px;
+      font-weight: 600;
+      color: var(--highlight);
+      margin: 0 0 20px 0;
+    }
 
-.hero p {
-  font-size: 18px;
-  color: #4b5563;
-  max-width: 580px;
-  margin-bottom: 35px;
-}
+    .hero p {
+      font-size: 18px;
+      color: #4b5563;
+      max-width: 580px;
+      margin-bottom: 35px;
+    }
 
-.cta-group {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 15px;
-}
+    .cta-group {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 15px;
+    }
 
-.button{
-  display:inline-flex;
-  align-items: center;
-  padding:14px 28px;
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius:14px;
-  text-decoration:none;
-  color: var(--text);
-  font-weight:700;
-  transition: .3s;
-  box-shadow: var(--shadow);
-}
+    .button {
+      display: inline-flex;
+      align-items: center;
+      padding: 14px 28px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 700;
+      transition: .3s;
+      box-shadow: var(--shadow);
+      cursor: pointer;
+    }
 
-.button.primary {
-  background: var(--accent);
-  color: var(--text);
-}
+    .button.primary {
+      background: var(--accent);
+      color: var(--text);
+    }
 
-.button:hover{
-  transform:translateY(-3px);
-  background: var(--card-hover);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, .1);
-}
+    .button:hover {
+      transform: translateY(-3px);
+      background: var(--card-hover);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, .1);
+    }
 
-.resume-link {
-  color: #4b5563;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 15px;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  margin-left: 10px;
-  transition: .2s;
-}
+    .resume-link {
+      color: #4b5563;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 15px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-left: 10px;
+      transition: .2s;
+    }
 
-.resume-link:hover {
-  color: #5171e6;
-  text-decoration: underline;
-}
+    .resume-link:hover {
+      color: var(--highlight);
+      text-decoration: underline;
+    }
 
-.hero-image {
-  display: flex;
-  justify-content: center;
-}
+    .hero-image {
+      display: flex;
+      justify-content: center;
+    }
 
-.hero-image img{
-  width:360px;
-  height: 450px;
-  object-fit: cover;
-  max-width:100%;
-  border-radius:32px;
-  border: 8px solid white;
-  box-shadow:0 30px 70px rgba(0,0,0,.12);
-  transition:.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
+    .hero-image img {
+      width: 360px;
+      height: 450px;
+      object-fit: cover;
+      max-width: 100%;
+      border-radius: 32px;
+      border: 8px solid white;
+      box-shadow: 0 30px 70px rgba(0,0,0,.12);
+      transition: .4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
 
-.hero-image img:hover{
-  transform: rotate(2deg) scale(1.03) translateY(-5px);
-}
+    .hero-image img:hover {
+      transform: rotate(2deg) scale(1.03) translateY(-5px);
+    }
 
-/* =========================
-   SECTIONS GENERAL & CARDS
-========================= */
-.section{
-  padding:100px 10%;
-  max-width: 1300px;
-  margin: auto;
-}
+    /* =========================
+       SECTIONS GENERAL
+    ========================= */
+    .section {
+      padding: 100px 10%;
+      max-width: 1300px;
+      margin: auto;
+    }
 
-.section-title{
-  text-align:center;
-  font-size:42px;
-  font-weight: 800;
-  margin-bottom:12px;
-}
+    .section-title {
+      text-align: center;
+      font-size: 42px;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
 
-.section-subtitle {
-  text-align: center;
-  color: #4b5563;
-  font-size: 16px;
-  max-width: 600px;
-  margin: 0 auto 60px auto;
-}
+    .section-subtitle {
+      text-align: center;
+      color: #4b5563;
+      font-size: 16px;
+      max-width: 600px;
+      margin: 0 auto 60px auto;
+    }
 
-/* HIGHLIGHT STATS */
-.stats{
-  display:flex;
-  justify-content:center;
-  gap:30px;
-  flex-wrap:wrap;
-}
+    /* =========================
+       NEW: ABOUT ME & CORE INTERESTS
+    ========================= */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 50px;
+      align-items: start;
+      margin-bottom: 60px;
+    }
 
-.stat{
-  flex: 1;
-  min-width:250px;
-  background:var(--card);
-  padding:35px 30px;
-  border-radius:24px;
-  text-align:center;
-  box-shadow: var(--shadow);
-  transition:.3s;
-  border: 1px solid rgba(255,255,255,0.4);
-}
+    .about-text h3 {
+      font-size: 26px;
+      font-weight: 800;
+      margin-bottom: 15px;
+    }
 
-.stat:hover{
-  transform:translateY(-8px);
-  background: var(--card-hover);
-}
+    .about-text p {
+      font-size: 16px;
+      color: #4b5563;
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
 
-.stat h3{
-  font-size:48px;
-  font-weight: 800;
-  margin:0 0 5px 0;
-  color: #3b5cc4;
-}
+    .interests-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
 
-.stat p {
-  margin: 0;
-  font-weight: 600;
-  color: var(--text);
-  font-size: 16px;
-}
+    .interest-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 20px;
+      box-shadow: var(--shadow);
+      display: flex;
+      gap: 15px;
+      align-items: flex-start;
+      transition: transform 0.2s ease, background-color 0.2s ease;
+    }
 
-/* REAL LIFE EXPERIENCE SECTION (PROJECT CURE) */
-.experience-wrapper {
-  background: rgba(255,255,255,0.5);
-  border: 1px solid var(--border);
-  border-radius: 28px;
-  padding: 40px;
-  display: grid;
-  grid-template-columns: 1fr 1.2fr;
-  gap: 40px;
-  align-items: center;
-  box-shadow: var(--shadow);
-}
+    .interest-card:hover {
+      transform: translateX(5px);
+      background: var(--bg);
+    }
 
-.exp-header h3 {
-  font-size: 26px;
-  margin: 0 0 4px 0;
-}
+    .interest-icon {
+      font-size: 24px;
+      background: var(--card);
+      padding: 10px;
+      border-radius: 12px;
+      line-height: 1;
+    }
 
-.exp-header h4 {
-  font-size: 16px;
-  font-weight: 600;
-  color: #5171e6;
-  text-transform: uppercase;
-  margin: 0 0 20px 0;
-  letter-spacing: 0.5px;
-}
+    .interest-details h4 {
+      margin: 0 0 5px 0;
+      font-size: 16px;
+      font-weight: 700;
+    }
 
-.exp-header p {
-  color: #4b5563;
-  font-size: 15px;
-  line-height: 1.7;
-  margin: 0;
-}
+    .interest-details p {
+      margin: 0;
+      font-size: 13px;
+      color: #4b5563;
+    }
 
-.exp-details {
-  background: white;
-  padding: 30px;
-  border-radius: 20px;
-  box-shadow: inset 0 2px 8px rgba(0,0,0,0.02);
-}
+    /* HIGHLIGHT STATS */
+    .stats {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
 
-.exp-details h5 {
-  margin: 0 0 12px 0;
-  font-size: 14px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
+    .stat {
+      flex: 1;
+      min-width: 250px;
+      background: var(--card);
+      padding: 35px 30px;
+      border-radius: 24px;
+      text-align: center;
+      box-shadow: var(--shadow);
+      transition: .3s;
+      border: 1px solid rgba(255,255,255,0.4);
+    }
 
-.exp-details ul {
-  padding: 0;
-  margin: 0;
-  list-style: none;
-}
+    .stat:hover {
+      transform: translateY(-8px);
+      background: var(--card-hover);
+    }
 
-.exp-details li {
-  position: relative;
-  padding-left: 20px;
-  margin-bottom: 12px;
-  font-size: 14px;
-  color: #4b5563;
-}
+    .stat h3 {
+      font-size: 48px;
+      font-weight: 800;
+      margin: 0 0 5px 0;
+      color: #3b5cc4;
+    }
 
-.exp-details li::before {
-  content: "▪";
-  position: absolute;
-  left: 4px;
-  color: #5171e6;
-}
+    .stat p {
+      margin: 0;
+      font-weight: 600;
+      color: var(--text);
+      font-size: 16px;
+    }
 
-/* RESEARCH TAGS */
-.tags{
-  display:flex;
-  justify-content:center;
-  flex-wrap:wrap;
-  gap:15px;
-  max-width: 800px;
-  margin: auto;
-}
+    /* =========================
+       NEW: RECRUITER TARGET DECK & TAILORED PROJECTS
+    ========================= */
+    .alignment-deck {
+      background: white;
+      border: 1.5px solid var(--border);
+      border-radius: 24px;
+      padding: 25px;
+      margin-bottom: 40px;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
 
-.tag{
-  background:var(--card);
-  padding:14px 24px;
-  border-radius:999px;
-  font-weight: 600;
-  transition:.25s;
-  box-shadow: var(--shadow);
-  border: 1px solid rgba(255,255,255,0.4);
-}
+    .deck-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
 
-.tag:hover{
-  background:var(--accent);
-  transform:translateY(-4px);
-}
+    .deck-title h3 {
+      font-size: 18px;
+      font-weight: 800;
+      margin: 0 0 4px 0;
+    }
 
-/* TIMELINE */
-.timeline{
-  max-width:850px;
-  margin:auto;
-}
+    .deck-title p {
+      margin: 0;
+      font-size: 13px;
+      color: #4b5563;
+    }
 
-.timeline-item{
-  background:var(--card);
-  padding:25px;
-  border-radius:20px;
-  margin-bottom:20px;
-  transition:.3s;
-  box-shadow: var(--shadow);
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  border: 1px solid rgba(255,255,255,0.4);
-}
+    .selector-wrapper select {
+      padding: 12px 20px;
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      border-radius: 12px;
+      border: 1.5px solid var(--border);
+      background: var(--bg);
+      color: var(--text);
+      cursor: pointer;
+      outline: none;
+      transition: border-color 0.2s;
+    }
 
-.timeline-item:hover{
-  transform:translateX(10px);
-  background: var(--card-hover);
-}
+    .selector-wrapper select:focus {
+      border-color: var(--highlight);
+    }
 
-.timeline-year {
-  font-size: 20px;
-  font-weight: 800;
-  color: #3b5cc4;
-  min-width: 60px;
-}
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+    }
 
-.timeline-desc {
-  font-size: 16px;
-  font-weight: 500;
-}
+    .project {
+      background: var(--card);
+      border-radius: 24px;
+      overflow: hidden;
+      transition: .3s;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255,255,255,0.4);
+      display: flex;
+      flex-direction: column;
+    }
 
-/* CAMPUS HUB NODES */
-.campus{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-  gap:25px;
-}
+    .project:hover {
+      transform: translateY(-8px);
+      background: var(--card-hover);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    }
 
-.lab{
-  background:var(--card);
-  padding:35px 25px;
-  border-radius:24px;
-  text-align:center;
-  cursor:pointer;
-  transition:.3s cubic-bezier(0.175, 0.885, 0.32, 1.1);
-  box-shadow: var(--shadow);
-  border: 1px solid rgba(255,255,255,0.4);
-}
+    .project-img {
+      height: 200px;
+      background: #2d3138;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 700;
+      font-size: 20px;
+      letter-spacing: 1px;
+    }
 
-.lab h3 {
-  margin: 0 0 10px 0;
-  font-size: 18px;
-}
+    .project-content {
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
 
-.lab p {
-  margin: 0;
-  font-size: 13px;
-  color: #4b5563;
-  opacity: 0;
-  transform: translateY(10px);
-  transition: .3s;
-}
+    .project-content h3 {
+      font-size: 20px;
+      margin: 0 0 10px 0;
+    }
 
-.lab:hover{
-  transform:translateY(-10px);
-  background:#ccdbfd;
-  box-shadow: 0 20px 35px rgba(0,0,0,0.08);
-}
+    .project-content p {
+      color: #4b5563;
+      font-size: 14.5px;
+      margin: 0 0 20px 0;
+      line-height: 1.6;
+      transition: opacity 0.2s ease;
+    }
 
-.lab:hover p {
-  opacity: 1;
-  transform: translateY(0);
-}
+    /* Target Company Spotlights inside Project Cards */
+    .spotlight-box {
+      background: rgba(255, 255, 255, 0.7);
+      border-left: 4.5px solid var(--highlight);
+      border-radius: 0 12px 12px 0;
+      padding: 12px 16px;
+      font-size: 13.5px;
+      color: #374151;
+      margin-bottom: 20px;
+      transition: opacity 0.2s ease;
+    }
 
-/* ==========================================
-   INTERACTIVE SIDE-DRAWER (ALERT() REMOVAL)
-========================================== */
-.drawer-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(15, 23, 42, 0.4);
-  backdrop-filter: blur(4px);
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.30s ease;
-  z-index: 2000;
-}
-.drawer-overlay.active {
-  opacity: 1;
-  visibility: visible;
-}
-.drawer-panel {
-  position: fixed;
-  top: 0;
-  right: -450px;
-  width: min(450px, 100%);
-  height: 100%;
-  background: white;
-  box-shadow: -10px 0 40px rgba(0,0,0,0.15);
-  z-index: 2001;
-  transition: right 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-  padding: 40px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-.drawer-panel.active {
-  right: 0;
-}
+    .spotlight-box strong {
+      color: var(--text);
+      display: block;
+      margin-bottom: 4px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
 
-/* FOOTER */
-footer{
-  text-align:center;
-  padding:60px;
-  border-top: 1px solid var(--border);
-  margin-top: 60px;
-  color: #4b5563;
-}
+    .project-link {
+      margin-top: auto;
+      color: #5171e6;
+      text-decoration: none;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 15px;
+    }
 
-/* MOBILE RESPONSIVENESS */
-@media(max-width:900px){
-  .hero{
-    grid-template-columns:1fr;
-    text-align:center;
-    padding-top:140px;
-    min-height: auto;
-    padding-bottom: 60px;
-  }
-  .hero-image{
-    margin-top:20px;
-    order: -1;
-  }
-  .hero h1{font-size:52px}
-  .hero p {margin: 0 auto 30px auto;}
-  .cta-group { justify-content: center; }
-  .nav-links{flex-wrap:wrap; justify-content: center;}
-  .experience-wrapper { grid-template-columns: 1fr; gap: 25px; }
-  .section { padding: 60px 6%; }
-}
-</style>
+    /* REAL LIFE EXPERIENCE SECTION (PROJECT CURE) */
+    .experience-wrapper {
+      background: rgba(255,255,255,0.5);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 40px;
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 40px;
+      align-items: center;
+      box-shadow: var(--shadow);
+    }
+
+    .exp-header h3 {
+      font-size: 26px;
+      margin: 0 0 4px 0;
+    }
+
+    .exp-header h4 {
+      font-size: 16px;
+      font-weight: 600;
+      color: #5171e6;
+      text-transform: uppercase;
+      margin: 0 0 20px 0;
+      letter-spacing: 0.5px;
+    }
+
+    .exp-header p {
+      color: #4b5563;
+      font-size: 15px;
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    .exp-details {
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: inset 0 2px 8px rgba(0,0,0,0.02);
+    }
+
+    .exp-details h5 {
+      margin: 0 0 12px 0;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .exp-details ul {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    .exp-details li {
+      position: relative;
+      padding-left: 20px;
+      margin-bottom: 12px;
+      font-size: 14px;
+      color: #4b5563;
+    }
+
+    .exp-details li::before {
+      content: "▪";
+      position: absolute;
+      left: 4px;
+      color: #5171e6;
+    }
+
+    /* RESEARCH TAGS */
+    .tags {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 15px;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .tag {
+      background: var(--card);
+      padding: 14px 24px;
+      border-radius: 999px;
+      font-weight: 600;
+      transition: .25s;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255,255,255,0.4);
+    }
+
+    .tag:hover {
+      background: var(--accent);
+      transform: translateY(-4px);
+    }
+
+    /* TIMELINE */
+    .timeline {
+      max-width: 850px;
+      margin: auto;
+    }
+
+    .timeline-item {
+      background: var(--card);
+      padding: 25px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+      transition: .3s;
+      box-shadow: var(--shadow);
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      border: 1px solid rgba(255,255,255,0.4);
+    }
+
+    .timeline-item:hover {
+      transform: translateX(10px);
+      background: var(--card-hover);
+    }
+
+    .timeline-year {
+      font-size: 20px;
+      font-weight: 800;
+      color: #3b5cc4;
+      min-width: 60px;
+    }
+
+    .timeline-desc {
+      font-size: 16px;
+      font-weight: 500;
+    }
+
+    /* =========================
+       CAMPUS HUB & NOTIFICATION DRAWER
+    ========================= */
+    .campus {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 25px;
+    }
+
+    .lab {
+      background: var(--card);
+      padding: 35px 25px;
+      border-radius: 24px;
+      text-align: center;
+      cursor: pointer;
+      transition: .3s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255,255,255,0.4);
+      user-select: none;
+    }
+
+    .lab h3 {
+      margin: 0 0 10px 0;
+      font-size: 18px;
+    }
+
+    .lab p {
+      margin: 0;
+      font-size: 13px;
+      color: #4b5563;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: .3s;
+    }
+
+    .lab:hover {
+      transform: translateY(-10px);
+      background: #ccdbfd;
+      box-shadow: 0 20px 35px rgba(0,0,0,0.08);
+    }
+
+    .lab:hover p {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Elegant Custom In-Page Modal/Popup Box (Zero alert() calls) */
+    .custom-modal {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: white;
+      border: 2px solid var(--border);
+      border-radius: 20px;
+      padding: 25px;
+      width: min(400px, 90vw);
+      box-shadow: 0 20px 55px rgba(0,0,0,0.15);
+      z-index: 10000;
+      transform: translateY(150%) scale(0.95);
+      opacity: 0;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      pointer-events: none;
+    }
+
+    .custom-modal.active {
+      transform: translateY(0) scale(1);
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+      border-bottom: 1.5px solid var(--bg);
+      padding-bottom: 10px;
+    }
+
+    .modal-title {
+      font-size: 16px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .modal-close {
+      background: var(--bg);
+      border: none;
+      border-radius: 50%;
+      width: 28px;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-weight: 700;
+      transition: background 0.2s;
+    }
+
+    .modal-close:hover {
+      background: var(--border);
+    }
+
+    .modal-body {
+      font-size: 14.5px;
+      color: #4b5563;
+      line-height: 1.6;
+    }
+
+    /* =========================
+       NEW: LET'S CONNECT (CONTACT ENGINE)
+    ========================= */
+    .connect-card {
+      background: white;
+      border: 1.5px solid var(--border);
+      border-radius: 28px;
+      padding: 40px;
+      box-shadow: var(--shadow);
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 40px;
+      align-items: start;
+    }
+
+    .connect-info h3 {
+      font-size: 28px;
+      font-weight: 800;
+      margin-bottom: 15px;
+    }
+
+    .connect-info p {
+      font-size: 15px;
+      color: #4b5563;
+      line-height: 1.7;
+      margin-bottom: 25px;
+    }
+
+    .contact-link-row {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .contact-node {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 600;
+      font-size: 15px;
+      transition: color 0.2s;
+    }
+
+    .contact-node:hover {
+      color: var(--highlight);
+    }
+
+    .node-icon {
+      font-size: 20px;
+      background: var(--bg);
+      border-radius: 12px;
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--border);
+    }
+
+    .connect-form {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .form-group label {
+      font-size: 12px;
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      color: #4b5563;
+    }
+
+    .form-group input, .form-group textarea {
+      padding: 12px 16px;
+      border-radius: 12px;
+      border: 1.5px solid var(--border);
+      font-family: inherit;
+      font-size: 14.5px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .form-group input:focus, .form-group textarea:focus {
+      border-color: var(--highlight);
+    }
+
+    .btn-submit {
+      background: var(--highlight);
+      color: white;
+      border: none;
+      padding: 14px 28px;
+      border-radius: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 15px;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .btn-submit:hover {
+      background: #3b5cc4;
+      transform: translateY(-2px);
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 60px;
+      border-top: 1px solid var(--border);
+      margin-top: 60px;
+      color: #4b5563;
+    }
+
+    /* MOBILE RESPONSIVENESS */
+    @media(max-width:950px) {
+      .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding-top: 140px;
+        min-height: auto;
+        padding-bottom: 60px;
+      }
+      .hero-image {
+        margin-top: 20px;
+        order: -1;
+      }
+      .hero h1 { font-size: 52px }
+      .hero p { margin: 0 auto 30px auto; }
+      .cta-group { justify-content: center; }
+      .nav-links { flex-wrap: wrap; justify-content: center; }
+      .about-grid, .experience-wrapper, .connect-card { grid-template-columns: 1fr; gap: 30px; }
+      .section { padding: 60px 6%; }
+    }
+  </style>
 </head>
 
 <body>
 
-<!-- NAV (UNCHANGED) -->
-<nav>
-  <a href="index.html" class="logo">Chelsea Ogbonna</a>
-
-  <div class="nav-links">
-    <a href="#about">About</a>
-    <a href="#projects">Projects</a>
-    <a href="#experience">Experiences</a>
-    <a href="#leadership">Leadership</a>
-    <a href="#connect">Contact</a>
-  </div>
-</nav>
-
-<!-- HERO -->
-<section class="hero">
-<div class="hero-text">
-  <h1>Chelsea Ogbonna</h1>
-  <h2>Biomedical • Mechanical • Research Engineer</h2>
-  <p>Engineering future-focused healthcare solutions at the intersection of microfluidics, bio-electronics, and adaptive mechanical design.</p>
-  
-  <div class="cta-group">
-    <a href="#projects" class="button primary">Explore Work →</a>
-    <a href="#connect" class="button">Let's Connect</a>
-    <a href="Ogbonna_Chelsea_BS_MS_Northwestern .pdf" target="_blank" class="resume-link">📄 View Resume</a>
-  </div>
-</div>
-
-<div class="hero-image">
-  <img src="Chelseaprofilepics.JPG" alt="Chelsea Ogbonna" onerror="this.src='https://placehold.co/360x450/abc4ff/1f2937?text=Chelsea+Ogbonna'">
-</div>
-</section>
-
-<!-- STATS SNAPSHOT -->
-<section class="section">
-<h2 class="section-title">At a Glance</h2>
-<p class="section-subtitle">A quick metric snapshot of my academic engineering and project background.</p>
-<div class="stats">
-  <div class="stat"><h3>5+</h3><p>R&D Engineering Projects</p></div>
-  <div class="stat"><h3>3+</h3><p>Academic Research Labs</p></div>
-  <div class="stat"><h3>50+</h3><p>Peers & Students Mentored</p></div>
-</div>
-</section>
-
-<!-- NEW: DETAILED SLIGHT ABOUT ME & INTERESTS SECTION -->
-<section class="section border-t border-slate-200" id="about">
-  <h2 class="section-title">Who I Am & Where I'm Heading</h2>
-  <p class="section-subtitle">A quick dive into my engineering motivation and core mechanical-biological focus areas.</p>
-  
-  <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start mt-8">
-    <div class="lg:col-span-5 bg-white p-8 rounded-3xl border border-slate-200 shadow-sm">
-      <div class="text-xs font-bold tracking-widest text-[#5171e6] uppercase mb-3">Academic Mission</div>
-      <h3 class="text-2xl font-extrabold mb-4 text-slate-800">Double-Major Discipline</h3>
-      <p class="text-slate-600 mb-4 text-[15px] leading-relaxed">
-        Completing a double curriculum in <strong>Biomedical and Mechanical Engineering at Northwestern University</strong> means living at the friction point where biological complexities meet rigorous structural mechanics.
-      </p>
-      <p class="text-slate-600 mb-6 text-[15px] leading-relaxed">
-        My engineering philosophy is focused entirely on <strong>translational impact</strong>: creating mechanical structures, fluidic environments, and wireless systems designed to move from cleanrooms directly to clinical bedsides.
-      </p>
-      <div class="flex items-center gap-3 p-3 bg-slate-50 rounded-xl border border-dashed border-slate-200">
-        <span class="text-2xl">🏫</span>
-        <span class="text-xs text-slate-500 font-semibold">Rogers Lab Bio-Electronics Research Assistant & ASME Designer</span>
-      </div>
+  <!-- UNIVERSAL MODAL SYSTEM (REPLACES RAW ALERTS) -->
+  <div class="custom-modal" id="modalNode">
+    <div class="modal-header">
+      <div class="modal-title" id="mTitle">🧬 Microfluidics Lab</div>
+      <button class="modal-close" onclick="closeNodeModal()">×</button>
     </div>
-    
-    <div class="lg:col-span-7 grid grid-cols-1 md:grid-cols-2 gap-6">
-      <div class="bg-[#d7e3fc] p-6 rounded-2xl border border-slate-200 shadow-sm transition hover:-translate-y-1 hover:bg-[#ccdbfd]">
-        <div class="text-2xl mb-3">🧬</div>
-        <h4 class="font-bold text-slate-800 mb-2">Microfluidics R&D</h4>
-        <p class="text-xs text-slate-600 leading-relaxed">Modeling precise laminar flow regimes and fabricating photolithographic molds to isolate sensitive cellular biomarkers safely.</p>
-      </div>
-      <div class="bg-[#d7e3fc] p-6 rounded-2xl border border-slate-200 shadow-sm transition hover:-translate-y-1 hover:bg-[#ccdbfd]">
-        <div class="text-2xl mb-3">🧠</div>
-        <h4 class="font-bold text-slate-800 mb-2">Implantable Devices</h4>
-        <p class="text-xs text-slate-600 leading-relaxed">Integrating wireless RF transfer and inductive loops into transient bio-electronic configurations that survive physiological environments.</p>
-      </div>
-      <div class="bg-[#d7e3fc] p-6 rounded-2xl border border-slate-200 shadow-sm transition hover:-translate-y-1 hover:bg-[#ccdbfd]">
-        <div class="text-2xl mb-3">🦾</div>
-        <h4 class="font-bold text-slate-800 mb-2">Adaptive Prototyping</h4>
-        <p class="text-xs text-slate-600 leading-relaxed">Employing FEA modeling, CAD tolerance stacks, and additive manufacturing to build complex kinematics platforms like ModuCargo.</p>
-      </div>
-      <div class="bg-[#d7e3fc] p-6 rounded-2xl border border-slate-200 shadow-sm transition hover:-translate-y-1 hover:bg-[#ccdbfd]">
-        <div class="text-2xl mb-3">🏥</div>
-        <h4 class="font-bold text-slate-800 mb-2">Clinical Usability</h4>
-        <p class="text-xs text-slate-600 leading-relaxed">Validating diagnostic tool integrity and optimizing systems under strict quality controls for trans-border clinical deployments.</p>
-      </div>
+    <div class="modal-body" id="mBody">
+      Detailed research footprint data will display here dynamically.
     </div>
   </div>
-</section>
 
-<!-- NEW: INTERACTIVE RECRUITER ALIGNMENT SELECTOR -->
-<section class="section border-t border-slate-200 bg-slate-50/50" id="projects">
-  <h2 class="section-title">Featured Work Alignment</h2>
-  <p class="section-subtitle">Select your organization below to dynamically align my project descriptions directly with your therapeutic pipelines.</p>
-  
-  <div class="flex flex-wrap justify-center gap-3 mb-12">
-    <button class="px-5 py-2.5 rounded-full text-xs font-bold border transition duration-200 shadow-sm alignment-btn bg-[#abc4ff] text-slate-800 border-[#abc4ff]" onclick="alignPortfolio('general', this)">
-      🌟 General R&D Focus
-    </button>
-    <button class="px-5 py-2.5 rounded-full text-xs font-bold border transition duration-200 shadow-sm alignment-btn bg-white text-slate-600 border-slate-200 hover:bg-slate-100" onclick="alignPortfolio('medtronic', this)">
-      💙 Medtronic Focus
-    </button>
-    <button class="px-5 py-2.5 rounded-full text-xs font-bold border transition duration-200 shadow-sm alignment-btn bg-white text-slate-600 border-slate-200 hover:bg-slate-100" onclick="alignPortfolio('abbott', this)">
-      ❤️ Abbott Focus
-    </button>
-    <button class="px-5 py-2.5 rounded-full text-xs font-bold border transition duration-200 shadow-sm alignment-btn bg-white text-slate-600 border-slate-200 hover:bg-slate-100" onclick="alignPortfolio('boston', this)">
-      💛 Boston Scientific Focus
-    </button>
-    <button class="px-5 py-2.5 rounded-full text-xs font-bold border transition duration-200 shadow-sm alignment-btn bg-white text-slate-600 border-slate-200 hover:bg-slate-100" onclick="alignPortfolio('baxter', this)">
-      🧡 Baxter Focus
-    </button>
-  </div>
+  <!-- NAV (UNCHANGED) -->
+  <nav>
+    <a href="chelsea.html" class="logo">Chelsea Ogbonna</a>
 
-  <!-- THE THREE FEATURED PROJECTS WITH DYNAMIC ALIGNMENT WRAPPER -->
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-    
-    <!-- PROJECT 1: SYNCYTIAL KNOT ISOLATION -->
-    <div class="bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden flex flex-col transition hover:shadow-md hover:-translate-y-1">
-      <div class="h-44 bg-gradient-to-r from-blue-900 to-indigo-950 flex items-center justify-center text-white text-lg font-extrabold tracking-wide relative">
-        <span>🧬 Microfluidics</span>
-        <span class="absolute top-3 right-3 text-[10px] uppercase font-extrabold bg-[#abc4ff] text-slate-800 px-2.5 py-1 rounded-full shadow-sm" id="p1-badge">R&D Diagnostic</span>
+    <div class="nav-links">
+      <a href="about.html">About</a>
+      <a href="projects.html">Projects</a>
+      <a href="experiences.html">Experiences</a>
+      <a href="leadership.html">Leadership</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-text">
+      <h1>Chelsea Ogbonna</h1>
+      <h2>Biomedical • Mechanical • Research Engineer</h2>
+      <p>Engineering future-focused healthcare solutions at the intersection of microfluidics, bio-electronics, and adaptive mechanical design.</p>
+      
+      <div class="cta-group">
+        <a href="#featured-projects" class="button primary">Explore Work →</a>
+        <a href="#lets-connect" class="button">Let's Connect</a>
+        <a href="Ogbonna_Chelsea_BS_MS_Northwestern .pdf" target="_blank" class="resume-link">📄 View Resume</a>
       </div>
-      <div class="p-6 flex flex-col flex-grow">
-        <h3 class="font-extrabold text-lg text-slate-800 mb-2">Syncytial Knot Isolation Device</h3>
-        <p class="text-xs text-[#5171e6] font-bold uppercase tracking-wider mb-3" id="p1-highlight">Translational Cell Diagnostics</p>
-        <p class="text-slate-600 text-sm leading-relaxed mb-6 flex-grow transition-opacity duration-300" id="p1-desc">
-          Designed custom microfluidic sorting channels optimizing the physical isolation of syncytial knots ($50\text{–}150\text{ }\mu\text{m}$) from placenta tissue specimens. Research maps directly to automated diagnostic pipelines for early preeclampsia discovery.
+    </div>
+
+    <div class="hero-image">
+      <img src="Chelseaprofilepics.JPG" alt="Chelsea Ogbonna">
+    </div>
+  </section>
+
+  <!-- NEW: ABOUT ME & CORE INTERESTS -->
+  <section class="section" style="border-top: 1px solid var(--border);">
+    <h2 class="section-title">Who I Am</h2>
+    <p class="section-subtitle">A quick introduction to my technical approach, academic pursuits, and operational fields.</p>
+
+    <div class="about-grid">
+      <div class="about-text">
+        <h3>Building Bridges Between Medicine &amp; Mechanics</h3>
+        <p>
+          I am a double major in <strong>Biomedical and Mechanical Engineering at Northwestern University</strong>. My core engineering philosophy centers on translation: turning high-fidelity microfluidic and electromagnetic models into robust, patient-facing devices. 
         </p>
-        <a href="syncytial-knots.html" class="inline-flex items-center gap-1.5 text-xs font-bold text-[#5171e6] hover:underline mt-auto">
-          Analyze Device Architecture →
-        </a>
-      </div>
-    </div>
-
-    <!-- PROJECT 2: TAVI INTEGRATED PACEMAKER -->
-    <div class="bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden flex flex-col transition hover:shadow-md hover:-translate-y-1">
-      <div class="h-44 bg-gradient-to-r from-rose-900 to-red-950 flex items-center justify-center text-white text-lg font-extrabold tracking-wide relative">
-        <span>❤️ Implantables</span>
-        <span class="absolute top-3 right-3 text-[10px] uppercase font-extrabold bg-[#abc4ff] text-slate-800 px-2.5 py-1 rounded-full shadow-sm" id="p2-badge">Bio-Electronics</span>
-      </div>
-      <div class="p-6 flex flex-col flex-grow">
-        <h3 class="font-extrabold text-lg text-slate-800 mb-2">TAVI Integrated Pacemaker</h3>
-        <p class="text-xs text-[#5171e6] font-bold uppercase tracking-wider mb-3" id="p2-highlight">Inductive Heart Pacing</p>
-        <p class="text-slate-600 text-sm leading-relaxed mb-6 flex-grow transition-opacity duration-300" id="p2-desc">
-          Coordinated physical modeling and RF antenna optimization for battery-free pacing loops. Co-integrates transient pacing electrodes natively within heart valve geometry to reduce clinical post-TAVI conduction blocks.
+        <p>
+          Whether analyzing viscoelastic shear boundaries inside cellular sorting structures or configuring wireless bio-electronics interfaces, I thrive in fast-paced multi-disciplinary environments. My research experience spans across campus labs, industry logistics pipelines, and competitive team-design projects.
         </p>
-        <a href="projects.html" class="inline-flex items-center gap-1.5 text-xs font-bold text-[#5171e6] hover:underline mt-auto">
-          View RF Tuning Process →
-        </a>
-      </div>
-    </div>
-
-    <!-- PROJECT 3: MODUCARGO PLATFORM -->
-    <div class="bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden flex flex-col transition hover:shadow-md hover:-translate-y-1">
-      <div class="h-44 bg-gradient-to-r from-slate-800 to-slate-900 flex items-center justify-center text-white text-lg font-extrabold tracking-wide relative">
-        <span>🚗 Robotics &amp; Hardware</span>
-        <span class="absolute top-3 right-3 text-[10px] uppercase font-extrabold bg-[#abc4ff] text-slate-800 px-2.5 py-1 rounded-full shadow-sm" id="p3-badge">Closed-Loop Controls</span>
-      </div>
-      <div class="p-6 flex flex-col flex-grow">
-        <h3 class="font-extrabold text-lg text-slate-800 mb-2">ModuCargo Assist Platform</h3>
-        <p class="text-xs text-[#5171e6] font-bold uppercase tracking-wider mb-3" id="p3-highlight">Smart Mecanum Transit</p>
-        <p class="text-slate-600 text-sm leading-relaxed mb-6 flex-grow transition-opacity duration-300" id="p3-desc">
-          Designed a terrain-adaptive motorized platform using load-cell mass calibrators and real-time IMU tilt stabilizers on a 4WD Mecanum chassis. Programmed complex speed profiles to prevent cargo slips over rough surfaces.
+        <p>
+          I approach every design with a hands-on methodology—iterating prototypes rapidly, analyzing mechanical failures systematically, and ensuring final systems are optimized for raw real-world utility.
         </p>
-        <a href="moducargo.html" class="inline-flex items-center gap-1.5 text-xs font-bold text-[#5171e6] hover:underline mt-auto">
-          Explore Embedded Layout →
-        </a>
+      </div>
+
+      <div class="interests-stack">
+        <div class="interest-card">
+          <div class="interest-icon">🧬</div>
+          <div class="interest-details">
+            <h4>Bio-Electronics &amp; RF Tuning</h4>
+            <p>Configuring battery-free, wireless power transfer arrays for heart valve pacing nodes.</p>
+          </div>
+        </div>
+
+        <div class="interest-card">
+          <div class="interest-icon">🧪</div>
+          <div class="interest-details">
+            <h4>Fluidic Assay Dynamics</h4>
+            <p>Optimizing laminar boundaries and pillar displacement offset configurations inside PDMS structures.</p>
+          </div>
+        </div>
+
+        <div class="interest-card">
+          <div class="interest-icon">⚙️</div>
+          <div class="interest-details">
+            <h4>Active Machinery</h4>
+            <p>Developing terrain-aware active motorized platforms and microfluidic sorting molds using high-fidelity CAD.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="section">
+    <div class="stats">
+      <div class="stat"><h3>5+</h3><p>R&D Engineering Projects</p></div>
+      <div class="stat"><h3>3+</h3><p>Academic Research Labs</p></div>
+      <div class="stat"><h3>50+</h3><p>Peers &amp; Students Mentored</p></div>
+    </div>
+  </section>
+
+  <!-- REAL LIFE EXPERIENCE SHOWCASE -->
+  <section class="section" style="background: rgba(171, 196, 255, 0.15); border-radius: 40px; padding: 80px 10%;">
+    <h2 class="section-title">Industry &amp; Global Health Impact</h2>
+    <p class="section-subtitle">Bridging engineering design paradigms with actionable real-world healthcare execution.</p>
+
+    <div class="experience-wrapper">
+      <div class="exp-header">
+        <h3>🌍 Project C.U.R.E.</h3>
+        <h4>Global Health Engineering Intern</h4>
+        <p>
+          Worked on reinforcing localized medical infrastructures within resource-constrained global healthcare operations. Evaluated structural integrity, systems deployment layouts, and compliance measures for systems shipped internationally.
+        </p>
+      </div>
+      <div class="exp-details">
+        <h5>Core Operations &amp; Skills</h5>
+        <ul>
+          <li>Inspected and validated functional parameters of donated clinical diagnostic instrumentation.</li>
+          <li>Optimized cross-border logistical architectures supporting healthcare nodes across 10+ target nations.</li>
+          <li>Analyzed supply chain tracking systems to map facility requests directly to hardware distribution arrays.</li>
+          <li>Applied Human Factors principles to match technical equipment features to field environment restrictions.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEW: RECRUITER TARGET DECK & PROJECTS -->
+  <section class="section" id="featured-projects">
+    <h2 class="section-title">Featured Projects</h2>
+    <p class="section-subtitle">Selected engineering prototypes balancing biomechanical principles and deep automation.</p>
+
+    <!-- Interactive Recruiter Customization Deck -->
+    <div class="alignment-deck">
+      <div class="deck-header">
+        <div class="deck-title">
+          <h3>Target Recruiter Alignment Deck</h3>
+          <p>Select your organization below to dynamically align Chelsea's work directly with your team's divisional needs.</p>
+        </div>
+        <div class="selector-wrapper">
+          <select id="companySelector" onchange="alignCompanyDossier()">
+            <option value="general">🌍 General Engineering R&amp;D</option>
+            <option value="medtronic">💜 Medtronic Focus</option>
+            <option value="abbott">💙 Abbott Focus</option>
+            <option value="stryker">🧡 Stryker Focus</option>
+          </select>
+        </div>
       </div>
     </div>
 
-  </div>
-</section>
+    <!-- 3 Projects in a modern row matching the alignment deck parameters -->
+    <div class="projects">
+      <!-- Project 1 -->
+      <div class="project">
+        <div class="project-img" style="background: linear-gradient(135deg, #2d3138, #3b5cc4);">🧬 Microfluidics</div>
+        <div class="project-content">
+          <h3>Syncytial Knot Isolation Device</h3>
+          <p id="descKnot">Designed custom macrofluidic and microfluidic sorting models optimizing structural isolation protocols for cellular microenvironments.</p>
+          
+          <div class="spotlight-box">
+            <strong id="labelKnot">Alignment Spotlight</strong>
+            <span id="spotKnot">Applies microfluidic boundary layer modeling and precision photolithography fabrication metrics.</span>
+          </div>
 
-<!-- REAL LIFE EXPERIENCE SHOW
+          <a href="syncytial-knots.html" class="project-link">Analyze Device Architecture →</a>
+        </div>
+      </div>
+
+      <!-- Project 2 -->
+      <div class="project">
+        <div class="project-img" style="background: linear-gradient(135deg, #2d3138, #c43b5c);">❤️ Implantables</div>
+        <div class="project-content">
+          <h3>TAVI Pacemaker Integration</h3>
+          <p id="descPace">Coordinated operational prototyping loops for battery-free, wireless bio-electronic pacing hardware embedded natively into structural heart valve designs.</p>
+          
+          <div class="spotlight-box">
+            <strong id="labelPace">Alignment Spotlight</strong>
+            <span id="spotPace">Applies bio-electronic circuit parameters, wireless power transmission protocols, and RF antenna modeling.</span>
+          </div>
+
+          <a href="projects.html" class="project-link">View RF Tuning Process →</a>
+        </div>
+      </div>
+
+      <!-- Project 3 -->
+      <div class="project">
+        <div class="project-img" style="background: linear-gradient(135deg, #2d3138, #2ca375);">🚗 Embedded Hardware</div>
+        <div class="project-content">
+          <h3>ModuCargo Platform</h3>
+          <p id="descCargo">Developed a motorized chassis utilizing real-time IMU gyroscopic feedback loop filters and weight calibration load cells to assist mobility-impaired populations.</p>
+          
+          <div class="spotlight-box">
+            <strong id="labelCargo">Alignment Spotlight</strong>
+            <span id="spotCargo">Applies embedded firmware programming, hardware-in-the-loop validation, and adaptive motor drive logic.</span>
+          </div>
+
+          <a href="moducargo.html" class="project-link">Study Platform Kinematics →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESEARCH Focus Areas -->
+  <section class="section">
+    <h2 class="section-title">Research Focus Areas</h2>
+    <p class="section-subtitle">Investigating structural questions across core technical mechanics domains.</p>
+
+    <div class="tags">
+      <div class="tag">Biomedical Devices</div>
+      <div class="tag">Microfluidics Engineering</div>
+      <div class="tag">Implantable Bio-Electronics</div>
+      <div class="tag">Embedded Hardware Systems</div>
+      <div class="tag">Viscoelastic Mechanics</div>
+      <div class="tag">Additive Manufacturing</div>
+    </div>
+  </section>
+
+  <!-- ACHIEVEMENTS -->
+  <section class="section">
+    <h2 class="section-title">Milestones</h2>
+    <p class="section-subtitle">Chronological progression of institutional engineering appointments and degrees.</p>
+
+    <div class="timeline">
+      <div class="timeline-item"><span class="timeline-year">2026</span><span class="timeline-desc">M.S. Mechanical Engineering Specialization Target</span></div>
+      <div class="timeline-item"><span class="timeline-year">2025</span><span class="timeline-desc">Rogers Lab • Bio-Electronics Graduate Research Assistant</span></div>
+      <div class="timeline-item"><span class="timeline-year">2025</span><span class="timeline-desc">Solutions Lab • Systems Analysis Research Associate</span></div>
+      <div class="timeline-item"><span class="timeline-year">2025</span><span class="timeline-desc">Microfluidic Platform Core Manufacturing Lead</span></div>
+    </div>
+  </section>
+
+  <!-- CAMPUS -->
+  <section class="section">
+    <h2 class="section-title">Interactive Campus Hub</h2>
+    <p class="section-subtitle">Click into any domain node to explore my associated research footprints.</p>
+
+    <div class="campus">
+      <div class="lab" onclick="triggerNodeModal('fluidic')">
+        <h3>🧬 Microfluidics Lab</h3>
+        <p>Cell sorting assays &amp; shear diagnostics</p>
+      </div>
+      <div class="lab" onclick="triggerNodeModal('implant')">
+        <h3>❤️ Implantables Lab</h3>
+        <p>RF circuits &amp; wireless power transfer</p>
+      </div>
+      <div class="lab" onclick="triggerNodeModal('embed')">
+        <h3>🚗 Embedded Systems</h3>
+        <p>Firmware structures &amp; data processing arrays</p>
+      </div>
+      <div class="lab" onclick="triggerNodeModal('leader')">
+        <h3>🏆 Leadership Center</h3>
+        <p>Peer guidance &amp; project framework architecture</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEW: LET'S CONNECT (CONTACT ENGINE) -->
+  <section class="section" id="lets-connect">
+    <h2 class="section-title">Let's Connect</h2>
+    <p class="section-subtitle">Reach out to discuss open engineering opportunities, research collaborations, or custom designs.</p>
+
+    <div class="connect-card">
+      <div class="connect-info">
+        <h3>Get in Touch</h3>
+        <p>
+          I am actively exploring full-time and project opportunities where my dual biomedical and mechanical background can optimize product development lifecycles. Drop a message to trigger an instant design discussion!
+        </p>
+
+        <div class="contact-link-row">
+          <a href="mailto:chelsea@u.northwestern.edu" class="contact-node">
+            <div class="node-icon">📧</div>
+            <span>chelsea@u.northwestern.edu</span>
+          </a>
+          <a href="https://linkedin.com" target="_blank" class="contact-node">
+            <div class="node-icon">💼</div>
+            <span>Chelsea Ogbonna on LinkedIn</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="connect-form">
+        <div class="form-group">
+          <label for="cName">Your Name / Organization</label>
+          <input type="text" id="cName" placeholder="Alex Rivera | Medtronic R&D">
+        </div>
+        <div class="form-group">
+          <label for="cPerk">Select Target Collaboration Focus</label>
+          <input type="text" id="cPerk" placeholder="Microfluidics, Embedded design, Pacemakers, or general discussion">
+        </div>
+        <div class="form-group">
+          <label for="cMessage">Message Context</label>
+          <textarea id="cMessage" rows="4" placeholder="Let's schedule a chat to discuss your design models..."></textarea>
+        </div>
+        <button class="btn-submit" onclick="dispatchContactMail()">Build and Send Email 🚀</button>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p style="margin: 0; font-size: 15px; font-weight: 500;">© 2026 Chelsea Ogbonna • Built with Clean Code Foundations</p>
+  </footer>
+
+  <script>
+    /* ========================================================
+       NEW: RECRUITER DOSSIER SYNERGY ENGINE (DYNAMIC DATA)
+       ======================================================== */
+    const dossiers = {
+      general: {
+        knot: {
+          desc: "Designed custom macrofluidic and microfluidic sorting models optimizing structural isolation protocols for cellular microenvironments.",
+          spot: "Applies microfluidic boundary layer modeling and precision photolithography fabrication metrics."
+        },
+        pace: {
+          desc: "Coordinated operational prototyping loops for battery-free, wireless bio-electronic pacing hardware embedded natively into structural heart valve designs.",
+          spot: "Applies bio-electronic circuit parameters, wireless power transmission protocols, and RF antenna modeling."
+        },
+        cargo: {
+          desc: "Developed a motorized chassis utilizing real-time IMU gyroscopic feedback loop filters and weight calibration load cells to assist mobility-impaired populations.",
+          spot: "Applies embedded firmware programming, hardware-in-the-loop validation, and adaptive motor drive logic."
+        }
+      },
+      medtronic: {
+        knot: {
+          desc: "Isolating delicate placental syncytial structures requires the same low-shear, biocompatible fluid routing principles that protect blood cells in cardiopulmonary bypass circuits.",
+          spot: "Medtronic Synergy: Demonstrates mastery of blood/tissue-contact boundary dynamics for Medtronic's Cardiovascular & Perfusion teams."
+        },
+        pace: {
+          desc: "Integrating pacing circuits inside transcatheter valves represents the next generation of pacemaker structures—effectively designing a battery-free, ultra-miniaturized Micra pacemaker.",
+          spot: "Medtronic Synergy: Directly aligns with Medtronic's Cardiac Rhythm Management (CRM) and structural heart R&D pipelines."
+        },
+        cargo: {
+          desc: "The terrain-aware control loops and multi-sensor calibrations are identical to the safety-critical feedback algorithms used in Medtronic's active robotic-assisted surgery systems (Hugo RAS).",
+          spot: "Medtronic Synergy: Maps to firmware and embedded sensor processing loops inside Medtronic's Surgical Robotics division."
+        }
+      },
+      abbott: {
+        knot: {
+          desc: "Isolating cellular biomarkers directly from complex background explant tissues provides a robust framework for high-purity point-of-care (POC) molecular assay cartridges.",
+          spot: "Abbott Synergy: Directly leverages Abbott's market leadership in diagnostics, matching their Alinity and point-of-care pipelines."
+        },
+        pace: {
+          desc: "Our pacemaker's wireless radio frequency power delivery loops directly mirror the electromagnetic transfer setups used in Abbott's implantable cardioverter-defibrillators (ICDs).",
+          spot: "Abbott Synergy: Perfectly matches Abbott's Cardiac Rhythm Management, structural heart, and neuromodulation R&D divisions."
+        },
+        cargo: {
+          desc: "Calibrating multi-axis sensor data under continuous dynamic noise demonstrates high competence in signal filtering—a core requirement for Abbott's continuous glucose monitors (FreeStyle Libre).",
+          spot: "Abbott Synergy: Proves technical compatibility with Abbott's remote patient monitoring and smart connected device groups."
+        }
+      },
+      stryker: {
+        knot: {
+          desc: "The precise mold micro-tolerances and structural alignment arrays require the same sub-micron manufacturing consistency used in custom ortho-surgical implants.",
+          spot: "Stryker Synergy: Maps to Stryker's joint replacement manufacturing and patient-specific implant customization divisions."
+        },
+        pace: {
+          desc: "Tuning micro-electronics and inductive loops maps to the wireless charging requirements and telemetry components used in Stryker's active motorized surgical instruments.",
+          spot: "Stryker Synergy: Proves proficiency in embedded electronics, matching the instrumentation design teams in Kalamazoo."
+        },
+        cargo: {
+          desc: "The terrain-aware stabilization engine was built specifically to reduce physical loading strains—aligning perfectly with Stryker's smart motorized hospital bed and patient handling fleets.",
+          spot: "Stryker Synergy: Directly maps to Stryker's Medical & Patient Handling division (Power-PRO strollers, Prime Series)."
+        }
+      }
+    };
+
+    function alignCompanyDossier() {
+      const company = document.getElementById('companySelector').value;
+      const data = dossiers[company];
+
+      // Grab elements
+      const descKnot = document.getElementById('descKnot');
+      const spotKnot = document.getElementById('spotKnot');
+      const labelKnot = document.getElementById('labelKnot');
+
+      const descPace = document.getElementById('descPace');
+      const spotPace = document.getElementById('spotPace');
+      const labelPace = document.getElementById('labelPace');
+
+      const descCargo = document.getElementById('descCargo');
+      const spotCargo = document.getElementById('spotCargo');
+      const labelCargo = document.getElementById('labelCargo');
+
+      // Fade descriptions out
+      [descKnot, spotKnot, descPace, spotPace, descCargo, spotCargo].forEach(el => el.style.opacity = '0.1');
+
+      setTimeout(() => {
+        // Change text
+        descKnot.innerText = data.knot.desc;
+        spotKnot.innerText = data.knot.spot;
+        labelKnot.innerText = company === 'general' ? 'Alignment Spotlight' : `${company.toUpperCase()} Target Spotlight`;
+
+        descPace.innerText = data.pace.desc;
+        spotPace.innerText = data.pace.spot;
+        labelPace.innerText = company === 'general' ? 'Alignment Spotlight' : `${company.toUpperCase()} Target Spotlight`;
+
+        descCargo.innerText = data.cargo.desc;
+        spotCargo.innerText = data.cargo.spot;
+        labelCargo.innerText = company === 'general' ? 'Alignment Spotlight' : `${company.toUpperCase()} Target Spotlight`;
+
+        // Fade back in
+        [descKnot, spotKnot, descPace, spotPace, descCargo, spotCargo].forEach(el => el.style.opacity = '1');
+      }, 200);
+    }
+
+    /* ========================================================
+       MODAL POPUP CONTROLLERS (ZERO NATIVE ALERT CALLS)
+       ======================================================== */
+    const labDetails = {
+      fluidic: {
+        title: "🧬 Microfluidics Research Detail",
+        body: "Researching microfluidic sorting models using asymmetric pillar geometries to separate placental cells ($50\text{–}150\text{ }\mu\text{m}$). Includes COMSOL multi-physics validation of Navier-Stokes velocity boundaries and pressure fields."
+      },
+      implant: {
+        title: "❤️ Implantable Devices Detail",
+        body: "Developing battery-free, RF-tuned pacing nodes embedded natively into transcatheter heart valves. Includes configuring inductive coils, matching resonant loops, and validating wireless transfer fields."
+      },
+      embed: {
+        title: "🚗 Embedded Systems Detail",
+        body: "Programming adaptive feedback filters for hardware assemblies. Highlights include integrating load cells, MPU6050 gyroscopes, and dual H-Bridge PWM motor speed scaling models."
+      },
+      leader: {
+        title: "🏆 Engineering Leadership Detail",
+        body: "Guiding diverse student engineering organizations, aligning multi-disciplinary project milestones, and presenting clinical design proposals to regional healthcare boards."
+      }
+    };
+
+    function triggerNodeModal(nodeKey) {
+      const data = labDetails[nodeKey];
+      document.getElementById('mTitle').innerText = data.title;
+      document.getElementById('mBody').innerText = data.body;
+      document.getElementById('modalNode').classList.add('active');
+    }
+
+    function closeNodeModal() {
+      document.getElementById('modalNode').classList.remove('active');
+    }
+
+    // Dismiss modal on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeNodeModal();
+    });
+
+    /* ========================================================
+       CONTACT EMAIL DISPATCH BUILDER
+       ======================================================== */
+    function dispatchContactMail() {
+      const name = document.getElementById('cName').value || "Hiring Manager";
+      const perk = document.getElementById('cPerk').value || "Design Partnership";
+      const message = document.getElementById('cMessage').value || "Let's align on upcoming R&D positions.";
+
+      const subject = encodeURIComponent(`Chelsea, let's connect regarding: ${perk}`);
+      const body = encodeURIComponent(`Hi Chelsea,\n\nThis is ${name}.\n\n${message}\n\nBest,\n${name}`);
+
+      window.location.href = `mailto:chelsea@u.northwestern.edu?subject=${subject}&body=${body}`;
+    }
+  </script>
+
+</body>
+</html>
