@@ -225,26 +225,30 @@
     /* =========================
        NEW: ABOUT ME & CORE INTERESTS
     ========================= */
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 50px;
-      align-items: start;
-      margin-bottom: 60px;
+    .about-grid{
+      display:flex;
+      justify-content:center;
+      margin-bottom:60px;
     }
 
-    .about-text h3 {
-      font-size: 26px;
-      font-weight: 800;
-      margin-bottom: 15px;
+    .about-text{
+      max-width:850px;
+      text-align:center;   /* remove if you want left-aligned text */
     }
 
-    .about-text p {
-      font-size: 16px;
-      color: #4b5563;
-      line-height: 1.7;
-      margin-bottom: 20px;
+    .about-text h3{
+      font-size:26px;
+      font-weight:800;
+      margin-bottom:15px;
     }
+
+    .about-text p{
+      font-size:16px;
+      color:#4b5563;
+      line-height:1.8;
+      margin-bottom:20px;
+    }
+    
 
     .interests-stack {
       display: flex;
