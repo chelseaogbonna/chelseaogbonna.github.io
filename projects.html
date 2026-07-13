@@ -33,13 +33,15 @@
       overflow-x: hidden;
       line-height: 1.6;
     }
-    
+
     .project-image{
-      width:100%;
-      border-radius:20px;
+      width:280px;          /* Change this to make it narrower */
+      height:180px;         /* Change this to make it shorter */
+      margin:0 auto 25px;
+      border-radius:16px;
       overflow:hidden;
-      margin-bottom:25px;
       background:var(--card);
+
       display:flex;
       justify-content:center;
       align-items:center;
@@ -47,8 +49,7 @@
 
     .project-image img{
       width:100%;
-      height:auto;
-      max-height:400px;
+      height:100%;
       object-fit:contain;
       display:block;
     }
