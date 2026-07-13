@@ -231,23 +231,41 @@
       margin-bottom:60px;
     }
 
-    .about-text{
-      max-width:850px;
-      text-align:center;   /* remove if you want left-aligned text */
+    .about-card{
+      max-width:900px;
+      width:100%;
+
+      background:rgba(255,255,255,0.65);
+      backdrop-filter:blur(14px);
+  
+      border:1px solid var(--border);
+      border-radius:24px;
+
+      padding:40px;
+
+      box-shadow:0 15px 40px rgba(0,0,0,.08);
+
+      transition:.3s;
+    }
+
+    .about-card:hover{
+      transform:translateY(-6px);
+      box-shadow:0 22px 55px rgba(0,0,0,.12);
     }
 
     .about-text h3{
-      font-size:26px;
-      font-weight:800;
-      margin-bottom:15px;
+      font-size:28px;
+      margin-top:0;
+      margin-bottom:20px;
     }
 
     .about-text p{
-      font-size:16px;
-      color:#4b5563;
+      font-size:17px;
       line-height:1.8;
-      margin-bottom:20px;
+      color:#4b5563;
+      margin-bottom:18px;
     }
+  
     
 
     .interests-stack {
@@ -926,17 +944,19 @@
     <p class="section-subtitle">A quick introduction to my technical approach, academic pursuits, and operational fields.</p>
 
     <div class="about-grid">
-      <div class="about-text">
-        <h3>Building Bridges Between Medicine &amp; Mechanics</h3>
-        <p>
-          I'm Chelsea Ogbonna, a Northwestern University graduate with a combined B.S. in Biomedical Engineering and M.S. in Mechanical Engineering.       
-        </p>
-        <p>
-          My interdisciplinary background allows me to bridge biology with engineering, combining analytical thinking, creativity, and hands-on design to develop technologies that improve healthcare.
-        </p>
-        <p>
-          I enjoy tackling complex challenges through engineering design, scientific research, computational analysis, and rapid prototyping, and I thrive in collaborative environments where curiosity, innovation, and continuous iteration drive meaningful solutions.
-        </p>
+      <div class="about-card">
+        <div class="about-text">
+          <h3>Building Bridges Between Medicine &amp; Mechanics</h3>
+          <p>
+            I'm Chelsea Ogbonna, a Northwestern University graduate with a combined B.S. in Biomedical Engineering and M.S. in Mechanical Engineering.
+          </p>
+          <p>
+            My interdisciplinary background allows me to bridge biology with engineering, combining analytical thinking, creativity, and hands-on design to develop technologies that improve healthcare.
+          </p>
+          <p>
+            I enjoy tackling complex challenges through engineering design, scientific research, computational analysis, and rapid prototyping, and I thrive in collaborative environments where curiosity, innovation, and continuous iteration drive meaningful solutions.
+          </p>
+        </div>
       </div>
     </div>
   </section>
