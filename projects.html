@@ -290,7 +290,7 @@
     }
 
     /* =========================
-       NEW: MODULAR SUB-BOX ARCHITECTURE
+       MODULAR SUB-BOX ARCHITECTURE
     ========================= */
     .panel-left {
       display: flex;
@@ -331,10 +331,6 @@
       border-left: 5px solid #10b981; /* Success Green */
     }
 
-    .dossier-card.skills {
-      border-left: 5px solid #6366f1; /* Indigo */
-    }
-
     .dossier-card h4 {
       font-size: 12px;
       text-transform: uppercase;
@@ -349,7 +345,6 @@
     .dossier-card.overview h4 { color: var(--highlight); }
     .dossier-card.contributions h4 { color: #3b5cc4; }
     .dossier-card.results h4 { color: #047857; }
-    .dossier-card.skills h4 { color: #4f46e5; }
 
     .dossier-card p {
       font-size: 14.5px;
@@ -373,8 +368,32 @@
       margin-bottom: 0;
     }
 
-    /* Skills Pill Array inside Skills Box */
-    .skills-section {
+    /* =========================
+       NEW: STRIP-STYLE SKILLS DECK
+    ========================= */
+    .skills-deck {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 15px;
+      flex-wrap: wrap;
+      background: rgba(248, 250, 252, 0.8);
+      border-radius: 16px;
+      padding: 15px 25px;
+      border: 1.5px solid var(--border);
+      box-shadow: inset 0 1px 4px rgba(0,0,0,0.01);
+    }
+
+    .skills-deck-title {
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: #4f46e5; /* Indigo */
+      letter-spacing: 0.5px;
+      margin-right: 10px;
+    }
+
+    .skills-row {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
@@ -403,7 +422,6 @@
 
     .troubleshoot-box.challenge {
       background: #fff8f8;
-      border-left: 5px solid #ef4444;
       border: 1px solid #fee2e2;
       border-left: 5px solid #ef4444;
     }
@@ -513,10 +531,14 @@
       .projects-hero h1 {
         font-size: 36px;
       }
-      .link-deck {
+      .link-deck, .skills-deck {
         flex-direction: column;
         align-items: flex-start;
         gap: 10px;
+      }
+      .skills-deck-title {
+        margin-right: 0;
+        margin-bottom: 5px;
       }
     }
   </style>
@@ -581,22 +603,12 @@
             <h4>📈 Results</h4>
             <p>Successfully designed and tested multiple microfluidic prototypes while identifying the strengths and limitations of each separation method. Experimental testing informed several design iterations that improved particle sorting and reduced clogging.</p>
           </div>
-          <div class="dossier-card skills">
-            <h4>🧠 Skills Utilized</h4>
-            <div class="skills-section">
-              <span class="skill-pill">COMSOL Multiphysics</span>
-              <span class="skill-pill">SolidWorks CAD</span>
-              <span class="skill-pill">Photolithography</span>
-              <span class="skill-pill">SUEX Photoresist</span>
-              <span class="skill-pill">Fluidic Assays</span>
-            </div>
-          </div>
         </div>
         <div class="panel-right">
-        <div class="project-image">
-          <img src="Screen Shot 2026-07-10 at 9.12.40 AM.png" alt="Sustainable Recycling Center Design">
-        </div>
-        <div class="troubleshoot-box challenge">
+          <div class="project-image">
+            <img src="Screen Shot 2026-07-10 at 9.12.40 AM.png" alt="Syncytial Knot Device Layout">
+          </div>
+          <div class="troubleshoot-box challenge">
             <h4>Engineering Challenges</h4>
             <p>Maintaining consistent particle flow was difficult due to particle settling, air bubbles, and channel leakage. Different microfluidic designs also introduced unique challenges, including outlet mixing and flow instability.</p>
           </div>
@@ -604,6 +616,17 @@
             <h4>How They Were Solved</h4>
             <p>Optimized syringe preparation, redesigned outlet geometries, increased channel spacing, and proposed bubble traps and improved inlet designs to improve separation reliability.</p>
           </div>
+        </div>
+      </div>
+      <!-- SKILLS DECK (STRAIGHT LINE) -->
+      <div class="skills-deck">
+        <div class="skills-deck-title">🧠 Skills Utilized:</div>
+        <div class="skills-row">
+          <span class="skill-pill">COMSOL Multiphysics</span>
+          <span class="skill-pill">SolidWorks CAD</span>
+          <span class="skill-pill">Photolithography</span>
+          <span class="skill-pill">SUEX Photoresist</span>
+          <span class="skill-pill">Fluidic Assays</span>
         </div>
       </div>
       <!-- RESOURCE & LINKS DECK -->
@@ -641,22 +664,12 @@
             <h4>📈 Results</h4>
             <p>The redesigned recycling center increased recycling participation by approximately $40\%$ and received the Best Design Team Award. The final design improved user understanding while reducing contamination of recyclable materials.</p>
           </div>
-          <div class="dossier-card skills">
-            <h4>🧠 Skills Utilized</h4>
-            <div class="skills-section">
-              <span class="skill-pill">Siemens NX</span>
-              <span class="skill-pill">SolidWorks</span>
-              <span class="skill-pill">Human-Centered Design</span>
-              <span class="skill-pill">User Research</span>
-              <span class="skill-pill">Rapid Prototyping</span>
-            </div>
-          </div>
         </div>
         <div class="panel-right">
-        <div class="project-image">
-          <img src="Screen Shot 2026-07-04 at 11.46.59 PM.png" alt="Sustainable Recycling Center Design">
-        </div>
-        <div class="troubleshoot-box challenge">
+          <div class="project-image">
+            <img src="Screen Shot 2026-07-04 at 11.46.59 PM.png" alt="Sustainable Recycling Center Design">
+          </div>
+          <div class="troubleshoot-box challenge">
             <h4>Engineering Challenges</h4>
             <p>Residents frequently placed non-recyclable materials in recycling bins because of confusing signage and poor system organization.</p>
           </div>
@@ -664,6 +677,17 @@
             <h4>How They Were Solved</h4>
             <p>Developed intuitive collection stations, simplified instructional graphics, and redesigned the recycling layout to improve usability and reduce sorting errors.</p>
           </div>
+        </div>
+      </div>
+      <!-- SKILLS DECK (STRAIGHT LINE) -->
+      <div class="skills-deck">
+        <div class="skills-deck-title">🧠 Skills Utilized:</div>
+        <div class="skills-row">
+          <span class="skill-pill">Siemens NX</span>
+          <span class="skill-pill">SolidWorks</span>
+          <span class="skill-pill">Human-Centered Design</span>
+          <span class="skill-pill">User Research</span>
+          <span class="skill-pill">Rapid Prototyping</span>
         </div>
       </div>
       <!-- RESOURCE & LINKS DECK -->
@@ -701,22 +725,12 @@
             <h4>📈 Results</h4>
             <p>Successfully demonstrated the ability to collect and analyze gait information across different walking conditions. The system showed potential for non-invasive monitoring of patients at risk of diabetic foot ulcers.</p>
           </div>
-          <div class="dossier-card skills">
-            <h4>🧠 Skills Utilized</h4>
-            <div class="skills-section">
-              <span class="skill-pill">Python</span>
-              <span class="skill-pill">MPU6050 IMU</span>
-              <span class="skill-pill">Force-Sensitive Resistors</span>
-              <span class="skill-pill">Signal Filtering</span>
-              <span class="skill-pill">Gait Kinematics</span>
-            </div>
-          </div>
         </div>
         <div class="panel-right">
-        <div class="project-image">
-          <img src="IMG_3705 Small.jpeg" alt="Sustainable Recycling Center Design">
-        </div>
-        <div class="troubleshoot-box challenge">
+          <div class="project-image">
+            <img src="IMG_3705 Small.jpeg" alt="Haptic Diabetic Foot Monitoring Device">
+          </div>
+          <div class="troubleshoot-box challenge">
             <h4>Engineering Challenges</h4>
             <p>Synchronizing force and motion data while minimizing sensor noise affected measurement accuracy.</p>
           </div>
@@ -724,6 +738,17 @@
             <h4>How They Were Solved</h4>
             <p>Applied signal processing techniques, calibrated sensors, and refined data acquisition workflows to improve measurement consistency.</p>
           </div>
+        </div>
+      </div>
+      <!-- SKILLS DECK (STRAIGHT LINE) -->
+      <div class="skills-deck">
+        <div class="skills-deck-title">🧠 Skills Utilized:</div>
+        <div class="skills-row">
+          <span class="skill-pill">Python</span>
+          <span class="skill-pill">MPU6050 IMU</span>
+          <span class="skill-pill">Force-Sensitive Resistors</span>
+          <span class="skill-pill">Signal Filtering</span>
+          <span class="skill-pill">Gait Kinematics</span>
         </div>
       </div>
       <!-- RESOURCE & LINKS DECK -->
@@ -761,22 +786,12 @@
             <h4>📈 Results</h4>
             <p>Produced a powered cargo platform capable of safely transporting loads up to $30\text{ lbs}$ across multiple terrain conditions while maintaining stability and adaptability.</p>
           </div>
-          <div class="dossier-card skills">
-            <h4>🧠 Skills Utilized</h4>
-            <div class="skills-section">
-              <span class="skill-pill">SolidWorks CAD</span>
-              <span class="skill-pill">Finite Element Analysis (FEA)</span>
-              <span class="skill-pill">Structural Mechanics</span>
-              <span class="skill-pill">Mecanum Kinematics</span>
-              <span class="skill-pill">Physical Prototyping</span>
-            </div>
-          </div>
         </div>
         <div class="panel-right">
-        <div class="project-image">
-          <img src="Screen Shot 2026-07-10 at 7.54.54 PM.png" alt="Sustainable Recycling Center Design">
-        </div>
-        <div class="troubleshoot-box challenge">
+          <div class="project-image">
+            <img src="Screen Shot 2026-07-10 at 7.54.54 PM.png" alt="Everyday Moving Helper Design">
+          </div>
+          <div class="troubleshoot-box challenge">
             <h4>Engineering Challenges</h4>
             <p>Balancing portability with structural rigidity while maintaining stability across different terrains required multiple design iterations.</p>
           </div>
@@ -784,6 +799,17 @@
             <h4>How They Were Solved</h4>
             <p>Optimized frame geometry, weight distribution, and wheel placement through iterative CAD modeling and mechanical analysis.</p>
           </div>
+        </div>
+      </div>
+      <!-- SKILLS DECK (STRAIGHT LINE) -->
+      <div class="skills-deck">
+        <div class="skills-deck-title">🧠 Skills Utilized:</div>
+        <div class="skills-row">
+          <span class="skill-pill">SolidWorks CAD</span>
+          <span class="skill-pill">Finite Element Analysis (FEA)</span>
+          <span class="skill-pill">Structural Mechanics</span>
+          <span class="skill-pill">Mecanum Kinematics</span>
+          <span class="skill-pill">Physical Prototyping</span>
         </div>
       </div>
       <!-- RESOURCE & LINKS DECK -->
@@ -821,22 +847,12 @@
             <h4>📈 Results</h4>
             <p>Produced a functional EMG system while reducing hardware costs by more than $90\%$ compared to commercial alternatives.</p>
           </div>
-          <div class="dossier-card skills">
-            <h4>🧠 Skills Utilized</h4>
-            <div class="skills-section">
-              <span class="skill-pill">Analog Circuit Design</span>
-              <span class="skill-pill">Bandpass Filtering</span>
-              <span class="skill-pill">Op-Amp Configurations</span>
-              <span class="skill-pill">Signal Amplification</span>
-              <span class="skill-pill">Noise Minimization</span>
-            </div>
-          </div>
         </div>
         <div class="panel-right">
-        <div class="project-image">
-          <img src="EMGbreadboard.webp" alt="Sustainable Recycling Center Design">
-        </div>
-        <div class="troubleshoot-box challenge">
+          <div class="project-image">
+            <img src="EMGbreadboard.webp" alt="EMG Acquisition Circuit">
+          </div>
+          <div class="troubleshoot-box challenge">
             <h4>Engineering Challenges</h4>
             <p>Muscle signals are extremely small and highly susceptible to electrical noise.</p>
           </div>
@@ -844,6 +860,17 @@
             <h4>How They Were Solved</h4>
             <p>Optimized analog filtering and amplification stages to improve signal quality and reduce interference.</p>
           </div>
+        </div>
+      </div>
+      <!-- SKILLS DECK (STRAIGHT LINE) -->
+      <div class="skills-deck">
+        <div class="skills-deck-title">🧠 Skills Utilized:</div>
+        <div class="skills-row">
+          <span class="skill-pill">Analog Circuit Design</span>
+          <span class="skill-pill">Bandpass Filtering</span>
+          <span class="skill-pill">Op-Amp Configurations</span>
+          <span class="skill-pill">Signal Amplification</span>
+          <span class="skill-pill">Noise Minimization</span>
         </div>
       </div>
       <!-- RESOURCE & LINKS DECK -->
@@ -881,22 +908,12 @@
             <h4>📈 Results</h4>
             <p>Successfully acquired and processed cardiac signals while significantly reducing equipment cost compared to commercial devices.</p>
           </div>
-          <div class="dossier-card skills">
-            <h4>🧠 Skills Utilized</h4>
-            <div class="skills-section">
-              <span class="skill-pill">Python FFT</span>
-              <span class="skill-pill">Instrumentation Amplifiers</span>
-              <span class="skill-pill">Notch Filtering (60Hz)</span>
-              <span class="skill-pill">Oscilloscope Verification</span>
-              <span class="skill-pill">Bio-Sensory Inputs</span>
-            </div>
-          </div>
         </div>
         <div class="panel-right">
-        <div class="project-image">
-          <img src="breadboardekg.webp" alt="Sustainable Recycling Center Design">
-        </div>
-        <div class="troubleshoot-box challenge">
+          <div class="project-image">
+            <img src="breadboardekg.webp" alt="EKG Assembly Circuit">
+          </div>
+          <div class="troubleshoot-box challenge">
             <h4>Engineering Challenges</h4>
             <p>Power-line interference and motion artifacts reduced signal quality during acquisition.</p>
           </div>
@@ -904,6 +921,17 @@
             <h4>How They Were Solved</h4>
             <p>Applied analog filtering techniques and FFT-based signal analysis to improve waveform quality and measurement accuracy.</p>
           </div>
+        </div>
+      </div>
+      <!-- SKILLS DECK (STRAIGHT LINE) -->
+      <div class="skills-deck">
+        <div class="skills-deck-title">🧠 Skills Utilized:</div>
+        <div class="skills-row">
+          <span class="skill-pill">Python FFT</span>
+          <span class="skill-pill">Instrumentation Amplifiers</span>
+          <span class="skill-pill">Notch Filtering (60Hz)</span>
+          <span class="skill-pill">Oscilloscope Verification</span>
+          <span class="skill-pill">Bio-Sensory Inputs</span>
         </div>
       </div>
       <!-- RESOURCE & LINKS DECK -->
@@ -937,34 +965,40 @@
               <li>Validated blood pressure measurements through experimental testing.</li>
             </ul>
           </div>
-
-
-        </div>
-        <div class="panel-right">
-        <div class="project-image">
-          <img src="breadekg.webp" alt="Sustainable Recycling Center Design">
-        </div>
-        <div class="dossier-card results">
+          <div class="dossier-card results">
             <h4>📈 Results</h4>
             <p>Successfully measured and calculated physiological cardiovascular parameters using a fully integrated custom-built system.</p>
-        </div>
-        <div class="dossier-card skills">
-          <h4>🧠 Skills Utilized</h4>
-          <div class="skills-section">
-            <span class="skill-pill">Pressure Transducer Tuning</span>
-            <span class="skill-pill">Oscillometric Algorithms</span>
-            <span class="skill-pill">Signal Peak Detection</span>
-            <span class="skill-pill">Clinical Standards</span>
-            <span class="skill-pill">MATLAB Processing</span>
           </div>
         </div>
-
+        <div class="panel-right">
+          <div class="project-image">
+            <img src="bloodpressure.webp" alt="Blood Pressure Circuit Board" onerror="this.src='https://placehold.co/400x300/d7e3fc/1f2937?text=Blood+Pressure+System'">
+          </div>
+          <div class="troubleshoot-box challenge">
+            <h4>Engineering Challenges</h4>
+            <p>Accurately identifying oscillometric peaks was difficult because of signal noise and pressure fluctuations.</p>
+          </div>
+          <div class="troubleshoot-box solution">
+            <h4>How They Were Solved</h4>
+            <p>Applied digital signal processing and filtering techniques to improve peak detection and measurement accuracy.</p>
+          </div>
+        </div>
+      </div>
+      <!-- SKILLS DECK (STRAIGHT LINE) -->
+      <div class="skills-deck">
+        <div class="skills-deck-title">🧠 Skills Utilized:</div>
+        <div class="skills-row">
+          <span class="skill-pill">Pressure Transducer Tuning</span>
+          <span class="skill-pill">Oscillometric Algorithms</span>
+          <span class="skill-pill">Signal Peak Detection</span>
+          <span class="skill-pill">Clinical Standards</span>
+          <span class="skill-pill">MATLAB Processing</span>
         </div>
       </div>
       <!-- RESOURCE & LINKS DECK -->
       <div class="link-deck">
         <div class="link-deck-title">Project Resources:</div>
-        <a href="🤖 Everyday Moving Helper.html" class="deck-link primary">Read Full Project →</a>
+        <a href="🩺 Blood Pressure Monitor.html" class="deck-link primary">Read Full Project →</a>
         <a href="#" class="deck-link">Peak Detection Script</a>
         <a href="#" class="deck-link">Pneumatic Connection Manual</a>
       </div>
@@ -992,32 +1026,40 @@
               <li>Mentored students throughout the design and problem-solving process.</li>
             </ul>
           </div>
-        
-        </div>
-        <div class="panel-right">
-        <div class="project-image">
-          <img src="Screen Shot 2026-07-08 at 8.34.48 PM.png" alt="Sustainable Recycling Center Design">
-        </div>
-        <div class="dossier-card results">
+          <div class="dossier-card results">
             <h4>📈 Results</h4>
             <p>Engaged students in interactive STEM learning while increasing confidence, participation, and interest in engineering through hands-on activities.</p>
+          </div>
         </div>
-        <div class="dossier-card skills">
-          <h4>🧠 Skills Utilized</h4>
-          <div class="skills-section">
-            <span class="skill-pill">Curriculum Architecture</span>
-            <span class="skill-pill">Human Factors</span>
-            <span class="skill-pill">Interactive Programming</span>
-            <span class="skill-pill">Team Mentorship</span>
-            <span class="skill-pill">Science Communication</span>
+        <div class="panel-right">
+          <div class="project-image">
+            <img src="inspirelabs.webp" alt="Inspire Labs STEM Outreach" onerror="this.src='https://placehold.co/400x300/d7e3fc/1f2937?text=Inspire+Labs'">
+          </div>
+          <div class="troubleshoot-box challenge">
+            <h4>Engineering Challenges</h4>
+            <p>Engineering concepts needed to be simplified without losing their educational value or reducing student engagement.</p>
+          </div>
+          <div class="troubleshoot-box solution">
+            <h4>How They Were Solved</h4>
+            <p>Designed visual demonstrations, interactive experiments, and project-based activities that made complex engineering concepts accessible to younger learners.</p>
           </div>
         </div>
       </div>
-    </div>
+      <!-- SKILLS DECK (STRAIGHT LINE) -->
+      <div class="skills-deck">
+        <div class="skills-deck-title">🧠 Skills Utilized:</div>
+        <div class="skills-row">
+          <span class="skill-pill">Curriculum Architecture</span>
+          <span class="skill-pill">Human Factors</span>
+          <span class="skill-pill">Interactive Programming</span>
+          <span class="skill-pill">Team Mentorship</span>
+          <span class="skill-pill">Science Communication</span>
+        </div>
+      </div>
       <!-- RESOURCE & LINKS DECK -->
       <div class="link-deck">
         <div class="link-deck-title">Project Resources:</div>
-        <a href="🧪 Inspire Labs.html" class="deck-link primary">Read Full Project →</a>
+        <a href="🏫 Inspire Labs.html" class="deck-link primary">Read Full Project →</a>
         <a href="#" class="deck-link">Download Lesson Manifests (.PDF)</a>
         <a href="#" class="deck-link">Outreach Event Photos</a>
       </div>
@@ -1025,11 +1067,15 @@
 
   </section>
 
-  <section class="next-page-container">
-    <p>Finished reading?</p>
-    <a href="experiences.html" class="next-page-btn">Explore My Experiences <span class="arrow">→</span></a>
-  </section>
-  
+  <!-- NEXT PAGE CTA -->
+  <div class="next-page-container">
+    <p>Up Next</p>
+    <a href="experiences.html" class="next-page-btn">
+      View Professional Experiences
+      <span class="arrow">→</span>
+    </a>
+  </div>
+
   <!-- FOOTER -->
   <footer>
     <p>© 2026 Chelsea Ogbonna • Built with Clean Code Foundations</p>
