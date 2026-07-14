@@ -641,41 +641,25 @@ box-shadow:
 
 
 .project-image{
-height:180px;
-
-
-background:var(--card);
-
-
-display:flex;
-
-
-align-items:center;
-
-
-justify-content:center;
-
-
-overflow:hidden;
-
+    width:100%;
+    height:250px;                 /* Adjust to your preferred height */
+    background:#ffffff;           /* Background behind image */
+    border:2px solid var(--border);
+    border-radius:18px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:12px;                 /* Space around image */
+    overflow:hidden;
+    box-sizing:border-box;
 }
-
-
 
 .project-image img{
-
-width:100%;
-
-height:100%;
-
-
-object-fit:cover;
-
-
-display:block;
-
+    width:100%;
+    height:100%;
+    object-fit:contain;           /* Shows the ENTIRE image */
+    border-radius:10px;
 }
-
 
 
 /* project content */
@@ -868,13 +852,24 @@ color:var(--muted);
     align-items:center;
 }
 
-.experience-image img{
+.experience-image{
     width:100%;
-    height:320px;
-    object-fit:cover;
-    border-radius:20px;
+    height:250px;
+    background:#ffffff;
+    border:2px solid var(--border);
+    border-radius:18px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:12px;
+    box-sizing:border-box;
 }
 
+.experience-image img{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+}
 .experience-badge{
     display:inline-block;
     background:var(--accent);
@@ -2315,7 +2310,7 @@ design, COMSOL simulation, and microfabrication.
 </p>
 
 
-<a href="experiences.html#research-experience"
+<a href="experiences.html#solutions-lab"
 class="project-link">
 
 Learn More →
