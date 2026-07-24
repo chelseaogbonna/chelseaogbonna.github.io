@@ -3,96 +3,224 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hire Me... Please? 👀</title>
+  <title>Hire Chelsea Ogbonna... Please? 👀</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&family=Outfit:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    body { font-family: 'Comic Neue', system-ui, sans-serif; }
-    .beg { animation: beg 1.5s infinite alternate; }
-    @keyframes beg { from { transform: translateY(0); } to { transform: translateY(-15px); } }
+    body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
+    .fun-font { font-family: 'Comic Neue', cursive, sans-serif; }
+    .title-font { font-family: 'Outfit', sans-serif; }
+    
+    .beg { animation: beg 1.5s infinite alternate ease-in-out; }
+    @keyframes beg { from { transform: translateY(0) scale(1); } to { transform: translateY(-12px) scale(1.05); } }
+
+    .pulse-glow { animation: pulseGlow 2s infinite alternate; }
+    @keyframes pulseGlow {
+      from { box-shadow: 0 0 15px rgba(250, 204, 21, 0.2); }
+      to { box-shadow: 0 0 35px rgba(250, 204, 21, 0.6); }
+    }
   </style>
 </head>
-<body class="bg-gradient-to-br from-purple-900 via-indigo-900 to-black text-white min-h-screen">
-  <div class="max-w-2xl mx-auto pt-16 px-6 text-center">
+<body class="bg-gradient-to-br from-purple-950 via-indigo-950 to-black text-white min-h-screen relative overflow-x-hidden">
+
+  <!-- Floating Ambient Blur Elements -->
+  <div class="fixed top-10 left-10 w-96 h-96 bg-pink-600/20 rounded-full blur-3xl pointer-events-none"></div>
+  <div class="fixed bottom-10 right-10 w-96 h-96 bg-purple-600/20 rounded-full blur-3xl pointer-events-none"></div>
+
+  <!-- Top Navigation Link back to Portfolio -->
+  <div class="max-w-4xl mx-auto pt-6 px-6 flex justify-between items-center">
+    <a href="index.html" class="text-purple-300 hover:text-white transition-colors flex items-center gap-2 font-medium text-sm">
+      <i class="fa-solid fa-arrow-left"></i> Back to Main Technical Portfolio
+    </a>
+    <span class="bg-purple-900/60 border border-purple-500/30 text-purple-200 text-xs px-3 py-1 rounded-full">
+      ✨ Chelsea Ogbonna • Human Side
+    </span>
+  </div>
+
+  <div class="max-w-3xl mx-auto pt-10 px-6 text-center">
     
-    <!-- Hero -->
-    <div class="mb-12">
-      <div class="text-6xl mb-4">🙏😂</div>
-      <h1 class="text-5xl font-bold tracking-tight mb-4">
-        Please Hire Me<br>
-        <span class="text-yellow-400">I'm Running Out of Ramen</span>
+    <!-- Hero Header -->
+    <div class="mb-10">
+      <div class="text-7xl mb-4 inline-block beg">🙏😂</div>
+      <h1 class="title-font text-5xl md:text-6xl font-extrabold tracking-tight mb-4 leading-tight">
+        Please Hire Chelsea<br>
+        <span class="text-yellow-400 bg-gradient-to-r from-yellow-300 via-amber-400 to-yellow-500 bg-clip-text text-transparent">
+          I'm Running Out of Coffee & CAD Motivation
+        </span>
       </h1>
-      <p class="text-2xl text-purple-300">Professional [Your Role] • Professional Meme Lord</p>
-    </div>
-
-    <!-- Funny Plea -->
-    <div class="bg-white/10 backdrop-blur-md rounded-3xl p-8 mb-10 border border-white/20">
-      <p class="text-2xl leading-relaxed">
-        Look, I'm not saying I'm the best candidate you'll see today...<br>
-        <span class="text-yellow-300 font-medium">but I am saying I will bring snacks and unmatched vibes to every meeting.</span>
+      <p class="text-2xl text-purple-200 font-medium">
+        Biomedical & Mechanical Engineer • Professional Meme Lord • Team Energizer
       </p>
-      <div class="my-8 text-7xl beg">🥺</div>
-      <p class="text-xl italic">"If you hire me, I promise to never use Comic Sans... unless it's ironically."</p>
     </div>
 
-    <!-- Why Me (humorous) -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-      <div class="bg-white/10 backdrop-blur rounded-2xl p-6">
-        <i class="fa-solid fa-rocket text-4xl mb-4 text-yellow-400"></i>
-        <h3 class="text-xl font-semibold">Speed</h3>
-        <p class="text-purple-200">I debug faster than I can eat a bag of chips</p>
-      </div>
-      <div class="bg-white/10 backdrop-blur rounded-2xl p-6">
-        <i class="fa-solid fa-face-laugh-squint text-4xl mb-4 text-yellow-400"></i>
-        <h3 class="text-xl font-semibold">Culture Fit</h3>
-        <p class="text-purple-200">I will make dad jokes in standup and you’ll pretend to hate them</p>
-      </div>
-      <div class="bg-white/10 backdrop-blur rounded-2xl p-6">
-        <i class="fa-solid fa-hand-holding-heart text-4xl mb-4 text-yellow-400"></i>
-        <h3 class="text-xl font-semibold">Loyalty</h3>
-        <p class="text-purple-200">I’ll stay until the free snacks run out (probably 3–5 years)</p>
+    <!-- Funny Plea Card -->
+    <div class="bg-white/10 backdrop-blur-md rounded-3xl p-8 mb-10 border border-white/20 shadow-2xl">
+      <p class="text-2xl leading-relaxed">
+        Look, my technical portfolio proves I can model CAD, analyze sensor data, and fabricate microfluidics...<br>
+        <span class="text-yellow-300 font-semibold">
+          but THIS page proves I will bring snacks, crystal-clear communication, and unmatched vibes to every sprint.
+        </span>
+      </p>
+      <div class="my-6 text-7xl beg">🥺</div>
+      <p class="text-xl italic fun-font text-purple-200">
+        "If you hire me, I promise to deliver clean code, proactive updates, and zero unnecessary meeting silences."
+      </p>
+    </div>
+
+    <!-- Soft Skills Matrix / "Why Me" Grid -->
+    <div class="mb-12">
+      <h2 class="title-font text-xs uppercase tracking-widest text-purple-300 font-bold mb-6">
+        ⚡ The Workplace Synergy Breakdown
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <div class="bg-white/10 backdrop-blur hover:bg-white/15 transition-all rounded-2xl p-6 border border-white/10 text-left">
+          <i class="fa-solid fa-bolt text-4xl mb-4 text-yellow-400"></i>
+          <h3 class="title-font text-xl font-bold mb-1">Clear Velocity</h3>
+          <p class="text-purple-200 text-sm leading-relaxed">
+            I debug, document, and update faster than I can finish a boba tea. No status updates left unread.
+          </p>
+        </div>
+
+        <div class="bg-white/10 backdrop-blur hover:bg-white/15 transition-all rounded-2xl p-6 border border-white/10 text-left">
+          <i class="fa-solid fa-face-laugh-squint text-4xl mb-4 text-yellow-400"></i>
+          <h3 class="title-font text-xl font-bold mb-1">Culture Champion</h3>
+          <p class="text-purple-200 text-sm leading-relaxed">
+            I bring high morale to intense sprint deadlines. Dad jokes in standup? You know it's happening.
+          </p>
+        </div>
+
+        <div class="bg-white/10 backdrop-blur hover:bg-white/15 transition-all rounded-2xl p-6 border border-white/10 text-left">
+          <i class="fa-solid fa-hand-holding-heart text-4xl mb-4 text-yellow-400"></i>
+          <h3 class="title-font text-xl font-bold mb-1">Unmatched Loyalty</h3>
+          <p class="text-purple-200 text-sm leading-relaxed">
+            I'll stay until the free office snacks run out (or until we successfully launch our 10th product revision).
+          </p>
+        </div>
+
       </div>
     </div>
 
-    <!-- Call to Action -->
+    <!-- Interactive Translator Box -->
+    <div class="bg-white/10 backdrop-blur-md rounded-3xl p-8 mb-12 border border-white/20 text-left">
+      <h3 class="title-font text-lg font-bold text-yellow-400 mb-3 flex items-center gap-2">
+        <i class="fa-solid fa-language"></i> Buzzword vs. How Chelsea Actually Operates
+      </h3>
+      <div class="flex flex-wrap gap-2 mb-4">
+        <button onclick="updateYap('yap1', this)" class="yap-btn active bg-yellow-400 text-black font-semibold text-xs px-4 py-2 rounded-full transition-all">
+          "Strong Communicator"
+        </button>
+        <button onclick="updateYap('yap2', this)" class="yap-btn bg-purple-900/80 hover:bg-purple-800 text-white font-semibold text-xs px-4 py-2 rounded-full transition-all">
+          "Adaptable Team Player"
+        </button>
+        <button onclick="updateYap('yap3', this)" class="yap-btn bg-purple-900/80 hover:bg-purple-800 text-white font-semibold text-xs px-4 py-2 rounded-full transition-all">
+          "Detail-Oriented"
+        </button>
+      </div>
+      <div class="bg-black/40 rounded-xl p-4 border-l-4 border-yellow-400">
+        <p id="yapOutput" class="text-purple-100 text-sm leading-relaxed">
+          I keep multidisciplinary teams aligned, bridge engineering gaps with clear documentation, and never leave colleagues guessing about project status.
+        </p>
+      </div>
+    </div>
+
+    <!-- Interactive Vibe Pill Selector -->
+    <div class="mb-12">
+      <h3 class="title-font text-sm uppercase tracking-widest text-purple-300 font-bold mb-4">
+        👉 Click a soft skill to unlock Chelsea's secret weapon:
+      </h3>
+      <div class="flex flex-wrap justify-center gap-3">
+        <button onclick="showSkill('💬 Proactive Updates', 'I send concise, daily progress notes so team leads never have to ask status updates twice.')" class="bg-white/10 hover:bg-yellow-400 hover:text-black border border-white/20 px-5 py-2.5 rounded-full text-sm font-semibold transition-all">
+          💬 Proactive Updates
+        </button>
+        <button onclick="showSkill('⚡ High Sprint Energy', 'When deadlines get tight, I keep morale high and focus sharp with optimism and steady execution.')" class="bg-white/10 hover:bg-yellow-400 hover:text-black border border-white/20 px-5 py-2.5 rounded-full text-sm font-semibold transition-all">
+          ⚡ High Sprint Energy
+        </button>
+        <button onclick="showSkill('🎧 Active Listening', 'I ask targeted questions during initial scoping to catch tolerance issues and edge cases early.')" class="bg-white/10 hover:bg-yellow-400 hover:text-black border border-white/20 px-5 py-2.5 rounded-full text-sm font-semibold transition-all">
+          🎧 Active Listening
+        </button>
+      </div>
+      <div id="skillToast" class="hidden mt-4 bg-yellow-400/20 border border-yellow-400/50 p-4 rounded-xl text-yellow-200 text-sm"></div>
+    </div>
+
+    <!-- Peer Feedback Quote Banner -->
+    <div class="bg-gradient-to-r from-purple-900/60 to-indigo-900/60 rounded-2xl p-6 mb-12 border border-purple-500/30 text-left">
+      <i class="fa-solid fa-quote-left text-3xl text-purple-400 mb-2 block"></i>
+      <p class="text-purple-100 italic text-base leading-relaxed mb-3">
+        "Chelsea brings a rare balance of technical rigor and team warmth. She makes complex engineering collaboration feel effortless and genuinely fun."
+      </p>
+      <span class="text-xs font-bold text-yellow-400 uppercase tracking-wider">— Engineering Project Collaborator</span>
+    </div>
+
+    <!-- Call to Action Section -->
     <div class="mb-16">
-      <a href="mailto:your.email@example.com?subject=You%20Had%20Me%20at%20Ramen" 
-         class="inline-block bg-yellow-400 hover:bg-yellow-300 text-black font-bold text-2xl px-12 py-6 rounded-3xl transition-all transform hover:scale-105 active:scale-95 shadow-xl">
+      <a href="mailto:chelsea@example.com?subject=You%20Had%20Me%20at%20Ramen%20%26%20CAD" 
+         class="pulse-glow inline-block bg-yellow-400 hover:bg-yellow-300 text-black font-extrabold text-2xl px-12 py-6 rounded-3xl transition-all transform hover:scale-105 active:scale-95 shadow-2xl">
         Hire This Absolute Legend →
       </a>
-      <p class="mt-6 text-sm text-purple-300">or at least reply so I can stop refreshing my inbox like a maniac</p>
+      <p class="mt-6 text-sm text-purple-300">
+        or send an email so I can stop refreshing my inbox like a maniac ☕
+      </p>
     </div>
 
     <!-- Footer -->
-    <footer class="text-purple-400 text-sm pb-12">
-      Made with ❤️, desperation, and way too much coffee<br>
-      P.S. I’m actually really good at what I do. Let’s chat?
+    <footer class="text-purple-400 text-sm pb-12 border-t border-purple-900/50 pt-8">
+      Made with ❤️, engineering enthusiasm, and way too much coffee.<br>
+      <span class="text-yellow-400 font-medium">P.S. I’m actually really good at what I do. Let’s build something great together!</span>
     </footer>
+
   </div>
 
   <script>
-    // Little confetti when they click the big button
-    document.querySelector('a').addEventListener('click', () => {
-      for(let i = 0; i < 60; i++) {
+    // Confetti Cannon Trigger
+    document.querySelector('a[href^="mailto"]').addEventListener('click', (e) => {
+      for(let i = 0; i < 70; i++) {
         setTimeout(() => {
           const confetti = document.createElement('div');
-          confetti.textContent = ['🎉','🚀','💼','😂'][Math.floor(Math.random()*4)];
+          confetti.textContent = ['🎉','🚀','💼','😂','✨','⚙️','🌸'][Math.floor(Math.random()*7)];
           confetti.style.position = 'fixed';
           confetti.style.left = Math.random() * 100 + 'vw';
           confetti.style.top = '-50px';
-          confetti.style.fontSize = '2rem';
-          confetti.style.transition = 'all 3s';
+          confetti.style.fontSize = (Math.random() * 1.5 + 1.5) + 'rem';
+          confetti.style.zIndex = '9999';
+          confetti.style.pointerEvents = 'none';
+          confetti.style.transition = 'all 3s cubic-bezier(0.25, 1, 0.5, 1)';
           document.body.appendChild(confetti);
           
           setTimeout(() => {
-            confetti.style.top = '100vh';
+            confetti.style.top = '105vh';
             confetti.style.transform = `rotate(${Math.random()*720}deg)`;
           }, 50);
           
           setTimeout(() => confetti.remove(), 3500);
-        }, i * 8);
+        }, i * 12);
       }
     });
+
+    // Translator Switcher
+    const yaps = {
+      yap1: "I keep multidisciplinary teams aligned, bridge engineering gaps with clear documentation, and never leave colleagues guessing about project status.",
+      yap2: "When specifications shift mid-sprint, I adjust CAD assemblies and workflows smoothly without losing team momentum or positivity.",
+      yap3: "I catch tolerance overlaps, communication gaps, and micro-details before physical prototypes ever hit production."
+    };
+
+    function updateYap(key, btn) {
+      document.querySelectorAll('.yap-btn').forEach(b => {
+        b.className = 'yap-btn bg-purple-900/80 hover:bg-purple-800 text-white font-semibold text-xs px-4 py-2 rounded-full transition-all';
+      });
+      btn.className = 'yap-btn active bg-yellow-400 text-black font-semibold text-xs px-4 py-2 rounded-full transition-all';
+      document.getElementById('yapOutput').innerText = yaps[key];
+    }
+
+    // Soft Skill Toast Trigger
+    function showSkill(title, desc) {
+      const toast = document.getElementById('skillToast');
+      toast.innerHTML = `<strong>${title}:</strong> ${desc}`;
+      toast.classList.remove('hidden');
+    }
   </script>
 </body>
 </html>
