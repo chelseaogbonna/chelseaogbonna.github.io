@@ -38,25 +38,6 @@
       to { box-shadow: 0 0 35px rgba(35, 206, 217, 0.7); }
     }
 
-    /* 🕺 DANCING ANIMAL ANIMATIONS 🕺 */
-    .dancer {
-      animation: dance 0.6s infinite alternate ease-in-out;
-      display: inline-block;
-      transform-origin: bottom center;
-    }
-
-    @keyframes dance {
-      0% {
-        transform: translateY(0) rotate(-8deg) scaleY(1);
-      }
-      50% {
-        transform: translateY(-18px) rotate(0deg) scaleY(1.05);
-      }
-      100% {
-        transform: translateY(0) rotate(8deg) scaleY(1);
-      }
-    }
-
     /* Speech Bubble Tail */
     .speech-bubble::after {
       content: '';
@@ -215,22 +196,25 @@
       </p>
     </div>
 
-    <!-- 🐱 DANCING ANIMAL SECTION 🐱 -->
+    <!-- 🐹 INTEGRATED DANCING HAMSTER SECTION 🐹 -->
     <div class="my-12 flex flex-col items-center justify-center relative">
       <!-- Speech Bubble -->
-      <div class="speech-bubble relative bg-aqua text-tealDark font-extrabold text-sm md:text-base px-6 py-3 rounded-2xl shadow-lg border-2 border-white mb-4 animate-bounce">
+      <div class="speech-bubble relative bg-aqua text-tealDark font-extrabold text-base md:text-lg px-6 py-3 rounded-2xl shadow-lg border-2 border-white mb-4 animate-bounce">
         💖 Thank you for coming to my website! 💖
       </div>
 
-      <!-- Stage Glow -->
+      <!-- Integrated Video/Animation Box -->
       <div class="relative flex items-center justify-center">
-        <div class="absolute bottom-0 w-32 h-6 bg-sunshine/80 rounded-full blur-md"></div>
-        <!-- Dancing Cat/Bear Emoji Animal -->
-        <div class="dancer text-7xl select-none cursor-pointer filter drop-shadow-md" title="Party Time!" onclick="toggleDanceAnimal(this)">
-          🐱
-        </div>
+        <!-- Glowing Floor Stage -->
+        <div class="absolute bottom-0 w-64 h-8 bg-sunshine/80 rounded-full blur-md"></div>
+        
+        <!-- Seamless Video Integration (No controls, continuous loop) -->
+        <video autoplay loop muted playsinline class="w-60 md:w-72 h-auto relative z-10 rounded-3xl shadow-2xl border-4 border-white object-cover">
+          <source src="dancing-hamster.mp4" type="video/mp4">
+          <!-- Fallback image/gif if video file is missing or gif is preferred -->
+          <img src="dancing-hamster.gif" alt="Dancing Hamster" class="w-60 md:w-72 h-auto rounded-3xl">
+        </video>
       </div>
-      <p class="text-xs font-bold text-coral mt-3">Click the cat to switch dancers! 🕺</p>
     </div>
 
     <!-- Footer -->
@@ -266,14 +250,6 @@
         }, i * 12);
       }
     });
-
-    // Switch Dancing Animal on Click
-    const animals = ['🐱', '🐻', '🐰', '🐶', '🦊', '🐼', '🐸', '🦁'];
-    let animalIdx = 0;
-    function toggleDanceAnimal(el) {
-      animalIdx = (animalIdx + 1) % animals.length;
-      el.textContent = animals[animalIdx];
-    }
 
     // Translator Switcher
     const yaps = {
