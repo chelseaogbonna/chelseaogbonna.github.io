@@ -3,50 +3,53 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Chelsea Ogbonna | Hire Me (Not a Drill)</title>
+  <title>Chelsea Ogbonna | Hire Me ✨</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg-gradient: linear-gradient(135deg, #18002e 0%, #3a0066 40%, #110022 100%);
-      --neon-pink: #ff007f;
-      --solar-yellow: #ffe600;
-      --electric-cyan: #00f5ff;
-      --bright-purple: #9d4edd;
-      --white: #ffffff;
-      --glass-bg: rgba(255, 255, 255, 0.07);
-      --glass-border: rgba(255, 255, 255, 0.2);
-      --neon-shadow: 0 0 25px rgba(255, 0, 127, 0.6);
-      --cyan-shadow: 0 0 25px rgba(0, 245, 255, 0.5);
-      --yellow-shadow: 0 0 25px rgba(255, 230, 0, 0.5);
+      --bg-base: #FAF8F5;
+      --text-dark: #2B2D42;
+      --text-muted: #6C757D;
+      
+      --pastel-pink: #FFC0CB;
+      --pastel-pink-soft: #FFF0F3;
+      --pastel-lavender: #E8DFF5;
+      --pastel-mint: #D8F3DC;
+      --pastel-yellow: #FEF9E7;
+      --pastel-butter: #FDE2E4;
+      --pastel-blue: #D0F4DE;
+
+      --card-bg: rgba(255, 255, 255, 0.75);
+      --card-border: rgba(255, 255, 255, 0.9);
+      --card-shadow: 0 10px 30px rgba(180, 160, 190, 0.12);
+      --hover-shadow: 0 15px 35px rgba(180, 160, 190, 0.22);
     }
 
     html { scroll-behavior: smooth; }
 
     body {
-      background: var(--bg-gradient);
-      background-attachment: fixed;
-      color: var(--white);
-      font-family: 'Space Grotesk', sans-serif;
+      background-color: var(--bg-base);
+      color: var(--text-dark);
+      font-family: 'Plus Jakarta Sans', sans-serif;
       min-height: 100vh;
       overflow-x: hidden;
       position: relative;
     }
 
-    /* BACKGROUND MESH & GLOWS */
-    .cyber-background {
+    /* SOFT PASTEL BACKGROUND BLUR */
+    .ambient-bg {
       position: fixed;
       top: 0; left: 0; width: 100%; height: 100%;
       z-index: 1; pointer-events: none;
-      background-image: 
-        radial-gradient(circle at 10% 20%, rgba(255, 0, 127, 0.25) 0%, transparent 40%),
-        radial-gradient(circle at 90% 80%, rgba(0, 245, 255, 0.25) 0%, transparent 40%),
-        linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-      background-size: 100% 100%, 100% 100%, 30px 30px, 30px 30px;
+      background: 
+        radial-gradient(circle at 15% 20%, #FFE5EC 0%, transparent 45%),
+        radial-gradient(circle at 85% 30%, #E8DFF5 0%, transparent 45%),
+        radial-gradient(circle at 50% 75%, #E8F5E9 0%, transparent 50%);
+      filter: blur(40px);
     }
 
     #canvas {
@@ -61,122 +64,127 @@
       align-items: center;
       gap: 8px;
       font-size: 13px;
-      font-weight: 700;
-      color: var(--electric-cyan);
+      font-weight: 600;
+      color: var(--text-muted);
       text-decoration: none;
-      padding: 1.5rem 2rem;
+      padding: 2rem;
       position: relative;
       z-index: 10;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
+      letter-spacing: 0.5px;
+      transition: color 0.2s, transform 0.2s;
     }
-    .back:hover { color: var(--solar-yellow); transform: translateX(-4px); }
+    .back:hover { color: var(--text-dark); transform: translateX(-3px); }
     .back svg { width: 16px; height: 16px; }
 
     /* HERO */
     .hero {
       text-align: center;
-      padding: 2rem 1.5rem 2rem;
+      padding: 1rem 1.5rem 3rem;
       position: relative;
       z-index: 5;
     }
 
-    .wildcat-flag {
-      display: inline-block;
-      background: var(--solar-yellow);
-      color: #000;
-      font-family: 'Syne', sans-serif;
-      font-weight: 800;
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--pastel-pink-soft);
+      color: #D65A7A;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 600;
       font-size: 13px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      padding: 8px 20px;
+      padding: 8px 18px;
       border-radius: 99px;
       margin-bottom: 1.5rem;
-      box-shadow: var(--yellow-shadow);
-      transform: rotate(-1deg);
-      cursor: pointer;
+      border: 1px solid rgba(214, 90, 122, 0.2);
     }
-    .wildcat-flag:hover { transform: scale(1.05) rotate(1deg); }
 
     .hero h1 {
-      font-family: 'Syne', sans-serif;
-      font-weight: 800;
-      font-size: clamp(38px, 8vw, 76px);
-      line-height: 1;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      font-size: clamp(38px, 6.5vw, 68px);
+      line-height: 1.15;
+      color: var(--text-dark);
       letter-spacing: -1px;
     }
-    .hero h1 .gradient {
-      background: linear-gradient(135deg, var(--solar-yellow), var(--neon-pink));
+
+    .hero h1 .highlight {
+      background: linear-gradient(120deg, #E0A96D, #D65A7A);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
-    .hero h1 .cyan { color: var(--electric-cyan); text-shadow: var(--cyan-shadow); }
 
     .hero-sub {
-      font-size: 18px;
-      color: #e0e0e0;
-      max-width: 650px;
+      font-size: 17px;
+      color: var(--text-muted);
+      max-width: 580px;
       margin: 1.2rem auto 0;
-      line-height: 1.5;
+      line-height: 1.6;
+      font-weight: 400;
     }
 
-    /* SCANNABLE STAT BRAG BAR */
+    /* STAT CARDS */
     .stat-bar {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      gap: 15px;
-      max-width: 850px;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+      max-width: 800px;
       margin: 2.5rem auto 0;
       padding: 0 1rem;
     }
+
     .stat-card {
-      background: rgba(0, 0, 0, 0.4);
-      border: 2px solid var(--electric-cyan);
-      border-radius: 16px;
-      padding: 15px;
-      box-shadow: var(--cyan-shadow);
+      background: var(--card-bg);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: var(--card-shadow);
       text-align: center;
+      transition: transform 0.2s ease;
     }
+    .stat-card:hover { transform: translateY(-3px); }
+
     .stat-card .num {
-      font-family: 'Syne', sans-serif;
-      font-size: 32px;
-      font-weight: 800;
-      color: var(--solar-yellow);
+      font-family: 'Outfit', sans-serif;
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--text-dark);
     }
     .stat-card .label {
       font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      color: var(--white);
+      font-weight: 600;
+      color: var(--text-muted);
       margin-top: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
 
     /* TICKER */
     .ticker-wrap {
       overflow: hidden;
-      background: var(--neon-pink);
-      color: #000;
-      padding: 12px 0;
-      margin: 3rem 0;
+      background: var(--pastel-lavender);
+      color: var(--text-dark);
+      padding: 14px 0;
+      margin: 3.5rem 0;
       white-space: nowrap;
-      transform: rotate(-1deg);
-      box-shadow: var(--neon-shadow);
+      border-top: 1px solid rgba(255,255,255,0.6);
+      border-bottom: 1px solid rgba(255,255,255,0.6);
     }
-    .ticker { display: inline-block; animation: ticker 20s linear infinite; }
+    .ticker { display: inline-block; animation: ticker 25s linear infinite; }
     .ticker span {
-      font-family: 'Syne', sans-serif;
-      font-size: 15px;
-      font-weight: 800;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      margin-right: 2rem;
+      font-family: 'Outfit', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      margin-right: 2.5rem;
     }
+    .ticker span.dot { color: #A29BFE; margin-right: 2.5rem; }
     @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
     /* WRAPPER */
     .wrap {
-      max-width: 850px;
+      max-width: 800px;
       margin: 0 auto;
       padding: 0 1.5rem 5rem;
       position: relative;
@@ -184,50 +192,47 @@
     }
 
     .slabel {
-      font-size: 12px;
-      font-weight: 800;
-      letter-spacing: 2px;
+      font-family: 'Outfit', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
       text-transform: uppercase;
-      color: var(--solar-yellow);
-      margin-bottom: 1rem;
-      margin-top: 3.5rem;
+      color: #8E7DBE;
+      margin-bottom: 1.2rem;
+      margin-top: 4rem;
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
     }
     .slabel::after {
       content: "";
       flex-grow: 1;
-      height: 2px;
-      background: linear-gradient(90deg, var(--solar-yellow), transparent);
+      height: 1px;
+      background: #E2DBF0;
     }
 
-    /* VISUAL MEME & IMAGE GRID SECTION */
+    /* VISUAL GALLERY */
     .meme-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       gap: 20px;
     }
     .meme-card {
-      background: var(--glass-bg);
-      border: 2px solid var(--glass-border);
-      border-radius: 16px;
+      background: var(--card-bg);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
       overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      transition: transform 0.2s, border-color 0.2s;
+      box-shadow: var(--card-shadow);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
     }
     .meme-card:hover {
-      transform: translateY(-5px);
-      border-color: var(--neon-pink);
-      box-shadow: var(--neon-shadow);
+      transform: translateY(-4px);
+      box-shadow: var(--hover-shadow);
     }
     .meme-img-container {
       height: 180px;
-      background: #000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      background: #f0f0f0;
       position: relative;
       overflow: hidden;
     }
@@ -237,199 +242,301 @@
       object-fit: cover;
     }
     .meme-caption {
-      padding: 15px;
-      font-size: 14px;
-      line-weight: 1.4;
+      padding: 18px;
+      font-size: 13.5px;
+      line-height: 1.5;
+      color: var(--text-muted);
     }
-    .meme-caption strong { color: var(--electric-cyan); display: block; margin-bottom: 4px; }
+    .meme-caption strong {
+      font-family: 'Outfit', sans-serif;
+      font-size: 15px;
+      color: var(--text-dark);
+      display: block;
+      margin-bottom: 4px;
+    }
 
-    /* EXECUTIVE SUMMARY CARD */
+    /* EXECUTIVE SUMMARY */
     .beg-block {
-      background: rgba(0, 0, 0, 0.4);
-      border: 2px solid var(--neon-pink);
-      border-radius: 20px;
-      padding: 2rem;
-      box-shadow: var(--neon-shadow);
-      position: relative;
+      background: var(--card-bg);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--card-border);
+      border-radius: 24px;
+      padding: 2.2rem;
+      box-shadow: var(--card-shadow);
     }
     .beg-block h2 {
-      font-family: 'Syne', sans-serif;
-      font-size: 24px;
-      color: var(--solar-yellow);
-      margin-bottom: 1rem;
+      font-family: 'Outfit', sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 10px;
     }
-    .beg-block p { font-size: 16px; line-height: 1.6; }
+    .beg-block p {
+      font-size: 15.5px;
+      line-height: 1.65;
+      color: var(--text-muted);
+    }
 
     /* TRANSLATOR BOX */
     .yap-box {
-      background: var(--glass-bg);
-      border: 2px solid var(--electric-cyan);
-      border-radius: 16px;
-      padding: 25px;
-      box-shadow: var(--cyan-shadow);
+      background: var(--card-bg);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--card-border);
+      border-radius: 24px;
+      padding: 2rem;
+      box-shadow: var(--card-shadow);
     }
-    .yap-selectors { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 15px; }
+    .yap-selectors { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
     .yap-btn {
-      background: rgba(255, 255, 255, 0.1);
-      border: 1px solid var(--white);
-      padding: 8px 14px;
-      border-radius: 8px;
-      color: var(--white);
-      font-weight: 700;
+      background: var(--pastel-yellow);
+      border: 1px solid rgba(0,0,0,0.05);
+      padding: 8px 16px;
+      border-radius: 99px;
+      color: var(--text-dark);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 600;
       font-size: 13px;
       cursor: pointer;
+      transition: all 0.2s ease;
     }
     .yap-btn.active, .yap-btn:hover {
-      background: var(--solar-yellow);
-      color: #000;
-      border-color: var(--solar-yellow);
+      background: var(--pastel-pink);
+      color: var(--text-dark);
     }
     .yap-content {
-      background: rgba(0,0,0,0.5);
-      border-radius: 10px;
-      padding: 15px;
-      border-left: 4px solid var(--neon-pink);
+      background: rgba(255, 255, 255, 0.6);
+      border-radius: 16px;
+      padding: 18px;
+      border-left: 3px solid #D65A7A;
     }
 
     /* VIBE METER */
     .vibe-card {
-      background: var(--glass-bg);
-      border: 2px solid var(--glass-border);
-      border-radius: 20px;
-      padding: 25px;
+      background: var(--card-bg);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--card-border);
+      border-radius: 24px;
+      padding: 2rem;
+      box-shadow: var(--card-shadow);
     }
-    .slider-row { margin-bottom: 15px; }
-    .slider-row label { font-size: 13px; display: flex; justify-content: space-between; margin-bottom: 5px; }
-    .slider-row label span { color: var(--solar-yellow); font-weight: 700; }
+    .slider-row { margin-bottom: 18px; }
+    .slider-row label {
+      font-size: 13px;
+      font-weight: 600;
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      color: var(--text-dark);
+    }
+    .slider-row label span { color: #8E7DBE; }
     .slider-row input[type="range"] {
-      width: 100%; accent-color: var(--neon-pink); cursor: pointer;
+      width: 100%;
+      accent-color: #D65A7A;
+      cursor: pointer;
     }
     .score-banner {
-      background: #000;
-      border: 2px solid var(--solar-yellow);
-      border-radius: 12px;
-      padding: 15px;
+      background: var(--pastel-mint);
+      border-radius: 16px;
+      padding: 16px;
       text-align: center;
-      box-shadow: var(--yellow-shadow);
+      margin-top: 10px;
     }
-    .score-value { font-size: 22px; font-weight: 800; color: var(--solar-yellow); font-family: 'Syne', sans-serif; }
+    .score-value {
+      font-family: 'Outfit', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: #2D6A4F;
+    }
 
     /* SOLIDWORKS CRASH HOTLINE */
     .crash-hotline {
-      background: rgba(255, 0, 0, 0.15);
-      border: 2px solid #ff4d4d;
-      border-radius: 20px;
-      padding: 25px;
+      background: #FFF5F5;
+      border: 1px solid #FFD6D6;
+      border-radius: 24px;
+      padding: 2rem;
       text-align: center;
+      box-shadow: var(--card-shadow);
     }
-    .crash-counter { font-family: 'Syne', sans-serif; font-size: 44px; font-weight: 800; color: #ff4d4d; }
+    .crash-counter {
+      font-family: 'Outfit', sans-serif;
+      font-size: 48px;
+      font-weight: 800;
+      color: #E63946;
+    }
     .crash-btn {
-      background: #ff4d4d; color: var(--white); border: none; padding: 10px 20px;
-      font-weight: 700; border-radius: 8px; margin-top: 10px; cursor: pointer;
-      text-transform: uppercase; font-size: 12px;
+      background: #E63946;
+      color: #FFF;
+      border: none;
+      padding: 10px 22px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 600;
+      border-radius: 99px;
+      margin-top: 12px;
+      cursor: pointer;
+      font-size: 12px;
+      transition: opacity 0.2s;
     }
+    .crash-btn:hover { opacity: 0.9; }
 
-    /* REASONS GRID (2 COLUMNS FOR QUICK SCANNING) */
+    /* REASONS GRID */
     .reasons-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 15px;
+      gap: 16px;
     }
     .reason-card {
-      background: var(--glass-bg);
-      border: 1px solid var(--glass-border);
-      border-radius: 12px;
-      padding: 15px 20px;
+      background: var(--card-bg);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--card-border);
+      border-radius: 18px;
+      padding: 18px 20px;
       display: flex;
-      gap: 15px;
+      gap: 16px;
       align-items: flex-start;
+      box-shadow: var(--card-shadow);
     }
     .reason-num {
-      font-family: 'Syne', sans-serif;
-      font-size: 22px;
-      font-weight: 800;
-      color: var(--electric-cyan);
+      font-family: 'Outfit', sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: #8E7DBE;
     }
-    .reason-card h3 { font-size: 15px; color: var(--solar-yellow); margin-bottom: 4px; }
-    .reason-card p { font-size: 13.5px; color: #ddd; line-height: 1.4; }
+    .reason-card h3 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text-dark);
+      margin-bottom: 2px;
+    }
+    .reason-card p {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      line-height: 1.45;
+    }
 
     /* OFFER FORM */
     .offer-card {
-      background: var(--glass-bg);
-      border: 2px solid var(--glass-border);
-      border-radius: 20px;
-      padding: 25px;
+      background: var(--card-bg);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--card-border);
+      border-radius: 24px;
+      padding: 2rem;
+      box-shadow: var(--card-shadow);
     }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px; }
-    .form-group label { display: block; font-size: 11px; text-transform: uppercase; color: var(--electric-cyan); margin-bottom: 5px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+    .form-group label {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
     .form-group input, .form-group select {
-      width: 100%; background: #000; border: 1px solid var(--glass-border);
-      padding: 10px; border-radius: 8px; color: var(--white); font-family: inherit;
+      width: 100%;
+      background: rgba(255,255,255,0.8);
+      border: 1px solid #E0E0E0;
+      padding: 10px 14px;
+      border-radius: 12px;
+      color: var(--text-dark);
+      font-family: inherit;
+      font-size: 14px;
+      outline: none;
     }
     .contract-preview {
-      background: #000; border: 1px dashed var(--neon-pink); border-radius: 8px;
-      padding: 15px; font-family: monospace; font-size: 13px; color: var(--solar-yellow); line-height: 1.5;
+      background: var(--pastel-yellow);
+      border: 1px dashed #E0C9A6;
+      border-radius: 16px;
+      padding: 18px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 13.5px;
+      color: #6B4E2E;
+      line-height: 1.6;
     }
 
     /* PROMISE BOX */
     .promise { text-align: center; padding: 2rem 1rem; }
-    .promise-checks { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 15px; }
-    .check-item {
-      background: rgba(0,0,0,0.4); border: 1.5px solid var(--electric-cyan);
-      border-radius: 99px; padding: 8px 16px; font-size: 13px; font-weight: 700; cursor: pointer;
+    .promise h2 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 22px;
+      color: var(--text-dark);
     }
-    .check-item:hover { background: var(--electric-cyan); color: #000; }
+    .promise-checks { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 16px; }
+    .check-item {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      box-shadow: var(--card-shadow);
+      border-radius: 99px;
+      padding: 8px 18px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-dark);
+      cursor: pointer;
+      transition: transform 0.2s, background 0.2s;
+    }
+    .check-item:hover {
+      transform: scale(1.03);
+      background: var(--pastel-pink-soft);
+    }
 
     /* BUTTONS */
     .cta-row { display: flex; gap: 15px; justify-content: center; margin-top: 3rem; flex-wrap: wrap; }
     .btn-main {
-      padding: 16px 32px; background: var(--solar-yellow); color: #000;
-      font-weight: 800; border-radius: 99px; text-decoration: none;
-      text-transform: uppercase; letter-spacing: 1px; box-shadow: var(--yellow-shadow);
+      padding: 15px 36px;
+      background: var(--text-dark);
+      color: #FFF;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 600;
+      font-size: 15px;
+      border-radius: 99px;
+      text-decoration: none;
+      letter-spacing: 0.5px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      transition: transform 0.2s ease, opacity 0.2s ease;
     }
-    .btn-main:hover { transform: scale(1.05); }
+    .btn-main:hover { transform: translateY(-2px); opacity: 0.92; }
 
     @media (max-width: 600px) {
-      .form-row { grid-template-columns: 1fr; }
-      .reasons-grid { grid-template-columns: 1fr; }
+      .form-row, .reasons-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
 
-  <div class="cyber-background"></div>
+  <!-- AMBIENT PASTEL GLOW BACKDROP -->
+  <div class="ambient-bg"></div>
   <canvas id="canvas"></canvas>
 
   <a href="index.html" class="back">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
-    Back to Portfolio
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    Portfolio
   </a>
 
-  <!-- HERO -->
+  <!-- HERO PANEL -->
   <div class="hero">
-    <div class="wildcat-flag" id="badgeTrigger">⚡ 100% High-Energy Engineer Inside 💜</div>
+    <div class="status-badge" id="badgeTrigger">✨ High-Energy & Driven Engineer</div>
     <h1>
       Hi, I'm Chelsea.<br />
-      And I <span class="gradient">genuinely</span> want to<br />
-      join <span class="cyan">your team.</span>
+      I'd love to join <span class="highlight">your team.</span>
     </h1>
     <p class="hero-sub">
-      Skip the dry cover letters. Here is a high-speed, interactive feasibility study on why hiring me is the easiest win for your team this quarter.
+      Skip the generic cover letter. Here is a quick, visual look at why I'd be a great fit for your engineering workspace.
     </p>
 
-    <!-- QUICK-SCAN STAT BRAG BAR -->
+    <!-- STAT BAR -->
     <div class="stat-bar">
       <div class="stat-card">
-        <div class="num">BME+ME</div>
-        <div class="label">Northwestern Dual Focus</div>
+        <div class="num">BME + ME</div>
+        <div class="label">Northwestern Dual Degree</div>
       </div>
       <div class="stat-card">
         <div class="num">100%</div>
-        <div class="label">Ctrl+S Muscle Memory</div>
+        <div class="label">Auto-Save Muscle Memory</div>
       </div>
       <div class="stat-card">
         <div class="num">∞</div>
-        <div class="label">Positive Team Energy</div>
+        <div class="label">Team Morale Boost</div>
       </div>
     </div>
   </div>
@@ -437,29 +544,28 @@
   <!-- TICKER -->
   <div class="ticker-wrap">
     <div class="ticker">
-      <span>Northwestern BME + MechE</span> ★ 
-      <span>SolidWorks Power User</span> ★ 
-      <span>High-Velocity Problem Solver</span> ★ 
-      <span>Zero Microwave-Fish Incidents</span> ★ 
-      <span>Rapid Prototype Queen</span> ★ 
-      <span>Northwestern BME + MechE</span> ★ 
-      <span>SolidWorks Power User</span> ★ 
-      <span>High-Velocity Problem Solver</span> ★ 
+      <span>Northwestern BME + MechE</span> <span class="dot">✦</span>
+      <span>SolidWorks & CAD Designer</span> <span class="dot">✦</span>
+      <span>Fast Learner & Problem Solver</span> <span class="dot">✦</span>
+      <span>Zero Microwave-Fish Incidents</span> <span class="dot">✦</span>
+      <span>Rapid Prototyping</span> <span class="dot">✦</span>
+      <span>Northwestern BME + MechE</span> <span class="dot">✦</span>
+      <span>SolidWorks & CAD Designer</span> <span class="dot">✦</span>
     </div>
   </div>
 
   <div class="wrap">
 
-    <!-- VISUAL MEME & IMAGE GALLERY (VISUAL & WITTY) -->
-    <p class="slabel">Visual Evidence & Vibe Check</p>
+    <!-- VISUAL GALLERY -->
+    <p class="slabel">A Quick Vibe Check</p>
     <div class="meme-grid">
       <div class="meme-card">
         <div class="meme-img-container">
-          <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=500&q=80" alt="Cad Work">
+          <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=500&q=80" alt="CAD Work">
         </div>
         <div class="meme-caption">
-          <strong>CAD Mastery</strong>
-          Me designing complex geometry vs. SolidWorks threatening to crash at 2:00 AM. (I always win).
+          <strong>CAD & Modeling</strong>
+          Navigating complex assemblies with organized feature trees and zero errors.
         </div>
       </div>
       <div class="meme-card">
@@ -468,7 +574,7 @@
         </div>
         <div class="meme-caption">
           <strong>Team Dynamics</strong>
-          Bringing unhinged positivity and fresh coffee to high-stakes sprint meetings.
+          Bringing clear communication, focus, and good energy to design reviews.
         </div>
       </div>
       <div class="meme-card">
@@ -476,18 +582,18 @@
           <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=500&q=80" alt="Lab Work">
         </div>
         <div class="meme-caption">
-          <strong>Testing & Debugging</strong>
-          "It works on my machine" turned into "It works in production, reliably, every time."
+          <strong>Testing & Iteration</strong>
+          Building physical prototypes and refining designs until they work reliably.
         </div>
       </div>
     </div>
 
     <!-- EXECUTIVE SUMMARY -->
-    <p class="slabel">The Honest Pitch</p>
+    <p class="slabel">The Core Thesis</p>
     <div class="beg-block">
-      <h2>The Thesis: I build cool things with great people.</h2>
+      <h2>I build thoughtful solutions with great people.</h2>
       <p>
-        Studying double engineering at Northwestern means I love deep technical challenges—from microfluidic channels to dynamic mechanisms. But more than that, I thrive on collaborative engineering momentum. I don't just complete projects; I optimize them and elevate everyone in the room while doing it.
+        Studying both Biomedical and Mechanical Engineering at Northwestern has taught me how to tackle complex technical problems—from microfluidics to mechanical mechanisms. But equal to the engineering work, I value collaborative teams, clear communication, and keeping project energy high.
       </p>
     </div>
 
@@ -500,8 +606,8 @@
         <button class="yap-btn" onclick="switchYap('yap3', this)">"Detail-Oriented"</button>
       </div>
       <div class="yap-content" id="yapContent">
-        <div style="font-size: 12px; color: var(--electric-cyan); margin-bottom: 5px;" id="yapOrig">TRANSLATION:</div>
-        <div style="font-size: 15px; font-weight: 500;" id="yapTrans">I keep project velocity high, align multidisciplinary teams, and ensure technical documentation is actually fun to read.</div>
+        <div style="font-size: 11px; font-weight: 700; color: #8E7DBE; margin-bottom: 4px;" id="yapOrig">TRANSLATION:</div>
+        <div style="font-size: 14.5px; color: var(--text-dark);" id="yapTrans">I keep project velocity high, align multidisciplinary teams, and ensure technical documentation is crystal clear.</div>
       </div>
     </div>
 
@@ -509,85 +615,85 @@
     <p class="slabel">Calibration Matrix</p>
     <div class="vibe-card">
       <div class="slider-row">
-        <label>Discussion & Morale Output <span id="valYap">85%</span></label>
+        <label>Discussion & Collaboration Output <span id="valYap">85%</span></label>
         <input type="range" id="slideYap" min="20" max="100" value="85" oninput="updateMeter()">
       </div>
       <div class="slider-row">
-        <label>CAD & Simulation Resilience <span id="valCad">95%</span></label>
+        <label>CAD & Design Resilience <span id="valCad">95%</span></label>
         <input type="range" id="slideCad" min="20" max="100" value="95" oninput="updateMeter()">
       </div>
       <div class="score-banner">
-        <div class="score-value" id="meterScore">OPTIMAL TEAM FIT</div>
+        <div class="score-value" id="meterScore">OPTIMAL TEAM FIT ✨</div>
       </div>
     </div>
 
     <!-- SOLIDWORKS THERAPY -->
-    <p class="slabel">Engineering Reality Check</p>
+    <p class="slabel">Reality Check</p>
     <div class="crash-hotline">
       <div class="crash-counter" id="crashCounter">142</div>
-      <p style="font-size: 13px; margin-top: 5px;">SolidWorks Crashes Survived (and conquered)</p>
+      <p style="font-size: 13.5px; color: var(--text-muted); margin-top: 4px;">SolidWorks Crashes Survived & Conquered</p>
       <button class="crash-btn" onclick="triggerCrash()">Simulate Crash Error</button>
     </div>
 
-    <!-- 10 REASONS GRID (SCANNABLE 2-COLUMN LAYOUT) -->
+    <!-- 10 REASONS GRID -->
     <p class="slabel">10 Quick Reasons We Mesh</p>
     <div class="reasons-grid">
       <div class="reason-card">
         <div class="reason-num">01</div>
-        <div><h3>High Morale Output</h3><p>Instant positive energy injection into intense design sprints.</p></div>
+        <div><h3>Positive Morale</h3><p>Steady energy and enthusiasm during intense sprint cycles.</p></div>
       </div>
       <div class="reason-card">
         <div class="reason-num">02</div>
-        <div><h3>Dual Rigor</h3><p>BME + MechE means cross-disciplinary engineering fluency.</p></div>
+        <div><h3>Dual Rigor</h3><p>BME + MechE cross-disciplinary technical depth.</p></div>
       </div>
       <div class="reason-card">
         <div class="reason-num">03</div>
-        <div><h3>CAD Mastery</h3><p>Clean assemblies with structured feature trees and zero errors.</p></div>
+        <div><h3>CAD Cleanliness</h3><p>Structured feature trees and well-constrained assemblies.</p></div>
       </div>
       <div class="reason-card">
         <div class="reason-num">04</div>
-        <div><h3>Grit & Resilience</h3><p>Chicago winters + tough engineering problems built high resilience.</p></div>
+        <div><h3>Grit & Resilience</h3><p>Chicago winters + tough technical problems built high resilience.</p></div>
       </div>
       <div class="reason-card">
         <div class="reason-num">05</div>
-        <div><h3>Proactive Asks</h3><p>I ask targeted questions early to avoid costly redesigns later.</p></div>
+        <div><h3>Proactive Asks</h3><p>Asking targeted questions early to streamline design iterations.</p></div>
       </div>
       <div class="reason-card">
         <div class="reason-num">06</div>
-        <div><h3>Leadership Tested</h3><p>Experience coordinating teams under real deadlines.</p></div>
+        <div><h3>Leadership Tested</h3><p>Proven track record of guiding student teams to deadline completion.</p></div>
       </div>
       <div class="reason-card">
         <div class="reason-num">07</div>
-        <div><h3>Impact-Focused</h3><p>Motivated by building products that genuinely help people.</p></div>
+        <div><h3>Impact-Driven</h3><p>Passionate about engineering work that directly improves lives.</p></div>
       </div>
       <div class="reason-card">
         <div class="reason-num">08</div>
-        <div><h3>High Responsiveness</h3><p>Fast Slack responses and clear status communication.</p></div>
+        <div><h3>Clear Communicator</h3><p>Fast responses and proactive updates across Slack/email.</p></div>
       </div>
       <div class="reason-card">
         <div class="reason-num">09</div>
-        <div><h3>Self-Aware</h3><p>Technical capability paired with a great sense of humor.</p></div>
+        <div><h3>Balanced Mindset</h3><p>Strong technical skills paired with a friendly, approachable vibe.</p></div>
       </div>
       <div class="reason-card">
         <div class="reason-num">10</div>
-        <div><h3>Proof of Effort</h3><p>I built this interactive page just to show dedication.</p></div>
+        <div><h3>Dedicated Effort</h3><p>Built this page to demonstrate initiative and creative thinking.</p></div>
       </div>
     </div>
 
     <!-- OFFER LETTER GENERATOR -->
-    <p class="slabel">Instant Offer Generator</p>
+    <p class="slabel">Instant Offer Preview</p>
     <div class="offer-card">
       <div class="form-row">
         <div class="form-group">
-          <label>Organization Name</label>
+          <label>Company Name</label>
           <input type="text" id="companyName" value="Awesome Tech Corp" oninput="updateContract()">
         </div>
         <div class="form-group">
-          <label>Key Team Perk</label>
+          <label>Team Perk</label>
           <select id="perkSelect" onchange="updateContract()">
             <option value="Unlimited Morale Sessions">Unlimited Morale Sessions</option>
             <option value="Dedicated Snack Station">Dedicated Snack Station</option>
-            <option value="Supercomputer Render Rig">Supercomputer Render Rig</option>
+            <option value="Fast Render Workstation">Fast Render Workstation</option>
           </select>
         </div>
       </div>
@@ -603,10 +709,10 @@
 
     <!-- PROMISE BOX -->
     <div class="promise">
-      <h2 style="font-family: 'Syne', sans-serif; color: var(--solar-yellow);">The Covenant ✋</h2>
+      <h2>The Covenant ✋</h2>
       <div class="promise-checks">
         <div class="check-item" onclick="triggerConfetti()">✓ Zero Tardiness</div>
-        <div class="check-item" onclick="triggerConfetti()">✓ 100% Team Energy</div>
+        <div class="check-item" onclick="triggerConfetti()">✓ High Team Energy</div>
         <div class="check-item" onclick="triggerConfetti()">✓ Continuous Saves</div>
         <div class="check-item" onclick="triggerConfetti()">✓ No Microwaved Fish</div>
       </div>
@@ -614,7 +720,7 @@
 
     <!-- CTA BUTTONS -->
     <div class="cta-row">
-      <a href="mailto:chelsea@example.com" class="btn-main">Send Offer Letter</a>
+      <a href="mailto:chelsea@example.com" class="btn-main">Get in Touch</a>
     </div>
 
   </div>
@@ -622,9 +728,9 @@
   <script>
     // YAP TRANSLATOR
     const yaps = {
-      yap1: { orig: '"Strong Communicator"', trans: 'I keep project velocity high, align multidisciplinary teams, and ensure technical documentation is actually fun to read.' },
-      yap2: { orig: '"Highly Adaptable"', trans: 'When project specs pivot mid-sprint, I re-route immediately without losing momentum or breaking CAD assemblies.' },
-      yap3: { orig: '"Detail-Oriented"', trans: 'I catch tolerance stack-up issues before the parts ever hit the machine shop floor.' }
+      yap1: { orig: '"Strong Communicator"', trans: 'I keep project velocity high, align multidisciplinary teams, and ensure technical documentation is crystal clear.' },
+      yap2: { orig: '"Highly Adaptable"', trans: 'When specs change mid-sprint, I pivot smoothly without losing momentum or breaking CAD assemblies.' },
+      yap3: { orig: '"Detail-Oriented"', trans: 'I catch tolerance stack-ups and clearance issues early before physical parts hit production.' }
     };
 
     function switchYap(key, btn) {
@@ -643,9 +749,9 @@
       
       const score = (parseInt(yap) + parseInt(cad)) / 2;
       const banner = document.getElementById('meterScore');
-      if (score > 85) banner.innerText = 'SUPREME UNSTOPPABLE WILDCAT FIT';
-      else if (score > 60) banner.innerText = 'HIGH-PERFORMANCE TEAM ENGINE';
-      else banner.innerText = 'BALANCED ENGINEERING CONTRIBUTOR';
+      if (score > 85) banner.innerText = 'OPTIMAL WILDCAT FIT ✨';
+      else if (score > 60) banner.innerText = 'GREAT TEAM COLLABORATOR 💡';
+      else banner.innerText = 'BALANCED ENGINEERING CONTRIBUTOR 🛠️';
     }
 
     // CRASH COUNTER
@@ -653,7 +759,7 @@
     function triggerCrash() {
       crashes++;
       document.getElementById('crashCounter').innerText = crashes;
-      alert('CRASH SIMULATED: Ctrl+S instinctively pressed. Zero data lost!');
+      alert('CRASH SIMULATED: Ctrl+S instinctively saved your progress!');
     }
 
     // CONTRACT PREVIEW
@@ -669,7 +775,7 @@
         `Status: READY TO SIGN ✍️`;
     }
 
-    // SIMPLE CONFETTI EFFECT
+    // SOFT CONFETTI EFFECT
     function triggerConfetti() {
       const canvas = document.getElementById('canvas');
       const ctx = canvas.getContext('2d');
@@ -677,15 +783,15 @@
       canvas.height = window.innerHeight;
       
       let particles = [];
-      for (let i = 0; i < 50; i++) {
+      for (let i = 0; i < 40; i++) {
         particles.push({
           x: window.innerWidth / 2,
           y: window.innerHeight / 2,
-          vx: (Math.random() - 0.5) * 12,
-          vy: (Math.random() - 0.5) * 12,
-          color: ['#ff007f', '#ffe600', '#00f5ff'][Math.floor(Math.random() * 3)],
-          size: Math.random() * 8 + 4,
-          life: 40
+          vx: (Math.random() - 0.5) * 8,
+          vy: (Math.random() - 0.5) * 8,
+          color: ['#FFC0CB', '#E8DFF5', '#D8F3DC', '#FEF9E7'][Math.floor(Math.random() * 4)],
+          size: Math.random() * 6 + 4,
+          life: 35
         });
       }
 
@@ -696,7 +802,9 @@
           p.y += p.vy;
           p.life--;
           ctx.fillStyle = p.color;
-          ctx.fillRect(p.x, p.y, p.size, p.size);
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+          ctx.fill();
           if (p.life <= 0) particles.splice(index, 1);
         });
         if (particles.length > 0) requestAnimationFrame(render);
