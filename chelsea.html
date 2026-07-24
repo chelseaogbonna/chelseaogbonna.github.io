@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,9 +8,24 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&family=Outfit:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,700;1,700&family=Outfit:wght@500;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            coral: '#FCA47C',
+            aqua: '#23CED9',
+            sunshine: '#F9D779',
+            jade: '#A1CCA6',
+            tealDark: '#097C87',
+          }
+        }
+      }
+    }
+  </script>
   <style>
-    body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
+    body { font-family: 'Plus Jakarta Sans', sans-serif; }
     .fun-font { font-family: 'Comic Neue', cursive, sans-serif; }
     .title-font { font-family: 'Outfit', sans-serif; }
     
@@ -19,84 +34,85 @@
 
     .pulse-glow { animation: pulseGlow 2s infinite alternate; }
     @keyframes pulseGlow {
-      from { box-shadow: 0 0 15px rgba(250, 204, 21, 0.2); }
-      to { box-shadow: 0 0 35px rgba(250, 204, 21, 0.6); }
+      from { box-shadow: 0 0 15px rgba(253, 164, 124, 0.4); }
+      to { box-shadow: 0 0 35px rgba(35, 206, 217, 0.7); }
     }
   </style>
 </head>
-<body class="bg-gradient-to-br from-purple-950 via-indigo-950 to-black text-white min-h-screen relative overflow-x-hidden">
+<body class="bg-[#FFFDF7] text-tealDark min-h-screen relative overflow-x-hidden">
 
-  <!-- Floating Ambient Blur Elements -->
-  <div class="fixed top-10 left-10 w-96 h-96 bg-pink-600/20 rounded-full blur-3xl pointer-events-none"></div>
-  <div class="fixed bottom-10 right-10 w-96 h-96 bg-purple-600/20 rounded-full blur-3xl pointer-events-none"></div>
+  <!-- Tropical Ambient Glowing Orbs -->
+  <div class="fixed -top-20 -left-20 w-96 h-96 bg-coral/30 rounded-full blur-3xl pointer-events-none"></div>
+  <div class="fixed top-1/3 -right-20 w-96 h-96 bg-aqua/25 rounded-full blur-3xl pointer-events-none"></div>
+  <div class="fixed -bottom-20 left-1/4 w-96 h-96 bg-sunshine/40 rounded-full blur-3xl pointer-events-none"></div>
 
-  <!-- Top Navigation Link back to Portfolio -->
-  <div class="max-w-4xl mx-auto pt-6 px-6 flex justify-between items-center">
-    <a href="index.html" class="text-purple-300 hover:text-white transition-colors flex items-center gap-2 font-medium text-sm">
-      <i class="fa-solid fa-arrow-left"></i> Back to Main Technical Portfolio
+  <!-- Top Navigation Link -->
+  <div class="max-w-4xl mx-auto pt-6 px-6 flex justify-between items-center relative z-10">
+    <a href="index.html" class="text-tealDark hover:text-black transition-colors flex items-center gap-2 font-bold text-sm">
+      <i class="fa-solid fa-arrow-left text-coral"></i> Back to Main Technical Portfolio
     </a>
-    <span class="bg-purple-900/60 border border-purple-500/30 text-purple-200 text-xs px-3 py-1 rounded-full">
-      ✨ Chelsea Ogbonna • Human Side
+    <span class="bg-jade/30 border border-jade/50 text-tealDark font-bold text-xs px-4 py-1.5 rounded-full shadow-sm">
+      ✨ Chelsea Ogbonna • Soft Skills & Vibe Check
     </span>
   </div>
 
-  <div class="max-w-3xl mx-auto pt-10 px-6 text-center">
+  <div class="max-w-3xl mx-auto pt-8 px-6 text-center relative z-10">
     
     <!-- Hero Header -->
     <div class="mb-10">
       <div class="text-7xl mb-4 inline-block beg">🙏😂</div>
-      <h1 class="title-font text-5xl md:text-6xl font-extrabold tracking-tight mb-4 leading-tight">
+      <h1 class="title-font text-5xl md:text-6xl font-black tracking-tight mb-4 leading-tight text-tealDark">
         Please Hire Chelsea<br>
-        <span class="text-yellow-400 bg-gradient-to-r from-yellow-300 via-amber-400 to-yellow-500 bg-clip-text text-transparent">
+        <span class="bg-gradient-to-r from-coral via-aqua to-tealDark bg-clip-text text-transparent drop-shadow-sm">
           I'm Running Out of Coffee & CAD Motivation
         </span>
       </h1>
-      <p class="text-2xl text-purple-200 font-medium">
+      <p class="text-xl md:text-2xl font-bold text-tealDark/80">
         Biomedical & Mechanical Engineer • Professional Meme Lord • Team Energizer
       </p>
     </div>
 
     <!-- Funny Plea Card -->
-    <div class="bg-white/10 backdrop-blur-md rounded-3xl p-8 mb-10 border border-white/20 shadow-2xl">
-      <p class="text-2xl leading-relaxed">
+    <div class="bg-white/80 backdrop-blur-md rounded-3xl p-8 mb-10 border-2 border-aqua/30 shadow-xl text-tealDark">
+      <p class="text-2xl leading-relaxed font-semibold">
         Look, my technical portfolio proves I can model CAD, analyze sensor data, and fabricate microfluidics...<br>
-        <span class="text-yellow-300 font-semibold">
+        <span class="bg-sunshine/60 px-2 py-1 rounded-md text-tealDark font-bold inline-block mt-2">
           but THIS page proves I will bring snacks, crystal-clear communication, and unmatched vibes to every sprint.
         </span>
       </p>
       <div class="my-6 text-7xl beg">🥺</div>
-      <p class="text-xl italic fun-font text-purple-200">
+      <p class="text-xl italic fun-font font-bold text-coral">
         "If you hire me, I promise to deliver clean code, proactive updates, and zero unnecessary meeting silences."
       </p>
     </div>
 
     <!-- Soft Skills Matrix / "Why Me" Grid -->
     <div class="mb-12">
-      <h2 class="title-font text-xs uppercase tracking-widest text-purple-300 font-bold mb-6">
+      <h2 class="title-font text-xs uppercase tracking-widest text-tealDark/70 font-black mb-6">
         ⚡ The Workplace Synergy Breakdown
       </h2>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         
-        <div class="bg-white/10 backdrop-blur hover:bg-white/15 transition-all rounded-2xl p-6 border border-white/10 text-left">
-          <i class="fa-solid fa-bolt text-4xl mb-4 text-yellow-400"></i>
-          <h3 class="title-font text-xl font-bold mb-1">Clear Velocity</h3>
-          <p class="text-purple-200 text-sm leading-relaxed">
+        <div class="bg-sunshine/30 backdrop-blur hover:bg-sunshine/50 transition-all rounded-2xl p-6 border-2 border-sunshine/60 text-left shadow-md">
+          <i class="fa-solid fa-bolt text-4xl mb-4 text-coral"></i>
+          <h3 class="title-font text-xl font-extrabold mb-1 text-tealDark">Clear Velocity</h3>
+          <p class="text-tealDark/80 text-sm font-medium leading-relaxed">
             I debug, document, and update faster than I can finish a boba tea. No status updates left unread.
           </p>
         </div>
 
-        <div class="bg-white/10 backdrop-blur hover:bg-white/15 transition-all rounded-2xl p-6 border border-white/10 text-left">
-          <i class="fa-solid fa-face-laugh-squint text-4xl mb-4 text-yellow-400"></i>
-          <h3 class="title-font text-xl font-bold mb-1">Culture Champion</h3>
-          <p class="text-purple-200 text-sm leading-relaxed">
+        <div class="bg-aqua/20 backdrop-blur hover:bg-aqua/35 transition-all rounded-2xl p-6 border-2 border-aqua/50 text-left shadow-md">
+          <i class="fa-solid fa-face-laugh-squint text-4xl mb-4 text-tealDark"></i>
+          <h3 class="title-font text-xl font-extrabold mb-1 text-tealDark">Culture Champion</h3>
+          <p class="text-tealDark/80 text-sm font-medium leading-relaxed">
             I bring high morale to intense sprint deadlines. Dad jokes in standup? You know it's happening.
           </p>
         </div>
 
-        <div class="bg-white/10 backdrop-blur hover:bg-white/15 transition-all rounded-2xl p-6 border border-white/10 text-left">
-          <i class="fa-solid fa-hand-holding-heart text-4xl mb-4 text-yellow-400"></i>
-          <h3 class="title-font text-xl font-bold mb-1">Unmatched Loyalty</h3>
-          <p class="text-purple-200 text-sm leading-relaxed">
+        <div class="bg-jade/30 backdrop-blur hover:bg-jade/50 transition-all rounded-2xl p-6 border-2 border-jade/60 text-left shadow-md">
+          <i class="fa-solid fa-hand-holding-heart text-4xl mb-4 text-coral"></i>
+          <h3 class="title-font text-xl font-extrabold mb-1 text-tealDark">Unmatched Loyalty</h3>
+          <p class="text-tealDark/80 text-sm font-medium leading-relaxed">
             I'll stay until the free office snacks run out (or until we successfully launch our 10th product revision).
           </p>
         </div>
@@ -105,23 +121,23 @@
     </div>
 
     <!-- Interactive Translator Box -->
-    <div class="bg-white/10 backdrop-blur-md rounded-3xl p-8 mb-12 border border-white/20 text-left">
-      <h3 class="title-font text-lg font-bold text-yellow-400 mb-3 flex items-center gap-2">
-        <i class="fa-solid fa-language"></i> Buzzword vs. How Chelsea Actually Operates
+    <div class="bg-white/90 backdrop-blur-md rounded-3xl p-8 mb-12 border-2 border-coral/40 text-left shadow-xl">
+      <h3 class="title-font text-lg font-bold text-coral mb-3 flex items-center gap-2">
+        <i class="fa-solid fa-language text-aqua"></i> Buzzword vs. How Chelsea Actually Operates
       </h3>
       <div class="flex flex-wrap gap-2 mb-4">
-        <button onclick="updateYap('yap1', this)" class="yap-btn active bg-yellow-400 text-black font-semibold text-xs px-4 py-2 rounded-full transition-all">
+        <button onclick="updateYap('yap1', this)" class="yap-btn active bg-coral text-white font-bold text-xs px-4 py-2 rounded-full transition-all shadow-sm">
           "Strong Communicator"
         </button>
-        <button onclick="updateYap('yap2', this)" class="yap-btn bg-purple-900/80 hover:bg-purple-800 text-white font-semibold text-xs px-4 py-2 rounded-full transition-all">
+        <button onclick="updateYap('yap2', this)" class="yap-btn bg-jade/30 hover:bg-jade/60 text-tealDark font-bold text-xs px-4 py-2 rounded-full transition-all">
           "Adaptable Team Player"
         </button>
-        <button onclick="updateYap('yap3', this)" class="yap-btn bg-purple-900/80 hover:bg-purple-800 text-white font-semibold text-xs px-4 py-2 rounded-full transition-all">
+        <button onclick="updateYap('yap3', this)" class="yap-btn bg-jade/30 hover:bg-jade/60 text-tealDark font-bold text-xs px-4 py-2 rounded-full transition-all">
           "Detail-Oriented"
         </button>
       </div>
-      <div class="bg-black/40 rounded-xl p-4 border-l-4 border-yellow-400">
-        <p id="yapOutput" class="text-purple-100 text-sm leading-relaxed">
+      <div class="bg-sunshine/30 rounded-xl p-4 border-l-4 border-coral">
+        <p id="yapOutput" class="text-tealDark font-medium text-sm leading-relaxed">
           I keep multidisciplinary teams aligned, bridge engineering gaps with clear documentation, and never leave colleagues guessing about project status.
         </p>
       </div>
@@ -129,47 +145,47 @@
 
     <!-- Interactive Vibe Pill Selector -->
     <div class="mb-12">
-      <h3 class="title-font text-sm uppercase tracking-widest text-purple-300 font-bold mb-4">
+      <h3 class="title-font text-xs uppercase tracking-widest text-tealDark/70 font-black mb-4">
         👉 Click a soft skill to unlock Chelsea's secret weapon:
       </h3>
       <div class="flex flex-wrap justify-center gap-3">
-        <button onclick="showSkill('💬 Proactive Updates', 'I send concise, daily progress notes so team leads never have to ask status updates twice.')" class="bg-white/10 hover:bg-yellow-400 hover:text-black border border-white/20 px-5 py-2.5 rounded-full text-sm font-semibold transition-all">
+        <button onclick="showSkill('💬 Proactive Updates', 'I send concise, daily progress notes so team leads never have to ask status updates twice.')" class="bg-white hover:bg-coral hover:text-white border-2 border-coral/40 text-tealDark px-5 py-2.5 rounded-full text-sm font-bold transition-all shadow-sm">
           💬 Proactive Updates
         </button>
-        <button onclick="showSkill('⚡ High Sprint Energy', 'When deadlines get tight, I keep morale high and focus sharp with optimism and steady execution.')" class="bg-white/10 hover:bg-yellow-400 hover:text-black border border-white/20 px-5 py-2.5 rounded-full text-sm font-semibold transition-all">
+        <button onclick="showSkill('⚡ High Sprint Energy', 'When deadlines get tight, I keep morale high and focus sharp with optimism and steady execution.')" class="bg-white hover:bg-aqua hover:text-tealDark border-2 border-aqua/50 text-tealDark px-5 py-2.5 rounded-full text-sm font-bold transition-all shadow-sm">
           ⚡ High Sprint Energy
         </button>
-        <button onclick="showSkill('🎧 Active Listening', 'I ask targeted questions during initial scoping to catch tolerance issues and edge cases early.')" class="bg-white/10 hover:bg-yellow-400 hover:text-black border border-white/20 px-5 py-2.5 rounded-full text-sm font-semibold transition-all">
+        <button onclick="showSkill('🎧 Active Listening', 'I ask targeted questions during initial scoping to catch tolerance issues and edge cases early.')" class="bg-white hover:bg-sunshine hover:text-tealDark border-2 border-sunshine/60 text-tealDark px-5 py-2.5 rounded-full text-sm font-bold transition-all shadow-sm">
           🎧 Active Listening
         </button>
       </div>
-      <div id="skillToast" class="hidden mt-4 bg-yellow-400/20 border border-yellow-400/50 p-4 rounded-xl text-yellow-200 text-sm"></div>
+      <div id="skillToast" class="hidden mt-4 bg-aqua/20 border-2 border-aqua p-4 rounded-xl text-tealDark font-semibold text-sm"></div>
     </div>
 
     <!-- Peer Feedback Quote Banner -->
-    <div class="bg-gradient-to-r from-purple-900/60 to-indigo-900/60 rounded-2xl p-6 mb-12 border border-purple-500/30 text-left">
-      <i class="fa-solid fa-quote-left text-3xl text-purple-400 mb-2 block"></i>
-      <p class="text-purple-100 italic text-base leading-relaxed mb-3">
+    <div class="bg-gradient-to-r from-coral/20 via-sunshine/30 to-aqua/20 rounded-2xl p-6 mb-12 border-2 border-aqua/40 text-left shadow-md">
+      <i class="fa-solid fa-quote-left text-3xl text-coral mb-2 block"></i>
+      <p class="text-tealDark font-semibold italic text-base leading-relaxed mb-3">
         "Chelsea brings a rare balance of technical rigor and team warmth. She makes complex engineering collaboration feel effortless and genuinely fun."
       </p>
-      <span class="text-xs font-bold text-yellow-400 uppercase tracking-wider">— Engineering Project Collaborator</span>
+      <span class="text-xs font-black text-tealDark uppercase tracking-wider">— Engineering Project Collaborator</span>
     </div>
 
     <!-- Call to Action Section -->
     <div class="mb-16">
       <a href="mailto:chelsea@example.com?subject=You%20Had%20Me%20at%20Ramen%20%26%20CAD" 
-         class="pulse-glow inline-block bg-yellow-400 hover:bg-yellow-300 text-black font-extrabold text-2xl px-12 py-6 rounded-3xl transition-all transform hover:scale-105 active:scale-95 shadow-2xl">
+         class="pulse-glow inline-block bg-coral hover:bg-coral/90 text-white font-extrabold text-2xl px-12 py-6 rounded-3xl transition-all transform hover:scale-105 active:scale-95 shadow-xl border-2 border-white">
         Hire This Absolute Legend →
       </a>
-      <p class="mt-6 text-sm text-purple-300">
+      <p class="mt-6 text-sm font-semibold text-tealDark/70">
         or send an email so I can stop refreshing my inbox like a maniac ☕
       </p>
     </div>
 
     <!-- Footer -->
-    <footer class="text-purple-400 text-sm pb-12 border-t border-purple-900/50 pt-8">
+    <footer class="text-tealDark/70 font-medium text-sm pb-12 border-t border-tealDark/15 pt-8">
       Made with ❤️, engineering enthusiasm, and way too much coffee.<br>
-      <span class="text-yellow-400 font-medium">P.S. I’m actually really good at what I do. Let’s build something great together!</span>
+      <span class="text-coral font-bold">P.S. I’m actually really good at what I do. Let’s build something great together!</span>
     </footer>
 
   </div>
@@ -180,7 +196,7 @@
       for(let i = 0; i < 70; i++) {
         setTimeout(() => {
           const confetti = document.createElement('div');
-          confetti.textContent = ['🎉','🚀','💼','😂','✨','⚙️','🌸'][Math.floor(Math.random()*7)];
+          confetti.textContent = ['🎉','🚀','💼','😂','✨','⚙️','🌺'][Math.floor(Math.random()*7)];
           confetti.style.position = 'fixed';
           confetti.style.left = Math.random() * 100 + 'vw';
           confetti.style.top = '-50px';
@@ -209,9 +225,9 @@
 
     function updateYap(key, btn) {
       document.querySelectorAll('.yap-btn').forEach(b => {
-        b.className = 'yap-btn bg-purple-900/80 hover:bg-purple-800 text-white font-semibold text-xs px-4 py-2 rounded-full transition-all';
+        b.className = 'yap-btn bg-jade/30 hover:bg-jade/60 text-tealDark font-bold text-xs px-4 py-2 rounded-full transition-all';
       });
-      btn.className = 'yap-btn active bg-yellow-400 text-black font-semibold text-xs px-4 py-2 rounded-full transition-all';
+      btn.className = 'yap-btn active bg-coral text-white font-bold text-xs px-4 py-2 rounded-full transition-all shadow-sm';
       document.getElementById('yapOutput').innerText = yaps[key];
     }
 
