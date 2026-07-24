@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Chelsea Ogbonna | Hire Me ✨</title>
+  <title>Chelsea Ogbonna | The Human Side ✨</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -20,16 +20,11 @@
       --pastel-lavender: #E8DFF5;
       --pastel-mint: #D8F3DC;
       --pastel-yellow: #FEF9E7;
-      --pastel-butter: #FDE2E4;
-      --pastel-blue: #D0F4DE;
 
-      --card-bg: rgba(255, 255, 255, 0.75);
+      --card-bg: rgba(255, 255, 255, 0.8);
       --card-border: rgba(255, 255, 255, 0.9);
-      --card-shadow: 0 10px 30px rgba(180, 160, 190, 0.12);
-      --hover-shadow: 0 15px 35px rgba(180, 160, 190, 0.22);
+      --card-shadow: 0 10px 30px rgba(180, 160, 190, 0.08);
     }
-
-    html { scroll-behavior: smooth; }
 
     body {
       background-color: var(--bg-base);
@@ -40,16 +35,16 @@
       position: relative;
     }
 
-    /* SOFT PASTEL BACKGROUND BLUR */
+    /* SOFT PASTEL BACKGROUND */
     .ambient-bg {
       position: fixed;
       top: 0; left: 0; width: 100%; height: 100%;
-      z-index: 1; pointer-events: none;
+      z-index: -1; pointer-events: none;
       background: 
-        radial-gradient(circle at 15% 20%, #FFE5EC 0%, transparent 45%),
-        radial-gradient(circle at 85% 30%, #E8DFF5 0%, transparent 45%),
-        radial-gradient(circle at 50% 75%, #E8F5E9 0%, transparent 50%);
-      filter: blur(40px);
+        radial-gradient(circle at 20% 20%, #FFE5EC 0%, transparent 50%),
+        radial-gradient(circle at 80% 30%, #E8DFF5 0%, transparent 50%),
+        radial-gradient(circle at 50% 80%, #E8F5E9 0%, transparent 50%);
+      filter: blur(50px);
     }
 
     #canvas {
@@ -58,7 +53,7 @@
       pointer-events: none; z-index: 1999;
     }
 
-    /* BACK LINK */
+    /* NAV LINK */
     .back {
       display: inline-flex;
       align-items: center;
@@ -67,142 +62,66 @@
       font-weight: 600;
       color: var(--text-muted);
       text-decoration: none;
-      padding: 2rem;
-      position: relative;
-      z-index: 10;
-      letter-spacing: 0.5px;
-      transition: color 0.2s, transform 0.2s;
+      padding: 1.5rem 2rem 0;
+      transition: color 0.2s;
     }
-    .back:hover { color: var(--text-dark); transform: translateX(-3px); }
+    .back:hover { color: var(--text-dark); }
     .back svg { width: 16px; height: 16px; }
+
+    /* CONTAINER */
+    .wrap {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
 
     /* HERO */
     .hero {
       text-align: center;
-      padding: 1rem 1.5rem 3rem;
-      position: relative;
-      z-index: 5;
+      margin-bottom: 2.5rem;
     }
 
-    .status-badge {
+    .badge {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
       background: var(--pastel-pink-soft);
       color: #D65A7A;
       font-family: 'Outfit', sans-serif;
       font-weight: 600;
       font-size: 13px;
-      padding: 8px 18px;
+      padding: 6px 16px;
       border-radius: 99px;
-      margin-bottom: 1.5rem;
-      border: 1px solid rgba(214, 90, 122, 0.2);
+      margin-bottom: 1rem;
+      border: 1px solid rgba(214, 90, 122, 0.15);
     }
 
     .hero h1 {
       font-family: 'Outfit', sans-serif;
       font-weight: 700;
-      font-size: clamp(38px, 6.5vw, 68px);
-      line-height: 1.15;
-      color: var(--text-dark);
-      letter-spacing: -1px;
-    }
-
-    .hero h1 .highlight {
-      background: linear-gradient(120deg, #E0A96D, #D65A7A);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      font-size: clamp(32px, 5vw, 48px);
+      line-height: 1.2;
+      letter-spacing: -0.5px;
     }
 
     .hero-sub {
-      font-size: 17px;
+      font-size: 16px;
       color: var(--text-muted);
-      max-width: 580px;
-      margin: 1.2rem auto 0;
+      margin-top: 1rem;
       line-height: 1.6;
-      font-weight: 400;
     }
 
-    /* STAT CARDS */
-    .stat-bar {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 16px;
-      max-width: 800px;
-      margin: 2.5rem auto 0;
-      padding: 0 1rem;
-    }
-
-    .stat-card {
-      background: var(--card-bg);
-      backdrop-filter: blur(12px);
-      border: 1px solid var(--card-border);
-      border-radius: 20px;
-      padding: 20px;
-      box-shadow: var(--card-shadow);
-      text-align: center;
-      transition: transform 0.2s ease;
-    }
-    .stat-card:hover { transform: translateY(-3px); }
-
-    .stat-card .num {
-      font-family: 'Outfit', sans-serif;
-      font-size: 28px;
-      font-weight: 700;
-      color: var(--text-dark);
-    }
-    .stat-card .label {
-      font-size: 12px;
-      font-weight: 600;
-      color: var(--text-muted);
-      margin-top: 4px;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-
-    /* TICKER */
-    .ticker-wrap {
-      overflow: hidden;
-      background: var(--pastel-lavender);
-      color: var(--text-dark);
-      padding: 14px 0;
-      margin: 3.5rem 0;
-      white-space: nowrap;
-      border-top: 1px solid rgba(255,255,255,0.6);
-      border-bottom: 1px solid rgba(255,255,255,0.6);
-    }
-    .ticker { display: inline-block; animation: ticker 25s linear infinite; }
-    .ticker span {
-      font-family: 'Outfit', sans-serif;
-      font-size: 14px;
-      font-weight: 600;
-      letter-spacing: 0.5px;
-      margin-right: 2.5rem;
-    }
-    .ticker span.dot { color: #A29BFE; margin-right: 2.5rem; }
-    @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-
-    /* WRAPPER */
-    .wrap {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 0 1.5rem 5rem;
-      position: relative;
-      z-index: 5;
-    }
-
+    /* SECTIONS */
     .slabel {
       font-family: 'Outfit', sans-serif;
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 700;
       letter-spacing: 1.5px;
       text-transform: uppercase;
       color: #8E7DBE;
-      margin-bottom: 1.2rem;
-      margin-top: 4rem;
+      margin: 2.5rem 0 1rem;
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
     }
     .slabel::after {
       content: "";
@@ -211,394 +130,152 @@
       background: #E2DBF0;
     }
 
-    /* VISUAL GALLERY */
-    .meme-grid {
+    /* VIBE CARDS (SOFT SKILLS) */
+    .vibes-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 20px;
-    }
-    .meme-card {
-      background: var(--card-bg);
-      backdrop-filter: blur(12px);
-      border: 1px solid var(--card-border);
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: var(--card-shadow);
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-    }
-    .meme-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--hover-shadow);
-    }
-    .meme-img-container {
-      height: 180px;
-      background: #f0f0f0;
-      position: relative;
-      overflow: hidden;
-    }
-    .meme-img-container img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    .meme-caption {
-      padding: 18px;
-      font-size: 13.5px;
-      line-height: 1.5;
-      color: var(--text-muted);
-    }
-    .meme-caption strong {
-      font-family: 'Outfit', sans-serif;
-      font-size: 15px;
-      color: var(--text-dark);
-      display: block;
-      margin-bottom: 4px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 14px;
     }
 
-    /* EXECUTIVE SUMMARY */
-    .beg-block {
+    .vibe-card {
       background: var(--card-bg);
-      backdrop-filter: blur(12px);
+      backdrop-filter: blur(10px);
       border: 1px solid var(--card-border);
-      border-radius: 24px;
-      padding: 2.2rem;
+      border-radius: 20px;
+      padding: 20px;
       box-shadow: var(--card-shadow);
     }
-    .beg-block h2 {
+
+    .vibe-card h3 {
       font-family: 'Outfit', sans-serif;
-      font-size: 22px;
-      font-weight: 700;
+      font-size: 16px;
+      font-weight: 600;
       color: var(--text-dark);
-      margin-bottom: 10px;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
-    .beg-block p {
-      font-size: 15.5px;
-      line-height: 1.65;
+
+    .vibe-card p {
+      font-size: 14px;
       color: var(--text-muted);
+      line-height: 1.5;
     }
 
     /* TRANSLATOR BOX */
     .yap-box {
       background: var(--card-bg);
-      backdrop-filter: blur(12px);
+      backdrop-filter: blur(10px);
       border: 1px solid var(--card-border);
-      border-radius: 24px;
-      padding: 2rem;
+      border-radius: 20px;
+      padding: 1.5rem;
       box-shadow: var(--card-shadow);
     }
-    .yap-selectors { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+
+    .yap-selectors { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
+    
     .yap-btn {
       background: var(--pastel-yellow);
-      border: 1px solid rgba(0,0,0,0.05);
-      padding: 8px 16px;
+      border: none;
+      padding: 8px 14px;
       border-radius: 99px;
       color: var(--text-dark);
       font-family: 'Plus Jakarta Sans', sans-serif;
       font-weight: 600;
-      font-size: 13px;
+      font-size: 12.5px;
       cursor: pointer;
-      transition: all 0.2s ease;
+      transition: background 0.2s;
     }
-    .yap-btn.active, .yap-btn:hover {
-      background: var(--pastel-pink);
-      color: var(--text-dark);
-    }
+    .yap-btn.active, .yap-btn:hover { background: var(--pastel-pink); }
+
     .yap-content {
       background: rgba(255, 255, 255, 0.6);
-      border-radius: 16px;
-      padding: 18px;
+      border-radius: 14px;
+      padding: 14px;
       border-left: 3px solid #D65A7A;
     }
 
-    /* VIBE METER */
-    .vibe-card {
-      background: var(--card-bg);
-      backdrop-filter: blur(12px);
-      border: 1px solid var(--card-border);
-      border-radius: 24px;
-      padding: 2rem;
-      box-shadow: var(--card-shadow);
-    }
-    .slider-row { margin-bottom: 18px; }
-    .slider-row label {
-      font-size: 13px;
-      font-weight: 600;
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 8px;
-      color: var(--text-dark);
-    }
-    .slider-row label span { color: #8E7DBE; }
-    .slider-row input[type="range"] {
-      width: 100%;
-      accent-color: #D65A7A;
-      cursor: pointer;
-    }
-    .score-banner {
-      background: var(--pastel-mint);
-      border-radius: 16px;
-      padding: 16px;
-      text-align: center;
-      margin-top: 10px;
-    }
-    .score-value {
-      font-family: 'Outfit', sans-serif;
-      font-size: 18px;
-      font-weight: 700;
-      color: #2D6A4F;
-    }
-
-    /* SOLIDWORKS CRASH HOTLINE */
-    .crash-hotline {
-      background: #FFF5F5;
-      border: 1px solid #FFD6D6;
-      border-radius: 24px;
-      padding: 2rem;
-      text-align: center;
-      box-shadow: var(--card-shadow);
-    }
-    .crash-counter {
-      font-family: 'Outfit', sans-serif;
-      font-size: 48px;
-      font-weight: 800;
-      color: #E63946;
-    }
-    .crash-btn {
-      background: #E63946;
-      color: #FFF;
-      border: none;
-      padding: 10px 22px;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-weight: 600;
-      border-radius: 99px;
-      margin-top: 12px;
-      cursor: pointer;
-      font-size: 12px;
-      transition: opacity 0.2s;
-    }
-    .crash-btn:hover { opacity: 0.9; }
-
-    /* REASONS GRID */
-    .reasons-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 16px;
-    }
-    .reason-card {
-      background: var(--card-bg);
-      backdrop-filter: blur(12px);
-      border: 1px solid var(--card-border);
-      border-radius: 18px;
-      padding: 18px 20px;
-      display: flex;
-      gap: 16px;
-      align-items: flex-start;
-      box-shadow: var(--card-shadow);
-    }
-    .reason-num {
-      font-family: 'Outfit', sans-serif;
-      font-size: 20px;
-      font-weight: 700;
-      color: #8E7DBE;
-    }
-    .reason-card h3 {
-      font-family: 'Outfit', sans-serif;
-      font-size: 15px;
-      font-weight: 600;
-      color: var(--text-dark);
-      margin-bottom: 2px;
-    }
-    .reason-card p {
-      font-size: 13.5px;
-      color: var(--text-muted);
-      line-height: 1.45;
-    }
-
-    /* OFFER FORM */
-    .offer-card {
-      background: var(--card-bg);
-      backdrop-filter: blur(12px);
-      border: 1px solid var(--card-border);
-      border-radius: 24px;
-      padding: 2rem;
-      box-shadow: var(--card-shadow);
-    }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
-    .form-group label {
-      display: block;
-      font-size: 11px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      color: var(--text-muted);
-      margin-bottom: 6px;
-    }
-    .form-group input, .form-group select {
-      width: 100%;
-      background: rgba(255,255,255,0.8);
-      border: 1px solid #E0E0E0;
-      padding: 10px 14px;
-      border-radius: 12px;
-      color: var(--text-dark);
-      font-family: inherit;
-      font-size: 14px;
-      outline: none;
-    }
-    .contract-preview {
-      background: var(--pastel-yellow);
-      border: 1px dashed #E0C9A6;
-      border-radius: 16px;
-      padding: 18px;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 13.5px;
-      color: #6B4E2E;
-      line-height: 1.6;
-    }
-
-    /* PROMISE BOX */
-    .promise { text-align: center; padding: 2rem 1rem; }
-    .promise h2 {
-      font-family: 'Outfit', sans-serif;
-      font-size: 22px;
-      color: var(--text-dark);
-    }
-    .promise-checks { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 16px; }
+    /* PROMISE PILLS */
+    .promise-checks { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: 1rem; }
+    
     .check-item {
       background: var(--card-bg);
       border: 1px solid var(--card-border);
       box-shadow: var(--card-shadow);
       border-radius: 99px;
-      padding: 8px 18px;
+      padding: 8px 16px;
       font-size: 13px;
       font-weight: 600;
       color: var(--text-dark);
       cursor: pointer;
-      transition: transform 0.2s, background 0.2s;
+      transition: transform 0.2s;
     }
-    .check-item:hover {
-      transform: scale(1.03);
-      background: var(--pastel-pink-soft);
-    }
+    .check-item:hover { transform: scale(1.03); background: var(--pastel-pink-soft); }
 
-    /* BUTTONS */
-    .cta-row { display: flex; gap: 15px; justify-content: center; margin-top: 3rem; flex-wrap: wrap; }
+    /* CTA */
+    .cta-row { text-align: center; margin-top: 2.5rem; }
+    
     .btn-main {
-      padding: 15px 36px;
+      display: inline-block;
+      padding: 14px 32px;
       background: var(--text-dark);
       color: #FFF;
       font-family: 'Outfit', sans-serif;
       font-weight: 600;
-      font-size: 15px;
+      font-size: 14px;
       border-radius: 99px;
       text-decoration: none;
-      letter-spacing: 0.5px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-      transition: transform 0.2s ease, opacity 0.2s ease;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+      transition: transform 0.2s;
     }
-    .btn-main:hover { transform: translateY(-2px); opacity: 0.92; }
-
-    @media (max-width: 600px) {
-      .form-row, .reasons-grid { grid-template-columns: 1fr; }
-    }
+    .btn-main:hover { transform: translateY(-2px); }
   </style>
 </head>
 <body>
 
-  <!-- AMBIENT PASTEL GLOW BACKDROP -->
   <div class="ambient-bg"></div>
   <canvas id="canvas"></canvas>
 
   <a href="index.html" class="back">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
-    Portfolio
+    Back to Portfolio
   </a>
-
-  <!-- HERO PANEL -->
-  <div class="hero">
-    <div class="status-badge" id="badgeTrigger">✨ High-Energy & Driven Engineer</div>
-    <h1>
-      Hi, I'm Chelsea.<br />
-      I'd love to join <span class="highlight">your team.</span>
-    </h1>
-    <p class="hero-sub">
-      Skip the generic cover letter. Here is a quick, visual look at why I'd be a great fit for your engineering workspace.
-    </p>
-
-    <!-- STAT BAR -->
-    <div class="stat-bar">
-      <div class="stat-card">
-        <div class="num">BME + ME</div>
-        <div class="label">Northwestern Dual Degree</div>
-      </div>
-      <div class="stat-card">
-        <div class="num">100%</div>
-        <div class="label">Auto-Save Muscle Memory</div>
-      </div>
-      <div class="stat-card">
-        <div class="num">∞</div>
-        <div class="label">Team Morale Boost</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- TICKER -->
-  <div class="ticker-wrap">
-    <div class="ticker">
-      <span>Northwestern BME + MechE</span> <span class="dot">✦</span>
-      <span>SolidWorks & CAD Designer</span> <span class="dot">✦</span>
-      <span>Fast Learner & Problem Solver</span> <span class="dot">✦</span>
-      <span>Zero Microwave-Fish Incidents</span> <span class="dot">✦</span>
-      <span>Rapid Prototyping</span> <span class="dot">✦</span>
-      <span>Northwestern BME + MechE</span> <span class="dot">✦</span>
-      <span>SolidWorks & CAD Designer</span> <span class="dot">✦</span>
-    </div>
-  </div>
 
   <div class="wrap">
 
-    <!-- VISUAL GALLERY -->
-    <p class="slabel">A Quick Vibe Check</p>
-    <div class="meme-grid">
-      <div class="meme-card">
-        <div class="meme-img-container">
-          <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=500&q=80" alt="CAD Work">
-        </div>
-        <div class="meme-caption">
-          <strong>CAD & Modeling</strong>
-          Navigating complex assemblies with organized feature trees and zero errors.
-        </div>
-      </div>
-      <div class="meme-card">
-        <div class="meme-img-container">
-          <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=500&q=80" alt="Teamwork">
-        </div>
-        <div class="meme-caption">
-          <strong>Team Dynamics</strong>
-          Bringing clear communication, focus, and good energy to design reviews.
-        </div>
-      </div>
-      <div class="meme-card">
-        <div class="meme-img-container">
-          <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=500&q=80" alt="Lab Work">
-        </div>
-        <div class="meme-caption">
-          <strong>Testing & Iteration</strong>
-          Building physical prototypes and refining designs until they work reliably.
-        </div>
-      </div>
-    </div>
-
-    <!-- EXECUTIVE SUMMARY -->
-    <p class="slabel">The Core Thesis</p>
-    <div class="beg-block">
-      <h2>I build thoughtful solutions with great people.</h2>
-      <p>
-        Studying both Biomedical and Mechanical Engineering at Northwestern has taught me how to tackle complex technical problems—from microfluidics to mechanical mechanisms. But equal to the engineering work, I value collaborative teams, clear communication, and keeping project energy high.
+    <!-- HERO -->
+    <div class="hero">
+      <div class="badge">✨ Soft Skills & Work Vibe</div>
+      <h1>Beyond the Resume</h1>
+      <p class="hero-sub">
+        My technical skills and engineering projects speak for themselves on my main portfolio. Here is a quick look at how I communicate, collaborate, and bring positive energy to the team.
       </p>
     </div>
 
-    <!-- TRANSLATOR BOX -->
-    <p class="slabel">Corporate Translator</p>
+    <!-- SOFT SKILLS GRID -->
+    <p class="slabel">How I Work in a Team</p>
+    <div class="vibes-grid">
+      <div class="vibe-card">
+        <h3>💬 Clear Communication</h3>
+        <p>I value transparent, proactive updates. No guessing games on project status or technical roadblocks.</p>
+      </div>
+      <div class="vibe-card">
+        <h3>🤝 High Morale & Energy</h3>
+        <p>Engineering design sprints can get intense. I bring steady optimism, active listening, and a supportive mindset.</p>
+      </div>
+      <div class="vibe-card">
+        <h3>⚡ Adaptive Problem Solving</h3>
+        <p>When project constraints shift mid-sprint, I adjust smoothly without losing momentum or team focus.</p>
+      </div>
+      <div class="vibe-card">
+        <h3>💡 Thoughtful Curiosity</h3>
+        <p>I ask targeted questions early in design phases to prevent costly rework and align on team goals.</p>
+      </div>
+    </div>
+
+    <!-- CORPORATE TRANSLATOR -->
+    <p class="slabel">In Buzzwords vs. In Practice</p>
     <div class="yap-box">
       <div class="yap-selectors">
         <button class="yap-btn active" onclick="switchYap('yap1', this)">"Strong Communicator"</button>
@@ -606,176 +283,40 @@
         <button class="yap-btn" onclick="switchYap('yap3', this)">"Detail-Oriented"</button>
       </div>
       <div class="yap-content" id="yapContent">
-        <div style="font-size: 11px; font-weight: 700; color: #8E7DBE; margin-bottom: 4px;" id="yapOrig">TRANSLATION:</div>
-        <div style="font-size: 14.5px; color: var(--text-dark);" id="yapTrans">I keep project velocity high, align multidisciplinary teams, and ensure technical documentation is crystal clear.</div>
+        <div style="font-size: 11px; font-weight: 700; color: #8E7DBE; margin-bottom: 4px;" id="yapOrig">WHAT THIS MEANS FOR THE TEAM:</div>
+        <div style="font-size: 14px; color: var(--text-dark);" id="yapTrans">I keep project velocity high, align multidisciplinary teams, and ensure technical documentation is crystal clear.</div>
       </div>
     </div>
 
-    <!-- VIBE-O-METER -->
-    <p class="slabel">Calibration Matrix</p>
-    <div class="vibe-card">
-      <div class="slider-row">
-        <label>Discussion & Collaboration Output <span id="valYap">85%</span></label>
-        <input type="range" id="slideYap" min="20" max="100" value="85" oninput="updateMeter()">
-      </div>
-      <div class="slider-row">
-        <label>CAD & Design Resilience <span id="valCad">95%</span></label>
-        <input type="range" id="slideCad" min="20" max="100" value="95" oninput="updateMeter()">
-      </div>
-      <div class="score-banner">
-        <div class="score-value" id="meterScore">OPTIMAL TEAM FIT ✨</div>
-      </div>
+    <!-- WORKPLACE PROMISES -->
+    <p class="slabel">Everyday Standards</p>
+    <div class="promise-checks">
+      <div class="check-item" onclick="triggerConfetti()">✓ Clear & Honest Communication</div>
+      <div class="check-item" onclick="triggerConfetti()">✓ High Team Morale</div>
+      <div class="check-item" onclick="triggerConfetti()">✓ Proactive Problem-Solving</div>
+      <div class="check-item" onclick="triggerConfetti()">✓ Great Listener</div>
     </div>
 
-    <!-- SOLIDWORKS THERAPY -->
-    <p class="slabel">Reality Check</p>
-    <div class="crash-hotline">
-      <div class="crash-counter" id="crashCounter">142</div>
-      <p style="font-size: 13.5px; color: var(--text-muted); margin-top: 4px;">SolidWorks Crashes Survived & Conquered</p>
-      <button class="crash-btn" onclick="triggerCrash()">Simulate Crash Error</button>
-    </div>
-
-    <!-- 10 REASONS GRID -->
-    <p class="slabel">10 Quick Reasons We Mesh</p>
-    <div class="reasons-grid">
-      <div class="reason-card">
-        <div class="reason-num">01</div>
-        <div><h3>Positive Morale</h3><p>Steady energy and enthusiasm during intense sprint cycles.</p></div>
-      </div>
-      <div class="reason-card">
-        <div class="reason-num">02</div>
-        <div><h3>Dual Rigor</h3><p>BME + MechE cross-disciplinary technical depth.</p></div>
-      </div>
-      <div class="reason-card">
-        <div class="reason-num">03</div>
-        <div><h3>CAD Cleanliness</h3><p>Structured feature trees and well-constrained assemblies.</p></div>
-      </div>
-      <div class="reason-card">
-        <div class="reason-num">04</div>
-        <div><h3>Grit & Resilience</h3><p>Chicago winters + tough technical problems built high resilience.</p></div>
-      </div>
-      <div class="reason-card">
-        <div class="reason-num">05</div>
-        <div><h3>Proactive Asks</h3><p>Asking targeted questions early to streamline design iterations.</p></div>
-      </div>
-      <div class="reason-card">
-        <div class="reason-num">06</div>
-        <div><h3>Leadership Tested</h3><p>Proven track record of guiding student teams to deadline completion.</p></div>
-      </div>
-      <div class="reason-card">
-        <div class="reason-num">07</div>
-        <div><h3>Impact-Driven</h3><p>Passionate about engineering work that directly improves lives.</p></div>
-      </div>
-      <div class="reason-card">
-        <div class="reason-num">08</div>
-        <div><h3>Clear Communicator</h3><p>Fast responses and proactive updates across Slack/email.</p></div>
-      </div>
-      <div class="reason-card">
-        <div class="reason-num">09</div>
-        <div><h3>Balanced Mindset</h3><p>Strong technical skills paired with a friendly, approachable vibe.</p></div>
-      </div>
-      <div class="reason-card">
-        <div class="reason-num">10</div>
-        <div><h3>Dedicated Effort</h3><p>Built this page to demonstrate initiative and creative thinking.</p></div>
-      </div>
-    </div>
-
-    <!-- OFFER LETTER GENERATOR -->
-    <p class="slabel">Instant Offer Preview</p>
-    <div class="offer-card">
-      <div class="form-row">
-        <div class="form-group">
-          <label>Company Name</label>
-          <input type="text" id="companyName" value="Awesome Tech Corp" oninput="updateContract()">
-        </div>
-        <div class="form-group">
-          <label>Team Perk</label>
-          <select id="perkSelect" onchange="updateContract()">
-            <option value="Unlimited Morale Sessions">Unlimited Morale Sessions</option>
-            <option value="Dedicated Snack Station">Dedicated Snack Station</option>
-            <option value="Fast Render Workstation">Fast Render Workstation</option>
-          </select>
-        </div>
-      </div>
-      <div class="contract-preview" id="contractPreview">
-        CONFIDENTIAL OFFER LETTER<br/>
-        To: Chelsea Ogbonna<br/>
-        From: [Awesome Tech Corp]<br/>
-        Role: Hardware/Biomedical Engineering Specialist<br/>
-        Included Perk: Unlimited Morale Sessions<br/>
-        Status: READY TO SIGN ✍️
-      </div>
-    </div>
-
-    <!-- PROMISE BOX -->
-    <div class="promise">
-      <h2>The Covenant ✋</h2>
-      <div class="promise-checks">
-        <div class="check-item" onclick="triggerConfetti()">✓ Zero Tardiness</div>
-        <div class="check-item" onclick="triggerConfetti()">✓ High Team Energy</div>
-        <div class="check-item" onclick="triggerConfetti()">✓ Continuous Saves</div>
-        <div class="check-item" onclick="triggerConfetti()">✓ No Microwaved Fish</div>
-      </div>
-    </div>
-
-    <!-- CTA BUTTONS -->
+    <!-- CTA -->
     <div class="cta-row">
-      <a href="mailto:chelsea@example.com" class="btn-main">Get in Touch</a>
+      <a href="mailto:chelsea@example.com" class="btn-main">Let's Connect</a>
     </div>
 
   </div>
 
   <script>
-    // YAP TRANSLATOR
     const yaps = {
       yap1: { orig: '"Strong Communicator"', trans: 'I keep project velocity high, align multidisciplinary teams, and ensure technical documentation is crystal clear.' },
-      yap2: { orig: '"Highly Adaptable"', trans: 'When specs change mid-sprint, I pivot smoothly without losing momentum or breaking CAD assemblies.' },
-      yap3: { orig: '"Detail-Oriented"', trans: 'I catch tolerance stack-ups and clearance issues early before physical parts hit production.' }
+      yap2: { orig: '"Highly Adaptable"', trans: 'When specs change mid-sprint, I pivot smoothly without losing team momentum or focus.' },
+      yap3: { orig: '"Detail-Oriented"', trans: 'I catch communication gaps and tolerance issues early before physical parts hit production.' }
     };
 
     function switchYap(key, btn) {
       document.querySelectorAll('.yap-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-      document.getElementById('yapOrig').innerText = 'TRANSLATION FOR ' + yaps[key].orig + ':';
       document.getElementById('yapTrans').innerText = yaps[key].trans;
     }
 
-    // VIBE METER
-    function updateMeter() {
-      const yap = document.getElementById('slideYap').value;
-      const cad = document.getElementById('slideCad').value;
-      document.getElementById('valYap').innerText = yap + '%';
-      document.getElementById('valCad').innerText = cad + '%';
-      
-      const score = (parseInt(yap) + parseInt(cad)) / 2;
-      const banner = document.getElementById('meterScore');
-      if (score > 85) banner.innerText = 'OPTIMAL WILDCAT FIT ✨';
-      else if (score > 60) banner.innerText = 'GREAT TEAM COLLABORATOR 💡';
-      else banner.innerText = 'BALANCED ENGINEERING CONTRIBUTOR 🛠️';
-    }
-
-    // CRASH COUNTER
-    let crashes = 142;
-    function triggerCrash() {
-      crashes++;
-      document.getElementById('crashCounter').innerText = crashes;
-      alert('CRASH SIMULATED: Ctrl+S instinctively saved your progress!');
-    }
-
-    // CONTRACT PREVIEW
-    function updateContract() {
-      const company = document.getElementById('companyName').value || 'Your Company';
-      const perk = document.getElementById('perkSelect').value;
-      document.getElementById('contractPreview').innerHTML = 
-        `CONFIDENTIAL OFFER LETTER<br/>` +
-        `To: Chelsea Ogbonna<br/>` +
-        `From: ${company}<br/>` +
-        `Role: Engineering Specialist<br/>` +
-        `Included Perk: ${perk}<br/>` +
-        `Status: READY TO SIGN ✍️`;
-    }
-
-    // SOFT CONFETTI EFFECT
     function triggerConfetti() {
       const canvas = document.getElementById('canvas');
       const ctx = canvas.getContext('2d');
@@ -783,15 +324,15 @@
       canvas.height = window.innerHeight;
       
       let particles = [];
-      for (let i = 0; i < 40; i++) {
+      for (let i = 0; i < 30; i++) {
         particles.push({
           x: window.innerWidth / 2,
           y: window.innerHeight / 2,
-          vx: (Math.random() - 0.5) * 8,
-          vy: (Math.random() - 0.5) * 8,
+          vx: (Math.random() - 0.5) * 6,
+          vy: (Math.random() - 0.5) * 6,
           color: ['#FFC0CB', '#E8DFF5', '#D8F3DC', '#FEF9E7'][Math.floor(Math.random() * 4)],
-          size: Math.random() * 6 + 4,
-          life: 35
+          size: Math.random() * 5 + 3,
+          life: 30
         });
       }
 
