@@ -37,6 +37,39 @@
       from { box-shadow: 0 0 15px rgba(253, 164, 124, 0.4); }
       to { box-shadow: 0 0 35px rgba(35, 206, 217, 0.7); }
     }
+
+    /* 🕺 DANCING ANIMAL ANIMATIONS 🕺 */
+    .dancer {
+      animation: dance 0.6s infinite alternate ease-in-out;
+      display: inline-block;
+      transform-origin: bottom center;
+    }
+
+    @keyframes dance {
+      0% {
+        transform: translateY(0) rotate(-8deg) scaleY(1);
+      }
+      50% {
+        transform: translateY(-18px) rotate(0deg) scaleY(1.05);
+      }
+      100% {
+        transform: translateY(0) rotate(8deg) scaleY(1);
+      }
+    }
+
+    /* Speech Bubble Tail */
+    .speech-bubble::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-width: 10px 10px 0;
+      border-style: solid;
+      border-color: #23CED9 transparent;
+      display: block;
+      width: 0;
+    }
   </style>
 </head>
 <body class="bg-[#FFFDF7] text-tealDark min-h-screen relative overflow-x-hidden">
@@ -182,6 +215,24 @@
       </p>
     </div>
 
+    <!-- 🐱 DANCING ANIMAL SECTION 🐱 -->
+    <div class="my-12 flex flex-col items-center justify-center relative">
+      <!-- Speech Bubble -->
+      <div class="speech-bubble relative bg-aqua text-tealDark font-extrabold text-sm md:text-base px-6 py-3 rounded-2xl shadow-lg border-2 border-white mb-4 animate-bounce">
+        💖 Thank you for coming to my website! 💖
+      </div>
+
+      <!-- Stage Glow -->
+      <div class="relative flex items-center justify-center">
+        <div class="absolute bottom-0 w-32 h-6 bg-sunshine/80 rounded-full blur-md"></div>
+        <!-- Dancing Cat/Bear Emoji Animal -->
+        <div class="dancer text-7xl select-none cursor-pointer filter drop-shadow-md" title="Party Time!" onclick="toggleDanceAnimal(this)">
+          🐱
+        </div>
+      </div>
+      <p class="text-xs font-bold text-coral mt-3">Click the cat to switch dancers! 🕺</p>
+    </div>
+
     <!-- Footer -->
     <footer class="text-tealDark/70 font-medium text-sm pb-12 border-t border-tealDark/15 pt-8">
       Made with ❤️, engineering enthusiasm, and way too much coffee.<br>
@@ -215,6 +266,14 @@
         }, i * 12);
       }
     });
+
+    // Switch Dancing Animal on Click
+    const animals = ['🐱', '🐻', '🐰', '🐶', '🦊', '🐼', '🐸', '🦁'];
+    let animalIdx = 0;
+    function toggleDanceAnimal(el) {
+      animalIdx = (animalIdx + 1) % animals.length;
+      el.textContent = animals[animalIdx];
+    }
 
     // Translator Switcher
     const yaps = {
