@@ -6,28 +6,29 @@
   <title>Chelsea Ogbonna | Hire Me (Not a Drill)</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --purple-base: #1a0933;
-      --wildcat-purple: #4e2a84;
-      --wildcat-bright: #8352d4;
-      --neon-pink: #ff2a85;
-      --solar-yellow: #ffd100;
-      --electric-cyan: #00f0ff;
+      --bg-gradient: linear-gradient(135deg, #18002e 0%, #3a0066 40%, #110022 100%);
+      --neon-pink: #ff007f;
+      --solar-yellow: #ffe600;
+      --electric-cyan: #00f5ff;
+      --bright-purple: #9d4edd;
       --white: #ffffff;
-      --glass-bg: rgba(78, 42, 132, 0.15);
-      --glass-border: rgba(255, 42, 133, 0.25);
-      --neon-shadow: 0 0 20px rgba(255, 42, 133, 0.45);
-      --solar-shadow: 0 0 20px rgba(255, 209, 0, 0.4);
+      --glass-bg: rgba(255, 255, 255, 0.07);
+      --glass-border: rgba(255, 255, 255, 0.2);
+      --neon-shadow: 0 0 25px rgba(255, 0, 127, 0.6);
+      --cyan-shadow: 0 0 25px rgba(0, 245, 255, 0.5);
+      --yellow-shadow: 0 0 25px rgba(255, 230, 0, 0.5);
     }
 
     html { scroll-behavior: smooth; }
 
     body {
-      background: var(--purple-base);
+      background: var(--bg-gradient);
+      background-attachment: fixed;
       color: var(--white);
       font-family: 'Space Grotesk', sans-serif;
       min-height: 100vh;
@@ -35,41 +36,23 @@
       position: relative;
     }
 
-    /* CYBER-NORTHWESTERN GRID AND BLOBS */
+    /* BACKGROUND MESH & GLOWS */
     .cyber-background {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 1;
-      pointer-events: none;
+      top: 0; left: 0; width: 100%; height: 100%;
+      z-index: 1; pointer-events: none;
       background-image: 
-        linear-gradient(rgba(255, 42, 133, 0.05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 42, 133, 0.05) 1px, transparent 1px);
-      background-size: 40px 40px;
+        radial-gradient(circle at 10% 20%, rgba(255, 0, 127, 0.25) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(0, 245, 255, 0.25) 0%, transparent 40%),
+        linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 30px 30px, 30px 30px;
     }
-    .glow-blob {
-      position: absolute;
-      width: 500px;
-      height: 500px;
-      border-radius: 50%;
-      filter: blur(120px);
-      pointer-events: none;
-      z-index: 1;
-      opacity: 0.6;
-    }
-    #blob1 { top: -100px; left: -100px; background: radial-gradient(circle, var(--wildcat-bright) 0%, rgba(0,0,0,0) 70%); }
-    #blob2 { bottom: -100px; right: -100px; background: radial-gradient(circle, var(--neon-pink) 0%, rgba(0,0,0,0) 70%); }
 
     #canvas {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 1999;
+      top: 0; left: 0; width: 100%; height: 100%;
+      pointer-events: none; z-index: 1999;
     }
 
     /* BACK LINK */
@@ -77,1159 +60,649 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 700;
       color: var(--electric-cyan);
       text-decoration: none;
       padding: 1.5rem 2rem;
-      transition: all 0.2s;
       position: relative;
       z-index: 10;
       text-transform: uppercase;
-      letter-spacing: 1px;
+      letter-spacing: 1.5px;
     }
-    .back:hover { 
-      color: var(--neon-pink); 
-      transform: translateX(-5px);
-      text-shadow: 0 0 10px rgba(255, 42, 133, 0.5);
-    }
+    .back:hover { color: var(--solar-yellow); transform: translateX(-4px); }
     .back svg { width: 16px; height: 16px; }
 
-    /* HERO DESIGN */
+    /* HERO */
     .hero {
       text-align: center;
-      padding: 4rem 2rem 2rem;
+      padding: 2rem 1.5rem 2rem;
       position: relative;
       z-index: 5;
     }
 
     .wildcat-flag {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--wildcat-purple);
-      color: var(--solar-yellow);
-      border: 2px solid var(--solar-yellow);
+      display: inline-block;
+      background: var(--solar-yellow);
+      color: #000;
       font-family: 'Syne', sans-serif;
       font-weight: 800;
-      font-size: 12px;
-      letter-spacing: 0.15em;
+      font-size: 13px;
+      letter-spacing: 2px;
       text-transform: uppercase;
-      padding: 8px 18px;
-      border-radius: 4px;
-      margin-bottom: 2rem;
-      box-shadow: var(--solar-shadow);
+      padding: 8px 20px;
+      border-radius: 99px;
+      margin-bottom: 1.5rem;
+      box-shadow: var(--yellow-shadow);
+      transform: rotate(-1deg);
       cursor: pointer;
-      transform: rotate(-1.5deg);
-      transition: all 0.2s;
     }
-    .wildcat-flag:hover {
-      transform: scale(1.05) rotate(1deg);
-      background: var(--neon-pink);
-      border-color: var(--white);
-      color: var(--white);
-      box-shadow: var(--neon-shadow);
-    }
+    .wildcat-flag:hover { transform: scale(1.05) rotate(1deg); }
 
     .hero h1 {
       font-family: 'Syne', sans-serif;
       font-weight: 800;
-      font-size: clamp(40px, 9vw, 84px);
-      line-height: 0.95;
-      letter-spacing: -2px;
-      color: var(--white);
+      font-size: clamp(38px, 8vw, 76px);
+      line-height: 1;
+      letter-spacing: -1px;
     }
     .hero h1 .gradient {
-      background: linear-gradient(135deg, var(--neon-pink), var(--solar-yellow));
+      background: linear-gradient(135deg, var(--solar-yellow), var(--neon-pink));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
-    .hero h1 .cyan {
-      color: var(--electric-cyan);
-      text-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
-    }
+    .hero h1 .cyan { color: var(--electric-cyan); text-shadow: var(--cyan-shadow); }
 
     .hero-sub {
-      font-size: 19px;
-      color: var(--white);
-      opacity: 0.9;
-      max-width: 600px;
-      margin: 1.5rem auto 0;
-      line-height: 1.6;
+      font-size: 18px;
+      color: #e0e0e0;
+      max-width: 650px;
+      margin: 1.2rem auto 0;
+      line-height: 1.5;
     }
 
-    /* SCROLL HINT */
-    .scroll-hint {
-      margin-top: 3rem;
-      font-size: 13px;
+    /* SCANNABLE STAT BRAG BAR */
+    .stat-bar {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 15px;
+      max-width: 850px;
+      margin: 2.5rem auto 0;
+      padding: 0 1rem;
+    }
+    .stat-card {
+      background: rgba(0, 0, 0, 0.4);
+      border: 2px solid var(--electric-cyan);
+      border-radius: 16px;
+      padding: 15px;
+      box-shadow: var(--cyan-shadow);
+      text-align: center;
+    }
+    .stat-card .num {
+      font-family: 'Syne', sans-serif;
+      font-size: 32px;
+      font-weight: 800;
+      color: var(--solar-yellow);
+    }
+    .stat-card .label {
+      font-size: 12px;
       text-transform: uppercase;
-      letter-spacing: 2px;
-      color: var(--electric-cyan);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 10px;
-    }
-    .scroll-arrow {
-      width: 24px;
-      height: 24px;
-      border-right: 3px solid var(--electric-cyan);
-      border-bottom: 3px solid var(--electric-cyan);
-      transform: rotate(45deg);
-      animation: bounce 1.5s ease-in-out infinite;
-    }
-    @keyframes bounce {
-      0%, 100% { transform: rotate(45deg) translateY(0); }
-      50% { transform: rotate(45deg) translateY(6px); }
+      letter-spacing: 1px;
+      color: var(--white);
+      margin-top: 4px;
     }
 
     /* TICKER */
     .ticker-wrap {
       overflow: hidden;
-      background: var(--wildcat-purple);
-      border-top: 3px solid var(--neon-pink);
-      border-bottom: 3px solid var(--neon-pink);
-      padding: 14px 0;
-      margin: 4rem 0;
+      background: var(--neon-pink);
+      color: #000;
+      padding: 12px 0;
+      margin: 3rem 0;
       white-space: nowrap;
       transform: rotate(-1deg);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      box-shadow: var(--neon-shadow);
     }
-    .ticker {
-      display: inline-block;
-      animation: ticker 25s linear infinite;
-    }
+    .ticker { display: inline-block; animation: ticker 20s linear infinite; }
     .ticker span {
       font-family: 'Syne', sans-serif;
-      font-size: 14px;
+      font-size: 15px;
       font-weight: 800;
-      letter-spacing: 0.1em;
+      letter-spacing: 1px;
       text-transform: uppercase;
-      color: var(--white);
-      margin-right: 3rem;
+      margin-right: 2rem;
     }
-    .ticker span.accent { color: var(--solar-yellow); text-shadow: var(--solar-shadow); }
-    @keyframes ticker {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
+    @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
     /* WRAPPER */
     .wrap {
-      max-width: 800px;
+      max-width: 850px;
       margin: 0 auto;
-      padding: 0 2rem 5rem;
+      padding: 0 1.5rem 5rem;
       position: relative;
       z-index: 5;
     }
 
-    /* SECTIONS */
     .slabel {
       font-size: 12px;
       font-weight: 800;
-      letter-spacing: 0.2em;
+      letter-spacing: 2px;
       text-transform: uppercase;
-      color: var(--electric-cyan);
+      color: var(--solar-yellow);
       margin-bottom: 1rem;
       margin-top: 3.5rem;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
     }
     .slabel::after {
       content: "";
       flex-grow: 1;
       height: 2px;
-      background: linear-gradient(90deg, var(--electric-cyan), transparent);
+      background: linear-gradient(90deg, var(--solar-yellow), transparent);
     }
 
-    /* THE OPENING PITCH */
-    .beg-block {
+    /* VISUAL MEME & IMAGE GRID SECTION */
+    .meme-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .meme-card {
       background: var(--glass-bg);
       border: 2px solid var(--glass-border);
       border-radius: 16px;
-      padding: 2.5rem;
-      box-shadow: inset 0 0 20px rgba(131, 82, 212, 0.1);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .meme-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--neon-pink);
+      box-shadow: var(--neon-shadow);
+    }
+    .meme-img-container {
+      height: 180px;
+      background: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       position: relative;
-      backdrop-filter: blur(10px);
+      overflow: hidden;
+    }
+    .meme-img-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .meme-caption {
+      padding: 15px;
+      font-size: 14px;
+      line-weight: 1.4;
+    }
+    .meme-caption strong { color: var(--electric-cyan); display: block; margin-bottom: 4px; }
+
+    /* EXECUTIVE SUMMARY CARD */
+    .beg-block {
+      background: rgba(0, 0, 0, 0.4);
+      border: 2px solid var(--neon-pink);
+      border-radius: 20px;
+      padding: 2rem;
+      box-shadow: var(--neon-shadow);
+      position: relative;
     }
     .beg-block h2 {
       font-family: 'Syne', sans-serif;
-      font-weight: 800;
-      font-size: 26px;
-      margin-bottom: 1rem;
+      font-size: 24px;
       color: var(--solar-yellow);
-    }
-    .beg-block p {
-      font-size: 16.5px;
-      line-height: 1.7;
       margin-bottom: 1rem;
     }
-    .beg-block p:last-child { margin-bottom: 0; }
-    .beg-block .tag {
-      position: absolute;
-      top: -15px;
-      right: 25px;
-      background: var(--neon-pink);
-      color: var(--white);
-      font-size: 12px;
-      font-weight: 800;
-      padding: 5px 14px;
-      border-radius: 4px;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      box-shadow: var(--neon-shadow);
-    }
-    .beg-block .highlight {
-      color: var(--electric-cyan);
-      font-weight: 700;
-    }
+    .beg-block p { font-size: 16px; line-height: 1.6; }
 
-    /* INTERACTIVE CANDIDACY VIBE-O-METER */
-    .vibe-card {
-      background: rgba(255, 255, 255, 0.02);
-      border: 2px solid rgba(255, 255, 255, 0.08);
-      border-radius: 20px;
-      padding: 35px;
-      backdrop-filter: blur(10px);
-    }
-    .vibe-card h2 {
-      font-family: 'Syne', sans-serif;
-      font-weight: 800;
-      font-size: 22px;
-      margin-bottom: 10px;
-      color: var(--white);
-    }
-    .vibe-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 20px;
-      margin: 25px 0;
-    }
-    .slider-row {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-    .slider-row label {
-      font-size: 14px;
-      font-weight: 700;
-      color: var(--muted);
-      display: flex;
-      justify-content: space-between;
-    }
-    .slider-row label span {
-      color: var(--solar-yellow);
-    }
-    .slider-row input[type="range"] {
-      width: 100%;
-      accent-color: var(--neon-pink);
-      background: rgba(255, 255, 255, 0.1);
-      height: 8px;
-      border-radius: 99px;
-      cursor: pointer;
-      outline: none;
-    }
-    .score-banner {
-      background: linear-gradient(135deg, rgba(78, 42, 132, 0.4), rgba(255, 42, 133, 0.15));
-      border: 2px solid var(--neon-pink);
-      border-radius: 12px;
-      padding: 20px;
-      text-align: center;
-      box-shadow: var(--neon-shadow);
-      transition: all 0.3s ease;
-    }
-    .score-value {
-      font-size: 28px;
-      font-weight: 800;
-      color: var(--solar-yellow);
-      font-family: 'Syne', sans-serif;
-      text-shadow: var(--solar-shadow);
-    }
-    .score-label {
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      color: var(--electric-cyan);
-      margin-top: 6px;
-    }
-
-    /* THE CHELSEA TRANSLATOR (INTERACTIVE YAP MODE) */
+    /* TRANSLATOR BOX */
     .yap-box {
       background: var(--glass-bg);
-      border: 2px solid var(--glass-border);
+      border: 2px solid var(--electric-cyan);
       border-radius: 16px;
-      padding: 30px;
-      margin: 2rem 0;
+      padding: 25px;
+      box-shadow: var(--cyan-shadow);
     }
-    .yap-selectors {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-bottom: 20px;
-    }
+    .yap-selectors { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 15px; }
     .yap-btn {
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.15);
-      padding: 8px 16px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid var(--white);
+      padding: 8px 14px;
       border-radius: 8px;
       color: var(--white);
       font-weight: 700;
       font-size: 13px;
       cursor: pointer;
-      transition: all 0.2s;
     }
     .yap-btn.active, .yap-btn:hover {
-      background: var(--neon-pink);
-      border-color: var(--white);
-      transform: translateY(-2px);
-      box-shadow: var(--neon-shadow);
+      background: var(--solar-yellow);
+      color: #000;
+      border-color: var(--solar-yellow);
     }
     .yap-content {
-      background: rgba(0,0,0,0.3);
-      border-radius: 12px;
-      padding: 20px;
-      font-size: 15px;
-      line-height: 1.6;
-      border-left: 4px solid var(--electric-cyan);
-      min-height: 110px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-    .yap-original {
-      font-style: italic;
-      color: var(--muted);
-      margin-bottom: 8px;
-      font-size: 13.5px;
-    }
-    .yap-translation {
-      font-weight: 500;
-      color: var(--white);
+      background: rgba(0,0,0,0.5);
+      border-radius: 10px;
+      padding: 15px;
+      border-left: 4px solid var(--neon-pink);
     }
 
-    /* REASONS LIST */
-    .reasons {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-      margin-top: 1.5rem;
-    }
-    .reason {
-      display: flex;
-      align-items: flex-start;
-      gap: 20px;
+    /* VIBE METER */
+    .vibe-card {
       background: var(--glass-bg);
-      border: 1.5px solid var(--glass-border);
-      border-radius: 16px;
-      padding: 1.5rem 1.75rem;
-      transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      cursor: pointer;
+      border: 2px solid var(--glass-border);
+      border-radius: 20px;
+      padding: 25px;
     }
-    .reason:hover {
-      border-color: var(--electric-cyan);
-      transform: scale(1.02) translateX(8px);
-      box-shadow: 0 0 20px rgba(0, 240, 255, 0.25);
+    .slider-row { margin-bottom: 15px; }
+    .slider-row label { font-size: 13px; display: flex; justify-content: space-between; margin-bottom: 5px; }
+    .slider-row label span { color: var(--solar-yellow); font-weight: 700; }
+    .slider-row input[type="range"] {
+      width: 100%; accent-color: var(--neon-pink); cursor: pointer;
+    }
+    .score-banner {
+      background: #000;
+      border: 2px solid var(--solar-yellow);
+      border-radius: 12px;
+      padding: 15px;
+      text-align: center;
+      box-shadow: var(--yellow-shadow);
+    }
+    .score-value { font-size: 22px; font-weight: 800; color: var(--solar-yellow); font-family: 'Syne', sans-serif; }
+
+    /* SOLIDWORKS CRASH HOTLINE */
+    .crash-hotline {
+      background: rgba(255, 0, 0, 0.15);
+      border: 2px solid #ff4d4d;
+      border-radius: 20px;
+      padding: 25px;
+      text-align: center;
+    }
+    .crash-counter { font-family: 'Syne', sans-serif; font-size: 44px; font-weight: 800; color: #ff4d4d; }
+    .crash-btn {
+      background: #ff4d4d; color: var(--white); border: none; padding: 10px 20px;
+      font-weight: 700; border-radius: 8px; margin-top: 10px; cursor: pointer;
+      text-transform: uppercase; font-size: 12px;
+    }
+
+    /* REASONS GRID (2 COLUMNS FOR QUICK SCANNING) */
+    .reasons-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 15px;
+    }
+    .reason-card {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 12px;
+      padding: 15px 20px;
+      display: flex;
+      gap: 15px;
+      align-items: flex-start;
     }
     .reason-num {
       font-family: 'Syne', sans-serif;
-      font-size: 26px;
+      font-size: 22px;
       font-weight: 800;
-      color: var(--neon-pink);
-      text-shadow: var(--neon-shadow);
-      min-width: 40px;
+      color: var(--electric-cyan);
     }
-    .reason-body h3 {
-      font-size: 17px;
-      font-weight: 700;
-      color: var(--white);
-      margin-bottom: 6px;
-    }
-    .reason-body p {
-      font-size: 14.5px;
-      color: var(--muted);
-      line-height: 1.6;
-    }
+    .reason-card h3 { font-size: 15px; color: var(--solar-yellow); margin-bottom: 4px; }
+    .reason-card p { font-size: 13.5px; color: #ddd; line-height: 1.4; }
 
-    /* THE SOLIDWORKS CRASH HOTLINE */
-    .crash-hotline {
-      background: linear-gradient(135deg, rgba(239, 68, 68, 0.15), rgba(78, 42, 132, 0.2));
-      border: 2px solid #ef4444;
-      border-radius: 20px;
-      padding: 30px;
-      text-align: center;
-      margin: 2.5rem 0;
-      position: relative;
-    }
-    .crash-counter {
-      font-family: 'Syne', sans-serif;
-      font-size: 48px;
-      font-weight: 800;
-      color: #ef4444;
-      text-shadow: 0 0 15px rgba(239, 68, 68, 0.4);
-      margin-bottom: 10px;
-    }
-    .crash-btn {
-      background: #ef4444;
-      color: var(--white);
-      border: none;
-      padding: 10px 20px;
-      font-weight: 700;
-      border-radius: 8px;
-      margin-top: 15px;
-      cursor: pointer;
-      transition: all 0.2s;
-      text-transform: uppercase;
-      font-size: 12px;
-      letter-spacing: 1px;
-    }
-    .crash-btn:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 15px rgba(239, 68, 68, 0.6);
-    }
-
-    /* FUN FACTS GRID */
-    .facts-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-    }
-    .fact-card {
-      background: var(--glass-bg);
-      border: 1.5px solid var(--glass-border);
-      border-radius: 16px;
-      padding: 1.75rem;
-      transition: all 0.25s ease;
-    }
-    .fact-card:hover { 
-      border-color: var(--solar-yellow); 
-      transform: translateY(-5px);
-      box-shadow: var(--solar-shadow);
-    }
-    .fact-card .emoji { font-size: 32px; margin-bottom: 12px; display: block; }
-    .fact-card h3 {
-      font-size: 16px;
-      font-weight: 700;
-      color: var(--white);
-      margin-bottom: 8px;
-    }
-    .fact-card p {
-      font-size: 14px;
-      color: var(--muted);
-      line-height: 1.6;
-    }
-
-    /* PROMISE BOX */
-    .promise {
+    /* OFFER FORM */
+    .offer-card {
       background: var(--glass-bg);
       border: 2px solid var(--glass-border);
       border-radius: 20px;
-      padding: 3rem 2rem;
-      margin-top: 2.5rem;
-      text-align: center;
-      position: relative;
+      padding: 25px;
     }
-    .promise h2 {
-      font-family: 'Syne', sans-serif;
-      font-weight: 800;
-      font-size: 26px;
-      margin-bottom: 1rem;
-      color: var(--solar-yellow);
-    }
-    .promise p {
-      font-size: 15px;
-      color: var(--white);
-      opacity: 0.9;
-      line-height: 1.7;
-      max-width: 560px;
-      margin: 0 auto 2rem;
-    }
-    .promise-checks {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 12px;
-    }
-    .check-item {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 14px;
-      font-weight: 700;
-      color: var(--white);
-      background: rgba(0, 240, 255, 0.08);
-      border: 1.5px solid var(--electric-cyan);
-      border-radius: 99px;
-      padding: 8px 18px;
-      cursor: pointer;
-      user-select: none;
-      transition: all 0.2s;
-    }
-    .check-item:hover {
-      transform: scale(1.08) rotate(1deg);
-      border-color: var(--solar-yellow);
-      background: rgba(255, 209, 0, 0.15);
-      box-shadow: var(--solar-shadow);
-    }
-    .check-item span { color: var(--electric-cyan); font-weight: 800; }
-
-    /* RECRUITER CALIBRATED PROPOSAL ENGINE */
-    .offer-card {
-      background: rgba(255, 255, 255, 0.02);
-      border: 2px solid rgba(255, 255, 255, 0.08);
-      border-radius: 20px;
-      padding: 35px;
-      margin-top: 2.5rem;
-    }
-    .offer-card h2 {
-      font-family: 'Syne', sans-serif;
-      font-size: 22px;
-      margin-bottom: 12px;
-      color: var(--white);
-    }
-    .offer-form {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-    }
-    .form-group {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-    .form-group label {
-      font-size: 11px;
-      text-transform: uppercase;
-      font-weight: 800;
-      letter-spacing: 1.5px;
-      color: var(--neon-pink);
-    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px; }
+    .form-group label { display: block; font-size: 11px; text-transform: uppercase; color: var(--electric-cyan); margin-bottom: 5px; }
     .form-group input, .form-group select {
-      background: rgba(0,0,0,0.4);
-      border: 1.5px solid var(--border);
-      padding: 12px 16px;
-      border-radius: 10px;
-      color: var(--white);
-      font-family: inherit;
-      font-size: 15px;
-      outline: none;
-      transition: border-color 0.2s;
-    }
-    .form-group input:focus, .form-group select:focus {
-      border-color: var(--electric-cyan);
+      width: 100%; background: #000; border: 1px solid var(--glass-border);
+      padding: 10px; border-radius: 8px; color: var(--white); font-family: inherit;
     }
     .contract-preview {
-      background: rgba(0,0,0,0.5);
-      border: 2px dashed var(--glass-border);
-      border-radius: 12px;
-      padding: 25px;
-      margin-top: 20px;
-      font-family: monospace;
-      font-size: 14px;
-      line-height: 1.7;
-      color: #a5d6ff;
+      background: #000; border: 1px dashed var(--neon-pink); border-radius: 8px;
+      padding: 15px; font-family: monospace; font-size: 13px; color: var(--solar-yellow); line-height: 1.5;
     }
+
+    /* PROMISE BOX */
+    .promise { text-align: center; padding: 2rem 1rem; }
+    .promise-checks { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 15px; }
+    .check-item {
+      background: rgba(0,0,0,0.4); border: 1.5px solid var(--electric-cyan);
+      border-radius: 99px; padding: 8px 16px; font-size: 13px; font-weight: 700; cursor: pointer;
+    }
+    .check-item:hover { background: var(--electric-cyan); color: #000; }
 
     /* BUTTONS */
-    .cta-row {
-      display: flex;
-      gap: 15px;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-top: 3.5rem;
+    .cta-row { display: flex; gap: 15px; justify-content: center; margin-top: 3rem; flex-wrap: wrap; }
+    .btn-main {
+      padding: 16px 32px; background: var(--solar-yellow); color: #000;
+      font-weight: 800; border-radius: 99px; text-decoration: none;
+      text-transform: uppercase; letter-spacing: 1px; box-shadow: var(--yellow-shadow);
     }
-    .btn-pink {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 15px;
-      font-weight: 800;
-      padding: 16px 36px;
-      background: linear-gradient(135deg, var(--neon-pink), var(--solar-yellow));
-      color: #000000;
-      border: none;
-      border-radius: 99px;
-      cursor: pointer;
-      text-decoration: none;
-      transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      box-shadow: var(--neon-shadow);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-    .btn-pink:hover { 
-      transform: scale(1.08) translateY(-3px); 
-      box-shadow: 0 0 30px rgba(255, 42, 133, 0.7);
-    }
-    .btn-outline {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 15px;
-      font-weight: 700;
-      padding: 16px 36px;
-      background: transparent;
-      color: var(--white);
-      border: 2px solid var(--electric-cyan);
-      border-radius: 99px;
-      cursor: pointer;
-      text-decoration: none;
-      transition: all 0.2s;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-    .btn-outline:hover { 
-      background: rgba(0, 240, 255, 0.1); 
-      box-shadow: 0 0 20px rgba(0, 240, 255, 0.4);
-      transform: translateY(-2px);
-    }
-
-    .footer-note {
-      text-align: center;
-      font-size: 13px;
-      color: var(--muted);
-      padding-top: 3rem;
-      border-top: 2px solid var(--glass-border);
-      line-height: 1.7;
-    }
+    .btn-main:hover { transform: scale(1.05); }
 
     @media (max-width: 600px) {
-      .facts-grid, .form-row { grid-template-columns: 1fr; }
-      .emoji-float { display: none; }
-      .hero h1 { font-size: 38px; }
-      .beg-block, .vibe-card, .yap-box, .promise { padding: 1.5rem; }
+      .form-row { grid-template-columns: 1fr; }
+      .reasons-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
 
-  <!-- GRID & AMBIENT GLOW BACKDROP -->
   <div class="cyber-background"></div>
-  <div class="glow-blob" id="blob1"></div>
-  <div class="glow-blob" id="blob2"></div>
-
-  <!-- CONFETTI CANVAS OVERLAY -->
   <canvas id="canvas"></canvas>
 
   <a href="index.html" class="back">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
-    Professional Portfolio
+    Back to Portfolio
   </a>
 
-  <!-- FLOATING PARALLAX DECORATIVE ASSETS -->
-  <span class="emoji-float e1">🧬</span>
-  <span class="emoji-float e2">⚙️</span>
-  <span class="emoji-float e3">📐</span>
-  <span class="emoji-float e4">💜</span>
-
-  <!-- HERO PANEL -->
+  <!-- HERO -->
   <div class="hero">
-    <div class="wildcat-flag" id="badgeTrigger">⚠️ WARNING: EXCESSIVE Morale Morale Ahead 💜</div>
+    <div class="wildcat-flag" id="badgeTrigger">⚡ 100% High-Energy Engineer Inside 💜</div>
     <h1>
       Hi, I'm Chelsea.<br />
-      And I <span class="gradient">genuinely, actually</span><br />
-      want to join <span class="cyan">your team.</span>
+      And I <span class="gradient">genuinely</span> want to<br />
+      join <span class="cyan">your team.</span>
     </h1>
     <p class="hero-sub">
-      Let's bypass the cookie-cutter cover letter filters. Below is a highly quantitative, highly interactive feasibility study detailing why adding me to your slack workspace is optimal.
+      Skip the dry cover letters. Here is a high-speed, interactive feasibility study on why hiring me is the easiest win for your team this quarter.
     </p>
-    <div class="scroll-hint">
-      <span>Initiate Feasibility Report</span>
-      <div class="scroll-arrow"></div>
+
+    <!-- QUICK-SCAN STAT BRAG BAR -->
+    <div class="stat-bar">
+      <div class="stat-card">
+        <div class="num">BME+ME</div>
+        <div class="label">Northwestern Dual Focus</div>
+      </div>
+      <div class="stat-card">
+        <div class="num">100%</div>
+        <div class="label">Ctrl+S Muscle Memory</div>
+      </div>
+      <div class="stat-card">
+        <div class="num">∞</div>
+        <div class="label">Positive Team Energy</div>
+      </div>
     </div>
   </div>
 
-  <!-- HORIZONTAL TICKER -->
+  <!-- TICKER -->
   <div class="ticker-wrap">
     <div class="ticker">
-      <span>Northwestern Wildcats BME + ME</span>
-      <span class="accent">★</span>
-      <span>2:00 AM SolidWorks Devotee</span>
-      <span class="accent">★</span>
-      <span>Guaranteed high yap-velocity</span>
-      <span class="accent">★</span>
-      <span>Will never microwavable-fish your kitchen</span>
-      <span class="accent">★</span>
-      <span>Actually likes reading assembly instructions</span>
-      <span class="accent">★</span>
-      <span>Chicago-winter level resilience</span>
-      <span class="accent">★</span>
-      <span>Northwestern Wildcats BME + ME</span>
-      <span class="accent">★</span>
-      <span>2:00 AM SolidWorks Devotee</span>
-      <span class="accent">★</span>
-      <span>Guaranteed high yap-velocity</span>
-      <span class="accent">★</span>
-      <span>Will never microwavable-fish your kitchen</span>
-      <span class="accent">★</span>
-      <span>Actually likes reading assembly instructions</span>
-      <span class="accent">★</span>
-      <span>Chicago-winter level resilience</span>
-      <span class="accent">★</span>
+      <span>Northwestern BME + MechE</span> ★ 
+      <span>SolidWorks Power User</span> ★ 
+      <span>High-Velocity Problem Solver</span> ★ 
+      <span>Zero Microwave-Fish Incidents</span> ★ 
+      <span>Rapid Prototype Queen</span> ★ 
+      <span>Northwestern BME + MechE</span> ★ 
+      <span>SolidWorks Power User</span> ★ 
+      <span>High-Velocity Problem Solver</span> ★ 
     </div>
   </div>
 
   <div class="wrap">
 
-    <!-- THE BEG -->
-    <p class="slabel">Executive Summary</p>
+    <!-- VISUAL MEME & IMAGE GALLERY (VISUAL & WITTY) -->
+    <p class="slabel">Visual Evidence & Vibe Check</p>
+    <div class="meme-grid">
+      <div class="meme-card">
+        <div class="meme-img-container">
+          <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=500&q=80" alt="Cad Work">
+        </div>
+        <div class="meme-caption">
+          <strong>CAD Mastery</strong>
+          Me designing complex geometry vs. SolidWorks threatening to crash at 2:00 AM. (I always win).
+        </div>
+      </div>
+      <div class="meme-card">
+        <div class="meme-img-container">
+          <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=500&q=80" alt="Teamwork">
+        </div>
+        <div class="meme-caption">
+          <strong>Team Dynamics</strong>
+          Bringing unhinged positivity and fresh coffee to high-stakes sprint meetings.
+        </div>
+      </div>
+      <div class="meme-card">
+        <div class="meme-img-container">
+          <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=500&q=80" alt="Lab Work">
+        </div>
+        <div class="meme-caption">
+          <strong>Testing & Debugging</strong>
+          "It works on my machine" turned into "It works in production, reliably, every time."
+        </div>
+      </div>
+    </div>
+
+    <!-- EXECUTIVE SUMMARY -->
+    <p class="slabel">The Honest Pitch</p>
     <div class="beg-block">
-      <div class="tag">Exhibit A</div>
-      <h2>Okay, here is the honest thesis.</h2>
+      <h2>The Thesis: I build cool things with great people.</h2>
       <p>
-        I am pursuing a double major in <span class="highlight">Biomedical and Mechanical Engineering at Northwestern University</span>. I am the kind of engineer who finds deep, unironic joy in optimizing microfluidic geometries and linkages. 
-      </p>
-      <p>
-        I don't just complete projects to check off rubrics. I live for the process: <span class="highlight">modeling, testing, breaking, redesigning, and collaborating</span>. I can do this in the lab, in CAD, or in a coffee shop with high noise levels.
+        Studying double engineering at Northwestern means I love deep technical challenges—from microfluidic channels to dynamic mechanisms. But more than that, I thrive on collaborative engineering momentum. I don't just complete projects; I optimize them and elevate everyone in the room while doing it.
       </p>
     </div>
 
-    <!-- TRANSLATOR BOX (Tailored & Fun) -->
-    <p class="slabel">Interactive Translation Interface</p>
+    <!-- TRANSLATOR BOX -->
+    <p class="slabel">Corporate Translator</p>
     <div class="yap-box">
-      <h2>The "Chelsea-to-Corporate" Translator</h2>
-      <p style="font-size: 13.5px; color: var(--muted); margin-bottom: 20px;">
-        I value transparent communication. Click below to translate corporate resume fluff into what I actually mean:
-      </p>
       <div class="yap-selectors">
-        <button class="yap-btn active" onclick="switchYap('yap1', this)">"Outstanding Communication Skills"</button>
-        <button class="yap-btn" onclick="switchYap('yap2', this)">"Highly Adaptable Under Pressure"</button>
-        <button class="yap-btn" onclick="switchYap('yap3', this)">"Detail-Oriented CAD Designer"</button>
+        <button class="yap-btn active" onclick="switchYap('yap1', this)">"Strong Communicator"</button>
+        <button class="yap-btn" onclick="switchYap('yap2', this)">"Adaptable"</button>
+        <button class="yap-btn" onclick="switchYap('yap3', this)">"Detail-Oriented"</button>
       </div>
       <div class="yap-content" id="yapContent">
-        <div class="yap-original" id="yapOrig">"Outstanding Communication Skills" translates to...</div>
-        <div class="yap-translation" id="yapTrans">I have legendary, high-output yap velocity. Whether aligning multi-disciplinary stakeholders, running clinician interviews, or keeping meeting energy high at 4:30 PM on a Friday—I am keeping the room engaged.</div>
+        <div style="font-size: 12px; color: var(--electric-cyan); margin-bottom: 5px;" id="yapOrig">TRANSLATION:</div>
+        <div style="font-size: 15px; font-weight: 500;" id="yapTrans">I keep project velocity high, align multidisciplinary teams, and ensure technical documentation is actually fun to read.</div>
       </div>
     </div>
 
-    <!-- INTERACTIVE CANDIDACY VIBE-O-METER -->
+    <!-- VIBE-O-METER -->
     <p class="slabel">Calibration Matrix</p>
     <div class="vibe-card">
-      <h2>Calibrate My Candidate Metrics</h2>
-      <p style="font-size: 13.5px; color: var(--muted); margin-bottom: 20px;">Adjust the sliders below to dial in your team's current constraints:</p>
-      
-      <div class="vibe-grid">
-        <div class="slider-row">
-          <label>Yap Frequency / Discussion Output <span id="valYap">75%</span></label>
-          <input type="range" id="slideYap" min="20" max="100" value="75">
-        </div>
-        <div class="slider-row">
-          <label>SolidWorks Resilience (Crashes Before Crying) <span id="valCad">90%</span></label>
-          <input type="range" id="slideCad" min="20" max="100" value="90">
-        </div>
-        <div class="slider-row">
-          <label>Meeting Morale & Cookie Quality Threshold <span id="valSnack">95%</span></label>
-          <input type="range" id="slideSnack" min="20" max="100" value="95">
-        </div>
-        <div class="slider-row">
-          <label>Slack Response Delay (Milliseconds) <span id="valEmail">98%</span></label>
-          <input type="range" id="slideEmail" min="20" max="100" value="98">
-        </div>
+      <div class="slider-row">
+        <label>Discussion & Morale Output <span id="valYap">85%</span></label>
+        <input type="range" id="slideYap" min="20" max="100" value="85" oninput="updateMeter()">
       </div>
-
+      <div class="slider-row">
+        <label>CAD & Simulation Resilience <span id="valCad">95%</span></label>
+        <input type="range" id="slideCad" min="20" max="100" value="95" oninput="updateMeter()">
+      </div>
       <div class="score-banner">
-        <div class="score-value" id="meterScore">SUPREME Wildcat CAD SPECIALIST</div>
-        <div class="score-label">Optimized Fit Recommendation</div>
+        <div class="score-value" id="meterScore">OPTIMAL TEAM FIT</div>
       </div>
     </div>
 
-    <!-- SOLIDWORKS THERAPY PANEL -->
+    <!-- SOLIDWORKS THERAPY -->
     <p class="slabel">Engineering Reality Check</p>
     <div class="crash-hotline">
-      <h2>SolidWorks Crash Therapy Counter</h2>
-      <p style="font-size:14px; margin-bottom:15px; opacity:0.9;">
-        Every mechanical engineer knows the painful sound of a desktop fan revving up right before SolidWorks goes silent. Press the button to simulate a crash and test my recovery reflexes!
-      </p>
       <div class="crash-counter" id="crashCounter">142</div>
-      <p style="font-size:12px; opacity:0.6;">Crashes survived during my Northwestern career</p>
+      <p style="font-size: 13px; margin-top: 5px;">SolidWorks Crashes Survived (and conquered)</p>
       <button class="crash-btn" onclick="triggerCrash()">Simulate Crash Error</button>
     </div>
 
-    <!-- REASONS -->
-    <p class="slabel">10 Reasons Why We Mesh Perfectly</p>
-    <div class="reasons">
-      <div class="reason">
+    <!-- 10 REASONS GRID (SCANNABLE 2-COLUMN LAYOUT) -->
+    <p class="slabel">10 Quick Reasons We Mesh</p>
+    <div class="reasons-grid">
+      <div class="reason-card">
         <div class="reason-num">01</div>
-        <div class="reason-body">
-          <h3>Uncapped Morale Calibration</h3>
-          <p>I have built an outstanding ability to elevate team dynamics. If energy levels dip during intensive sprints, I am ready with morale boosts, logical insights, and fresh coffee.</p>
-        </div>
+        <div><h3>High Morale Output</h3><p>Instant positive energy injection into intense design sprints.</p></div>
       </div>
-      <div class="reason">
+      <div class="reason-card">
         <div class="reason-num">02</div>
-        <div class="reason-body">
-          <h3>Double Engineering Load</h3>
-          <p>Studying both Biomedical and Mechanical Engineering at Northwestern means I thrive in highly demanding environments. I don't just study complex systems; I actively build and optimize them.</p>
-        </div>
+        <div><h3>Dual Rigor</h3><p>BME + MechE means cross-disciplinary engineering fluency.</p></div>
       </div>
-      <div class="reason">
+      <div class="reason-card">
         <div class="reason-num">03</div>
-        <div class="reason-body">
-          <h3>On-Demand Meeting Catering</h3>
-          <p>I stand by my commitment to team well-being. Good ideas flow better when the team is supported, and I make sure morale stays high.</p>
-        </div>
+        <div><h3>CAD Mastery</h3><p>Clean assemblies with structured feature trees and zero errors.</p></div>
       </div>
-      <div class="reason">
+      <div class="reason-card">
         <div class="reason-num">04</div>
-        <div class="reason-body">
-          <h3>Unmatched Perseverance</h3>
-          <p>I have spent hours resolving fluid meshes and debugging microfluidic boundaries. When a technical obstacle arises, I dive in headfirst until it's completely solved.</p>
-        </div>
+        <div><h3>Grit & Resilience</h3><p>Chicago winters + tough engineering problems built high resilience.</p></div>
       </div>
-      <div class="reason">
+      <div class="reason-card">
         <div class="reason-num">05</div>
-        <div class="reason-body">
-          <h3>Targeted Inquiry Process</h3>
-          <p>I ask precise, impactful questions. I gather requirements effectively so we spend our energy building the right solution correctly the first time.</p>
-        </div>
+        <div><h3>Proactive Asks</h3><p>I ask targeted questions early to avoid costly redesigns later.</p></div>
       </div>
-      <div class="reason">
+      <div class="reason-card">
         <div class="reason-num">06</div>
-        <div class="reason-body">
-          <h3>Active Leadership Experience</h3>
-          <p>Leading student organizations has taught me how to coordinate complex project timelines and align differing opinions under a unified goal.</p>
-        </div>
+        <div><h3>Leadership Tested</h3><p>Experience coordinating teams under real deadlines.</p></div>
       </div>
-      <div class="reason">
+      <div class="reason-card">
         <div class="reason-num">07</div>
-        <div class="reason-body">
-          <h3>Patient-Focused Design Philosophy</h3>
-          <p>I chose Biomedical Engineering because I am passionate about creating tools that directly improve lives. This purpose drives the standard of my work.</p>
-        </div>
+        <div><h3>Impact-Focused</h3><p>Motivated by building products that genuinely help people.</p></div>
       </div>
-      <div class="reason">
+      <div class="reason-card">
         <div class="reason-num">08</div>
-        <div class="reason-body">
-          <h3>High-Frequency Slack Response</h3>
-          <p>I keep communications moving. I write clearly, double-check details, and keep project stakeholders seamlessly updated.</p>
-        </div>
+        <div><h3>High Responsiveness</h3><p>Fast Slack responses and clear status communication.</p></div>
       </div>
-      <div class="reason">
+      <div class="reason-card">
         <div class="reason-num">09</div>
-        <div class="reason-body">
-          <h3>Self-Aware Dynamic Team Member</h3>
-          <p>This entire portfolio secret section is proof: I bring technical capability, absolute dedication, and a great sense of humor to the workspace.</p>
-        </div>
+        <div><h3>Self-Aware</h3><p>Technical capability paired with a great sense of humor.</p></div>
       </div>
-      <div class="reason">
+      <div class="reason-card">
         <div class="reason-num">10</div>
-        <div class="reason-body">
-          <h3>Absolute Commitment</h3>
-          <p>I custom-built this entire digital proof-of-concept just to demonstrate my work ethic. Imagine what I will build when we are working together.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- FUN FACTS -->
-    <p class="slabel">Wildcat Profile Dossier</p>
-    <div class="facts-grid">
-      <div class="fact-card">
-        <span class="emoji">🧬</span>
-        <h3>BME + MechE Double Threat</h3>
-        <p>Combining the mechanical rigor of structural mechanics with the organic complexity of microfluidics and cellular dynamics.</p>
-      </div>
-      <div class="fact-card">
-        <span class="emoji">🏆</span>
-        <h3>ASME Design Competitor</h3>
-        <p>I bring an intense, focused energy to engineering design challenges. I love the fast-paced nature of collaborative sprints.</p>
-      </div>
-      <div class="fact-card">
-        <span class="emoji">❄️</span>
-        <h3>Chicago Winter Hardened</h3>
-        <p>If I can survive a 9:00 AM exam while walking through a -15°F wind chill off Lake Michigan, your office AC settings will not faze me.</p>
-      </div>
-      <div class="fact-card">
-        <span class="emoji">💾</span>
-        <h3>The Ctrl+S Muscle Reflex</h3>
-        <p>My hand automatically hits Ctrl+S every 45 seconds. It is an instinct born from years of complex CAD modeling.</p>
-      </div>
-    </div>
-
-    <!-- VOWS -->
-    <div class="promise">
-      <h2>The Solemn Professional Covenant ✋</h2>
-      <p>Click any vow below to execute a secure, micro-targeted engineering validation launch (with custom particle confirmation):</p>
-      <div class="promise-checks">
-        <div class="check-item" data-emoji="⏰"><span>✓</span> Zero tardiness logs</div>
-        <div class="check-item" data-emoji="💜"><span>✓</span> 110% Wildcat energy</div>
-        <div class="check-item" data-emoji="🍪"><span>✓</span> Home-baked meeting cookies</div>
-        <div class="check-item" data-emoji="💾"><span>✓</span> Continuous assembly saves</div>
-        <div class="check-item" data-emoji="🐟"><span>✓</span> NO fish in the microwave ever</div>
+        <div><h3>Proof of Effort</h3><p>I built this interactive page just to show dedication.</p></div>
       </div>
     </div>
 
     <!-- OFFER LETTER GENERATOR -->
-    <p class="slabel">Instant Offer Letter Draft</p>
+    <p class="slabel">Instant Offer Generator</p>
     <div class="offer-card">
-      <h2>Custom Offer Calibration</h2>
-      <p style="font-size:13px; color: var(--muted); margin-bottom: 15px;">Configure the parameters below to draft Chelsea's optimized employment agreement:</p>
-      
-      <div class="offer-form">
-        <div class="form-row">
-          <div class="form-group">
-            <label for="companyName">Your Organization</label>
-            <input type="text" id="companyName" value="Awesome Tech Corp">
-          </div>
-          <div class="form-group">
-            <label for="perkSelect">Select High-Value Perk</label>
-            <select id="perkSelect">
-              <option value="Unlimited Team Morale Yap Sessions">Unlimited Team Morale Yap Sessions</option>
-              <option value="Dedicated Office Snack Drawer">Dedicated Office Snack Drawer</option>
-              <option value="Private SolidWorks Render Supercomputer">Private SolidWorks Render Supercomputer</option>
-              <option value="Unlimited Cold Brew Coffee Sponsorship">Unlimited Cold Brew Coffee Sponsorship</option>
-            </select>
-          </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Organization Name</label>
+          <input type="text" id="companyName" value="Awesome Tech Corp" oninput="updateContract()">
         </div>
-        
-        <div class="contract-preview" id="contractPreview">
-          // Calibrated Contract Proposal<br>
-          To: Chelsea Ogbonna &lt;chelsea@u.northwestern.edu&gt;<br>
-          From: Awesome Tech Corp<br><br>
-          Chelsea, we offer you a role backed by one (1) Unlimited Team Morale Yap Sessions. We expect daily high-morale engineering and promise no fish will ever be microwaved.
+        <div class="form-group">
+          <label>Key Team Perk</label>
+          <select id="perkSelect" onchange="updateContract()">
+            <option value="Unlimited Morale Sessions">Unlimited Morale Sessions</option>
+            <option value="Dedicated Snack Station">Dedicated Snack Station</option>
+            <option value="Supercomputer Render Rig">Supercomputer Render Rig</option>
+          </select>
         </div>
+      </div>
+      <div class="contract-preview" id="contractPreview">
+        CONFIDENTIAL OFFER LETTER<br/>
+        To: Chelsea Ogbonna<br/>
+        From: [Awesome Tech Corp]<br/>
+        Role: Hardware/Biomedical Engineering Specialist<br/>
+        Included Perk: Unlimited Morale Sessions<br/>
+        Status: READY TO SIGN ✍️
       </div>
     </div>
 
-    <!-- CTA -->
-    <div class="cta-row">
-      <a href="#" class="btn-pink" id="emailBtn">
-        📧 Let's build together
-      </a>
-      <a href="index.html" class="btn-outline">
-        Professional Resume
-      </a>
+    <!-- PROMISE BOX -->
+    <div class="promise">
+      <h2 style="font-family: 'Syne', sans-serif; color: var(--solar-yellow);">The Covenant ✋</h2>
+      <div class="promise-checks">
+        <div class="check-item" onclick="triggerConfetti()">✓ Zero Tardiness</div>
+        <div class="check-item" onclick="triggerConfetti()">✓ 100% Team Energy</div>
+        <div class="check-item" onclick="triggerConfetti()">✓ Continuous Saves</div>
+        <div class="check-item" onclick="triggerConfetti()">✓ No Microwaved Fish</div>
+      </div>
     </div>
 
-    <div class="divider">· · ·</div>
-
-    <p class="footer-note">
-      This page was built with unyielding dedication, excessive coffee, and complete self-awareness.<br />
-      The rest of this portfolio is much more standard. I promise. Go ahead, verify my designs!
-    </p>
+    <!-- CTA BUTTONS -->
+    <div class="cta-row">
+      <a href="mailto:chelsea@example.com" class="btn-main">Send Offer Letter</a>
+    </div>
 
   </div>
 
   <script>
-    /* ========================================================
-       CHELSEA TRANSLATOR INTERACTION
-       ======================================================== */
-    const translations = {
-      yap1: {
-        orig: '"Outstanding Communication Skills" translates to...',
-        trans: "I have legendary, high-output yap velocity. Whether aligning multi-disciplinary stakeholders, running clinician interviews, or keeping meeting energy high at 4:30 PM on a Friday—I am keeping the room engaged."
-      },
-      yap2: {
-        orig: '"Highly Adaptable Under Pressure" translates to...',
-        trans: "I have successfully debugged fluid simulation velocity fields while my CAD model was crashing, a project teammate was MIA, and my laptop battery was at 3%. I do not panic. I simply find the nearest outlet and fix it."
-      },
-      yap3: {
-        orig: '"Detail-Oriented CAD Designer" translates to...',
-        trans: "I will align your mates, double-check your tolerances, clean up your feature trees, and ensure your assemblies actually move smoothly. I save my files so often it has become a subconscious muscle reflex."
-      }
+    // YAP TRANSLATOR
+    const yaps = {
+      yap1: { orig: '"Strong Communicator"', trans: 'I keep project velocity high, align multidisciplinary teams, and ensure technical documentation is actually fun to read.' },
+      yap2: { orig: '"Highly Adaptable"', trans: 'When project specs pivot mid-sprint, I re-route immediately without losing momentum or breaking CAD assemblies.' },
+      yap3: { orig: '"Detail-Oriented"', trans: 'I catch tolerance stack-up issues before the parts ever hit the machine shop floor.' }
     };
 
-    function switchYap(id, btn) {
+    function switchYap(key, btn) {
       document.querySelectorAll('.yap-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-      const content = translations[id];
-      document.getElementById('yapOrig').innerText = content.orig;
-      document.getElementById('yapTrans').innerText = content.trans;
+      document.getElementById('yapOrig').innerText = 'TRANSLATION FOR ' + yaps[key].orig + ':';
+      document.getElementById('yapTrans').innerText = yaps[key].trans;
     }
 
-    /* ========================================================
-       SOLIDWORKS CRASH COUNTER INTERACTION
-       ======================================================== */
-    let crashCount = 142;
+    // VIBE METER
+    function updateMeter() {
+      const yap = document.getElementById('slideYap').value;
+      const cad = document.getElementById('slideCad').value;
+      document.getElementById('valYap').innerText = yap + '%';
+      document.getElementById('valCad').innerText = cad + '%';
+      
+      const score = (parseInt(yap) + parseInt(cad)) / 2;
+      const banner = document.getElementById('meterScore');
+      if (score > 85) banner.innerText = 'SUPREME UNSTOPPABLE WILDCAT FIT';
+      else if (score > 60) banner.innerText = 'HIGH-PERFORMANCE TEAM ENGINE';
+      else banner.innerText = 'BALANCED ENGINEERING CONTRIBUTOR';
+    }
+
+    // CRASH COUNTER
+    let crashes = 142;
     function triggerCrash() {
-      crashCount++;
-      document.getElementById('crashCounter').innerText = crashCount;
-      spawnCannon(window.innerWidth / 2, window.innerHeight / 2, ['💥', '📁', '⚠️', '😢', '💀']);
+      crashes++;
+      document.getElementById('crashCounter').innerText = crashes;
+      alert('CRASH SIMULATED: Ctrl+S instinctively pressed. Zero data lost!');
     }
 
-    /* ========================================================
-       MOCK CALIBRATION AND EVALUATION METERS
-       ======================================================== */
-    const slideYap = document.getElementById('slideYap');
-    const slideCad = document.getElementById('slideCad');
-    const slideSnack = document.getElementById('slideSnack');
-    const slideEmail = document.getElementById('slideEmail');
-
-    const valYap = document.getElementById('valYap');
-    const valCad = document.getElementById('valCad');
-    const valSnack = document.getElementById('valSnack');
-    const valEmail = document.getElementById('valEmail');
-
-    const meterScore = document.getElementById('meterScore');
-
-    function reevaluateCandidate() {
-      const y = parseInt(slideYap.value);
-      const c = parseInt(slideCad.value);
-      const s = parseInt(slideSnack.value);
-      const e = parseInt(slideEmail.value);
-
-      valYap.innerText = y + "%";
-      valCad.innerText = c + "%";
-      valSnack.innerText = s + "%";
-      valEmail.innerText = e + "%";
-
-      const total = y + c + s + e;
-
-      if (total > 350) {
-        meterScore.innerText = "SUPREME Wildcat CAD SPECIALIST (HIRE NOW)";
-        meterScore.style.color = "var(--electric-cyan)";
-      } else if (total > 260) {
-        meterScore.innerText = "ELITE DESIGN COLLABORATOR";
-        meterScore.style.color = "var(--solar-yellow)";
-      } else if (total > 150) {
-        meterScore.innerText = "HIGH-OUTPUT SYSTEM ENGINEER";
-        meterScore.style.color = "var(--neon-pink)";
-      } else {
-        meterScore.innerText = "SOLID CORE APPRENTICE";
-        meterScore.style.color = "var(--white)";
-      }
-    }
-
-    [slideYap, slideCad, slideSnack, slideEmail].forEach(slider => {
-      slider.addEventListener('input', reevaluateCandidate);
-    });
-
-    /* ========================================================
-       DYNAMIC CONTRACT DRAFTER
-       ======================================================== */
-    const companyInput = document.getElementById('companyName');
-    const perkSelect = document.getElementById('perkSelect');
-    const contractPreview = document.getElementById('contractPreview');
-    const emailBtn = document.getElementById('emailBtn');
-
+    // CONTRACT PREVIEW
     function updateContract() {
-      const company = companyInput.value || "Awesome Tech Corp";
-      const perk = perkSelect.value;
-
-      contractPreview.innerHTML = `
-        // Calibrated Contract Proposal<br>
-        To: Chelsea Ogbonna &lt;chelsea@u.northwestern.edu&gt;<br>
-        From: ${company}<br><br>
-        Chelsea, we offer you a role at ${company} backed by: ${perk}. We expect daily high-morale engineering, excellent SolidWorks performance, and promise no fish will ever be microwaved. Let's build!
-      `;
-
-      // Formulate pre-filled email anchor
-      const subject = encodeURIComponent(`Chelsea, let's talk about ${company}!`);
-      const body = encodeURIComponent(`Hi Chelsea,\n\nWe saw the secret page on your portfolio and we want to discuss joining our team at ${company}.\n\nWe'll make sure there's ${perk} waiting for you.\n\nBest,\nYour Hiring Team`);
-      emailBtn.href = `mailto:chelsea@u.northwestern.edu?subject=${subject}&body=${body}`;
+      const company = document.getElementById('companyName').value || 'Your Company';
+      const perk = document.getElementById('perkSelect').value;
+      document.getElementById('contractPreview').innerHTML = 
+        `CONFIDENTIAL OFFER LETTER<br/>` +
+        `To: Chelsea Ogbonna<br/>` +
+        `From: ${company}<br/>` +
+        `Role: Engineering Specialist<br/>` +
+        `Included Perk: ${perk}<br/>` +
+        `Status: READY TO SIGN ✍️`;
     }
 
-    companyInput.addEventListener('input', updateContract);
-    perkSelect.addEventListener('change', updateContract);
-    updateContract(); // Initial setup
-
-    /* ========================================================
-       EMOJI CANNON PARTICLE SYSTEM
-       ======================================================== */
-    const canvas = document.getElementById('canvas');
-    const ctx = canvas.getContext('2d');
-
-    let particles = [];
-
-    function resizeCanvas() {
+    // SIMPLE CONFETTI EFFECT
+    function triggerConfetti() {
+      const canvas = document.getElementById('canvas');
+      const ctx = canvas.getContext('2d');
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
+      
+      let particles = [];
+      for (let i = 0; i < 50; i++) {
+        particles.push({
+          x: window.innerWidth / 2,
+          y: window.innerHeight / 2,
+          vx: (Math.random() - 0.5) * 12,
+          vy: (Math.random() - 0.5) * 12,
+          color: ['#ff007f', '#ffe600', '#00f5ff'][Math.floor(Math.random() * 3)],
+          size: Math.random() * 8 + 4,
+          life: 40
+        });
+      }
+
+      function render() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        particles.forEach((p, index) => {
+          p.x += p.vx;
+          p.y += p.vy;
+          p.life--;
+          ctx.fillStyle = p.color;
+          ctx.fillRect(p.x, p.y, p.size, p.size);
+          if (p.life <= 0) particles.splice(index, 1);
+        });
+        if (particles.length > 0) requestAnimationFrame(render);
+      }
+      render();
     }
-    window.addEventListener('resize', resizeCanvas);
-    resizeCanvas();
-
-    class Particle {
-      constructor(x, y, emoji) {
-        this.x = x;
-        this.y = y;
-        this.emoji = emoji;
-        this.size = Math.random() * 20 + 20;
-        this.angle = Math.random() * Math.PI * 2;
-        this.speed = Math.random() * 8 + 6;
-        this.vx = Math.cos(this.angle) * this.speed;
-        this.vy = Math.sin(this.angle) * this.speed - 3;
-        this.gravity = 0.35;
-        this.opacity = 1;
-        this.rotation = Math.random() * Math.PI;
-        this.rotationSpeed = (Math.random() - 0.5) * 0.1;
-      }
-
-      update() {
-        this.vy += this.gravity;
-        this.x += this.vx;
-        this.y += this.vy;
-        this.opacity -= 0.015;
-        this.rotation += this.rotationSpeed;
-      }
-
-      draw() {
-        ctx.save();
-        ctx.translate(this.x, this.y);
-        ctx.rotate(this.rotation);
-        ctx.globalAlpha = this.opacity;
-        ctx.font = `${this.size}px Arial`;
-        ctx.fillText(this.emoji, -this.size / 2, this.size / 2);
-        ctx.restore();
-      }
-    }
-
-    function spawnCannon(x, y, extraEmojis = []) {
-      const defaultEmojis = ['🧬', '⚙️', '📐', '🍪', '💜', '🔥', '💻', '💡'];
-      const pool = extraEmojis.length > 0 ? extraEmojis : defaultEmojis;
-      for (let i = 0; i < 35; i++) {
-        const randomEmoji = pool[Math.floor(Math.random() * pool.length)];
-        particles.push(new Particle(x, y, randomEmoji));
-      }
-    }
-
-    function animate() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      particles.forEach((p, index) => {
-        p.update();
-        p.draw();
-        if (p.opacity <= 0) {
-          particles.splice(index, 1);
-        }
-      });
-      requestAnimationFrame(animate);
-    }
-    animate();
-
-    // Trigger on Promise Checklist click
-    document.querySelectorAll('.check-item').forEach(item => {
-      item.addEventListener('click', (e) => {
-        const emoji = item.getAttribute('data-emoji') || '🎉';
-        const rect = item.getBoundingClientRect();
-        const x = rect.left + rect.width / 2;
-        const y = rect.top + rect.height / 2;
-        spawnCannon(x, y, [emoji, '★', '✨', '✓', '💜']);
-      });
-    });
-
-    // Trigger on flag click
-    document.getElementById('badgeTrigger').addEventListener('click', (e) => {
-      const rect = e.target.getBoundingClientRect();
-      spawnCannon(rect.left + rect.width / 2, rect.top + rect.height / 2, ['💜', '🧬', '⚙️', '🏆', '🔥']);
-    });
-
-    // Trigger on main CTA click
-    emailBtn.addEventListener('click', (e) => {
-      if (particles.length < 100) {
-        spawnCannon(window.innerWidth / 2, window.innerHeight * 0.8, ['📝', '💼', '💵', '💜', '🚀']);
-      }
-    });
-
-    // Background mouse reactivity
-    document.addEventListener('mousemove', (e) => {
-      const x = (e.clientX - window.innerWidth / 2) * 0.04;
-      const y = (e.clientY - window.innerHeight / 2) * 0.04;
-      document.getElementById('blob1').style.transform = `translate(${x}px, ${y}px)`;
-      document.getElementById('blob2').style.transform = `translate(${-x}px, ${-y}px)`;
-    });
   </script>
-
 </body>
 </html>
