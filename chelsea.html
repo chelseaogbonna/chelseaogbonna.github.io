@@ -1,568 +1,98 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Chelsea Ogbonna | The Human Side ✨</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hire Me... Please? 👀</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet">
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --bg-base: #FAF7F2;
-      --text-dark: #2B2D42;
-      --text-muted: #6C757D;
-      
-      --pastel-pink: #FFC0CB;
-      --pastel-pink-soft: #FFF0F3;
-      --pastel-lavender: #E8DFF5;
-      --pastel-mint: #D8F3DC;
-      --pastel-yellow: #FEF9E7;
-      --pastel-peach: #FDE2E4;
-      --pastel-blue: #E0F4FF;
-
-      --card-bg: rgba(255, 255, 255, 0.82);
-      --card-border: rgba(255, 255, 255, 0.95);
-      --card-shadow: 0 12px 35px rgba(190, 170, 200, 0.12);
-      --hover-shadow: 0 18px 40px rgba(180, 150, 190, 0.22);
-    }
-
-    body {
-      background-color: var(--bg-base);
-      color: var(--text-dark);
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      min-height: 100vh;
-      overflow-x: hidden;
-      position: relative;
-    }
-
-    /* AMBIENT PASTEL BACKGROUND GLOWS */
-    .ambient-bg {
-      position: fixed;
-      top: 0; left: 0; width: 100%; height: 100%;
-      z-index: -1; pointer-events: none;
-      background: 
-        radial-gradient(circle at 10% 15%, #FFE5EC 0%, transparent 45%),
-        radial-gradient(circle at 85% 25%, #E8DFF5 0%, transparent 45%),
-        radial-gradient(circle at 50% 65%, #E8F5E9 0%, transparent 50%),
-        radial-gradient(circle at 20% 85%, #E0F4FF 0%, transparent 40%);
-      filter: blur(60px);
-    }
-
-    #canvas {
-      position: fixed;
-      top: 0; left: 0; width: 100%; height: 100%;
-      pointer-events: none; z-index: 1999;
-    }
-
-    /* NAV LINK */
-    .back {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--text-muted);
-      text-decoration: none;
-      padding: 2rem 2.5rem 0;
-      transition: color 0.2s, transform 0.2s;
-    }
-    .back:hover { color: var(--text-dark); transform: translateX(-3px); }
-    .back svg { width: 16px; height: 16px; }
-
-    /* CONTAINER */
-    .wrap {
-      max-width: 920px;
-      margin: 0 auto;
-      padding: 1.5rem 1.5rem 5rem;
-    }
-
-    /* HERO HEADER */
-    .hero {
-      text-align: center;
-      margin-bottom: 3.5rem;
-      position: relative;
-    }
-
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: var(--pastel-pink-soft);
-      color: #D65A7A;
-      font-family: 'Outfit', sans-serif;
-      font-weight: 600;
-      font-size: 13px;
-      padding: 7px 20px;
-      border-radius: 99px;
-      margin-bottom: 1.2rem;
-      border: 1px solid rgba(214, 90, 122, 0.15);
-      box-shadow: 0 4px 12px rgba(214, 90, 122, 0.08);
-    }
-
-    .hero h1 {
-      font-family: 'Outfit', sans-serif;
-      font-weight: 800;
-      font-size: clamp(36px, 6vw, 62px);
-      line-height: 1.15;
-      letter-spacing: -1px;
-      color: var(--text-dark);
-    }
-
-    .hero h1 .highlight {
-      background: linear-gradient(120deg, #D65A7A, #8E7DBE);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .hero-sub {
-      font-size: 17.5px;
-      color: var(--text-muted);
-      max-width: 620px;
-      margin: 1.2rem auto 0;
-      line-height: 1.6;
-    }
-
-    /* QUICK PILL STRIP */
-    .pill-strip {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 10px;
-      margin-top: 2rem;
-    }
-
-    .pill-tag {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      padding: 8px 16px;
-      border-radius: 99px;
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--text-dark);
-      box-shadow: var(--card-shadow);
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    /* SECTION LABELS */
-    .slabel {
-      font-family: 'Outfit', sans-serif;
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      color: #8E7DBE;
-      margin: 4rem 0 1.5rem;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    .slabel::after {
-      content: "";
-      flex-grow: 1;
-      height: 1px;
-      background: #E2DBF0;
-    }
-
-    /* VISUAL VIBE GALLERY GRID */
-    .vibe-gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 20px;
-    }
-
-    .vibe-card {
-      background: var(--card-bg);
-      backdrop-filter: blur(12px);
-      border: 1px solid var(--card-border);
-      border-radius: 24px;
-      overflow: hidden;
-      box-shadow: var(--card-shadow);
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-    }
-    .vibe-card:hover {
-      transform: translateY(-5px);
-      box-shadow: var(--hover-shadow);
-    }
-
-    .vibe-img-wrap {
-      height: 190px;
-      position: relative;
-      overflow: hidden;
-    }
-    .vibe-img-wrap img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .vibe-card-content {
-      padding: 20px;
-    }
-    .vibe-card-content h3 {
-      font-family: 'Outfit', sans-serif;
-      font-size: 17px;
-      font-weight: 700;
-      color: var(--text-dark);
-      margin-bottom: 6px;
-    }
-    .vibe-card-content p {
-      font-size: 14px;
-      color: var(--text-muted);
-      line-height: 1.5;
-    }
-
-    /* WORK STYLE MATRIX GRID */
-    .matrix-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-      gap: 16px;
-    }
-
-    .matrix-card {
-      background: var(--card-bg);
-      backdrop-filter: blur(12px);
-      border: 1px solid var(--card-border);
-      border-radius: 20px;
-      padding: 22px;
-      box-shadow: var(--card-shadow);
-    }
-
-    .matrix-icon {
-      font-size: 26px;
-      margin-bottom: 10px;
-      display: inline-block;
-    }
-
-    .matrix-card h3 {
-      font-family: 'Outfit', sans-serif;
-      font-size: 16px;
-      font-weight: 700;
-      color: var(--text-dark);
-      margin-bottom: 6px;
-    }
-
-    .matrix-card p {
-      font-size: 13.5px;
-      color: var(--text-muted);
-      line-height: 1.5;
-    }
-
-    /* TRANSLATOR BOX */
-    .yap-box {
-      background: var(--card-bg);
-      backdrop-filter: blur(12px);
-      border: 1px solid var(--card-border);
-      border-radius: 24px;
-      padding: 2rem;
-      box-shadow: var(--card-shadow);
-    }
-
-    .yap-selectors { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
-    
-    .yap-btn {
-      background: var(--pastel-yellow);
-      border: none;
-      padding: 9px 18px;
-      border-radius: 99px;
-      color: var(--text-dark);
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-weight: 600;
-      font-size: 13px;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-    .yap-btn.active, .yap-btn:hover { background: var(--pastel-pink); }
-
-    .yap-content {
-      background: rgba(255, 255, 255, 0.7);
-      border-radius: 16px;
-      padding: 18px;
-      border-left: 4px solid #D65A7A;
-    }
-
-    /* PEER FEEDBACK CAROUSEL / BOXES */
-    .feedback-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-      gap: 16px;
-    }
-
-    .quote-card {
-      background: var(--pastel-lavender);
-      border: 1px solid rgba(255,255,255,0.8);
-      border-radius: 20px;
-      padding: 20px;
-      box-shadow: var(--card-shadow);
-      position: relative;
-    }
-
-    .quote-card p {
-      font-size: 14px;
-      font-style: italic;
-      color: var(--text-dark);
-      line-height: 1.5;
-      margin-bottom: 12px;
-    }
-
-    .quote-author {
-      font-family: 'Outfit', sans-serif;
-      font-size: 12.5px;
-      font-weight: 700;
-      color: #6C5CE7;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-
-    /* TEAM PROMISES */
-    .promise-container {
-      background: var(--card-bg);
-      backdrop-filter: blur(12px);
-      border: 1px solid var(--card-border);
-      border-radius: 24px;
-      padding: 2.2rem;
-      text-align: center;
-      box-shadow: var(--card-shadow);
-    }
-
-    .promise-container h3 {
-      font-family: 'Outfit', sans-serif;
-      font-size: 20px;
-      color: var(--text-dark);
-      margin-bottom: 8px;
-    }
-
-    .promise-container p {
-      font-size: 14.5px;
-      color: var(--text-muted);
-      margin-bottom: 1.2rem;
-    }
-
-    .promise-checks { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
-    
-    .check-item {
-      background: #FFF;
-      border: 1px solid var(--card-border);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
-      border-radius: 99px;
-      padding: 9px 20px;
-      font-size: 13.5px;
-      font-weight: 600;
-      color: var(--text-dark);
-      cursor: pointer;
-      transition: transform 0.2s, background 0.2s;
-    }
-    .check-item:hover { transform: scale(1.04); background: var(--pastel-pink-soft); }
-
-    /* CTA */
-    .cta-row { text-align: center; margin-top: 3.5rem; }
-    
-    .btn-main {
-      display: inline-block;
-      padding: 16px 40px;
-      background: var(--text-dark);
-      color: #FFF;
-      font-family: 'Outfit', sans-serif;
-      font-weight: 700;
-      font-size: 15px;
-      border-radius: 99px;
-      text-decoration: none;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.12);
-      transition: transform 0.2s;
-    }
-    .btn-main:hover { transform: translateY(-3px); }
+    body { font-family: 'Comic Neue', system-ui, sans-serif; }
+    .beg { animation: beg 1.5s infinite alternate; }
+    @keyframes beg { from { transform: translateY(0); } to { transform: translateY(-15px); } }
   </style>
 </head>
-<body>
+<body class="bg-gradient-to-br from-purple-900 via-indigo-900 to-black text-white min-h-screen">
+  <div class="max-w-2xl mx-auto pt-16 px-6 text-center">
+    
+    <!-- Hero -->
+    <div class="mb-12">
+      <div class="text-6xl mb-4">🙏😂</div>
+      <h1 class="text-5xl font-bold tracking-tight mb-4">
+        Please Hire Me<br>
+        <span class="text-yellow-400">I'm Running Out of Ramen</span>
+      </h1>
+      <p class="text-2xl text-purple-300">Professional [Your Role] • Professional Meme Lord</p>
+    </div>
 
-  <div class="ambient-bg"></div>
-  <canvas id="canvas"></canvas>
-
-  <a href="index.html" class="back">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
-    Portfolio
-  </a>
-
-  <div class="wrap">
-
-    <!-- HERO SECTION -->
-    <div class="hero">
-      <div class="badge">✨ Soft Skills & Work Style</div>
-      <h1>The Human Side of Engineering</h1>
-      <p class="hero-sub">
-        My technical projects prove I can build. This page showcases how I collaborate, lead, and keep team momentum high.
+    <!-- Funny Plea -->
+    <div class="bg-white/10 backdrop-blur-md rounded-3xl p-8 mb-10 border border-white/20">
+      <p class="text-2xl leading-relaxed">
+        Look, I'm not saying I'm the best candidate you'll see today...<br>
+        <span class="text-yellow-300 font-medium">but I am saying I will bring snacks and unmatched vibes to every meeting.</span>
       </p>
+      <div class="my-8 text-7xl beg">🥺</div>
+      <p class="text-xl italic">"If you hire me, I promise to never use Comic Sans... unless it's ironically."</p>
+    </div>
 
-      <!-- QUICK-SCAN TAG STRIP -->
-      <div class="pill-strip">
-        <div class="pill-tag">🌸 Active Listener</div>
-        <div class="pill-tag">⚡ Sprint Energizer</div>
-        <div class="pill-tag">💬 Clear Communicator</div>
-        <div class="pill-tag">🧩 Cross-Functional Ally</div>
+    <!-- Why Me (humorous) -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+      <div class="bg-white/10 backdrop-blur rounded-2xl p-6">
+        <i class="fa-solid fa-rocket text-4xl mb-4 text-yellow-400"></i>
+        <h3 class="text-xl font-semibold">Speed</h3>
+        <p class="text-purple-200">I debug faster than I can eat a bag of chips</p>
+      </div>
+      <div class="bg-white/10 backdrop-blur rounded-2xl p-6">
+        <i class="fa-solid fa-face-laugh-squint text-4xl mb-4 text-yellow-400"></i>
+        <h3 class="text-xl font-semibold">Culture Fit</h3>
+        <p class="text-purple-200">I will make dad jokes in standup and you’ll pretend to hate them</p>
+      </div>
+      <div class="bg-white/10 backdrop-blur rounded-2xl p-6">
+        <i class="fa-solid fa-hand-holding-heart text-4xl mb-4 text-yellow-400"></i>
+        <h3 class="text-xl font-semibold">Loyalty</h3>
+        <p class="text-purple-200">I’ll stay until the free snacks run out (probably 3–5 years)</p>
       </div>
     </div>
 
-    <!-- VISUAL GALLERY -->
-    <p class="slabel">Workplace Vibes & Environment</p>
-    <div class="vibe-gallery">
-      <div class="vibe-card">
-        <div class="vibe-img-wrap">
-          <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=600&q=80" alt="Collaboration">
-        </div>
-        <div class="vibe-card-content">
-          <h3>Collaborative Design Sprints</h3>
-          <p>I thrive in whiteboard sessions where everyone shares ideas freely and builds on each other's strengths.</p>
-        </div>
-      </div>
-
-      <div class="vibe-card">
-        <div class="vibe-img-wrap">
-          <img src="https://images.unsplash.com/photo-1531497865144-0464ef8fb9a9?auto=format&fit=crop&w=600&q=80" alt="Feedback Loop">
-        </div>
-        <div class="vibe-card-content">
-          <h3>Open Feedback Culture</h3>
-          <p>Feedback is where good ideas become great ones. I welcome critique early and pass on encouragement constantly.</p>
-        </div>
-      </div>
-
-      <div class="vibe-card">
-        <div class="vibe-img-wrap">
-          <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=600&q=80" alt="Focus">
-        </div>
-        <div class="vibe-card-content">
-          <h3>Focused Problem Solving</h3>
-          <p>Balancing high-energy team dynamics with deep focus blocks to hit critical milestones cleanly.</p>
-        </div>
-      </div>
+    <!-- Call to Action -->
+    <div class="mb-16">
+      <a href="mailto:your.email@example.com?subject=You%20Had%20Me%20at%20Ramen" 
+         class="inline-block bg-yellow-400 hover:bg-yellow-300 text-black font-bold text-2xl px-12 py-6 rounded-3xl transition-all transform hover:scale-105 active:scale-95 shadow-xl">
+        Hire This Absolute Legend →
+      </a>
+      <p class="mt-6 text-sm text-purple-300">or at least reply so I can stop refreshing my inbox like a maniac</p>
     </div>
 
-    <!-- WORK STYLE MATRIX -->
-    <p class="slabel">How I Operate in a Team</p>
-    <div class="matrix-grid">
-      <div class="matrix-card">
-        <span class="matrix-icon">💡</span>
-        <h3>Proactive Communication</h3>
-        <p>I send frequent, concise updates so no one ever has to guess project status or technical blockers.</p>
-      </div>
-
-      <div class="matrix-card">
-        <span class="matrix-icon">🌱</span>
-        <h3>Empathy & Active Listening</h3>
-        <p>Understanding team members' perspectives ensures we build solutions that work for everyone.</p>
-      </div>
-
-      <div class="matrix-card">
-        <span class="matrix-icon">⚙️</span>
-        <h3>Adaptive Mindset</h3>
-        <p>When project constraints shift mid-sprint, I pivot smoothly without losing enthusiasm or momentum.</p>
-      </div>
-
-      <div class="matrix-card">
-        <span class="matrix-icon">🎯</span>
-        <h3>Thoughtful Curiosity</h3>
-        <p>I ask targeted questions early in design phases to catch edge cases and prevent costly rework.</p>
-      </div>
-    </div>
-
-    <!-- BUZZWORD TRANSLATOR -->
-    <p class="slabel">In Buzzwords vs. In Real Life</p>
-    <div class="yap-box">
-      <div class="yap-selectors">
-        <button class="yap-btn active" onclick="switchYap('yap1', this)">"Strong Communicator"</button>
-        <button class="yap-btn" onclick="switchYap('yap2', this)">"Highly Adaptable"</button>
-        <button class="yap-btn" onclick="switchYap('yap3', this)">"Detail-Oriented"</button>
-      </div>
-      <div class="yap-content" id="yapContent">
-        <div style="font-size: 11px; font-weight: 700; color: #8E7DBE; margin-bottom: 4px;" id="yapOrig">WHAT THIS MEANS FOR THE TEAM:</div>
-        <div style="font-size: 14.5px; color: var(--text-dark);" id="yapTrans">I keep project velocity high, align multidisciplinary teams, and ensure technical documentation is crystal clear.</div>
-      </div>
-    </div>
-
-    <!-- PEER FEEDBACK HIGHLIGHTS -->
-    <p class="slabel">What Collaborators Say</p>
-    <div class="feedback-grid">
-      <div class="quote-card">
-        <p>"Chelsea brings a steadying, optimistic presence to high-stress deadline pushes. She makes tough engineering sprints feel manageable."</p>
-        <div class="quote-author">— Design Sprint Peer</div>
-      </div>
-      <div class="quote-card">
-        <p>"Always the first to ask the right clarifying questions in design reviews, saving our team from major iteration cycles."</p>
-        <div class="quote-author">— Project Lead</div>
-      </div>
-    </div>
-
-    <!-- TEAM PROMISES -->
-    <p class="slabel">Everyday Standards</p>
-    <div class="promise-container">
-      <h3>The Collaboration Covenant ✋</h3>
-      <p>Click any pill to test the interactive vibe check!</p>
-      <div class="promise-checks">
-        <div class="check-item" onclick="triggerConfetti()">✓ Clear & Proactive Updates</div>
-        <div class="check-item" onclick="triggerConfetti()">✓ High Team Morale</div>
-        <div class="check-item" onclick="triggerConfetti()">✓ Respectful Feedback Loops</div>
-        <div class="check-item" onclick="triggerConfetti()">✓ Solution-Oriented Thinking</div>
-      </div>
-    </div>
-
-    <!-- CTA BUTTON -->
-    <div class="cta-row">
-      <a href="mailto:chelsea@example.com" class="btn-main">Let's Connect & Work Together</a>
-    </div>
-
+    <!-- Footer -->
+    <footer class="text-purple-400 text-sm pb-12">
+      Made with ❤️, desperation, and way too much coffee<br>
+      P.S. I’m actually really good at what I do. Let’s chat?
+    </footer>
   </div>
 
   <script>
-    const yaps = {
-      yap1: { orig: '"Strong Communicator"', trans: 'I keep project velocity high, align multidisciplinary teams, and ensure technical documentation is crystal clear.' },
-      yap2: { orig: '"Highly Adaptable"', trans: 'When specs change mid-sprint, I pivot smoothly without losing team momentum or focus.' },
-      yap3: { orig: '"Detail-Oriented"', trans: 'I catch communication gaps and tolerance issues early before physical parts hit production.' }
-    };
-
-    function switchYap(key, btn) {
-      document.querySelectorAll('.yap-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      document.getElementById('yapTrans').innerText = yaps[key].trans;
-    }
-
-    function triggerConfetti() {
-      const canvas = document.getElementById('canvas');
-      const ctx = canvas.getContext('2d');
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-      
-      let particles = [];
-      for (let i = 0; i < 35; i++) {
-        particles.push({
-          x: window.innerWidth / 2,
-          y: window.innerHeight / 2,
-          vx: (Math.random() - 0.5) * 7,
-          vy: (Math.random() - 0.5) * 7,
-          color: ['#FFC0CB', '#E8DFF5', '#D8F3DC', '#FEF9E7', '#E0F4FF'][Math.floor(Math.random() * 5)],
-          size: Math.random() * 5 + 3,
-          life: 30
-        });
+    // Little confetti when they click the big button
+    document.querySelector('a').addEventListener('click', () => {
+      for(let i = 0; i < 60; i++) {
+        setTimeout(() => {
+          const confetti = document.createElement('div');
+          confetti.textContent = ['🎉','🚀','💼','😂'][Math.floor(Math.random()*4)];
+          confetti.style.position = 'fixed';
+          confetti.style.left = Math.random() * 100 + 'vw';
+          confetti.style.top = '-50px';
+          confetti.style.fontSize = '2rem';
+          confetti.style.transition = 'all 3s';
+          document.body.appendChild(confetti);
+          
+          setTimeout(() => {
+            confetti.style.top = '100vh';
+            confetti.style.transform = `rotate(${Math.random()*720}deg)`;
+          }, 50);
+          
+          setTimeout(() => confetti.remove(), 3500);
+        }, i * 8);
       }
-
-      function render() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        particles.forEach((p, index) => {
-          p.x += p.vx;
-          p.y += p.vy;
-          p.life--;
-          ctx.fillStyle = p.color;
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-          ctx.fill();
-          if (p.life <= 0) particles.splice(index, 1);
-        });
-        if (particles.length > 0) requestAnimationFrame(render);
-      }
-      render();
-    }
+    });
   </script>
 </body>
 </html>
