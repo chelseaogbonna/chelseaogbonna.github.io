@@ -1,357 +1,378 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Chelsea Ogbonna | The Human Side ✨</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Secret Recruiter Page | Chelsea Ogbonna</title>
 
-    :root {
-      --bg-base: #FAF8F5;
-      --text-dark: #2B2D42;
-      --text-muted: #6C757D;
-      
-      --pastel-pink: #FFC0CB;
-      --pastel-pink-soft: #FFF0F3;
-      --pastel-lavender: #E8DFF5;
-      --pastel-mint: #D8F3DC;
-      --pastel-yellow: #FEF9E7;
+<style>
 
-      --card-bg: rgba(255, 255, 255, 0.8);
-      --card-border: rgba(255, 255, 255, 0.9);
-      --card-shadow: 0 10px 30px rgba(180, 160, 190, 0.08);
-    }
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
 
-    body {
-      background-color: var(--bg-base);
-      color: var(--text-dark);
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      min-height: 100vh;
-      overflow-x: hidden;
-      position: relative;
-    }
+body{
 
-    /* SOFT PASTEL BACKGROUND */
-    .ambient-bg {
-      position: fixed;
-      top: 0; left: 0; width: 100%; height: 100%;
-      z-index: -1; pointer-events: none;
-      background: 
-        radial-gradient(circle at 20% 20%, #FFE5EC 0%, transparent 50%),
-        radial-gradient(circle at 80% 30%, #E8DFF5 0%, transparent 50%),
-        radial-gradient(circle at 50% 80%, #E8F5E9 0%, transparent 50%);
-      filter: blur(50px);
-    }
+    background:linear-gradient(135deg,#0f1720,#182634,#22384d);
+    color:white;
+    min-height:100vh;
 
-    #canvas {
-      position: fixed;
-      top: 0; left: 0; width: 100%; height: 100%;
-      pointer-events: none; z-index: 1999;
-    }
+}
 
-    /* NAV LINK */
-    .back {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--text-muted);
-      text-decoration: none;
-      padding: 1.5rem 2rem 0;
-      transition: color 0.2s;
-    }
-    .back:hover { color: var(--text-dark); }
-    .back svg { width: 16px; height: 16px; }
+nav{
 
-    /* CONTAINER */
-    .wrap {
-      max-width: 680px;
-      margin: 0 auto;
-      padding: 2rem 1.5rem 4rem;
-    }
+    width:100%;
+    padding:25px;
 
-    /* HERO */
-    .hero {
-      text-align: center;
-      margin-bottom: 2.5rem;
-    }
+    display:flex;
+    justify-content:center;
+    gap:40px;
 
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      background: var(--pastel-pink-soft);
-      color: #D65A7A;
-      font-family: 'Outfit', sans-serif;
-      font-weight: 600;
-      font-size: 13px;
-      padding: 6px 16px;
-      border-radius: 99px;
-      margin-bottom: 1rem;
-      border: 1px solid rgba(214, 90, 122, 0.15);
-    }
+    background:rgba(255,255,255,.05);
+    backdrop-filter:blur(15px);
 
-    .hero h1 {
-      font-family: 'Outfit', sans-serif;
-      font-weight: 700;
-      font-size: clamp(32px, 5vw, 48px);
-      line-height: 1.2;
-      letter-spacing: -0.5px;
-    }
+}
 
-    .hero-sub {
-      font-size: 16px;
-      color: var(--text-muted);
-      margin-top: 1rem;
-      line-height: 1.6;
-    }
+nav a{
 
-    /* SECTIONS */
-    .slabel {
-      font-family: 'Outfit', sans-serif;
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      color: #8E7DBE;
-      margin: 2.5rem 0 1rem;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .slabel::after {
-      content: "";
-      flex-grow: 1;
-      height: 1px;
-      background: #E2DBF0;
-    }
+    color:white;
+    text-decoration:none;
+    font-weight:bold;
 
-    /* VIBE CARDS (SOFT SKILLS) */
-    .vibes-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 14px;
-    }
+}
 
-    .vibe-card {
-      background: var(--card-bg);
-      backdrop-filter: blur(10px);
-      border: 1px solid var(--card-border);
-      border-radius: 20px;
-      padding: 20px;
-      box-shadow: var(--card-shadow);
-    }
+nav a:hover{
 
-    .vibe-card h3 {
-      font-family: 'Outfit', sans-serif;
-      font-size: 16px;
-      font-weight: 600;
-      color: var(--text-dark);
-      margin-bottom: 6px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
+    color:#99C1DE;
 
-    .vibe-card p {
-      font-size: 14px;
-      color: var(--text-muted);
-      line-height: 1.5;
-    }
+}
 
-    /* TRANSLATOR BOX */
-    .yap-box {
-      background: var(--card-bg);
-      backdrop-filter: blur(10px);
-      border: 1px solid var(--card-border);
-      border-radius: 20px;
-      padding: 1.5rem;
-      box-shadow: var(--card-shadow);
-    }
+.container{
 
-    .yap-selectors { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
-    
-    .yap-btn {
-      background: var(--pastel-yellow);
-      border: none;
-      padding: 8px 14px;
-      border-radius: 99px;
-      color: var(--text-dark);
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-weight: 600;
-      font-size: 12.5px;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-    .yap-btn.active, .yap-btn:hover { background: var(--pastel-pink); }
+    width:min(900px,90%);
+    margin:60px auto;
 
-    .yap-content {
-      background: rgba(255, 255, 255, 0.6);
-      border-radius: 14px;
-      padding: 14px;
-      border-left: 3px solid #D65A7A;
-    }
+}
 
-    /* PROMISE PILLS */
-    .promise-checks { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: 1rem; }
-    
-    .check-item {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      box-shadow: var(--card-shadow);
-      border-radius: 99px;
-      padding: 8px 16px;
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--text-dark);
-      cursor: pointer;
-      transition: transform 0.2s;
-    }
-    .check-item:hover { transform: scale(1.03); background: var(--pastel-pink-soft); }
+.hero{
 
-    /* CTA */
-    .cta-row { text-align: center; margin-top: 2.5rem; }
-    
-    .btn-main {
-      display: inline-block;
-      padding: 14px 32px;
-      background: var(--text-dark);
-      color: #FFF;
-      font-family: 'Outfit', sans-serif;
-      font-weight: 600;
-      font-size: 14px;
-      border-radius: 99px;
-      text-decoration: none;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-      transition: transform 0.2s;
-    }
-    .btn-main:hover { transform: translateY(-2px); }
-  </style>
+    text-align:center;
+    margin-bottom:60px;
+
+}
+
+.hero h1{
+
+    font-size:60px;
+    margin-bottom:20px;
+
+}
+
+.hero p{
+
+    font-size:20px;
+    opacity:.8;
+
+}
+
+.card{
+
+    background:#edf2fb;
+    color:#1f2937;
+
+    padding:35px;
+
+    border-radius:20px;
+
+    margin-bottom:30px;
+
+    box-shadow:0 15px 40px rgba(0,0,0,.25);
+
+}
+
+.card h2{
+
+    color:#4b7fa5;
+    margin-bottom:20px;
+
+}
+
+.card ul{
+
+    margin-left:25px;
+    line-height:2;
+
+}
+
+.bar{
+
+    margin-top:20px;
+
+}
+
+.progress{
+
+    height:28px;
+    border-radius:30px;
+    background:#d7e3fc;
+    overflow:hidden;
+    margin-bottom:18px;
+
+}
+
+.fill{
+
+    height:100%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    color:white;
+    font-weight:bold;
+
+    background:#99C1DE;
+
+}
+
+.quote{
+
+    font-size:22px;
+    text-align:center;
+    font-style:italic;
+
+}
+
+.button{
+
+    display:block;
+
+    width:250px;
+
+    margin:50px auto;
+
+    text-align:center;
+
+    text-decoration:none;
+
+    background:#99C1DE;
+
+    color:#0f1720;
+
+    padding:18px;
+
+    border-radius:12px;
+
+    font-weight:bold;
+
+    transition:.3s;
+
+}
+
+.button:hover{
+
+    transform:translateY(-4px);
+
+}
+
+footer{
+
+    text-align:center;
+
+    opacity:.7;
+
+    margin:40px;
+
+}
+
+.small{
+
+    font-size:14px;
+
+    opacity:.7;
+
+    margin-top:20px;
+
+}
+
+</style>
+
 </head>
+
 <body>
 
-  <div class="ambient-bg"></div>
-  <canvas id="canvas"></canvas>
+<nav>
 
-  <a href="index.html" class="back">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
-    Back to Portfolio
-  </a>
+<a href="index.html">Home</a>
 
-  <div class="wrap">
+<a href="projects.html">Projects</a>
 
-    <!-- HERO -->
-    <div class="hero">
-      <div class="badge">✨ Soft Skills & Work Vibe</div>
-      <h1>Beyond the Resume</h1>
-      <p class="hero-sub">
-        My technical skills and engineering projects speak for themselves on my main portfolio. Here is a quick look at how I communicate, collaborate, and bring positive energy to the team.
-      </p>
-    </div>
+<a href="contact.html">Contact</a>
 
-    <!-- SOFT SKILLS GRID -->
-    <p class="slabel">How I Work in a Team</p>
-    <div class="vibes-grid">
-      <div class="vibe-card">
-        <h3>💬 Clear Communication</h3>
-        <p>I value transparent, proactive updates. No guessing games on project status or technical roadblocks.</p>
-      </div>
-      <div class="vibe-card">
-        <h3>🤝 High Morale & Energy</h3>
-        <p>Engineering design sprints can get intense. I bring steady optimism, active listening, and a supportive mindset.</p>
-      </div>
-      <div class="vibe-card">
-        <h3>⚡ Adaptive Problem Solving</h3>
-        <p>When project constraints shift mid-sprint, I adjust smoothly without losing momentum or team focus.</p>
-      </div>
-      <div class="vibe-card">
-        <h3>💡 Thoughtful Curiosity</h3>
-        <p>I ask targeted questions early in design phases to prevent costly rework and align on team goals.</p>
-      </div>
-    </div>
+</nav>
 
-    <!-- CORPORATE TRANSLATOR -->
-    <p class="slabel">In Buzzwords vs. In Practice</p>
-    <div class="yap-box">
-      <div class="yap-selectors">
-        <button class="yap-btn active" onclick="switchYap('yap1', this)">"Strong Communicator"</button>
-        <button class="yap-btn" onclick="switchYap('yap2', this)">"Adaptable"</button>
-        <button class="yap-btn" onclick="switchYap('yap3', this)">"Detail-Oriented"</button>
-      </div>
-      <div class="yap-content" id="yapContent">
-        <div style="font-size: 11px; font-weight: 700; color: #8E7DBE; margin-bottom: 4px;" id="yapOrig">WHAT THIS MEANS FOR THE TEAM:</div>
-        <div style="font-size: 14px; color: var(--text-dark);" id="yapTrans">I keep project velocity high, align multidisciplinary teams, and ensure technical documentation is crystal clear.</div>
-      </div>
-    </div>
+<div class="container">
 
-    <!-- WORKPLACE PROMISES -->
-    <p class="slabel">Everyday Standards</p>
-    <div class="promise-checks">
-      <div class="check-item" onclick="triggerConfetti()">✓ Clear & Honest Communication</div>
-      <div class="check-item" onclick="triggerConfetti()">✓ High Team Morale</div>
-      <div class="check-item" onclick="triggerConfetti()">✓ Proactive Problem-Solving</div>
-      <div class="check-item" onclick="triggerConfetti()">✓ Great Listener</div>
-    </div>
+<div class="hero">
 
-    <!-- CTA -->
-    <div class="cta-row">
-      <a href="mailto:chelsea@example.com" class="btn-main">Let's Connect</a>
-    </div>
+<h1>🎉 You Found the Secret Page</h1>
 
-  </div>
+<p>
+Congratulations.
+You have unlocked the highly confidential Recruiter DLC.
+</p>
 
-  <script>
-    const yaps = {
-      yap1: { orig: '"Strong Communicator"', trans: 'I keep project velocity high, align multidisciplinary teams, and ensure technical documentation is crystal clear.' },
-      yap2: { orig: '"Highly Adaptable"', trans: 'When specs change mid-sprint, I pivot smoothly without losing team momentum or focus.' },
-      yap3: { orig: '"Detail-Oriented"', trans: 'I catch communication gaps and tolerance issues early before physical parts hit production.' }
-    };
+</div>
 
-    function switchYap(key, btn) {
-      document.querySelectorAll('.yap-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      document.getElementById('yapTrans').innerText = yaps[key].trans;
-    }
+<div class="card">
 
-    function triggerConfetti() {
-      const canvas = document.getElementById('canvas');
-      const ctx = canvas.getContext('2d');
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-      
-      let particles = [];
-      for (let i = 0; i < 30; i++) {
-        particles.push({
-          x: window.innerWidth / 2,
-          y: window.innerHeight / 2,
-          vx: (Math.random() - 0.5) * 6,
-          vy: (Math.random() - 0.5) * 6,
-          color: ['#FFC0CB', '#E8DFF5', '#D8F3DC', '#FEF9E7'][Math.floor(Math.random() * 4)],
-          size: Math.random() * 5 + 3,
-          life: 30
-        });
-      }
+<h2>📊 Totally Scientific Hiring Statistics</h2>
 
-      function render() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        particles.forEach((p, index) => {
-          p.x += p.vx;
-          p.y += p.vy;
-          p.life--;
-          ctx.fillStyle = p.color;
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-          ctx.fill();
-          if (p.life <= 0) particles.splice(index, 1);
-        });
-        if (particles.length > 0) requestAnimationFrame(render);
-      }
-      render();
-    }
-  </script>
+<p>
+
+After years of extensive research (approximately 7 minutes),
+I have concluded that recruiters who find this page are
+
+<strong>97.4% more likely</strong>
+
+to interview me.
+
+</p>
+
+<p class="small">
+
+*Source: trust me.*
+
+</p>
+
+</div>
+
+<div class="card">
+
+<h2>📝 If You Hire Me...</h2>
+
+<ul>
+
+<li>I promise to label my variables better than <code>x</code>, <code>x2</code>, and <code>final_final_v3</code>.</li>
+
+<li>I will ask questions instead of pretending I know everything.</li>
+
+<li>I get way too excited when an experiment finally works.</li>
+
+<li>I think debugging is basically detective work.</li>
+
+<li>I genuinely enjoy solving difficult engineering problems.</li>
+
+<li>I can explain complicated ideas using terrible stick-figure drawings.</li>
+
+<li>I probably already have three new project ideas before finishing the current one.</li>
+
+</ul>
+
+</div>
+
+<div class="card">
+
+<h2>📈 Current Status</h2>
+
+<div class="bar">
+
+Finding cool engineering problems
+
+<div class="progress">
+
+<div class="fill" style="width:100%;">
+100%
+</div>
+
+</div>
+
+Learning new things
+
+<div class="progress">
+
+<div class="fill" style="width:100%;">
+100%
+</div>
+
+</div>
+
+Coffee level
+
+<div class="progress">
+
+<div class="fill" style="width:78%;">
+78%
+</div>
+
+</div>
+
+Hope that you're impressed
+
+<div class="progress">
+
+<div class="fill" style="width:99%;">
+99%
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<h2>🎯 Serious Moment</h2>
+
+<p>
+
+All jokes aside—
+
+thank you for taking the time to explore my portfolio.
+
+Engineering has allowed me to solve problems that genuinely matter,
+and I'm excited to continue building technologies that improve healthcare
+and make a meaningful impact.
+
+I hope we get the opportunity to work together.
+
+</p>
+
+</div>
+
+<div class="card">
+
+<p class="quote">
+
+"If you've read this far...
+
+we're basically friends now."
+
+😄
+
+</p>
+
+</div>
+
+<a class="button" href="contact.html">
+
+📧 Okay... let's connect!
+
+</a>
+
+</div>
+
+<footer>
+
+Disclaimer:
+No recruiters were harmed during the statistical analysis presented on this page.
+
+</footer>
+
 </body>
 </html>
+```
