@@ -4,8 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/png" href="Portfolio Favicon.png" />
-  <title>Projects | Chelsea Ogbonna</title>
+  <title>Project Portfolio | Chelsea Ogbonna</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -15,6 +14,7 @@
       --bg: #edf2fb;
       --card: #d7e3fc;
       --accent: #abc4ff;
+      --primary-blue: #6C8EF5;
       --text: #1f2937;
       --border: #c1d3fe;
       --card-hover: #ccdbfd;
@@ -95,58 +95,84 @@
       padding: 140px 0 100px;
     }
 
-    /* HERO / HEADER */
+    /* HERO / MASTER DOSSIER HEADER */
     .hero {
       text-align: center;
-      margin-bottom: 60px;
+      margin-bottom: 45px;
+    }
+
+    .dossier-badge {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.8px;
+      color: var(--primary-blue);
+      background: rgba(255, 255, 255, 0.75);
+      padding: 6px 16px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      margin-bottom: 16px;
     }
 
     .hero h1 {
-      font-size: 60px;
+      font-size: 56px;
       font-weight: 800;
-      margin-bottom: 20px;
+      margin-bottom: 16px;
+      letter-spacing: -0.5px;
     }
 
     .hero p {
-      max-width: 750px;
+      max-width: 720px;
       margin: auto;
       color: #4b5563;
       font-size: 18px;
-      line-height: 1.8;
-    }
-
-    /* Quick Jump Filter Bar */
-    .quick-nav {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-bottom: 60px;
-    }
-
-    .quick-nav a {
-      text-decoration: none;
-      color: var(--text);
-      background: rgba(255, 255, 255, 0.7);
-      padding: 8px 18px;
-      border-radius: 999px;
-      font-size: 14px;
-      font-weight: 600;
-      border: 1px solid rgba(193, 211, 254, 0.6);
-      transition: all 0.25s ease;
-    }
-
-    .quick-nav a:hover {
-      background: var(--accent);
-      transform: translateY(-2px);
+      line-height: 1.75;
     }
 
     /* =========================
-    PROJECT CARD ARCHITECTURE
+    INTERACTIVE CATEGORY FILTERS
     ========================= */
-    .section {
-      margin: 40px 0;
-      scroll-margin-top: 110px;
+    .filter-bar {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 55px;
+    }
+
+    .filter-btn {
+      cursor: pointer;
+      font-family: Inter, sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.7);
+      padding: 10px 20px;
+      border-radius: 999px;
+      border: 1px solid rgba(193, 211, 254, 0.7);
+      transition: all 0.25s ease;
+    }
+
+    .filter-btn:hover {
+      background: var(--card);
+      transform: translateY(-2px);
+    }
+
+    .filter-btn.active {
+      background: var(--primary-blue);
+      color: #ffffff;
+      border-color: var(--primary-blue);
+      box-shadow: 0 6px 18px rgba(108, 142, 245, 0.3);
+    }
+
+    /* =========================
+    INDIVIDUAL PROJECT CARDS
+    ========================= */
+    .projects-container {
+      display: flex;
+      flex-direction: column;
+      gap: 45px;
     }
 
     .project-card {
@@ -154,8 +180,7 @@
       border-radius: 20px;
       padding: 40px;
       box-shadow: var(--shadow);
-      transition: .3s;
-      margin-bottom: 50px;
+      transition: transform 0.3s ease, background 0.3s ease, opacity 0.35s ease;
     }
 
     .project-card:hover {
@@ -163,28 +188,52 @@
       transform: translateY(-4px);
     }
 
+    .project-card.filtered-out {
+      display: none;
+    }
+
+    .card-header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 6px;
+    }
+
     .project-card h2 {
-      font-size: 28px;
+      font-size: 26px;
       font-weight: 700;
       color: var(--text);
-      margin-bottom: 4px;
+    }
+
+    .category-pill {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      color: var(--primary-blue);
+      background: rgba(255, 255, 255, 0.75);
+      padding: 5px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(193, 211, 254, 0.7);
     }
 
     .project-card h3 {
-      font-size: 16px;
+      font-size: 15px;
       font-weight: 600;
-      color: #6C8EF5;
+      color: var(--primary-blue);
       text-transform: uppercase;
       letter-spacing: 0.5px;
-      margin-bottom: 30px;
+      margin-bottom: 28px;
     }
 
     .project-card h4 {
-      font-size: 15px;
+      font-size: 14px;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.5px;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
       color: var(--text);
     }
 
@@ -194,31 +243,31 @@
       line-height: 1.7;
     }
 
-    /* Balanced Asymmetric Layout */
+    /* Balanced Two-Column Card Grid */
     .card-layout-grid {
       display: grid;
       grid-template-columns: 1.15fr 0.85fr;
-      gap: 40px;
+      gap: 35px;
       align-items: start;
     }
 
     .text-column-left {
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      gap: 18px;
     }
 
     .media-column-right {
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      gap: 18px;
     }
 
     .info-block {
-      background: rgba(255, 255, 255, 0.45);
-      padding: 25px;
+      background: rgba(255, 255, 255, 0.48);
+      padding: 22px 25px;
       border-radius: 14px;
-      border: 1px solid rgba(193, 211, 254, 0.55);
+      border: 1px solid rgba(193, 211, 254, 0.6);
     }
 
     /* Smooth Hover-Zoom Image Frame */
@@ -253,7 +302,7 @@
     li {
       position: relative;
       padding-left: 20px;
-      margin-bottom: 10px;
+      margin-bottom: 9px;
       font-size: 14px;
       color: #4b5563;
       line-height: 1.6;
@@ -267,17 +316,17 @@
       content: "▪";
       position: absolute;
       left: 4px;
-      color: #6C8EF5;
+      color: var(--primary-blue);
       font-size: 14px;
       top: -1px;
     }
 
-    /* SKILLS PILLS */
+    /* UNBOXED SKILLS TAGS */
     .skills {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
-      padding-top: 5px;
+      padding-top: 2px;
     }
 
     .tag {
@@ -288,12 +337,28 @@
       border-radius: 999px;
       font-size: 13px;
       font-weight: 500;
-      border: 1px solid rgba(193, 211, 254, 0.5);
+      border: 1px solid rgba(193, 211, 254, 0.55);
     }
 
     .project-card:hover .tag {
       background: rgba(255, 255, 255, 0.9);
       border-color: var(--accent);
+    }
+
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+      color: var(--primary-blue);
+      font-weight: 700;
+      margin-top: 4px;
+      transition: transform 0.2s;
+      font-size: 14px;
+    }
+
+    .project-link:hover {
+      transform: translateX(4px);
     }
 
     /* =========================
@@ -356,11 +421,11 @@
       transform: translateY(0);
     }
 
-    /* RESPONSIVE DESIGN ADJUSTMENTS */
+    /* RESPONSIVE DESIGN */
     @media (max-width: 900px) {
       .card-layout-grid {
         grid-template-columns: 1fr;
-        gap: 30px;
+        gap: 25px;
       }
       .media-column-right {
         order: -1;
@@ -369,7 +434,7 @@
         aspect-ratio: 16/10;
       }
       body { padding: 40px 4%; }
-      .hero h1 { font-size: 40px; }
+      .hero h1 { font-size: 38px; }
     }
   </style>
 </head>
@@ -391,103 +456,108 @@
 
   <div class="content">
 
+    <!-- MASTER DOSSIER HEADER -->
     <div class="hero">
-      <h1>Manufacturing & Design Projects</h1>
+      <span class="dossier-badge">Engineering Dossier</span>
+      <h1>Project Portfolio</h1>
       <p>
-        Hands-on engineering labs and fabrication workflows spanning precision metrology, 
-        plastic deformation, subtractive CNC/manual machining, and rapid prototyping.
+        A master dossier tracking biomedical instrumentation, soft wearable patches, 
+        and modular systems engineering loops.
       </p>
     </div>
 
-    <!-- Quick Jump Navigation -->
-    <div class="quick-nav">
-      <a href="#metrology">📐 Precision Metrology</a>
-      <a href="#metal-forming">🔨 Metal Forming & Testing</a>
-      <a href="#injection-molding">⚙️ Mold Fabrication & Machining</a>
-      <a href="#additive-mfg">🧊 Additive Manufacturing</a>
-      <a href="#cnc-turning">🔄 CNC Turning & Surface Integrity</a>
+    <!-- CATEGORY FILTER BAR -->
+    <div class="filter-bar" role="tablist" aria-label="Filter projects by discipline">
+      <button class="filter-btn active" data-filter="all">All Projects</button>
+      <button class="filter-btn" data-filter="biomedical">Biomedical & Wearables</button>
+      <button class="filter-btn" data-filter="instrumentation">Instrumentation</button>
+      <button class="filter-btn" data-filter="product-meche">Product & MechE</button>
+      <button class="filter-btn" data-filter="human-factors">Human Factors & Ed</button>
     </div>
 
-    <!-- PROJECT 1: METROLOGY & CAD -->
-    <section id="metrology" class="section">
-      <div class="project-card">
-        <h2>📐 Precision Metrology & Reverse Engineering</h2>
-        <h3>Dimensional Inspection, Tolerance Analysis & CAD Modeling</h3>
+    <!-- INDIVIDUAL PROJECT CARDS -->
+    <div class="projects-container">
+
+      <!-- PROJECT 1: PRECISION METROLOGY & REVERSE ENGINEERING -->
+      <article class="project-card" data-category="instrumentation">
+        <div class="card-header-top">
+          <h2>📐 Precision Metrology & Reverse Engineering</h2>
+          <span class="category-pill">Instrumentation</span>
+        </div>
+        <h3>Dimensional Inspection, Tolerance Analysis & CAD Reconstruction</h3>
         
         <div class="card-layout-grid">
           <div class="text-column-left">
             <div class="info-block">
               <h4>Objective</h4>
               <p>
-                Obtain high-accuracy dimensional measurements across 20 distinct features (Locations A–T) of a mechanical knob to reconstruct a fully constrained, manufacturable CAD model. Evaluated how instrument resolution, feature geometry, and allowable tolerances govern component fit and function.
+                Obtain high-accuracy dimensional measurements across 20 distinct features (Locations A–T) of a mechanical knob to reproduce a fully constrained CAD model, evaluating how instrument precision, part geometry, and allowable tolerances dictate mechanical fit.
               </p>
             </div>
             
             <div class="info-block">
-              <h4>Methodology & Technical Execution</h4>
+              <h4>Technical Execution & Key Findings</h4>
               <ul>
-                <li><strong>Multi-Instrument Calibration:</strong> Measured external, internal, and depth features using Dial Calipers, Micrometers, Gauge Pins, Gauge Blocks, and an Optical Comparator.</li>
-                <li><strong>Uncertainty & Capability Analysis:</strong> Compared tool precision limits against feature scale—balancing high-resolution localized tools with broader-range instruments.</li>
-                <li><strong>Tolerance Stack-Up Evaluation:</strong> Defined engineering tolerances to ensure proper clearance and interference fits across mating assemblies.</li>
-                <li><strong>CAD Reconstruction:</strong> Translated empirical inspection data into a precise 3D digital solid model ready for manufacturing validation.</li>
+                <li><strong>Multi-Instrument Inspection:</strong> Measured internal, external, and depth features using a Dial Caliper, Micrometer, Gauge Pins, Gauge Blocks, and an Optical Comparator.</li>
+                <li><strong>Measurement Uncertainty Comparison:</strong> Evaluated trade-offs between localized high-precision gauges and broader-range instruments across complex feature profiles.</li>
+                <li><strong>Tolerance & Fit Specification:</strong> Established allowable dimensional error thresholds to ensure proper mating clearances without compromising part assembly.</li>
+                <li><strong>CAD Model Reproduction:</strong> Translated empirical inspection data into a manufacturable 3D solid model.</li>
               </ul>
             </div>
           </div>
 
           <div class="media-column-right">
             <div class="img-frame">
-              <!-- Replace with your CAD knob drawing or optical comparator photo -->
-              <img src="metrology-knob.png" alt="Precision Measurement and CAD Reconstruction of Mechanical Knob">
+              <img src="metrology-knob.png" alt="Dimensional Inspection and CAD Reconstruction of Mechanical Knob">
             </div>
             <div>
-              <h4>Tools & Competencies</h4>
+              <h4>Core Competencies</h4>
               <div class="skills">
-                <span class="tag">Micrometer & Calipers</span>
+                <span class="tag">Micrometer & Dial Calipers</span>
                 <span class="tag">Optical Comparator</span>
                 <span class="tag">Gauge Pins & Blocks</span>
-                <span class="tag">GD&T / Tolerancing</span>
-                <span class="tag">CAD Reverse Engineering</span>
-                <span class="tag">Measurement Uncertainty</span>
+                <span class="tag">Tolerance Analysis</span>
+                <span class="tag">CAD Modeling</span>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </article>
 
-    <!-- PROJECT 2: METAL FORMING & TENSILE TESTING -->
-    <section id="metal-forming" class="section">
-      <div class="project-card">
-        <h2>🔨 Sheet Metal Forming & Mechanical Characterization</h2>
-        <h3>Plastic Deformation, Spot Welding & Tensile Failure Analysis</h3>
+      <!-- PROJECT 2: METAL FORMING & TENSILE TESTING -->
+      <article class="project-card" data-category="product-meche">
+        <div class="card-header-top">
+          <h2>🔨 Sheet Metal Forming & Mechanical Characterization</h2>
+          <span class="category-pill">Product & MechE</span>
+        </div>
+        <h3>Plastic Deformation, Spot Welding & Uniaxial Tensile Testing</h3>
         
         <div class="card-layout-grid">
           <div class="text-column-left">
             <div class="info-block">
               <h4>Objective</h4>
               <p>
-                Investigate how material yield strength, ductility, and strain hardening govern formability without fracture. Combined hands-on sheet metal fabrication using Carbon Steel 1008 with destructive uniaxial tensile testing of Aluminum 6061.
+                Investigate how yield strength, ductility, and strain hardening govern metal formability between yield and fracture limits by fabricating a Carbon Steel 1008 enclosure and testing an Aluminum 6061 specimen to failure.
               </p>
             </div>
             
             <div class="info-block">
-              <h4>Methodology & Technical Execution</h4>
+              <h4>Technical Execution & Key Findings</h4>
               <ul>
-                <li><strong>Sheet Metal Layout & Bending:</strong> Marked bend allowances on Carbon Steel 1008 using a combination square and scriber, then sheared and formed geometry on a sheet metal bender.</li>
-                <li><strong>Resistance Spot Welding:</strong> Joined structural seams of the fabricated enclosure using calibrated resistance spot welding parameters.</li>
-                <li><strong>Uniaxial Tensile Testing:</strong> Pulled an Aluminum 6061 dog-bone specimen to fracture to capture continuous load-displacement data.</li>
-                <li><strong>Stress–Strain Curve Analysis:</strong> Calculated Modulus of Elasticity, 0.2% offset Yield Strength, Ultimate Tensile Strength (UTS), and percent elongation to map elastic-to-plastic transitions.</li>
+                <li><strong>Sheet Metal Layout & Bending:</strong> Marked bend geometry on Carbon Steel 1008 using a combination square and scriber, then sheared and formed edges on a sheet metal bender.</li>
+                <li><strong>Resistance Spot Welding:</strong> Joined structural box seams using calibrated spot welding parameters for rigid assembly.</li>
+                <li><strong>Destructive Tensile Testing:</strong> Stretched an Aluminum 6061 specimen until fracture to capture real-time load and elongation data.</li>
+                <li><strong>Stress–Strain Curve Characterization:</strong> Calculated Modulus of Elasticity, Yield Strength, Ultimate Tensile Strength (UTS), and ductility to map elastic-to-plastic transitions.</li>
               </ul>
             </div>
           </div>
 
           <div class="media-column-right">
             <div class="img-frame">
-              <!-- Replace with your sheet metal box or stress-strain plot -->
               <img src="metal-forming.png" alt="Carbon Steel Sheet Metal Box and Aluminum 6061 Stress-Strain Curve">
             </div>
             <div>
-              <h4>Tools & Competencies</h4>
+              <h4>Core Competencies</h4>
               <div class="skills">
                 <span class="tag">Carbon Steel 1008</span>
                 <span class="tag">Aluminum 6061</span>
@@ -499,149 +569,153 @@
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </article>
 
-    <!-- PROJECT 3: INJECTION MOLDING & MILLING -->
-    <section id="injection-molding" class="section">
-      <div class="project-card">
-        <h2>⚙️ Injection Mold Insert Fabrication & Machining Physics</h2>
-        <h3>Manual Milling, Cutting Force Modeling & Surface Roughness</h3>
+      <!-- PROJECT 3: INJECTION MOLD INSERT FABRICATION -->
+      <article class="project-card" data-category="product-meche">
+        <div class="card-header-top">
+          <h2>⚙️ Injection Mold Insert Fabrication & Machining Mechanics</h2>
+          <span class="category-pill">Product & MechE</span>
+        </div>
+        <h3>Manual Milling, Cutting Force Modeling & Surface Finish</h3>
         
         <div class="card-layout-grid">
           <div class="text-column-left">
             <div class="info-block">
               <h4>Objective</h4>
               <p>
-                Machine a high-precision metallic mold insert capable of withstanding cyclic injection molding pressures while achieving tight dimensional repeatability and surface finish. Paired physical milling with computational modeling of cutting mechanics.
+                Machine a precision mold insert capable of producing repeatable injection-molded parts with high surface finish, paired with computational modeling of cutting forces and surface roughness parameters.
               </p>
             </div>
             
             <div class="info-block">
-              <h4>Methodology & Technical Execution</h4>
+              <h4>Technical Execution & Key Findings</h4>
               <ul>
-                <li><strong>Precision Milling Operations:</strong> Established datum coordinates using a 0.200" edge finder; machined pockets, contours, and parting surfaces with 1/4" and 1/2" flat end mills and a 3/16" ball end mill.</li>
-                <li><strong>Holemaking & Threading:</strong> Drilled pilot holes with a #7 drill bit and manually tapped internal mounting threads using a 1/4-20 hand tap.</li>
-                <li><strong>Cutting Force Estimation (Virtual Lab 1):</strong> Applied mechanistic machining models to predict tangential and feed forces across varying spindle speeds and depths of cut.</li>
-                <li><strong>Surface Roughness Analysis (Virtual Lab 2):</strong> Quantified empirical surface roughness ($R_a$) from profilometry data and benchmarked results against theoretical feed-rate and tool-nose radius equations.</li>
+                <li><strong>Precision Milling & Setup:</strong> Indexed workpiece datums with a 0.200" edge finder; machined cavity geometries using 1/4" and 1/2" end mills and a 3/16" ball end mill.</li>
+                <li><strong>Holemaking & Tapping:</strong> Drilled precision mounting holes with a #7 drill bit and tapped internal threads with a 1/4-20 hand tap.</li>
+                <li><strong>Cutting Force Estimation (Virtual Lab 1):</strong> Modeled theoretical cutting forces as a function of feed rate, depth of cut, and spindle speed.</li>
+                <li><strong>Surface Roughness Evaluation (Virtual Lab 2):</strong> Calculated measured roughness from surface profile data and compared results against idealized tool-geometry predictions.</li>
               </ul>
             </div>
           </div>
 
           <div class="media-column-right">
             <div class="img-frame">
-              <!-- Replace with your machined mold insert photo -->
-              <img src="mold-insert.png" alt="Milled Aluminum Injection Mold Insert">
+              <img src="mold-insert.png" alt="Milled Injection Mold Insert Workpiece">
             </div>
             <div>
-              <h4>Tools & Competencies</h4>
+              <h4>Core Competencies</h4>
               <div class="skills">
                 <span class="tag">Manual Milling</span>
                 <span class="tag">Injection Molding Tooling</span>
-                <span class="tag">End Mills & Tapping</span>
-                <span class="tag">Edge Finding</span>
-                <span class="tag">Cutting Force Modeling</span>
-                <span class="tag">Surface Roughness (Ra)</span>
+                <span class="tag">End Mills & 1/4-20 Tapping</span>
+                <span class="tag">0.200" Edge Finding</span>
+                <span class="tag">Cutting Force Analysis</span>
+                <span class="tag">Surface Profilometry</span>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </article>
 
-    <!-- PROJECT 4: ADDITIONAL TECHNIQUE 1 (ADDITIVE MANUFACTURING) -->
-    <section id="additive-mfg" class="section">
-      <div class="project-card">
-        <h2>🧊 Additive Manufacturing & Anisotropic Build Optimization</h2>
-        <h3>Fused Deposition Modeling (FDM), Slicing Parameters & Layer Adhesion</h3>
+      <!-- PROJECT 4: BIOMEDICAL & WEARABLES PLACEHOLDER CARD -->
+      <article class="project-card" data-category="biomedical">
+        <div class="card-header-top">
+          <h2>🩹 Soft Wearable Bio-Electronic Patch & Gait Telemetry</h2>
+          <span class="category-pill">Biomedical & Wearables</span>
+        </div>
+        <h3>Flexible Sensor Integration, Wireless Power & Closed-Loop Monitoring</h3>
         
         <div class="card-layout-grid">
           <div class="text-column-left">
             <div class="info-block">
               <h4>Objective</h4>
               <p>
-                Evaluate how print orientation, infill geometry, and thermal extrusion parameters affect mechanical strength, dimensional accuracy, and build time in polymer rapid prototyping for biomedical and mechanical housings.
+                Design conformal wearable sensor architectures and battery-free RF circuits that maintain high signal-to-noise ratios under dynamic physiological motion and soft-tissue deformation.
               </p>
             </div>
             
             <div class="info-block">
-              <h4>Methodology & Technical Execution</h4>
+              <h4>Technical Execution & Key Findings</h4>
               <ul>
-                <li><strong>Build Orientation & Anisotropy:</strong> Analyzed interlayer shear weakness by printing test coupons across XYZ orientations to align tensile load paths with continuous raster lines.</li>
-                <li><strong>Toolpath & Slicing Optimization:</strong> Tuned wall perimeter counts, gyroid vs. rectilinear infill density, and support interface clearance to balance structural rigidity against material waste.</li>
-                <li><strong>Thermal & Dimensional Compensation:</strong> Calibrated nozzle temperatures and accounted for polymer shrinkage to ensure press-fit bearings and fasteners seated cleanly post-print.</li>
+                <li><strong>Soft Substrate & RF Coil Integration:</strong> Fabricated flexible PCB interconnects and tuned impedance matching networks for reliable wireless power and telemetry transfer.</li>
+                <li><strong>Multimodal Sensor Validation:</strong> Benchmarked ground reaction force sensors and inertial measurement units (IMUs) across dynamic loading conditions.</li>
+                <li><strong>In-Vitro Flow-Loop Testing:</strong> Validated device encapsulation and electrical stability inside simulated physiological fluid environments.</li>
               </ul>
+            </div>
+            <div>
+              <a href="research.html" class="project-link">→ View Related Lab Research</a>
             </div>
           </div>
 
           <div class="media-column-right">
             <div class="img-frame">
-              <!-- Replace with your 3D printed prototype or slicer preview -->
-              <img src="additive-mfg.png" alt="3D Printed Prototype and Slicer Toolpath">
+              <img src="Screen Shot 2026-07-06 at 5.30.45 PM.png" alt="Soft Wearable Bio-Electronics Prototype">
             </div>
             <div>
-              <h4>Tools & Competencies</h4>
+              <h4>Core Competencies</h4>
               <div class="skills">
-                <span class="tag">FDM 3D Printing</span>
-                <span class="tag">Design for Additive (DfAM)</span>
-                <span class="tag">Slicing & G-Code</span>
-                <span class="tag">Anisotropy Analysis</span>
-                <span class="tag">Rapid Prototyping</span>
+                <span class="tag">Soft Wearables</span>
+                <span class="tag">RF Impedance Tuning</span>
+                <span class="tag">IMU & Force Sensors</span>
+                <span class="tag">PCB Soldering</span>
+                <span class="tag">Flow-Loop Validation</span>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </article>
 
-    <!-- PROJECT 5: ADDITIONAL TECHNIQUE 2 (CNC TURNING & LATHE OPERATIONS) -->
-    <section id="cnc-turning" class="section">
-      <div class="project-card">
-        <h2>🔄 Precision Turning & Cylindrical Component Fabrication</h2>
-        <h3>Lathe Operations, Concentricity Control & Chip Formation</h3>
+      <!-- PROJECT 5: HUMAN FACTORS & ED PLACEHOLDER CARD -->
+      <article class="project-card" data-category="human-factors">
+        <div class="card-header-top">
+          <h2>🧠 Clinical Ergonomics & Community Behavioral Workflows</h2>
+          <span class="category-pill">Human Factors & Ed</span>
+        </div>
+        <h3>Usability Inspection, Field Training Protocols & Quantitative Coding</h3>
         
         <div class="card-layout-grid">
           <div class="text-column-left">
             <div class="info-block">
               <h4>Objective</h4>
               <p>
-                Manufacture axisymmetric stepped shafts and threaded bushings on a precision lathe while maintaining strict concentricity, surface finish, and thermal control during continuous material removal.
+                Bridge technical engineering systems with real-world human operators by auditing medical device usability for low-resource clinics and structuring evidence-based communication training protocols.
               </p>
             </div>
             
             <div class="info-block">
-              <h4>Methodology & Technical Execution</h4>
+              <h4>Technical Execution & Key Findings</h4>
               <ul>
-                <li><strong>Turning & Facing Operations:</strong> Executed roughing and finishing passes, facing cuts, and shoulder steps while monitoring spindle RPM and surface feet per minute (SFM).</li>
-                <li><strong>Boring & Center Drilling:</strong> Utilized tailstock center drills and boring bars to establish coaxial internal bores with minimal runout.</li>
-                <li><strong>Chip Control & Tool Wear Monitoring:</strong> Adjusted feed rates and coolant application to promote healthy segmented chip formation and prevent built-up edge (BUE) on carbide inserts.</li>
+                <li><strong>Human Factors Equipment Auditing:</strong> Inspected and categorized clinical hardware for intuitive operation and reliability across 10+ global healthcare systems.</li>
+                <li><strong>Behavioral Study Architecture:</strong> Built standardized data collection pipelines for 150+ participants evaluating structured transparency communication.</li>
+                <li><strong>Quantitative Content Coding:</strong> Wrote Python scripts to systematically score and analyze behavioral response effectiveness.</li>
               </ul>
             </div>
           </div>
 
           <div class="media-column-right">
             <div class="img-frame">
-              <!-- Replace with your turned shaft photo or lathe setup -->
-              <img src="lathe-turning.png" alt="Precision Turned Cylindrical Shaft Component">
+              <img src="TSL_Logo_A_Full_Color_Dark.webp" alt="Human Factors and Behavioral Study Architecture">
             </div>
             <div>
-              <h4>Tools & Competencies</h4>
+              <h4>Core Competencies</h4>
               <div class="skills">
-                <span class="tag">Lathe Turning</span>
-                <span class="tag">Concentricity & Runout</span>
-                <span class="tag">Feeds & Speeds (SFM)</span>
-                <span class="tag">Boring & Facing</span>
-                <span class="tag">Chip Mechanics</span>
+                <span class="tag">Human Factors Engineering</span>
+                <span class="tag">Usability Auditing</span>
+                <span class="tag">Python Data Coding</span>
+                <span class="tag">Study Protocol Design</span>
+                <span class="tag">Stakeholder Training</span>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </article>
+
+    </div>
 
     <section class="next-page-container">
-      <p>Want to see these skills in research?</p>
-      <a href="research.html" class="next-page-btn">Explore My Research <span class="arrow">→</span></a>
+      <p>Want to dive deeper into lab publications & trials?</p>
+      <a href="research.html" class="next-page-btn">Explore Research Experience <span class="arrow">→</span></a>
     </section>
  
   </div>
@@ -651,7 +725,7 @@
       Thank you for visiting my portfolio!
     </p>
     <p style="margin-top:10px; font-size:15px;">
-      If you'd like to collaborate, discuss manufacturing design, or connect professionally, I'd love to hear from you.
+      If you'd like to collaborate, discuss engineering design, or connect professionally, I'd love to hear from you.
     </p>
     <p style="margin-top:25px; font-size:14px;">
       © 2026 Chelsea Ogbonna
@@ -664,6 +738,29 @@
   </div>
 
   <script>
+    // Interactive Category Filtering
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('.project-card');
+
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Update active button state
+        filterButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const selectedCategory = btn.getAttribute('data-filter');
+
+        projectCards.forEach(card => {
+          const cardCategory = card.getAttribute('data-category');
+          if (selectedCategory === 'all' || cardCategory === selectedCategory) {
+            card.classList.remove('filtered-out');
+          } else {
+            card.classList.add('filtered-out');
+          }
+        });
+      });
+    });
+
     // Scroll Reveal Engine
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
@@ -673,7 +770,7 @@
       });
     }, { threshold: 0.05 });
 
-    document.querySelectorAll(".project-card, .hero, .section, .quick-nav").forEach((el) => {
+    document.querySelectorAll(".project-card, .hero, .filter-bar").forEach((el) => {
       el.classList.add("hidden");
       observer.observe(el);
     });
